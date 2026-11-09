@@ -31,3 +31,7 @@
 ## 向いている場面 / 向いていない場面
 
 後で書く。
+
+## メモ
+
+- ベクトルタイルを Leaflet で描く選択肢として protomaps-leaflet (https://github.com/protomaps/protomaps-leaflet, BSD-3-Clause) がある。MapLibre GL JS と比べる軸を後で書く

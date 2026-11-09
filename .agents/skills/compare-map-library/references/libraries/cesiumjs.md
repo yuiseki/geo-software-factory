@@ -31,3 +31,8 @@
 ## 向いている場面 / 向いていない場面
 
 後で書く。
+
+## メモ
+
+- 国内の 3D 都市モデルの実例: PLATEAU VIEW 5.0 (https://github.com/Project-PLATEAU/PLATEAU-VIEW-5.0)。Re:Earth Visualizer を介して CesiumJS を使う構成かは未確認
+- ゲームエンジンで使うなら Cesium Native (native/cesium-native.md)

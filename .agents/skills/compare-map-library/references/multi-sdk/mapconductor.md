@@ -13,6 +13,19 @@
 
 後で書く。GitHub org に android-sdk / ios-sdk / react-sdk と、地図 SDK ごとのモジュール (`<platform>-for-<sdk>`: Google Maps, MapLibre, Mapbox, HERE, MapKit, ArcGIS, TomTom, MapTiler, Leaflet, OpenLayers, Cesium, deck.gl など) がある (2026-11-10 にリポジトリ名で確認。各モジュールの成熟度は未確認)。
 
+## ライセンス
+
+2026-11-10 に GitHub API のライセンス判定で確かめた値。
+
+| リポジトリ | 判定 |
+|---|---|
+| android-sdk, android-sdk-core, ios-sdk, ios-sdk-core | Apache-2.0 |
+| react-sdk | MIT |
+| 地図 SDK ごとのモジュール (react-for-maplibre など、確かめたもの) | Apache-2.0 |
+| react-for-cesium | NOASSERTION (LICENSE の実体は未確認) |
+
+下にある地図 SDK のライセンスと料金は別にかかる。
+
 ## 何が楽になるか
 
 後で書く: 地図 SDK の乗り換え、複数 SDK の併用、マーカー・図形などのオーバーレイの共通化。

@@ -1,6 +1,6 @@
 ---
 name: compare-map-library
-description: 地図プロダクトを実装するためのライブラリ/SDK を、地図プロダクトの要件に応じて比較し技術選定する。Web (Leaflet, MapLibre GL JS, Mapbox GL JS, Google Maps JavaScript API, CesiumJS, OpenLayers, deck.gl など)、ネイティブアプリ (MapLibre Native, Mapbox Maps SDK, Google Maps SDK for Android/iOS, Apple MapKit など)、複数 SDK の抽象化層 (MapConductor など) を扱う。描画方式 (ラスタ/ベクトル、2D/3D)、対象端末、組み合わせるタイルサービス、ライセンスと費用、データ量と性能を軸に推奨を出す。「地図ライブラリはどれがいい」「Leaflet と MapLibre どっち」「3D 地図を作りたい」「スマホアプリに地図を入れたい」「地図 SDK を乗り換えたい」と言われたら使う。
+description: 地図プロダクトを実装するためのライブラリ/SDK を、地図プロダクトの要件に応じて比較し技術選定する。Web (Leaflet, MapLibre GL JS, Mapbox GL JS, Google Maps JavaScript API, CesiumJS, OpenLayers, deck.gl など)、ネイティブアプリ (MapLibre Native, Mapbox Maps SDK, Google Maps SDK for Android/iOS, Apple MapKit, Cesium Native など)、地図アプリの土台 (TerriaJS, Re:Earth Visualizer, kepler.gl など)、複数 SDK の抽象化層 (MapConductor など) を扱う。描画方式 (ラスタ/ベクトル、2D/3D)、対象端末、組み合わせるタイルサービス、ライセンスと費用、データ量と性能を軸に推奨を出す。「地図ライブラリはどれがいい」「Leaflet と MapLibre どっち」「3D 地図を作りたい」「スマホアプリに地図を入れたい」「地図 SDK を乗り換えたい」と言われたら使う。
 ---
 
 # compare-map-library
@@ -17,10 +17,19 @@ description: 地図プロダクトを実装するためのライブラリ/SDK �
 | [libraries/cesiumjs](references/libraries/cesiumjs.md) | Web で候補に入れるとき | CesiumJS |
 | [libraries/openlayers](references/libraries/openlayers.md) | Web で候補に入れるとき | OpenLayers |
 | [libraries/deck-gl](references/libraries/deck-gl.md) | Web で候補に入れるとき | deck.gl |
+| [libraries/maptalks](references/libraries/maptalks.md) | Web で 2D と 3D を 1 つで扱いたいとき | maptalks.js |
+| [libraries/openglobus](references/libraries/openglobus.md) | 地球儀型の 3D を CesiumJS 以外でも比べるとき | OpenGlobus |
+| [libraries/navara](references/libraries/navara.md) | MapLibre 系で 3D を扱いたいとき | Navara |
+| [libraries/globe-gl](references/libraries/globe-gl.md) | 全球のデータを地球儀で見せたいとき | globe.gl |
+| [libraries/d3-geo](references/libraries/d3-geo.md) | タイルなしの主題図 (コロプレス図など) を描くとき | d3-geo |
+| [frameworks/terriajs](references/frameworks/terriajs.md) | ライブラリから組まずに、地図アプリの土台を使うか検討するとき | TerriaJS |
+| [frameworks/reearth-visualizer](references/frameworks/reearth-visualizer.md) | 同上。3D の Web GIS を組むとき | Re:Earth Visualizer |
+| [frameworks/kepler-gl](references/frameworks/kepler-gl.md) | 同上。位置データの分析画面を作るとき | kepler.gl |
 | [native/maplibre-native](references/native/maplibre-native.md) | ネイティブアプリで候補に入れるとき | MapLibre Native |
 | [native/mapbox-maps-sdk](references/native/mapbox-maps-sdk.md) | ネイティブアプリで候補に入れるとき | Mapbox Maps SDK |
 | [native/google-maps-sdk](references/native/google-maps-sdk.md) | ネイティブアプリで候補に入れるとき | Google Maps SDK for Android / iOS |
 | [native/apple-mapkit](references/native/apple-mapkit.md) | iOS/macOS で候補に入れるとき | Apple MapKit |
+| [native/cesium-native](references/native/cesium-native.md) | ゲームエンジン (Unreal, Unity) で 3D Tiles を扱うとき | Cesium Native |
 | [multi-sdk/mapconductor](references/multi-sdk/mapconductor.md) | 複数の地図 SDK を併用・乗り換えしたいとき、複数プラットフォームで同じ書き方をしたいとき | MapConductor |
 
 ## 入力
@@ -31,12 +40,13 @@ description: 地図プロダクトを実装するためのライブラリ/SDK �
 
 後で書く。候補:
 
-1. 対象端末で分ける (Web / ネイティブ / 両方)
-2. タイルサービスとの組み合わせ制約で足切りする (例: Google Maps のタイルは Google Maps の SDK で表示する)
-3. 2D/3D、ベクトルタイルの要否、データ量で候補を絞る
-4. ライセンス (OSS か商用か、利用料の有無) と費用を確かめる
-5. 地図 SDK の乗り換えや併用が見込まれるなら、抽象化層 (MapConductor など) を挟むかを検討する
-6. 推奨を先に書き、続けて軸と候補ごとの評価を表で示す
+1. 対象端末で分ける (Web / ネイティブ / ゲームエンジン / 複数)
+2. ライブラリから組むか、地図アプリの土台 (TerriaJS, Re:Earth Visualizer, kepler.gl など) を使うかを決める
+3. タイルサービスとの組み合わせ制約で足切りする (例: Google Maps のタイルは Google Maps の SDK で表示する)
+4. 2D/3D、ベクトルタイルの要否、データ量で候補を絞る
+5. ライセンス (OSS か商用か、利用料の有無) と費用を確かめる
+6. 地図 SDK の乗り換えや併用が見込まれるなら、抽象化層 (MapConductor など) を挟むかを検討する
+7. 推奨を先に書き、続けて軸と候補ごとの評価を表で示す
 
 ## 大まかな指針
 
@@ -44,7 +54,9 @@ description: 地図プロダクトを実装するためのライブラリ/SDK �
 
 - ラスタタイルに少しのマーカーを置くだけ: Leaflet
 - ベクトルタイル、スタイル編集、大量の地物: MapLibre GL JS
-- 地球儀、3D Tiles、地形: CesiumJS
+- 地球儀、3D Tiles、地形: CesiumJS (比べる相手: OpenGlobus, Navara)
+- ゲームエンジンで 3D 都市・地形: Cesium Native (Cesium for Unreal / Unity)
+- パン・ズームしない主題図: d3-geo
 - 大量データの可視化レイヤー: deck.gl を他の地図ライブラリに重ねる
 - Google Maps のタイルや Places を使う: Google Maps JavaScript API / Google Maps SDK
 - Web とネイティブで同じスタイルを使いたい: MapLibre GL JS + MapLibre Native

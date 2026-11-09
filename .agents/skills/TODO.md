@@ -4,9 +4,10 @@
   - [ ] SKILL.md
   - [ ] references/question-bank.md
   - [ ] assets/product-brief-template.md
-- [ ] compare-map-infra (0/10)
+- [ ] compare-map-infra (0/11)
   - [ ] SKILL.md
   - [ ] references/criteria.md
+  - [ ] references/self-hosting.md
   - [ ] references/providers/tile-openstreetmap-org.md
   - [ ] references/providers/tile-openstreetmap-jp.md
   - [ ] references/providers/openfreemap.md
@@ -15,7 +16,7 @@
   - [ ] references/providers/geolonia-maps.md
   - [ ] references/providers/here.md
   - [ ] references/providers/mapfan-api.md
-- [ ] compare-map-library (0/9)
+- [ ] compare-map-library (0/14)
   - [ ] SKILL.md
   - [ ] references/criteria.md
   - [ ] references/libraries/leaflet.md
@@ -25,9 +26,14 @@
   - [ ] references/libraries/cesiumjs.md
   - [ ] references/libraries/openlayers.md
   - [ ] references/libraries/deck-gl.md
+  - [ ] references/native/maplibre-native.md
+  - [ ] references/native/mapbox-maps-sdk.md
+  - [ ] references/native/google-maps-sdk.md
+  - [ ] references/native/apple-mapkit.md
+  - [ ] references/multi-sdk/mapconductor.md
 
 ## 候補 (まだ作るか決めていない)
 
-- 自前タイル配信 (PMTiles, Planetiler, tileserver 等) を選択肢に入れるか: compare-map-infra に入れるか別スキルにするか
-- ネイティブアプリ向け SDK (MapLibre Native, Mapbox Maps SDK, Google Maps SDK for Android/iOS) の比較
-- 運用 (タイル配信のコスト見積もり、API キー管理、帰属表示)
+- 運用系のスキル: タイル配信のコスト見積もり、API キー管理、帰属表示
+- ネイティブ向けの追加候補: HERE SDK, ArcGIS Maps SDK, クロスプラットフォーム (react-native-maps, Flutter の地図プラグイン)
+- 自前配信の追加: 生成ツール (Planetiler, tilemaker) ごとに reference を分けるか

@@ -18,8 +18,8 @@ grilling-map-product  ->  compare-map-infra  ->  compare-map-library
 | 依頼の状態 | 使うスキル |
 |---|---|
 | 「地図アプリを作りたい」など、誰に何の価値を届けるかがまだ曖昧 | grilling-map-product |
-| 要件は固まっていて、タイル/地図データの提供元を選びたい | compare-map-infra |
-| 要件は固まっていて、描画ライブラリ/SDK を選びたい | compare-map-library |
+| 要件は固まっていて、タイル/地図データの提供元を選びたい (自前配信を含む) | compare-map-infra |
+| 要件は固まっていて、描画ライブラリ/SDK を選びたい (Web、ネイティブアプリ、複数 SDK の抽象化層) | compare-map-library |
 | 技術選定を頼まれたが、要件 (利用規模、商用か、必要な地図の詳しさ、対象端末など) が聞き出せていない | 先に grilling-map-product |
 
 後で書く:

@@ -9,8 +9,8 @@
 | スキル | 使う場面 |
 |---|---|
 | [grilling-map-product](.agents/skills/grilling-map-product/SKILL.md) | 作りたい地図プロダクトの価値と機能が曖昧なとき、明確になるまで問い詰める |
-| [compare-map-infra](.agents/skills/compare-map-infra/SKILL.md) | 地図タイルサービス (OSM, OpenFreeMap, Mapbox, Google Maps, Geolonia Maps, HERE, MapFan API など) を要件に照らして選ぶ |
-| [compare-map-library](.agents/skills/compare-map-library/SKILL.md) | 地図ライブラリ (Leaflet, MapLibre GL JS, Mapbox GL JS, Google Maps JS API, CesiumJS など) を要件に照らして選ぶ |
+| [compare-map-infra](.agents/skills/compare-map-infra/SKILL.md) | 地図タイルサービス (OSM, OpenFreeMap, Mapbox, Google Maps, Geolonia Maps, HERE, MapFan API など) と自前配信 (PMTiles など) を要件に照らして選ぶ |
+| [compare-map-library](.agents/skills/compare-map-library/SKILL.md) | 地図ライブラリ (Leaflet, MapLibre GL JS, Mapbox GL JS, Google Maps JS API, CesiumJS など)、ネイティブアプリ向け SDK、複数 SDK の抽象化層 (MapConductor など) を要件に照らして選ぶ |
 
 スキルの使い分けはエージェント向けに [AGENTS.md](AGENTS.md) に書く。
 

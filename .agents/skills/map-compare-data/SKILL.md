@@ -1,6 +1,6 @@
 ---
 name: map-compare-data
-description: 地図に載せる主題データ (ベースマップ以外) の出どころを比較し選ぶ。OpenStreetMap、Overture Maps、国土数値情報、基盤地図情報、e-Stat の統計と境界、アドレス・ベース・レジストリ、自治体のオープンデータ、G空間情報センターなどを、収録範囲、詳しさ、更新頻度、形式、ライセンス (ODbL、CC BY、PDL、政府標準利用規約) と、混ぜたときの条件で比べる。「地図に載せるデータはどこから」「施設や境界のデータがほしい」「オープンデータで地図を作りたい」「OSM と Overture どっち」と言われたら使う。
+description: 地図に載せる主題データ (ベースマップ以外) の出どころを比較し選ぶ。OpenStreetMap、Overture Maps、国土数値情報、基盤地図情報、e-Stat の統計と境界、アドレス・ベース・レジストリ、自治体のオープンデータ、G空間情報センター、気象庁、航空機と船舶の位置 (ADS-B、AIS)、AI エージェントで集めたデータなどを、収録範囲、詳しさ、更新頻度、形式、ライセンス (ODbL、CC BY、PDL、政府標準利用規約) と、混ぜたときの条件で比べる。「地図に載せるデータはどこから」「施設や境界のデータがほしい」「オープンデータで地図を作りたい」「OSM と Overture どっち」と言われたら使う。
 ---
 
 # map-compare-data
@@ -19,7 +19,10 @@ description: 地図に載せる主題データ (ベースマップ以外) の出
 | [sources/municipal-open-data](references/sources/municipal-open-data.md) | 自治体のデータが要るとき | 自治体のオープンデータと G空間情報センター |
 | [sources/alltheplaces](references/sources/alltheplaces.md) | チェーン店の店舗が要るとき | 公式の店舗検索から集めた店舗データ (CC0) |
 | [sources/wikidata](references/sources/wikidata.md) | 名所や施設の代表点、写真、ID での突き合わせが要るとき | Wikidata (構造化データは CC0) |
+| [sources/jma](references/sources/jma.md) | 雨雲、アメダス、警報、地震、津波を重ねるとき | 気象庁のデータ (公式の配布と画面の非公開の口)、利用規約、気象業務法 |
+| [sources/live-tracking](references/sources/live-tracking.md) | 航空機や船舶の生きた位置が要るとき | ADS-B と AIS の出どころ、非商用の条件、プライバシー |
 | [license-mixing](references/license-mixing.md) | 複数のデータを混ぜるとき | ライセンスを混ぜたときの条件 |
+| [ai-collected-data](references/ai-collected-data.md) | AI エージェントで集めた、確かめたデータを載せるとき | 記録する列、地図での表示、抜き取り検査、ライセンスと ODbL |
 
 ## 入力
 
@@ -57,6 +60,9 @@ description: 地図に載せる主題データ (ベースマップ以外) の出
 - 全球の道路、建物、POI: OSM (ODbL)。POI を ODbL なしで使いたいなら Overture の places
 - 名所や施設の代表点と写真: Wikidata の座標 (CC0) と画像 (Commons、ファイルごとのライセンス)。路線や店など座標の無い項目は OSM で補う
 - チェーン店の店舗 (コンビニ、飲食チェーンなど): OSM と Overture の places をブランドの Wikidata ID (`brand:wikidata`、`brand.wikidata`) で絞り、AllThePlaces と並べる。どれも網羅率の公表がないので、会社が公表する店舗数と合計を突き合わせる
+- 雨雲 (降水ナウキャスト)、アメダス、警報・注意報、地震、津波: 気象庁。警報と地震は公式の防災情報 XML を使い、画面のタイルや JSON は予告なく変わる前提で読む。加工して独自の予想を出すなら予報業務許可を確かめる
+- 航空機と船舶の生きた位置: 商用なら adsb.lol (ODbL) か各社の商用契約、研究や非商用なら OpenSky Network や Global Fishing Watch も候補。個人の機体や船の扱いを先に決める
+- AI で店や施設を集めた、確かめた一覧: 項目ごとに根拠の URL と確かめた日を残し、無作為の抜き取り検査で誤りの率を出してから載せる。OSM を出発点にしたら ODbL の派生データベースになる
 - 国内の POI を検索 API で引きたい: map-compare-infra の `search/`
 
 ## 出力
@@ -77,4 +83,5 @@ description: 地図に載せる主題データ (ベースマップ以外) の出
 - 公式見解の無いライセンスの組み合わせ (ODbL と CC BY や PDL を 1 つのデータベースにするなど) は、推測と明記し、断定しない。
 - 安全に関わる情報 (避難場所など) は、時点と出どころを地図の上で見せることを勧める。
 - 店舗や施設の件数を地域ごとに数えるときは、出どころごとに数えて並べ、食い違いの大きさを答えに書く。正解の数が手に入らないなら、どの出どころの数で描いたかを地図に書く。
+- AI を通しても元のデータの条件は消えない。サイトから写した値はそのサイトの規約のまま、OSM から始めた一覧は ODbL のままとして扱う。
 - 規約やライセンスの解釈は、条文から読んだものと推測を分けて書く。法的な判断を断定しない。

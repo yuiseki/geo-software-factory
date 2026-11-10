@@ -1,6 +1,6 @@
 # 比較の軸 (主題データの出どころ)
 
-地図に載せる主題データ (施設、建物、境界、住所、統計、災害リスクなど、ベースマップ以外) の出どころを同じ軸で並べるための手順。比較を始める前に読む。各出どころの事実は `sources/` と [license-mixing](license-mixing.md) にあり、この文書には軸と判定の手順だけを書く。例として挙げる事実は、各 reference に 2026-11-10 時点で書かれていたもの。
+地図に載せる主題データ (施設、建物、境界、住所、統計、災害リスクなど、ベースマップ以外) の出どころを同じ軸で並べるための手順。比較を始める前に読む。各出どころの事実は `sources/` と [license-mixing](license-mixing.md) にあり、この文書には軸と判定の手順だけを書く。例として挙げる事実は、各 reference に 2026-11-10 時点 (気象庁、航空機と船舶、AI で集めたデータは 2026-11-11 時点) で書かれていたもの。
 
 ## 進め方
 
@@ -15,8 +15,9 @@
 | 条件 | 何を確かめるか | 外れる例 (各 reference の記述) |
 |---|---|---|
 | 商用利用と再配布 | 使う版の利用条件が、商用か、タイルやデータとして再配布するかに合うか | 国土数値情報の避難施設、市区町村役場 (P34)、郵便局、警察署、消防署、道の駅、緊急輸送道路は最新版でも非商用で再配布できない。学校は 2013 年度版だけ非商用。市町村役場等及び公的集会施設 (P05) は CC BY 4.0 ([ksj](sources/ksj.md))。自治体のデータには独自規約やライセンス未指定のものがある ([municipal-open-data](sources/municipal-open-data.md)) |
+| 商用利用の制限 (生きた位置) | 無料の API が非商用に限られていないか | OpenSky Network の API、ADS-B Exchange の Community API、Global Fishing Watch (CC BY-NC 4.0) は非商用。adsb.lol は ODbL ([live-tracking](sources/live-tracking.md)) |
 | 継承の条件 (シェアアライク) | 自社のデータと混ぜた結果を、同じライセンスで公開できるか | OSM と、OSM を含む Overture のテーマ (buildings、transportation、divisions、base) は ODbL。同じ種類の地物で自社のデータと突き合わせると、自社のデータにも共有義務が及びうる ([openstreetmap](sources/openstreetmap.md)、[overture-maps](sources/overture-maps.md)、[license-mixing](license-mixing.md)) |
-| 法令上の手続 | ライセンスとは別に、手続が要るか | 基盤地図情報は基本測量成果に当たり、使い方によって測量法の承認が要る ([fgd](sources/fgd.md)、map-legal-check の survey-act) |
+| 法令上の手続 | ライセンスとは別に、手続が要るか | 基盤地図情報は基本測量成果に当たり、使い方によって測量法の承認が要る ([fgd](sources/fgd.md)、map-legal-check の survey-act)。気象庁の予報や観測を補間や区域の変更で加工して出すと、気象業務法の予報業務許可が要りうる ([jma](sources/jma.md)) |
 | 対象地域 | 対象地域を収録しているか | 国内の公的データは日本だけ。全球なら OSM、Overture |
 | 安全に関わる情報の鮮度 | 古いデータを見せると危険がないか | 国土数値情報の避難施設は 2012 年度版が最新で、自治体の最新の指定とずれうる。避難場所は自治体のデータや国土地理院の指定緊急避難場所データで確かめる ([ksj](sources/ksj.md)) |
 
@@ -56,7 +57,12 @@
 - 加工の表示: 国のデータを加工したら、加工したことと加工した主体を書き、国が作ったように見せない ([ksj](sources/ksj.md)、[estat](sources/estat.md)、[abr](sources/abr.md))。
 - 公式見解の無い組み合わせ: ODbL のデータと CC BY や PDL のデータを 1 つのデータベースにする場合の扱いは、公的機関と OSMF のどちらの公式見解も見つかっていない ([license-mixing](license-mixing.md))。
 
-### 7. 識別子と結びつけやすさ
+### 7. 集め方と検証
+
+- 人が確かめたデータか、AI や機械で集めたデータか。AI で集めた、確かめたデータは、根拠の URL、確かめた日、無作為の抜き取り検査の誤りの率があるものを重く見る。率が無ければ未確認として扱う ([ai-collected-data](ai-collected-data.md))。
+- 公式の配布か、画面が内部で読んでいる非公開の口か。気象庁のナウキャストのタイルや画面の JSON は仕様が公開されず、予告なく変わり、止まっても 200 を返すことがある ([jma](sources/jma.md))。
+
+### 8. 識別子と結びつけやすさ
 
 - 安定した ID: Overture の GERS ID はリリースをまたいで地物を対応づけられる (2025-06-25.0 より前の ID は使えない、[overture-maps](sources/overture-maps.md))。アドレス・ベース・レジストリの町字 ID、全国地方公共団体コード、e-Stat の KEY_CODE は、他のデータと結合する鍵になる。
 - 自社のデータや統計と結合する予定があるなら、鍵の有無を重く見る。
@@ -74,6 +80,8 @@
 | 統計の主題図 (人口、事業所) | なし | 識別子 (KEY_CODE)、鮮度 |
 | 住所の検索や正規化 | なし | 公的な裏付け、識別子 (町字 ID) |
 | 全球、海外を含む | 対象地域 | 収録範囲と網羅性 |
+| 生きた位置 (航空機、船舶) | 商用利用の制限 (生きた位置)、継承の条件 | ライセンスと出典表示の負担、鮮度と更新頻度 ([live-tracking](sources/live-tracking.md)) |
+| AI で集めた、AI で確かめたデータを載せる | 継承の条件 (OSM を出発点にしたとき) | 集め方と検証 ([ai-collected-data](ai-collected-data.md)) |
 
 ## この文書で扱っていない出どころ
 

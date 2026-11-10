@@ -4,7 +4,7 @@
   - [ ] SKILL.md
   - [ ] references/question-bank.md
   - [ ] assets/product-brief-template.md
-- [ ] map-compare-arch (1/19)
+- [ ] map-compare-arch (1/20)
   - [ ] SKILL.md
   - [ ] references/criteria.md
   - [x] references/self-hosting.md
@@ -12,6 +12,7 @@
   - [ ] references/capabilities/search.md
   - [ ] references/capabilities/routing.md
   - [ ] references/capabilities/analysis.md
+  - [ ] references/capabilities/source-of-truth.md
   - [ ] references/formats/cloud-native-formats.md
   - [ ] references/browser/service-worker.md
   - [ ] references/browser/storage.md

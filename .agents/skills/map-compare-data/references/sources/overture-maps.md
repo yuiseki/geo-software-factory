@@ -30,6 +30,7 @@ Overture Maps は、OpenStreetMap、企業の提供データ、機械学習で�
 - 配布形式 (Shapefile、GeoJSON、GeoParquet、PMTiles、CSV など): GeoParquet (ファイルのメタデータでは GeoParquet 1.1.0、ジオメトリは WKB、bbox 列による covering 付き)。テーマ別の PMTiles もあるが、公式は本番利用を勧めておらず、レイヤーや属性、ズームは予告なく変わり得るとしている。Explorer や DuckDB 経由で GeoJSON に書き出せる。
 - 取得方法 (一括ダウンロード、API、範囲を絞った取得): S3 `s3://overturemaps-us-west-2/release/<RELEASE>/theme=<theme>/type=<type>/*.parquet`、Azure `https://overturemapswestus2.blob.core.windows.net/release/<RELEASE>`。PMTiles は `https://overturemaps-extras-us-west-2.s3.us-west-2.amazonaws.com/tiles/<RELEASE>/<THEME>.pmtiles`。範囲を絞るには overturemaps-py (v2.1.0、2026-11-07 公開) の bbox 指定、DuckDB の SQL (bbox 列で絞る)、ブラウザの Explorer。`https://stac.overturemaps.org/latest.ddb` は最新リリースへのビューを持つ DuckDB ファイル (DuckDB 1.2.0 以上)。
 - 座標参照系: 公式ページでの明記は確認できなかった。`2026-10-21.0` の divisions のファイルの GeoParquet メタデータには `crs` がなく、GeoParquet 仕様では `crs` 省略時は OGC:CRS84 (経度・緯度、WGS84) と解釈される。他のテーマのファイルも同じかは確かめていない。
+- places の列 (`2026-10-21.0`): 分類は `basic_category` (例: `convenience_store`) と `taxonomy` (`primary`、`hierarchy`、`alternates`) で、以前の `categories` 列はない。ほかに `operating_status`、`brand` (`wikidata`、`names`)、`sources` (出所ごとに `dataset`、`license`、`confidence` など) を持つ。`sources[1]` は最初の出所だけで、統合された他の出所は後ろの要素にある。範囲を絞るには `bbox` 列 (`xmin`、`ymin` など) で条件を付けると、DuckDB は東京 23 区の範囲を S3 から 1 分ほどで読めた (DuckDB 1.5.5、2026-11-10)。
 
 ## ライセンスと出典表示
 
@@ -46,6 +47,7 @@ Overture Maps は、OpenStreetMap、企業の提供データ、機械学習で�
 - GERS ID は 2025-06-25.0 より前の ID を UUID に置き換えたので、古い ID は今のデータと対応しない。base テーマと building_part の UUID は GERS ID ではなく安定性の約束がない。
 - 公開リリースは 60 日で消えるため、過去の版を再現したいなら自分で保存しておく必要がある。
 - 日本の places、buildings、transportation の網羅率は公式に示されていない。
+- 重複の実例: 東京 23 区のセブン-イレブン (`brand.wikidata = Q259340` か名前の一致、`basic_category = convenience_store`) は 2,669 件で、30 m 以内の点を 1 つにまとめると約 2,150 件になった。同じ範囲の OSM は 1,944 件。ATM や「storage_facility」に分類された同じブランドの点も混ざる (2026-10-21.0)。
 
 ## 地図プロダクトでの使いどころ
 

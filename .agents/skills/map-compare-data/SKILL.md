@@ -17,6 +17,7 @@ description: 地図に載せる主題データ (ベースマップ以外) の出
 | [sources/estat](references/sources/estat.md) | 統計や境界が要るとき | e-Stat の統計と境界 |
 | [sources/abr](references/sources/abr.md) | 住所の正規化や位置参照が要るとき | アドレス・ベース・レジストリ |
 | [sources/municipal-open-data](references/sources/municipal-open-data.md) | 自治体のデータが要るとき | 自治体のオープンデータと G空間情報センター |
+| [sources/alltheplaces](references/sources/alltheplaces.md) | チェーン店の店舗が要るとき | 公式の店舗検索から集めた店舗データ (CC0) |
 | [license-mixing](references/license-mixing.md) | 複数のデータを混ぜるとき | ライセンスを混ぜたときの条件 |
 
 ## 入力
@@ -53,6 +54,7 @@ description: 地図に載せる主題データ (ベースマップ以外) の出
 - 住所の正規化と代表点: アドレス・ベース・レジストリ (座標参照系の混在に注意)
 - 特定の自治体の施設一覧: その自治体のオープンデータ、自治体標準オープンデータセット
 - 全球の道路、建物、POI: OSM (ODbL)。POI を ODbL なしで使いたいなら Overture の places
+- チェーン店の店舗 (コンビニ、飲食チェーンなど): OSM と Overture の places をブランドの Wikidata ID (`brand:wikidata`、`brand.wikidata`) で絞り、AllThePlaces と並べる。どれも網羅率の公表がないので、会社が公表する店舗数と合計を突き合わせる
 - 国内の POI を検索 API で引きたい: map-compare-infra の `search/`
 
 ## 出力
@@ -72,4 +74,5 @@ description: 地図に載せる主題データ (ベースマップ以外) の出
 - 利用条件は項目と版ごとに違う。「国土数値情報は CC BY」のように出どころ単位でまとめて書かない。
 - 公式見解の無いライセンスの組み合わせ (ODbL と CC BY や PDL を 1 つのデータベースにするなど) は、推測と明記し、断定しない。
 - 安全に関わる情報 (避難場所など) は、時点と出どころを地図の上で見せることを勧める。
+- 店舗や施設の件数を地域ごとに数えるときは、出どころごとに数えて並べ、食い違いの大きさを答えに書く。正解の数が手に入らないなら、どの出どころの数で描いたかを地図に書く。
 - 規約やライセンスの解釈は、条文から読んだものと推測を分けて書く。法的な判断を断定しない。

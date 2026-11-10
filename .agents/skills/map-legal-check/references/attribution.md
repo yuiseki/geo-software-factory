@@ -28,6 +28,7 @@
 |---|---|---|---|
 | OSM データから作ったタイルを使うインタラクティブ地図 (ウェブ、アプリ) | 当たる。地図の隅に「OpenStreetMap」(歴史的な「© OpenStreetMap contributors」も可) を表示し、openstreetmap.org/copyright へリンクする。右下が伝統的だが隅ならどこでもよい。操作しないと見えない形は不可。閉じた後、地図の操作後、又は 5 秒後に畳んだり消したりしてよいが、ライセンス情報はたどれるようにする | ODbL 第 4.3 条、Attribution Guidelines | https://osmfoundation.org/wiki/Licence/Attribution_Guidelines |
 | OSM の静止画 (スクリーンショット、記事の図) | 当たる。基本はインタラクティブ地図と同じ。一つの文書で複数の画像なら一度の表示でよい。地物 100 未満、面積 10,000 m² 未満、小さなサムネイルやアイコンは除外 | Attribution Guidelines | https://osmfoundation.org/wiki/Licence/Attribution_Guidelines |
+| 商用のベースマップの静止画 (記事、README) | 提供元ごとに違う。Geolonia Maps は帰属表示が写っていれば載せてよい (提供元への聞き取り、2026-11-10)。他の提供元は各 provider の reference と規約で確かめる | 提供元への聞き取り | map-compare-infra の providers/geolonia-maps.md |
 | OSM の印刷物 (書籍、PDF、紙地図) | 当たる。地図の横、脚注、謝辞など、他の帰属表示が通常置かれる場所に置き、URL「openstreetmap.org/copyright」を印字する | Attribution Guidelines | 同上 |
 | OSM を使うジオコーダーやルート検索、それを組み込むアプリ | 当たる。サービスとアプリで OpenStreetMap をクレジットする。個々の結果には表示は不要 (Derivative Database になる場合を除く) | Attribution Guidelines、Geocoding Guideline | https://osmfoundation.org/wiki/Licence/Attribution_Guidelines 、 https://osmfoundation.org/wiki/Licence/Community_Guidelines/Geocoding_-_Guideline |
 | OSM 由来のデータベースや抽出ファイルの配布 | 当たる。帰属表示と ODbL 本文又はリンクを、readme やメタデータなど利用者が見る場所に置く | ODbL 第 4.2 条、Attribution Guidelines | https://opendatacommons.org/licenses/odbl/1-0/ |

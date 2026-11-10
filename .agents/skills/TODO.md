@@ -85,11 +85,12 @@
   - [x] references/cross-platform/flutter-map.md
   - [x] references/niche.md
 
-- [x] map-compare-data (10/10)
+- [x] map-compare-data (11/11)
   - [x] SKILL.md
   - [x] references/criteria.md
   - [x] references/license-mixing.md
   - [x] references/sources/abr.md
+  - [x] references/sources/alltheplaces.md
   - [x] references/sources/estat.md
   - [x] references/sources/fgd.md
   - [x] references/sources/ksj.md

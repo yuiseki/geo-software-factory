@@ -2,7 +2,9 @@
 
 「東京23区の区ごとのセブンイレブンの数を可視化したい」
 
-この一言から、地図に載せるデータの出どころ、ライセンスと出典表示、描画ライブラリまでを、AI エージェントが根拠つきで選ぶためのスキル集。
+この一言から、地図に載せるデータの出どころ、ライセンスと出典表示、描画ライブラリまでを、AI エージェントが根拠つきで選ぶためのスキル集。「地図アプリを作りたい」のような曖昧な依頼なら、何を作るかの聞き取りから始める。
+
+## 作例 1: 区ごとの店舗数を地図で見る
 
 ![東京23区の区ごとのセブン-イレブンの店舗数](docs/images/seven-eleven-tokyo23.png)
 
@@ -14,6 +16,16 @@
 - 区の境界は国土数値情報 (CC BY 4.0)。描画は Geolonia Maps の embed で、HTML の属性だけでコロプレス図にした
 
 通しで見つかった足りない手順 (チェーン店の数え方、AllThePlaces の打ち切り、Overture の 2026 年の列名) は、その場でスキルに書き足した。記録は [examples/seven-eleven-tokyo23](examples/seven-eleven-tokyo23/) にある。
+
+## 作例 2: 地図アプリを企画から公開まで
+
+「旅先で定番の名所を訪れることを、ゲームの実績解除みたいに演出してくれるアプリがほしい」から始めて、何を作るかの聞き取り、置き場所、地図データ、ライブラリの順にスキルを通し、MapLibre GL JS と OpenFreeMap、Cloudflare の Workers と D1 で作って公開した。
+
+![旅の実績解除！の一覧と地図](docs/images/unlock-your-trip.png)
+
+- 聞き取りでは 1 問ずつ聞き、価値の芯を 2 回読み違えて、本人の答えで直した。外したことはスキルに書き足した
+- 予算 0 円、OSS (Apache-2.0)、他の人も登録できるサービスにする前提で、置き場所とライブラリを選んだ
+- 記録は [examples/unlock-your-trip](examples/unlock-your-trip/)、アプリは https://unlock-your-trip.yuiseki.workers.dev
 
 ## できること、できないこと
 
@@ -67,7 +79,7 @@ npx skills add yuiseki/geo-app-factory --skill map-compare-library  # 1 つだ�
 
 ## 利害関係の開示
 
-このスキル集の作者は、Geolonia Maps を提供する株式会社 Geolonia に関係している。上の例で Geolonia Maps を使ったのは、HTML の属性だけでコロプレス図を描ける機能を試すためである。スキルは Geolonia Maps を特別扱いしない。
+このスキル集の作者は、Geolonia Maps を提供する株式会社 Geolonia に関係している。作例 1 で Geolonia Maps を使ったのは、HTML の属性だけでコロプレス図を描ける機能を試すためである。作例 2 は Geolonia の製品を使っていない。スキルは Geolonia Maps を特別扱いしない。
 
 ## ディレクトリ構成
 
@@ -92,7 +104,7 @@ LICENSE                   Apache License 2.0
   map-compare-protocol/
   map-migrate/
 docs/images/              README の図
-examples/                 スキルを通した記録
+examples/                 スキルを通した記録 (seven-eleven-tokyo23、unlock-your-trip)
 ```
 
 ## ライセンス

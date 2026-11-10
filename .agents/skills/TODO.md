@@ -4,9 +4,9 @@
   - [ ] SKILL.md
   - [ ] references/question-bank.md
   - [ ] assets/product-brief-template.md
-- [ ] map-compare-arch (18/20)
-  - [ ] SKILL.md
-  - [ ] references/criteria.md
+- [x] map-compare-arch (20/20)
+  - [x] SKILL.md
+  - [x] references/criteria.md
   - [x] references/self-hosting.md
   - [x] references/capabilities/tiles.md
   - [x] references/capabilities/search.md

@@ -45,9 +45,25 @@ reference の事実 (料金、規約、ライセンス、版) は 2026-11-10 に
 
 ## 使い方
 
-- Claude Code: `.claude/skills` は `.agents/skills` へのシンボリックリンク。リポジトリを開けばスキルが読まれる
-- Codex / Gemini CLI / opencode など: 後で書く
-- 他のリポジトリへの導入方法 (コピー、`npx skills add` 等): 後で書く
+このリポジトリを開いて、エージェントに地図プロダクトのことを頼む。スキルは [Agent Skills](https://code.claude.com/docs/en/skills) の形 (`SKILL.md` を持つディレクトリ) で、`.agents/skills/` にある。
+
+| エージェント | このリポジトリで読まれる場所 | 使い分けの案内 |
+|---|---|---|
+| Claude Code | `.claude/skills/` (`.agents/skills/` へのシンボリックリンク) | `CLAUDE.md` が `AGENTS.md` を読み込む |
+| Codex | `.agents/skills/` | `AGENTS.md` を読む |
+| Gemini CLI | `.agents/skills/` (`.gemini/skills/` の別名として読まれる) | |
+| opencode | `.agents/skills/` か `.claude/skills/` | |
+
+読まれる場所は 2026-11-11 に各エージェントの文書で確かめた (Claude Code https://code.claude.com/docs/en/skills 、Codex https://learn.chatgpt.com/docs/build-skills 、Gemini CLI https://geminicli.com/docs/cli/skills/ 、opencode https://opencode.ai/docs/skills)。
+
+他のリポジトリに入れるときは、[skills](https://github.com/vercel-labs/skills) の CLI (Node.js 22.20 以降) を使う。
+
+```sh
+npx skills add yuiseki/geo-app-factory                          # 全部のスキル
+npx skills add yuiseki/geo-app-factory --skill map-compare-library  # 1 つだけ
+```
+
+この CLI が入れるのはスキルのディレクトリだけで、リポジトリ直下の [AGENTS.md](AGENTS.md) (どの段階でどのスキルを使うかの案内) は入らない。流れに沿って使いたいときは、AGENTS.md の中身を入れ先の AGENTS.md に写す。スキルは 1 つずつでも働くように書いてある。
 
 ## 利害関係の開示
 

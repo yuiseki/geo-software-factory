@@ -29,7 +29,7 @@ Geolonia Maps SDK は、Geolonia が配信する地図を Web サイトとアプ
 | ラスタタイル (XYZ) | 対応 (maps-suite、maps-react) | `{z}/{x}/{y}` のテンプレート URL を raster ソースとして追加する。例は地理院タイル。embed の HTML 属性だけではこの機能は使えない (https://docs.geolonia.com/howto/custom-source/) |
 | ベクトルタイル (MVT / PMTiles / MLT) | MVT と PMTiles は対応。MLT は未確認 | Geolonia の標準スタイルは MVT を使う。外部の MVT も vector ソースとして追加できる (https://docs.geolonia.com/howto/custom-source/)。`GeoloniaMap` は PMTiles プロトコルを登録する (https://docs.geolonia.com/reference/core/Class.GeoloniaMap/)。公式スタイル `geoloniamaps/smartcity-base` は国土地理院の最適化ベクトルタイルを PMTiles 形式で読む (https://docs.geolonia.com/explanation/styles/)。MLT は公式ドキュメントに記述がない |
 | スタイル仕様 (MapLibre/Mapbox Style 等) | 対応 (MapLibre Style Spec) | Geolonia のスタイル名 (`geolonia/basic-v2` など) か、スタイル JSON の URL を指定する。外部スタイルの例は `https://tile.openstreetmap.jp/styles/osm-bright/style.json` (https://docs.geolonia.com/howto/change-style/, https://docs.geolonia.com/explanation/map-style/) |
-| GeoJSON | 対応 | embed は `data-geojson`、maps-core は `geojson` オプションと `SimpleStyle` で、simplestyle-spec に沿って描く。クラスタリング、コロプレス、ヒートマップ、値による円の大きさと色の描き分けがある (https://www.npmjs.com/package/@geolonia/maps-core, https://github.com/geolonia/embed/blob/master/CHANGELOG.md の v6.0.0-pre.6)。maps-suite には型の混在した GeoJSON を描く `Data` レイヤーがある (https://docs.geolonia.com/reference/) |
+| GeoJSON | 対応 | embed は `data-geojson`、maps-core は `geojson` オプションと `SimpleStyle` で、simplestyle-spec に沿って描く。クラスタリング、コロプレス、ヒートマップ、値による円の大きさと色の描き分けがある (https://www.npmjs.com/package/@geolonia/maps-core, https://github.com/geolonia/embed/blob/master/CHANGELOG.md の v6.0.0-pre.6)。maps-suite には型の混在した GeoJSON を描く `Data` レイヤーがある (https://docs.geolonia.com/reference/)。コロプレス図とヒートマップは、embed v6 以降なら JavaScript を書かずに HTML の属性だけで描ける。コロプレスは `data-choropleth` (塗り分けに使う数値プロパティ)、`data-choropleth-colors`、`data-choropleth-range` で、範囲を等間隔に割り当てて色を補間する (階級分けの指定はない)。ヒートマップは点の GeoJSON に `data-heatmap` (重みのプロパティ、全点同じ重みなら `on`) と `data-heatmap-colors` で、有効にするとマーカーとクラスタリングは出ない。maps-react は `choropleth` と `heatmap` の props で同じことができる。半径や強さの調整は maps-suite か maps-react で MapLibre のレイヤーの `paint` を書く。数値プロパティが文字列だと塗り分けられない (https://docs.geolonia.com/howto/choropleth/ , https://docs.geolonia.com/howto/heatmap/) |
 | 3D Tiles / glTF | 未確認 | 公式ドキュメントに記述がない。基盤の MapLibre GL JS のカスタムレイヤーは使えるはずである (推測) |
 | 地形 (標高タイル) | 対応 (標準スタイル) | 標準スタイル `geolonia/basic-v2` は国土地理院の標高タイルを raster-dem ソース (`dem`) として持つ (https://cdn.geolonia.com/style/geolonia/basic-v2/ja.json)。地形の表示手順を説明したハウツーは見つからなかった |
 | WMS / WMTS | 未確認 | 公式ドキュメントに記述がない。基盤が MapLibre GL JS の Map なので、raster ソースの URL に `{bbox-epsg-3857}` を入れる MapLibre の方法で WMS を読めるはずである (推測) |
@@ -92,6 +92,7 @@ Geolonia Maps SDK は、Geolonia が配信する地図を Web サイトとアプ
 - Geolonia Maps のタイルとスタイルを使う Web の地図。API キーの付与、スタイル名の解決、3D 建物の切り替えを SDK が受け持つ。
 - ビルド環境のない静的な HTML や CMS に、属性だけで地図を置きたい場合 (embed、または `<geolonia-map>`)。
 - MapLibre GL JS の API とスタイル仕様を使いつつ、マーカー、ポップアップ、GeoJSON の描き分け (クラスタリング、コロプレス、ヒートマップ) を設定だけで済ませたい場合。
+- 手元の GeoJSON を素早く可視化したい場合。コロプレス図とヒートマップを HTML の属性だけで描ける。提供元はこれを珍しい特徴として推している (提供元への聞き取り、2026-11-10。手順は https://docs.geolonia.com/howto/choropleth/ , https://docs.geolonia.com/howto/heatmap/)。
 - `google.maps.*` に近いクラス構成 (`Map`、`Marker`、`InfoWindow` など) で書かれた既存の JavaScript を移したい場合 (maps-suite)。
 - 開発中やプロトタイプを、キーを発行せずに localhost や GitHub Pages などで動かしたい場合。
 
@@ -124,6 +125,8 @@ Geolonia Maps SDK は、Geolonia が配信する地図を Web サイトとアプ
 - https://docs.geolonia.com/howto/change-style/
 - https://docs.geolonia.com/howto/3d/
 - https://docs.geolonia.com/howto/globe/
+- https://docs.geolonia.com/howto/choropleth/
+- https://docs.geolonia.com/howto/heatmap/
 - https://cdn.geolonia.com/style/geolonia/basic-v2/ja.json
 - https://www.geolonia.com/products/faq/
 - https://www.geolonia.com/terms/

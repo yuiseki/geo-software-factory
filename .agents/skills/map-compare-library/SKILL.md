@@ -13,7 +13,7 @@ description: 地図プロダクトを実装するためのライブラリや SDK
 | [libraries/leaflet](references/libraries/leaflet.md) | Web で候補に入れるとき | Leaflet |
 | [libraries/maplibre-gl-js](references/libraries/maplibre-gl-js.md) | Web で候補に入れるとき | MapLibre GL JS |
 | [libraries/mapbox-gl-js](references/libraries/mapbox-gl-js.md) | Web で候補に入れるとき | Mapbox GL JS |
-| [libraries/geolonia-maps](references/libraries/geolonia-maps.md) | Web で候補に入れるとき、Geolonia Maps のタイルを使うとき | Geolonia Maps SDK (embed、maps-suite、maps-react、maps-core) |
+| [libraries/geolonia-maps](references/libraries/geolonia-maps.md) | Web で候補に入れるとき、Geolonia Maps のタイルを使うとき、GeoJSON をコロプレス図やヒートマップで素早く可視化したいとき | Geolonia Maps SDK (embed、maps-suite、maps-react、maps-core) |
 | [libraries/google-maps-js](references/libraries/google-maps-js.md) | Web で候補に入れるとき | Google Maps JavaScript API |
 | [libraries/cesiumjs](references/libraries/cesiumjs.md) | Web で候補に入れるとき | CesiumJS |
 | [libraries/openlayers](references/libraries/openlayers.md) | Web で候補に入れるとき | OpenLayers |

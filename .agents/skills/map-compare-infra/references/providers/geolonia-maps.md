@@ -77,6 +77,7 @@ Geolonia Maps は、Geolonia が配信するベクトルタイル地図を Web �
 - 日本語の地図を表示回数ベースの公開単価で使いたい場合。月 10 万〜1,000 万回の費用を料金ページだけで計算できる。
 - MapLibre GL JS の API やスタイル仕様をそのまま使い、スタイルを自由に変えたい場合。
 - 外部のタイルや GeoJSON を重ねる地図を作る場合。利用規約に併用の制限がない。
+- 手元の GeoJSON をコロプレス図やヒートマップで素早く可視化したい場合。公式 SDK の embed なら HTML の属性だけで描ける (https://docs.geolonia.com/howto/choropleth/ , https://docs.geolonia.com/howto/heatmap/)。提供元も推している機能である (提供元への聞き取り、2026-11-10)。
 - 開発中やプロトタイプを、登録なしに localhost や GitHub Pages などで動かしたい場合。
 
 ## 向いていない場面

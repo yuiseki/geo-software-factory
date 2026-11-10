@@ -4,9 +4,9 @@
   - [ ] SKILL.md
   - [ ] references/question-bank.md
   - [ ] assets/product-brief-template.md
-- [ ] compare-map-infra (24/26)
+- [ ] compare-map-infra (25/26)
   - [ ] SKILL.md
-  - [ ] references/criteria.md
+  - [x] references/criteria.md
   - [x] references/self-hosting.md
   - [x] references/providers/tile-openstreetmap-org.md
   - [x] references/providers/tile-openstreetmap-jp.md
@@ -31,9 +31,9 @@
   - [x] references/3d/cesium-ion.md
   - [x] references/3d/plateau.md
   - [x] references/niche.md
-- [ ] compare-map-library (28/30)
+- [ ] compare-map-library (29/30)
   - [ ] SKILL.md
-  - [ ] references/criteria.md
+  - [x] references/criteria.md
   - [x] references/libraries/leaflet.md
   - [x] references/libraries/maplibre-gl-js.md
   - [x] references/libraries/mapbox-gl-js.md

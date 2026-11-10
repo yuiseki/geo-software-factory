@@ -12,7 +12,7 @@
 
 ## 概要
 
-点や線を手で描く、表計算のファイルを読み込む、といった作業をブラウザの画面だけで済ませ、できた地図を URL や iframe で Web サイトに埋め込むサービスである。2026-11-11 に公開の地図サイトをヘッドレスブラウザで観察したところ、withfs ニュースマップは Blogger に Google マイマップを埋め込み、JAXA 防災インタフェースは ArcGIS Online のアプリ (Web AppBuilder、Map Journal) を使い、気温のページは WordPress に Google Maps を埋め込んでいた。ライブラリから組む前に、この種のサービスで要件が足りるかを確かめる。 JAXA のアプリは ArcGIS Online ではなく JAXA 自身の ArcGIS のポータル (daichi-bousai.dpif.jaxa.jp/portal/) から配られていた (2026-11-11 観測)。自前で運用する ArcGIS Enterprise では、ArcGIS Online の廃止の予定がそのまま及ばない可能性がある (推測)。
+点や線を手で描く、表計算のファイルを読み込む、といった作業をブラウザの画面だけで済ませ、できた地図を URL や iframe で Web サイトに埋め込むサービスである。2026-11-11 に公開の地図サイトをヘッドレスブラウザで観察したところ、withfs ニュースマップは Blogger に Google マイマップを埋め込み、JAXA 防災インタフェースは ArcGIS Online のアプリ (Web AppBuilder、Map Journal) を使い、気温のページは WordPress に Google Maps を埋め込んでいた。ライブラリから組む前に、この種のサービスで要件が足りるかを確かめる。
 
 ## Google マイマップ
 
@@ -27,7 +27,7 @@
 
 - できること: ArcGIS Online の Web マップを材料に、ArcGIS StoryMaps で地図つきの読み物を、ArcGIS Experience Builder で地図アプリの画面をノーコードで組む。ArcGIS Maps SDK for JavaScript で書く場合は [arcgis-maps-sdk-js](../libraries/arcgis-maps-sdk-js.md) を見る。
 - Web AppBuilder の廃止: ArcGIS Online では、2026 年第 1 四半期に新規作成ができなくなり、2026 年第 4 四半期に既存のアプリの更新ができなくなり、2027 年第 2 四半期に既存のアプリが動かなくなる。移行先は Experience Builder (https://doc.arcgis.com/en/web-appbuilder/latest/create-apps/wab-retirement.htm)。2026-11-11 は更新ができる最後の四半期に当たる。
-- 旧版の Esri Story Maps (Map Journal、Cascade など): テンプレートは 2026-02 に ArcGIS Online から廃止された。廃止された項目は、所有者が代わりの項目を設定していればそこへ転送される (https://doc.esri.com/en/arcgis-storymaps/latest/get-started/transition-from-classic.html)。2026-11-11 の観察で JAXA 防災インタフェースに Map Journal が見えたことと、この記述との関係は確かめていない (未確認)。
+- 旧版の Esri Story Maps (Map Journal、Cascade など): テンプレートは 2026-02 に ArcGIS Online から廃止された。廃止された項目は、所有者が代わりの項目を設定していればそこへ転送される (https://doc.esri.com/en/arcgis-storymaps/latest/get-started/transition-from-classic.html)。2026-11-11 の観察で JAXA 防災インタフェースに Map Journal が見えたことと、この記述との関係は確かめていない (未確認)。 JAXA のアプリは ArcGIS Online ではなく JAXA 自身の ArcGIS のポータル (daichi-bousai.dpif.jaxa.jp/portal/) から配られていた (2026-11-11 観測)。自前で運用する ArcGIS Enterprise では、ArcGIS Online の廃止の予定がそのまま及ばない可能性がある (推測)。
 - ライセンスと費用: ArcGIS Online はユーザータイプ (Creator、Professional、Professional Plus、Mobile Worker、Contributor、Viewer) ごとに契約し、クレジットが Creator と Professional 系は 500、Mobile Worker と Contributor は 250、Viewer は 0 付く。料金はページに無く、営業への問い合わせになる (https://www.esri.com/en-us/arcgis/products/arcgis-online/buy)。地図とアプリを作って共有できると書かれているのは Creator 以上である (同)。クレジットは解析、ルート検索、ジオコーディングなどで減り、公開したアプリが組織の有料のコンテンツを使えば費用は組織が負う (https://doc.esri.com/en/arcgis-online/latest/reference/faq.html)。StoryMaps は、有料のサービスやデータを使う地図を載せると閲覧回数に応じてクレジットを使う (https://doc.esri.com/en/arcgis-storymaps/latest/reference/faq.html)。
 - 無料のアカウント: 公開アカウントは個人の非商用に限られ、保存容量は 2 GB で、ホストレイヤーの公開と Map Viewer での解析ができない (https://doc.esri.com/en/arcgis-online/latest/reference/faq.html)。
 - 縛り: 作った画面は ArcGIS Online の上で動き、廃止の予定に従って移行を迫られる (Web AppBuilder、旧版 Story Maps の例)。長く公開しつづける地図では、製品の寿命を見込む。

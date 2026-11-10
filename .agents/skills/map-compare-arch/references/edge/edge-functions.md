@@ -45,12 +45,12 @@
 - Workers の静的アセット (Workers Assets) は Range を無視して 200 で全体を返す。PMTiles をアセットとして置くと Range 読みにならないので、R2 に置くか、`run_worker_first` で Worker を通して 206 を組み立てる。アセットは 1 ファイル 25 MiB までなので大きな PMTiles はそもそも置けない。
 - protomaps の手順では、R2 は他のクラウドストレージより遅く「500ms or higher」と書かれている。キャッシュに当たらないタイルの体感速度を見積もる時に効く。
 - R2 の Web 画面からのアップロードは 300 MB まで。大きなファイルは rclone などを使う。
-- Cloudflare のキャッシュ全消去 (Purge Everything) はゾーン全体に効くので、タイル配信用にゾーンを分けることが protomaps の手順で勧められている。ただし Free プランでも URL、ホスト名、タグ、プレフィックスの単位で消せるので、消し方を絞ればゾーンを分けなくてもよい (https://developers.cloudflare.com/cache/how-to/purge-cache/、2026-11-10 確認)。
+- Cloudflare のキャッシュ全消去 (Purge Everything) はゾーン全体に効くので、タイル配信用にゾーンを分けることが protomaps の手順で勧められている。ただし Free プランでも URL、ホスト名、タグ、プレフィックスの単位で消せるので、消し方を絞ればゾーンを分けなくてもよい。Free ではホスト名、タグ、プレフィックス、全消去の要求は毎分 5 回まで、URL の単位は毎秒 800 件まで (https://developers.cloudflare.com/cache/how-to/purge-cache/、2026-11-10 確認)。
 - Vercel は Edge runtime から Node.js への移行を勧めており、Next.js 16.3 以降では `runtime = 'edge'` が使えない。新規に Edge runtime を前提にしない。
 - Vercel Edge runtime は実行時にバイト列から Wasm をコンパイルできない (import 文で読み込んだ Wasm だけ)。Wasm を R2 などから取ってくる構成はとれない。
 - Lambda@Edge は viewer イベントで返せるレスポンスが 40 KB までで、タイル 1 枚を返すにも足りないことがある (推測)。origin イベントでも 1 MB までである。
 - CloudFront Functions はリクエスト本文にもネットワークにも触れないので、タイルの中身を扱う処理は書けない。URL の書き換えや API キーの照合向けである。
-- Workers の Free は 1 日 100,000 リクエストまでで、超えると Error 1027 を返す (課金はされない)。D1 の Free は 1 日に読み 500 万行、書き 10 万行、1 DB 500 MB、アカウントで 5 GB と 10 DB まで。日の上限に達すると D1 の API がエラーを返し、UTC の 0 時まで書けない (https://developers.cloudflare.com/workers/platform/limits/ 、https://developers.cloudflare.com/d1/platform/pricing/ 、2026-11-10 確認)。予算 0 円の小さなサービスの正本に使える
+- Workers の Free は 1 日 100,000 リクエストまでで、課金はされない。超えたときの振る舞いはルートの fail mode で決まり、closed なら Error 1027 を返し、open なら Worker を通らずに配信元へ素通しになる。D1 の Free は 1 日に読み 500 万行、書き 10 万行、1 DB 500 MB、アカウントで 5 GB と 10 DB まで。日の上限に達すると D1 の API がエラーを返し、UTC の 0 時まで書けない (https://developers.cloudflare.com/workers/platform/limits/ 、https://developers.cloudflare.com/d1/platform/pricing/ 、2026-11-10 確認)。予算 0 円の小さなサービスの正本に使える
 - Workers の Free は CPU 10 ms、サブリクエスト 50 回までなので、1 リクエストで R2 を何度も読む処理 (PMTiles のディレクトリを複数段たどる場合など) は回数に注意する (推測)。
 
 ## 出典

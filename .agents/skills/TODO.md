@@ -25,7 +25,7 @@
   - [x] references/edge/edge-functions.md
   - [x] references/edge/near-user-servers.md
   - [x] references/app/native-runtime.md
-- [ ] map-compare-infra (25/26、自前配信の扱いを map-compare-arch に合わせて見直す)
+- [ ] map-compare-infra (26/26、自前配信の扱いを map-compare-arch に合わせて見直す)
   - [x] SKILL.md
   - [x] references/criteria.md
   - [x] references/providers/tile-openstreetmap-org.md
@@ -43,7 +43,7 @@
   - [x] references/providers/carto-basemaps.md
   - [x] references/providers/gsi-tiles.md
   - [x] references/providers/zenrin-maps-api.md
-  - [ ] references/search/openpoiapi.md
+  - [x] references/search/openpoiapi.md
   - [x] references/regional/china.md
   - [x] references/regional/korea.md
   - [x] references/imagery/esri-world-imagery.md

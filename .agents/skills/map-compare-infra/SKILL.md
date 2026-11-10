@@ -26,6 +26,7 @@ description: 地図プロダクトの要件に応じて、ベースマップ、�
 | [providers/carto-basemaps](references/providers/carto-basemaps.md) | データ可視化の背景地図が要るとき | CARTO basemaps |
 | [providers/gsi-tiles](references/providers/gsi-tiles.md) | 国内が対象のとき | 地理院タイル (国土地理院) |
 | [providers/zenrin-maps-api](references/providers/zenrin-maps-api.md) | 国内で住宅地図レベルの詳しさが要るとき | ZENRIN Maps API |
+| [search/openpoiapi](references/search/openpoiapi.md) | 国内の施設 (POI) 検索が要るとき、検索結果を保存して使いたいとき | OpenPOI API (オープンデータを統合した国内の POI 検索 API) |
 | [regional/china](references/regional/china.md) | 中国本土が対象に入るとき | 法規制、GCJ-02 / BD-09、使えるサービス |
 | [regional/korea](references/regional/korea.md) | 韓国が対象に入るとき | 法規制、使えるサービス |
 | [imagery/esri-world-imagery](references/imagery/esri-world-imagery.md) | 衛星・航空写真が要るとき | Esri World Imagery |

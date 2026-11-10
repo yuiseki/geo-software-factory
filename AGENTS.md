@@ -7,11 +7,18 @@
 ## 流れ
 
 ```
-map-product-grilling -> map-compare-arch -> map-compare-infra -> map-compare-library
-(何を作るか)             (何をどこに置くか)   (どの地図データか)     (どのライブラリで描くか)
+map-product-grilling -> map-compare-arch -> map-compare-infra -> map-compare-library -> map-legal-check
+(何を作るか)             (何をどこに置くか)   (どの地図データか)     (どのライブラリで描くか)  (公開の前に)
+                                            map-compare-data
+                                            (地図に載せる主題データ)
 ```
 
-後で書く: 下の表の 4 段階以外のスキル (data、auth、protocol、ux-design、poc-measure、legal-check、ops、migrate) を、流れのどこで使うか。
+4 段階のほかに、書き上がっているスキルは次の場所で使う。
+
+- map-compare-data: 地図に載せる主題データ (施設、境界、統計、店舗など) が要るとき、map-compare-infra と並べて使う。背景の地図 (ベースマップ) と主題データは別々に選び、ライセンスを混ぜたときの条件はこのスキルで確かめる
+- map-legal-check: 公開の前に、最後に使う。帰属表示、ODbL、写真の帰属、測量法、位置情報、地図 API の規約を確かめる
+
+骨組みのスキル (map-compare-auth、map-compare-protocol、map-ux-design、map-poc-measure、map-ops、map-migrate) は、まだ流れに入れない。呼ばれたら、骨組みであることを答えに書く。
 
 各段階は、入口の条件がそろったら始め、出口のものを出したら次へ進む。依頼が途中の段階だけ (例: 「Leaflet と MapLibre どっち」) なら、その段階の入口の条件がそろっているかを確かめて、そこから始める。前の段階を飛ばした場合は、飛ばした段階で決まるはずのこと (例: タイルの供給元) を仮の前提として答えに書く。
 

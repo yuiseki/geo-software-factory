@@ -25,7 +25,7 @@
   - [x] references/edge/edge-functions.md
   - [x] references/edge/near-user-servers.md
   - [x] references/app/native-runtime.md
-- [ ] map-compare-infra (26/26、自前配信の扱いを map-compare-arch に合わせて見直す)
+- [x] map-compare-infra (26/26)
   - [x] SKILL.md
   - [x] references/criteria.md
   - [x] references/providers/tile-openstreetmap-org.md

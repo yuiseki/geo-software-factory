@@ -1,11 +1,11 @@
 ---
 name: map-compare-infra
-description: 地図プロダクトの要件に応じて、ベースマップ、衛星・航空写真、3D データの供給元を比較し技術選定する。商用サービス (Google Maps, Mapbox, MapTiler, Esri, HERE, TomTom, Geolonia Maps, ZENRIN, MapFan など)、無償の公開タイル (OpenStreetMap, OpenFreeMap)、公的データ (地理院タイル, PLATEAU)、PMTiles などによる自前配信を、足切り (商用可否、公共案件、地域の法規制、ライブラリとの組み合わせ)、地図の詳しさ、安定性、ライセンス、移行のしやすさ、課金単位を揃えた費用で比べる。「どの地図タイルを使うべき」「ベースマップの選定」「Google Maps の代わり」「地図 API の料金比較」「衛星画像はどこから」「中国や韓国の地図」「タイルを自前で配信したい」と言われたら使う。
+description: 地図プロダクトの要件に応じて、ベースマップ、衛星・航空写真、3D データの供給元を比較し技術選定する。商用サービス (Google Maps, Mapbox, MapTiler, Esri, HERE, TomTom, Geolonia Maps, ZENRIN, MapFan など)、無償の公開タイル (OpenStreetMap, OpenFreeMap)、公的データ (地理院タイル, PLATEAU)を、足切り (商用可否、公共案件、地域の法規制、ライブラリとの組み合わせ)、地図の詳しさ、安定性、ライセンス、移行のしやすさ、課金単位を揃えた費用で比べる。「どの地図タイルを使うべき」「ベースマップの選定」「Google Maps の代わり」「地図 API の料金比較」「衛星画像はどこから」「中国や韓国の地図」「国内の POI 検索 API」と言われたら使う。自前で配信するかどうかは map-compare-arch で決める。
 ---
 
 # map-compare-infra
 
-地図プロダクトの要件から、ベースマップや衛星画像、3D データの供給元を選ぶ。商用サービス、無償の公開タイル、公的データ、自前配信を同じ軸で並べ、足切り、軸ごとの評価、規模ごとの費用の順に比べて推奨を出す。比較の軸と費用の見積もり方は [criteria](references/criteria.md) にあり、各供給元の事実は下の表の reference にある。
+地図プロダクトの要件から、ベースマップや衛星画像、3D データの供給元を選ぶ。商用サービス、無償の公開タイル、公的データを同じ軸で並べ、足切り、軸ごとの評価、規模ごとの費用の順に比べて推奨を出す。比較の軸と費用の見積もり方は [criteria](references/criteria.md) にあり、各供給元の事実は下の表の reference にある。自前で配信するか、外部の供給元に任せるかは、先に map-compare-arch で決める。自前配信と決まっていれば、ここでは配信の元にするデータと、外部の供給元との費用の比較に使う。
 
 | reference | 読むとき | 中身 |
 |---|---|---|
@@ -54,7 +54,7 @@ description: 地図プロダクトの要件に応じて、ベースマップ、�
 ## 進め方
 
 1. [criteria](references/criteria.md) を読み、「要件から軸の重みを決める」の表で、当てる足切りの条件と重くする軸を決める。
-2. 候補を集める。下の「最初の当たり」から要件に合うものを選び、表の「読むとき」に当てはまる reference を開く。自前配信も候補として同じ軸で並べる ([self-hosting](../map-compare-arch/references/self-hosting.md))。要件に特殊な主題や地域が入っていれば [niche](references/niche.md) を見る。
+2. 候補を集める。下の「最初の当たり」から要件に合うものを選び、表の「読むとき」に当てはまる reference を開く。map-compare-arch の結果で自前配信が候補に残っていれば、外部の供給元との損益分岐を [self-hosting](../map-compare-arch/references/self-hosting.md) で求めて並べる。要件に特殊な主題や地域が入っていれば [niche](references/niche.md) を見る。
 3. 足切りの条件で候補を外す。外した候補と理由を残す。
 4. 残った候補を評価の軸で比べる。値は各 reference から写し、reference に「未確認」とあるものは未確認のまま書く。
 5. 費用を見積もる。[criteria](references/criteria.md) の「費用の見積もり方」に従い、候補ごとに使い方の経路と課金単位を決め、月間の地図表示回数を揃えて規模ごとに並べる。タイル数で課金される経路だけに、1 回の表示あたりのタイル数の換算を使う。
@@ -71,7 +71,8 @@ description: 地図プロダクトの要件に応じて、ベースマップ、�
 - 商用の汎用ベースマップ: Google Maps Platform、Mapbox、MapTiler Cloud、Esri、HERE、TomTom、Geolonia Maps などを、課金単位と使い方の経路を揃えて比べる
 - ArcGIS の資産がある案件: Esri ArcGIS Location Platform
 - データ可視化の背景地図: CARTO basemaps
-- 表示回数が多い、閉域網、地図の中身を自分で決めたい: 自前配信。閉域網ならオンプレ版のある製品も候補 (MapTiler On-Prem)
+- 表示回数が多い、閉域網、地図の中身を自分で決めたい: 自前配信にするかを map-compare-arch で決める。閉域網ならオンプレ版のある製品も候補 (MapTiler On-Prem)
+- 国内の施設 (POI) 検索で、結果を保存して使いたい: OpenPOI API ([search/openpoiapi](references/search/openpoiapi.md))。運営者が非公開で SLA が無いので、主たる検索 API にするかは慎重に決める
 - 中国本土、韓国が対象: [regional/china](references/regional/china.md)、[regional/korea](references/regional/korea.md) の手順で、その地域で使えるサービスに絞る
 - 衛星・航空写真: `imagery/` の reference。商用か、解析や学習に使うかで使えるものが変わる
 - 3D の地形と建物: 国内の都市なら PLATEAU、全球なら Cesium ion か Google Photorealistic 3D Tiles (Google の reference の節)。公共案件では Cesium ion の無料枠を使えない

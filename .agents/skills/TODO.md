@@ -4,28 +4,28 @@
   - [ ] SKILL.md
   - [ ] references/question-bank.md
   - [ ] assets/product-brief-template.md
-- [ ] map-compare-arch (1/20)
+- [ ] map-compare-arch (18/20)
   - [ ] SKILL.md
   - [ ] references/criteria.md
   - [x] references/self-hosting.md
-  - [ ] references/capabilities/tiles.md
-  - [ ] references/capabilities/search.md
-  - [ ] references/capabilities/routing.md
-  - [ ] references/capabilities/analysis.md
-  - [ ] references/capabilities/source-of-truth.md
-  - [ ] references/formats/cloud-native-formats.md
-  - [ ] references/browser/service-worker.md
-  - [ ] references/browser/storage.md
-  - [ ] references/browser/wasm.md
-  - [ ] references/browser/webgpu.md
-  - [ ] references/browser/workers.md
-  - [ ] references/browser/network.md
-  - [ ] references/browser/device.md
-  - [ ] references/browser/local-ai.md
-  - [ ] references/edge/edge-functions.md
-  - [ ] references/edge/near-user-servers.md
-  - [ ] references/app/native-runtime.md
-- [ ] map-compare-infra (25/25、自前配信の扱いを map-compare-arch に合わせて見直す)
+  - [x] references/capabilities/tiles.md
+  - [x] references/capabilities/search.md
+  - [x] references/capabilities/routing.md
+  - [x] references/capabilities/analysis.md
+  - [x] references/capabilities/source-of-truth.md
+  - [x] references/formats/cloud-native-formats.md
+  - [x] references/browser/service-worker.md
+  - [x] references/browser/storage.md
+  - [x] references/browser/wasm.md
+  - [x] references/browser/webgpu.md
+  - [x] references/browser/workers.md
+  - [x] references/browser/network.md
+  - [x] references/browser/device.md
+  - [x] references/browser/local-ai.md
+  - [x] references/edge/edge-functions.md
+  - [x] references/edge/near-user-servers.md
+  - [x] references/app/native-runtime.md
+- [ ] map-compare-infra (25/26、自前配信の扱いを map-compare-arch に合わせて見直す)
   - [x] SKILL.md
   - [x] references/criteria.md
   - [x] references/providers/tile-openstreetmap-org.md
@@ -43,6 +43,7 @@
   - [x] references/providers/carto-basemaps.md
   - [x] references/providers/gsi-tiles.md
   - [x] references/providers/zenrin-maps-api.md
+  - [ ] references/search/openpoiapi.md
   - [x] references/regional/china.md
   - [x] references/regional/korea.md
   - [x] references/imagery/esri-world-imagery.md
@@ -51,13 +52,14 @@
   - [x] references/3d/cesium-ion.md
   - [x] references/3d/plateau.md
   - [x] references/niche.md
-- [x] map-compare-library (30/30)
+- [ ] map-compare-library (30/31)
   - [x] SKILL.md
   - [x] references/criteria.md
   - [x] references/libraries/leaflet.md
   - [x] references/libraries/maplibre-gl-js.md
   - [x] references/libraries/mapbox-gl-js.md
   - [x] references/libraries/google-maps-js.md
+  - [ ] references/libraries/geolonia-maps.md
   - [x] references/libraries/cesiumjs.md
   - [x] references/libraries/openlayers.md
   - [x] references/libraries/deck-gl.md

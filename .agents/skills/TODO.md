@@ -4,7 +4,7 @@
   - [x] SKILL.md
   - [x] references/question-bank.md
   - [x] assets/product-brief-template.md
-- [x] map-compare-arch (20/20)
+- [x] map-compare-arch (21/21)
   - [x] SKILL.md
   - [x] references/criteria.md
   - [x] references/self-hosting.md
@@ -25,6 +25,7 @@
   - [x] references/edge/edge-functions.md
   - [x] references/edge/near-user-servers.md
   - [x] references/app/native-runtime.md
+  - [x] references/hosting/static-hosting.md
 - [x] map-compare-infra (26/26)
   - [x] SKILL.md
   - [x] references/criteria.md
@@ -98,7 +99,7 @@
   - [x] references/sources/openstreetmap.md
   - [x] references/sources/overture-maps.md
   - [x] references/sources/wikidata.md
-- [x] map-legal-check (7/7)
+- [x] map-legal-check (9/9)
   - [x] SKILL.md
   - [x] references/api-terms.md
   - [x] references/attribution.md
@@ -106,6 +107,8 @@
   - [x] references/location-privacy.md
   - [x] references/odbl.md
   - [x] references/survey-act.md
+  - [x] references/youtube-embed.md
+  - [x] references/itunes-search-api.md
 - [x] map-ux-design (8/8)
   - [x] SKILL.md
   - [x] references/accessibility.md

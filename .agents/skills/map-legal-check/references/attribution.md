@@ -1,6 +1,6 @@
 # 帰属表示の要件
 
-対象: OpenStreetMap (OSMF のガイドライン)、商用の地図 API、地理院タイル、オープンデータ (CC BY、PDL、政府標準利用規約) の帰属表示の書き方と置き場所
+対象: OpenStreetMap (OSMF のガイドライン)、商用の地図 API、地図に埋め込む YouTube と iTunes の試聴、地理院タイル、オープンデータ (CC BY、PDL、政府標準利用規約) の帰属表示の書き方と置き場所
 
 ## メタ情報
 
@@ -41,6 +41,8 @@
 | Wikimedia Commons の写真を載せる (名所の写真など) | 写真ごとのライセンスに従う。CC BY 系は、作者 (アップロードした人ではなく、ファイルの説明の「作者」)、ライセンス、ファイルの説明ページへのリンクを添える。パブリックドメインと CC0 は表示の義務はないが、出どころの表示を勧める。Commons の API の作者の欄が「No machine-readable author provided」のときは、ファイルの説明ページで作者を確かめてから載せ、確かめられなければ載せない (推測: リンクだけで足りるとは公式に書かれていない) | Commons の再利用の手引き、Credit line | https://commons.wikimedia.org/wiki/Commons:Reusing_content_outside_Wikimedia 、https://commons.wikimedia.org/wiki/Commons:Credit_line |
 | PDL1.0 の国・自治体のデータを使う | 当たる。例「出典：「○○動向調査」（D庁）（当該ページのURL）、PDL1.0（規約原文ページのURL）」。加工時は例「「○○動向調査」（D庁）（当該ページのURL）をもとに○○株式会社作成」。提供元が「重要情報」で別の記載例を示していればそれに従う | PDL1.0 1.1 | https://www.digital.go.jp/resources/open_data/public_data_license_v1.0 |
 | 政府標準利用規約 (第 2.0 版) のデータを使う | 当たる。例「出典：「○○動向調査」（A 省） （当該ページの URL）」、加工時は「…を加工して作成」。各府省が自サイトで示す記載例に従う | 政府標準利用規約 (第 2.0 版) 1) ア、イ | https://www.digital.go.jp/assets/contents/node/basic_page/field_ref_resources/f7fde41d-ffca-4b2a-9b25-94b8a701a037/a0f187e6/20220706_resources_data_betten_01.pdf |
+| YouTube の動画やライブ配信を地図に埋め込む | 当たる。埋め込みプレーヤーの中に YouTube が出すチャンネル名、タイトル、ロゴ、リンクを隠さない、消さない、上に要素を重ねない (modestbranding は 2023-08-15 に廃止され、ブランドの出し方はプレーヤーが決める)。YouTube の内容を出す画面では YouTube Brand Features で出どころを示し、他の出どころと混ざるなら YouTube の分だけ個別に示す。YouTube の内容なしでは役に立たない地図なら「developed with YouTube」ロゴ、そうでなければ YouTube ロゴ、場所が無ければ YouTube アイコン。ロゴは押すと YouTube の内容へ飛ぶようにし、画面でいちばん目立つ要素にしない。サイトの名前に YouTube や YT を入れない。YouTube 利用規約へのリンクも要る (2026-11-11 確認、詳細は [youtube-embed](youtube-embed.md)) | YouTube API Services Developer Policies III.A.1、III.F.2、III.I、ToS 10.3、11、Branding Guidelines | https://developers.google.com/youtube/terms/developer-policies 、https://developers.google.com/youtube/terms/branding-guidelines |
+| iTunes Search API の試聴やアートワークを地図に出す | 当たる。Promo Content の近くに、その商品の iTunes の購入ページへ直接リンクする Apple 承認のバッジを置く (デジタルで 30px 以上、余白はバッジの高さの 10 分の 1 以上、灰色の縁を省かない)。曲やミュージックビデオの試聴には「provided courtesy of iTunes」の帰属を付ける。使った Apple の商標のクレジット行を法的な表記の場所に 1 回置く。Search API の文書が挙げる「Download on iTunes」バッジは現行の Guidelines に見当たらない (2026-11-11 確認、詳細は [itunes-search-api](itunes-search-api.md)) | Search API の文書「Legal」(ii)、(iii)、iTunes Identity Guidelines 1.3 から 1.5、7.1、Apple Music Identity Guidelines 1.5、9.2 | https://performance-partners.apple.com/search-api 、https://marketing.services.apple/itunes-identity-guidelines |
 | 商用の地図 API (タイル、検索、ルート) を使う | 当たる (一般的な形)。多くの提供元は利用規約で、提供元のロゴや著作権表示を地図上に残すこと、消したり隠したりしないこと、提供元が取得した第三者データの表示も残すことを求める。具体的な文言、置き場所、ロゴの要否は提供元ごとに違うので、各提供元の reference (map-compare-infra) を見る | 各提供元の規約 | 各提供元の reference (map-compare-infra) |
 
 ## 当たらない場面
@@ -62,6 +64,8 @@
   - 国土地理院の地図等: 「出典：国土地理院発行2.5万分1地形図」「電子地形図25000（国土地理院）を加工して作成」。ウェブやシステムでは地図の表示中は出典を見えるようにし、技術的に困難なら説明ページや取扱説明書でよい。印刷できるなら印刷物にも (出典の記載例ページ)。
   - PDL1.0: 「出典：D庁ウェブサイト（当該ページのURL）、PDL1.0（規約原文ページのURL）」。URL はリンクにしてもよい。
   - 政府標準利用規約 (第 2.0 版): 「出典：A 省ウェブサイト （当該ページの URL）」。
+  - YouTube: 文言の指定は無く、ロゴ (developed with YouTube、YouTube ロゴ、YouTube アイコン) と YouTube 利用規約 (https://www.youtube.com/t/terms) へのリンク。ロゴは YouTube のブランドサイトの配布物を使い、色を変えない (developed with YouTube ロゴは単色なら色を変えてよい) (Branding Guidelines)。
+  - iTunes Search API の試聴: 「provided courtesy of iTunes」(Search API の文書「Legal」(iii))。クレジット行の例「Apple and Apple Music are trademarks of Apple Inc., registered in the U.S. and other countries」(Apple Music Identity Guidelines 9.2)。
   - CC BY 4.0: 条文は特定の文言を指定しない。第 3 条 (a)(1) の要素を、媒体に応じた合理的な方法で示す。
 
 ## 守らなかった場合
@@ -92,6 +96,8 @@
 - https://www.gsi.go.jp/LAW/2930-qa.html (Q1-12、Q1-15、Q1-19、Q1-22、Q5-2)
 - https://maps.gsi.go.jp/development/ichiran.html (地理院タイルの利用と出典、タイルごとの個別出典の例、他機関のタイルは各機関の規約が適用される場合がある旨)
 - https://laws.e-gov.go.jp/law/324AC0000000188 (測量法第 30 条第 3 項、第 4 項、罰則)
+- https://developers.google.com/youtube/terms/branding-guidelines (YouTube のロゴの種類と置き場所、2026-11-11 確認)
+- https://performance-partners.apple.com/search-api 、https://marketing.services.apple/itunes-identity-guidelines (iTunes の試聴の帰属とバッジ、2026-11-11 確認)
 
 ## 未確認のこと
 
@@ -99,5 +105,6 @@
 - 地理院タイル一覧ページは長く、後半 (約 9 万字) の各タイルの個別出典を全部は読んでいない。使うタイルごとに備考を確かめる必要がある。
 - PDL1.0 の各府省・自治体の「重要情報」で示される個別の記載例。提供元ごとに確かめる。
 - 政府標準利用規約 (第 2.0 版) の規約本文そのもの (各府省の採用ページ) は読んでおらず、内閣官房の解説資料に引用された条文で確認した。
+- YouTube ロゴと YouTube アイコンの最小の大きさ (YouTube のブランドサイトの数値) は確かめていない。
 - 商用の地図 API 各社の帰属要件の具体的な内容 (このファイルでは調べていない。map-compare-infra の各提供元 reference に委ねる)。
 - 帰属表示を畳む UI (MapLibre の compact attribution 等) が Attribution Guidelines の「5 秒後に畳んでよい」等の条件を満たすかは、実装ごとの挙動を確かめていない。

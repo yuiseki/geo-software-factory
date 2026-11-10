@@ -47,7 +47,7 @@ fetch は `Range: bytes=開始-終了` を付けて、大きなファイルの�
 
 保存、計算、表現のどれを、ブラウザ・アプリの層に置けるようにするか。
 
-- 保存: タイルやベクタを 1 つの大きなファイル (PMTiles、FlatGeobuf、GeoParquet、COG) として静的ホスティングや CDN に置き、ブラウザが Range で必要な部分だけを読む。タイルサーバーやデータベースを置かずに済む。pmtiles の JS ライブラリは `range: bytes=開始-終了` を付けた fetch で、ヘッダーとディレクトリとタイルを読み分ける (PMTiles の js/src/index.ts で確認)。
+- 保存: タイルやベクタを 1 つの大きなファイル (PMTiles、FlatGeobuf、GeoParquet、COG) として静的ホスティングや CDN に置き、ブラウザが Range で必要な部分だけを読む。 ただし Range に 206 で答える置き場所に限る。Cloudflare Pages と Workers の静的アセットは Range に 200 (全体) を返すので、PMTiles や COG には R2 などを使う (../hosting/static-hosting.md、2026-11-11 確認)。タイルサーバーやデータベースを置かずに済む。pmtiles の JS ライブラリは `range: bytes=開始-終了` を付けた fetch で、ヘッダーとディレクトリとタイルを読み分ける (PMTiles の js/src/index.ts で確認)。
 - 計算: Range で読んだ部分をブラウザの中で展開、絞り込み、集計する。pmtiles の JS ライブラリは gzip のタイルとディレクトリを `DecompressionStream("gzip")` で展開し、無い環境では fflate に切り替える。hyparquet は Range で Parquet の必要な列と行グループだけを読み、DuckDB-Wasm は Range で読んだ Parquet に SQL をかける。FlatGeobuf は packed Hilbert R-tree の索引を先に読み、範囲に入る地物だけを Range で取る。
 - 表現: Streams で届いた順に地物を描けるので、全件を待たずに地図を描き始められる (FlatGeobuf の JS 実装は地物を 1 件ずつ返す)。WebTransport は車両位置のような更新の多いデータを、WebSocket の代わりに順序の要らないデータグラムで送る用途に使える (推測。地図での採用例は未確認)。Fetch Priority で画面中央のタイルを `high`、先読みのタイルを `low` にする使い方もできる (推測。主要な地図ライブラリが使っているかは未確認)。
 

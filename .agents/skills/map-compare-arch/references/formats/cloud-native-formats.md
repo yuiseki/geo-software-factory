@@ -26,7 +26,7 @@
 
 形式を選ぶと、保存をどこに置き、計算をどこでするかが変わる。
 
-- 静的ホスティングや CDN に置くだけで、ブラウザから直接読めるもの: PMTiles、COG、GeoParquet、FlatGeobuf、Zarr、STAC (JSON)。いずれも Range か小さなファイルへの分割で必要な部分だけを読む。サーバーの側の条件は、Range に 206 で答えること、CORS で `Range` (と必要なら `If-Match`) を許し、`ETag` を `Access-Control-Expose-Headers` で公開すること (PMTiles の文書)。
+- 静的ホスティングや CDN に置くだけで、ブラウザから直接読めるもの: PMTiles、COG、GeoParquet、FlatGeobuf、Zarr、STAC (JSON)。いずれも Range か小さなファイルへの分割で必要な部分だけを読む。 ただし Range に 206 で答える置き場所に限る。Cloudflare Pages と Workers の静的アセットは Range に 200 (全体) を返すので、PMTiles や COG には R2 などを使う (hosting/static-hosting.md、2026-11-11 確認)。サーバーの側の条件は、Range に 206 で答えること、CORS で `Range` (と必要なら `If-Match`) を許し、`ETag` を `Access-Control-Expose-Headers` で公開すること (PMTiles の文書)。
 - 関数を挟む必要があるもの (CORS、認証、形式の変換): GeoPackage と MBTiles は SQLite なので、普通はサーバーか関数で開いて配る。PMTiles でも、z/x/y の URL しか扱えないクライアント (古い地図 SDK など) に配るとき、利用者ごとの認証を入れるとき、CDN のキャッシュを効かせたいときは関数を挟む。Protomaps の Workers 実装は、Worker を自分のドメインに割り当てないとキャッシュが効かないと書いている。COG を任意の色づけや再投影で配るときは TiTiler のような動的タイルサーバーを挟む。
 - 端末に持ち出す (一部を切り出す) ときの手段: `pmtiles extract` は元のアーカイブがリモートでも、`--bbox`、`--region` (GeoJSON)、`--maxzoom` で一部を切り出せる (元のアーカイブがクラスタ化されていることが前提)。GeoParquet と FlatGeobuf は範囲で読んだ地物を端末の中で別のファイルに書き出せる (推測)。GeoPackage はそれ自体が持ち出し用の 1 ファイルの形式である。
 

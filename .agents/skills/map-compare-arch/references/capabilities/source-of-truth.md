@@ -6,7 +6,7 @@
 
 | 項目 | 値 |
 |---|---|
-| 確かめた日 | 2026-11-10 |
+| 確かめた日 | 2026-11-10 (Firebase Firestore の行と無料枠の項は 2026-11-11) |
 | 確かめた版 | PostgreSQL 18.6 (2026-08-13 公開、19 は RC 1 が 2026-10-15 に出た段階)、PostGIS 3.7.0 (2026-10-30 公開)、MongoDB マニュアル 9.0 (Current)、Debezium 3.7、SpatiaLite 5.1.0 (2023-08-04)、GeoPackage 1.4.0 (OGC 12-128r19)、Orion-LD 1.12.0 (2026-01) |
 
 ## 正本と配信用の成果物を分ける考え方
@@ -69,6 +69,7 @@
 | CockroachDB (分散 SQL) | 既定は SERIALIZABLE。READ COMMITTED も選べる (クラスタ設定で無効なら SERIALIZABLE に上げられる)。直列化できないと 40001 で失敗し、結果が 16 KiB 以下の単文、一括送信なら自動で再試行、それ以外はクライアント側の再試行が要る | geometry の型と WKT、WKB、GeoJSON。PostGIS 関数は一部のみ対応。空間索引は S2 による空間の分割 (四分木、ヒルベルト曲線) を転置索引 (GIN) に格納する方式で、PostGIS の R-Tree と違う。kNN 問い合わせ、独自 SRID、`spatial_ref_sys` への INSERT (そのため `ogr2ogr -f PostgreSQL`) は非対応。空間型は既定の主キーや一意索引に使えない | 水平分散 (S2 の分割は分散に向くと文書が説明) | 24.3.0 の公開日以降の版は CockroachDB Software License (OSI 承認の OSS ではない)。年商 1,000 万ドル未満の事業者は Enterprise Free を毎年更新で使えるが、政府機関は対象外。Free と Trial はテレメトリ送信が必須で、7 日止まると同時トランザクション 5 に制限される | https://docs.cockroachlabs.com/docs/stable/transactions 、 https://docs.cockroachlabs.com/docs/stable/spatial-data-overview 、 https://docs.cockroachlabs.com/docs/stable/spatial-indexes 、 https://docs.cockroachlabs.com/docs/stable/licensing-faqs |
 | クラウドの管理型 PostgreSQL (Amazon Aurora PostgreSQL、Cloud SQL for PostgreSQL、Supabase、Neon など) | PostgreSQL と同じ | PostGIS 拡張を有効にできる。Cloud SQL の PostGIS 版は PostgreSQL 13〜17 で 3.5.2、18 で 3.6.0。Aurora は `rds_superuser` 権限で `CREATE EXTENSION postgis`。拡張の更新は手動 | 事業者の複製機能による | 本体は PostgreSQL と PostGIS のライセンス。サービス自体は各社の利用規約 | https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/Appendix.PostgreSQL.CommonDBATasks.PostGIS.html 、 https://docs.cloud.google.com/sql/docs/postgres/extensions 、 https://supabase.com/docs/guides/database/extensions/postgis 、 https://neon.com/docs/extensions/postgis |
 | Spanner (GoogleSQL) | (本ファイルでは未確認) | GoogleSQL のデータ型一覧に GEOGRAPHY 型がない。空間の正本にするなら、空間の判定はアプリ側か別の索引で行うことになる (推測) | (未確認) | 商用サービス | https://docs.cloud.google.com/spanner/docs/data-types |
+| Firebase Firestore (Standard edition) | 複数文書のトランザクションと一括書き込み。直列化可能な分離 (コミット時刻で順序づける) を保証する。データベースの並行制御の既定は Standard edition が悲観的 (読んだ文書にロック)、Enterprise edition が楽観的。モバイルと Web の SDK は設定にかかわらず文書の版を前提条件にした楽観的な方式を取り、競合すると全体をやり直し、回数を超えると ABORTED で失敗する。トランザクションは 270 秒、アイドル 60 秒、ロックの期限 20 秒。端末がオフラインだとトランザクションは失敗し、一括書き込みは実行される | 地理の型は点 (GeoPoint) だけで、空間索引と空間演算はない。近傍の検索は geohash の文字列を文書に持たせ、範囲の問い合わせを最大 9 組 (多くは 4 組) 並べて近似し、誤って入った結果をクライアントで距離を測って除く (`geofire-common`)。極に近いほど誤りが増える。多角形の検索は文書にない | 管理型で水平に伸びる (書き込みの規模の数値は本ファイルでは未確認)。1 文書 1 MiB、1 回の API 要求 10 MiB。Android と Apple は既定でオフラインのキャッシュを持ち、Web は既定で無効で `persistentLocalCache` で IndexedDB に置く (既定 100 MB、複数タブは `persistentMultipleTabManager`) | 商用サービス (Firebase と Google Cloud の規約)。管理型のエクスポートは Blaze プランが要り、Cloud Storage に LevelDB のログ形式で書き出す。開始時点の厳密なスナップショットではない。ルールとクライアント SDK とデータの形が Firestore 固有なので、乗り換えの手間が大きい (推測) | https://firebase.google.com/docs/firestore/transaction-data-contention 、 https://firebase.google.com/docs/firestore/manage-data/transactions 、 https://firebase.google.com/docs/firestore/solutions/geoqueries 、 https://firebase.google.com/docs/firestore/quotas 、 https://firebase.google.com/docs/firestore/manage-data/enable-offline 、 https://firebase.google.com/docs/firestore/manage-data/export-import |
 | SQLite + SpatiaLite、GeoPackage (1 ファイルの正本) | SQLite のトランザクションは ACID だが、書き込みは同時に 1 つだけ (RESERVED ロックを持てるのは 1 プロセス、取れなければ SQLITE_BUSY)。WAL モードでも書き込みは 1 つずつ (推測: WAL の文書は未読) | SpatiaLite は SQLite の空間拡張。GeoPackage は SQLite のファイルにベクタ地物、タイル、属性を入れる OGC 標準 (1.4.0、12-128r19) で、R-tree 空間索引の拡張を持つ | 1 ファイルなので配布や持ち出しが簡単 (現地調査用)。多人数の同時書き込みには向かない | SpatiaLite 5.1.0 は MPL 1.1、GPL-2.0-or-later、LGPL-2.1-or-later から選べる三重ライセンス。SQLite 本体はパブリックドメイン (未確認) | https://www.sqlite.org/lockingv3.html 、 https://www.gaia-gis.it/fossil/libspatialite/home 、 https://www.ogc.org/standards/geopackage/ 、 https://www.geopackage.org/spec/ |
 | OSM 型の編集 API (OSM API v0.6) | 各要素 (node、way、relation) が版番号を持ち、送った版がサーバーの現在の版と違えば 409 Conflict を返す楽観的排他。差分のアップロード (osmChange) は 1 トランザクションで全部か無しかで適用される。一方で changeset 自体は原子的ではなく、閉じる前に変更が他人に見える。1 changeset は最大 10,000 要素 | (API の範囲外。OSM の公式サーバーは別途データベースを持つ) | 多数の編集者が非同期に編集する前提 | (API 仕様。データは ODbL) (ODbL は未確認) | https://wiki.openstreetmap.org/wiki/API_v0.6 |
 
@@ -76,6 +77,7 @@
 
 - Cloudflare D1 の Free: 1 日に読み 500 万行、書き 10 万行、1 DB 500 MB。超えるとエラーを返すだけで課金されない (https://developers.cloudflare.com/d1/platform/pricing/)。空間の型と索引は無いので、点の数が少なければ距離の計算はブラウザで行う
 - Supabase の Free: データベース 500 MB、認証の MAU 50,000。1 週間使われないとプロジェクトが止まる (https://supabase.com/pricing)。旅行のように使う時期が飛び飛びのサービスでは、使わない間に公開ページが止まる
+- Firebase Firestore の Spark (無料) プラン (2026-11-11 確認): 保存 1 GiB、1 日に読み 5 万、書き 2 万、削除 2 万、下り転送は月 10 GiB。日次の枠は太平洋時間の深夜 0 時ごろに戻る (https://firebase.google.com/docs/firestore/quotas 、 https://firebase.google.com/docs/firestore/pricing)。一方で料金プランの一般の頁は、Spark で無料の量を超えるとその製品はその月の残りの間止まると書く (https://firebase.google.com/docs/projects/billing/firebase-pricing-plans)。どちらの単位で止まるかは未確認。リスナーは結果に入った文書と更新された文書ごとに読みとして数え、オフラインのキャッシュが無いと再接続のたびに問い合わせ直しとして数える。Cloud Functions は Spark では使えない (https://firebase.google.com/pricing)。投稿を集める地図で、書き込みの検証をサーバーの関数でしたいなら Blaze が要る
 
 ## 置き場所ごとの書き込み
 
@@ -143,6 +145,11 @@ PostGIS (GPL-2.0)、MongoDB (SSPL、OSI 非承認) など、組み込み、改�
 - https://supabase.com/docs/guides/database/extensions/postgis 、 https://neon.com/docs/extensions/postgis (PostGIS の提供)
 - https://supabase.com/docs/guides/database/postgres/row-level-security (`auth.uid()` と `auth.jwt()`)
 - https://docs.postgrest.org/en/stable/references/transactions.html 、 https://github.com/PostgREST/postgrest (`request.jwt.claims`、MIT)
+- https://firebase.google.com/docs/firestore/transaction-data-contention 、 https://firebase.google.com/docs/firestore/manage-data/transactions (Firestore の直列化可能な分離、悲観的と楽観的、オフラインで失敗する、270 秒と 20 秒、2026-11-11 確認)
+- https://firebase.google.com/docs/firestore/solutions/geoqueries (geohash による近傍の近似、2026-11-11 確認)
+- https://firebase.google.com/docs/firestore/quotas 、 https://firebase.google.com/docs/firestore/pricing 、 https://firebase.google.com/pricing 、 https://firebase.google.com/docs/projects/billing/firebase-pricing-plans (Spark の量、超えたとき、リスナーの数え方、2026-11-11 確認)
+- https://firebase.google.com/docs/firestore/manage-data/enable-offline (オフラインのキャッシュ、2026-11-11 確認)
+- https://firebase.google.com/docs/firestore/manage-data/export-import (エクスポートに Blaze が要る、LevelDB 形式、2026-11-11 確認)
 - https://www.sqlite.org/lockingv3.html (SQLite の単一書き込み)
 - https://www.gaia-gis.it/fossil/libspatialite/home (SpatiaLite 5.1.0 と三重ライセンス)
 - https://www.ogc.org/standards/geopackage/ 、 https://www.geopackage.org/spec/ (GeoPackage 1.4.0、R-tree 拡張)
@@ -181,3 +188,4 @@ PostGIS (GPL-2.0)、MongoDB (SSPL、OSI 非承認) など、組み込み、改�
 - QFieldCloud の同期の仕組み (差分の適用方法) と競合の扱い
 - Neon の RLS、認証連携が独自関数に依存するか
 - 正本から成果物への反映の遅れについて、実測に基づく目安
+- Firestore の Spark で無料の量を超えたとき、日単位で戻るのか月の残りの間止まるのか (quotas の頁と料金プランの頁が食い違う)。Firestore の書き込みの規模の上限 (1 文書あたりの持続的な書き込みの速さは quotas の頁に数値がない)

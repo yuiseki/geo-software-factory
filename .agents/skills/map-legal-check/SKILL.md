@@ -1,6 +1,6 @@
 ---
 name: map-legal-check
-description: 地図プロダクトを公開する前に、法令と規約と権利の確認をする。帰属表示、ODbL の派生データベース、測量法による地図の複製・使用の承認 (地理院地図、基盤地図情報)、位置情報と個人情報、電気通信事業法の外部送信規律、地図 API の規約 (キャッシュ、併用、機械学習への利用)、中国・韓国の規制を、条文と公式の案内で確かめる。「地図を公開して大丈夫か」「帰属表示はどう書く」「地理院の地図を使うのに申請は要るか」「位置情報を集めたい」と言われたら使う。
+description: 地図プロダクトを公開する前に、法令と規約と権利の確認をする。帰属表示、ODbL の派生データベース、測量法による地図の複製・使用の承認 (地理院地図、基盤地図情報)、位置情報と個人情報、電気通信事業法の外部送信規律、地図 API の規約 (キャッシュ、併用、機械学習への利用)、地図に載せる YouTube の埋め込みと iTunes の試聴の規約、中国・韓国の規制を、条文と公式の案内で確かめる。「地図を公開して大丈夫か」「帰属表示はどう書く」「地理院の地図を使うのに申請は要るか」「位置情報を集めたい」と言われたら使う。
 ---
 
 # map-legal-check
@@ -15,6 +15,8 @@ description: 地図プロダクトを公開する前に、法令と規約と権�
 | [location-privacy](references/location-privacy.md) | 利用者の位置情報を集めるとき | 位置情報と個人情報 |
 | [external-transmission](references/external-transmission.md) | 地図 SDK や解析ツールが利用者の情報を外部に送るとき | 電気通信事業法の外部送信規律 |
 | [api-terms](references/api-terms.md) | 商用の地図 API を使うとき | 地図 API の規約で引っかかりやすい条項 |
+| [youtube-embed](references/youtube-embed.md) | 地図に YouTube の動画やライブ配信を埋め込む、配信の状態や視聴者数を取るとき | YouTube API Services の規約 (埋め込み、保存、帰属、割当て) |
+| [itunes-search-api](references/itunes-search-api.md) | 地図に iTunes Search API の試聴やアートワークを出すとき | Promo Content の条件、バッジ、帰属 |
 | [map-compare-infra の regional/china](../map-compare-infra/references/regional/china.md) | 中国本土が対象に入るとき | 中国の地図の規制 |
 | [map-compare-infra の regional/korea](../map-compare-infra/references/regional/korea.md) | 韓国が対象に入るとき | 韓国の地図データの規制 |
 
@@ -43,6 +45,8 @@ description: 地図プロダクトを公開する前に、法令と規約と権�
    | 利用者の位置情報を取得、保存、分析、第三者に提供する。海外の事業者のクラウドや API に送る | [location-privacy](references/location-privacy.md) |
    | Web やアプリで、地図 SDK、タイル API、解析ツールが利用者の端末の情報を外部に送る | [external-transmission](references/external-transmission.md) |
    | 商用の地図 API を使う。とくにキャッシュ、他社の地図との併用、解析や機械学習、オフライン、政府案件 | [api-terms](references/api-terms.md) と map-compare-infra の各提供元の reference |
+   | 地図の上に YouTube の動画やライブ配信を埋め込む、YouTube Data API を使う | [youtube-embed](references/youtube-embed.md) |
+   | 地図の上で iTunes Search API の試聴を鳴らす、アートワークを出す | [itunes-search-api](references/itunes-search-api.md) |
    | 対象地域に中国本土、韓国が入る | map-compare-infra の regional/china、regional/korea |
 
 2. 決まりごとに、reference の「何を求める決まりか」を先に読み、その決まりが何を守ろうとしているかを書く。続けて、当たるかどうかを、reference の「地図プロダクトで当たる場面」と「当たらない場面」に照らして判断する。

@@ -1,6 +1,6 @@
 # 地図 API の規約で引っかかりやすい条項
 
-対象: キャッシュと保存、他社の地図との併用、機械学習への利用、ベンチマークの公表、表示の改変の禁止。各提供元の事実は map-compare-infra の reference にあり、ここでは確かめる観点と条項の探し方をまとめる
+対象: キャッシュと保存、他社の地図との併用、機械学習への利用、ベンチマークの公表、表示の改変の禁止。地図に載せる動画・音楽の API (YouTube、iTunes Search API) の要点。各提供元の事実は map-compare-infra の reference にあり、ここでは確かめる観点と条項の探し方をまとめる
 
 ## メタ情報
 
@@ -109,6 +109,15 @@
 |---|---|---|
 | Cesium ion | 無料の Community は政府開発の評価目的に限る。政府案件は有償の商用ライセンスが必要。政府機関が発注者の場合、ライセンスは注文書に記載した機関・部署に限る | [cesium-ion.md](../../map-compare-infra/references/3d/cesium-ion.md) (利用規約 1.23、https://cesium.com/platform/cesium-ion/pricing/) |
 | その他の提供元 | 政府利用に特化した条項は reference に記載なし (条項の有無は未確認) | 各 reference |
+
+### 地図に載せる動画・音楽の API (地図 API 以外)
+
+地図の上に動画の埋め込みや音楽の試聴を並べるサービスでは、地図 API とは別の規約がかかる。条項の詳細は個別の reference に置く (2026-11-11 確認)。
+
+| 提供元 | 条項の要点 | 条項 | reference |
+|---|---|---|---|
+| YouTube (埋め込みプレーヤー、Data API) | 埋め込みも YouTube API Services に含まれる。プレーヤーは 200 × 200px 以上、自動再生は 1 画面に同時に 1 つ、プレーヤーの上に要素を重ねない。動画の保存・キャッシュは書面の承認なしに禁止。認可なしの API Data の保存は 30 日まで、API Data から新しい指標を作らない、スクレイピングの禁止。帰属を隠さない | RMF、Policies III.E.1、III.E.4、III.E.6、III.F.2、III.I | [youtube-embed](youtube-embed.md) (https://developers.google.com/youtube/terms/developer-policies) |
+| Apple (iTunes Search API) | 試聴とアートワークは元の内容の宣伝に限る。購入ページへ直接リンクするバッジの近くに置き、試聴には「provided courtesy of iTunes」。試聴はストリーミングだけで、ダウンロード・保存・キャッシュ禁止。独立の娯楽の価値のために使わない。1 分に約 20 回 | Search API の文書「Legal」(i) から (vi)、「Notes」 | [itunes-search-api](itunes-search-api.md) (https://performance-partners.apple.com/search-api) |
 
 ## 地図プロダクトで当たる場面
 

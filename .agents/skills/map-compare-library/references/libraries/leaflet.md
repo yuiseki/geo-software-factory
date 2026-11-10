@@ -5,7 +5,7 @@
 | 項目 | 値 |
 |---|---|
 | 確かめた日 | 2026-11-10 |
-| 最新の安定版 (リリース日) | 1.9.4 (2023-05-18)。npm の `latest` タグも 1.9.4 である。2.0 系はプレリリースで、最新は 2.0.0-beta.2 (2026-11-06、npm の `beta` タグ) (https://github.com/Leaflet/Leaflet/releases, https://www.npmjs.com/package/leaflet) |
+| 最新の安定版 (リリース日) | 1.9.4 (2023-05-18)。npm の `latest` タグも 1.9.4 である。2.0 系はプレリリースで、最新は 2.0.0-beta.3 (2026-11-10、npm の `beta` タグ、2026-11-11 確認) (https://github.com/Leaflet/Leaflet/releases, https://www.npmjs.com/package/leaflet) |
 | リポジトリ | https://github.com/Leaflet/Leaflet |
 | ドキュメント | https://leafletjs.com/ (API リファレンスは https://leafletjs.com/reference.html) |
 | ライセンス (LICENSE ファイルで確かめる) | BSD 2-Clause。著作権表記は Volodymyr Agafonkin (2010-2026) と CloudMade (2010-2011) (https://github.com/Leaflet/Leaflet/blob/main/LICENSE) |

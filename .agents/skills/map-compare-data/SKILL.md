@@ -18,6 +18,7 @@ description: 地図に載せる主題データ (ベースマップ以外) の出
 | [sources/abr](references/sources/abr.md) | 住所の正規化や位置参照が要るとき | アドレス・ベース・レジストリ |
 | [sources/municipal-open-data](references/sources/municipal-open-data.md) | 自治体のデータが要るとき | 自治体のオープンデータと G空間情報センター |
 | [sources/alltheplaces](references/sources/alltheplaces.md) | チェーン店の店舗が要るとき | 公式の店舗検索から集めた店舗データ (CC0) |
+| [sources/wikidata](references/sources/wikidata.md) | 名所や施設の代表点、写真、ID での突き合わせが要るとき | Wikidata (構造化データは CC0) |
 | [license-mixing](references/license-mixing.md) | 複数のデータを混ぜるとき | ライセンスを混ぜたときの条件 |
 
 ## 入力
@@ -54,6 +55,7 @@ description: 地図に載せる主題データ (ベースマップ以外) の出
 - 住所の正規化と代表点: アドレス・ベース・レジストリ (座標参照系の混在に注意)
 - 特定の自治体の施設一覧: その自治体のオープンデータ、自治体標準オープンデータセット
 - 全球の道路、建物、POI: OSM (ODbL)。POI を ODbL なしで使いたいなら Overture の places
+- 名所や施設の代表点と写真: Wikidata の座標 (CC0) と画像 (Commons、ファイルごとのライセンス)。路線や店など座標の無い項目は OSM で補う
 - チェーン店の店舗 (コンビニ、飲食チェーンなど): OSM と Overture の places をブランドの Wikidata ID (`brand:wikidata`、`brand.wikidata`) で絞り、AllThePlaces と並べる。どれも網羅率の公表がないので、会社が公表する店舗数と合計を突き合わせる
 - 国内の POI を検索 API で引きたい: map-compare-infra の `search/`
 

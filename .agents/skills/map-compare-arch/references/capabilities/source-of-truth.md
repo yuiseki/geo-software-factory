@@ -72,6 +72,11 @@
 | SQLite + SpatiaLite、GeoPackage (1 ファイルの正本) | SQLite のトランザクションは ACID だが、書き込みは同時に 1 つだけ (RESERVED ロックを持てるのは 1 プロセス、取れなければ SQLITE_BUSY)。WAL モードでも書き込みは 1 つずつ (推測: WAL の文書は未読) | SpatiaLite は SQLite の空間拡張。GeoPackage は SQLite のファイルにベクタ地物、タイル、属性を入れる OGC 標準 (1.4.0、12-128r19) で、R-tree 空間索引の拡張を持つ | 1 ファイルなので配布や持ち出しが簡単 (現地調査用)。多人数の同時書き込みには向かない | SpatiaLite 5.1.0 は MPL 1.1、GPL-2.0-or-later、LGPL-2.1-or-later から選べる三重ライセンス。SQLite 本体はパブリックドメイン (未確認) | https://www.sqlite.org/lockingv3.html 、 https://www.gaia-gis.it/fossil/libspatialite/home 、 https://www.ogc.org/standards/geopackage/ 、 https://www.geopackage.org/spec/ |
 | OSM 型の編集 API (OSM API v0.6) | 各要素 (node、way、relation) が版番号を持ち、送った版がサーバーの現在の版と違えば 409 Conflict を返す楽観的排他。差分のアップロード (osmChange) は 1 トランザクションで全部か無しかで適用される。一方で changeset 自体は原子的ではなく、閉じる前に変更が他人に見える。1 changeset は最大 10,000 要素 | (API の範囲外。OSM の公式サーバーは別途データベースを持つ) | 多数の編集者が非同期に編集する前提 | (API 仕様。データは ODbL) (ODbL は未確認) | https://wiki.openstreetmap.org/wiki/API_v0.6 |
 
+### 無料枠で正本を置くとき (2026-11-10 確認)
+
+- Cloudflare D1 の Free: 1 日に読み 500 万行、書き 10 万行、1 DB 500 MB。超えるとエラーを返すだけで課金されない (https://developers.cloudflare.com/d1/platform/pricing/)。空間の型と索引は無いので、点の数が少なければ距離の計算はブラウザで行う
+- Supabase の Free: データベース 500 MB、認証の MAU 50,000。1 週間使われないとプロジェクトが止まる (https://supabase.com/pricing)。旅行のように使う時期が飛び飛びのサービスでは、使わない間に公開ページが止まる
+
 ## 置き場所ごとの書き込み
 
 | 置き場所 | 実現手段 | 整合性で失うもの | 出典 |

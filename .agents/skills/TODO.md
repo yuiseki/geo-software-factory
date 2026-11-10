@@ -85,7 +85,7 @@
   - [x] references/cross-platform/flutter-map.md
   - [x] references/niche.md
 
-- [x] map-compare-data (11/11)
+- [x] map-compare-data (12/12)
   - [x] SKILL.md
   - [x] references/criteria.md
   - [x] references/license-mixing.md
@@ -97,6 +97,7 @@
   - [x] references/sources/municipal-open-data.md
   - [x] references/sources/openstreetmap.md
   - [x] references/sources/overture-maps.md
+  - [x] references/sources/wikidata.md
 - [x] map-legal-check (7/7)
   - [x] SKILL.md
   - [x] references/api-terms.md

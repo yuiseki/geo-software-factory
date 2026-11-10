@@ -66,6 +66,8 @@ MapLibre GL JS は、WebGL でベクトルタイルから対話的な地図を�
 - 最終コミット日: 2026-11-10 (JST、main ブランチ、https://github.com/maplibre/maplibre-gl-js/commits/main)
 - 近年の大きな破壊的変更: v5.0.0 (2024-12-31) は WebGL のコンテキスト指定を `canvasContextAttributes` に移す、`on` の戻り値を `Subscription` に変える、非圧縮の本番ビルドを外すなど (https://github.com/maplibre/maplibre-gl-js/releases/tag/v5.0.0)。v6.0.0 (2026-07-23 JST) は、ESM のみの配布 (UMD、CSP 版、CommonJS の廃止)、WebGL2 必須、ES2022 対象、`styleimagemissing` の通知専用化、`map.transform` の削除、GeoJSON の入れ子 properties の保持、`zoomLevelsToOverscale` の既定値変更など (https://github.com/maplibre/maplibre-gl-js/releases/tag/v6.0.0)。v6 では `<script src>` を `<script type="module">` に変え、バンドラー利用時は `setWorkerUrl()` の呼び出しが要る。`@latest` で読み込むページは v6 以降で白紙になると移行ガイドが警告している (https://github.com/maplibre/maplibre-gl-js/blob/main/docs/guides/v5-to-v6-migration-guide.md)。
 
+- Mapbox のタイルを MapLibre GL JS で使う場合: Mapbox Product Terms (2026-10-20 版) 2.8.3 は、純正の描画ライブラリ (Qualified Renderer) を使わない場合は、地図ロードではなく API の要求の回数で課金すると定めている。Web で他のライブラリから使うことを禁じる条文は見当たらない (条文に禁止の文が無いことからの推測を含む)。モバイルアプリでは 2.9.1 により Mobile SDK が唯一の利用手段で、MapLibre Native からは使えない (map-compare-infra の providers/mapbox.md、2026-11-11 確認)
+
 ## 向いている場面
 
 - ベクトルタイル (MVT、PMTiles、MLT) をスタイル文書で描くベース地図。
@@ -129,7 +131,6 @@ MapLibre GL JS は、WebGL でベクトルタイルから対話的な地図を�
 
 - WebGPU への取り組み: 公式ドキュメントと CHANGELOG に記述が見当たらず、計画の有無を確かめられなかった。
 - bundlephobia の 296.7 kB にワーカーファイルが含まれるか: bundlephobia の結果に内訳がなく判断できなかった。
-- Mapbox のタイルやスタイルを MapLibre GL JS で使ってよいか: Mapbox の利用規約を読んでいない。
 - Mapbox GL JS v2 以降のスタイル独自機能との互換範囲: 公式の一覧を確かめていない。
 - WMTS を XYZ 形式の URL で読めるかは公式の例で確かめておらず、推測である。
 - 公式ドキュメントの日本語訳の有無: 公式サイト上に見当たらなかったが、存在しないとは断定できない。

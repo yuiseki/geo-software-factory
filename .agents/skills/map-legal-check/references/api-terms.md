@@ -123,7 +123,7 @@
 
 ## 当たらない場面
 
-- Google のサービス固有規約は、Geocoding API などの緯度経度を 30 日までキャッシュすることと place_id の保存を許している ([google-maps.md](../../map-compare-infra/references/providers/google-maps.md))。
+- Google のサービス固有規約は、Geocoding API などの緯度経度を 30 日までキャッシュすることと place_id の保存を許している。Geocoding API の緯度経度と住所は、利用者向けの機能のためだけに、利用者ごとに分けて保存するなら期限なしでもよい (6.3.2)。Places UI Kit は Google 以外の地図とも使える (15.1) (2026-10-28 版、2026-11-11 確認。[google-maps.md](../../map-compare-infra/references/providers/google-maps.md))。
 - Mapbox の Mapping API の地図コンテンツは、リクエストした同じ端末に限り 30 日までキャッシュできる (Product Terms 2.8.1、[mapbox.md](../../map-compare-infra/references/providers/mapbox.md))。
 - Esri は帰属表示つきの PDF や画像などの静的な地図表現を作成し報告書に使うことを認めている (Master Agreement 3.2 b、[esri-arcgis-location-platform.md](../../map-compare-infra/references/providers/esri-arcgis-location-platform.md))。
 - 国土地理院のタイルをリアルタイムに読み込むウェブサイトやアプリは、営利・非営利を問わず出典の明示のみで申請不要 (国土地理院 Q&A Q1-12、[gsi-tiles.md](../../map-compare-infra/references/providers/gsi-tiles.md))。

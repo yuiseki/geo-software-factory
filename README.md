@@ -58,6 +58,7 @@ reference の事実 (料金、規約、ライセンス、版) は 2026-11-10 に
 ```
 AGENTS.md                 エージェント向け: どのスキルをいつ使うか
 CLAUDE.md                 Claude Code 向け: AGENTS.md を読み込むだけ
+LICENSE                   Apache License 2.0
 .claude/skills -> ../.agents/skills
 .agents/skills/
   AGENTS.md               スキルを書く人向けの決まり
@@ -80,4 +81,6 @@ examples/                 スキルを通した記録
 
 ## ライセンス
 
-後で決める。
+[Apache License 2.0](LICENSE)。
+
+ただし、作例の図とデータ ([docs/images/seven-eleven-tokyo23.png](docs/images/seven-eleven-tokyo23.png)、[examples/seven-eleven-tokyo23/](examples/seven-eleven-tokyo23/) の `wards.geojson` と `counts.tsv`) は、元のデータのライセンスと出典表示に従う。店舗は © OpenStreetMap contributors (ODbL 1.0) と Overture Maps Foundation、区の境界は国土数値情報 (行政区域データ) (国土交通省) を加工して作成 (CC BY 4.0)、図の背景の地図は © Geolonia、© OpenStreetMap、© GSI Japan。

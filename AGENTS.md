@@ -11,6 +11,8 @@ map-product-grilling -> map-compare-arch -> map-compare-infra -> map-compare-lib
 (何を作るか)             (何をどこに置くか)   (どの地図データか)     (どのライブラリで描くか)
 ```
 
+後で書く: 下の表の 4 段階以外のスキル (data、auth、protocol、ux-design、poc-measure、legal-check、ops、migrate) を、流れのどこで使うか。
+
 各段階は、入口の条件がそろったら始め、出口のものを出したら次へ進む。依頼が途中の段階だけ (例: 「Leaflet と MapLibre どっち」) なら、その段階の入口の条件がそろっているかを確かめて、そこから始める。前の段階を飛ばした場合は、飛ばした段階で決まるはずのこと (例: タイルの供給元) を仮の前提として答えに書く。
 
 | 段階 | 入口 (そろっていないと始めない) | 出口 (次の段階に渡すもの) |
@@ -28,6 +30,14 @@ map-product-grilling -> map-compare-arch -> map-compare-infra -> map-compare-lib
 | 要件は固まっていて、保存・計算・表現をクラウド、エッジ、ブラウザ/アプリのどこに置くかを決めたい (自前配信、オフライン、検索やルート検索を自前で持つ、正本の DB) | map-compare-arch |
 | 要件は固まっていて、タイル/地図データ/POI 検索の提供元を選びたい | map-compare-infra |
 | 要件は固まっていて、描画ライブラリ/SDK を選びたい (Web、ネイティブアプリ、複数 SDK の抽象化層) | map-compare-library |
+| 地図に載せる主題データ (施設、境界、統計など) の出どころを選びたい | map-compare-data |
+| 認証、権限、タイルやデータへのアクセス制御を決めたい | map-compare-auth |
+| リアルタイムの配信や、地理空間の API の標準 (OGC API、WMS、NGSI-LD など) を決めたい | map-compare-protocol |
+| 地図の画面と操作を設計したい (大量の地物、検索、現在地、モバイル、アクセシビリティ) | map-ux-design |
+| 技術選定の結論を左右する値 (タイル数、表示回数、データの大きさ、端末での動作) を測りたい | map-poc-measure |
+| 公開の前に、法令、規約、帰属表示を確かめたい | map-legal-check |
+| API キー、利用量、データの更新、障害への備えを運用したい | map-ops |
+| 既存の地図を別のサービスやライブラリへ乗り換えたい | map-migrate |
 | 技術選定を頼まれたが、要件が聞き出せていない | 下の「要件が足りないときの判定」に従う |
 
 ## 要件が足りないときの判定

@@ -85,9 +85,83 @@
   - [x] references/cross-platform/flutter-map.md
   - [x] references/niche.md
 
+- [ ] map-compare-data (0/10)
+  - [ ] SKILL.md
+  - [ ] references/criteria.md
+  - [ ] references/license-mixing.md
+  - [ ] references/sources/abr.md
+  - [ ] references/sources/estat.md
+  - [ ] references/sources/fgd.md
+  - [ ] references/sources/ksj.md
+  - [ ] references/sources/municipal-open-data.md
+  - [ ] references/sources/openstreetmap.md
+  - [ ] references/sources/overture-maps.md
+- [ ] map-legal-check (0/7)
+  - [ ] SKILL.md
+  - [ ] references/api-terms.md
+  - [ ] references/attribution.md
+  - [ ] references/external-transmission.md
+  - [ ] references/location-privacy.md
+  - [ ] references/odbl.md
+  - [ ] references/survey-act.md
+- [ ] map-ux-design (0/8)
+  - [ ] SKILL.md
+  - [ ] references/accessibility.md
+  - [ ] references/cartography.md
+  - [ ] references/geolocation-ux.md
+  - [ ] references/initial-load.md
+  - [ ] references/many-features.md
+  - [ ] references/mobile-interaction.md
+  - [ ] references/search-ux.md
+- [ ] map-poc-measure (0/6)
+  - [ ] SKILL.md
+  - [ ] references/data-size.md
+  - [ ] references/device-testing.md
+  - [ ] references/map-load-estimation.md
+  - [ ] references/render-performance.md
+  - [ ] references/tiles-per-view.md
+- [ ] map-ops (0/5)
+  - [ ] SKILL.md
+  - [ ] references/api-key-management.md
+  - [ ] references/data-update.md
+  - [ ] references/fallback.md
+  - [ ] references/usage-monitoring.md
+- [ ] map-compare-auth (0/14)
+  - [ ] SKILL.md
+  - [ ] references/criteria.md
+  - [ ] references/niche.md
+  - [ ] references/providers/amazon-cognito.md
+  - [ ] references/providers/auth0.md
+  - [ ] references/providers/better-auth.md
+  - [ ] references/providers/clerk.md
+  - [ ] references/providers/firebase-auth.md
+  - [ ] references/providers/keycloak.md
+  - [ ] references/providers/logto.md
+  - [ ] references/providers/ory.md
+  - [ ] references/providers/supabase-auth.md
+  - [ ] references/providers/workos.md
+  - [ ] references/tile-access-control.md
+- [ ] map-compare-protocol (0/11)
+  - [ ] SKILL.md
+  - [ ] references/criteria.md
+  - [ ] references/realtime/mqtt.md
+  - [ ] references/realtime/polling-webhook.md
+  - [ ] references/realtime/sse.md
+  - [ ] references/realtime/websocket.md
+  - [ ] references/standards/ngsi-ld.md
+  - [ ] references/standards/ogc-api.md
+  - [ ] references/standards/ogc-classic.md
+  - [ ] references/standards/sensorthings.md
+  - [ ] references/standards/stac-api.md
+- [ ] map-migrate (0/5)
+  - [ ] SKILL.md
+  - [ ] references/from-google-maps.md
+  - [ ] references/from-leaflet-raster.md
+  - [ ] references/from-mapbox.md
+  - [ ] references/migration-plan.md
+
 ## 候補 (まだ作るか決めていない)
 
-- 運用系のスキル: タイル配信のコスト見積もり、API キー管理、帰属表示
 - ネイティブ向けの追加候補: HERE SDK, ArcGIS Maps SDK, クロスプラットフォーム (react-native-maps, Flutter の地図プラグイン)
 - 自前配信の追加 (map-compare-arch): 生成ツール (Planetiler, tilemaker) ごとに reference を分けるか
 - 探索の結果は tmp/explore-*.md。保留したリポジトリ (仕分けの理由は tmp/libs.md): maplibre-rs, osgEarth, GeoLibre, zarr-gl / zarr-layer, tangram

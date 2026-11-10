@@ -165,4 +165,4 @@
 
 - ネイティブ向けの追加候補: HERE SDK, ArcGIS Maps SDK, クロスプラットフォーム (react-native-maps, Flutter の地図プラグイン)
 - 自前配信の追加 (map-compare-arch): 生成ツール (Planetiler, tilemaker) ごとに reference を分けるか
-- 探索の結果は tmp/explore-*.md。保留したリポジトリ (仕分けの理由は tmp/libs.md): maplibre-rs, osgEarth, GeoLibre, zarr-gl / zarr-layer, tangram
+- 保留したリポジトリ: maplibre-rs, osgEarth, GeoLibre, zarr-gl / zarr-layer, tangram

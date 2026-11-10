@@ -7,6 +7,8 @@ description: 地図プロダクトで、データをやり取りする方式 (�
 
 地図プロダクトのデータのやり取りの方式を選ぶ。
 
+> 骨組みの段階で、手順と reference はまだ書かれていない。このスキルを使うと決めたら、骨組みであることを答えに書き、reference の「[記入]」や空欄を事実として扱わない。判断は、書き上がったスキル (map-compare-arch、map-compare-infra、map-compare-library、map-compare-data、map-legal-check) と公式の文書で確かめられる範囲にとどめる。
+
 後で書く。
 
 | reference | 読むとき | 中身 |

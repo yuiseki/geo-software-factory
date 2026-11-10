@@ -1,9 +1,9 @@
 ---
-name: grilling-map-product
+name: map-product-grilling
 description: 作りたい地図プロダクトについて、誰にどんな価値を届けたいのか、その価値のためにどの機能を実装すべきかが十分に明確になるまで、ユーザーに質問を重ねて問い詰める。「地図アプリを作りたい」「地図サービスを企画している」「地図を使って何かしたい」のように目的や要件が曖昧な依頼、または技術選定を頼まれたが要件が聞き出せていないときに使う。
 ---
 
-# grilling-map-product
+# map-product-grilling
 
 > 骨組みの段階。以下の各節は後で書く。
 
@@ -42,7 +42,7 @@ description: 作りたい地図プロダクトについて、誰にどんな価�
 
 ## 出力
 
-後で書く: プロダクト概要の形式。compare-map-infra と compare-map-library に渡せる要件 (規模、商用か、詳しさ、端末、2D/3D など) を含める。
+後で書く: プロダクト概要の形式。map-compare-infra と map-compare-library に渡せる要件 (規模、商用か、詳しさ、端末、2D/3D など) を含める。
 
 ## やってはいけないこと
 

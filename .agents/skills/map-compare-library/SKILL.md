@@ -1,9 +1,9 @@
 ---
-name: compare-map-library
+name: map-compare-library
 description: 地図プロダクトを実装するためのライブラリや SDK を、要件に応じて比較し技術選定する。Web (Leaflet, MapLibre GL JS, Mapbox GL JS, Google Maps JavaScript API, OpenLayers, CesiumJS, ArcGIS Maps SDK for JavaScript, deck.gl など)、ネイティブ (MapLibre Native, Mapbox Maps SDK, Google Maps SDK, Apple MapKit, Mapsui)、クロスプラットフォーム (react-native-maps, MapLibre React Native, flutter_map)、ゲームエンジン (Cesium for Unity / Unreal)、地図アプリの土台 (TerriaJS, Re:Earth Visualizer, kepler.gl)、複数 SDK の抽象化層 (MapConductor) を、対象端末、タイルの供給元との組み合わせ、ライセンス (コピーレフトを含む)、描画の能力、性能、保守体制、移行のしやすさで比べる。「地図ライブラリはどれがいい」「Leaflet と MapLibre どっち」「3D 地図を作りたい」「スマホアプリに地図を入れたい」「React Native や Flutter で地図」「地図 SDK を乗り換えたい」と言われたら使う。
 ---
 
-# compare-map-library
+# map-compare-library
 
 地図プロダクトの要件から、地図を描くライブラリや SDK を選ぶ。Web のライブラリ、ネイティブ SDK、クロスプラットフォームのライブラリ、地図アプリの土台、複数 SDK の抽象化層を同じ軸で並べ、足切り、軸ごとの評価の順に比べて推奨を出す。比較の軸と、タイルの供給元との決め方は [criteria](references/criteria.md) にあり、各候補の事実は下の表の reference にある。
 
@@ -52,12 +52,12 @@ description: 地図プロダクトを実装するためのライブラリや SDK
 - 将来の乗り換えや、複数の地図 SDK の併用の見込み
 - 特殊な要件: 屋内、完全オフライン、印刷、地理座標を持たない画像
 
-対象端末と配布形態が分からないまま比較に入らない。足切りがこの 2 つで決まるので、分からなければ先に聞く。聞くときは選択肢で答えられる形にし、1 回に聞く数を絞る。要件が全体に曖昧なら、比較の前にプロダクトの価値から聞き直す (grilling-map-product に当たる手順)。
+対象端末と配布形態が分からないまま比較に入らない。足切りがこの 2 つで決まるので、分からなければ先に聞く。聞くときは選択肢で答えられる形にし、1 回に聞く数を絞る。要件が全体に曖昧なら、比較の前にプロダクトの価値から聞き直す (map-product-grilling に当たる手順)。
 
 ## 進め方
 
 1. [criteria](references/criteria.md) を読み、「要件から軸の重みを決める」の表で、当てる足切りの条件と重くする軸を決める。
-2. タイルの供給元との関係を決める。[criteria](references/criteria.md) の「タイルの供給元との関係」の順に従う。供給元が決まっていなければ、compare-map-infra と並行して決める。
+2. タイルの供給元との関係を決める。[criteria](references/criteria.md) の「タイルの供給元との関係」の順に従う。供給元が決まっていなければ、map-compare-infra と並行して決める。
 3. 候補を集める。下の「最初の当たり」から要件に合うものを選び、表の「読むとき」に当てはまる reference を開く。ライブラリから組まずに済むか (`frameworks/`) と、特殊な要件 ([niche](references/niche.md)) も確かめる。
 4. 足切りの条件で候補を外す。ライセンスは本体だけでなく、主要な依存と推奨されるプラグインも見る。外した候補と理由を残す。
 5. 残った候補を評価の軸で比べる。値は各 reference から写し、reference に「未確認」とあるものは未確認のまま書く。性能が結論を左右するなら、要件の件数で試作して測ることを勧める。
@@ -98,5 +98,5 @@ description: 地図プロダクトを実装するためのライブラリや SDK
 
 - ライブラリの版で API とライセンスが変わる (Mapbox GL JS は v1 系と v2 以降でライセンスが違う)。比べた版を必ず書く。
 - 性能の数字は、測った条件 (端末、データ件数、版) つきで書く。条件の無い数字で比べない。
-- ライブラリの選択で、組み合わせるタイルの課金単位が変わることがある (Mapbox、MapTiler)。費用に効くときは compare-map-infra の費用の見積もりに戻す。
+- ライブラリの選択で、組み合わせるタイルの課金単位が変わることがある (Mapbox、MapTiler)。費用に効くときは map-compare-infra の費用の見積もりに戻す。
 - 規約やライセンスの解釈は、条文から読んだものと推測を分けて書く。法的な判断を断定しない。

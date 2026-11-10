@@ -1,9 +1,9 @@
 # TODO
 
-- [ ] map-product-grilling (0/3)
-  - [ ] SKILL.md
-  - [ ] references/question-bank.md
-  - [ ] assets/product-brief-template.md
+- [x] map-product-grilling (3/3)
+  - [x] SKILL.md
+  - [x] references/question-bank.md
+  - [x] assets/product-brief-template.md
 - [x] map-compare-arch (20/20)
   - [x] SKILL.md
   - [x] references/criteria.md

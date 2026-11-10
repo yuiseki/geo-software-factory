@@ -98,6 +98,20 @@
 - 監視と障害対応: 静的 PMTiles + CDN は常駐サーバーが無いので、監視対象は CDN と関数のエラー率、レイテンシ、請求額になる。Protomaps は 200ms 以下を速い、500ms 以上を遅いとしている ([Deploy](https://docs.protomaps.com/deploy/))。タイルサーバー型ではサーバーのプロセス、ディスク、PostGIS も監視対象に入る。いずれも SLA は自分で持つことになる。
 - 帰属表示 (ODbL の要件): OSM 由来のタイルを表示するときは「OpenStreetMap」への帰属と、データが ODbL で使えることが分かる表示が要る。「OpenStreetMap」を openstreetmap.org/copyright へのリンクにする方法がある。インタラクティブな地図では地図の隅に表示するのが通例で、閉じる操作、地図の操作、または 5 秒後に畳んでよいが、利用者が探せばライセンス情報に辿り着けなければならない ([OSMF Attribution Guidelines](https://osmfoundation.org/wiki/Licence/Attribution_Guidelines))。OpenMapTiles スキーマを使う場合は「© OpenMapTiles」の表示も要る ([OpenMapTiles LICENSE.md](https://github.com/openmaptiles/openmaptiles/blob/master/LICENSE.md))。標高データを使うなら、その出典 (国土地理院、Copernicus など) の表示条件にも従う。
 
+## 入力データ: Overture Maps
+
+<!-- 追記テンプレート: この節の [記入] だけを埋める -->
+- 何を配布しているか (テーマ、形式、更新頻度): [記入]
+- ライセンス (テーマごと。ODbL と CDLA などの違い): [記入]
+- OSM を入力にする場合との違い (国内の建物・POI の量と質): [記入]
+- タイル化の手段 (Planetiler のプロファイル、Protomaps など): [記入]
+
+## ライセンス上の注意
+
+<!-- 追記テンプレート: この節の [記入] だけを埋める -->
+- この文書で挙げたツールのうち GPL / LGPL / AGPL などのコピーレフトのもの (例: Nominatim) と、自前で運用・改変・配布するときに求められること: [記入]
+- データのライセンス (ODbL の継承条件、派生データベースと生成物の扱い): [記入]
+
 ## 向いている場面
 
 - 月間ロード数が多く、商用タイル API の従量課金が R2 や CloudFront の保存・転送の費用より明らかに高い。

@@ -22,6 +22,8 @@ description: 地図プロダクトを実装するためのライブラリ/SDK �
 | [libraries/navara](references/libraries/navara.md) | MapLibre 系で 3D を扱いたいとき | Navara |
 | [libraries/globe-gl](references/libraries/globe-gl.md) | 全球のデータを地球儀で見せたいとき | globe.gl |
 | [libraries/d3-geo](references/libraries/d3-geo.md) | タイルなしの主題図 (コロプレス図など) を描くとき | d3-geo |
+| [libraries/arcgis-maps-sdk-js](references/libraries/arcgis-maps-sdk-js.md) | ArcGIS の資産がある案件、2D と 3D を同じ API で扱いたいとき | ArcGIS Maps SDK for JavaScript |
+| [libraries/3d-tiles-renderer-js](references/libraries/3d-tiles-renderer-js.md) | three.js のアプリに 3D Tiles を載せたいとき | 3DTilesRendererJS |
 | [frameworks/terriajs](references/frameworks/terriajs.md) | ライブラリから組まずに、地図アプリの土台を使うか検討するとき | TerriaJS |
 | [frameworks/reearth-visualizer](references/frameworks/reearth-visualizer.md) | 同上。3D の Web GIS を組むとき | Re:Earth Visualizer |
 | [frameworks/kepler-gl](references/frameworks/kepler-gl.md) | 同上。位置データの分析画面を作るとき | kepler.gl |
@@ -30,6 +32,11 @@ description: 地図プロダクトを実装するためのライブラリ/SDK �
 | [native/google-maps-sdk](references/native/google-maps-sdk.md) | ネイティブアプリで候補に入れるとき | Google Maps SDK for Android / iOS |
 | [native/apple-mapkit](references/native/apple-mapkit.md) | iOS/macOS で候補に入れるとき | Apple MapKit |
 | [native/cesium-native](references/native/cesium-native.md) | ゲームエンジン (Unreal, Unity) で 3D Tiles を扱うとき | Cesium Native |
+| [native/mapsui](references/native/mapsui.md) | .NET のアプリに地図を入れるとき | Mapsui |
+| [cross-platform/react-native-maps](references/cross-platform/react-native-maps.md) | React Native で OS 標準の地図を使うとき | react-native-maps |
+| [cross-platform/maplibre-react-native](references/cross-platform/maplibre-react-native.md) | React Native で自前のタイルを使うとき | MapLibre React Native |
+| [cross-platform/flutter-map](references/cross-platform/flutter-map.md) | Flutter で地図を使うとき | flutter_map |
+| [niche](references/niche.md) | 上のどれも要件に合わないとき (屋内、完全オフライン、組み込み、非地理座標、印刷など) | 特定の要件でだけ候補になるもの |
 | [multi-sdk/mapconductor](references/multi-sdk/mapconductor.md) | 複数の地図 SDK を併用・乗り換えしたいとき、複数プラットフォームで同じ書き方をしたいとき | MapConductor |
 
 ## 入力
@@ -40,7 +47,7 @@ description: 地図プロダクトを実装するためのライブラリ/SDK �
 
 後で書く。候補:
 
-1. 対象端末で分ける (Web / ネイティブ / ゲームエンジン / 複数)
+1. 対象端末で分ける (Web / ネイティブ / クロスプラットフォーム (React Native, Flutter, .NET) / ゲームエンジン / 複数)
 2. ライブラリから組むか、地図アプリの土台 (TerriaJS, Re:Earth Visualizer, kepler.gl など) を使うかを決める
 3. タイルサービスとの組み合わせ制約で足切りする (例: Mapbox のタイルはモバイルでは Mapbox の SDK でしか使えない、Google のタイルは Google 以外の地図と併用できない。詳細は各タイルサービスの規約)
 4. 2D/3D、ベクトルタイルの要否、データ量で候補を絞る

@@ -4,7 +4,7 @@
   - [ ] SKILL.md
   - [ ] references/question-bank.md
   - [ ] assets/product-brief-template.md
-- [ ] compare-map-infra (9/11)
+- [ ] compare-map-infra (9/26)
   - [ ] SKILL.md
   - [ ] references/criteria.md
   - [x] references/self-hosting.md
@@ -16,7 +16,22 @@
   - [x] references/providers/geolonia-maps.md
   - [x] references/providers/here.md
   - [x] references/providers/mapfan-api.md
-- [ ] compare-map-library (21/23)
+  - [ ] references/providers/maptiler.md
+  - [ ] references/providers/stadia-maps.md
+  - [ ] references/providers/esri-arcgis-location-platform.md
+  - [ ] references/providers/tomtom.md
+  - [ ] references/providers/carto-basemaps.md
+  - [ ] references/providers/gsi-tiles.md
+  - [ ] references/providers/zenrin-maps-api.md
+  - [ ] references/regional/china.md
+  - [ ] references/regional/korea.md
+  - [ ] references/imagery/esri-world-imagery.md
+  - [ ] references/imagery/eox-s2cloudless.md
+  - [ ] references/imagery/nasa-gibs.md
+  - [ ] references/3d/cesium-ion.md
+  - [ ] references/3d/plateau.md
+  - [ ] references/niche.md
+- [ ] compare-map-library (21/30)
   - [ ] SKILL.md
   - [ ] references/criteria.md
   - [x] references/libraries/leaflet.md
@@ -40,10 +55,17 @@
   - [x] references/native/apple-mapkit.md
   - [x] references/native/cesium-native.md
   - [x] references/multi-sdk/mapconductor.md
+  - [ ] references/libraries/arcgis-maps-sdk-js.md
+  - [ ] references/libraries/3d-tiles-renderer-js.md
+  - [ ] references/native/mapsui.md
+  - [ ] references/cross-platform/react-native-maps.md
+  - [ ] references/cross-platform/maplibre-react-native.md
+  - [ ] references/cross-platform/flutter-map.md
+  - [ ] references/niche.md
 
 ## 候補 (まだ作るか決めていない)
 
 - 運用系のスキル: タイル配信のコスト見積もり、API キー管理、帰属表示
 - ネイティブ向けの追加候補: HERE SDK, ArcGIS Maps SDK, クロスプラットフォーム (react-native-maps, Flutter の地図プラグイン)
 - 自前配信の追加: 生成ツール (Planetiler, tilemaker) ごとに reference を分けるか
-- 保留したリポジトリ (仕分けの理由は tmp/libs.md): maplibre-rs, osgEarth, GeoLibre, zarr-gl / zarr-layer, tangram
+- 探索の結果は tmp/explore-*.md。保留したリポジトリ (仕分けの理由は tmp/libs.md): maplibre-rs, osgEarth, GeoLibre, zarr-gl / zarr-layer, tangram

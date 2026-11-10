@@ -51,6 +51,14 @@
 - 直近 1 年のリリース数: Cesium Native は 2025-11-10 から 2026-11-10 に v0.54.0 から v0.66.0 まで 13 版 (ほぼ毎月 1 日前後) ([CHANGES.md](https://github.com/CesiumGS/cesium-native/blob/main/CHANGES.md))。同期間の GitHub Releases は Cesium for Unreal 14 件、Cesium for Unity 12 件。
 - 最終コミット日: Cesium Native 2026-11-09、Cesium for Unreal 2026-11-09、Cesium for Unity 2026-11-06 (いずれも main ブランチ)。
 
+## Cesium for Unity / Unreal
+
+<!-- 追記テンプレート: この節の [記入] だけを埋める -->
+- 何をするプラグインか、最新の版、対応するエンジンの版: [記入]
+- ライセンスと費用 (プラグイン、Cesium ion、Google 3D Tiles): [記入]
+- 配布元 (Fab、Unity Asset Store、GitHub): [記入]
+- Google Photorealistic 3D Tiles や PLATEAU を読み込む手順の有無: [記入]
+
 ## 向いている場面
 
 - 3D 都市モデル、点群、写実的な 3D タイル、地形を地球儀上で扱うアプリ。

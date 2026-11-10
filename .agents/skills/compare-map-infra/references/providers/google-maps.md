@@ -87,6 +87,14 @@ Google Maps Platform は Google マップの地図、ストリートビュー、
 - 運営の継続性 (運営主体、資金源): Google LLC が運営する。規約の重要な変更は通知から 30 日後に発効し、SLA に不利な変更は 90 日前までに通知する ([利用規約 1.3(b)](https://cloud.google.com/maps-platform/terms))。旧 Places API、Directions API、Distance Matrix API は Legacy 扱いで、廃止の 12 か月以上前に告知すると説明されている ([March 2025 changes](https://developers.google.com/maps/billing-and-pricing/march-2025))。
 - 障害情報の公開先: https://status.cloud.google.com/maps-platform/
 
+## Photorealistic 3D Tiles
+
+<!-- 追記テンプレート: この節の [記入] だけを埋める -->
+- 何を提供するか (形式、カバー範囲、国内の都市): [記入]
+- 対応ライブラリ (CesiumJS, deck.gl, 3DTilesRendererJS, Cesium for Unity / Unreal など): [記入]
+- 料金と無料枠: [記入]
+- 規約上の制約 (キャッシュ、他の地図との併用、帰属表示): [記入]
+
 ## 向いている場面
 
 - Google の SDK で地図を描き、場所検索・ルート検索・ストリートビューを同じ画面で使いたい場合。

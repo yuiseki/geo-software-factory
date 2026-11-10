@@ -19,6 +19,21 @@ description: 地図プロダクトの要件に応じて、地図タイルの供�
 | [providers/geolonia-maps](references/providers/geolonia-maps.md) | 候補に入れるとき | Geolonia Maps |
 | [providers/here](references/providers/here.md) | 候補に入れるとき | HERE |
 | [providers/mapfan-api](references/providers/mapfan-api.md) | 候補に入れるとき | MapFan API |
+| [providers/maptiler](references/providers/maptiler.md) | 候補に入れるとき | MapTiler Cloud |
+| [providers/stadia-maps](references/providers/stadia-maps.md) | 候補に入れるとき | Stadia Maps (Stamen のスタイル) |
+| [providers/esri-arcgis-location-platform](references/providers/esri-arcgis-location-platform.md) | 候補に入れるとき、ArcGIS の資産がある案件 | Esri ArcGIS Location Platform |
+| [providers/tomtom](references/providers/tomtom.md) | 候補に入れるとき | TomTom Maps API |
+| [providers/carto-basemaps](references/providers/carto-basemaps.md) | データ可視化の背景地図が要るとき | CARTO basemaps |
+| [providers/gsi-tiles](references/providers/gsi-tiles.md) | 国内が対象のとき | 地理院タイル (国土地理院) |
+| [providers/zenrin-maps-api](references/providers/zenrin-maps-api.md) | 国内で住宅地図レベルの詳しさが要るとき | ZENRIN Maps API |
+| [regional/china](references/regional/china.md) | 中国本土が対象に入るとき | 法規制、GCJ-02 / BD-09、使えるサービス |
+| [regional/korea](references/regional/korea.md) | 韓国が対象に入るとき | 法規制、使えるサービス |
+| [imagery/esri-world-imagery](references/imagery/esri-world-imagery.md) | 衛星・航空写真が要るとき | Esri World Imagery |
+| [imagery/eox-s2cloudless](references/imagery/eox-s2cloudless.md) | 衛星・航空写真が要るとき | EOX Sentinel-2 cloudless |
+| [imagery/nasa-gibs](references/imagery/nasa-gibs.md) | 日次の全球画像や長期の時系列が要るとき | NASA GIBS |
+| [3d/cesium-ion](references/3d/cesium-ion.md) | 3D の地形・建物が要るとき | Cesium ion |
+| [3d/plateau](references/3d/plateau.md) | 国内の 3D 都市モデルが要るとき | PLATEAU |
+| [niche](references/niche.md) | 上のどれも要件に合わないとき、特殊な主題・地域・画像が要るとき | 特定の要件でだけ候補になるもの |
 
 ## 入力
 

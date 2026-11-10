@@ -26,7 +26,7 @@
   - [x] references/edge/near-user-servers.md
   - [x] references/app/native-runtime.md
   - [x] references/hosting/static-hosting.md
-- [x] map-compare-infra (26/26)
+- [x] map-compare-infra (27/27)
   - [x] SKILL.md
   - [x] references/criteria.md
   - [x] references/providers/tile-openstreetmap-org.md
@@ -53,7 +53,8 @@
   - [x] references/3d/cesium-ion.md
   - [x] references/3d/plateau.md
   - [x] references/niche.md
-- [x] map-compare-library (31/31)
+  - [x] references/providers/mierune.md
+- [x] map-compare-library (32/32)
   - [x] SKILL.md
   - [x] references/criteria.md
   - [x] references/libraries/leaflet.md
@@ -85,7 +86,7 @@
   - [x] references/cross-platform/maplibre-react-native.md
   - [x] references/cross-platform/flutter-map.md
   - [x] references/niche.md
-
+  - [x] references/frameworks/no-code-maps.md
 - [x] map-compare-data (15/15)
   - [x] SKILL.md
   - [x] references/criteria.md

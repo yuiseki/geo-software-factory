@@ -56,6 +56,7 @@ MapLibre GL JS は、WebGL でベクトルタイルから対話的な地図を�
 
 - 主なプラグイン・拡張: 公式のプラグイン一覧に、PMTiles、deck.gl、maplibre-three-plugin、Terra Draw、maplibre-gl-geocoder、maplibre-cog-protocol、maplibre-contour などが載る (https://maplibre.org/maplibre-gl-js/docs/plugins/)。
 - React / Vue などのラッパー: React は react-map-gl (MIT、8.1.3、`@vis.gl/react-maplibre` として MapLibre 向けパッケージがある、https://github.com/visgl/react-map-gl, https://www.npmjs.com/package/@vis.gl/react-maplibre) ほか。Vue は @indoorequal/vue-maplibre-gl (MIT)、Svelte は svelte-maplibre (MIT)、Angular は ngx-maplibre-gl (https://maplibre.org/maplibre-gl-js/docs/plugins/, https://github.com/indoorequal/vue-maplibre-gl, https://github.com/dimfeld/svelte-maplibre)。各ラッパーの v6 対応は未確認。
+- SSR のフレームワーク (Next.js、Astro など) で使うとき: 地図はブラウザでだけ作る。2026-11-11 に Node.js 23.9.0 で maplibre-gl 6.17.0 を試すと、`import` は通り、`new Map()` は `ReferenceError: document is not defined` で失敗した (実測)。そのため地図を作る処理はサーバーで動かない場所 (React なら `useEffect` の中) に置く。Next.js の App Router では、`'use client'` を付けた Client Component も初回はサーバーで HTML に事前レンダリングされる (https://nextjs.org/docs/app/getting-started/server-and-client-components)。サーバーで描かせたくなければ、Client Component の中で `next/dynamic` に `{ ssr: false }` を付けて読み込む。`ssr: false` は Server Component では使えずエラーになる (https://nextjs.org/docs/app/guides/lazy-loading)。Astro では、地図のコンポーネントに `client:only="react"` のように使うフレームワークを添えて付けると、サーバーでの HTML のレンダリングを飛ばす (https://docs.astro.build/en/reference/directives-reference/)。2026-11-11 の観察では、ラズリマップが Next.js、Proton の Flock の地図が Astro と React、全国Q地図が Astro で作られていた。
 - TypeScript の型: 本体が TypeScript で書かれ、型を同梱する (https://maplibre.org/maplibre-gl-js/docs/, https://www.npmjs.com/package/maplibre-gl)。
 - ネイティブ版・兄弟プロジェクト: MapLibre Native (Android、iOS ほか) が同じ組織にあり、スタイル仕様を共有する (https://maplibre.org/maplibre-gl-js/docs/)。6.0.0 のアイコン拡大の変更は gl-js と native の両方に入れると明記されている (https://github.com/maplibre/maplibre-gl-js/releases/tag/v6.0.0)。
 - 日本語の情報 (公式翻訳、国内コミュニティ): 公式ドキュメントの日本語訳は確かめられなかった。国内コミュニティとして MapLibre User Group Japan (MUG-JP) が 2023-01 に発足し、MapLibre 公式ニュースでも紹介された (https://www.maplibre.org/news/2023-01-23-maplibre-user-group-japan/)。年次の活動まとめを dev.to や Zenn に公開している (https://dev.to/mug-jp, https://zenn.dev/mugjp/articles/try-118-maplibre-2025)。
@@ -123,6 +124,10 @@ MapLibre GL JS は、WebGL でベクトルタイルから対話的な地図を�
 - https://www.npmjs.com/package/@vis.gl/react-maplibre
 - https://github.com/indoorequal/vue-maplibre-gl
 - https://github.com/dimfeld/svelte-maplibre
+- https://nextjs.org/docs/app/getting-started/server-and-client-components
+- https://nextjs.org/docs/app/guides/lazy-loading
+- https://docs.astro.build/en/reference/directives-reference/
+- 2026-11-11 に Node.js 23.9.0 で maplibre-gl 6.17.0 を import し、`new Map()` を呼んだ実測
 - https://www.maplibre.org/news/2023-01-23-maplibre-user-group-japan/
 - https://dev.to/mug-jp
 - https://zenn.dev/mugjp/articles/try-118-maplibre-2025
@@ -135,4 +140,5 @@ MapLibre GL JS は、WebGL でベクトルタイルから対話的な地図を�
 - WMTS を XYZ 形式の URL で読めるかは公式の例で確かめておらず、推測である。
 - 公式ドキュメントの日本語訳の有無: 公式サイト上に見当たらなかったが、存在しないとは断定できない。
 - 各ラッパー (react-map-gl、vue-maplibre-gl ほか) の v6 対応状況: 各リポジトリで確かめていない。
+- 各ラッパーが SSR のフレームワークでサーバー側の実行を避けてくれるか: ラッパーごとの文書を確かめていない。
 - Governing Board の構成員や法人格: 憲章に人数 (5 名) はあるが、現在の構成員と法人の有無は確かめていない。

@@ -55,6 +55,7 @@ Leaflet はモバイル対応の対話的な地図を作る JavaScript ライブ
 
 - 主なプラグイン・拡張: 公式のプラグイン一覧に数百件が載る (https://leafletjs.com/plugins.html, https://github.com/Leaflet/Leaflet/blob/main/FAQ.md)。例として Leaflet.markercluster (MIT、https://github.com/Leaflet/Leaflet.markercluster)、Leaflet.heat (BSD-2-Clause、https://github.com/Leaflet/Leaflet.heat)、Esri Leaflet (Apache-2.0、https://github.com/Esri/esri-leaflet)、Leaflet-Geoman (MIT、https://github.com/geoman-io/leaflet-geoman)、protomaps-leaflet と maplibre-gl-leaflet (上記) がある。2.0.0-beta.2 から、2.0 で動くプラグインはプラグイン一覧で「Ready for Leaflet 2」として区別される。markercluster と heat は 1.9 と 2.0 の両方に対応した例として挙げられている (https://github.com/Leaflet/Leaflet/releases/tag/v2.0.0-beta.2)。
 - React / Vue などのラッパー: React は react-leaflet (5.0.0、2024-12-14)。ライセンスは OSI 承認ではない Hippocratic License 2.1 である (https://github.com/PaulLeCam/react-leaflet, https://www.npmjs.com/package/react-leaflet)。Vue は vue-leaflet (MIT、最終 push 2024-07-10、https://github.com/vue-leaflet/vue-leaflet)。いずれも Leaflet 2.0 対応は未確認。
+- SSR のフレームワーク (Next.js、Astro など) で使うとき: 2026-11-11 に Node.js 23.9.0 で試すと、Leaflet 1.9.4 は `import` しただけで `ReferenceError: window is not defined` になり、2.0.0-beta.3 は `import` が通った (実測)。1.x ではモジュールの読み込み自体をブラウザだけで行う必要がある。Next.js の App Router では、`'use client'` を付けた Client Component も初回はサーバーで事前レンダリングされるので (https://nextjs.org/docs/app/getting-started/server-and-client-components)、地図のコンポーネントを Client Component の中から `next/dynamic` の `{ ssr: false }` で読み込む。`ssr: false` は Server Component では使えない (https://nextjs.org/docs/app/guides/lazy-loading)。Astro では `client:only="react"` のようにフレームワークを添えて付ける (https://docs.astro.build/en/reference/directives-reference/)。react-leaflet を使う場合も、Leaflet 本体を読み込む点は変わらない (推測)。
 - TypeScript の型: 1.x は DefinitelyTyped の `@types/leaflet` (最新 1.9.22、https://www.npmjs.com/package/@types/leaflet)。2.0.0-beta.1 からは型をパッケージに同梱し、`@types/leaflet` は使わない (https://github.com/Leaflet/Leaflet/releases/tag/v2.0.0-beta.1)。
 - ネイティブ版・兄弟プロジェクト: なし (公式のネイティブ SDK は確認した範囲で見当たらない)
 - 日本語の情報 (公式翻訳、国内コミュニティ): 公式サイトのトップページに日本語版への導線は見当たらなかった (https://leafletjs.com/)。国内コミュニティは未確認。
@@ -113,6 +114,10 @@ Leaflet はモバイル対応の対話的な地図を作る JavaScript ライブ
 - https://github.com/PaulLeCam/react-leaflet
 - https://www.npmjs.com/package/react-leaflet
 - https://github.com/vue-leaflet/vue-leaflet
+- https://nextjs.org/docs/app/getting-started/server-and-client-components
+- https://nextjs.org/docs/app/guides/lazy-loading
+- https://docs.astro.build/en/reference/directives-reference/
+- 2026-11-11 に Node.js 23.9.0 で leaflet 1.9.4 と 2.0.0-beta.3 を import した実測
 
 ## 未確認のこと
 

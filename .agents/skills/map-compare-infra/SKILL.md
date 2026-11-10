@@ -25,6 +25,7 @@ description: 地図プロダクトの要件に応じて、ベースマップ、�
 | [providers/tomtom](references/providers/tomtom.md) | 候補に入れるとき | TomTom Maps API |
 | [providers/carto-basemaps](references/providers/carto-basemaps.md) | データ可視化の背景地図が要るとき | CARTO basemaps |
 | [providers/gsi-tiles](references/providers/gsi-tiles.md) | 国内が対象のとき | 地理院タイル (国土地理院) |
+| [providers/mierune](references/providers/mierune.md) | 国内が対象で、淡い背景のラスタタイルや、閉域網で自分で配信する日本向けのベクトル地図が要るとき | MIERUNE (無料のラスタタイル MIERUNE / MIERUNE MONO と、有償の MIERUNE地図タイル) |
 | [providers/zenrin-maps-api](references/providers/zenrin-maps-api.md) | 国内で住宅地図レベルの詳しさが要るとき | ZENRIN Maps API |
 | [search/openpoiapi](references/search/openpoiapi.md) | 国内の施設 (POI) 検索が要るとき、検索結果を保存して使いたいとき | OpenPOI API (オープンデータを統合した国内の POI 検索 API) |
 | [regional/china](references/regional/china.md) | 中国本土が対象に入るとき | 法規制、GCJ-02 / BD-09、使えるサービス |
@@ -68,6 +69,7 @@ description: 地図プロダクトの要件に応じて、ベースマップ、�
 - 個人や非商用の試作: OpenFreeMap (無料、キー不要、SLA なし)。tile.openstreetmap.org と tile.openstreetmap.jp は、本番の主たる供給元にしない
 - 国内の公的な地図、防災、行政の図面との整合: 地理院タイル (無料、SLA なし)
 - 国内で住宅地図レベルの詳しさ: ZENRIN Maps API (料金は見積もり制)
+- 国内で主題データを目立たせる淡い背景: MIERUNE MONO (無料、キー不要、停止がありうると明記)。閉域網で日本向けのベクトル地図を自分で配信するなら MIERUNE地図タイル (1 システムあたりの一括払い)
 - 商用の汎用ベースマップ: Google Maps Platform、Mapbox、MapTiler Cloud、Esri、HERE、TomTom、Geolonia Maps などを、課金単位と使い方の経路を揃えて比べる
 - ArcGIS の資産がある案件: Esri ArcGIS Location Platform
 - データ可視化の背景地図: CARTO basemaps

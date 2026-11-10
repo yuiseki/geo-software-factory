@@ -28,6 +28,7 @@ description: 地図プロダクトを実装するためのライブラリや SDK
 | [frameworks/terriajs](references/frameworks/terriajs.md) | ライブラリから組まずに、地図アプリの土台を使うか検討するとき | TerriaJS |
 | [frameworks/reearth-visualizer](references/frameworks/reearth-visualizer.md) | 同上。3D の Web GIS を組むとき | Re:Earth Visualizer |
 | [frameworks/kepler-gl](references/frameworks/kepler-gl.md) | 同上。位置データの分析画面を作るとき | kepler.gl |
+| [frameworks/no-code-maps](references/frameworks/no-code-maps.md) | 開発せずに地図を作って埋め込むか検討するとき (自治体、報道、ブログの地図) | Google マイマップ、ArcGIS Online のアプリ (StoryMaps、Experience Builder、Web AppBuilder の廃止)、uMap、Felt。ノーコードで足りるときと作るとき |
 | [native/maplibre-native](references/native/maplibre-native.md) | ネイティブアプリで候補に入れるとき | MapLibre Native |
 | [native/mapbox-maps-sdk](references/native/mapbox-maps-sdk.md) | ネイティブアプリで候補に入れるとき | Mapbox Maps SDK |
 | [native/google-maps-sdk](references/native/google-maps-sdk.md) | ネイティブアプリで候補に入れるとき | Google Maps SDK for Android / iOS |
@@ -82,6 +83,8 @@ description: 地図プロダクトを実装するためのライブラリや SDK
 - ゲームエンジンで 3D の都市や地形: Cesium for Unity / Unreal (Cesium Native の reference の節)
 - Web とアプリで同じ見た目: MapLibre GL JS と MapLibre Native (同じスタイル仕様)
 - 開発の手間を減らしたい GIS 画面: 地図アプリの土台 (TerriaJS、Re:Earth Visualizer、kepler.gl)
+- 地点を手で載せて埋め込むだけ: ノーコードのサービス (Google マイマップ、uMap、Felt、ArcGIS StoryMaps)。件数、表示回数、製品の寿命で足りるかを確かめる
+- Next.js や Astro などの SSR のフレームワークで使う: 地図はブラウザでだけ作る (MapLibre GL JS と Leaflet の reference の「エコシステム」の SSR の項)
 - 地図 SDK の乗り換えや併用: 抽象化層 (MapConductor)
 
 ## 出力

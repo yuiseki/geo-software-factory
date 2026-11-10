@@ -14,7 +14,7 @@
 | 条件 | 何を確かめるか | 外れる例 (各 reference の記述) |
 |---|---|---|
 | 対象端末 | Web、Android、iOS、デスクトップ、ゲームエンジン、組み込み機器のどれで動かすか | react-native-maps は Web に対応しない ([react-native-maps](cross-platform/react-native-maps.md))。組み込み・車載は MapLibre Native Qt などに限られる ([niche](niche.md)) |
-| タイルの供給元との組み合わせ | 使うタイルを、そのライブラリで表示してよいか | Mapbox のタイルはモバイルでは Mapbox の SDK を通してしか使えない。Geolonia Maps のタイルは Geolonia Maps SDK を通して使うのが推奨で、他のライブラリから使うのはサポート外 ([geolonia-maps](libraries/geolonia-maps.md))。Google のタイルは Google 以外の地図と併用できない。ArcGIS Maps SDK for JavaScript は Web で使う場合に他の Esri 製品との併用が求められる ([arcgis-maps-sdk-js](libraries/arcgis-maps-sdk-js.md)) |
+| タイルの供給元との組み合わせ | 使うタイルを、そのライブラリで表示してよいか | Mapbox のタイルはモバイルでは Mapbox の SDK を通してしか使えない (Product Terms 2.9.1、[mapbox-maps-sdk](native/mapbox-maps-sdk.md))。Geolonia Maps のタイルは Geolonia Maps SDK を通して使うのが推奨で、他のライブラリから使うのはサポート外 ([geolonia-maps](libraries/geolonia-maps.md))。Google のタイルは Google 以外の地図と併用できない。ArcGIS Maps SDK for JavaScript は Web で使う場合に他の Esri 製品との併用が求められる ([arcgis-maps-sdk-js](libraries/arcgis-maps-sdk-js.md)) |
 | ライセンス | プロダクトの配布形態 (SaaS、アプリのストア配布、受託納品、OSS 公開) と、ライブラリと主要な依存のライセンスが両立するか | maptalks.js の 3D 系パッケージは UNLICENSED ([maptalks](libraries/maptalks.md))。flutter_map のオフライン用に推奨される flutter_map_tile_caching は GPL-3.0 ([flutter-map](cross-platform/flutter-map.md))。react-leaflet は OSI 非承認の Hippocratic License ([leaflet](libraries/leaflet.md)) |
 | 必須の描画能力 | ベクトルタイル、3D 建物、地形、地球儀、3D Tiles のうち、要件で欠かせないもの | Leaflet は本体だけではベクトルタイルとスタイル仕様を扱えない ([leaflet](libraries/leaflet.md))。3D Tiles が要るなら、CesiumJS、3DTilesRendererJS、ゲームエンジン向けの Cesium などに限られる |
 | 利用料 | ライブラリ自体に利用料や課金があるか | Mapbox GL JS は v2 以降が独自ライセンスで、地図ロードで課金される ([mapbox-gl-js](libraries/mapbox-gl-js.md)) |
@@ -79,7 +79,7 @@
 1. 供給元が要件で決まっている (既存契約、公共案件で公的データを使う、など) なら、その供給元を表示してよいライブラリだけを候補にする。
 2. ライブラリが要件で決まっている (既存のアプリ、社内の標準) なら、そのライブラリで表示してよい供給元だけを map-compare-infra の候補にする。
 3. どちらも決まっていなければ、移行のしやすさを重く見て、スタイル仕様が共通の組み合わせ (MapLibre 系のライブラリと、MapLibre Style Spec で配信される供給元) を基準にし、そこから外れる組み合わせを選ぶ理由 (独自の機能、データの詳しさ) を書く。
-4. 同じ供給元でも、ライブラリによって課金単位が変わる。Mapbox と MapTiler は、自社の SDK を使うと地図の表示回数で、MapLibre などから直接タイルを取るとタイルのリクエスト数で課金される。ライブラリの選択を費用の見積もりに反映する (map-compare-infra の criteria.md の「費用の見積もり方」)。
+4. 同じ供給元でも、ライブラリによって課金単位が変わる。Mapbox は Web の Mapbox GL JS なら地図ロード、モバイルの Maps SDK なら月間アクティブユーザー (MAU)、MapLibre などから直接タイルを取るとタイルのリクエスト数で課金される。MapTiler は自社の SDK なら地図の表示回数、直接タイルを取るとタイルのリクエスト数で課金される。ライブラリの選択を費用の見積もりに反映する (map-compare-infra の criteria.md の「費用の見積もり方」)。
 
 ## 要件から軸の重みを決める
 

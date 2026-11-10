@@ -44,7 +44,7 @@
 
 ## 判断を左右すること
 
-- 更新頻度: PMTiles は 1 ファイルを丸ごと作り直して差し替える方式で、Protomaps の basemap は日次でビルドが出ている (build.protomaps.com に日付名のファイルが並ぶ)。差し替え後は CDN のキャッシュを消す必要があり、Cloudflare の Purge はゾーン全体を消すので専用ゾーンが勧められている。編集が頻繁なデータは PostGIS から都度タイルを作る Martin や pg_tileserv が合う (推測)。出典: https://docs.protomaps.com/deploy/cloudflare
+- 更新頻度: PMTiles は 1 ファイルを丸ごと作り直して差し替える方式で、Protomaps の basemap は日次でビルドが出ている (build.protomaps.com に日付名のファイルが並ぶ)。差し替え後は CDN のキャッシュを消す必要がある。Protomaps の手順は「Cloudflare の Purge Cache はゾーン全体に効く」として専用ゾーンを勧めているが、Cloudflare は Free プランでも URL、ホスト名、タグ、プレフィックスの単位で消せる。ゾーン全体に効くのは Purge Everything だけである (https://developers.cloudflare.com/cache/how-to/purge-cache/、2026-11-10 確認)。編集が頻繁なデータは PostGIS から都度タイルを作る Martin や pg_tileserv が合う (推測)。出典: https://docs.protomaps.com/deploy/cloudflare
 - 応答の速さ: CDN のキャッシュが当たれば 100 ms 以下、AWS の関数経由で p50 125 ms と p99 800 ms、静的 PMTiles の直読みは最も遅い区分で、遠いリージョンだと数秒になりうる。出典: https://docs.protomaps.com/deploy/ 、https://docs.protomaps.com/deploy/aws
 - オフラインで使いたいか: PMTiles を端末に置けば MapLibre Native で読める。tile.openstreetmap.org はオフライン利用と一括取得を禁じているので、オフラインには自前の PMTiles か、オフライン利用を許す提供元が要る。出典: https://operations.osmfoundation.org/policies/tiles/ 、https://github.com/maplibre/maplibre-native/blob/main/platform/android/CHANGELOG.md
 - 費用 (外部 API の課金単位、自前の計算と転送): 外部 API は多くがタイル数か地図の読み込み回数で課金する (提供元ごとの単価は map-compare-infra で扱う)。Cloudflare Workers は月 5 ドルで 1,000 万リクエストを含み、超過は 100 万あたり 0.30 ドル。R2 は保存、書き込み、読み出しで課金され、読み出しはキャッシュが外れたときだけ起きる。AWS では CloudFront の invalidation は月 1,000 回まで無料。常駐サーバーは負荷が無くても動かし続ける費用がかかる (推測)。出典: https://docs.protomaps.com/deploy/cloudflare 、https://docs.protomaps.com/deploy/aws
@@ -55,7 +55,7 @@
 
 - GeoServer (GPL-2.0 以降): 組み込み (自社製品に同梱して配る) と改変して配布する場合は、ソースを GPL で開示する義務が生じる。SaaS として外部に提供するだけなら GPL-2.0 は配布にあたらないので開示義務は生じない (AGPL でないため)。改変せずに別プロセスとして HTTP で使うだけなら自社コードには及ばない (推測: GPL の一般的な解釈で、個別事案は法務の確認が要る)。出典: https://github.com/geoserver/geoserver/blob/main/LICENSE.md
 - Martin、TileServer GL、pg_tileserv、BBOX、t-rex、PMTiles の参照実装はいずれも寛容なライセンス (Apache-2.0、MIT、BSD) で、著作権表示とライセンス文を残せば組み込み、改変、配布、SaaS 提供ができる。TileServer GL の npm パッケージと Docker イメージには MapLibre GL Native が入る (同梱物のライセンスは別に確認する (推測))
-- OSM 由来のタイル (Protomaps basemap など) は ODbL の Produced Work として配られ、OpenStreetMap の帰属表示が要る。ODbL の要約では、データベースやそこから作った作品を公に使うときは帰属表示が要り、改変したデータベースを公に使うならそのデータベースも ODbL で提供する (share-alike)。タイルを描いた画像やタイルそのものの配布は Produced Work 側に入る (推測: 何がデータベース扱いになるかは OSMF のガイドラインで確かめる)。出典: https://docs.protomaps.com/basemaps/downloads 、https://opendatacommons.org/licenses/odbl/summary/
+- OSM 由来のタイル (Protomaps basemap など) は ODbL の Produced Work として配られ、OpenStreetMap の帰属表示が要る。ODbL の要約では、データベースやそこから作った作品を公に使うときは帰属表示が要り、改変したデータベースを公に使うならそのデータベースも ODbL で提供する (share-alike)。タイルを描いた画像 (ラスタ) は通常 Produced Work 側に入る。ベクトルタイルは地物の座標と属性をそのまま持ち、データを取り出せるので、データベースとみなされる余地がある (推測。Protomaps は planet ビルドを Produced Work として配っている。詳しくは [self-hosting](../self-hosting.md) の ODbL の項と OSMF の Produced Work Guideline で確かめる)。出典: https://docs.protomaps.com/basemaps/downloads 、https://opendatacommons.org/licenses/odbl/summary/
 - 国土地理院の最適化ベクトルタイルは国土地理院コンテンツ利用規約に従い、「国土地理院最適化ベクトルタイル」などの出典明示が要る。出典: https://github.com/gsi-cyberjapan/optimal_bvmap
 
 ## 出典

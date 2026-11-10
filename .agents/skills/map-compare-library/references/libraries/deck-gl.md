@@ -17,7 +17,7 @@ GPU を使って大量の地理データを描く可視化フレームワーク�
 
 ## 描画方式
 
-- レンダリング (DOM / Canvas 2D / WebGL / WebGPU): WebGL2 (luma.gl 経由)。WebGPU は試験的。9.2 (2025-10-07) で一部レイヤーの早期プレビューが始まり、9.4 (2026-09-05) で公式レイヤーカタログの全レイヤーが WebGPU に対応したが、本番利用はまだ勧めないと公式が明記している。一部の機能は WebGPU で使えないか部分対応 ([What's New](https://deck.gl/docs/whats-new)、[WebGPU ガイド](https://deck.gl/docs/developer-guide/webgpu))
+- レンダリング (DOM / Canvas 2D / WebGL / WebGPU): WebGL2 (luma.gl 経由)。WebGPU は試験的。9.2 (2025-10-07) で一部レイヤーの早期プレビューが始まり、9.4 (2026-09-05) のリリースノートは公式レイヤーカタログの全レイヤーが WebGPU に対応したとするが、WebGPU ガイドの対応表では CARTO のレイヤー (`@deck.gl/carto`) と拡張の多くが未実装 (❌) のままで、両者は食い違う。本番利用はまだ勧めないと公式が明記している。一部の機能は WebGPU で使えないか部分対応 ([What's New](https://deck.gl/docs/whats-new)、[WebGPU ガイド](https://deck.gl/docs/developer-guide/webgpu))
 - 2D / 2.5D (傾き・回転) / 3D: 2D、傾き・回転、3D すべて。MapView (地図)、OrbitView、FirstPersonView、OrthographicView を持つ ([API リファレンス core](https://github.com/visgl/deck.gl/tree/master/docs/api-reference/core))。9.3 で地形に沿って視点を動かす TerrainController が入った ([What's New](https://deck.gl/docs/whats-new))
 - 地球儀表示: GlobeView があるが試験的。ズーム 12 を超えると精度が落ちる、座標系は経緯度のみ、HeatmapLayer と ContourLayer は動かない、TileLayer / MVTLayer / TerrainLayer の対応は試験的、などの制限がある ([GlobeView](https://deck.gl/docs/api-reference/core/globe-view))。9.4 で TerrainLayer、Tile3DLayer、IconLayer、TextLayer などが地球儀上で動くようになった ([What's New](https://deck.gl/docs/whats-new))
 - 対応する投影法: Web メルカトル (MapView)、地球儀 (GlobeView、試験的)、地理座標を使わない直交・透視ビュー。任意の CRS で平面地図を描く `_CustomProjectionView` は master の What's New では「Unreleased」節にあり、9.4.1 時点の安定版には含まれない ([What's New (master)](https://github.com/visgl/deck.gl/blob/master/docs/whats-new.md)、[CustomProjectionView](https://github.com/visgl/deck.gl/blob/master/docs/api-reference/core/custom-projection-view.md))

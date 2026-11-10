@@ -41,7 +41,7 @@
 
 - ライセンス: MIT。
 - 下にある SDK の費用: 対象外 (下にある地図 SDK が無い)。費用はタイル配信の提供元か自前配信のインフラで決まる
-- ライセンス上の注意: なし (コピーレフトの依存は見当たらない)。主な依存のライセンスは、SkiaSharp と HarfBuzzSharp が MIT、BruTile が Apache-2.0、Svg.Skia が MIT、Topten.RichTextKit が Apache-2.0、BitMiracle.LibTiff.NET が BSD 系、sqlite-net が MIT、SQLitePCLRaw が Apache-2.0、DotSpatial.Projections が MIT、NetTopologySuite.IO.VectorTiles が MIT、NetTopologySuite.IO.GeoJSON4STJ が BSD-3-Clause、VexTile.Renderers が MIT。NetTopologySuite 本体は JTS 由来で、Eclipse Public License 1.0 と Eclipse Distribution License 1.0 (BSD 系) の選択制なので、EDL を選べば弱いコピーレフトの EPL の条件 (改変したソースの開示) を負わずに済む。Apache-2.0 の依存は配布時に NOTICE ファイルの扱いに注意する。配布時はこれらの著作権表示を含める (https://github.com/NetTopologySuite/NetTopologySuite/blob/develop/License.md 、 https://github.com/Mapsui/Mapsui/blob/main/Directory.Packages.props 、 https://github.com/BruTile/BruTile 、 https://github.com/memsom/VexTile.Renderers)
+- ライセンス上の注意: なし (コピーレフトの依存は見当たらない)。主な依存のライセンスは、SkiaSharp と HarfBuzzSharp が MIT、BruTile が Apache-2.0、Svg.Skia が MIT、Topten.RichTextKit が Apache-2.0、BitMiracle.LibTiff.NET が BSD 系、sqlite-net が MIT、SQLitePCLRaw が Apache-2.0、DotSpatial.Projections が MIT、NetTopologySuite.IO.VectorTiles が MIT、NetTopologySuite.IO.GeoJSON4STJ が BSD-3-Clause、VexTile.Renderers が MIT。NetTopologySuite 本体は BSD-3-Clause である。JTS から移植した部分は Eclipse Public License 1.0 と Eclipse Distribution License 1.0 (BSD 系) の選択制なので、EDL を選べば弱いコピーレフトの EPL の条件 (改変したソースの開示) を負わずに済む。Apache-2.0 の依存は配布時に NOTICE ファイルの扱いに注意する。配布時はこれらの著作権表示を含める (https://github.com/NetTopologySuite/NetTopologySuite/blob/develop/License.md 、 https://github.com/Mapsui/Mapsui/blob/main/Directory.Packages.props 、 https://github.com/BruTile/BruTile 、 https://github.com/memsom/VexTile.Renderers)
 
 ## エコシステム
 

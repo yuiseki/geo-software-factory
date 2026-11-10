@@ -45,7 +45,7 @@
 - Workers の静的アセット (Workers Assets) は Range を無視して 200 で全体を返す。PMTiles をアセットとして置くと Range 読みにならないので、R2 に置くか、`run_worker_first` で Worker を通して 206 を組み立てる。アセットは 1 ファイル 25 MiB までなので大きな PMTiles はそもそも置けない。
 - protomaps の手順では、R2 は他のクラウドストレージより遅く「500ms or higher」と書かれている。キャッシュに当たらないタイルの体感速度を見積もる時に効く。
 - R2 の Web 画面からのアップロードは 300 MB まで。大きなファイルは rclone などを使う。
-- Cloudflare のキャッシュ全消去はゾーン全体に効くので、タイル配信用にゾーンを分けることが protomaps の手順で勧められている。
+- Cloudflare のキャッシュ全消去 (Purge Everything) はゾーン全体に効くので、タイル配信用にゾーンを分けることが protomaps の手順で勧められている。ただし Free プランでも URL、ホスト名、タグ、プレフィックスの単位で消せるので、消し方を絞ればゾーンを分けなくてもよい (https://developers.cloudflare.com/cache/how-to/purge-cache/、2026-11-10 確認)。
 - Vercel は Edge runtime から Node.js への移行を勧めており、Next.js 16.3 以降では `runtime = 'edge'` が使えない。新規に Edge runtime を前提にしない。
 - Vercel Edge runtime は実行時にバイト列から Wasm をコンパイルできない (import 文で読み込んだ Wasm だけ)。Wasm を R2 などから取ってくる構成はとれない。
 - Lambda@Edge は viewer イベントで返せるレスポンスが 40 KB までで、タイル 1 枚を返すにも足りないことがある (推測)。origin イベントでも 1 MB までである。

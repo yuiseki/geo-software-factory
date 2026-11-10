@@ -80,6 +80,17 @@ API ごとに、対応した版を書く。iOS では全ブラウザが WebKit �
 - Edge の Aion-1.0-Instruct: Canary / Dev の 150.0.4070 以降でフラグを立てると使える。GPU が弱い端末でも CPU で動くとされる。2026-07 にオープンソースで公開予定と書かれていた
 - Prompt API の対応言語は en、ja、es、de、fr で、他の言語は開発中
 
+## ページの道具を AI エージェントに渡す (WebMCP)
+
+ブラウザの中で推論するのとは逆向きに、ページが自分の操作 (地図の移動、検索、絞り込み) を「道具」として AI エージェントに公開する API がある。2026-11-11 に確かめた。
+
+- 位置づけ: W3C の Web Machine Learning Community Group の草案 (Draft Community Group Report、2026-11-10 版) で、W3C の標準でも標準化の過程でもないと仕様自身が書いている (https://webmachinelearning.github.io/webmcp/)
+- 対応: Chrome 149 と Edge 150 で Origin Trial。手元で試すときは `chrome://flags/#enable-webmcp-testing`。Firefox と Safari には実装が無く、標準化への立場の議論があるだけ (https://github.com/webmachinelearning/webmcp/blob/main/implementation-status.md)
+- 形: `document.modelContext.registerTool({ name, title, description, inputSchema, outputSchema, execute, annotations })` で道具を登録する。`getTools()`、`executeTool()`、`toolchange` などのイベントがある。Permissions Policy の `tools` (既定は 'self') が無いと登録できない。HTML のフォームから宣言的に登録する案は、まだ仕様に入っていない
+- 安全: 仕様は、プロンプトインジェクション (道具の説明や出力に仕込まれた指示)、意図の偽装、引数を増やして個人の文脈を引き出す漏えいを危険として挙げ、サイトが付けた注釈だけにエージェントが頼らないよう書いている
+- 地図の例 (2026-11-11 観測): https://webmcp-googlemap.pages.dev/ は Google マップのページに、問い合わせ (「東京でおすすめのレストラン」) を地域と語に分けて検索する道具と、今の検索条件を返す読み取りだけの道具を公開していた
+- 使いどころ: 地図の操作 (表示する範囲、絞り込み、レイヤーの切り替え) を、利用者のエージェントからも操作できるようにしたいとき。Origin Trial の段階なので、無い環境でも画面だけで使えるように作る (推測)
+
 ## 出典
 
 - https://www.w3.org/TR/webnn/ (Candidate Recommendation Draft 2026-10-21、MLContextOptions、Worker への公開、セキュアコンテキスト限定)

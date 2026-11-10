@@ -19,7 +19,7 @@ Geolonia Maps は、Geolonia が配信するベクトルタイル地図を Web �
 - データの出どころ (自社調査 / OSM / 他社からのライセンス): 標準スタイル `geolonia/basic-v2` は OpenStreetMap のデータを元にしている (出典: スタイル一覧)。著作権情報ページは、地図データソースとして OpenStreetMap (ODbL)、国土地理院の地理院地図 Vector と標高タイル、農林水産省の筆ポリゴンデータ、Natural Earth を挙げている (出典: 著作権情報)。`geolonia/gsi` と `geoloniamaps/smartcity-base` は国土地理院のベクトルタイルを使うスタイルである (出典: スタイル一覧)。自社による現地調査の記述はない。
 - 国内の詳しさ (建物の形状、住所・番地、POI、道路の属性、注記): 標準スタイルの配信元 tiles.json が示すレイヤは building、poi、transportation、transportation_name、place、landuse、water、boundary、fudepoli (筆ポリゴン) などで、最大ズームは 14 (出典: `osm.v2.tiles.geolonia.com/tiles.json` の vector_layers)。建物の形と高さはベクトルタイルに含まれ、3D 建物表示に使われる (出典: 3D 表示のハウツー)。詳しさは OpenStreetMap と国土地理院データの収録状況に依存する。住所・番地レベルのデータを地図タイルに含むかは公式資料に記述がない (未確認)。
 - 全球の対応: 全球。標準タイルの範囲は経度 −180〜180、緯度 ±85.05 (出典: tiles.json)。FAQ は海外エリアも OpenStreetMap を元に表示できるとしている。表示言語は日本語と英語 (出典: FAQ)。
-- 更新頻度: 未確認。
+- 更新頻度: 通常は月 1 回程度 (提供元への聞き取り、2026-11-10。公開文書に記述はない)。
 
 ## 提供形式と機能
 
@@ -37,8 +37,8 @@ Geolonia Maps は、Geolonia が配信するベクトルタイル地図を Web �
 ## 対応ライブラリ
 
 - 公式 SDK (Web / Android / iOS): Web 向けに embed、maps-suite、maps-react と、基盤の maps-core (いずれも JavaScript) (出典: ドキュメント)。FAQ は SDK を「JavaScript の SDK」としており、Android / iOS のネイティブ SDK の公開ドキュメントはない。
-- 公式以外のライブラリから使えるか (MapLibre GL JS, Leaflet, OpenLayers など): 提供元は、Geolonia Maps のタイルを使うには公式 SDK (embed、maps-suite、maps-react と基盤の maps-core) を使う必要があるとしている (2026-11-10 時点で公式文書に明記した箇所は未確認)。公式 SDK の地図インスタンスは MapLibre GL JS の Map を継承しており、MapLibre GL JS の API をそのまま呼べる (出典: maps-core へのアクセスのハウツー、https://docs.geolonia.com/reference/)。公式 SDK は Geolonia のソースへのリクエストに API キー (`key`) と `sessionId` を付ける (出典: https://www.npmjs.com/package/@geolonia/maps-core)。公式 SDK を使わずに MapLibre GL JS 単体や Leaflet、OpenLayers から Geolonia のタイルを読む手順は公式資料にない。
-- 組み合わせの制約 (特定の SDK でしか表示してはならない等): Geolonia のタイルは公式 SDK を通して使う (提供元の説明。公式文書での明記は未確認)。公式 SDK は外部のスタイルやタイルも表示でき、MapLibre GL JS の API も使えるので、SDK を使うことで描画の機能が狭まることはない (出典: スタイル変更のハウツー https://docs.geolonia.com/howto/change-style/ 、独自のデータソース追加のハウツー)。利用規約に特定の SDK を指定する条項はない。外部スタイルを指定した場合は 3D 建物の切り替えなど一部の機能が効かない (出典: 3D 表示のハウツー)。
+- 公式以外のライブラリから使えるか (MapLibre GL JS, Leaflet, OpenLayers など): 技術的には使えるが、提供元は推奨せず、公式 SDK (embed、maps-suite、maps-react と基盤の maps-core) 以外からの利用はサポートの対象外である (提供元への聞き取り、2026-11-10。公開文書に記述はない)。公式 SDK の地図インスタンスは MapLibre GL JS の Map を継承しており、MapLibre GL JS の API をそのまま呼べる (出典: maps-core へのアクセスのハウツー、https://docs.geolonia.com/reference/)。公式 SDK は Geolonia のソースへのリクエストに API キー (`key`) と `sessionId` を付ける (出典: https://www.npmjs.com/package/@geolonia/maps-core)。公式 SDK を使わずに MapLibre GL JS 単体や Leaflet、OpenLayers から Geolonia のタイルを読む手順は公式資料にない。
+- 組み合わせの制約 (特定の SDK でしか表示してはならない等): Geolonia のタイルは公式 SDK を通して使うのが推奨で、他のライブラリから使うのはサポート外 (提供元への聞き取り、2026-11-10)。公式 SDK は外部のスタイルやタイルも表示でき、MapLibre GL JS の API も使えるので、SDK を使うことで描画の機能が狭まることはない (出典: スタイル変更のハウツー https://docs.geolonia.com/howto/change-style/ 、独自のデータソース追加のハウツー)。利用規約に特定の SDK を指定する条項はない。外部スタイルを指定した場合は 3D 建物の切り替えなど一部の機能が効かない (出典: 3D 表示のハウツー)。
 - API キー・アカウントの要否: 本番公開にはユーザー登録と API キーの発行、利用 URL の登録が必要。localhost、CodePen、GitHub Pages (`*.github.io`、独自ドメインは対象外)、Netlify、Vercel、Cloudflare Pages など許可された開発・プレビュー環境では、デモキー `YOUR-API-KEY` で登録なしに描画でき、表示回数の制限もない (出典: デモキーで無料で試せる環境、maps-dev ページ)。
 
 ## 料金
@@ -83,7 +83,7 @@ Geolonia Maps は、Geolonia が配信するベクトルタイル地図を Web �
 
 - ジオコーディングやルート検索を同じ提供元の API でそろえたい場合。どちらも提供していない。
 - 航空写真が必要な場合。
-- Android / iOS のネイティブアプリに組み込む場合。公開されているのは JavaScript のライブラリだけである。
+- Android / iOS のネイティブアプリに組み込む場合。公開されているのは JavaScript のライブラリだけである。ネイティブアプリに近いものを作るなら、提供元が公開している PWA の地図アプリのテンプレート Geolonia PWAマップ (MIT、https://github.com/geoloniamaps/pwamap) がある。提供元によれば利用は定着している (提供元への聞き取り、2026-11-10)。
 - 稼働率の保証や障害情報の公開を契約上の条件にしたい場合。公開 SLA とステータスページがない。
 
 ## 出典
@@ -109,9 +109,8 @@ Geolonia Maps は、Geolonia が配信するベクトルタイル地図を Web �
 
 ## 未確認のこと
 
-- 地図データの更新頻度。公式資料に記述がない。
 - 住所・番地レベルのデータを地図タイルに含むか。tiles.json のレイヤ名からは判断できない。
-- Geolonia のタイルに公式 SDK が必須であることを明記した公式文書。提供元は SDK が必要としているが、ドキュメント、FAQ、利用規約に該当する文言が見つからなかった。公式 SDK を使わずに MapLibre GL JS 単体、Leaflet、OpenLayers から使う公式の手順もない。tiles.json が返すタイル URL には Origin に結び付いたトークンが付く。
+- 公式 SDK 以外 (MapLibre GL JS 単体、Leaflet、OpenLayers、MapLibre Native) からの利用の扱いを書いた公式文書。提供元への聞き取りでは、技術的には使えるがサポート外である。ただし、ドキュメント、FAQ、利用規約に該当する文言は見つからなかった。公式 SDK を使わずに使う公式の手順もない。tiles.json が返すタイル URL には Origin に結び付いたトークンが付く。
 - ベクトルタイルのスキーマ仕様書。レイヤ名は tiles.json で見えるが、属性の定義を説明するページが見つからなかった。
 - 障害情報の公開先。ステータスページが見つからなかった。
 - 料金表の 500,001 回目以降が段階制か。料金ページの計算例は 500,000 回までしか示していない。

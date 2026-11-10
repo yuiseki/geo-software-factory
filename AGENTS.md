@@ -19,7 +19,7 @@ map-product-grilling -> map-compare-arch -> map-compare-infra -> map-compare-lib
 |---|---|---|
 | map-product-grilling | 「地図アプリを作りたい」など、誰に何の価値を届けるかが曖昧な依頼 | プロダクト概要: 一行の説明、利用者と場面、機能 (Must / Should / Could)、技術選定に渡す要件 |
 | map-compare-arch | 要る機能、データの大きさと対象範囲、ルールの強制 (アクセス制御、不正の防止) の有無、対象端末 | 機能 × 要素 (保存、計算、表現) の置き場所の表。外部の API に任せる機能と、自前で持つ機能。次の段階への条件 (例: PMTiles を読めること、Wasm のスレッドを使うならクロスオリジン分離) |
-| map-compare-infra | 利用形態 (商用か、公共案件か、受託か)、規模 (月間の地図表示回数)、対象地域。map-compare-arch の結果 (自前配信か、外部の供給元か) | 推奨する供給元と費用表。ライブラリへの制約 (例: Geolonia Maps のタイルは Geolonia Maps SDK を通して使う、Google のタイルは Google 以外の地図と併用できない) |
+| map-compare-infra | 利用形態 (商用か、公共案件か、受託か)、規模 (月間の地図表示回数)、対象地域。map-compare-arch の結果 (自前配信か、外部の供給元か) | 推奨する供給元と費用表。ライブラリへの制約 (例: Geolonia Maps のタイルは Geolonia Maps SDK を通して使うのが推奨で、他のライブラリからはサポート外、Google のタイルは Google 以外の地図と併用できない) |
 | map-compare-library | 対象端末、配布形態 (SaaS、ストア配布、受託納品、OSS)。map-compare-infra の結果 (タイルの供給元) | 推奨するライブラリ・SDK と、配布形態ごとのライセンスの注意 |
 
 ## どのスキルを使うか
@@ -52,7 +52,7 @@ map-product-grilling -> map-compare-arch -> map-compare-infra -> map-compare-lib
 
 置き場所、地図データ、ライブラリは互いに制約する。原則は流れの順に決めるが、要件で先に決まっているものがあれば、そこから逆向きに制約を当てる。
 
-- 地図データの供給元が決まっている (既存の契約、公共案件で公的データを使う): その供給元の規約が、置き場所とライブラリを縛る。例: Google のタイルは Google 以外の地図と併用できない。Mapbox のタイルはモバイルでは Mapbox の SDK を通してしか使えない。Geolonia Maps のタイルは Geolonia Maps SDK を通して使う。Google の Map Tiles API はキャッシュを許さないので、オフラインに置く案が外れる。
+- 地図データの供給元が決まっている (既存の契約、公共案件で公的データを使う): その供給元の規約が、置き場所とライブラリを縛る。例: Google のタイルは Google 以外の地図と併用できない。Mapbox のタイルはモバイルでは Mapbox の SDK を通してしか使えない。Geolonia Maps のタイルは Geolonia Maps SDK を通して使うのが推奨で、他のライブラリから使うのはサポート外になる。Google の Map Tiles API はキャッシュを許さないので、オフラインに置く案が外れる。
 - ライブラリが決まっている (既存のアプリ、社内の標準): そのライブラリで表示してよい供給元と、読める形式 (PMTiles、MLT、3D Tiles) だけを候補にする。
 - 置き場所が決まっている (閉域網、オフライン): 外部の API に任せる案が外れ、自前配信かオンプレ版のある製品、端末に置ける形式に限られる。
 - 同じ供給元でも、ライブラリによって課金単位が変わる (Mapbox と MapTiler は、自社の SDK なら地図の表示回数、他のライブラリから直接タイルを取るとタイルのリクエスト数)。ライブラリを決めたら、map-compare-infra の費用に戻って計算し直す。

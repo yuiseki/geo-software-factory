@@ -6,7 +6,7 @@
 |---|---|
 | 確かめた日 | 2026-11-10 |
 | 最新の安定版 (リリース日) | 4 パッケージで版が別々である。@geolonia/embed 5.2.2 (2026-04-03 JST、npm の `next` タグは 6.0.0-pre.6、2026-10-30 JST)、@geolonia/maps-suite 2.2.0 (2026-11-09 JST)、@geolonia/maps-react 0.5.0 (2026-10-30 JST)、@geolonia/maps-core 0.8.0 (2026-10-26 JST) (https://www.npmjs.com/package/@geolonia/embed, https://www.npmjs.com/package/@geolonia/maps-suite, https://www.npmjs.com/package/@geolonia/maps-react, https://www.npmjs.com/package/@geolonia/maps-core)。公式ドキュメントのチュートリアルは embed を CDN の `embed/v6` で読み込んでおり、この URL が配信するのは 6.0.0-pre.6 である (https://docs.geolonia.com/tutorials/embed/publish/、配信ファイル内の版文字列で確認) |
-| リポジトリ | embed は https://github.com/geolonia/embed 、maps-core は https://github.com/geolonia/maps-core 。maps-suite と maps-react は公開リポジトリを確認できなかった (npm のパッケージだけが公開されている) |
+| リポジトリ | embed は https://github.com/geolonia/embed 、maps-core は https://github.com/geolonia/maps-core 。maps-suite と maps-react はリポジトリが非公開で、npm のパッケージだけが公開されている (提供元への聞き取り、2026-11-10) |
 | ドキュメント | https://docs.geolonia.com/ (リファレンスは https://docs.geolonia.com/reference/) |
 | ライセンス (LICENSE ファイルで確かめる) | MIT。maps-core はリポジトリの LICENSE が MIT (Copyright (c) 2026 Geolonia Inc.) (https://github.com/geolonia/maps-core/blob/main/LICENSE)。maps-suite と maps-react は npm パッケージに同梱の LICENSE が MIT。embed はリポジトリと npm パッケージに LICENSE ファイルがなく、package.json の license 欄が MIT である (https://github.com/geolonia/embed) |
 | 運営主体・ガバナンス | 株式会社 Geolonia が開発し配布している (LICENSE の著作権表記、https://docs.geolonia.com/)。外部の参加者を含む運営組織や憲章は確認できなかった |
@@ -38,13 +38,13 @@ Geolonia Maps SDK は、Geolonia が配信する地図を Web サイトとアプ
 
 - 使えない、または規約上使ってはならないタイルサービス: SDK 側の制限は公式資料に記述がない。外部のタイルを重ねるときは、配信元の利用規約が求める出典を `attribution` に入れるよう案内している (https://docs.geolonia.com/howto/custom-source/)。
 - API キー・アカウントの要否: Geolonia のスタイルとタイルを使うときだけ必要で、外部のスタイルを使うときは API キーなしで地図を作れる。maps-core の README は「Geolonia API key is only required when using Geolonia's hosted styles and tiles.」とする (https://www.npmjs.com/package/@geolonia/maps-core)。本番のドメインで Geolonia の地図を出すには、ダッシュボードで API キーを発行し、利用する URL を登録する。localhost、GitHub Pages など許可された環境ではデモキー `YOUR-API-KEY` で描画できる (https://docs.geolonia.com/explanation/free-referers/, https://docs.geolonia.com/tutorials/embed/publish/)。
-- Geolonia Maps のタイルを使うのに、この SDK が必須か (公式の記述): 提供元は、Geolonia Maps のタイルを使うには Geolonia Maps SDK を使う必要があるとしている (2026-11-10 時点で公式文書に明記した箇所は未確認)。ドキュメントの「はじめに」、チュートリアル、リファレンス、FAQ、利用規約を調べたが、SDK 以外から使うことを禁じる、または SDK を必須とする文言は見つからなかった (https://docs.geolonia.com/, https://www.geolonia.com/products/faq/, https://www.geolonia.com/terms/)。関連する公開情報として、SDK は Geolonia のソースとスプライトへのリクエストに `key` と `sessionId` を付けており、`setTransformRequest()` でこの処理を外した場合は利用者が自分で付ける必要がある (https://www.npmjs.com/package/@geolonia/maps-core, https://github.com/geolonia/embed/blob/master/CHANGELOG.md の v6.0.0-pre.6)。`keyring` は SDK 全体で共有される API キー、ステージ、Geolonia スタイルの判定を保持する (https://docs.geolonia.com/reference/core/Variable.keyring/)。
+- Geolonia Maps のタイルを使うのに、この SDK が必須か (公式の記述): 必須ではないが、SDK 以外から使うのはサポートの対象外である。技術的には使えるが、提供元は推奨しない (提供元への聞き取り、2026-11-10)。ドキュメントの「はじめに」、チュートリアル、リファレンス、FAQ、利用規約を調べたが、SDK 以外から使うことを禁じる、または SDK を必須とする文言は見つからなかった (https://docs.geolonia.com/, https://www.geolonia.com/products/faq/, https://www.geolonia.com/terms/)。関連する公開情報として、SDK は Geolonia のソースとスプライトへのリクエストに `key` と `sessionId` を付けており、`setTransformRequest()` でこの処理を外した場合は利用者が自分で付ける必要がある (https://www.npmjs.com/package/@geolonia/maps-core, https://github.com/geolonia/embed/blob/master/CHANGELOG.md の v6.0.0-pre.6)。`keyring` は SDK 全体で共有される API キー、ステージ、Geolonia スタイルの判定を保持する (https://docs.geolonia.com/reference/core/Variable.keyring/)。
 - この SDK で Geolonia 以外のタイルやスタイルを表示できるか: できる。外部スタイル JSON の URL を指定でき (https://docs.geolonia.com/howto/change-style/)、外部のラスタタイルやベクトルタイルをソースとして追加できる (https://docs.geolonia.com/howto/custom-source/)。ただし 3D 建物の切り替えは Geolonia のスタイルでしか効かない (https://docs.geolonia.com/howto/3d/)。
 
 ## ライセンスと費用
 
 - ライセンス: MIT (maps-core、maps-suite、maps-react は LICENSE ファイル、embed は package.json の license 欄)。
-- 利用料 (無料 / 従量 / 有料の機能): SDK 自体は MIT で無料である。Geolonia のスタイルとタイルを使うと、地図の表示回数による従量課金の対象になる (料金は map-compare-infra の Geolonia Maps の項を参照、https://www.geolonia.com/pricing/)。外部のスタイルとタイルだけで使う場合の課金の扱いは公式資料に記述がない。
+- 利用料 (無料 / 従量 / 有料の機能): SDK 自体は MIT で無料である。Geolonia のスタイルとタイルを使うと、地図の表示回数による従量課金の対象になる (料金は map-compare-infra の Geolonia Maps の項を参照、https://www.geolonia.com/pricing/)。Geolonia のスタイルとタイルを読まず、外部のスタイルとタイルだけを表示する場合は課金されない (提供元への聞き取り、2026-11-10。公開文書に記述はない)。
 - 版によるライセンスの変化: なし (確かめた範囲で、どのパッケージもライセンスを変えた記録はない)。
 - ライセンス上の注意 (コピーレフト、OSI 非承認の依存があれば、組み込み、改変、配布、SaaS 提供で求められること): embed の配布ファイルと maps-suite の script タグ用ビルドは MapLibre GL JS (BSD 3-Clause) を同梱する。BSD 3-Clause は再配布時に著作権表示と許諾条件の表示を求める。embed は 6.0.0-pre.5 で、同梱する maplibre-gl のライセンス表記が `dist/embed-core.js` から落ちていた問題を直した (https://github.com/geolonia/embed/blob/master/CHANGELOG.md)。コピーレフトの依存は、npm の dependencies に載る直接の依存の範囲では見当たらない (推測。間接依存までは調べていない)。
 
@@ -75,7 +75,7 @@ Geolonia Maps SDK は、Geolonia が配信する地図を Web サイトとアプ
   - maps-core: 13 件 (0.0.1 から 0.8.0)。初版は 2026-03-31 JST で、すべて 0.x である (https://github.com/geolonia/maps-core/releases)。
   - maps-suite: 12 件 (0.0.1 から 2.2.0)。初版は 2026-04-02 JST。
   - maps-react: 10 件 (0.0.1 から 0.5.0)。初版は 2026-06-09 JST。
-- 最終コミット日: embed は 2026-11-10 JST (master ブランチ、https://github.com/geolonia/embed/commits/master)、maps-core は 2026-10-30 JST (main ブランチ、https://github.com/geolonia/maps-core/commits/main)。maps-suite と maps-react は公開リポジトリがないため未確認。npm への最終公開は maps-suite が 2026-11-09 JST、maps-react が 2026-10-30 JST。
+- 最終コミット日: embed は 2026-11-10 JST (master ブランチ、https://github.com/geolonia/embed/commits/master)、maps-core は 2026-10-30 JST (main ブランチ、https://github.com/geolonia/maps-core/commits/main)。maps-suite と maps-react はリポジトリが非公開のため未確認。npm への最終公開は maps-suite が 2026-11-09 JST、maps-react が 2026-10-30 JST。
 - 近年の大きな破壊的変更: embed 6.0.0-pre.4 で同梱する maplibre-gl を v6 系に上げた。maplibre-gl v6 にはデフォルトエクスポートがなく、`window.geolonia` 経由で MapLibre の API を触っている場合は v6 の変更点を確かめる必要がある (https://github.com/geolonia/embed/blob/master/CHANGELOG.md)。maps-core、maps-suite、maps-react は ESM のみの配布で `require()` の入口がなく、MapLibre GL JS v6 に合わせてバンドラー利用時にワーカーの設定 (`setWorkerUrl`) が要る。maps-suite はワーカーを同梱するので設定は不要である (https://www.npmjs.com/package/@geolonia/maps-core, https://www.npmjs.com/package/@geolonia/maps-suite, https://www.npmjs.com/package/@geolonia/maps-react)。maps-suite は 2.0.0 (2026-10-02 JST) で版の先頭が上がり、CDN の `maps-suite/v1` は MapLibre GL JS 5.23.0、`maps-suite/v2` は 6.11.2 を同梱している (配信ファイル内の版文字列で確認)。2.0.0 の変更内容を記した公開の変更履歴は見つからなかった。
 
 ## 4 つのパッケージの使い分け
@@ -97,9 +97,9 @@ Geolonia Maps SDK は、Geolonia が配信する地図を Web サイトとアプ
 
 ## 向いていない場面
 
-- Android / iOS のネイティブアプリに組み込む場合。公開されているのは JavaScript の SDK だけである。
+- Android / iOS のネイティブアプリに組み込む場合。公開されているのは JavaScript の SDK だけである。ネイティブアプリに近いものを作るなら、提供元が公開している PWA の地図アプリのテンプレート Geolonia PWAマップ (MIT、https://github.com/geoloniamaps/pwamap) がある。提供元によれば利用は定着している (提供元への聞き取り、2026-11-10)。
 - 版の安定を重視する案件。maps-core と maps-react は 0.x で、embed の v6 系はプレリリースのまま公式ドキュメントが案内している。
-- ソースコードと変更履歴を公開リポジトリで追いたい場合。maps-suite と maps-react の公開リポジトリは確認できなかった。
+- ソースコードと変更履歴を公開リポジトリで追いたい場合。maps-suite と maps-react のリポジトリは非公開である。
 - WebGL2 が使えない環境を相手にする場合 (MapLibre GL JS v6 に依存する版。MapLibre GL JS v6 の要件からの推測)。
 - 3D Tiles、WMTS の Capabilities 読み込みなど、公式ドキュメントにない形式を標準機能として扱いたい場合。
 
@@ -144,11 +144,10 @@ Geolonia Maps SDK は、Geolonia が配信する地図を Web サイトとアプ
 
 ## 未確認のこと
 
-- Geolonia Maps のタイルを使うのに SDK が必須であることを明記した公式文書: 提供元はそうしているが、ドキュメント、FAQ、利用規約に該当する文言が見つからなかった。SDK を使わずに MapLibre GL JS 単体、Leaflet、OpenLayers から使う公式の手順もない。
-- maps-suite と maps-react のソースコードと変更履歴: 公開リポジトリが見つからず、npm のパッケージと公式ドキュメントしか確かめられなかった。そのため両者の最終コミット日と、maps-suite 2.0.0 の破壊的変更の内容は確かめていない。
+- SDK 以外からの利用の扱いを書いた公式文書: 提供元への聞き取りでは、技術的には使えるがサポート外である。ただし、ドキュメント、FAQ、利用規約に該当する文言は見つからなかった。SDK を使わずに MapLibre GL JS 単体、Leaflet、OpenLayers から使う公式の手順もない。
+- maps-suite と maps-react のソースコードと変更履歴: リポジトリが非公開で、npm のパッケージと公式ドキュメントしか確かめられなかった。そのため両者の最終コミット日と、maps-suite 2.0.0 の破壊的変更の内容は確かめていない。
 - MLT、3D Tiles / glTF、WMS / WMTS への対応: 公式ドキュメントに記述がない。基盤が MapLibre GL JS の Map であることからの推測にとどまる。
 - 地形 (3D 地形) の表示手順: 標準スタイルが標高タイルのソースを持つことは確かめたが、地形を立体表示する手順の公式ドキュメントが見つからなかった。
-- 外部のスタイルとタイルだけで SDK を使った場合の課金の扱い: 料金ページとドキュメントに記述がない。
 - バンドルサイズ: bundlephobia などの第三者の値ではなく、手元で `gzip -9` した値である。配信時の圧縮方式 (brotli など) では値が変わる。
 - 間接依存のライセンス: 直接の依存しか見ていない。
 - MapLibre Native との組み合わせ: Geolonia のスタイルとタイルを MapLibre Native から使えるか、使ってよいかを示す公式資料がない。

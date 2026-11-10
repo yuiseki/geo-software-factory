@@ -77,6 +77,10 @@ npx skills add yuiseki/geo-app-factory --skill map-compare-library  # 1 つだ�
 
 この CLI が入れるのはスキルのディレクトリだけで、リポジトリ直下の [AGENTS.md](AGENTS.md) (どの段階でどのスキルを使うかの案内) は入らない。流れに沿って使いたいときは、AGENTS.md の中身を入れ先の AGENTS.md に写す。スキルは 1 つずつでも働くように書いてある。
 
+## 書き足すとき
+
+`python3 scripts/check.py` で、frontmatter、SKILL.md の行数 (200 行まで)、リンク切れ、em ダッシュ、手元のパス、利害関係の開示の文面、TODO.md の一覧と件数を検査する。確認日 (「確かめた日」) が 90 日より古い reference は警告として出る。検査そのもののテストは `python3 -m unittest discover -s tests`。どちらも GitHub Actions で回る。スキルを書くときの決まりは [.agents/skills/AGENTS.md](.agents/skills/AGENTS.md)。
+
 ## 利害関係の開示
 
 このスキル集の作者は、Geolonia Maps を提供する株式会社 Geolonia に関係している。作例 1 で Geolonia Maps を使ったのは、HTML の属性だけでコロプレス図を描ける機能を試すためである。作例 2 は Geolonia の製品を使っていない。スキルは Geolonia Maps を特別扱いしない。
@@ -104,6 +108,7 @@ LICENSE                   Apache License 2.0
   map-compare-protocol/
   map-migrate/
 docs/images/              README の図
+scripts/check.py          公開前の検査 (tests/ にそのテスト)
 examples/                 スキルを通した記録 (seven-eleven-tokyo23、unlock-your-trip)
 ```
 

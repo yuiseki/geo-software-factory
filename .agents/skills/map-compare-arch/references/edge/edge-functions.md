@@ -33,7 +33,7 @@
   - DuckDB の Wasm は 30 MB を超える本体があり、Workers 向けに削った `@ducklings/workers` でも約 9.7 MB で Paid プランが前提と README に書かれている。メモリ 128 MB の中で大きな Parquet を扱うのは難しい (推測)。
   - SQLite は D1 と Durable Objects の SQLite として使える。D1 が SpatiaLite や R*Tree を有効にしているかは公式の制限ページに書かれていない (未確認)。
   - ルート検索 (OSRM や Valhalla) はグラフを常駐させるメモリが要るので、128 MB の isolate には収まらない (推測)。必要なら Cloudflare Containers (最大 12 GiB) か、リージョンのサーバーに置く。
-- 表現: エッジ関数は描画しない。MVT、TileJSON、スタイル JSON、スプライトを返し、描画はブラウザやアプリの MapLibre が行う。認証 (API キーと Origin の照合) やスタイルの書き換えをエッジで済ませると、オリジンに届くリクエストを減らせる。
+- 表現: エッジ関数は描画しない。MVT、TileJSON、スタイル JSON、スプライトを返し、描画はブラウザやアプリの MapLibre が行う。トークンや署名の検証、API キーと Origin の照合、スタイルの書き換えをエッジで済ませると、オリジンに届くリクエストを減らせる。ただし API キーと Origin (Referer) の照合は、ブラウザ以外からは偽れるので、誰が取れるかの制御にはならない。限られた人だけに見せるなら、短命のトークンや署名付き URL を検証する (map-compare-auth の tile-access-control)。
 
 ## 地図の実装例
 

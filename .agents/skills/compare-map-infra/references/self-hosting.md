@@ -100,17 +100,21 @@
 
 ## 入力データ: Overture Maps
 
-<!-- 追記テンプレート: この節の [記入] だけを埋める -->
-- 何を配布しているか (テーマ、形式、更新頻度): [記入]
-- ライセンス (テーマごと。ODbL と CDLA などの違い): [記入]
-- OSM を入力にする場合との違い (国内の建物・POI の量と質): [記入]
-- タイル化の手段 (Planetiler のプロファイル、Protomaps など): [記入]
+- 何を配布しているか (テーマ、形式、更新頻度): addresses、base、buildings、divisions、places、transportation の 6 テーマを GeoParquet で配布し、S3 (`s3://overturemaps-us-west-2/release/<版>/theme=.../type=.../`) から読める ([Getting data](https://docs.overturemaps.org/getting-data/)、[overture-tiles](https://github.com/OvertureMaps/overture-tiles))。2023 年 10 月から毎月リリースしており、2026-11-10 時点の最新は 2026-10-21.0 (スキーマ v2.0.0) ([Release calendar](https://docs.overturemaps.org/release-calendar/))。テーマごとの PMTiles もリリースごとに `overturemaps-extras-us-west-2` に置かれるが、形状と属性を確かめるためのもので、本番用の地図のベースマップとして作られてはいないと明記されている ([Overture Tiles](https://docs.overturemaps.org/examples/overture-tiles/))。
+- ライセンス (テーマごと。ODbL と CDLA などの違い): base、buildings、divisions、transportation は ODbL で、「© OpenStreetMap contributors」の表示が要る。これらに含まれる OSM 以外のデータ (ESA WorldCover、Google Open Buildings、Esri Community Maps など) は CC BY 4.0 で、それぞれの表示も要る。transportation には「Data from TomTom」の表示もある。places は OSM のデータを含まず、提供元ごとに CDLA-Permissive-2.0 (Meta、Microsoft など)、Apache-2.0 (Foursquare)、CC0 (AllThePlaces) に分かれる。addresses は提供元ごとの寛容なオープンライセンス (CC BY 4.0、CC0 など) ([Attribution](https://docs.overturemaps.org/attribution/)、[Places](https://docs.overturemaps.org/guides/places/))。つまり ODbL のテーマを使うと OSM と同じ継承条件 (下の「ライセンス上の注意」) がかかり、places だけなら ODbL はかからない。
+- OSM を入力にする場合との違い (国内の建物・POI の量と質): buildings は OSM を最優先にし、OSM に無い場所を Microsoft、Google Open Buildings、東アジアの ML 抽出データなどで補う ([Buildings](https://docs.overturemaps.org/guides/buildings/))。places は全世界で約 8,800 万件 (2026 年 10 月) で、Meta 由来が約 6,000 万件を占め、各地物に存在の確からしさ (0〜1) が付く ([Places](https://docs.overturemaps.org/guides/places/))。国内に限った建物と POI の件数、位置や名称の正しさを OSM と比べた公式の資料は見つからなかった (未確認)。推測: 建物は OSM が薄い地域で ML 由来の輪郭が加わる分だけ件数が増え、POI は OSM に無い店舗が入る一方、確からしさの低いものを閾値で除く処理が要る。
+- タイル化の手段 (Planetiler のプロファイル、Protomaps など): Planetiler は GeoParquet (Overture) を入力に取れる ([Planetiler README](https://github.com/onthegomap/planetiler#features))。Overture 公式の overture-tiles (MIT) は Planetiler のテーマ別プロファイルで 6 テーマを PMTiles にし、AWS Batch で動かす構成と Terraform モジュールがある。プロファイルは Docker イメージに固定で、独自プロファイルは今後の予定 ([overture-tiles](https://github.com/OvertureMaps/overture-tiles))。Protomaps basemaps はタイル 4.14.0 で Overture を実験的な入力として加え、以後 Places や陸地の描画に対応を広げている ([CHANGELOG](https://github.com/protomaps/basemaps/blob/main/CHANGELOG.md))。
 
 ## ライセンス上の注意
 
-<!-- 追記テンプレート: この節の [記入] だけを埋める -->
-- この文書で挙げたツールのうち GPL / LGPL / AGPL などのコピーレフトのもの (例: Nominatim) と、自前で運用・改変・配布するときに求められること: [記入]
-- データのライセンス (ODbL の継承条件、派生データベースと生成物の扱い): [記入]
+- この文書で挙げたツールのうち GPL / LGPL / AGPL などのコピーレフトのもの (例: Nominatim) と、自前で運用・改変・配布するときに求められること: GitHub のライセンス表示で確かめた (2026-11-10)。Planetiler、Martin (Apache-2.0 と MIT のデュアル)、Photon、imposm3、OpenSearch は Apache-2.0 か MIT、tileserver-gl と MapLibre Native は BSD-2-Clause、go-pmtiles と Mapterhorn と Protomaps basemaps のコードは BSD-3-Clause、Pelias と openmaptiles-tools は MIT、tilemaker は独自の寛容な FTWPL で、いずれもコピーレフトではない。これらは改変や配布をしてもソースの公開義務は無く、配布時に著作権表示とライセンス文を添えればよい (Apache-2.0 は変更した旨の表示も要る)。コピーレフトは次のとおり。
+  - Nominatim: Python のコードは GPL-3.0-or-later、osm2pgsql 用の Lua 設定は Apache-2.0、その他のファイルは GPL-2.0 ([README](https://github.com/osm-search/Nominatim))。依存する osm2pgsql と PostGIS も GPL-2.0 (OpenMapTiles の生成手順も PostGIS を使う)。GPL は AGPL と違い、サーバーとして運用して HTTP で結果を返すだけならソースの公開義務は生じない。改変して社内や自社サービスで使う場合も同じ。義務が生じるのは配布する場合で、改変版や、これらを含む Docker イメージ、オンプレミス向けの納品物を第三者に渡すときは、対応するソースコード (改変部分を含む) を GPL の条件で提供し、受け手に同じ権利を与える必要がある。推測: Nominatim の HTTP API を呼ぶだけの自社アプリは、一般に GPL の派生物にはならないと解されるが、同じプロセスに組み込む場合は別に検討が要る。
+  - Pelias が使う Elasticsearch: pelias/docker の planet 構成は `pelias/elasticsearch:7.17.27` を使う ([docker-compose.yml](https://github.com/pelias/docker/blob/master/projects/planet/docker-compose.yml))。Elasticsearch は 7.11 以降、配布物が Elastic License 2.0 (ELv2) で、ソースは SSPL と ELv2 (8.16 以降は AGPLv3 も) から選ぶ ([Elastic licensing FAQ](https://www.elastic.co/pricing/faq/licensing)、[LICENSE.txt](https://github.com/elastic/elasticsearch/blob/main/LICENSE.txt))。ELv2 と SSPL は OSI 非承認である。ELv2 のもとで Pelias の検索 API を自社サービスとして公開することは、ELv2 の制限を守る限り認められると Elastic は説明している。ELv2 は、ソフトウェアの機能の実質的な部分を利用者に使わせるホスト型・マネージド型のサービスとして第三者に提供すること、ライセンスキーの機能の回避、権利表示の削除を禁じている ([Elastic License 2.0](https://www.elastic.co/licensing/elastic-license))。SSPL か AGPL を選んだうえで改変版を外部向けのサービスとして提供する場合は、改変部分のソース公開が求められる。
+  - データやスタイルのライセンス: OpenMapTiles のスキーマのデザインは CC BY 4.0 で「© OpenMapTiles」の表示が要る ([LICENSE.md](https://github.com/openmaptiles/openmaptiles/blob/master/LICENSE.md))。Protomaps basemaps のスタイルは CC0 ([LICENSE.md](https://github.com/protomaps/basemaps/blob/main/LICENSE.md))。
+- データのライセンス (ODbL の継承条件、派生データベースと生成物の扱い): OSM のデータは ODbL 1.0 である。ODbL は「派生データベース (Derivative Database)」と「生成物 (Produced Work)」を分けて扱う ([ODbL 1.0](https://opendatacommons.org/licenses/odbl/1-0/))。
+  - 派生データベース: OSM を改変、変換、組み替えたデータベース。公衆に使わせる (Publicly Use) 場合は ODbL (または互換ライセンス) で提供しなければならない (4.4)。派生データベースから作った生成物を公衆に使わせる場合も、派生データベース全体か、変更点を表すファイル (変更を生む手順でもよい) を機械可読な形で受け手に提供する (4.6)。オンラインでの提供は無償。組織の内部だけで使うなら公衆への利用にはあたらず、継承は求められない (4.5(c))。自前データを OSM と混ぜて作ったタイル用のデータベースは派生データベースにあたりうる。
+  - 生成物: データベースを使って作った画像、文字、音などの作品で、作品自体のライセンスは自由に決められる (4.5(b))。ただし公衆に使わせるときは、ODbL のデータベースから作られたことと、それが ODbL で入手できることを示す表示が要る (4.3)。OSMF のガイドラインは、PNG、JPG、PDF、SVG などのラスタ画像や印刷物の地図を通常は生成物とし、元のデータを取り出すことを目的とした成果物はデータベースとして扱うとしている ([Produced Work Guideline](https://osmfoundation.org/wiki/Licence/Community_Guidelines/Produced_Work_-_Guideline))。推測: ベクトルタイルは地物の座標と属性をそのまま持ち、データを取り出せるので、生成物でなくデータベースとみなされる余地がある。Protomaps は自らの planet ビルドを生成物として配布しているが ([Downloads](https://docs.protomaps.com/basemaps/downloads))、自前データを混ぜたベクトルタイルを公開する場合は、混ぜたデータに ODbL の継承が及ぶかを個別に検討する。
+  - 帰属表示: 上の「運用の負担」の帰属表示の要件に従う。CC BY-SA のラスタタイル (OpenTopoMap など) を加工して公開する場合は、加工後の画像にも CC BY-SA の継承がかかる。
 
 ## 向いている場面
 
@@ -187,6 +191,21 @@
 - https://aws.amazon.com/cloudfront/pricing/pay-as-you-go/
 - https://planet.openstreetmap.org/
 - https://osmfoundation.org/wiki/Licence/Attribution_Guidelines
+- https://docs.overturemaps.org/getting-data/
+- https://docs.overturemaps.org/release-calendar/
+- https://docs.overturemaps.org/examples/overture-tiles/
+- https://docs.overturemaps.org/attribution/
+- https://docs.overturemaps.org/guides/places/
+- https://docs.overturemaps.org/guides/buildings/
+- https://github.com/OvertureMaps/overture-tiles
+- https://github.com/protomaps/basemaps/blob/main/CHANGELOG.md
+- https://github.com/osm-search/Nominatim
+- https://github.com/pelias/docker/blob/master/projects/planet/docker-compose.yml
+- https://www.elastic.co/pricing/faq/licensing
+- https://github.com/elastic/elasticsearch/blob/main/LICENSE.txt
+- https://www.elastic.co/licensing/elastic-license
+- https://opendatacommons.org/licenses/odbl/1-0/
+- https://osmfoundation.org/wiki/Licence/Community_Guidelines/Produced_Work_-_Guideline
 
 ## 未確認のこと
 
@@ -198,3 +217,7 @@
 - Pelias と Photon の日本の住所文字列に対する実際の精度、Pelias が使うデータ源の日本の住所の収録状況: 公式に評価の記述が無く、自分で計測もしていない。
 - 1 ロードあたりのタイル数 (20) と平均サイズ (50KB) は仮定であり、公式の数字は無い。
 - CloudFront の従量単価は公式ページを WebFetch で要約して読んだ値で、Price List API での照合はしていない。
+- Overture と OSM の国内の建物・POI の件数と質の比較: 公式の資料に国別の比較が無く、自分で集計もしていない。
+- Elasticsearch 7.17 系を AGPL で使えるか: Elastic の FAQ は AGPL の追加を 8.16 からとしており、7.17 系の扱いは記載が無い。
+- ベクトルタイルが ODbL の生成物かデータベースか: OSMF の生成物ガイドラインはベクトルタイルに触れておらず、本文の扱いは推測である。
+- GPL のソフトを HTTP 越しに呼ぶ自社アプリが派生物にあたらないという点: 一般的な解釈によるもので、個別の構成での法的な判断は確かめていない。

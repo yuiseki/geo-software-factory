@@ -53,11 +53,10 @@
 
 ## Cesium for Unity / Unreal
 
-<!-- 追記テンプレート: この節の [記入] だけを埋める -->
-- 何をするプラグインか、最新の版、対応するエンジンの版: [記入]
-- ライセンスと費用 (プラグイン、Cesium ion、Google 3D Tiles): [記入]
-- 配布元 (Fab、Unity Asset Store、GitHub): [記入]
-- Google Photorealistic 3D Tiles や PLATEAU を読み込む手順の有無: [記入]
+- 何をするプラグインか、最新の版、対応するエンジンの版: Cesium Native を使い、3D Tiles、地形、ラスターの重ね合わせを WGS84 の地球儀上で Unreal Engine / Unity のレベル・シーンに読み込むプラグインである ([cesium-unreal README](https://github.com/CesiumGS/cesium-unreal)、[cesium-unity README](https://github.com/CesiumGS/cesium-unity))。Cesium for Unreal は v2.31.0 (2026-11-02) で Unreal Engine 5.6 / 5.7 / 5.8 向け。それより古い UE は旧版を使う (例: UE 5.1 は v2.5.0 まで) ([cesium-unreal v2.31.0](https://github.com/CesiumGS/cesium-unreal/releases/tag/v2.31.0)、[cesium-unreal README](https://github.com/CesiumGS/cesium-unreal))。Cesium for Unity は v1.26.1 (2026-10-29) で Unity 2022.3 以上 ([cesium-unity v1.26.1](https://github.com/CesiumGS/cesium-unity/releases/tag/v1.26.1)、[package.json](https://github.com/CesiumGS/cesium-unity/blob/main/package.json))。Unity のクイックスタートは「2021.3.2f1 以上」と書いており、package.json と食い違う ([Unity quickstart](https://cesium.com/learn/unity/unity-quickstart/))。
+- ライセンスと費用 (プラグイン、Cesium ion、Google 3D Tiles): プラグインは Apache-2.0 で無料 ([cesium-unreal README](https://github.com/CesiumGS/cesium-unreal))。Fab の掲載価格も無料 ([Fab](https://www.fab.com/listings/76c295fe-0dc6-4fd6-8319-e9833be427cd))。Cesium ion は必須ではないが、公式のクイックスタートは地形と建物の配信に Cesium ion のアカウントを前提にしている ([Unreal quickstart](https://cesium.com/learn/unreal/unreal-quickstart/)、[Unity quickstart](https://cesium.com/learn/unity/unity-quickstart/))。ion の料金は上の「ライセンスと費用」の通り (Community 無料は個人・非商用向け、Commercial は月 $149 から、USD、2026-11-10 確認、[Cesium 料金](https://cesium.com/pricing/))。Google Photorealistic 3D Tiles は Cesium ion に含まれる形で提供されている ([Cesium ブログ 2023-10-26](https://cesium.com/blog/2023/10/26/photorealistic-3d-tiles-in-cesium-ion/))。Google の Map Tiles API を直接使う場合は月 1,000 イベントまで無料、以降 1,000 イベントあたり $6.00 から (USD、2026-11-10 確認、[Google Maps Platform pricing](https://developers.google.com/maps/billing-and-pricing/pricing))。ion 経由で使う場合の課金の扱いは未確認。
+- 配布元 (Fab、Unity Asset Store、GitHub): Cesium for Unreal は Fab (旧 Unreal Engine Marketplace) と GitHub Releases の ZIP。Linux では GitHub Releases が勧められている ([cesium-unreal README](https://github.com/CesiumGS/cesium-unreal)、[Fab](https://www.fab.com/listings/76c295fe-0dc6-4fd6-8319-e9833be427cd))。Cesium for Unity は Cesium のスコープ付きレジストリ (https://unity.pkg.cesium.com 、スコープ `com.cesium.unity`) から Package Manager で入れるのが公式の手順で、GitHub Releases に `.tgz` もある ([Unity quickstart](https://cesium.com/learn/unity/unity-quickstart/)、[cesium-unity v1.26.1](https://github.com/CesiumGS/cesium-unity/releases/tag/v1.26.1))。Unity Asset Store での配布は確認できなかった。
+- Google Photorealistic 3D Tiles や PLATEAU を読み込む手順の有無: Google Photorealistic 3D Tiles は Unreal、Unity ともに公式チュートリアルがあり、Cesium パネルの「Quick Add」から ion 経由で追加する。Unity の手順では Google の規約に従うため Cesium3DTileset の「Show Credits On Screen」を有効にするよう書かれている ([Unreal チュートリアル](https://cesium.com/learn/unreal/unreal-photorealistic-3d-tiles/)、[Unity チュートリアル](https://cesium.com/learn/unity/unity-photorealistic-3d-tiles))。PLATEAU は Cesium ion の「Japan 3D Buildings」(PLATEAU の CityGML を 3D Tiles にしたもの、2024-06 公開) として Unreal / Unity から読める ([Cesium ブログ 2024-06-03](https://cesium.com/blog/2024/06/03/japan-3d-buildings))。無料の ion アカウントで使え、国土交通省 3D 都市モデルの帰属表示が必須で、自動で付くのは CesiumJS と Cesium Stories だけと書かれているため、Unreal / Unity では自分で表示を入れる必要がある ([Japan 3D Buildings](https://cesium.com/platform/cesium-ion/content/japan-3d-buildings/))。PLATEAU 専用の Unreal / Unity チュートリアルは確認できなかった。
 
 ## 向いている場面
 
@@ -86,9 +85,22 @@
 - https://github.com/CesiumGS/cesium-unity/blob/main/package.json
 - https://github.com/odd-io/cesium_3d_native
 - https://cesium.com/pricing/
+- https://cesium.com/learn/unity/unity-quickstart/
+- https://cesium.com/learn/unreal/unreal-quickstart/
+- https://www.fab.com/listings/76c295fe-0dc6-4fd6-8319-e9833be427cd
+- https://cesium.com/learn/unreal/unreal-photorealistic-3d-tiles/
+- https://cesium.com/learn/unity/unity-photorealistic-3d-tiles
+- https://cesium.com/blog/2023/10/26/photorealistic-3d-tiles-in-cesium-ion/
+- https://cesium.com/blog/2024/06/03/japan-3d-buildings
+- https://cesium.com/platform/cesium-ion/content/japan-3d-buildings/
+- https://developers.google.com/maps/billing-and-pricing/pricing
 
 ## 未確認のこと
 
 - Unreal / Unity 経由で動かす場合の Android / iOS の最低 OS 版。プラグインのドキュメントで記載を確かめていない。
 - オフライン利用 (ローカルのタイルセットを読む方法と、Cesium ion のデータを端末に保存してよいかの規約)。調べきれなかった。
-- Cesium for Unreal / Unity の Fab や Unity Asset Store での配布条件。GitHub のライセンス (Apache-2.0) のみ確かめた。
+- Cesium for Unreal / Unity の配布条件のうち、Fab 版のライセンス表記と対応する UE の版、Unity Asset Store での配布の有無。Fab で無料であることと、Unity 版が Cesium 独自のパッケージレジストリで配られることは確かめた (「Cesium for Unity / Unreal」節)。
+- Cesium ion 経由で Google Photorealistic 3D Tiles を使う場合の課金 (ion の配信量に数えるか、Google の課金が別にかかるか)。ion の告知記事とチュートリアルに記載が無かった。
+- Cesium for Unity が Unity Asset Store で配布されているか。公式の手順はスコープ付きレジストリのみで、Asset Store の掲載を見つけられなかった。
+- Fab の掲載ページにライセンス条件と対応 UE 版の記載が無く (価格は無料)、Fab 版と GitHub 版の条件が同じかは確かめていない。
+- Unity の最低版。package.json (2022.3) とクイックスタート (2021.3.2f1) が食い違っており、クイックスタートが古いと推測した。

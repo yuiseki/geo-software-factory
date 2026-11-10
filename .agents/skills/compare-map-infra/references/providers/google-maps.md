@@ -89,11 +89,10 @@ Google Maps Platform は Google マップの地図、ストリートビュー、
 
 ## Photorealistic 3D Tiles
 
-<!-- 追記テンプレート: この節の [記入] だけを埋める -->
-- 何を提供するか (形式、カバー範囲、国内の都市): [記入]
-- 対応ライブラリ (CesiumJS, deck.gl, 3DTilesRendererJS, Cesium for Unity / Unreal など): [記入]
-- 料金と無料枠: [記入]
-- 規約上の制約 (キャッシュ、他の地図との併用、帰属表示): [記入]
+- 何を提供するか (形式、カバー範囲、国内の都市): 衛星・航空写真を貼った 3D メッシュを OGC 3D Tiles 形式で配る ([3D Tiles overview](https://developers.google.com/maps/documentation/tile/3d-tiles-overview))。ルートタイルセット `https://tile.googleapis.com/v1/3dtiles/root.json?key=...` を取得し、そこから辿ってタイルを読む。1 回のルートタイルセット取得で少なくとも 3 時間はタイルを取得でき、その後はルートを取り直す ([3D Tiles](https://developers.google.com/maps/documentation/tile/3d-tiles))。カバー範囲は国単位で示され、日本は Map Tiles 2D / 3D ともに「good data quality and availability」とされる ([Coverage](https://developers.google.com/maps/coverage))。国内のどの都市が 3D メッシュで覆われているかの一覧は公開されていない (未確認)。EEA に請求先がある開発者は 2025-07-08 から EEA 向け規約が適用され、一部のコンテンツが返らなくなる ([3D Tiles](https://developers.google.com/maps/documentation/tile/3d-tiles))。
+- 対応ライブラリ (CesiumJS, deck.gl, 3DTilesRendererJS, Cesium for Unity / Unreal など): 公式の手順は CesiumJS (1.91 以降)、Cesium for Unreal (1.12 以降)、Cesium for Unity、deck.gl (8.9.13 以降) を挙げる ([Work with a 3D Tiles renderer](https://developers.google.com/maps/documentation/tile/use-renderer)、[3D Tiles](https://developers.google.com/maps/documentation/tile/3d-tiles))。レンダラーは各タイルの帰属表示を出せるものでなければならない。3DTilesRendererJS (three.js) は Google の資料には無いが、Google Photorealistic Tiles を読む例を同梱している ([3DTilesRendererJS](https://github.com/NASA-AMMOS/3DTilesRendererJS))。
+- 料金と無料枠: SKU「Map Tiles API: Photorealistic 3D Tiles」は Enterprise 区分で、無料枠は月 1,000 件。1,000 件あたり 100,000 件まで $6.00、500,000 件まで $5.10、1,000,000 件まで $4.20、5,000,000 件まで $3.30、それ以上 $2.40 (USD、2026-11-10) ([料金ページ](https://developers.google.com/maps/billing-and-pricing/pricing))。SKU の課金イベントは「3D タイルを返すリクエスト」と書かれている ([SKU details](https://developers.google.com/maps/billing-and-pricing/sku-details/maps))。一方でクォータはルートタイルセットの取得が 1 日 10,000 件で、レンダラーのタイル取得は無制限 (毎分 12,000 件まで) で日次クォータに数えない ([Usage and billing](https://developers.google.com/maps/documentation/tile/usage-and-billing))。ルート 1 回が 1 件なのかタイル 1 枚ごとに 1 件なのかは未確認。
+- 規約上の制約 (キャッシュ、他の地図との併用、帰属表示): 帰属表示は各 glTF タイルの `asset` と `copyright` に入って返り、表示中の全タイルの帰属をまとめ、並べ替えて 1 行で表示しなければならない。CesiumJS では `showCreditsOnScreen` を有効にする。キャッシュは規約が明示的に許す場合を除き禁止で、オフライン利用、地理データの抽出や再販も禁止。重ねる 3D オブジェクトはタイルから抽出、トレース、派生させたものであってはならない ([Map Tiles API policies](https://developers.google.com/maps/documentation/tile/policies))。Google 以外の地図との併用禁止 ([利用規約 3.2.3(e)](https://cloud.google.com/maps-platform/terms)) は上の「利用規約上の制約」と同じく適用される。
 
 ## 向いている場面
 
@@ -125,6 +124,9 @@ Google Maps Platform は Google マップの地図、ストリートビュー、
 - https://developers.google.com/maps/documentation/tile/policies
 - https://developers.google.com/maps/documentation/tile/usage-and-billing
 - https://developers.google.com/maps/documentation/tile/3d-tiles
+- https://developers.google.com/maps/documentation/tile/3d-tiles-overview
+- https://developers.google.com/maps/documentation/tile/use-renderer
+- https://github.com/NASA-AMMOS/3DTilesRendererJS
 - https://developers.google.com/maps/documentation/javascript/usage-and-billing
 - https://developers.google.com/maps/documentation/javascript/vector-map
 - https://developers.google.com/maps/documentation/javascript/cloud-customization
@@ -143,4 +145,6 @@ Google Maps Platform は Google マップの地図、ストリートビュー、
 - 料金表の Static Maps、Street View Tiles、Photorealistic 3D Tiles、Autocomplete、Compute Routes の中間区分の境界。料金ページは列見出しで示しており、本稿では単価の並びだけを書いた。
 - Maps SDK (モバイル) の SKU が「Unlimited」である一方、Map ID を使うモバイルの地図ロードは Dynamic Maps の課金対象になる。どの使い方で課金が発生するかの細部は確かめきれていない。
 - モバイル SDK の開発者向けオフライン地図機能の有無。公式資料で該当する記載を見つけられなかった。
+- Photorealistic 3D Tiles の課金イベントの単位 (ルートタイルセット 1 回か、タイル 1 枚ごとか): SKU の説明は「3D タイルを返すリクエスト」とするが、クォータの説明はルートタイルセットだけを数えており、どちらで課金されるかを公式資料から確かめきれなかった。
+- Photorealistic 3D Tiles が国内のどの都市を 3D メッシュで覆っているか: カバー範囲は国単位でしか公開されていない。
 - Map Tiles API の 2D タイルの 1 日 15,000 リクエストのクォータをどこまで引き上げられるか。公開資料に上限の記載がない。

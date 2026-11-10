@@ -4,7 +4,7 @@
   - [ ] SKILL.md
   - [ ] references/question-bank.md
   - [ ] assets/product-brief-template.md
-- [ ] compare-map-infra (9/26)
+- [ ] compare-map-infra (24/26)
   - [ ] SKILL.md
   - [ ] references/criteria.md
   - [x] references/self-hosting.md
@@ -16,22 +16,22 @@
   - [x] references/providers/geolonia-maps.md
   - [x] references/providers/here.md
   - [x] references/providers/mapfan-api.md
-  - [ ] references/providers/maptiler.md
-  - [ ] references/providers/stadia-maps.md
-  - [ ] references/providers/esri-arcgis-location-platform.md
-  - [ ] references/providers/tomtom.md
-  - [ ] references/providers/carto-basemaps.md
-  - [ ] references/providers/gsi-tiles.md
-  - [ ] references/providers/zenrin-maps-api.md
-  - [ ] references/regional/china.md
-  - [ ] references/regional/korea.md
-  - [ ] references/imagery/esri-world-imagery.md
-  - [ ] references/imagery/eox-s2cloudless.md
-  - [ ] references/imagery/nasa-gibs.md
-  - [ ] references/3d/cesium-ion.md
-  - [ ] references/3d/plateau.md
-  - [ ] references/niche.md
-- [ ] compare-map-library (21/30)
+  - [x] references/providers/maptiler.md
+  - [x] references/providers/stadia-maps.md
+  - [x] references/providers/esri-arcgis-location-platform.md
+  - [x] references/providers/tomtom.md
+  - [x] references/providers/carto-basemaps.md
+  - [x] references/providers/gsi-tiles.md
+  - [x] references/providers/zenrin-maps-api.md
+  - [x] references/regional/china.md
+  - [x] references/regional/korea.md
+  - [x] references/imagery/esri-world-imagery.md
+  - [x] references/imagery/eox-s2cloudless.md
+  - [x] references/imagery/nasa-gibs.md
+  - [x] references/3d/cesium-ion.md
+  - [x] references/3d/plateau.md
+  - [x] references/niche.md
+- [ ] compare-map-library (28/30)
   - [ ] SKILL.md
   - [ ] references/criteria.md
   - [x] references/libraries/leaflet.md
@@ -55,13 +55,13 @@
   - [x] references/native/apple-mapkit.md
   - [x] references/native/cesium-native.md
   - [x] references/multi-sdk/mapconductor.md
-  - [ ] references/libraries/arcgis-maps-sdk-js.md
-  - [ ] references/libraries/3d-tiles-renderer-js.md
-  - [ ] references/native/mapsui.md
-  - [ ] references/cross-platform/react-native-maps.md
-  - [ ] references/cross-platform/maplibre-react-native.md
-  - [ ] references/cross-platform/flutter-map.md
-  - [ ] references/niche.md
+  - [x] references/libraries/arcgis-maps-sdk-js.md
+  - [x] references/libraries/3d-tiles-renderer-js.md
+  - [x] references/native/mapsui.md
+  - [x] references/cross-platform/react-native-maps.md
+  - [x] references/cross-platform/maplibre-react-native.md
+  - [x] references/cross-platform/flutter-map.md
+  - [x] references/niche.md
 
 ## 候補 (まだ作るか決めていない)
 

@@ -62,7 +62,15 @@
 
 未定
 
+### 主題データ (map-compare-data)
+
+未定
+
 ### ライブラリ・SDK (map-compare-library)
+
+未定
+
+### 公開の前 (map-legal-check)
 
 未定
 

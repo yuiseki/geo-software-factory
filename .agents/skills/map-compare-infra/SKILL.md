@@ -10,7 +10,7 @@ description: 地図プロダクトの要件に応じて、ベースマップ、�
 | reference | 読むとき | 中身 |
 |---|---|---|
 | [criteria](references/criteria.md) | 比較を始める前に、いつも | 比較の軸と、要件から軸の重みを決める方法 |
-| [self-hosting](references/self-hosting.md) | 自前配信を候補に入れるとき、商用サービスの費用が重いとき、外部通信が許されないとき | 自前でのタイル生成と配信の構成、費用、運用の負担 |
+| [self-hosting](../map-compare-arch/references/self-hosting.md) (map-compare-arch の reference) | 自前配信を候補に入れるとき、商用サービスの費用が重いとき、外部通信が許されないとき | 自前でのタイル生成と配信の構成、費用、運用の負担。置き場所の判断は map-compare-arch で行う |
 | [providers/tile-openstreetmap-org](references/providers/tile-openstreetmap-org.md) | 候補に入れるとき | OSMF の公式タイル |
 | [providers/tile-openstreetmap-jp](references/providers/tile-openstreetmap-jp.md) | 候補に入れるとき | OSMFJ のタイル |
 | [providers/openfreemap](references/providers/openfreemap.md) | 候補に入れるとき | OpenFreeMap |
@@ -53,7 +53,7 @@ description: 地図プロダクトの要件に応じて、ベースマップ、�
 ## 進め方
 
 1. [criteria](references/criteria.md) を読み、「要件から軸の重みを決める」の表で、当てる足切りの条件と重くする軸を決める。
-2. 候補を集める。下の「最初の当たり」から要件に合うものを選び、表の「読むとき」に当てはまる reference を開く。自前配信も候補として同じ軸で並べる ([self-hosting](references/self-hosting.md))。要件に特殊な主題や地域が入っていれば [niche](references/niche.md) を見る。
+2. 候補を集める。下の「最初の当たり」から要件に合うものを選び、表の「読むとき」に当てはまる reference を開く。自前配信も候補として同じ軸で並べる ([self-hosting](../map-compare-arch/references/self-hosting.md))。要件に特殊な主題や地域が入っていれば [niche](references/niche.md) を見る。
 3. 足切りの条件で候補を外す。外した候補と理由を残す。
 4. 残った候補を評価の軸で比べる。値は各 reference から写し、reference に「未確認」とあるものは未確認のまま書く。
 5. 費用を見積もる。[criteria](references/criteria.md) の「費用の見積もり方」に従い、候補ごとに使い方の経路と課金単位を決め、月間の地図表示回数を揃えて規模ごとに並べる。タイル数で課金される経路だけに、1 回の表示あたりのタイル数の換算を使う。

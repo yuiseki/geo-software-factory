@@ -4,10 +4,29 @@
   - [ ] SKILL.md
   - [ ] references/question-bank.md
   - [ ] assets/product-brief-template.md
-- [x] map-compare-infra (26/26)
+- [ ] map-compare-arch (1/19)
+  - [ ] SKILL.md
+  - [ ] references/criteria.md
+  - [x] references/self-hosting.md
+  - [ ] references/capabilities/tiles.md
+  - [ ] references/capabilities/search.md
+  - [ ] references/capabilities/routing.md
+  - [ ] references/capabilities/analysis.md
+  - [ ] references/formats/cloud-native-formats.md
+  - [ ] references/browser/service-worker.md
+  - [ ] references/browser/storage.md
+  - [ ] references/browser/wasm.md
+  - [ ] references/browser/webgpu.md
+  - [ ] references/browser/workers.md
+  - [ ] references/browser/network.md
+  - [ ] references/browser/device.md
+  - [ ] references/browser/local-ai.md
+  - [ ] references/edge/edge-functions.md
+  - [ ] references/edge/near-user-servers.md
+  - [ ] references/app/native-runtime.md
+- [ ] map-compare-infra (25/25、自前配信の扱いを map-compare-arch に合わせて見直す)
   - [x] SKILL.md
   - [x] references/criteria.md
-  - [x] references/self-hosting.md
   - [x] references/providers/tile-openstreetmap-org.md
   - [x] references/providers/tile-openstreetmap-jp.md
   - [x] references/providers/openfreemap.md
@@ -67,5 +86,5 @@
 
 - 運用系のスキル: タイル配信のコスト見積もり、API キー管理、帰属表示
 - ネイティブ向けの追加候補: HERE SDK, ArcGIS Maps SDK, クロスプラットフォーム (react-native-maps, Flutter の地図プラグイン)
-- 自前配信の追加: 生成ツール (Planetiler, tilemaker) ごとに reference を分けるか
+- 自前配信の追加 (map-compare-arch): 生成ツール (Planetiler, tilemaker) ごとに reference を分けるか
 - 探索の結果は tmp/explore-*.md。保留したリポジトリ (仕分けの理由は tmp/libs.md): maplibre-rs, osgEarth, GeoLibre, zarr-gl / zarr-layer, tangram

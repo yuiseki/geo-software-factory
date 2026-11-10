@@ -19,7 +19,7 @@
 | 対象地域の法規制 | 対象地域に中国本土や韓国が入るか。入るなら、その地域で使えるサービスに限られる | 中国本土は GCJ-02 の認可データが要る ([regional/china](regional/china.md))。韓国は地図データの国外持ち出しが規制されている ([regional/korea](regional/korea.md)) |
 | 商用利用の可否 | 利用者が営利組織か、収益があるか。無料プランや無料データが非商用に限られていないか | Stadia Maps の Free は非商用で、営利組織の利用は収益がなくても商用とされる ([stadia-maps](providers/stadia-maps.md))。EOX Sentinel-2 cloudless の 2018 年版以降は CC BY-NC-SA ([eox-s2cloudless](imagery/eox-s2cloudless.md)) |
 | 公共案件での利用 | 発注者が自治体・政府か。受託開発で納品する構成か | Cesium ion の無料枠は政府案件に使えない ([cesium-ion](3d/cesium-ion.md)) |
-| 外部通信の可否 | 閉域網、オフライン、データの国内保持が求められるか | 外部通信が許されないなら、自前配信 ([self-hosting](self-hosting.md)) かオンプレ版のある製品 (MapTiler On-Prem、[maptiler](providers/maptiler.md)) に限られる |
+| 外部通信の可否 | 閉域網、オフライン、データの国内保持が求められるか | 外部通信が許されないなら、自前配信 ([self-hosting](../../map-compare-arch/references/self-hosting.md)) かオンプレ版のある製品 (MapTiler On-Prem、[maptiler](providers/maptiler.md)) に限られる |
 | ライブラリとの組み合わせ | 使いたい描画ライブラリで、そのタイルを表示してよいか | Google のタイルは Google 以外の地図と併用できない ([google-maps](providers/google-maps.md))。Mapbox のタイルはモバイルでは Mapbox の SDK を通してしか使えない ([mapbox](providers/mapbox.md))。Esri の Basemap Styles は Esri のサービスと組み合わせて使う ([esri-arcgis-location-platform](providers/esri-arcgis-location-platform.md)) |
 | キャッシュと保存 | タイルを端末やサーバーに保存する必要があるか (オフライン、再配信) | Google の Map Tiles API はキャッシュを許していない ([google-maps](providers/google-maps.md)) |
 | データの二次利用 | 地図や画像を解析や機械学習に使うか | Esri World Imagery は解析や AI/ML 学習への利用を規約で禁じている ([esri-world-imagery](imagery/esri-world-imagery.md)) |
@@ -60,8 +60,8 @@
 ### 5. ライセンスと権利
 
 - 帰属表示: 地図上に何を表示する義務があるか。表示を消せない、または特定の書式が求められることがある。
-- データの継承条件: OSM 由来のデータは ODbL。自前で加工して配る場合は、派生データベースの扱いを確かめる ([self-hosting](self-hosting.md) の「ライセンス上の注意」)。
-- 自前配信のツールのライセンス: GPL などのコピーレフトのツール (Nominatim、PostGIS、osm2pgsql) を改変して配る場合の義務 ([self-hosting](self-hosting.md))。
+- データの継承条件: OSM 由来のデータは ODbL。自前で加工して配る場合は、派生データベースの扱いを確かめる ([self-hosting](../../map-compare-arch/references/self-hosting.md) の「ライセンス上の注意」)。
+- 自前配信のツールのライセンス: GPL などのコピーレフトのツール (Nominatim、PostGIS、osm2pgsql) を改変して配る場合の義務 ([self-hosting](../../map-compare-arch/references/self-hosting.md))。
 - 比較・公表の制限: 契約者が競合製品との比較やベンチマークを公表することを、規約で制限しているサービスがある (TomTom の規約 11.6.10、[tomtom](providers/tomtom.md))。
 
 ### 6. 移行のしやすさ
@@ -72,7 +72,7 @@
 
 ### 7. 自前で運用する負担
 
-自前配信は、費用の軸では有利になりやすいが、データの更新、監視、障害対応、帰属表示を自分で引き受ける ([self-hosting](self-hosting.md) の「運用の負担」)。運用体制 (人数、夜間対応の有無) を要件から確かめ、この軸で比べる。
+自前配信は、費用の軸では有利になりやすいが、データの更新、監視、障害対応、帰属表示を自分で引き受ける ([self-hosting](../../map-compare-arch/references/self-hosting.md) の「運用の負担」)。運用体制 (人数、夜間対応の有無) を要件から確かめ、この軸で比べる。
 
 ### 8. 窓口とサポート
 

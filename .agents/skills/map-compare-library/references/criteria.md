@@ -14,7 +14,7 @@
 | 条件 | 何を確かめるか | 外れる例 (各 reference の記述) |
 |---|---|---|
 | 対象端末 | Web、Android、iOS、デスクトップ、ゲームエンジン、組み込み機器のどれで動かすか | react-native-maps は Web に対応しない ([react-native-maps](cross-platform/react-native-maps.md))。組み込み・車載は MapLibre Native Qt などに限られる ([niche](niche.md)) |
-| タイルの供給元との組み合わせ | 使うタイルを、そのライブラリで表示してよいか | Mapbox のタイルはモバイルでは Mapbox の SDK を通してしか使えない。Google のタイルは Google 以外の地図と併用できない。ArcGIS Maps SDK for JavaScript は Web で使う場合に他の Esri 製品との併用が求められる ([arcgis-maps-sdk-js](libraries/arcgis-maps-sdk-js.md)) |
+| タイルの供給元との組み合わせ | 使うタイルを、そのライブラリで表示してよいか | Mapbox のタイルはモバイルでは Mapbox の SDK を通してしか使えない。Geolonia Maps のタイルは Geolonia Maps SDK を通して使う ([geolonia-maps](libraries/geolonia-maps.md))。Google のタイルは Google 以外の地図と併用できない。ArcGIS Maps SDK for JavaScript は Web で使う場合に他の Esri 製品との併用が求められる ([arcgis-maps-sdk-js](libraries/arcgis-maps-sdk-js.md)) |
 | ライセンス | プロダクトの配布形態 (SaaS、アプリのストア配布、受託納品、OSS 公開) と、ライブラリと主要な依存のライセンスが両立するか | maptalks.js の 3D 系パッケージは UNLICENSED ([maptalks](libraries/maptalks.md))。flutter_map のオフライン用に推奨される flutter_map_tile_caching は GPL-3.0 ([flutter-map](cross-platform/flutter-map.md))。react-leaflet は OSI 非承認の Hippocratic License ([leaflet](libraries/leaflet.md)) |
 | 必須の描画能力 | ベクトルタイル、3D 建物、地形、地球儀、3D Tiles のうち、要件で欠かせないもの | Leaflet は本体だけではベクトルタイルとスタイル仕様を扱えない ([leaflet](libraries/leaflet.md))。3D Tiles が要るなら、CesiumJS、3DTilesRendererJS、ゲームエンジン向けの Cesium などに限られる |
 | 利用料 | ライブラリ自体に利用料や課金があるか | Mapbox GL JS は v2 以降が独自ライセンスで、地図ロードで課金される ([mapbox-gl-js](libraries/mapbox-gl-js.md)) |
@@ -99,3 +99,7 @@
 
 - アクセシビリティ (スクリーンリーダーでの操作、キーボード操作、配色のコントラスト): reference で調べていない。要件に入っていれば、候補ごとに公式ドキュメントと実装を確かめる。
 - セキュリティ (依存の脆弱性の扱い、CSP との相性): reference で調べていない。
+
+## 利害関係の開示
+
+このスキル集の作者は Geolonia Maps SDK の提供元に関係している。比較では Geolonia Maps SDK を特別扱いしない。

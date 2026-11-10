@@ -37,8 +37,8 @@ Geolonia Maps は、Geolonia が配信するベクトルタイル地図を Web �
 ## 対応ライブラリ
 
 - 公式 SDK (Web / Android / iOS): Web 向けに embed、maps-suite、maps-react と、基盤の maps-core (いずれも JavaScript) (出典: ドキュメント)。FAQ は SDK を「JavaScript の SDK」としており、Android / iOS のネイティブ SDK の公開ドキュメントはない。
-- 公式以外のライブラリから使えるか (MapLibre GL JS, Leaflet, OpenLayers など): 公式ライブラリの地図インスタンスは MapLibre GL JS の Map を継承しており、MapLibre GL JS の API をそのまま呼べる (出典: maps-core へのアクセスのハウツー)。公式ライブラリを使わず MapLibre GL JS 単体や Leaflet、OpenLayers から Geolonia のタイルを読む手順は公式資料に見つからなかった (未確認)。
-- 組み合わせの制約 (特定の SDK でしか表示してはならない等): 利用規約に該当する条項はない。外部スタイルを指定した場合は 3D 建物の切り替えなど一部の機能が効かない (出典: 3D 表示のハウツー)。
+- 公式以外のライブラリから使えるか (MapLibre GL JS, Leaflet, OpenLayers など): 提供元は、Geolonia Maps のタイルを使うには公式 SDK (embed、maps-suite、maps-react と基盤の maps-core) を使う必要があるとしている (2026-11-10 時点で公式文書に明記した箇所は未確認)。公式 SDK の地図インスタンスは MapLibre GL JS の Map を継承しており、MapLibre GL JS の API をそのまま呼べる (出典: maps-core へのアクセスのハウツー、https://docs.geolonia.com/reference/)。公式 SDK は Geolonia のソースへのリクエストに API キー (`key`) と `sessionId` を付ける (出典: https://www.npmjs.com/package/@geolonia/maps-core)。公式 SDK を使わずに MapLibre GL JS 単体や Leaflet、OpenLayers から Geolonia のタイルを読む手順は公式資料にない。
+- 組み合わせの制約 (特定の SDK でしか表示してはならない等): Geolonia のタイルは公式 SDK を通して使う (提供元の説明。公式文書での明記は未確認)。公式 SDK は外部のスタイルやタイルも表示でき、MapLibre GL JS の API も使えるので、SDK を使うことで描画の機能が狭まることはない (出典: スタイル変更のハウツー https://docs.geolonia.com/howto/change-style/ 、独自のデータソース追加のハウツー)。利用規約に特定の SDK を指定する条項はない。外部スタイルを指定した場合は 3D 建物の切り替えなど一部の機能が効かない (出典: 3D 表示のハウツー)。
 - API キー・アカウントの要否: 本番公開にはユーザー登録と API キーの発行、利用 URL の登録が必要。localhost、CodePen、GitHub Pages (`*.github.io`、独自ドメインは対象外)、Netlify、Vercel、Cloudflare Pages など許可された開発・プレビュー環境では、デモキー `YOUR-API-KEY` で登録なしに描画でき、表示回数の制限もない (出典: デモキーで無料で試せる環境、maps-dev ページ)。
 
 ## 料金
@@ -111,7 +111,7 @@ Geolonia Maps は、Geolonia が配信するベクトルタイル地図を Web �
 
 - 地図データの更新頻度。公式資料に記述がない。
 - 住所・番地レベルのデータを地図タイルに含むか。tiles.json のレイヤ名からは判断できない。
-- 公式ライブラリを使わずに MapLibre GL JS 単体、Leaflet、OpenLayers から Geolonia のタイルを使えるか。公式の手順がない。tiles.json が返すタイル URL には Origin に結び付いたトークンが付く。
+- Geolonia のタイルに公式 SDK が必須であることを明記した公式文書。提供元は SDK が必要としているが、ドキュメント、FAQ、利用規約に該当する文言が見つからなかった。公式 SDK を使わずに MapLibre GL JS 単体、Leaflet、OpenLayers から使う公式の手順もない。tiles.json が返すタイル URL には Origin に結び付いたトークンが付く。
 - ベクトルタイルのスキーマ仕様書。レイヤ名は tiles.json で見えるが、属性の定義を説明するページが見つからなかった。
 - 障害情報の公開先。ステータスページが見つからなかった。
 - 料金表の 500,001 回目以降が段階制か。料金ページの計算例は 500,000 回までしか示していない。

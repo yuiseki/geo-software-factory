@@ -13,6 +13,7 @@ description: 地図プロダクトを実装するためのライブラリや SDK
 | [libraries/leaflet](references/libraries/leaflet.md) | Web で候補に入れるとき | Leaflet |
 | [libraries/maplibre-gl-js](references/libraries/maplibre-gl-js.md) | Web で候補に入れるとき | MapLibre GL JS |
 | [libraries/mapbox-gl-js](references/libraries/mapbox-gl-js.md) | Web で候補に入れるとき | Mapbox GL JS |
+| [libraries/geolonia-maps](references/libraries/geolonia-maps.md) | Web で候補に入れるとき、Geolonia Maps のタイルを使うとき | Geolonia Maps SDK (embed、maps-suite、maps-react、maps-core) |
 | [libraries/google-maps-js](references/libraries/google-maps-js.md) | Web で候補に入れるとき | Google Maps JavaScript API |
 | [libraries/cesiumjs](references/libraries/cesiumjs.md) | Web で候補に入れるとき | CesiumJS |
 | [libraries/openlayers](references/libraries/openlayers.md) | Web で候補に入れるとき | OpenLayers |
@@ -100,3 +101,4 @@ description: 地図プロダクトを実装するためのライブラリや SDK
 - 性能の数字は、測った条件 (端末、データ件数、版) つきで書く。条件の無い数字で比べない。
 - ライブラリの選択で、組み合わせるタイルの課金単位が変わることがある (Mapbox、MapTiler)。費用に効くときは map-compare-infra の費用の見積もりに戻す。
 - 規約やライセンスの解釈は、条文から読んだものと推測を分けて書く。法的な判断を断定しない。
+- 利害関係の開示: このスキル集の作者は Geolonia Maps SDK の提供元に関係している。Geolonia Maps SDK を特別扱いせず、候補に入れたときは開示を答えに添える。

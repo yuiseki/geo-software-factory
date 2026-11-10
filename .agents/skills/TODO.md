@@ -52,14 +52,14 @@
   - [x] references/3d/cesium-ion.md
   - [x] references/3d/plateau.md
   - [x] references/niche.md
-- [ ] map-compare-library (30/31)
+- [x] map-compare-library (31/31)
   - [x] SKILL.md
   - [x] references/criteria.md
   - [x] references/libraries/leaflet.md
   - [x] references/libraries/maplibre-gl-js.md
   - [x] references/libraries/mapbox-gl-js.md
   - [x] references/libraries/google-maps-js.md
-  - [ ] references/libraries/geolonia-maps.md
+  - [x] references/libraries/geolonia-maps.md
   - [x] references/libraries/cesiumjs.md
   - [x] references/libraries/openlayers.md
   - [x] references/libraries/deck-gl.md

@@ -4,42 +4,42 @@
   - [ ] SKILL.md
   - [ ] references/question-bank.md
   - [ ] assets/product-brief-template.md
-- [ ] compare-map-infra (0/11)
+- [ ] compare-map-infra (9/11)
   - [ ] SKILL.md
   - [ ] references/criteria.md
-  - [ ] references/self-hosting.md
-  - [ ] references/providers/tile-openstreetmap-org.md
-  - [ ] references/providers/tile-openstreetmap-jp.md
-  - [ ] references/providers/openfreemap.md
-  - [ ] references/providers/mapbox.md
-  - [ ] references/providers/google-maps.md
-  - [ ] references/providers/geolonia-maps.md
-  - [ ] references/providers/here.md
-  - [ ] references/providers/mapfan-api.md
-- [ ] compare-map-library (0/23)
+  - [x] references/self-hosting.md
+  - [x] references/providers/tile-openstreetmap-org.md
+  - [x] references/providers/tile-openstreetmap-jp.md
+  - [x] references/providers/openfreemap.md
+  - [x] references/providers/mapbox.md
+  - [x] references/providers/google-maps.md
+  - [x] references/providers/geolonia-maps.md
+  - [x] references/providers/here.md
+  - [x] references/providers/mapfan-api.md
+- [ ] compare-map-library (21/23)
   - [ ] SKILL.md
   - [ ] references/criteria.md
-  - [ ] references/libraries/leaflet.md
-  - [ ] references/libraries/maplibre-gl-js.md
-  - [ ] references/libraries/mapbox-gl-js.md
-  - [ ] references/libraries/google-maps-js.md
-  - [ ] references/libraries/cesiumjs.md
-  - [ ] references/libraries/openlayers.md
-  - [ ] references/libraries/deck-gl.md
-  - [ ] references/libraries/maptalks.md
-  - [ ] references/libraries/openglobus.md
-  - [ ] references/libraries/navara.md
-  - [ ] references/libraries/globe-gl.md
-  - [ ] references/libraries/d3-geo.md
-  - [ ] references/frameworks/terriajs.md
-  - [ ] references/frameworks/reearth-visualizer.md
-  - [ ] references/frameworks/kepler-gl.md
-  - [ ] references/native/maplibre-native.md
-  - [ ] references/native/mapbox-maps-sdk.md
-  - [ ] references/native/google-maps-sdk.md
-  - [ ] references/native/apple-mapkit.md
-  - [ ] references/native/cesium-native.md
-  - [ ] references/multi-sdk/mapconductor.md
+  - [x] references/libraries/leaflet.md
+  - [x] references/libraries/maplibre-gl-js.md
+  - [x] references/libraries/mapbox-gl-js.md
+  - [x] references/libraries/google-maps-js.md
+  - [x] references/libraries/cesiumjs.md
+  - [x] references/libraries/openlayers.md
+  - [x] references/libraries/deck-gl.md
+  - [x] references/libraries/maptalks.md
+  - [x] references/libraries/openglobus.md
+  - [x] references/libraries/navara.md
+  - [x] references/libraries/globe-gl.md
+  - [x] references/libraries/d3-geo.md
+  - [x] references/frameworks/terriajs.md
+  - [x] references/frameworks/reearth-visualizer.md
+  - [x] references/frameworks/kepler-gl.md
+  - [x] references/native/maplibre-native.md
+  - [x] references/native/mapbox-maps-sdk.md
+  - [x] references/native/google-maps-sdk.md
+  - [x] references/native/apple-mapkit.md
+  - [x] references/native/cesium-native.md
+  - [x] references/multi-sdk/mapconductor.md
 
 ## 候補 (まだ作るか決めていない)
 

@@ -25,7 +25,7 @@ grilling-map-product  ->  compare-map-infra  ->  compare-map-library
 後で書く:
 
 - 要件が足りないまま比較に入らないための判定基準
-- infra と library が互いに制約する場合 (例: Google Maps のタイルは Google Maps SDK でしか表示できない) の進め方
+- infra と library が互いに制約する場合 (例: Google のタイルは Map Tiles API 経由なら他のレンダラーでも表示できるが、Google 以外の地図と併用できない) の進め方
 - 1 つの依頼で複数のスキルを続けて使うときの受け渡し (プロダクト概要のファイル形式と置き場所)
 
 ## 進め方の原則

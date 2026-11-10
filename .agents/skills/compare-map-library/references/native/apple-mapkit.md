@@ -1,70 +1,88 @@
 # Apple MapKit
 
-<!-- テンプレート: [記入] の箇所を全て埋め、[記入] の文字を消す。見出しと表の行は消さない。調べても分からない項目は「未確認」と書き、末尾の「未確認のこと」に理由を書く。本文の事実には出典の URL を添える。 -->
-
 ## メタ情報
 
 | 項目 | 値 |
 |---|---|
-| 確かめた日 | [記入: YYYY-MM-DD] |
-| 最新の安定版 (プラットフォームごと、リリース日) | [記入] |
-| リポジトリ | [記入: URL。非公開なら「なし」] |
-| ドキュメント | [記入: URL] |
-| ライセンス | [記入] |
-| 運営主体 | [記入] |
+| 確かめた日 | 2026-11-10 |
+| 最新の安定版 (プラットフォームごと、リリース日) | MapKit は OS と Xcode の SDK に同梱され、単独の版番号を持たない。Apple のリリースノート一覧には iOS & iPadOS 27.2 まで掲載され、27.3 はベータ ([iOS & iPadOS リリースノート](https://developer.apple.com/documentation/ios-ipados-release-notes))。各 OS 版のリリース日は未確認。MapKit JS の最新の主要版は MapKit JS 6 ([MapKit JS リリースノート](https://developer.apple.com/documentation/mapkitjs/mapkit-js-release-notes)) |
+| リポジトリ | なし (非公開) |
+| ドキュメント | https://developer.apple.com/documentation/mapkit 、https://developer.apple.com/documentation/mapkitjs |
+| ライセンス | プロプライエタリ。Apple の OS SDK の一部 (利用条件は Apple Developer Program の契約による。条文は未確認) |
+| 運営主体 | Apple |
 
 ## 概要
 
-[記入: 何をする SDK か、2〜4 文]
+Apple Maps の地図と航空写真をアプリのビューに埋め込み、注釈やオーバーレイを重ね、Look Around、地点検索の補完、住所と座標の変換を行うフレームワークである ([MapKit](https://developer.apple.com/documentation/mapkit))。UIKit / AppKit 向けの `MKMapView` と SwiftUI 向けの `Map` がある ([MKMapView](https://developer.apple.com/documentation/mapkit/mkmapview)、[Map](https://developer.apple.com/documentation/mapkit/map))。Web 向けには別の JavaScript API である MapKit JS がある ([MapKit JS](https://developer.apple.com/documentation/mapkitjs))。
 
 ## 対応プラットフォーム
 
 | プラットフォーム | 対応 | 最低 OS 版・備考 |
 |---|---|---|
-| Android | [記入] | [記入] |
-| iOS | [記入] | [記入] |
-| デスクトップ (macOS / Windows / Linux) | [記入] | [記入] |
-| ゲームエンジン (Unreal / Unity など) | [記入] | [記入] |
+| Android | ネイティブは非対応 | MapKit JS は Web ページやアプリ (iOS、Android を含む) に地図を埋め込める ([MapKit JS](https://developer.apple.com/documentation/mapkitjs)) |
+| iOS | 対応 | フレームワークは iOS 3.0 から。SwiftUI の `Map` は iOS 14.0 から、`MapStyle` を含む新しい API は iOS 17.0 から ([MapKit](https://developer.apple.com/documentation/mapkit)、[Map](https://developer.apple.com/documentation/mapkit/map)、[MapStyle](https://developer.apple.com/documentation/mapkit/mapstyle)) |
+| デスクトップ (macOS / Windows / Linux) | macOS のみ | macOS 10.9 から、Mac Catalyst 13.0 から。Windows / Linux はネイティブ非対応で、MapKit JS を使う ([MapKit](https://developer.apple.com/documentation/mapkit)、[Apple Maps](https://developer.apple.com/maps/)) |
+| ゲームエンジン (Unreal / Unity など) | 対象外 | Apple のプラットフォームのフレームワークとしてのみ提供される |
 
-- UI フレームワーク (Jetpack Compose / SwiftUI / Flutter / React Native) への対応 (公式か非公式か): [記入]
+- UI フレームワーク (Jetpack Compose / SwiftUI / Flutter / React Native) への対応 (公式か非公式か): SwiftUI は公式で、`Map` ビューを iOS 14.0 / macOS 11.0 / tvOS 14.0 / watchOS 7.0 / visionOS から提供する。マーカー、注釈、オーバーレイを `Map` の中に書ける ([Map](https://developer.apple.com/documentation/mapkit/map))。Jetpack Compose は対象外 (Android 非対応)。Flutter / React Native の公式ラッパーは無い (Apple が提供していないことを確かめた範囲で。コミュニティ製は未確認)。他に tvOS 9.2、watchOS 2.0、visionOS 1.0 から MapKit を使える ([MapKit](https://developer.apple.com/documentation/mapkit))。
 
 ## 描画方式
 
-- グラフィックス API (OpenGL ES / Metal / Vulkan など): [記入]
-- 2D / 2.5D / 3D、地球儀: [記入]
+- グラフィックス API (OpenGL ES / Metal / Vulkan など): 未確認。公式ドキュメントに記載がない。
+- 2D / 2.5D / 3D、地球儀: `MKMapView` は 2D と 3D の表示を持つ標準地図、航空写真と地図を重ねたハイブリッド、航空写真の各構成を持つ ([MKMapView](https://developer.apple.com/documentation/mapkit/mkmapview))。SwiftUI では `MapStyle` (iOS 17.0 以降) で標準・航空写真・ハイブリッドを切り替える ([MapStyle](https://developer.apple.com/documentation/mapkit/mapstyle))。地球儀表示は未確認。
 
 ## 対応するタイル・データ
 
-- 表示できるタイル・地図データ: [記入]
-- 組み合わせの制約 (特定のタイルでしか使えない等): [記入]
-- オフライン地図: [記入]
+- 表示できるタイル・地図データ: 基盤の地図は Apple Maps。独自のビットマップのタイルを `MKTileOverlay` で重ねる、または基盤地図を完全に置き換えることができる。URL テンプレートで x、y、ズーム、スケールを指定する ([MKTileOverlay](https://developer.apple.com/documentation/mapkit/mktileoverlay))。GeoJSON は `MKGeoJSONDecoder` で MapKit の型に変換できる (iOS 13.0 以降) ([MKGeoJSONDecoder](https://developer.apple.com/documentation/mapkit/mkgeojsondecoder))。ベクタータイルを読む API の記載はない。
+- 組み合わせの制約 (特定のタイルでしか使えない等): 独自タイルはラスターのみ。Apple Maps の地図を MapKit 以外のレンダラーで描く手段は公開されていない (MapKit JS と Apple Maps Server API を除く)。
+- オフライン地図: 未確認。開発者向けにオフライン領域をダウンロードする API の記載を見つけられなかった。
 
 ## ライセンスと費用
 
-- SDK 自体のライセンス: [記入]
-- 従量課金 (MAU、地図ロードなど、単価と無料枠): [記入]
+- SDK 自体のライセンス: プロプライエタリ (OS SDK の一部)。
+- 従量課金 (MAU、地図ロードなど、単価と無料枠): ネイティブの MapKit の料金や利用上限は公開ページで見つけられず未確認。MapKit JS は Apple Developer Program のメンバーシップごとに 1 日あたり地図表示 250,000 回、サービス呼び出し 25,000 回、スナップショット 25,000 件 (固有のリクエスト) までが無料。それ以上は Apple に問い合わせる形で、超過時の料金や挙動は書かれていない ([MapKit JS](https://developer.apple.com/maps/web/))。MapKit JS の利用には Maps トークンが必要 ([MapKit JS](https://developer.apple.com/documentation/mapkitjs))。
 
 ## Web 版との関係
 
-- 同じスタイル仕様・同じ API の Web 版: [記入]
+- 同じスタイル仕様・同じ API の Web 版: MapKit JS が Web 版にあたる。ネイティブの MapKit と同様に注釈とオーバーレイを重ねられ、場所の詳細ビューと Look Around も提供する ([MapKit JS](https://developer.apple.com/documentation/mapkitjs))。API は JavaScript で、ネイティブの API とは別物。共通のスタイル仕様は公開されていない。
 
 ## 開発の活発さ
 
-- 直近 1 年のリリース数: [記入]
-- 最終コミット日: [記入]
+- 直近 1 年のリリース数: 対象外。OS の更新とともに提供されるため、MapKit 単独のリリースはない。
+- 最終コミット日: 対象外 (ソース非公開)。
 
 ## 向いている場面
 
-- [記入]
+- iOS / macOS / watchOS / tvOS / visionOS だけを対象にするアプリで、SwiftUI で地図を書きたい場合。
+- Apple Maps の地図、Look Around、検索をそのまま使いたい場合。
+- 外部の SDK を追加せずに地図を出したい場合。
 
 ## 向いていない場面
 
-- [記入]
+- Android を同じネイティブ SDK で対象にする場合 (Android はネイティブ非対応)。
+- 自前のベクタータイルやスタイルで地図を描きたい場合 (独自タイルはラスターのみ)。
+- オフライン地図が必要な場合 (開発者向け API を確かめられなかった)。
+- Web で大量に地図を表示する場合 (MapKit JS の無料枠を超えると個別に問い合わせが要る)。
 
 ## 出典
 
-- [記入: 本文で使った URL を全て。公式を優先]
+- https://developer.apple.com/maps/
+- https://developer.apple.com/maps/web/
+- https://developer.apple.com/documentation/mapkit
+- https://developer.apple.com/documentation/mapkit/map
+- https://developer.apple.com/documentation/mapkit/mapstyle
+- https://developer.apple.com/documentation/mapkit/mkmapview
+- https://developer.apple.com/documentation/mapkit/mktileoverlay
+- https://developer.apple.com/documentation/mapkit/mkgeojsondecoder
+- https://developer.apple.com/documentation/mapkitjs
+- https://developer.apple.com/documentation/mapkitjs/mapkit-js-release-notes
+- https://developer.apple.com/documentation/ios-ipados-release-notes
 
 ## 未確認のこと
 
-- [記入: 調べたが確かめられなかったことと、その理由。無ければ「なし」]
+- ネイティブ MapKit の料金と利用上限。公開ページに記載を見つけられなかった。
+- MapKit の利用条件の条文 (Apple Developer Program License Agreement の該当箇所)。読んでいない。
+- 描画に使うグラフィックス API。公式ドキュメントに記載がない。
+- 地球儀表示、開発者向けのオフライン地図 API の有無。公式ドキュメントで記載を見つけられなかった。
+- iOS 27 系の各版のリリース日。リリースノート一覧から日付を取れなかった。
+- Flutter / React Native のコミュニティ製ラッパーの状況。調べていない。

@@ -1,70 +1,91 @@
 # MapLibre Native (Android / iOS)
 
-<!-- テンプレート: [記入] の箇所を全て埋め、[記入] の文字を消す。見出しと表の行は消さない。調べても分からない項目は「未確認」と書き、末尾の「未確認のこと」に理由を書く。本文の事実には出典の URL を添える。 -->
-
 ## メタ情報
 
 | 項目 | 値 |
 |---|---|
-| 確かめた日 | [記入: YYYY-MM-DD] |
-| 最新の安定版 (プラットフォームごと、リリース日) | [記入] |
-| リポジトリ | [記入: URL。非公開なら「なし」] |
-| ドキュメント | [記入: URL] |
-| ライセンス | [記入] |
-| 運営主体 | [記入] |
+| 確かめた日 | 2026-11-10 |
+| 最新の安定版 (プラットフォームごと、リリース日) | Android: android-v13.7.1 (2026-10-15)。なお 13.5 系の保守版 android-v13.5.4 が 2026-11-09 に出ている。iOS: ios-v7.0.0 (2026-10-28)。地球儀対応の `-globe` 付きプレリリース (android-v2026.11.2-globe / ios-v2026.11.2-globe、2026-11-02) が別にある ([Releases](https://github.com/maplibre/maplibre-native/releases)) |
+| リポジトリ | https://github.com/maplibre/maplibre-native |
+| ドキュメント | https://maplibre.org/maplibre-native/android/examples/getting-started/ (Android)、https://maplibre.org/maplibre-native/ios/latest/documentation/maplibre/ (iOS)、https://maplibre.org/maplibre-native/docs/book/ (開発者向け) |
+| ライセンス | BSD 2-Clause ([LICENSE.md](https://github.com/maplibre/maplibre-native/blob/main/LICENSE.md)) |
+| 運営主体 | MapLibre (GitHub の maplibre organization、maplibre.org)。2020 年 12 月に Mapbox GL Native が非 OSS ライセンスへ移る前の版から分岐したもの ([README](https://github.com/maplibre/maplibre-native)) |
 
 ## 概要
 
-[記入: 何をする SDK か、2〜4 文]
+MapLibre Style Spec に従うスタイルを読み、ベクタータイル・ラスタータイルを GPU で描画する C++ 製の地図レンダラーと、その Android / iOS 向け SDK である ([README](https://github.com/maplibre/maplibre-native))。Mapbox GL Native の OSS 版から分岐した BSD ライセンスの実装で、地図データの提供元を選ばない。地図データや API キーは同梱されず、タイルとスタイルは利用者が用意する。
 
 ## 対応プラットフォーム
 
 | プラットフォーム | 対応 | 最低 OS 版・備考 |
 |---|---|---|
-| Android | [記入] | [記入] |
-| iOS | [記入] | [記入] |
-| デスクトップ (macOS / Windows / Linux) | [記入] | [記入] |
-| ゲームエンジン (Unreal / Unity など) | [記入] | [記入] |
+| Android | 対応 | `minSdk = 23` (Android 6.0) ([build.gradle.kts](https://github.com/maplibre/maplibre-native/blob/main/platform/android/MapLibreAndroid/build.gradle.kts))。Maven の `org.maplibre.gl:android-sdk` で配布 |
+| iOS | 対応 | ios-v7.0.0 で最低 iOS 15.5 に引き上げ ([ios-v7.0.0 リリースノート](https://github.com/maplibre/maplibre-native/releases/tag/ios-v7.0.0))。Swift Package / CocoaPods で配布。UIKit ベース ([README](https://github.com/maplibre/maplibre-native)) |
+| デスクトップ (macOS / Windows / Linux) | 対応 (コアのビルド) | Linux / Windows / macOS 向けのビルド手順がある。Node.js 版 `@maplibre/maplibre-gl-native`、Qt 版 (別リポジトリ maplibre-native-qt) もある ([README](https://github.com/maplibre/maplibre-native)、[Platforms](https://maplibre.org/maplibre-native/docs/book/platforms/index.html)) |
+| ゲームエンジン (Unreal / Unity など) | 公式の統合なし | README とプラットフォーム表に Unreal / Unity の記載がない |
 
-- UI フレームワーク (Jetpack Compose / SwiftUI / Flutter / React Native) への対応 (公式か非公式か): [記入]
+- UI フレームワーク (Jetpack Compose / SwiftUI / Flutter / React Native) への対応 (公式か非公式か): SDK 本体は Android の View (`MapView`) と iOS の UIKit で、Compose / SwiftUI のビューは本体に含まれない。いずれも maplibre organization 配下の別リポジトリとして提供されている。Compose: MapLibre Compose (Compose Multiplatform、Android / iOS / Desktop / Web、v0.20.0、BSD 3-Clause、[maplibre-compose](https://github.com/maplibre/maplibre-compose))。SwiftUI: MapLibreSwiftUI (v0.26.1、1.0 前で API 安定を約束していない、Stadia Maps から移管、[swiftui-dsl](https://github.com/maplibre/swiftui-dsl))。Flutter: [flutter-maplibre-gl](https://github.com/maplibre/flutter-maplibre-gl)。React Native: [maplibre-react-native](https://github.com/maplibre/maplibre-react-native) (Expo 対応を掲げる)。
 
 ## 描画方式
 
-- グラフィックス API (OpenGL ES / Metal / Vulkan など): [記入]
-- 2D / 2.5D / 3D、地球儀: [記入]
+- グラフィックス API (OpenGL ES / Metal / Vulkan など): Android は OpenGL ES 3.0 と Vulkan 1.0、iOS は Metal。WebGPU バックエンドも Android / iOS / Linux / macOS で対応と表にある ([Platforms](https://maplibre.org/maplibre-native/docs/book/platforms/index.html))。Android の既定の成果物 `android-sdk` は Vulkan で、OpenGL ES 版 `android-sdk-opengl`、実行時に両者を切り替える `android-sdk-vulkan-opengl` が別にある ([Artifacts](https://maplibre.org/maplibre-native/android/examples/artifacts/))。
+- 2D / 2.5D / 3D、地球儀: 2D の地図に傾き・回転と `fill-extrusion` による建物の押し出しがある (13.7.1 のリリースノートに fill-extrusion の修正がある、[android-v13.7.1](https://github.com/maplibre/maplibre-native/releases/tag/android-v13.7.1))。地球儀はスタイルの `"projection": {"type": "globe"}` で描画する機能が `-globe` 付きのプレリリースで提供されており、安定版にはまだ入っていない ([android-v2026.11.2-globe](https://github.com/maplibre/maplibre-native/releases/tag/android-v2026.11.2-globe))。地形の 3D 表示は未確認。
 
 ## 対応するタイル・データ
 
-- 表示できるタイル・地図データ: [記入]
-- 組み合わせの制約 (特定のタイルでしか使えない等): [記入]
-- オフライン地図: [記入]
+- 表示できるタイル・地図データ: MapLibre Style Spec のスタイルで、ベクタータイル (MVT)、ラスタータイル、raster-dem、GeoJSON、画像ソースを扱う。PMTiles を `pmtiles://` URL で読み、Android では APK の assets に同梱した PMTiles も読める ([android-v13.7.1](https://github.com/maplibre/maplibre-native/releases/tag/android-v13.7.1))。
+- 組み合わせの制約 (特定のタイルでしか使えない等): 特定の提供元に縛られない。スタイルとタイルは利用者が用意する。
+- オフライン地図: Android に `OfflineManager` があり、領域を指定したダウンロードができる ([OfflineManager.kt](https://github.com/maplibre/maplibre-native/blob/main/platform/android/MapLibreAndroid/src/main/java/org/maplibre/android/offline/OfflineManager.kt))。PMTiles をアプリに同梱する方法も取れる。
 
 ## ライセンスと費用
 
-- SDK 自体のライセンス: [記入]
-- 従量課金 (MAU、地図ロードなど、単価と無料枠): [記入]
+- SDK 自体のライセンス: BSD 2-Clause ([LICENSE.md](https://github.com/maplibre/maplibre-native/blob/main/LICENSE.md))。
+- 従量課金 (MAU、地図ロードなど、単価と無料枠): SDK 自体には無い。費用はタイル配信元 (自前配信や商用タイルサービス) の料金で決まる。
 
 ## Web 版との関係
 
-- 同じスタイル仕様・同じ API の Web 版: [記入]
+- 同じスタイル仕様・同じ API の Web 版: MapLibre GL JS が同じ MapLibre Style Spec を使う。API はプラットフォームごとに別で、Android (Java/Kotlin) と iOS (Swift/Objective-C) の API は GL JS と一致しない。描画結果を GL JS に合わせる修正が続いている (例: line-pattern の大きさを GL JS に合わせた、[android-v13.7.1](https://github.com/maplibre/maplibre-native/releases/tag/android-v13.7.1))。
 
 ## 開発の活発さ
 
-- 直近 1 年のリリース数: [記入]
-- 最終コミット日: [記入]
+- 直近 1 年のリリース数: 2025-11-10 から 2026-11-10 の GitHub Releases で、Android の安定版 28 件 (プレリリースを含めると 38 件)、iOS の安定版 19 件 (同 28 件) ([Releases](https://github.com/maplibre/maplibre-native/releases))。
+- 最終コミット日: 2026-11-09 (main ブランチ)。
 
 ## 向いている場面
 
-- [記入]
+- 地図の提供元を自分で選びたい、自前のタイルや PMTiles を配信したい場合。
+- SDK の利用料や MAU 課金を避けたい場合。
+- Web 版 (MapLibre GL JS) と同じスタイルを Android / iOS でも使いたい場合。
+- Android で Vulkan、iOS で Metal を使う描画が必要な場合。
 
 ## 向いていない場面
 
-- [記入]
+- 地図データ・検索・経路などをひとつの事業者からまとめて調達したい場合 (SDK は描画だけで、データは別途用意が要る)。
+- 地球儀表示を安定版で使いたい場合 (2026-11-10 時点でプレリリースのみ)。
+- Compose / SwiftUI の API 安定性を重視する場合 (ラッパーはいずれも 1.0 前)。
 
 ## 出典
 
-- [記入: 本文で使った URL を全て。公式を優先]
+- https://github.com/maplibre/maplibre-native
+- https://github.com/maplibre/maplibre-native/releases
+- https://github.com/maplibre/maplibre-native/blob/main/LICENSE.md
+- https://github.com/maplibre/maplibre-native/releases/tag/ios-v7.0.0
+- https://github.com/maplibre/maplibre-native/releases/tag/android-v13.7.1
+- https://github.com/maplibre/maplibre-native/releases/tag/android-v2026.11.2-globe
+- https://github.com/maplibre/maplibre-native/blob/main/platform/android/MapLibreAndroid/build.gradle.kts
+- https://github.com/maplibre/maplibre-native/blob/main/platform/android/MapLibreAndroid/src/main/java/org/maplibre/android/offline/OfflineManager.kt
+- https://maplibre.org/maplibre-native/android/examples/getting-started/
+- https://maplibre.org/maplibre-native/android/examples/artifacts/
+- https://maplibre.org/maplibre-native/ios/latest/documentation/maplibre/
+- https://maplibre.org/maplibre-native/docs/book/
+- https://maplibre.org/maplibre-native/docs/book/platforms/index.html
+- https://github.com/maplibre/maplibre-compose
+- https://github.com/maplibre/swiftui-dsl
+- https://github.com/maplibre/flutter-maplibre-gl
+- https://github.com/maplibre/maplibre-react-native
 
 ## 未確認のこと
 
-- [記入: 調べたが確かめられなかったことと、その理由。無ければ「なし」]
+- 地形 (raster-dem による 3D 地形) の表示に対応するか。公式ドキュメントで明記した箇所を見つけられなかった。
+- iOS の `OfflineManager` 相当 (MLNOfflineStorage) の詳細。Android 側のソースのみ確かめた。
+- 地球儀機能が安定版に入る時期。プレリリースのリリースノートに予定の記載がない。

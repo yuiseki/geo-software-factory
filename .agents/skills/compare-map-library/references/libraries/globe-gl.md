@@ -1,90 +1,102 @@
 # globe.gl
 
-<!-- テンプレート: [記入] の箇所を全て埋め、[記入] の文字を消す。見出しと表の行は消さない。調べても分からない項目は「未確認」と書き、末尾の「未確認のこと」に理由を書く。本文の事実には出典の URL を添える。 -->
-
 ## メタ情報
 
 | 項目 | 値 |
 |---|---|
-| 確かめた日 | [記入: YYYY-MM-DD] |
-| 最新の安定版 (リリース日) | [記入] |
-| リポジトリ | [記入: URL。非公開なら「なし」] |
-| ドキュメント | [記入: URL] |
-| ライセンス (LICENSE ファイルで確かめる) | [記入] |
-| 運営主体・ガバナンス | [記入] |
+| 確かめた日 | 2026-11-10 |
+| 最新の安定版 (リリース日) | 2.46.2 (npm 公開 2026-08-22、JST)。GitHub Releases は使っておらず、版はタグと npm で出している ([npm](https://www.npmjs.com/package/globe.gl)、[タグ](https://github.com/vasturiano/globe.gl/tags)) |
+| リポジトリ | https://github.com/vasturiano/globe.gl |
+| ドキュメント | https://github.com/vasturiano/globe.gl#api-reference (README の API リファレンス)、例は https://vasturiano.github.io/globe.gl/ |
+| ライセンス (LICENSE ファイルで確かめる) | MIT (Copyright (c) 2019 Vasco Asturiano) ([LICENSE](https://github.com/vasturiano/globe.gl/blob/master/LICENSE)) |
+| 運営主体・ガバナンス | 個人 (Vasco Asturiano) のリポジトリ。財団や企業の運営ではない |
 
 ## 概要
 
-[記入: 何をするライブラリか、2〜4 文]
+three.js (WebGL) の上に作られた、3D の地球儀にデータ可視化レイヤーを重ねる Web コンポーネントである。three-globe プラグインを使いやすく包んだもので、点、弧、ポリゴン、経路、ヒートマップ、六角形集計、ラベル、HTML 要素、任意の three.js オブジェクトなどのレイヤーを持つ ([README](https://github.com/vasturiano/globe.gl))。道路や注記まで描く詳しい地図を見せる道具ではなく、全球規模のデータ (航路、人口、地震など) を見せる演出向けである (README の例の構成から判断)。
 
 ## 描画方式
 
-- レンダリング (DOM / Canvas 2D / WebGL / WebGPU): [記入]
-- 2D / 2.5D (傾き・回転) / 3D: [記入]
-- 地球儀表示: [記入]
-- 対応する投影法: [記入]
+- レンダリング (DOM / Canvas 2D / WebGL / WebGPU): WebGL (three.js の `WebGLRenderer`)。`rendererConfig` は `WebGLRenderer` のコンストラクタに渡される。HTML 要素レイヤーは DOM で重ねる ([README](https://github.com/vasturiano/globe.gl))。WebGPU への言及は README にない
+- 2D / 2.5D (傾き・回転) / 3D: 3D のみ (球体をカメラで回して見る)。平面地図の表示はない ([README](https://github.com/vasturiano/globe.gl))
+- 地球儀表示: 対応 (表示の前提そのもの)
+- 対応する投影法: 球面への投影のみ。地球を包む画像 (`globeImageUrl`) と起伏の画像 (`bumpImageUrl`) は正距円筒図法 (equirectangular) の画像を求める ([README](https://github.com/vasturiano/globe.gl))
 
 ## 対応するデータ
 
 | データ | 対応 | 備考 |
 |---|---|---|
-| ラスタタイル (XYZ) | [記入] | [記入] |
-| ベクトルタイル (MVT / PMTiles / MLT) | [記入] | [記入] |
-| スタイル仕様 (MapLibre/Mapbox Style 等) | [記入] | [記入] |
-| GeoJSON | [記入] | [記入] |
-| 3D Tiles / glTF | [記入] | [記入] |
-| 地形 (標高タイル) | [記入] | [記入] |
-| WMS / WMTS | [記入] | [記入] |
+| ラスタタイル (XYZ) | 対応 | `globeTileEngineUrl(x, y, l)` に slippy map タイルの URL を返す関数を渡すと、タイルで地球儀表面を覆う ([README](https://github.com/vasturiano/globe.gl)、[Tiled Map Engine の例](https://vasturiano.github.io/globe.gl/example/tile-engine/)) |
+| ベクトルタイル (MVT / PMTiles / MLT) | 非対応 | README に記述がない |
+| スタイル仕様 (MapLibre/Mapbox Style 等) | 非対応 | README に記述がない。見た目は three.js のマテリアルとアクセサ関数で指定する |
+| GeoJSON | 一部対応 | ポリゴンレイヤーと六角形化ポリゴンレイヤーが、各データの GeoJSON ジオメトリ (`type` と `coordinates`) を読む ([README](https://github.com/vasturiano/globe.gl))。FeatureCollection を丸ごと読み込む関数はなく、利用者が配列にして渡す。点や線は緯度経度のアクセサで渡す |
+| 3D Tiles / glTF | 3D Tiles は非対応、glTF は three.js 経由で可 | 3D Objects レイヤーと Custom レイヤーは任意の three.js `Object3D` を受け取るので、three.js のローダーで読んだ glTF を置ける (推測。README は glTF を名指ししていない) |
+| 地形 (標高タイル) | 非対応 | 起伏は `bumpImageUrl` のバンプマップ (見た目の陰影) で表すだけで、標高タイルからの形状生成はない ([README](https://github.com/vasturiano/globe.gl)) |
+| WMS / WMTS | 未確認 | README に記述がない。XYZ 形式の URL で引けるなら `globeTileEngineUrl` で使える (推測) |
 
 ## 組み合わせの制約
 
-- 使えない、または規約上使ってはならないタイルサービス: [記入]
-- API キー・アカウントの要否: [記入]
+- 使えない、または規約上使ってはならないタイルサービス: ライブラリ側の制約はない。`globeTileEngineUrl` で使うタイルは各配信元の規約に従う。Google の地図タイルは Google 以外の地図と併用できない (Google Maps Platform 利用規約 3.2.3(e)、[利用規約](https://cloud.google.com/maps-platform/terms))
+- API キー・アカウントの要否: 不要 (ライブラリ自体)。使うタイル配信元が要求する場合はその配信元の条件に従う
 
 ## ライセンスと費用
 
-- ライセンス: [記入]
-- 利用料 (無料 / 従量 / 有料の機能): [記入]
-- 版によるライセンスの変化: [記入。無ければ「なし」]
+- ライセンス: MIT ([LICENSE](https://github.com/vasturiano/globe.gl/blob/master/LICENSE))
+- 利用料 (無料 / 従量 / 有料の機能): 無料
+- 版によるライセンスの変化: なし
 
 ## 性能と規模
 
-- バンドルサイズ (min+gzip、版と出典つき): [記入]
-- 扱える地物の数の目安 (公式の記述か、測った条件つき): [記入]
-- 低性能端末・モバイルブラウザでの注意: [記入]
+- バンドルサイズ (min+gzip、版と出典つき): 2.46.2 で 559,272 バイト ([bundlephobia globe.gl@2.46.2](https://bundlephobia.com/package/globe.gl@2.46.2))。three.js が peer 依存ではなく通常の依存 (`three: >=0.179 <1`) なので、この数値は three.js を含む ([npm](https://www.npmjs.com/package/globe.gl))
+- 扱える地物の数の目安 (公式の記述か、測った条件つき): 公式の数値はない。点と六角形集計には、全メッシュを 1 つの three.js オブジェクトに統合して描画を速くする `pointsMerge` / `hexBinMerge` があるが、統合するとクリックやホバーが効かなくなる。曲面の分割解像度 (`*CurvatureResolution`) を細かくすると負荷が上がる ([README](https://github.com/vasturiano/globe.gl))
+- 低性能端末・モバイルブラウザでの注意: 公式の記述はない。静止画で足りる場面では `pauseAnimation()` で描画ループを止めて負荷を下げられる ([README](https://github.com/vasturiano/globe.gl))
 
 ## エコシステム
 
-- 主なプラグイン・拡張: [記入]
-- React / Vue などのラッパー: [記入]
-- TypeScript の型: [記入]
-- ネイティブ版・兄弟プロジェクト: [記入]
-- 日本語の情報 (公式翻訳、国内コミュニティ): [記入]
+- 主なプラグイン・拡張: 中核の three-globe (three.js のプラグイン、MIT) ([three-globe](https://github.com/vasturiano/three-globe))。AR 版の globe-ar、A-Frame 用の aframe-globe-component (1.19.1) が同じ作者から出ている ([README](https://github.com/vasturiano/globe.gl)、[npm aframe-globe-component](https://www.npmjs.com/package/aframe-globe-component))
+- React / Vue などのラッパー: React 向けに同じ作者の react-globe.gl (2.38.0) ([react-globe.gl](https://github.com/vasturiano/react-globe.gl))。Vue の公式ラッパーは未確認
+- TypeScript の型: 同梱 (`dist/globe.gl.d.ts`) ([package.json](https://github.com/vasturiano/globe.gl/blob/master/package.json))
+- ネイティブ版・兄弟プロジェクト: ネイティブ版はない。兄弟は three-globe、react-globe.gl、globe-ar、aframe-globe-component
+- 日本語の情報 (公式翻訳、国内コミュニティ): 公式の日本語訳はない (ドキュメントは英語の README のみ)。国内コミュニティは未確認
 
 ## 開発の活発さ
 
-- 直近 1 年のリリース数: [記入]
-- 最終コミット日: [記入]
-- 近年の大きな破壊的変更: [記入]
-
-## 既存のメモ
-
-<!-- 下のメモは骨組みのときに書いたもの。確かめたうえで本文の該当箇所に取り込み、この節ごと消す。 -->
-
-three.js ベースの、地球儀上のデータ可視化用 UI コンポーネント。詳しい地図 (道路、注記) を見せるのではなく、全球のデータを見せる演出向け。
+- 直近 1 年のリリース数: 6 (2025-11-10〜2026-11-10 に npm へ公開された版。2.45.1〜2.46.2。`npm view globe.gl time` で数えた)
+- 最終コミット日: 2026-08-22 (master ブランチ、JST)。中核の three-globe は 2026-10-14 に push がある ([three-globe](https://github.com/vasturiano/three-globe))
+- 近年の大きな破壊的変更: メジャー版は 2019-09 の 2.0.0 から 2.x のまま ([npm](https://www.npmjs.com/package/globe.gl))。CHANGELOG と GitHub Releases がないため、マイナー版での破壊的変更の有無は未確認
 
 ## 向いている場面
 
-- [記入]
+- 全球規模のデータ (航路、通信ケーブル、人口、地震、衛星など) を地球儀上で見せる展示・ランディングページ・ダッシュボードの演出
+- 弧、リング、粒子などのアニメーションで流れや動きを見せたい場合
+- three.js の知識を活かして独自の 3D 表現を足したい場合
 
 ## 向いていない場面
 
-- [記入]
+- 道路、建物、注記などを読む詳しい地図。ベクトルタイルとスタイル仕様に対応しない
+- 都市・街区レベルまでズームして使う地図アプリ
+- 平面地図や地球儀以外の投影法が要る場合
+- 長期の保守体制 (複数の保守者、財団、企業) を重視する場合 (個人が保守する)
 
 ## 出典
 
-- [記入: 本文で使った URL を全て。公式を優先]
+- https://github.com/vasturiano/globe.gl
+- https://github.com/vasturiano/globe.gl/blob/master/LICENSE
+- https://github.com/vasturiano/globe.gl/blob/master/package.json
+- https://github.com/vasturiano/globe.gl/tags
+- https://vasturiano.github.io/globe.gl/
+- https://vasturiano.github.io/globe.gl/example/tile-engine/
+- https://github.com/vasturiano/three-globe
+- https://github.com/vasturiano/react-globe.gl
+- https://www.npmjs.com/package/globe.gl
+- https://www.npmjs.com/package/aframe-globe-component
+- https://bundlephobia.com/package/globe.gl@2.46.2
+- https://cloud.google.com/maps-platform/terms
 
 ## 未確認のこと
 
-- [記入: 調べたが確かめられなかったことと、その理由。無ければ「なし」]
+- WMS / WMTS: README に記述がない
+- glTF の読み込み: README は任意の three.js オブジェクトを置けるとだけ書き、glTF を名指ししていない。上の記述は推測
+- 扱える地物の数とモバイルでの性能: 公式の記述がない
+- マイナー版での破壊的変更: CHANGELOG と GitHub Releases がなく、コミット履歴を全て読むことはしていない
+- Vue 向けラッパー、国内コミュニティ: 公式の案内が見つからなかった

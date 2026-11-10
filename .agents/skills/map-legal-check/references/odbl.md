@@ -46,7 +46,7 @@
 | 住所から緯度経度を求める (正引き) / 緯度経度から住所を求める (逆引き) ジオコーディングの結果を自社データと一緒に保存する | ジオコーダーの OSM データが未変更か Trivial な変更だけで、結果を集めて OSM の全部又は Substantial な部分を含む新しいデータベースを作らないなら、share-alike はかからない。名前、住所、緯度経度だけを含み、市規模以上の主要地物の大半を系統的に集めようとしていなければ Substantial な抽出ではない。ジオコーダーとそれを組み込むアプリは OpenStreetMap をクレジットする | Geocoding Guideline。同 Guideline は、ジオコーディング結果を Produced Work と宣言する案を ODbL の文言になじまないとして採らなかった | https://osmfoundation.org/wiki/Licence/Community_Guidelines/Geocoding_-_Guideline |
 | OSM から少数の地物を取り出して使う | 100 地物未満、又は人口 1,000 人までの地域の地物は Substantial ではない。100 地物超でも、非系統的で自分の質的な基準による一回限りの抽出なら Substantial ではない。同じ目的の小さな抽出の反復は一つの大きな抽出とみなす。ある地域の飲食店すべての抽出は系統的 | Substantial Guideline | https://osmfoundation.org/wiki/Licence/Community_Guidelines/Substantial_-_Guideline |
 | OSM データの形式変換 (JSON、MySQL 等)、座標系の変換、フィルタによる部分抽出、道路や面の単純化 | Trivial Transformation。他のデータ源が関わらなければ共有すべき情報を加えない。データの追加や修正は決して Trivial ではない | Trivial Transformations Guideline | https://osmfoundation.org/wiki/Licence/Community_Guidelines/Trivial_Transformations_-_Guideline |
-| OSM の Derivative Database を有料 API や DRM 付きで提供する | 第 4.7 条 (a) で禁止。制限のない複製を追加費用なしで並行提供する場合のみ可 (第 4.7 条 (b)) | 第 4.7 条 | https://opendatacommons.org/licenses/odbl/1-0/ |
+| OSM の Derivative Database を、受け手の権利を制限する条件や技術的手段 (DRM など) を付けて提供する | 第 4.7 条 (a) で禁止。制限のない複製を追加費用なしで並行提供する場合のみ可 (第 4.7 条 (b))。料金を取ること自体は禁止されていない (第 3.1 条は商用利用を含むとする)。ただし Publicly Use する場合は第 4.6 条の複製の提供が要る | 第 4.7 条 | https://opendatacommons.org/licenses/odbl/1-0/ |
 | OSM を相当部分抽出した機械学習の学習データセット | Derivative Database。学習済みモデルはドキュメントで帰属。予測結果は ODbL の対象外とされる | Attribution Guidelines | https://osmfoundation.org/wiki/Licence/Attribution_Guidelines |
 
 ## 当たらない場面

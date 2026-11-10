@@ -18,7 +18,7 @@
 |---|---|---|---|---|
 | Produced Work (画像、印刷物、ラスタタイル) として出す | ODbL 4.3 により Produced Work は通知だけでよく、Produced Work 自体を ODbL にする義務はない | 元データの抽出を目的にした出力はデータベース扱い。派生データベースから作った Produced Work を公に使うなら、派生データベースか変更点の提供の申し出が要る (ODbL 4.6)。ベクトルタイルが Produced Work かは OSMF のガイドラインで確認できなかった | 特定のツールに依らない | https://opendatacommons.org/licenses/odbl/1-0/ 、https://osmfoundation.org/wiki/Licence/Community_Guidelines/Produced_Work_-_Guideline |
 | 地物の種類ごとに出所を分ける (水平レイヤー) | 地物の種類 (Feature Type) のデータが全部 OSM 以外なら、その種類に ODbL の share-alike はかからない。例: OSM を背景にして鳥の渡りの経路を重ねる、OSM の飲食店を除いて自前の飲食店レイヤーを載せる | 同じ種類で OSM と他データを補い合うと、別レイヤーにしても共有義務がかかる。例: OSM にない墓地だけを集めたレイヤー、OSM と見比べて追加した飲食店 | 特定のツールに依らない | https://osmfoundation.org/wiki/Licence/Community_Guidelines/Horizontal_Map_Layers_-_Guideline (2014-06-06 承認) |
-| Collective Database として組む | 同じ地域の切り出しの中で、データの種類ごとに全部 OSM か全部 OSM 以外なら、共有義務は OSM 部分だけ。物理的に分ける必要はない。OSM 以外のデータが主要な地物の形状や属性を丸ごと置き換えるか、OSM にない形状や属性を足す場合も含む | OSM と他データが互いを参照しない、が条件の一つ。キーでの結合 (本番の性能のための結合も) は参照とみなされる。自社の店舗一覧と OSM を突き合わせて重複を消した統合データは対象外で、公に使うと share-alike がかかり得る | 特定のツールに依らない | https://osmfoundation.org/wiki/Licence/Community_Guidelines/Collective_Database_Guideline_Guideline (2016-06-17 承認)、ODbL 4.5 |
+| Collective Database として組む | 同じ地域の切り出しの中で、データの種類ごとに全部 OSM か全部 OSM 以外なら、共有義務は OSM 部分だけ。物理的に分ける必要はない。OSM 以外のデータが主要な地物の形状や属性を丸ごと置き換えるか、OSM にない形状や属性を足す場合も含む | OSM と他データが互いを参照しないことは、選べる条件の一つにすぎない (Guideline の条件は「または」でつながる)。キーでの結合 (本番の性能のための結合も) は参照とみなされるが、参照していても、データの種類ごとに全部 OSM か全部 OSM 以外なら Collective Database になる (Guideline の例では、OSM の飲食店にキーで結び付けた自社の電話番号に share-alike はかからない)。自社の店舗一覧と OSM を突き合わせて重複を消した統合データは対象外で、公に使うと share-alike がかかり得る | 特定のツールに依らない | https://osmfoundation.org/wiki/Licence/Community_Guidelines/Collective_Database_Guideline_Guideline (2016-06-17 承認)、ODbL 4.5 |
 | ODbL を避けられる出所を選ぶ | Overture の places は OSM を含まず、主に CDLA-Permissive-2.0 で、共有時に規約本文を添えるだけでよい | Overture 自身が「places を OSM と結合すると結果に ODbL が要ることがある」と書いている。buildings、transportation、divisions、base は ODbL | Overture `2026-10-21.0` | https://docs.overturemaps.org/guides/places/ 、https://cdla.dev/permissive-2-0/ |
 | 公的データは CC BY 4.0 として扱う | PDL1.0 と政府標準利用規約 (第 2.0 版) は CC BY 4.0 と互換で、CC BY に従った利用もできると明記している。CC BY 4.0 のデータと同じ条件でまとめられる | 各規約の出典表示と加工表示の条件は残る。第三者の権利を含むものは別途許諾が要る | 特定のツールに依らない | https://www.digital.go.jp/resources/open_data/public_data_license_v1.0 (1.7.3)、「政府標準利用規約（第 2.0 版）」の解説 (平成 27 年 12 月 24 日) |
 | 出典表示をまとめて出す | 複数の出所の表示を地図の隅に並べる。OSMF は他の表示を OSM の表示と同時に、隣に出すことを認める | 他の表示が「OSM のデータが OSM 由来でない」と誤解させてはならない。OSM を使っていない範囲や地物では OSM 表示を出さないほうが望ましい (動的な切り替えは任意) | MapLibre GL JS などの地図ライブラリはソースごとの attribution を地図の隅に並べる機能を持つ (版は未確認) | https://osmfoundation.org/wiki/Licence/Attribution_Guidelines (2021-06-25 採択) |
@@ -45,7 +45,7 @@
 
 - 自社の POI と OSM の POI を「重複を消して 1 つにまとめる」と、OSMF のガイドラインの対象外となり、自社データにも share-alike がかかり得る。
 - 「別レイヤーにしたから大丈夫」は成り立たない。同じ種類の地物を補い合えばレイヤーが分かれていても共有義務がかかる。
-- キーで結合しているだけでも「参照」とみなされる。Collective Database として扱うには互いを参照しない必要がある。
+- キーで結合しているだけでも「参照」とみなされる。ただし、参照しないことは Collective Database の条件の一つにすぎない。参照していても、ある種類のデータが同じ地域の切り出しの中で全部 OSM か全部 OSM 以外なら Collective Database として扱える。
 - Overture を使えば ODbL を避けられるとは限らない。places 以外の主要テーマは ODbL。
 - CC BY 4.0 は技術的保護手段 (DRM) を課して配布することを禁じており、OSMF はこれを ODbL の配布条件と衝突するとして許諾を求めている。DRM のかかるアプリ配布に CC BY 4.0 のデータを含めるときは同じ論点があり得る (推測)。
 - 加工した公的データを「国が作った未加工のデータ」に見えるように出すことは PDL1.0 で禁止されている。

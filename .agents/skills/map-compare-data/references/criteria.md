@@ -14,7 +14,7 @@
 
 | 条件 | 何を確かめるか | 外れる例 (各 reference の記述) |
 |---|---|---|
-| 商用利用と再配布 | 使う版の利用条件が、商用か、タイルやデータとして再配布するかに合うか | 国土数値情報の避難施設、役場、郵便局、警察署、消防署、道の駅、緊急輸送道路は最新版でも非商用で再配布できない。学校は 2013 年度版だけ非商用 ([ksj](sources/ksj.md))。自治体のデータには独自規約やライセンス未指定のものがある ([municipal-open-data](sources/municipal-open-data.md)) |
+| 商用利用と再配布 | 使う版の利用条件が、商用か、タイルやデータとして再配布するかに合うか | 国土数値情報の避難施設、市区町村役場 (P34)、郵便局、警察署、消防署、道の駅、緊急輸送道路は最新版でも非商用で再配布できない。学校は 2013 年度版だけ非商用。市町村役場等及び公的集会施設 (P05) は CC BY 4.0 ([ksj](sources/ksj.md))。自治体のデータには独自規約やライセンス未指定のものがある ([municipal-open-data](sources/municipal-open-data.md)) |
 | 継承の条件 (シェアアライク) | 自社のデータと混ぜた結果を、同じライセンスで公開できるか | OSM と、OSM を含む Overture のテーマ (buildings、transportation、divisions、base) は ODbL。同じ種類の地物で自社のデータと突き合わせると、自社のデータにも共有義務が及びうる ([openstreetmap](sources/openstreetmap.md)、[overture-maps](sources/overture-maps.md)、[license-mixing](license-mixing.md)) |
 | 法令上の手続 | ライセンスとは別に、手続が要るか | 基盤地図情報は基本測量成果に当たり、使い方によって測量法の承認が要る ([fgd](sources/fgd.md)、map-legal-check の survey-act) |
 | 対象地域 | 対象地域を収録しているか | 国内の公的データは日本だけ。全球なら OSM、Overture |

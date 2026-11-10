@@ -13,12 +13,16 @@ map-product-grilling -> map-compare-arch -> map-compare-infra -> map-compare-lib
                                             (地図に載せる主題データ)
 ```
 
-4 段階のほかに、書き上がっているスキルは次の場所で使う。
+4 段階のほかのスキルは、次の場所で使う。
 
 - map-compare-data: 地図に載せる主題データ (施設、境界、統計、店舗など) が要るとき、map-compare-infra と並べて使う。背景の地図 (ベースマップ) と主題データは別々に選び、ライセンスを混ぜたときの条件はこのスキルで確かめる
+- map-compare-auth: ログインや、タイルとデータを限られた人だけに見せることが要るとき、map-compare-arch と並べて使う
+- map-compare-protocol: リアルタイムの配信や、OGC API、STAC、NGSI-LD などの標準での受け渡しが要るとき、map-compare-arch と並べて使う
+- map-ux-design: ライブラリが決まったあと、画面と操作を設計するときに使う。結果はプロダクト概要の「画面と操作」の節に書く
+- map-poc-measure: 費用やデータの大きさなど、数字が比較の結論を左右するとき、どの段階からでも使う。測った値を、その段階に戻して比べ直す
 - map-legal-check: 公開の前に、最後に使う。帰属表示、ODbL、写真の帰属、測量法、位置情報、地図 API の規約を確かめる
-
-骨組みのスキル (map-compare-auth、map-compare-protocol、map-ux-design、map-poc-measure、map-ops、map-migrate) は、まだ流れに入れない。呼ばれたら、骨組みであることを答えに書く。
+- map-ops: 公開したあとの運用 (API キー、利用量と予算、データの更新、障害のときの切り替え) で使う
+- map-migrate: 既存の地図を別のサービスやライブラリへ乗り換えるとき、map-product-grilling の代わりの入口として使う。移行先の選定は map-compare-infra と map-compare-library に回す
 
 各段階は、入口の条件がそろったら始め、出口のものを出したら次へ進む。依頼が途中の段階だけ (例: 「Leaflet と MapLibre どっち」) なら、その段階の入口の条件がそろっているかを確かめて、そこから始める。前の段階を飛ばした場合は、飛ばした段階で決まるはずのこと (例: タイルの供給元) を仮の前提として答えに書く。
 

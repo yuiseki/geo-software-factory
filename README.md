@@ -44,14 +44,14 @@
 | [map-compare-library](.agents/skills/map-compare-library/SKILL.md) | 地図ライブラリ (Leaflet, MapLibre GL JS, Mapbox GL JS, Google Maps JS API, CesiumJS など)、ネイティブアプリ向け SDK、複数 SDK の抽象化層 (MapConductor など) を要件に照らして選ぶ | 書いた |
 | [map-compare-data](.agents/skills/map-compare-data/SKILL.md) | 地図に載せる主題データ (OSM、Overture、国土数値情報、統計、チェーン店の店舗など) の出どころを選ぶ | 書いた |
 | [map-legal-check](.agents/skills/map-legal-check/SKILL.md) | 公開の前に、帰属表示、ODbL、測量法、位置情報と個人情報、地図 API の規約を確かめる | 書いた |
-| [map-compare-auth](.agents/skills/map-compare-auth/SKILL.md) | 認証と認可の仕組み、タイルやデータへのアクセス制御を選ぶ | 骨組み |
-| [map-compare-protocol](.agents/skills/map-compare-protocol/SKILL.md) | リアルタイムの配信と、地理空間の API の標準 (OGC API、WMS、NGSI-LD など) を選ぶ | 骨組み |
-| [map-ux-design](.agents/skills/map-ux-design/SKILL.md) | 地図の UI と UX (大量の地物、検索、現在地、モバイル、アクセシビリティ) を設計する | 骨組み |
-| [map-poc-measure](.agents/skills/map-poc-measure/SKILL.md) | タイル数、表示回数、データの大きさ、端末での動作を試作して測る | 骨組み |
-| [map-ops](.agents/skills/map-ops/SKILL.md) | API キー、利用量と予算、データの更新、障害時の切り替えを運用する | 骨組み |
-| [map-migrate](.agents/skills/map-migrate/SKILL.md) | Google Maps、Mapbox、Leaflet などからの乗り換えを計画する | 骨組み |
+| [map-compare-auth](.agents/skills/map-compare-auth/SKILL.md) | 認証と認可の仕組み、タイルやデータへのアクセス制御を選ぶ | 書いた |
+| [map-compare-protocol](.agents/skills/map-compare-protocol/SKILL.md) | リアルタイムの配信と、地理空間の API の標準 (OGC API、WMS、NGSI-LD など) を選ぶ | 書いた |
+| [map-ux-design](.agents/skills/map-ux-design/SKILL.md) | 地図の UI と UX (大量の地物、検索、現在地、モバイル、アクセシビリティ) を設計する | 書いた |
+| [map-poc-measure](.agents/skills/map-poc-measure/SKILL.md) | タイル数、表示回数、データの大きさ、端末での動作を試作して測る | 書いた |
+| [map-ops](.agents/skills/map-ops/SKILL.md) | API キー、利用量と予算、データの更新、障害時の切り替えを運用する | 書いた |
+| [map-migrate](.agents/skills/map-migrate/SKILL.md) | Google Maps、Mapbox、Leaflet などからの乗り換えを計画する | 書いた |
 
-「骨組み」のスキルは、手順の枠と「後で書く」だけがある。進み具合は [.agents/skills/TODO.md](.agents/skills/TODO.md)。スキルの使い分けはエージェント向けに [AGENTS.md](AGENTS.md) に書く。
+進み具合は [.agents/skills/TODO.md](.agents/skills/TODO.md)。スキルの使い分けはエージェント向けに [AGENTS.md](AGENTS.md) に書く。
 
 reference の事実 (料金、規約、ライセンス、版) は 2026-11-10 に確かめたもの。変わるので、使うときは公式のページで確かめ直す。
 

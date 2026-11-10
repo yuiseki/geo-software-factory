@@ -106,61 +106,61 @@
   - [x] references/location-privacy.md
   - [x] references/odbl.md
   - [x] references/survey-act.md
-- [ ] map-ux-design (0/8)
-  - [ ] SKILL.md
-  - [ ] references/accessibility.md
-  - [ ] references/cartography.md
-  - [ ] references/geolocation-ux.md
-  - [ ] references/initial-load.md
-  - [ ] references/many-features.md
-  - [ ] references/mobile-interaction.md
-  - [ ] references/search-ux.md
-- [ ] map-poc-measure (0/6)
-  - [ ] SKILL.md
-  - [ ] references/data-size.md
-  - [ ] references/device-testing.md
-  - [ ] references/map-load-estimation.md
-  - [ ] references/render-performance.md
-  - [ ] references/tiles-per-view.md
-- [ ] map-ops (0/5)
-  - [ ] SKILL.md
-  - [ ] references/api-key-management.md
-  - [ ] references/data-update.md
-  - [ ] references/fallback.md
-  - [ ] references/usage-monitoring.md
-- [ ] map-compare-auth (0/14)
-  - [ ] SKILL.md
-  - [ ] references/criteria.md
-  - [ ] references/niche.md
-  - [ ] references/providers/amazon-cognito.md
-  - [ ] references/providers/auth0.md
-  - [ ] references/providers/better-auth.md
-  - [ ] references/providers/clerk.md
-  - [ ] references/providers/firebase-auth.md
-  - [ ] references/providers/keycloak.md
-  - [ ] references/providers/logto.md
-  - [ ] references/providers/ory.md
-  - [ ] references/providers/supabase-auth.md
-  - [ ] references/providers/workos.md
-  - [ ] references/tile-access-control.md
-- [ ] map-compare-protocol (0/11)
-  - [ ] SKILL.md
-  - [ ] references/criteria.md
-  - [ ] references/realtime/mqtt.md
-  - [ ] references/realtime/polling-webhook.md
-  - [ ] references/realtime/sse.md
-  - [ ] references/realtime/websocket.md
-  - [ ] references/standards/ngsi-ld.md
-  - [ ] references/standards/ogc-api.md
-  - [ ] references/standards/ogc-classic.md
-  - [ ] references/standards/sensorthings.md
-  - [ ] references/standards/stac-api.md
-- [ ] map-migrate (0/5)
-  - [ ] SKILL.md
-  - [ ] references/from-google-maps.md
-  - [ ] references/from-leaflet-raster.md
-  - [ ] references/from-mapbox.md
-  - [ ] references/migration-plan.md
+- [x] map-ux-design (8/8)
+  - [x] SKILL.md
+  - [x] references/accessibility.md
+  - [x] references/cartography.md
+  - [x] references/geolocation-ux.md
+  - [x] references/initial-load.md
+  - [x] references/many-features.md
+  - [x] references/mobile-interaction.md
+  - [x] references/search-ux.md
+- [x] map-poc-measure (6/6)
+  - [x] SKILL.md
+  - [x] references/data-size.md
+  - [x] references/device-testing.md
+  - [x] references/map-load-estimation.md
+  - [x] references/render-performance.md
+  - [x] references/tiles-per-view.md
+- [x] map-ops (5/5)
+  - [x] SKILL.md
+  - [x] references/api-key-management.md
+  - [x] references/data-update.md
+  - [x] references/fallback.md
+  - [x] references/usage-monitoring.md
+- [x] map-compare-auth (14/14)
+  - [x] SKILL.md
+  - [x] references/criteria.md
+  - [x] references/niche.md
+  - [x] references/providers/amazon-cognito.md
+  - [x] references/providers/auth0.md
+  - [x] references/providers/better-auth.md
+  - [x] references/providers/clerk.md
+  - [x] references/providers/firebase-auth.md
+  - [x] references/providers/keycloak.md
+  - [x] references/providers/logto.md
+  - [x] references/providers/ory.md
+  - [x] references/providers/supabase-auth.md
+  - [x] references/providers/workos.md
+  - [x] references/tile-access-control.md
+- [x] map-compare-protocol (11/11)
+  - [x] SKILL.md
+  - [x] references/criteria.md
+  - [x] references/realtime/mqtt.md
+  - [x] references/realtime/polling-webhook.md
+  - [x] references/realtime/sse.md
+  - [x] references/realtime/websocket.md
+  - [x] references/standards/ngsi-ld.md
+  - [x] references/standards/ogc-api.md
+  - [x] references/standards/ogc-classic.md
+  - [x] references/standards/sensorthings.md
+  - [x] references/standards/stac-api.md
+- [x] map-migrate (5/5)
+  - [x] SKILL.md
+  - [x] references/from-google-maps.md
+  - [x] references/from-leaflet-raster.md
+  - [x] references/from-mapbox.md
+  - [x] references/migration-plan.md
 
 ## 候補 (まだ作るか決めていない)
 

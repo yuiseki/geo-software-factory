@@ -51,7 +51,7 @@ reference の事実 (料金、規約、ライセンス、版) は 2026-11-10 に
 
 ## 利害関係の開示
 
-このスキル集の作者は Geolonia Maps の提供元に関係している。上の例で Geolonia Maps を使ったのは、HTML の属性だけでコロプレス図を描ける機能を試すためである。スキルは Geolonia Maps を特別扱いしない。
+このスキル集の作者は、Geolonia Maps を提供する株式会社 Geolonia に関係している。上の例で Geolonia Maps を使ったのは、HTML の属性だけでコロプレス図を描ける機能を試すためである。スキルは Geolonia Maps を特別扱いしない。
 
 ## ディレクトリ構成
 

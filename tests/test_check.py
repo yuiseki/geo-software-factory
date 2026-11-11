@@ -107,6 +107,25 @@ class CheckTest(unittest.TestCase):
         _, warnings = self.run_check(f, today=datetime.date(2027, 3, 1))
         self.assertEqual(warnings, [])
 
+    def test_every_service_card_states_what_it_is_and_how_it_pays(self):
+        f = good_files()
+        rows = "".join(f"| {r} | x |\n" for r in check.CARD_ROWS)
+        f[".agents/skills/demo/assets/services/README.md"] = "# index\n"
+        f[".agents/skills/demo/assets/services/good.md"] = f"# good\n\n| 項目 | 内容 |\n|---|---|\n{rows}"
+        f[".agents/skills/demo/assets/services/thin.md"] = "# thin\n\n| 項目 | 内容 |\n|---|---|\n| 一行で | x |\n| 描画 | y |\n"
+        f[".agents/skills/TODO.md"] = "# TODO\n\n- [x] demo (3/3)\n  - [x] SKILL.md\n  - [x] references/a.md\n  - [x] assets/services/\n"
+        errors, _ = self.run_check(f)
+        thin = [e for e in errors if "assets/services/" in e]
+        self.assertEqual(thin, [f".agents/skills/demo/assets/services/thin.md: card has no row '{r}'" for r in check.CARD_ROWS if r != "一行で"])
+
+    def test_a_card_row_left_empty_is_an_error(self):
+        f = good_files()
+        rows = "".join(f"| {r} | {'' if r == '運営' else 'x'} |\n" for r in check.CARD_ROWS)
+        f[".agents/skills/demo/assets/services/a.md"] = f"# a\n\n| 項目 | 内容 |\n|---|---|\n{rows}"
+        f[".agents/skills/TODO.md"] = "# TODO\n\n- [x] demo (3/3)\n  - [x] SKILL.md\n  - [x] references/a.md\n  - [x] assets/services/\n"
+        errors, _ = self.run_check(f)
+        self.assertEqual([e for e in errors if "assets/services/" in e], [".agents/skills/demo/assets/services/a.md: card row '運営' is empty"])
+
 
 if __name__ == "__main__":
     unittest.main()

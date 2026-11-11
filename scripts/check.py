@@ -21,6 +21,9 @@ DISCLOSURE_PREFIX = "- 利害関係の開示:"
 CHECKED = re.compile(r"^\| 確かめた日 \| (\d{4}-\d{2}-\d{2})")
 TODO_SKILL = re.compile(r"^- \[( |x)\] (\S+) \((\d+)/(\d+)\)$")
 TODO_FILE = re.compile(r"^  - \[( |x)\] (\S+)$")
+# What a competitor card must say beyond the technology: what the service is, for whom, and how it pays.
+CARD_ROWS = ("一行で", "提供する価値", "想定する利用者", "商用か非商用か", "推定の売上", "運営", "推定の運用費")
+CARD_ROW = re.compile(r"^\| ([^|]+?) \|(.*?)\|")
 
 
 def markdown_files(root: pathlib.Path) -> list[pathlib.Path]:
@@ -116,6 +119,19 @@ def check_todo(root: pathlib.Path, errors: list[str]) -> None:
             errors.append(f"TODO.md: {skill_dir.parent.name} is not listed")
 
 
+def check_cards(root: pathlib.Path, errors: list[str]) -> None:
+    for card in sorted((root / ".agents/skills").glob("*/assets/services/*.md")):
+        if card.name == "README.md":
+            continue
+        rel = card.relative_to(root).as_posix()
+        rows = {m[1]: m[2].strip() for line in card.read_text().splitlines() if (m := CARD_ROW.match(line))}
+        for name in CARD_ROWS:
+            if name not in rows:
+                errors.append(f"{rel}: card has no row '{name}'")
+            elif not rows[name]:
+                errors.append(f"{rel}: card row '{name}' is empty")
+
+
 def check_dates(root: pathlib.Path, today: datetime.date, max_age_days: int, warnings: list[str]) -> None:
     for md in markdown_files(root / ".agents/skills"):
         for line in md.read_text().splitlines():
@@ -132,6 +148,7 @@ def check(root: pathlib.Path, today: datetime.date, max_age_days: int) -> tuple[
     check_text(root, errors)
     check_disclosure(root, errors)
     check_todo(root, errors)
+    check_cards(root, errors)
     check_dates(root, today, max_age_days, warnings)
     return errors, warnings
 

@@ -62,7 +62,7 @@ Geolonia Maps SDK は、Geolonia が配信する地図を Web サイトとアプ
 
 ## エコシステム
 
-- 主なプラグイン・拡張: embed はプラグインの仕組みを持つ (`EmbedPlugin` 型、https://docs.geolonia.com/reference/embed/TypeAlias.EmbedPlugin/)。API キーの管理と利用量の確認に Geolonia CLI がある (https://docs.geolonia.com/explanation/cli/)。Claude Code 向けの Geolonia Agent Skills (MIT) があり、Google Maps JavaScript API から maps-suite へ移行する手順と、`google.maps.*` と `geolonia.maps.*` の対応表を含む (https://docs.geolonia.com/explanation/agent-skills/)。基盤が MapLibre GL JS の Map なので、MapLibre GL JS のプラグインを組み合わせられるはずである (推測)。
+- 主なプラグイン・拡張: embed はプラグインの仕組みを持つ (`EmbedPlugin` 型、https://docs.geolonia.com/reference/embed/TypeAlias.EmbedPlugin/)。API キーの管理と利用量の確認に Geolonia CLI がある (https://docs.geolonia.com/explanation/cli/)。Claude Code 向けの Geolonia Agent Skills (MIT、https://github.com/geolonia/geolonia-agent-skills) があり、Google Maps JavaScript API から maps-suite へ移行する手順と、`google.maps.*` と `geolonia.maps.*` の対応表を含む (https://docs.geolonia.com/explanation/agent-skills/)。基盤が MapLibre GL JS の Map なので、MapLibre GL JS のプラグインを組み合わせられるはずである (推測)。
 - React / Vue などのラッパー: React は公式の maps-react (`Map`、`Source`、`Layer`、`Marker`、`Popup`、各種コントロール、`MapProvider`、`useMap` などのフック、react と react-dom は 18 以上) (https://docs.geolonia.com/reference/, https://www.npmjs.com/package/@geolonia/maps-react)。Vue と Svelte の公式ラッパーはないが、maps-suite のカスタム要素 `<geolonia-map>` をテンプレートにそのまま書ける (https://docs.geolonia.com/howto/web-component/)。
 - TypeScript の型: 4 パッケージとも型定義 (`.d.ts`) を同梱する (npm パッケージの中身で確認)。リファレンスは型定義から生成されている。maps-react だけは生成されたリファレンスがない (https://docs.geolonia.com/reference/)。
 - ネイティブ版・兄弟プロジェクト: Android / iOS のネイティブ SDK は公開ドキュメントにない。FAQ はプログラミング言語について「JavaScript の SDK があります」とする (https://www.geolonia.com/products/faq/)。描画エンジンを共有する兄弟プロジェクトとして MapLibre Native を使えるかは公式資料に記述がない。

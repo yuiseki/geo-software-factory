@@ -40,6 +40,7 @@ Google Maps Platform は Google マップの地図、ストリートビュー、
 - 公式以外のライブラリから使えるか (MapLibre GL JS, Leaflet, OpenLayers など): Map Tiles API を使えば使える。Map Tiles API のポリシーは「サードパーティのレンダラーで Google マップを表示する場合」のロゴ表示の決まりを定めており、他のレンダラーでの表示を前提にしている ([Map Tiles API policies](https://developers.google.com/maps/documentation/tile/policies))。3D Tiles は「任意の 3D Tiles レンダラー」にルートタイルセットの URL を渡して使う ([Map Tiles API overview](https://developers.google.com/maps/documentation/tile/overview))。ただし 2D Map Tiles はラスタ画像なので、ベクトルタイル前提のスタイル編集はできない。
 - 組み合わせの制約 (特定の SDK でしか表示してはならない等): Google Maps Core Services を Google 以外の地図と一緒に、または近くで使ってはならない。例として、Places のコンテンツを Google 以外の地図に表示すること、ストリートビューと Google 以外の地図を同じ画面に表示すること、Google の地図から Google 以外の地図へリンクすることが挙がっている ([利用規約 3.2.3(e)](https://cloud.google.com/maps-platform/terms))。サードパーティのレンダラーを使うときは、Google ロゴにレンダラーのロゴを重ねず、十分な間隔を取る ([Map Tiles API policies](https://developers.google.com/maps/documentation/tile/policies))。
 - API キー・アカウントの要否: 必要。請求先アカウントを紐づけた Google Cloud プロジェクトと API キーが要る ([Get API key](https://developers.google.com/maps/documentation/javascript/get-api-key))。
+- 提供元のエージェント向けスキル: [googlemaps/agent-skills](https://github.com/googlemaps/agent-skills) (Apache-2.0)。入口の `google-maps-platform` (1.0.2) が Web、Android、iOS、Web Services の API の使い方を案内し、コードを書く前に Google Maps Platform Code Assist (MCP) で最新の文書を引くよう求める。試作には請求先の設定が要らない公開の Maps Demo Key を使い、本番では自分のキーを作って制限するよう促す。ほかに Navigation SDK for Android の 7.x から 8.x への移行のスキルがある。`npx skills add googlemaps/agent-skills` か Gemini CLI の拡張で入れる (2026-11-11 確認)。
 
 ## 料金
 

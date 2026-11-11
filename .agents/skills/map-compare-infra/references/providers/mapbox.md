@@ -40,6 +40,7 @@ Mapbox は地図タイル (ベクトル・ラスタ)、スタイル編集ツー�
 - 公式以外のライブラリから使えるか (MapLibre GL JS, Leaflet, OpenLayers など): Web では使える。規約は Qualified Renderer (GL JS v1.0 以上) を使わない場合、地図ロード単価ではなく API リクエスト数で課金すると定めており、他ライブラリからの利用自体は禁じていない ([Product Terms 2.8.3, 3.57](https://www.mapbox.com/legal/product-terms))。料金ページも Static Tiles API のリクエストを「Mapbox.js、Leaflet などラスタのスリッピーマップを作る一連のリクエスト」と説明している ([料金ページ](https://www.mapbox.com/pricing))。
 - 組み合わせの制約 (特定の SDK でしか表示してはならない等): モバイルアプリでは Mobile SDK を Mapbox サービスへの唯一のアクセス手段として使わなければならない ([Product Terms 2.9.1](https://www.mapbox.com/legal/product-terms))。このため MapLibre Native などからモバイルアプリで Mapbox のタイルを使うことは規約上できないと読める。地図コンテンツは Mapbox の API から直接取得し、プロキシや再配信をしてはならない ([Product Terms 1.9, 2.8.1](https://www.mapbox.com/legal/product-terms))。
 - API キー・アカウントの要否: 必要。Mapbox アカウントとアクセストークンで API を呼ぶ ([Access tokens](https://docs.mapbox.com/accounts/guides/tokens/))。
+- 提供元のエージェント向けスキル: [mapbox/mapbox-agent-skills](https://github.com/mapbox/mapbox-agent-skills) (MIT)。Web、iOS、Android、Flutter の実装、スタイル、検索、ナビゲーション、アクセストークンの守り方など 20 個のスキルがあり、Google Maps からの移行と MapLibre からの移行のスキルも含む。Claude Code などに `/plugin marketplace add mapbox/mapbox-agent-skills` で入れる (2026-11-11 確認)。
 
 ## 料金
 

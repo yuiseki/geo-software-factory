@@ -82,6 +82,20 @@ class CheckTest(unittest.TestCase):
         self.assertIn("TODO.md: demo lists references/gone.md, which does not exist", errors)
         self.assertIn("TODO.md: demo says (1/2) but has 3/3", errors)
 
+    def test_todo_may_list_a_directory_of_data_as_one_entry(self):
+        f = good_files()
+        f[".agents/skills/demo/assets/cards/one.md"] = "# one\n"
+        f[".agents/skills/demo/assets/cards/two.md"] = "# two\n"
+        f[".agents/skills/TODO.md"] = "# TODO\n\n- [x] demo (3/3)\n  - [x] SKILL.md\n  - [x] references/a.md\n  - [x] assets/cards/\n"
+        errors, _ = self.run_check(f)
+        self.assertEqual(errors, [])
+
+    def test_a_listed_directory_must_exist_and_hold_files(self):
+        f = good_files()
+        f[".agents/skills/TODO.md"] = "# TODO\n\n- [x] demo (3/3)\n  - [x] SKILL.md\n  - [x] references/a.md\n  - [x] assets/cards/\n"
+        errors, _ = self.run_check(f)
+        self.assertIn("TODO.md: demo lists assets/cards/, which does not exist", errors)
+
     def test_old_checked_dates_are_warnings(self):
         errors, warnings = self.run_check(good_files(), today=datetime.date(2027, 3, 1))
         self.assertEqual(errors, [])

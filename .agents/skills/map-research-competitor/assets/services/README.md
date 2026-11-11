@@ -37,16 +37,20 @@
 | [全国地番マップ｜公図（法務局地図）・地番図を全国で検索・ダウンロード](chiban.md) | ウェブ | 団体 | 商用 | MapLibre GL JS | Cloudflare |
 | [ChizuZu - 地図比較アプリ](chizuzu.md) | ウェブ | 個人と見られる | 非商用 | Leaflet | Cloudflare |
 | [JR東海道本線（東京〜熱海）｜吉田初三郎風・鳥瞰路線図](chokanzu.md) | ウェブ | 個人 | 非商用と見られる | - | Cloudflare |
+| [CoMaps](comaps.md) | アプリ | 団体 | 商用 | 自前の C++ の地図エンジン (Organic Maps から分かれた) | App Store、Google Play |
 | [CSTB Japan and NW Pacific 2026](cstb.md) | ウェブ | 個人と見られる | 非商用 | Leaflet 1.9.4 | Cloudflare |
 | [方位図法世界地図作成ツール](cubbit.md) | ウェブ | 個人 | 非商用 | Google Maps JavaScript API | Cloudflare |
 | [ダジック・アース - ダジック・アース](dagik.md) | アプリとウェブ | 団体と大学 | 非商用 | - | Cloudflare |
 | [DeFlock Maps ｜ ALPR Camera Map & Privacy Routes](deflock.md) | ウェブ | 団体 | 非商用と見られる | MapLibre GL JS | Cloudflare |
+| [Dokoka - 矢印だけの散歩ナビ](dokoka.md) | アプリ | 個人 | 非商用 | - | App Store、Google Play |
+| [Every Door](everydoor.md) | アプリ | 個人 | 非商用と見られる | flutter_map と vector_map_tiles | App Store、Google Play |
 | [Flight Atlas](flightatlas.md) | ウェブ | 個人 | 非商用 | MapLibre GL JS 5.24.0 | GitHub Pages |
 | [Flock camera map: Find the Flock cameras watching you ｜ Proton](flock.md) | ウェブ | 企業 | 商用 | MapLibre GL JS | 不明 (応答ヘッダーに手がかりが無い) |
 | [🍽️ Japan Food Facilities - 地図](food-facilities.md) | ウェブ | 団体か個人 | 非商用と見られる | MapLibre GL JS | GitHub Pages |
 | [Hail Mary - Star Map](gaia-mary.md) | ウェブ | 個人 | 非商用 | - | GitHub Pages |
 | [GeoConfirmed - Open-Source Conflict Geolocation & Verification](geoconfirmed.md) | ウェブ | 団体 | 非商用と見られる | MapLibre GL JS | Cloudflare |
 | [GeoLens: Open-Source Geospatial Data Catalog & Map Builder](geolens.md) | ウェブ | 団体 | 非商用 | - | Cloudflare |
+| [ジオクエ-写真を撮ってポイントに！ポイ活アプリ](geoquest.md) | アプリ | 企業 | 商用 | - | App Store、Google Play |
 | [Global Threat Map ｜ Intelligence Platform](globalthreatmap.md) | ウェブ | 未確認 | 商用と見られる | Mapbox GL JS | Railway |
 | [God's Eye View ｜ Official Site: Real-Time 3D Globe](godseyeview.md) | ウェブ | 企業 | 商用と見られる | - | Cloudflare |
 | [ゴミ箱マップ ｜ 街中のゴミ箱情報をシェアしよう！](gomibako.md) | ウェブ | 個人と見られる | 商用 | Leaflet | nginx (配信先の事業者は不明) |
@@ -81,8 +85,11 @@
 | [ラズリマップ｜図面から、測る手間を消す](lazuri.md) | ウェブ | 企業 | 商用と見られる | MapLibre GL JS | Fly.io |
 | [LivMap (リブマップ) - チームで使う共有地図](livmap.md) | アプリとウェブ | 企業 | 商用 | - | Cloudflare |
 | [Map Studio](map-enoki.md) | ウェブ | 個人と見られる | 非商用 | - | Vercel |
-| [地図マピオン（Mapion）｜地図検索/ルート検索/天気予報](mapion.md) | ウェブ | 企業 | 商用 | - | CloudFront 経由 (nginx) |
+| [MapComplete](mapcomplete.md) | ウェブ | 個人 | 非商用と見られる | MapLibre GL JS | Caddy (配信先の事業者は不明) |
+| [Mapillary](mapillary.md) | アプリとウェブ | 企業 | 非商用と見られる | ウェブ: Mapillary JS (自社の OSS。トップページでは地図を開いていない) | App Store、Google Play。ウェブの画像は fbcdn.net |
+| [地図マピオン（Mapion）｜地図検索/ルート検索/天気予報](mapion.md) | アプリとウェブ | 企業 | 商用 | - | CloudFront 経由 (nginx) |
 | [Maply](maply.md) | アプリ | 企業 | 商用と見られる | - | App Store |
+| [オフライン地図、GPSナビ:MAPS.ME](mapsme.md) | アプリとウェブ | 企業 | 商用 | 自前の C++ の地図エンジン (Organic Maps と CoMaps の元になった omim、Apache-2.0。今の版の中は未確認) | App Store、Google Play |
 | [近くの安いマックがわかる｜マクドナルド価格帯マップ](mcd-pricemap.md) | ウェブ | 個人 | 商用 | Leaflet | Cloudflare |
 | [MeshMap - Meshtastic Node Map](meshmap.md) | ウェブ | 個人 | 非商用 | Leaflet | Cloudflare |
 | [Interactive Middle-earth Map - LOTR, Hobbit & Silmarillion](middle-earth.md) | ウェブ | 個人と見られる | 非商用 | Leaflet | 不明 (応答ヘッダーに手がかりが無い) |
@@ -99,7 +106,8 @@
 | [earth :: a global map of wind, weather, and ocean conditions](nullschool.md) | ウェブ | 企業 | 商用 | - | Cloudflare |
 | [OpenGeocode: free, open-source, self-hosted geocoding](opengeocode.md) | ウェブ | 団体 | 非商用 | - | Cloudflare |
 | [Open Infrastructure Map](openinframap.md) | ウェブ | 個人 | 非商用 | MapLibre GL JS | Cloudflare |
-| [OsmAnd Map](osmand.md) | アプリとウェブ | 企業 | 商用 | Leaflet | nginx/1.18.0 (Ubuntu) (配信先の事業者は不明) |
+| [Organic マップ: オフライン地図](organicmaps.md) | アプリ | 企業 | 商用 | 自前の C++ の地図エンジン (MAPS.ME の omim から分かれた) | App Store、Google Play、Obtainium (GitHub のリリース) |
+| [OsmAnd Map](osmand.md) | アプリとウェブ | 企業 | 商用 | ウェブ: Leaflet。アプリ: 自前のエンジン (Android は Java の `osmandapp/OsmAnd`、描画の中核は C++ の `osmandapp/OsmAnd-core`) | nginx/1.18.0 (Ubuntu) (配信先の事業者は不明) |
 | [建物名 地名マップ v2.9.26](place-name-map.md) | ウェブ | 個人 | 非商用 | Leaflet | GitHub Pages |
 | [国勢調査 メッシュ年齢構成クラスターマップ](popbalance.md) | ウェブ | 個人 | 非商用 | MapLibre GL JS | GitHub Pages |
 | [全国農業用ため池マップについて ｜ 全国Q地図](qchizu-pond.md) | ウェブ | 個人か団体 | 商用 | - | Cloudflare |
@@ -114,12 +122,15 @@
 | [showhand - 全晒しAI不動産周辺マップ](showhand.md) | ウェブ | 企業 | 商用 | - | Vercel |
 | [SNS災害情報集約マップAI](solafune-alert.md) | ウェブ | 企業 | 商用と見られる | MapLibre GL JS | Amazon S3 + CloudFront |
 | [THE SOUNDING EARTH](sounding-earth.md) | ウェブ | 企業か個人 | 商用 | three.js | nginx (静的な配信) |
+| [StreetComplete](streetcomplete.md) | アプリ | 個人 | 商用 | MapLibre (maplibre-compose 0.20.0) | Google Play、App Store |
 | [Sunlit Earth: Earth from space as your wallpaper](sunlit-earth.md) | ウェブ | 個人か有志 | 非商用 | - | Cloudflare |
+| [スーパー地形](superdem.md) | アプリ | 個人 | 商用 | - | App Store、Google Play |
 | [世界のライブカメラ地図｜いま見れるライブ映像 - たま旅ライブ](tamatabi.md) | ウェブ | 個人と見られる | 商用 | MapLibre GL JS 4.7.1、D3 | Vercel |
 | [Dig a Hole to China? See Where You'd Come Out ｜ Through Earth](throughearth.md) | ウェブ | 個人 | 非商用 | three.js | Cloudflare |
 | [TokyoMap（東京都地図情報サイト）](tokyomap.md) | ウェブ | 公的機関 | 非商用 | Google Maps JavaScript API | Amazon S3 + CloudFront |
 | [日本のライブカメラ地図 ｜ とまり木](tomarigi.md) | ウェブ | 企業 | 商用 | Leaflet | Cloudflare |
 | [trainsworld](trainsworld.md) | ウェブ | 個人 | 非商用 | MapLibre GL JS | Cloudflare 経由の GitHub Pages |
+| [トリマ-歩数・移動でポイント！散歩やウォーキングでお金を稼ぐ](trima.md) | アプリ | 企業 | 商用 | - | App Store、Google Play |
 | [Trip Planner 山行計画サポートマップ｜日本雪崩ネットワーク](tripplanner.md) | ウェブ | 団体 | 商用 | - | Cloudflare |
 | [uMap - Online map creator](umap.md) | ウェブ | 団体 | 非商用 | Leaflet | nginx/1.31.6 (配信先の事業者は不明) |
 | [Urbanist Map](urbanistmap.md) | ウェブ | 個人 | 非商用 | MapLibre GL JS | Cloudflare |
@@ -130,6 +141,7 @@
 | [Watched · Something watched you this week](watched-earth.md) | ウェブ | 個人 | 非商用 | - | Vercel |
 | [Interactive Map (WebMCP)](webmcp-gmap.md) | ウェブ | 個人と見られる | 非商用 | Google Maps JavaScript API | Cloudflare |
 | [Yahoo!防災速報](yahoo-bousai.md) | アプリ | 企業 | 非商用と見られる | - | App Store、Google Play |
+| [Yahoo!マップ](yahoo-map.md) | アプリとウェブ | 企業 | 商用 | ウェブ: Mapbox GL JS (アプリの中は開いていない) | App Store、Google Play。ウェブの配信元は未確認 |
 | [非公式 山岡家 Map](yamaokaya.md) | ウェブ | 個人 | 非商用 | MapLibre GL JS | Amazon S3 + CloudFront |
 | [YAMAP / ヤマップ ｜ 登山をもっと楽しく、登山情報プラットフォーム](yamap.md) | アプリとウェブ | 企業 | 商用 | - | CloudFront 経由 (配信元は不明)。アプリは App Store、Google Play |
 | [気象衛星とレーダーマップ ｜ Zoom Earth](zoomearth.md) | アプリとウェブ | 企業 | 商用 | - | Cloudflare |

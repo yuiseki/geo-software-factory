@@ -31,3 +31,7 @@
 メモ:
 
 - テーマの地図の例: `bicyclelib.html`。画面に「© OpenStreetMap, Protomaps Sunny」
+
+データの出どころ (地図の帰属表示と画面の最下部 500 字、2026-11-12):
+
+- 画面の最下部ほか: 「© OpenStreetMap , Protomaps Sunny」(テーマの地図の画面、初めの観測)

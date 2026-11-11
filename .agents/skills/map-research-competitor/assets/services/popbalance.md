@@ -31,3 +31,7 @@
 
 - `https://cyberjapandata.gsi.go.jp/xyz/optimal_bvmap-v1/optimal_bvmap-v1.pmtiles`
 - `https://klareswasser.github.io/map_popbalance/cluster.pmtiles`
+
+データの出どころ (地図の帰属表示と画面の最下部 500 字、2026-11-12):
+
+- 画面の最下部ほか: 「出典：令和２年国勢調査（総務省統計局）」。初めの観測では「国土地理院最適化ベクトルタイル(淡色地図風スタイル) | MapLibre」も画面に出ていた

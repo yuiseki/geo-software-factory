@@ -32,3 +32,7 @@
 - `https://a.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png`
 - `https://b.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png`
 - `https://c.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png`
+
+データの出どころ (地図の帰属表示と画面の最下部 500 字、2026-11-12):
+
+- 地図の帰属表示: 「© OSM © CARTO」

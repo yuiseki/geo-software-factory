@@ -36,3 +36,7 @@
 - 世界のライブカメラを地図で見るサービス。カメラは YouTube の埋め込み
 - カメラのデータは `/api/livecams` 1 本 (展開して 8.7 MB、転送 1.3 MB)。配信中かを確かめた時刻 (`checkedAt`) が数分前になっていた
 - MapLibre GL JS 4.7.1 と OpenFreeMap の dark スタイルのほか、d3-geo と topojson で Natural Earth の陸地 (`land-50m.json`) を点で描いている
+
+データの出どころ (地図の帰属表示と画面の最下部 500 字、2026-11-12):
+
+- 画面の最下部ほか: 「© OpenFreeMap、© OpenMapTiles、データ © OpenStreetMap contributors」(ページの HTML の中、初めの観測)

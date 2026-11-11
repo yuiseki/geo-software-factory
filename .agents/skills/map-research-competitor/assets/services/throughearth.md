@@ -26,3 +26,8 @@
 | 背景の地図とタイル | 見つからなかった |
 | 投稿やデータの保存先 | 見えなかった |
 | 配信 | Cloudflare |
+
+データの出どころ (地図の帰属表示と画面の最下部 500 字、2026-11-12):
+
+- 地図の帰属表示: 「Created by krpelan.com」
+- 画面の最下部ほか: 「Map data: Natural Earth. Earth imagery: NASA Blue Marble. Earth layers follow the PREM model」

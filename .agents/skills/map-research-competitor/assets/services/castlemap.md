@@ -33,3 +33,7 @@
 - `https://castlemap.au/tiles/castle-base-png/{z}/{x}/{y}.png`
 - `https://castlemap.au/tiles/lots-png/{z}/{x}/{y}.png`
 - `https://castlemap.au/tiles/proposed_10x6rear-png/{z}/{x}/{y}.png`
+
+データの出どころ (地図の帰属表示と画面の最下部 500 字、2026-11-12):
+
+- 画面の最下部ほか: 「Copyright ©, All Rights Reserved」(データの出典の表記は無い)

@@ -30,3 +30,7 @@
 読み込んだタイルとスタイルの URL (一部):
 
 - `https://openmaptiles.data.gouv.fr/data/planet-vector/{z}/{x}/{y}.pbf`
+
+データの出どころ (地図の帰属表示と画面の最下部 500 字、2026-11-12):
+
+- 地図の帰属表示: 「STAR Open Data | RUDI Rennes Métropole | © DINUM (data.gouv.fr) © OpenMapTiles © Contributeurs OpenStreetMap」

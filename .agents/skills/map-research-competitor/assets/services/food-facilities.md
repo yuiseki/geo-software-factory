@@ -31,3 +31,7 @@
 
 - `https://cyberjapandata.gsi.go.jp/xyz/pale/{z}/{x}/{y}.png`
 - `https://food.japan-facilities.com/api/tiles/{z}/{x}/{y}.pbf`
+
+データの出どころ (地図の帰属表示と画面の最下部 500 字、2026-11-12):
+
+- 画面の最下部ほか: 「出典・ライセンス」のページへのリンク (出典の本文は別のページ)。「最終更新 2026-10-20」

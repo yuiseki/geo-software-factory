@@ -34,3 +34,7 @@
 - `https://js.arcgis.com/5.2/esri/widgets/Legend/styles/support/relationshipUtils.js`
 - `https://server.arcgisonline.com/arcgis/rest/services/Elevation/World_Hillshade/MapServer/tile/{z}/{x}/{y}`
 - `https://services.arcgisonline.com/arcgis/rest/services/Elevation/World_Hillshade/MapServer/tile/{z}/{x}/{y}`
+
+データの出どころ (地図の帰属表示と画面の最下部 500 字、2026-11-12):
+
+- 地図の帰属表示にも画面の最下部にも、データの出典は見えなかった。地図の画面の中に描かれている、別のボタンやページにある、の可能性はある

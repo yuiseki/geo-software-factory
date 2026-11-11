@@ -31,3 +31,7 @@
 
 - `https://tiles.openfreemap.org/planet/20261101_080013_pt/{z}/{x}/{y}.pbf`
 - `https://tiles.openfreemap.org/styles/positron`
+
+データの出どころ (地図の帰属表示と画面の最下部 500 字、2026-11-12):
+
+- 画面の最下部ほか: 「© EuroGeographics for the administrative boundaries」「© OpenMapTiles」(ページの HTML の中、初めの観測)

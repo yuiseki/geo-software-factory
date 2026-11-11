@@ -30,3 +30,7 @@
 読み込んだタイルとスタイルの URL (一部):
 
 - `https://maps.geo.ap-northeast-1.amazonaws.com/maps/v0/maps/YamaokayaMap/tiles/{z}/{x}/{y}`
+
+データの出どころ (地図の帰属表示と画面の最下部 500 字、2026-11-12):
+
+- 地図の帰属表示: 「© 2026 HERE」

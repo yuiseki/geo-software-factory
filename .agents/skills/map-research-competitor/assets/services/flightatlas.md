@@ -30,3 +30,7 @@
 読み込んだタイルとスタイルの URL (一部):
 
 - `https://tiles.openfreemap.org/planet/20261101_080013_pt/{z}/{x}/{y}.pbf`
+
+データの出どころ (地図の帰属表示と画面の最下部 500 字、2026-11-12):
+
+- 地図の帰属表示: 「Data: Wikipedia, US DOT, UK CAA, Eurostat, ANAC, BITRE, DGCA India (ODbL), OurAirports. Map: OpenFreeMap © OpenMapTiles © OpenStreetMap contributors. How this was made」

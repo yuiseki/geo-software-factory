@@ -35,3 +35,7 @@
 メモ:
 
 - 冠水の投稿を日付つきの PMTiles (`hazard-reports-YYYYMMDD-HHMMSS.pmtiles`) に焼いて配っていた。背景の地図も自前のベクトルタイル (2026-08-31 の版)
+
+データの出どころ (地図の帰属表示と画面の最下部 500 字、2026-11-12):
+
+- 画面に「Protomaps © OpenStreetMap contributors」(初めの観測)。冠水の情報は利用者の投稿

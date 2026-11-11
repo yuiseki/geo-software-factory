@@ -30,3 +30,7 @@
 メモ:
 
 - トップページを開いた。地図の画面そのもの (アプリ、デモ、ダウンロード版) は開いていない
+
+データの出どころ (地図の帰属表示と画面の最下部 500 字、2026-11-12):
+
+- 画面の最下部ほか: 「Built on imagery from NASA, data from EUMETSAT, and many open source projects」

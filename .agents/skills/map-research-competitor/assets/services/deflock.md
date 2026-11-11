@@ -31,3 +31,7 @@
 
 - `https://deflock.dontgetflocked.com/cameras-us-hourly-f16a8c07a3ff/{z}/{x}/{y}.mvt`
 - `https://deflock.dontgetflocked.com/planet/{z}/{x}/{y}.mvt`
+
+データの出どころ (地図の帰属表示と画面の最下部 500 字、2026-11-12):
+
+- 地図の帰属表示: 「© OpenStreetMap」

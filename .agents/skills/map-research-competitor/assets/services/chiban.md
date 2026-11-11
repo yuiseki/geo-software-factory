@@ -35,3 +35,7 @@
 - `https://layers.koaza.net/borders/Ward_2026.pmtiles`
 - `https://layers.koaza.net/chiseki/KouzuZure.pmtiles`
 - `https://layers.koaza.net/city_map/11/11203_2026_dissolve.pmtiles`
+
+データの出どころ (地図の帰属表示と画面の最下部 500 字、2026-11-12):
+
+- 地図の帰属表示: 「自治体地番図（オープンデータ・開示請求データ） | 地理院タイル | 登記所備付地図データ（法務省） | 国土数値情報（行政区域 N03） | 「アドレス・ベース・レジストリ」（デジタル庁）を加工して作成／国土数値情報（鉄道・学校・市町村役場等及び公的集会施設・医療機関・空港。国土交通省）を加工して作成／© OpenStreetMap contributors／OpenPOI API」 ／ 「© 2026 日本小字地名地籍編纂刊行会 (JKCS)」

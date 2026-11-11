@@ -38,3 +38,8 @@
 メモ:
 
 - 陰影などを自前の PMTiles に分けて置き、Leaflet で重ねている
+
+データの出どころ (地図の帰属表示と画面の最下部 500 字、2026-11-12):
+
+- 地図の帰属表示: 「Basemap: IGR Map (Ikegami 2026), from GEBCO 2026, CSTB Japan and NW Pacific 2026 v27 (JAMSTEC DARWIN, NOAA NCEI DCDB, MGDS, PANGAEA, PIBHMC, KHOA, JODC)」
+- 画面の最下部ほか: 「出典の表示を条件に自由に利用できます」「本データセットと、依拠した航海や格子を引用してください」「編纂物であるため、元データには提供機関ごとに異なる条件が及びます」

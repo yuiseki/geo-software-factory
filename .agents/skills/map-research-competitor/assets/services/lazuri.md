@@ -32,3 +32,7 @@
 - `https://cyberjapandata.gsi.go.jp/xyz/optimal_bvmap-v1/{z}/{x}/{y}.pbf`
 - `https://lazurimap.com/pmtiles/chushi/chushi-jp-9e10b28f.pmtiles`
 - `https://lazurimap.com/tiles/globe/{z}/{x}/{y}`
+
+データの出どころ (地図の帰属表示と画面の最下部 500 字、2026-11-12):
+
+- 画面の最下部ほか: 画面に「出典」のボタンがある (中は開いていない)

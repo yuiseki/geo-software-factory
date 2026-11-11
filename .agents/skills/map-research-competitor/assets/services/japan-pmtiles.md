@@ -33,3 +33,7 @@
 - `https://armd-01.sakura.ne.jp/tiles/style.css`
 - `https://tile.openstreetmap.jp/styles/osm-bright/sprite.json`
 - `https://tile.openstreetmap.jp/styles/osm-bright/sprite.png`
+
+データの出どころ (地図の帰属表示と画面の最下部 500 字、2026-11-12):
+
+- フッターに「作成・管理 K.Sakanoshita 地図データ © OpenStreetMap contributors」(初めの観測)

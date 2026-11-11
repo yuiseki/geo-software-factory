@@ -30,3 +30,7 @@
 メモ:
 
 - 同じサイトに 19 の地図がある (風、海流、川、地形など)
+
+データの出どころ (地図の帰属表示と画面の最下部 500 字、2026-11-12):
+
+- 画面の最下部ほか: 「OpenSeaMap / OpenStreetMap contributors · NGA List of Lights · NOAA ENC · USCG Light List · national lists of lights」

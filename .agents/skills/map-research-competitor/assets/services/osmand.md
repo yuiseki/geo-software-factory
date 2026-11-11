@@ -37,3 +37,7 @@
 
 - App Store: OsmAnd - マップ＆ナビゲーション オフライン、販売元 OsmAND B.V.、無料、評価 153 件 (平均 4.2)、初出 2015-04-21、最新の更新 2026-10-23 (https://apps.apple.com/jp/app/id934850257)
 - Google Play: `net.osmand`、1,000万+ ダウンロード、アプリ内購入 あり
+
+データの出どころ (地図の帰属表示と画面の最下部 500 字、2026-11-12):
+
+- 地図の帰属表示: 「OsmAnd Web 1.03 © OpenStreetMap contributors」

@@ -38,3 +38,7 @@
 メモ:
 
 - 地図を作れるサービス。既定の背景として OSM France の HOT スタイル、OpenTopoMap、Esri などを選べる
+
+データの出どころ (地図の帰属表示と画面の最下部 500 字、2026-11-12):
+
+- フッターに「uMap An OpenStreetMap project」「Hosted by Humanitarian OpenStreetMap Team」。背景のタイルの帰属表示は、各地図の画面に出る (トップページでは見ていない)

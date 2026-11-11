@@ -33,3 +33,7 @@
 - `https://openinframap.org/{z}/{x}/{y}/0.mvt`
 - `https://openinframap.org/{z}/{x}/{y}/1.mvt`
 - `https://openinframap.org/{z}/{x}/{y}/2.mvt`
+
+データの出どころ (地図の帰属表示と画面の最下部 500 字、2026-11-12):
+
+- 地図の帰属表示: 「© OpenStreetMap | MapLibre | OpenStreetMap, Open Infrastructure Map」

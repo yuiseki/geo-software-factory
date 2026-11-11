@@ -30,3 +30,7 @@
 読み込んだタイルとスタイルの URL (一部):
 
 - `https://monitor-the-situation.com/basemap/v1/20261101_080013_pt/{z}/{x}/{y}.pbf`
+
+データの出どころ (地図の帰属表示と画面の最下部 500 字、2026-11-12):
+
+- 画面の最下部ほか: 「© OpenMapTiles」「© OpenStreetMap」(ページの HTML の中、初めの観測)

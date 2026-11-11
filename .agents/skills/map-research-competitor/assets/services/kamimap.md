@@ -33,3 +33,7 @@
 - `https://tile.openstreetmap.jp/styles/maptiler-basic-ja/sprite.json`
 - `https://tile.openstreetmap.jp/styles/maptiler-basic-ja/sprite.png`
 - `https://tile.openstreetmap.jp/styles/maptiler-basic-ja/style.json`
+
+データの出どころ (地図の帰属表示と画面の最下部 500 字、2026-11-12):
+
+- 地図の帰属表示: 「© OpenMapTiles © OpenStreetMap contributors」

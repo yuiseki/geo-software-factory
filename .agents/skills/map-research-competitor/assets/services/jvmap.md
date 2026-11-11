@@ -32,3 +32,7 @@
 - `https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json`
 - `https://basemaps.cartocdn.com/gl/positron-gl-style/style.json`
 - `https://tiles.basemaps.cartocdn.com/v/20261026-01/vectortiles/carto.streets/v2/{z}/{x}/{y}.mvt`
+
+データの出どころ (地図の帰属表示と画面の最下部 500 字、2026-11-12):
+
+- 地図の帰属表示: 「© OpenStreetMap contributors © CARTO」

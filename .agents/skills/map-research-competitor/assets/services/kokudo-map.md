@@ -32,3 +32,7 @@
 - `https://cyberjapandata.gsi.go.jp/xyz/pale/{z}/{x}/{y}.png`
 - `https://data.nanase.cc/national-routes.pmtiles`
 - `https://data.nanase.cc/prefectural-routes.pmtiles`
+
+データの出どころ (地図の帰属表示と画面の最下部 500 字、2026-11-12):
+
+- 地図の帰属表示: 「国土地理院 | 道路データ © OpenStreetMap contributors (ODbL 1.0)」

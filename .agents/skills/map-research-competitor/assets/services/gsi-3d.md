@@ -33,3 +33,7 @@
 - `https://cyberjapandata.gsi.go.jp/xyz/dem1a_png/{z}/{x}/{y}.png`
 - `https://cyberjapandata.gsi.go.jp/xyz/optimal_bvmap-v1/optimal_bvmap-v1.pmtiles`
 - `https://raw.githubusercontent.com/gsi-cyberjapan/3dpc-3dtiles/refs/heads/main/public/styles/std.json`
+
+データの出どころ (地図の帰属表示と画面の最下部 500 字、2026-11-12):
+
+- 地図の帰属表示: 「国土地理院最適化ベクトルタイル(標準地図風スタイル) | MapLibre」

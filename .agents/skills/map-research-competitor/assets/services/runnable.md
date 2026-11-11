@@ -31,3 +31,7 @@
 
 - `https://cyberjapandata.gsi.go.jp/xyz/hillshademap/{z}/{x}/{y}.png`
 - `https://cyberjapandata.gsi.go.jp/xyz/pale/{z}/{x}/{y}.png`
+
+データの出どころ (地図の帰属表示と画面の最下部 500 字、2026-11-12):
+
+- 画面の最下部ほか: 「地図: 国土地理院 ・ 区間データ: © OpenStreetMap contributors（ODbL） ・ 標高: 国土地理院 標高タイル ・ 公衆トイレの一部: 都府県・市のオープンデータ（CC BY など。点ごとに出典を表示）」

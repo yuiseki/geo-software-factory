@@ -35,3 +35,7 @@
 メモ:
 
 - 投稿の保存に Firestore を使っている
+
+データの出どころ (地図の帰属表示と画面の最下部 500 字、2026-11-12):
+
+- 地図の帰属表示: 「ver. 2026-11-08e ・ 地図データ © OpenStreetMap contributors（ODbL）・淡色の背景地図 国土地理院・シンプル地図 OpenFreeMap © OpenMapTiles・地名と施設 Overture Maps Foundation・Leaflet」 ／ 「地図データ © OpenStreetMap contributors（ODbL）・淡色の背景地図 国土地理院・シンプル地図 OpenFreeMap © OpenMapTiles・地名と施設 Overture Maps Foundation・Leaflet」

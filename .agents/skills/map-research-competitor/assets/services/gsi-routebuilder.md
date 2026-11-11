@@ -37,3 +37,7 @@
 
 - 経路探索は BRouter。OSM の公開の Overpass API (`overpass-api.de`) への通信があった
 - 峠や水場の名前は、地理院の注記 (`experimental_anno`) と OSM から取っている
+
+データの出どころ (地図の帰属表示と画面の最下部 500 字、2026-11-12):
+
+- 地図の帰属表示: 「地理院タイル, ルート: BRouter」 ／ 「© OpenStreetMap contributors」

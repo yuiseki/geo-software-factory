@@ -34,3 +34,7 @@
 メモ:
 
 - タイルは Firebase Hosting (`web.app`) に置いている
+
+データの出どころ (地図の帰属表示と画面の最下部 500 字、2026-11-12):
+
+- 画面の最下部ほか: 「The base map image is sourced from the internet and is used here for fan/educational purposes」(元の地図の画像の出典は書かれていない)

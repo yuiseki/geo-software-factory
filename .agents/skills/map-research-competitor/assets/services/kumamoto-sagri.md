@@ -32,3 +32,7 @@
 - `https://cyberjapandata.gsi.go.jp/xyz/seamlessphoto/{z}/{x}/{y}.jpg`
 - `https://kumamoto-quake-map.sagri.workers.dev/terra_tiles/{z}/{x}/{y}.webp`
 - `https://maps.gsi.go.jp/xyz/20260729kumamoto_yatsushiro_0729do_sokuho/{z}/{x}/{y}.png`
+
+データの出どころ (地図の帰属表示と画面の最下部 500 字、2026-11-12):
+
+- 地図の帰属表示: 「運営: サグリ株式会社, 地理院タイル（全国最新写真）, 提供：株式会社テラ・ラボ, 国土地理院（正射画像・速報 7/29撮影）, Sentinel-1 data: ESA/Copernicus／解析: サグリ／建物: OpenStreetMap (ODbL)」

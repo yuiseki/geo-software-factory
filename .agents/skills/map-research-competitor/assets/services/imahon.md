@@ -36,3 +36,7 @@
 - 全国の本屋を探す地図。画面に「この範囲 8673 軒」と出た。店とイベントの情報は AI で集めており、確かめきれていないところがあるとサイトで説明している
 - 店のデータは `/real/index.json` 1 本 (展開して 2.2 MB、転送 627 KB)、イベントは `/real/events.json`。MapLibre GL JS 5.6.0 を cdnjs から読む
 - Supabase の `data_edits_live` を開くたびに呼んでいた。利用者からの修正の受け付けに使っていると見られる (推測)
+
+データの出どころ (地図の帰属表示と画面の最下部 500 字、2026-11-12):
+
+- 地図の帰属表示: 「OpenFreeMap © OpenMapTiles Data from OpenStreetMap」

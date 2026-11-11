@@ -35,3 +35,7 @@
 - `https://searoute.info/style/sprite.json`
 - `https://searoute.info/style/sprite.png`
 - `https://tile.openstreetmap.jp/data/hoppo/{z}/{x}/{y}.pbf`
+
+データの出どころ (地図の帰属表示と画面の最下部 500 字、2026-11-12):
+
+- 地図の帰属表示: 「© OpenMapTiles © OpenStreetMap contributors」

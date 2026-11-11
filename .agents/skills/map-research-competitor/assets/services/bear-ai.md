@@ -3,6 +3,7 @@
 - URL: https://fukazawa-lab.github.io/japan-bear-map/index.html
 - 観測した日: 2026-11-11
 - 概要と収支を確かめた日: 2026-11-12
+- 探すときの語: クマ、熊、出没予測、遭遇リスク、AI 予測、獣害
 
 ## どんなサービスか
 

@@ -23,6 +23,7 @@ TODO_SKILL = re.compile(r"^- \[( |x)\] (\S+) \((\d+)/(\d+)\)$")
 TODO_FILE = re.compile(r"^  - \[( |x)\] (\S+)$")
 # What a competitor card must say beyond the technology: what the service is, for whom, and how it pays.
 CARD_ROWS = ("一行で", "提供する価値", "想定する利用者", "商用か非商用か", "推定の売上", "運営", "推定の運用費")
+SEARCH_WORDS = re.compile(r"^- 探すときの語: *(.*)$", re.M)
 CARD_ROW = re.compile(r"^\| ([^|]+?) \|(.*?)\|")
 
 
@@ -125,7 +126,12 @@ def check_cards(root: pathlib.Path, errors: list[str]) -> None:
         if card.name == "README.md":
             continue
         rel = card.relative_to(root).as_posix()
-        rows = {m[1]: m[2].strip() for line in card.read_text().splitlines() if (m := CARD_ROW.match(line))}
+        text = card.read_text()
+        rows = {m[1]: m[2].strip() for line in text.splitlines() if (m := CARD_ROW.match(line))}
+        # Names differ from the words people search with (生活利便性 vs 生活便利), so each card lists them.
+        words = SEARCH_WORDS.search(text)
+        if not words or not words[1].strip():
+            errors.append(f"{rel}: card has no words to search it by (- 探すときの語:)")
         for name in CARD_ROWS:
             if name not in rows:
                 errors.append(f"{rel}: card has no row '{name}'")

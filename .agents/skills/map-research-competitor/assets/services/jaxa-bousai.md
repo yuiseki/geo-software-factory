@@ -3,6 +3,7 @@
 - URL: https://daichi-bousai.dpif.jaxa.jp/static/html/pre_top.html
 - 観測した日: 2026-11-11
 - 概要と収支を確かめた日: 2026-11-12
+- 探すときの語: 人工衛星、衛星画像、だいち、防災、災害、JAXA、緊急観測
 
 ## どんなサービスか
 

@@ -3,6 +3,7 @@
 - URL: https://www.ri2maps-public.com/chiba-disaster-ri2maps-view/
 - 観測した日: 2026-11-11
 - 概要と収支を確かめた日: 2026-11-12
+- 探すときの語: 浸水、冠水、水害、千葉、災害アーカイブ、写真
 
 ## どんなサービスか
 

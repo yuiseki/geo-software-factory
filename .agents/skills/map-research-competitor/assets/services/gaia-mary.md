@@ -3,6 +3,7 @@
 - URL: https://valhovey.github.io/gaia-mary/
 - 観測した日: 2026-11-11
 - 概要と収支を確かめた日: 2026-11-12
+- 探すときの語: 星図、恒星、Gaia、宇宙、Project Hail Mary、小説、ファン
 
 ## どんなサービスか
 

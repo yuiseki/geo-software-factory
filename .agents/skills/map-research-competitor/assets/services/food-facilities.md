@@ -3,6 +3,7 @@
 - URL: https://gl20percentclub.github.io/japan-food-facilities/map.html
 - 観測した日: 2026-11-11
 - 概要と収支を確かめた日: 2026-11-12
+- 探すときの語: 飲食店、食品営業許可、飲食施設、オープンデータ、保健所、店舗
 
 ## どんなサービスか
 

@@ -3,6 +3,7 @@
 - URL: https://tiles.gsj.jp/tiles/pcpng/mixed/index.html
 - 観測した日: 2026-11-11
 - 概要と収支を確かめた日: 2026-11-12
+- 探すときの語: 点群、点群タイル、PNG タイル、3D、産総研、地質調査
 
 ## どんなサービスか
 

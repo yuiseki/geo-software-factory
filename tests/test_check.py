@@ -111,8 +111,8 @@ class CheckTest(unittest.TestCase):
         f = good_files()
         rows = "".join(f"| {r} | x |\n" for r in check.CARD_ROWS)
         f[".agents/skills/demo/assets/services/README.md"] = "# index\n"
-        f[".agents/skills/demo/assets/services/good.md"] = f"# good\n\n| 項目 | 内容 |\n|---|---|\n{rows}"
-        f[".agents/skills/demo/assets/services/thin.md"] = "# thin\n\n| 項目 | 内容 |\n|---|---|\n| 一行で | x |\n| 描画 | y |\n"
+        f[".agents/skills/demo/assets/services/good.md"] = f"# good\n\n- 探すときの語: x\n\n| 項目 | 内容 |\n|---|---|\n{rows}"
+        f[".agents/skills/demo/assets/services/thin.md"] = "# thin\n\n- 探すときの語: x\n\n| 項目 | 内容 |\n|---|---|\n| 一行で | x |\n| 描画 | y |\n"
         f[".agents/skills/TODO.md"] = "# TODO\n\n- [x] demo (3/3)\n  - [x] SKILL.md\n  - [x] references/a.md\n  - [x] assets/services/\n"
         errors, _ = self.run_check(f)
         thin = [e for e in errors if "assets/services/" in e]
@@ -121,7 +121,7 @@ class CheckTest(unittest.TestCase):
     def test_a_card_row_left_empty_is_an_error(self):
         f = good_files()
         rows = "".join(f"| {r} | {'' if r == '運営' else 'x'} |\n" for r in check.CARD_ROWS)
-        f[".agents/skills/demo/assets/services/a.md"] = f"# a\n\n| 項目 | 内容 |\n|---|---|\n{rows}"
+        f[".agents/skills/demo/assets/services/a.md"] = f"# a\n\n- 探すときの語: x\n\n| 項目 | 内容 |\n|---|---|\n{rows}"
         f[".agents/skills/TODO.md"] = "# TODO\n\n- [x] demo (3/3)\n  - [x] SKILL.md\n  - [x] references/a.md\n  - [x] assets/services/\n"
         errors, _ = self.run_check(f)
         self.assertEqual([e for e in errors if "assets/services/" in e], [".agents/skills/demo/assets/services/a.md: card row '運営' is empty"])
@@ -129,10 +129,23 @@ class CheckTest(unittest.TestCase):
     def test_app_cards_are_checked_like_service_cards(self):
         f = good_files()
         f[".agents/skills/demo/assets/apps/README.md"] = "# index\n"
-        f[".agents/skills/demo/assets/apps/thin.md"] = "# thin\n\n| 項目 | 内容 |\n|---|---|\n| 一行で | x |\n"
+        f[".agents/skills/demo/assets/apps/thin.md"] = "# thin\n\n- 探すときの語: x\n\n| 項目 | 内容 |\n|---|---|\n| 一行で | x |\n"
         f[".agents/skills/TODO.md"] = "# TODO\n\n- [x] demo (3/3)\n  - [x] SKILL.md\n  - [x] references/a.md\n  - [x] assets/apps/\n"
         errors, _ = self.run_check(f)
         self.assertEqual([e for e in errors if "assets/apps/" in e], [f".agents/skills/demo/assets/apps/thin.md: card has no row '{r}'" for r in check.CARD_ROWS if r != "一行で"])
+
+    def test_every_card_lists_words_to_search_it_by(self):
+        f = good_files()
+        rows = "".join(f"| {r} | x |\n" for r in check.CARD_ROWS)
+        f[".agents/skills/demo/assets/services/with.md"] = f"# with\n\n- 探すときの語: 生活の便利さ、住みやすさ\n\n| 項目 | 内容 |\n|---|---|\n{rows}"
+        f[".agents/skills/demo/assets/services/without.md"] = f"# without\n\n| 項目 | 内容 |\n|---|---|\n{rows}"
+        f[".agents/skills/demo/assets/services/empty.md"] = f"# empty\n\n- 探すときの語: \n\n| 項目 | 内容 |\n|---|---|\n{rows}"
+        f[".agents/skills/TODO.md"] = "# TODO\n\n- [x] demo (3/3)\n  - [x] SKILL.md\n  - [x] references/a.md\n  - [x] assets/services/\n"
+        errors, _ = self.run_check(f)
+        self.assertEqual(sorted(e for e in errors if "assets/services/" in e), [
+            ".agents/skills/demo/assets/services/empty.md: card has no words to search it by (- 探すときの語:)",
+            ".agents/skills/demo/assets/services/without.md: card has no words to search it by (- 探すときの語:)",
+        ])
 
 
 if __name__ == "__main__":

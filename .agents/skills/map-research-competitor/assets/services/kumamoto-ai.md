@@ -3,6 +3,7 @@
 - URL: https://tomo3141592653.github.io/self-driving-ai-prototype/kumamoto-quake-2026/
 - 観測した日: 2026-11-11
 - 概要と収支を確かめた日: 2026-11-12
+- 探すときの語: 熊本地震、地震、災害、支援拠点、給水所、避難所、多言語
 
 ## どんなサービスか
 

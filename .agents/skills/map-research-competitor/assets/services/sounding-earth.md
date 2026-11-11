@@ -3,6 +3,7 @@
 - URL: https://musica-terra.com/interactive/the-sounding-earth/
 - 観測した日: 2026-11-11
 - 概要と収支を確かめた日: 2026-11-12
+- 探すときの語: 音楽、世界の音楽、文化圏、地球儀、試聴、音楽史
 
 ## どんなサービスか
 

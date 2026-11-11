@@ -7,14 +7,15 @@
 ## 流れ
 
 ```
-map-product-grilling -> map-compare-arch -> map-compare-infra -> map-compare-library -> map-legal-check
-(何を作るか)             (何をどこに置くか)   (どの地図データか)     (どのライブラリで描くか)  (公開の前に)
-                                            map-compare-data
-                                            (地図に載せる主題データ)
+map-product-grilling -> map-research-competitor -> map-compare-arch -> map-compare-infra -> map-compare-library -> map-legal-check
+(何を作るか)             (似たものと違い)            (何をどこに置くか)   (どの地図データか)     (どのライブラリで描くか)  (公開の前に)
+                                                                       map-compare-data
+                                                                       (地図に載せる主題データ)
 ```
 
 4 段階のほかのスキルは、次の場所で使う。
 
+- map-research-competitor: map-product-grilling で価値の芯 (一行の説明と価値の順位) が決まったあと、技術選定の前に使う。似たサービスを探して開き、本人が「使う」「貢献する」「違いを決めて作る」「学びのために作る」のどれにするかを選ぶ。違いを決めて作るなら、違いを生む機能を Must に入れ直すため map-product-grilling に戻ってよい
 - map-compare-data: 地図に載せる主題データ (施設、境界、統計、店舗など) が要るとき、map-compare-infra と並べて使う。背景の地図 (ベースマップ) と主題データは別々に選び、ライセンスを混ぜたときの条件はこのスキルで確かめる
 - map-compare-auth: ログインや、タイルとデータを限られた人だけに見せることが要るとき、map-compare-arch と並べて使う
 - map-compare-protocol: リアルタイムの配信や、OGC API、STAC、NGSI-LD などの標準での受け渡しが要るとき、map-compare-arch と並べて使う
@@ -29,6 +30,7 @@ map-product-grilling -> map-compare-arch -> map-compare-infra -> map-compare-lib
 | 段階 | 入口 (そろっていないと始めない) | 出口 (次の段階に渡すもの) |
 |---|---|---|
 | map-product-grilling | 「地図アプリを作りたい」など、誰に何の価値を届けるかが曖昧な依頼 | プロダクト概要: 一行の説明、利用者と場面、機能 (Must / Should / Could)、技術選定に渡す要件 |
+| map-research-competitor | プロダクト概要の一行の説明と、本人が並べた価値の順位 | プロダクト概要の「似たサービスと違い」: 探した経路と検索語、比べた表、本人が選んだ進め方、違いを生む機能 |
 | map-compare-arch | 要る機能、データの大きさと対象範囲、ルールの強制 (アクセス制御、不正の防止) の有無、対象端末 | 機能 × 要素 (保存、計算、表現) の置き場所の表。外部の API に任せる機能と、自前で持つ機能。次の段階への条件 (例: PMTiles を読めること、Wasm のスレッドを使うならクロスオリジン分離) |
 | map-compare-infra | 利用形態 (商用か、公共案件か、受託か)、規模 (月間の地図表示回数)、対象地域。map-compare-arch の結果 (自前配信か、外部の供給元か) | 推奨する供給元と費用表。ライブラリへの制約 (例: Geolonia Maps のタイルは Geolonia Maps SDK を通して使うのが推奨で、他のライブラリからはサポート外、Google のタイルは Google 以外の地図と併用できない) |
 | map-compare-library | 対象端末、配布形態 (SaaS、ストア配布、受託納品、OSS)。map-compare-infra の結果 (タイルの供給元) | 推奨するライブラリ・SDK と、配布形態ごとのライセンスの注意 |
@@ -38,6 +40,7 @@ map-product-grilling -> map-compare-arch -> map-compare-infra -> map-compare-lib
 | 依頼の状態 | 使うスキル |
 |---|---|
 | 「地図アプリを作りたい」など、誰に何の価値を届けるかがまだ曖昧 | map-product-grilling |
+| 作りたいものと似たサービスがあるか知りたい、車輪の再発明にならないか確かめたい | map-research-competitor |
 | 要件は固まっていて、保存・計算・表現をクラウド、エッジ、ブラウザ/アプリのどこに置くかを決めたい (自前配信、オフライン、検索やルート検索を自前で持つ、正本の DB) | map-compare-arch |
 | 要件は固まっていて、タイル/地図データ/POI 検索の提供元を選びたい | map-compare-infra |
 | 要件は固まっていて、描画ライブラリ/SDK を選びたい (Web、ネイティブアプリ、複数 SDK の抽象化層) | map-compare-library |

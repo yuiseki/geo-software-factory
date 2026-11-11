@@ -49,6 +49,7 @@
 - [熊出没マップ2026年 - 全国165,975件 - クママップ](../services/kumamap.md)
 - [LivMap (リブマップ) - チームで使う共有地図](../services/livmap.md)
 - [Mapillary](../services/mapillary.md)
+- [MapQuest](../services/mapquest.md)
 - [地図マピオン（Mapion）｜地図検索/ルート検索/天気予報](../services/mapion.md)
 - [OsmAnd Map](../services/osmand.md)
 - [裁判官マップ - 日本地図から裁判官を探す ｜ 裁判官マップ](../services/saibankan.md)

@@ -20,6 +20,7 @@
 
 | 項目 | 観測したもの |
 |---|---|
+| 種類 | ウェブと iOS、Android のアプリ (技術の欄はウェブの観測。アプリの中は開いていない) |
 | 描画 | 地図ライブラリの名前は見つからなかった |
 | フレームワーク | 見つからなかった |
 | 背景の地図とタイル | 自前のタイル (サイトと同じドメイン) |
@@ -34,6 +35,11 @@
 - `https://tiles.zoom.earth/geocolor/himawari/2026-11-10/{z}/{x}/{y}/28.jpg`
 - `https://tiles.zoom.earth/geocolor/himawari/2026-11-10/{z}/{x}/{y}/29.jpg`
 - `https://tiles.zoom.earth/geocolor/himawari/2026-11-10/{z}/{x}/{y}/30.jpg`
+
+ストアの表示 (2026-11-12):
+
+- App Store: Zoom Earth - 天気予報、降水マップ、販売元 Neave Interactive Limited、無料、評価 690 件 (平均 4.7)、初出 2023-06-27、最新の更新 2026-10-21 (https://apps.apple.com/jp/app/id1531561063)
+- Google Play: `com.neave.zoomearth`、500万+ ダウンロード、アプリ内購入 あり
 
 メモ:
 

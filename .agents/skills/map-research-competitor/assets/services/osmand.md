@@ -20,6 +20,7 @@
 
 | 項目 | 観測したもの |
 |---|---|
+| 種類 | ウェブと iOS、Android のアプリ (技術の欄はウェブの観測。アプリの中は開いていない) |
 | 描画 | Leaflet |
 | フレームワーク | 見つからなかった |
 | 背景の地図とタイル | OsmAnd のタイル、自前のタイル (サイトと同じドメイン) |
@@ -30,3 +31,8 @@
 
 - `https://maptile.osmand.net/tile/styles`
 - `https://tile.osmand.net/hd/{z}/{x}/{y}.png`
+
+ストアの表示 (2026-11-12):
+
+- App Store: OsmAnd - マップ＆ナビゲーション オフライン、販売元 OsmAND B.V.、無料、評価 153 件 (平均 4.2)、初出 2015-04-21、最新の更新 2026-10-23 (https://apps.apple.com/jp/app/id934850257)
+- Google Play: `net.osmand`、1,000万+ ダウンロード、アプリ内購入 あり

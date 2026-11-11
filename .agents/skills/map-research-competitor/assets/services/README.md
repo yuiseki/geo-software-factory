@@ -9,7 +9,7 @@
 
 ## 読むときの注意
 
-- 技術は 2026-11-11、どんなサービスかは 2026-11-12 の観測で、その後に作りが変わっていることがある。結論に使う前に、そのサービスを開き直す
+- 技術は 2026-11-11 (2026-11-12 に足した 13 枚は 2026-11-12)、どんなサービスかは 2026-11-12 の観測で、その後に作りが変わっていることがある。結論に使う前に、そのサービスを開き直す
 - 外から見えた範囲だけを書いている。どんなサービスかは、トップページと、運営者、料金、寄付、特定商取引法の表記のページ (見つかったものだけ) を読んで書いた。「見つからなかった」は「使っていない」ではない (1 つにまとめた JavaScript の中や、別のページにある地図は見えない)
 - 描画のライブラリは、ページの DOM (`maplibregl-map` などのクラス) と、読み込んだ JavaScript の中の文字列で判定した。版は JavaScript の中に版の文字列が見えたときだけ書いた
 - 配信は応答ヘッダー (`server`、`cf-ray`、`x-vercel-id`、`x-github-request-id`、`x-amz-cf-id` など) で判定した。Cloudflare はプロキシとして前に置かれるので、その後ろの配信元は分からないことがある
@@ -32,6 +32,7 @@
 | [Custom Sydney Maps - Floor Plans On A Map](castlemap.md) | 個人 | 商用と見られる | - | Apache/2.4.58 (Ubuntu) (配信先の事業者は不明) |
 | [全国地番マップ｜公図（法務局地図）・地番図を全国で検索・ダウンロード](chiban.md) | 団体 | 商用 | MapLibre GL JS | Cloudflare |
 | [ChizuZu - 地図比較アプリ](chizuzu.md) | 個人と見られる | 非商用 | Leaflet | Cloudflare |
+| [JR東海道本線（東京〜熱海）｜吉田初三郎風・鳥瞰路線図](chokanzu.md) | 個人 | 非商用と見られる | - | Cloudflare |
 | [CSTB Japan and NW Pacific 2026](cstb.md) | 個人と見られる | 非商用 | Leaflet 1.9.4 | Cloudflare |
 | [方位図法世界地図作成ツール](cubbit.md) | 個人 | 非商用 | Google Maps JavaScript API | Cloudflare |
 | [ダジック・アース - ダジック・アース](dagik.md) | 団体と大学 | 非商用 | - | Cloudflare |
@@ -43,19 +44,23 @@
 | [GeoConfirmed - Open-Source Conflict Geolocation & Verification](geoconfirmed.md) | 団体 | 非商用と見られる | MapLibre GL JS | Cloudflare |
 | [GeoLens: Open-Source Geospatial Data Catalog & Map Builder](geolens.md) | 団体 | 非商用 | - | Cloudflare |
 | [Global Threat Map ｜ Intelligence Platform](globalthreatmap.md) | 未確認 | 商用と見られる | Mapbox GL JS | Railway |
+| [God's Eye View ｜ Official Site: Real-Time 3D Globe](godseyeview.md) | 企業 | 商用と見られる | - | Cloudflare |
 | [ゴミ箱マップ ｜ 街中のゴミ箱情報をシェアしよう！](gomibako.md) | 個人と見られる | 商用 | Leaflet | nginx (配信先の事業者は不明) |
 | [印刷地図作成ツール - 移転のお知らせ](gpxmapprint.md) | 個人と見られる | 非商用と見られる | - | nginx (配信先の事業者は不明) |
 | [電力系統マップ - Electrical Grid Map](grid.md) | 個人と見られる | 非商用と見られる | - | Cloudflare |
 | [3次元地図可視化サイト](gsi-3d.md) | 公的機関 | 非商用 | MapLibre GL JS | GitHub Pages |
+| [地理院ルートビルダー｜峠名がわかる自転車ルート作成（GPX無料）](gsi-routebuilder.md) | 個人と見られる | 商用 | Leaflet | nginx (配信先の事業者は不明) |
 | [点群PNGタイルの実例](gsj-pcpng.md) | 公的機関 | 非商用 | - | Amazon S3 + CloudFront |
 | [どこでも北海道マップ](hokkaido-map.md) | 個人と見られる | 非商用 | Leaflet | GitHub Pages |
 | [探す｜今からほんや](imahon.md) | 個人 | 非商用と見られる | MapLibre GL JS 5.6.0 | Cloudflare |
 | [【推し活カフェ】日本最大級の推し活・コラボカフェ検索 ｜ imako推し活カフェ](imako.md) | 企業 | 商用 | - | Cloudflare |
 | [自分のサーバーで日本地図を表示する｜Japan PMTiles](japan-pmtiles.md) | 個人 | 非商用 | MapLibre GL JS | nginx (配信先の事業者は不明) |
 | [防災インタフェース](jaxa-bousai.md) | 公的機関 | 非商用 | - | volt-adc (配信先の事業者は不明) |
+| [日本地図の陣とりバトル](jintori.md) | 個人と見られる | 非商用と見られる | - | nginx/1.24.0 (Ubuntu) (配信先の事業者は不明) |
 | [JP Market Vis - 日本の上場企業マップ](jp-market-vis.md) | 個人 | 非商用 | - | GitHub Pages |
 | [ライブハウス検索マップ - JVMAP｜全国の音楽会場を地図で探す](jvmap.md) | 企業 | 商用 | MapLibre GL JS | Vercel |
 | [令和8年熊本地震関連情報 - 紙マップ](kamimap.md) | 団体 | 非商用 | MapLibre GL JS、Mapbox GL JS | GitHub Pages |
+| [県境王｜KSKだぜGAMES](kenkyo.md) | 個人と見られる | 非商用と見られる | - | Cloudflare |
 | [全球大気の流れ、寒気・暖気の状況：2026年10月25日12UTC ｜ 気温のページ ｜ 気温データから地球大気を見る](kion.md) | 個人 | 商用 | Google Maps JavaScript API | nginx (配信先の事業者は不明) |
 | [国会議員マップ - あなたに近い議員がわかる](kokkaimap.md) | 個人 | 商用 | - | Vercel |
 | [国道マップ](kokudo-map.md) | 個人 | 非商用 | MapLibre GL JS | Cloudflare 経由の GitHub Pages |
@@ -83,22 +88,28 @@
 | [withfs ニュースマップ｜ニュースの舞台を地図で俯瞰する ｜ withfs](newsmap.md) | 個人と見られる | 商用 | - | Google (Blogger) |
 | [電界強度マップ - 電磁環境研究室モニタリングプロジェクト](nict-emc.md) | 公的機関 | 非商用 | - | Apache (配信先の事業者は不明) |
 | [earth :: a global map of wind, weather, and ocean conditions](nullschool.md) | 企業 | 商用 | - | Cloudflare |
+| [OpenGeocode: free, open-source, self-hosted geocoding](opengeocode.md) | 団体 | 非商用 | - | Cloudflare |
 | [Open Infrastructure Map](openinframap.md) | 個人 | 非商用 | MapLibre GL JS | Cloudflare |
 | [OsmAnd Map](osmand.md) | 企業 | 商用 | Leaflet | nginx/1.18.0 (Ubuntu) (配信先の事業者は不明) |
 | [国勢調査 メッシュ年齢構成クラスターマップ](popbalance.md) | 個人 | 非商用 | MapLibre GL JS | GitHub Pages |
 | [全国農業用ため池マップについて ｜ 全国Q地図](qchizu-pond.md) | 個人か団体 | 商用 | - | Cloudflare |
+| [Relief Fiddler Demo](relief-fiddler.md) | 企業 | 非商用と見られる | MapLibre GL JS | nginx (配信先の事業者は不明) |
 | [Rennes Transit Map - Visualisation temps réel du réseau STAR](rennes-transit.md) | 個人 | 非商用 | MapLibre GL JS | GitHub Pages |
 | [令和８年千葉連続風水害 復旧・復興アーカイブ ｜ Ri2MAPS](ri2maps.md) | 未確認 | 非商用と見られる | Leaflet 1.9.4 | Apache (配信先の事業者は不明) |
 | [全国のトレランコースと大会コース｜Runnable](runnable.md) | 個人と見られる | 商用 | MapLibre GL JS | Vercel |
 | [裁判官マップ - 日本地図から裁判官を探す ｜ 裁判官マップ](saibankan.md) | 個人 | 非商用と見られる | - | Cloudflare |
 | [おでかけ航路マップ ｜ 日本全国の旅客船・フェリー航路情報と時刻表リンク](searoute.md) | 個人 | 商用 | MapLibre GL JS | Cloudflare |
+| [生活利便性マップ](seikatsu-map.md) | 個人 | 非商用 | Leaflet 1.9.4 | Cloudflare |
 | [せんべろ東京マップ（東京都内の立ち飲み・大衆酒場・居酒屋を地図から検索） ｜ せんべろnet](senbero.md) | 個人 | 商用 | Google Maps JavaScript API | nginx (配信先の事業者は不明) |
 | [showhand - 全晒しAI不動産周辺マップ](showhand.md) | 企業 | 商用 | - | Vercel |
 | [SNS災害情報集約マップAI](solafune-alert.md) | 企業 | 商用と見られる | MapLibre GL JS | Amazon S3 + CloudFront |
 | [THE SOUNDING EARTH](sounding-earth.md) | 企業か個人 | 商用 | three.js | nginx (静的な配信) |
+| [Sunlit Earth: Earth from space as your wallpaper](sunlit-earth.md) | 個人か有志 | 非商用 | - | Cloudflare |
 | [世界のライブカメラ地図｜いま見れるライブ映像 - たま旅ライブ](tamatabi.md) | 個人と見られる | 商用 | MapLibre GL JS 4.7.1、D3 | Vercel |
+| [Dig a Hole to China? See Where You'd Come Out ｜ Through Earth](throughearth.md) | 個人 | 非商用 | three.js | Cloudflare |
 | [TokyoMap（東京都地図情報サイト）](tokyomap.md) | 公的機関 | 非商用 | Google Maps JavaScript API | Amazon S3 + CloudFront |
 | [日本のライブカメラ地図 ｜ とまり木](tomarigi.md) | 企業 | 商用 | Leaflet | Cloudflare |
+| [trainsworld](trainsworld.md) | 個人 | 非商用 | MapLibre GL JS | Cloudflare 経由の GitHub Pages |
 | [Trip Planner 山行計画サポートマップ｜日本雪崩ネットワーク](tripplanner.md) | 団体 | 商用 | - | Cloudflare |
 | [uMap - Online map creator](umap.md) | 団体 | 非商用 | Leaflet | nginx/1.31.6 (配信先の事業者は不明) |
 | [Urbanist Map](urbanistmap.md) | 個人 | 非商用 | MapLibre GL JS | Cloudflare |
@@ -106,8 +117,10 @@
 | [Trump Deadline Countdown ｜ CENTCOM Theater Operations Map ｜ US vs Iran Force Tracker](usvsiran.md) | 個人 | 非商用と見られる | Leaflet | Cloudflare |
 | [V2X2MAP - live receiver and map for ITS-G5 / V2X](v2x2map.md) | 個人と見られる | 商用 | - | Cloudflare |
 | [WAR 3.0 - Live World War 3 Heat Map & Real-Time Conflict Tracker](warheatmap.md) | 個人と見られる | 非商用と見られる | MapLibre GL JS 4.7.1 | Cloudflare |
+| [Watched · Something watched you this week](watched-earth.md) | 個人 | 非商用 | - | Vercel |
 | [Interactive Map (WebMCP)](webmcp-gmap.md) | 個人と見られる | 非商用 | Google Maps JavaScript API | Cloudflare |
 | [非公式 山岡家 Map](yamaokaya.md) | 個人 | 非商用 | MapLibre GL JS | Amazon S3 + CloudFront |
+| [YAMAP / ヤマップ ｜ 登山をもっと楽しく、登山情報プラットフォーム](yamap.md) | 企業 | 商用 | - | CloudFront 経由 (配信元は不明) |
 | [気象衛星とレーダーマップ ｜ Zoom Earth](zoomearth.md) | 企業 | 商用 | - | Cloudflare |
 
 ## カードを足すとき

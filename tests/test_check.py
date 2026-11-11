@@ -126,6 +126,14 @@ class CheckTest(unittest.TestCase):
         errors, _ = self.run_check(f)
         self.assertEqual([e for e in errors if "assets/services/" in e], [".agents/skills/demo/assets/services/a.md: card row '運営' is empty"])
 
+    def test_app_cards_are_checked_like_service_cards(self):
+        f = good_files()
+        f[".agents/skills/demo/assets/apps/README.md"] = "# index\n"
+        f[".agents/skills/demo/assets/apps/thin.md"] = "# thin\n\n| 項目 | 内容 |\n|---|---|\n| 一行で | x |\n"
+        f[".agents/skills/TODO.md"] = "# TODO\n\n- [x] demo (3/3)\n  - [x] SKILL.md\n  - [x] references/a.md\n  - [x] assets/apps/\n"
+        errors, _ = self.run_check(f)
+        self.assertEqual([e for e in errors if "assets/apps/" in e], [f".agents/skills/demo/assets/apps/thin.md: card has no row '{r}'" for r in check.CARD_ROWS if r != "一行で"])
+
 
 if __name__ == "__main__":
     unittest.main()

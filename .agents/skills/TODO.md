@@ -4,11 +4,12 @@
   - [x] SKILL.md
   - [x] references/question-bank.md
   - [x] assets/product-brief-template.md
-- [x] map-research-competitor (4/4)
+- [x] map-research-competitor (5/5)
   - [x] SKILL.md
   - [x] references/search-channels.md
   - [x] references/comparison.md
   - [x] assets/services/
+  - [x] assets/apps/
 - [x] map-compare-arch (21/21)
   - [x] SKILL.md
   - [x] references/criteria.md

@@ -120,7 +120,8 @@ def check_todo(root: pathlib.Path, errors: list[str]) -> None:
 
 
 def check_cards(root: pathlib.Path, errors: list[str]) -> None:
-    for card in sorted((root / ".agents/skills").glob("*/assets/services/*.md")):
+    cards = [*(root / ".agents/skills").glob("*/assets/services/*.md"), *(root / ".agents/skills").glob("*/assets/apps/*.md")]
+    for card in sorted(cards):
         if card.name == "README.md":
             continue
         rel = card.relative_to(root).as_posix()

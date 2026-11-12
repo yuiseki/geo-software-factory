@@ -1,16 +1,16 @@
 # TODO
 
-- [x] map-product-grilling (3/3)
+- [x] geo-software-product-grilling (3/3)
   - [x] SKILL.md
   - [x] references/question-bank.md
   - [x] assets/product-brief-template.md
-- [x] map-research-competitor (5/5)
+- [x] geo-software-research-competitor (5/5)
   - [x] SKILL.md
   - [x] references/search-channels.md
   - [x] references/comparison.md
   - [x] assets/services/
   - [x] assets/apps/
-- [x] map-compare-arch (21/21)
+- [x] geo-software-arch (21/21)
   - [x] SKILL.md
   - [x] references/criteria.md
   - [x] references/self-hosting.md
@@ -32,7 +32,7 @@
   - [x] references/edge/near-user-servers.md
   - [x] references/app/native-runtime.md
   - [x] references/hosting/static-hosting.md
-- [x] map-compare-infra (27/27)
+- [x] geo-software-infra (27/27)
   - [x] SKILL.md
   - [x] references/criteria.md
   - [x] references/providers/tile-openstreetmap-org.md
@@ -60,7 +60,7 @@
   - [x] references/3d/plateau.md
   - [x] references/niche.md
   - [x] references/providers/mierune.md
-- [x] map-compare-library (33/33)
+- [x] geo-software-library (33/33)
   - [x] SKILL.md
   - [x] references/criteria.md
   - [x] references/libraries/leaflet.md
@@ -94,7 +94,7 @@
   - [x] references/niche.md
   - [x] references/frameworks/no-code-maps.md
   - [x] references/full-scratch.md
-- [x] map-compare-data (15/15)
+- [x] geo-software-data (15/15)
   - [x] SKILL.md
   - [x] references/criteria.md
   - [x] references/license-mixing.md
@@ -110,7 +110,7 @@
   - [x] references/ai-collected-data.md
   - [x] references/sources/jma.md
   - [x] references/sources/live-tracking.md
-- [x] map-legal-check (9/9)
+- [x] geo-software-legal-check (9/9)
   - [x] SKILL.md
   - [x] references/api-terms.md
   - [x] references/attribution.md
@@ -120,7 +120,7 @@
   - [x] references/survey-act.md
   - [x] references/youtube-embed.md
   - [x] references/itunes-search-api.md
-- [x] map-ux-design (8/8)
+- [x] geo-software-ux-design (8/8)
   - [x] SKILL.md
   - [x] references/accessibility.md
   - [x] references/cartography.md
@@ -129,20 +129,20 @@
   - [x] references/many-features.md
   - [x] references/mobile-interaction.md
   - [x] references/search-ux.md
-- [x] map-poc-measure (6/6)
+- [x] geo-software-poc-measure (6/6)
   - [x] SKILL.md
   - [x] references/data-size.md
   - [x] references/device-testing.md
   - [x] references/map-load-estimation.md
   - [x] references/render-performance.md
   - [x] references/tiles-per-view.md
-- [x] map-ops (5/5)
+- [x] geo-software-ops (5/5)
   - [x] SKILL.md
   - [x] references/api-key-management.md
   - [x] references/data-update.md
   - [x] references/fallback.md
   - [x] references/usage-monitoring.md
-- [x] map-compare-auth (15/15)
+- [x] geo-software-auth (15/15)
   - [x] SKILL.md
   - [x] references/criteria.md
   - [x] references/niche.md
@@ -158,7 +158,7 @@
   - [x] references/providers/supabase-auth.md
   - [x] references/providers/workos.md
   - [x] references/tile-access-control.md
-- [x] map-compare-protocol (11/11)
+- [x] geo-software-protocol (11/11)
   - [x] SKILL.md
   - [x] references/criteria.md
   - [x] references/realtime/mqtt.md
@@ -170,19 +170,19 @@
   - [x] references/standards/ogc-classic.md
   - [x] references/standards/sensorthings.md
   - [x] references/standards/stac-api.md
-- [x] map-migrate (5/5)
+- [x] geo-software-migrate (5/5)
   - [x] SKILL.md
   - [x] references/from-google-maps.md
   - [x] references/from-leaflet-raster.md
   - [x] references/from-mapbox.md
   - [x] references/migration-plan.md
-- [ ] map-app-growth (0/1)
+- [ ] geo-software-growth (0/1)
   - [ ] SKILL.md
-- [ ] map-app-monetize (0/1)
+- [ ] geo-software-monetize (0/1)
   - [ ] SKILL.md
 
 ## 候補 (まだ作るか決めていない)
 
 - ネイティブ向けの追加候補: HERE SDK, ArcGIS Maps SDK, クロスプラットフォーム (react-native-maps, Flutter の地図プラグイン)
-- 自前配信の追加 (map-compare-arch): 生成ツール (Planetiler, tilemaker) ごとに reference を分けるか
+- 自前配信の追加 (geo-software-arch): 生成ツール (Planetiler, tilemaker) ごとに reference を分けるか
 - 保留したリポジトリ: maplibre-rs, osgEarth, GeoLibre, zarr-gl / zarr-layer, tangram

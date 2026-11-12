@@ -7,51 +7,54 @@
 ## 流れ
 
 ```
-map-product-grilling -> map-research-competitor -> map-compare-arch -> map-compare-infra -> map-compare-library -> map-legal-check
-(何を作るか)             (似たものと違い)            (何をどこに置くか)   (どの地図データか)     (どのライブラリで描くか)  (公開の前に)
-                                                                       map-compare-data
-                                                                       (地図に載せる主題データ)
+geo-software-product-grilling       何を作るか
+  -> geo-software-research-competitor  似たものと違い
+  -> geo-software-arch                 何をどこに置くか
+  -> geo-software-infra                どの地図データか
+     (並べて geo-software-data)        地図に載せる主題データ
+  -> geo-software-library              どのライブラリで描くか
+  -> geo-software-legal-check          公開の前に
 ```
 
 4 段階のほかのスキルは、次の場所で使う。
 
-- map-research-competitor: map-product-grilling で価値の芯 (一行の説明と価値の順位) が決まったあと、技術選定の前に使う。似たサービスを探して開き、本人が「使う」「貢献する」「違いを決めて作る」「学びのために作る」のどれにするかを選ぶ。違いを決めて作るなら、違いを生む機能を Must に入れ直すため map-product-grilling に戻ってよい
-- map-compare-data: 地図に載せる主題データ (施設、境界、統計、店舗など) が要るとき、map-compare-infra と並べて使う。背景の地図 (ベースマップ) と主題データは別々に選び、ライセンスを混ぜたときの条件はこのスキルで確かめる
-- map-compare-auth: ログインや、タイルとデータを限られた人だけに見せることが要るとき、map-compare-arch と並べて使う
-- map-compare-protocol: リアルタイムの配信や、OGC API、STAC、NGSI-LD などの標準での受け渡しが要るとき、map-compare-arch と並べて使う
-- map-ux-design: ライブラリが決まったあと、画面と操作を設計するときに使う。結果はプロダクト概要の「画面と操作」の節に書く
-- map-poc-measure: 費用やデータの大きさなど、数字が比較の結論を左右するとき、どの段階からでも使う。測った値を、その段階に戻して比べ直す
-- map-legal-check: 公開の前に、最後に使う。帰属表示、ODbL、写真の帰属、測量法、位置情報、地図 API の規約を確かめる
-- map-ops: 公開したあとの運用 (API キー、利用量と予算、データの更新、障害のときの切り替え) で使う
-- map-migrate: 既存の地図を別のサービスやライブラリへ乗り換えるとき、map-product-grilling の代わりの入口として使う。移行先の選定は map-compare-infra と map-compare-library に回す
+- geo-software-research-competitor: geo-software-product-grilling で価値の芯 (一行の説明と価値の順位) が決まったあと、技術選定の前に使う。似たサービスを探して開き、本人が「使う」「貢献する」「違いを決めて作る」「学びのために作る」のどれにするかを選ぶ。違いを決めて作るなら、違いを生む機能を Must に入れ直すため geo-software-product-grilling に戻ってよい
+- geo-software-data: 地図に載せる主題データ (施設、境界、統計、店舗など) が要るとき、geo-software-infra と並べて使う。背景の地図 (ベースマップ) と主題データは別々に選び、ライセンスを混ぜたときの条件はこのスキルで確かめる
+- geo-software-auth: ログインや、タイルとデータを限られた人だけに見せることが要るとき、geo-software-arch と並べて使う
+- geo-software-protocol: リアルタイムの配信や、OGC API、STAC、NGSI-LD などの標準での受け渡しが要るとき、geo-software-arch と並べて使う
+- geo-software-ux-design: ライブラリが決まったあと、画面と操作を設計するときに使う。結果はプロダクト概要の「画面と操作」の節に書く
+- geo-software-poc-measure: 費用やデータの大きさなど、数字が比較の結論を左右するとき、どの段階からでも使う。測った値を、その段階に戻して比べ直す
+- geo-software-legal-check: 公開の前に、最後に使う。帰属表示、ODbL、写真の帰属、測量法、位置情報、地図 API の規約を確かめる
+- geo-software-ops: 公開したあとの運用 (API キー、利用量と予算、データの更新、障害のときの切り替え) で使う
+- geo-software-migrate: 既存の地図を別のサービスやライブラリへ乗り換えるとき、geo-software-product-grilling の代わりの入口として使う。移行先の選定は geo-software-infra と geo-software-library に回す
 
 各段階は、入口の条件がそろったら始め、出口のものを出したら次へ進む。依頼が途中の段階だけ (例: 「Leaflet と MapLibre どっち」) なら、その段階の入口の条件がそろっているかを確かめて、そこから始める。前の段階を飛ばした場合は、飛ばした段階で決まるはずのこと (例: タイルの供給元) を仮の前提として答えに書く。
 
 | 段階 | 入口 (そろっていないと始めない) | 出口 (次の段階に渡すもの) |
 |---|---|---|
-| map-product-grilling | 「地図アプリを作りたい」など、誰に何の価値を届けるかが曖昧な依頼 | プロダクト概要: 一行の説明、利用者と場面、機能 (Must / Should / Could)、技術選定に渡す要件 |
-| map-research-competitor | プロダクト概要の一行の説明と、本人が並べた価値の順位 | プロダクト概要の「似たサービスと違い」: 探した経路と検索語、比べた表、本人が選んだ進め方、違いを生む機能 |
-| map-compare-arch | 要る機能、データの大きさと対象範囲、ルールの強制 (アクセス制御、不正の防止) の有無、対象端末 | 機能 × 要素 (保存、計算、表現) の置き場所の表。外部の API に任せる機能と、自前で持つ機能。次の段階への条件 (例: PMTiles を読めること、Wasm のスレッドを使うならクロスオリジン分離) |
-| map-compare-infra | 利用形態 (商用か、公共案件か、受託か)、規模 (月間の地図表示回数)、対象地域。map-compare-arch の結果 (自前配信か、外部の供給元か) | 推奨する供給元と費用表。ライブラリへの制約 (例: Geolonia Maps のタイルは Geolonia Maps SDK を通して使うのが推奨で、他のライブラリからはサポート外、Google のタイルは Google 以外の地図と併用できない) |
-| map-compare-library | 対象端末、配布形態 (SaaS、ストア配布、受託納品、OSS)。map-compare-infra の結果 (タイルの供給元) | 推奨するライブラリ・SDK と、配布形態ごとのライセンスの注意 |
+| geo-software-product-grilling | 「地図アプリを作りたい」など、誰に何の価値を届けるかが曖昧な依頼 | プロダクト概要: 一行の説明、利用者と場面、機能 (Must / Should / Could)、技術選定に渡す要件 |
+| geo-software-research-competitor | プロダクト概要の一行の説明と、本人が並べた価値の順位 | プロダクト概要の「似たサービスと違い」: 探した経路と検索語、比べた表、本人が選んだ進め方、違いを生む機能 |
+| geo-software-arch | 要る機能、データの大きさと対象範囲、ルールの強制 (アクセス制御、不正の防止) の有無、対象端末 | 機能 × 要素 (保存、計算、表現) の置き場所の表。外部の API に任せる機能と、自前で持つ機能。次の段階への条件 (例: PMTiles を読めること、Wasm のスレッドを使うならクロスオリジン分離) |
+| geo-software-infra | 利用形態 (商用か、公共案件か、受託か)、規模 (月間の地図表示回数)、対象地域。geo-software-arch の結果 (自前配信か、外部の供給元か) | 推奨する供給元と費用表。ライブラリへの制約 (例: Geolonia Maps のタイルは Geolonia Maps SDK を通して使うのが推奨で、他のライブラリからはサポート外、Google のタイルは Google 以外の地図と併用できない) |
+| geo-software-library | 対象端末、配布形態 (SaaS、ストア配布、受託納品、OSS)。geo-software-infra の結果 (タイルの供給元) | 推奨するライブラリ・SDK と、配布形態ごとのライセンスの注意 |
 
 ## どのスキルを使うか
 
 | 依頼の状態 | 使うスキル |
 |---|---|
-| 「地図アプリを作りたい」など、誰に何の価値を届けるかがまだ曖昧 | map-product-grilling |
-| 作りたいものと似たサービスがあるか知りたい、車輪の再発明にならないか確かめたい | map-research-competitor |
-| 要件は固まっていて、保存・計算・表現をクラウド、エッジ、ブラウザ/アプリのどこに置くかを決めたい (自前配信、オフライン、検索やルート検索を自前で持つ、正本の DB) | map-compare-arch |
-| 要件は固まっていて、タイル/地図データ/POI 検索の提供元を選びたい | map-compare-infra |
-| 要件は固まっていて、描画ライブラリ/SDK を選びたい (Web、ネイティブアプリ、複数 SDK の抽象化層) | map-compare-library |
-| 地図に載せる主題データ (施設、境界、統計など) の出どころを選びたい | map-compare-data |
-| 認証、権限、タイルやデータへのアクセス制御を決めたい | map-compare-auth |
-| リアルタイムの配信や、地理空間の API の標準 (OGC API、WMS、NGSI-LD など) を決めたい | map-compare-protocol |
-| 地図の画面と操作を設計したい (大量の地物、検索、現在地、モバイル、アクセシビリティ) | map-ux-design |
-| 技術選定の結論を左右する値 (タイル数、表示回数、データの大きさ、端末での動作) を測りたい | map-poc-measure |
-| 公開の前に、法令、規約、帰属表示を確かめたい | map-legal-check |
-| API キー、利用量、データの更新、障害への備えを運用したい | map-ops |
-| 既存の地図を別のサービスやライブラリへ乗り換えたい | map-migrate |
+| 「地図アプリを作りたい」など、誰に何の価値を届けるかがまだ曖昧 | geo-software-product-grilling |
+| 作りたいものと似たサービスがあるか知りたい、車輪の再発明にならないか確かめたい | geo-software-research-competitor |
+| 要件は固まっていて、保存・計算・表現をクラウド、エッジ、ブラウザ/アプリのどこに置くかを決めたい (自前配信、オフライン、検索やルート検索を自前で持つ、正本の DB) | geo-software-arch |
+| 要件は固まっていて、タイル/地図データ/POI 検索の提供元を選びたい | geo-software-infra |
+| 要件は固まっていて、描画ライブラリ/SDK を選びたい (Web、ネイティブアプリ、複数 SDK の抽象化層) | geo-software-library |
+| 地図に載せる主題データ (施設、境界、統計など) の出どころを選びたい | geo-software-data |
+| 認証、権限、タイルやデータへのアクセス制御を決めたい | geo-software-auth |
+| リアルタイムの配信や、地理空間の API の標準 (OGC API、WMS、NGSI-LD など) を決めたい | geo-software-protocol |
+| 地図の画面と操作を設計したい (大量の地物、検索、現在地、モバイル、アクセシビリティ) | geo-software-ux-design |
+| 技術選定の結論を左右する値 (タイル数、表示回数、データの大きさ、端末での動作) を測りたい | geo-software-poc-measure |
+| 公開の前に、法令、規約、帰属表示を確かめたい | geo-software-legal-check |
+| API キー、利用量、データの更新、障害への備えを運用したい | geo-software-ops |
+| 既存の地図を別のサービスやライブラリへ乗り換えたい | geo-software-migrate |
 | 技術選定を頼まれたが、要件が聞き出せていない | 下の「要件が足りないときの判定」に従う |
 
 ## 要件が足りないときの判定
@@ -59,7 +62,7 @@ map-product-grilling -> map-research-competitor -> map-compare-arch -> map-compa
 各段階の入口の条件 (上の表) を、依頼とプロダクト概要から読み取る。
 
 - 足りないのが 1〜2 項目なら、その段階のスキルの中で聞く。選択肢で答えられる形にし、1 回に聞く数を絞る。
-- 足りないのが 3 項目以上か、「誰に何の価値を届けるか」が答えられないなら、比較に入らずに map-product-grilling から始める。
+- 足りないのが 3 項目以上か、「誰に何の価値を届けるか」が答えられないなら、比較に入らずに geo-software-product-grilling から始める。
 - 推測で埋めて比較に入らない。どうしても先に進むときは、仮に置いた値を答えの冒頭に書き、その値が変わると推奨が変わることを書く。
 
 ## 段階どうしが制約し合うとき
@@ -69,15 +72,15 @@ map-product-grilling -> map-research-competitor -> map-compare-arch -> map-compa
 - 地図データの供給元が決まっている (既存の契約、公共案件で公的データを使う): その供給元の規約が、置き場所とライブラリを縛る。例: Google のタイルは Google 以外の地図と併用できない。Mapbox のタイルはモバイルでは Mapbox の SDK を通してしか使えない。Geolonia Maps のタイルは Geolonia Maps SDK を通して使うのが推奨で、他のライブラリから使うのはサポート外になる。Google の Map Tiles API はキャッシュを許さないので、オフラインに置く案が外れる。
 - ライブラリが決まっている (既存のアプリ、社内の標準): そのライブラリで表示してよい供給元と、読める形式 (PMTiles、MLT、3D Tiles) だけを候補にする。
 - 置き場所が決まっている (閉域網、オフライン): 外部の API に任せる案が外れ、自前配信かオンプレ版のある製品、端末に置ける形式に限られる。
-- 同じ供給元でも、ライブラリによって課金単位が変わる (Mapbox は Web の GL JS なら地図ロード、モバイルの SDK なら MAU、他のライブラリから直接タイルを取るとタイルのリクエスト数。MapTiler は自社の SDK なら地図の表示回数、直接タイルを取るとタイルのリクエスト数)。ライブラリを決めたら、map-compare-infra の費用に戻って計算し直す。
+- 同じ供給元でも、ライブラリによって課金単位が変わる (Mapbox は Web の GL JS なら地図ロード、モバイルの SDK なら MAU、他のライブラリから直接タイルを取るとタイルのリクエスト数。MapTiler は自社の SDK なら地図の表示回数、直接タイルを取るとタイルのリクエスト数)。ライブラリを決めたら、geo-software-infra の費用に戻って計算し直す。
 - 後の段階で前の段階の前提が崩れたら (例: 選んだライブラリが必要な形式を読めない)、前の段階に戻って、崩れた前提だけを入れ替えて比べ直す。
-- map-compare-data で選んだ主題データの大きさや形式が、map-compare-arch で置いた前提 (件数、更新頻度、配る形式) と食い違ったら、arch に戻る。食い違わなければ、data の結果をプロダクト概要の「主題データ」の節に書き足すだけでよい。
+- geo-software-data で選んだ主題データの大きさや形式が、geo-software-arch で置いた前提 (件数、更新頻度、配る形式) と食い違ったら、arch に戻る。食い違わなければ、data の結果をプロダクト概要の「主題データ」の節に書き足すだけでよい。
 
 ## スキル間の受け渡し
 
 1 つの依頼で複数のスキルを続けて使うときは、プロダクト概要のファイルで受け渡す。
 
-- 形式: [.agents/skills/map-product-grilling/assets/product-brief-template.md](.agents/skills/map-product-grilling/assets/product-brief-template.md) のひな形に従う。
+- 形式: [.agents/skills/geo-software-product-grilling/assets/product-brief-template.md](.agents/skills/geo-software-product-grilling/assets/product-brief-template.md) のひな形に従う。
 - 置き場所: 利用者の作業ディレクトリの `product-brief.md`。利用者が別の場所を指定したらそれに従う。ファイルを作れない環境では、会話の中に同じ形で書く。
 - 各段階は、決めたことをひな形の「技術選定の結果」の自分の節に書き足す。前の段階の節は書き換えず、前提が崩れたときは「まだ決まっていないこと」に書いて前の段階に戻る。
 

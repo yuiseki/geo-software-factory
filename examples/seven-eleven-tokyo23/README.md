@@ -8,9 +8,9 @@
 
 | 段階 | スキル | 決めたこと |
 |---|---|---|
-| データの出どころ | map-compare-data | 店舗は OSM、確かめ用に Overture Maps の places と AllThePlaces。区の境界は国土数値情報の行政区域 (N03) 2026 年版 (CC BY 4.0) |
-| 描き方 | map-compare-library | Geolonia Maps の embed v6 のコロプレス (HTML の属性だけ)。静止画として撮る |
-| 公開の前 | map-legal-check | OSM (ODbL) と国土数値情報の出典表示、Geolonia Maps の地図の静止画の扱い |
+| データの出どころ | geo-software-data | 店舗は OSM、確かめ用に Overture Maps の places と AllThePlaces。区の境界は国土数値情報の行政区域 (N03) 2026 年版 (CC BY 4.0) |
+| 描き方 | geo-software-library | Geolonia Maps の embed v6 のコロプレス (HTML の属性だけ)。静止画として撮る |
+| 公開の前 | geo-software-legal-check | OSM (ODbL) と国土数値情報の出典表示、Geolonia Maps の地図の静止画の扱い |
 
 ## 数え比べた結果
 
@@ -23,7 +23,7 @@
 | AllThePlaces (`seven_eleven_jp`、2026-11-05 収集) | 0 | 全国でちょうど 6,000 件で打ち切られており、東京都の店舗が入っていなかった |
 | セブン-イレブン・ジャパンの公表値 | 東京都全体で 2,945 (2026 年 10 月末) | 区ごとの数は公表されていない |
 
-この図は区ごとの店舗数をそのまま塗っている。区の面積と人口は大きく違うので、区どうしを比べるなら、面積あたりか人口あたりに直したほうがよい (map-ux-design の cartography)。依頼が「区ごとの数」だったので、数のまま描いた。
+この図は区ごとの店舗数をそのまま塗っている。区の面積と人口は大きく違うので、区どうしを比べるなら、面積あたりか人口あたりに直したほうがよい (geo-software-ux-design の cartography)。依頼が「区ごとの数」だったので、数のまま描いた。
 
 区ごとの正解の数は手に入らなかったので、図は OSM の数で描き、そのことを図に書いた。Overture の数は区ごとに OSM の 1.15 倍 (台東区) から 1.63 倍 (荒川区) で、この差は、取りこぼしと重複のどちらが大きいかを確かめられていない。
 

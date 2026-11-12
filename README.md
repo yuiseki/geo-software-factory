@@ -40,19 +40,19 @@
 
 | スキル | 使う場面 | 状態 |
 |---|---|---|
-| [map-product-grilling](.agents/skills/map-product-grilling/SKILL.md) | 作りたい地図プロダクトの価値と機能が曖昧なとき、明確になるまで、選択肢つきの質問を 1 問ずつ重ねて問い詰める | 書いた |
-| [map-research-competitor](.agents/skills/map-research-competitor/SKILL.md) | 似たサービスを探して開き、価値、データ、機能を比べて、使う、貢献する、違いを決めて作る、のどれにするかを本人が選ぶ | 書いた |
-| [map-compare-arch](.agents/skills/map-compare-arch/SKILL.md) | 保存・計算・表現を、クラウド、エッジ、ブラウザ/アプリのどこに置くかを機能ごとに決める (自前配信、ブラウザの API の活用を含む) | 書いた |
-| [map-compare-infra](.agents/skills/map-compare-infra/SKILL.md) | 地図タイルサービス (OSM, OpenFreeMap, Mapbox, Google Maps, Geolonia Maps, HERE, MapFan API など) を要件に照らして選ぶ | 書いた |
-| [map-compare-library](.agents/skills/map-compare-library/SKILL.md) | 地図ライブラリ (Leaflet, MapLibre GL JS, Mapbox GL JS, Google Maps JS API, CesiumJS など)、ネイティブアプリ向け SDK、複数 SDK の抽象化層 (MapConductor など) を要件に照らして選ぶ | 書いた |
-| [map-compare-data](.agents/skills/map-compare-data/SKILL.md) | 地図に載せる主題データ (OSM、Overture、国土数値情報、統計、チェーン店の店舗など) の出どころを選ぶ | 書いた |
-| [map-legal-check](.agents/skills/map-legal-check/SKILL.md) | 公開の前に、帰属表示、ODbL、測量法、位置情報と個人情報、地図 API の規約を確かめる | 書いた |
-| [map-compare-auth](.agents/skills/map-compare-auth/SKILL.md) | 認証と認可の仕組み、タイルやデータへのアクセス制御を選ぶ | 書いた |
-| [map-compare-protocol](.agents/skills/map-compare-protocol/SKILL.md) | リアルタイムの配信と、地理空間の API の標準 (OGC API、WMS、NGSI-LD など) を選ぶ | 書いた |
-| [map-ux-design](.agents/skills/map-ux-design/SKILL.md) | 地図の UI と UX (大量の地物、検索、現在地、モバイル、アクセシビリティ) を設計する | 書いた |
-| [map-poc-measure](.agents/skills/map-poc-measure/SKILL.md) | タイル数、表示回数、データの大きさ、端末での動作を試作して測る | 書いた |
-| [map-ops](.agents/skills/map-ops/SKILL.md) | API キー、利用量と予算、データの更新、障害時の切り替えを運用する | 書いた |
-| [map-migrate](.agents/skills/map-migrate/SKILL.md) | Google Maps、Mapbox、Leaflet などからの乗り換えを計画する | 書いた |
+| [geo-software-product-grilling](.agents/skills/geo-software-product-grilling/SKILL.md) | 作りたい地図プロダクトの価値と機能が曖昧なとき、明確になるまで、選択肢つきの質問を 1 問ずつ重ねて問い詰める | 書いた |
+| [geo-software-research-competitor](.agents/skills/geo-software-research-competitor/SKILL.md) | 似たサービスを探して開き、価値、データ、機能を比べて、使う、貢献する、違いを決めて作る、のどれにするかを本人が選ぶ | 書いた |
+| [geo-software-arch](.agents/skills/geo-software-arch/SKILL.md) | 保存・計算・表現を、クラウド、エッジ、ブラウザ/アプリのどこに置くかを機能ごとに決める (自前配信、ブラウザの API の活用を含む) | 書いた |
+| [geo-software-infra](.agents/skills/geo-software-infra/SKILL.md) | 地図タイルサービス (OSM, OpenFreeMap, Mapbox, Google Maps, Geolonia Maps, HERE, MapFan API など) を要件に照らして選ぶ | 書いた |
+| [geo-software-library](.agents/skills/geo-software-library/SKILL.md) | 地図ライブラリ (Leaflet, MapLibre GL JS, Mapbox GL JS, Google Maps JS API, CesiumJS など)、ネイティブアプリ向け SDK、複数 SDK の抽象化層 (MapConductor など) を要件に照らして選ぶ | 書いた |
+| [geo-software-data](.agents/skills/geo-software-data/SKILL.md) | 地図に載せる主題データ (OSM、Overture、国土数値情報、統計、チェーン店の店舗など) の出どころを選ぶ | 書いた |
+| [geo-software-legal-check](.agents/skills/geo-software-legal-check/SKILL.md) | 公開の前に、帰属表示、ODbL、測量法、位置情報と個人情報、地図 API の規約を確かめる | 書いた |
+| [geo-software-auth](.agents/skills/geo-software-auth/SKILL.md) | 認証と認可の仕組み、タイルやデータへのアクセス制御を選ぶ | 書いた |
+| [geo-software-protocol](.agents/skills/geo-software-protocol/SKILL.md) | リアルタイムの配信と、地理空間の API の標準 (OGC API、WMS、NGSI-LD など) を選ぶ | 書いた |
+| [geo-software-ux-design](.agents/skills/geo-software-ux-design/SKILL.md) | 地図の UI と UX (大量の地物、検索、現在地、モバイル、アクセシビリティ) を設計する | 書いた |
+| [geo-software-poc-measure](.agents/skills/geo-software-poc-measure/SKILL.md) | タイル数、表示回数、データの大きさ、端末での動作を試作して測る | 書いた |
+| [geo-software-ops](.agents/skills/geo-software-ops/SKILL.md) | API キー、利用量と予算、データの更新、障害時の切り替えを運用する | 書いた |
+| [geo-software-migrate](.agents/skills/geo-software-migrate/SKILL.md) | Google Maps、Mapbox、Leaflet などからの乗り換えを計画する | 書いた |
 
 進み具合は [.agents/skills/TODO.md](.agents/skills/TODO.md)。スキルの使い分けはエージェント向けに [AGENTS.md](AGENTS.md) に書く。
 
@@ -75,7 +75,7 @@ reference の事実 (料金、規約、ライセンス、版) は 2026-11-10 に
 
 ```sh
 npx skills add yuiseki/geo-software-factory                       # 全部のスキル
-npx skills add yuiseki/geo-software-factory --skill map-compare-library  # 1 つだけ
+npx skills add yuiseki/geo-software-factory --skill geo-software-library  # 1 つだけ
 ```
 
 この CLI が入れるのはスキルのディレクトリだけで、リポジトリ直下の [AGENTS.md](AGENTS.md) (どの段階でどのスキルを使うかの案内) は入らない。流れに沿って使いたいときは、AGENTS.md の中身を入れ先の AGENTS.md に写す。スキルは 1 つずつでも働くように書いてある。
@@ -98,19 +98,19 @@ LICENSE                   Apache License 2.0
 .agents/skills/
   AGENTS.md               スキルを書く人向けの決まり
   TODO.md                 執筆の進み具合
-  map-product-grilling/
-  map-research-competitor/
-  map-compare-arch/
-  map-compare-infra/
-  map-compare-library/
-  map-compare-data/
-  map-legal-check/
-  map-ux-design/
-  map-poc-measure/
-  map-ops/
-  map-compare-auth/
-  map-compare-protocol/
-  map-migrate/
+  geo-software-product-grilling/
+  geo-software-research-competitor/
+  geo-software-arch/
+  geo-software-infra/
+  geo-software-library/
+  geo-software-data/
+  geo-software-legal-check/
+  geo-software-ux-design/
+  geo-software-poc-measure/
+  geo-software-ops/
+  geo-software-auth/
+  geo-software-protocol/
+  geo-software-migrate/
 docs/images/              README の図
 scripts/check.py          公開前の検査 (tests/ にそのテスト)
 examples/                 スキルを通した記録 (seven-eleven-tokyo23、unlock-your-trip)

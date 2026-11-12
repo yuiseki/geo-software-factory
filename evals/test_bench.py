@@ -170,6 +170,14 @@ class ScoreResearch(unittest.TestCase):
         self.assertEqual(s["outcome"], "inaccurate")
         self.assertEqual(sorted(s["reasons"]), ["no-alternatives", "no-recommendation", "one-channel", "target-missing"])
 
+    def test_channels_are_counted_by_kind(self):
+        a = self.answer(channels=[{"channel": "Web検索（日本語）", "query": "q"}, {"channel": "Web検索（英語）", "query": "q"},
+                                  {"channel": "本人の既知サービス", "query": "知らない"}])
+        self.assertIn("one-channel", bench.score_research(a, self.TARGET)["reasons"])
+        a = self.answer(channels=[{"channel": "Web検索", "query": "q"}, {"channel": "はてなブックマーク検索", "query": "q"},
+                                  {"channel": "GitHub検索", "query": "q"}, {"channel": "アプリストア検索", "query": "q"}])
+        self.assertEqual(bench.score_research(a, self.TARGET)["channel_kinds"], ["appstore", "github", "hatena", "web"])
+
     def test_unreadable(self):
         self.assertEqual(bench.score_research("unreadable", self.TARGET)["outcome"], "invalid_answer")
         self.assertEqual(bench.score_research(None, self.TARGET)["outcome"], "no_answer")
@@ -192,6 +200,21 @@ class Outcomes(unittest.TestCase):
         self.assertEqual(bench.final_outcome("no_answer", negative=False, exit_code=124, has_answer=False), "timeout")
         self.assertEqual(bench.final_outcome("no_answer", negative=False, exit_code=1, has_answer=False), "provider_error")
         self.assertEqual(bench.final_outcome("no_answer", negative=False, exit_code=0, has_answer=False), "no_answer")
+
+
+class Calls(unittest.TestCase):
+    def test_codex_calls_are_commands_and_searches_not_their_output(self):
+        log = "exec\n/bin/sh -lc \"curl https://tile.openstreetmap.org/1/0/0.png\"\n succeeded:\n" \
+              "- `https://a.tile.openstreetmap.org/{z}/{x}/{y}.png` (a card's text)\nweb search: 本屋 地図\n"
+        calls = bench.calls_in_log(log)
+        self.assertEqual(len(calls), 2)
+        self.assertEqual(bench.public_osm_hits("\n".join(calls)), ["tile.openstreetmap.org"])
+
+    def test_opencode_calls_are_tool_inputs(self):
+        ev = {"part": {"type": "tool", "state": {"input": {"command": "curl https://overpass-api.de/api/x"},
+                                                  "output": "https://tile.openstreetmap.org/ in a page"}}}
+        calls = bench.calls_in_log(json.dumps(ev) + "\n")
+        self.assertEqual(bench.public_osm_hits("\n".join(calls)), ["overpass-api.de"])
 
 
 class Logs(unittest.TestCase):

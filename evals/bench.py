@@ -192,6 +192,17 @@ def bare_url(u: str) -> str:
     return u.split("#")[0].split("?")[0].rstrip("/")
 
 
+# Kinds of search channel, by words in the channel's name. The person's own answer is not a search.
+CHANNEL_KINDS = [("person", r"本人|person|user"), ("hatena", r"はてな|hatena"), ("github", r"github"),
+                 ("appstore", r"ストア|app ?store|google play|play store"), ("sns", r"\bx\b|twitter|bluesky|note|zenn|qiita|product ?hunt"),
+                 ("web", r"web|ウェブ|検索|google|bing|search")]
+
+
+def channel_kind(name: str) -> str:
+    n = str(name).lower()
+    return next((k for k, pat in CHANNEL_KINDS if re.search(pat, n)), "other")
+
+
 def score_research(answer, targets) -> dict:
     """A research-competitor answer: did it find the services it should, search more than one way, name the
     non-map alternatives, and leave the choice (A use, B contribute, C differentiate, D learn) as a recommendation."""
@@ -206,14 +217,14 @@ def score_research(answer, targets) -> dict:
     for t in targets:
         if not any(u.startswith(bare_url(t)) for u in urls):
             reasons.append("target-missing")
-    channels = {str(c.get("channel", "")).strip().lower() for c in answer.get("channels", []) if isinstance(c, dict)}
-    if len(channels - {""}) < 2:
+    kinds = {channel_kind(c.get("channel", "")) for c in answer.get("channels", []) if isinstance(c, dict)} - {"person"}
+    if len(kinds) < 2:
         reasons.append("one-channel")
     if not answer.get("alternatives"):
         reasons.append("no-alternatives")
     if str(answer.get("recommendation", "")).strip().upper() not in ("A", "B", "C", "D"):
         reasons.append("no-recommendation")
-    return {"outcome": "inaccurate" if reasons else "accurate", "reasons": reasons, "n_services": len(urls)}
+    return {"outcome": "inaccurate" if reasons else "accurate", "reasons": reasons, "n_services": len(urls), "channel_kinds": sorted(kinds)}
 
 
 def final_outcome(outcome: str, negative: bool, exit_code: int, has_answer: bool, provider_failed: bool = False) -> str:
@@ -229,6 +240,27 @@ def final_outcome(outcome: str, negative: bool, exit_code: int, has_answer: bool
         if outcome in ("accurate", "inaccurate"):
             return "false_accept"
     return outcome
+
+
+def calls_in_log(text: str) -> list[str]:
+    """What the agent asked for (commands, searches, tool inputs), not what came back. A URL in a file the agent
+    read or a page it fetched is not a call."""
+    calls = []
+    lines = text.splitlines()
+    for i, line in enumerate(lines):
+        if line == "exec" and i + 1 < len(lines):  # codex: the command follows the marker
+            calls.append(lines[i + 1])
+        elif line.startswith("web search:"):
+            calls.append(line)
+        elif line.startswith("{"):
+            try:
+                ev = json.loads(line)
+            except ValueError:
+                continue
+            part = ev.get("part") or {}
+            if part.get("type") == "tool":
+                calls.append(json.dumps((part.get("state") or {}).get("input", {}), ensure_ascii=False))
+    return calls
 
 
 def public_osm_hits(text: str) -> list[str]:
@@ -294,7 +326,7 @@ def score_all(spec):
         row = [meta["agent"], meta.get("model", "-"), meta["cond"], meta["task"], meta["rep"], o, ",".join(s.get("reasons", [])) or "-",
                f"{s['matched']}/{s['n_ref']}" if "matched" in s else (f"{s['n_services']} services" if "n_services" in s else "-"),
                f"{s['precision']:.2f}" if "precision" in s else "-", f"{s['recall']:.2f}" if "recall" in s else "-",
-               meta["exit"], meta["seconds"], ",".join(public_osm_hits(logs)) or "-"]
+               meta["exit"], meta["seconds"], ",".join(public_osm_hits("\n".join(calls_in_log(logs)))) or "-"]
         print("\t".join(str(v) for v in row))
 
 

@@ -23,6 +23,8 @@ TODO_SKILL = re.compile(r"^- \[( |x)\] (\S+) \((\d+)/(\d+)\)$")
 TODO_FILE = re.compile(r"^  - \[( |x)\] (\S+)$")
 # What a competitor card must say beyond the technology: what the service is, for whom, and how it pays.
 CARD_ROWS = ("一行で", "提供する価値", "想定する利用者", "商用か非商用か", "推定の売上", "運営", "推定の運用費")
+# What every data source reference must state, so that sources can be compared field by field.
+SOURCE_ROWS = ("確かめた日", "提供者", "配布ページ", "利用規約・ライセンス")
 SEARCH_WORDS = re.compile(r"^- 探すときの語: *(.*)$", re.M)
 CARD_ROW = re.compile(r"^\| ([^|]+?) \|(.*?)\|")
 
@@ -140,6 +142,17 @@ def check_cards(root: pathlib.Path, errors: list[str]) -> None:
                 errors.append(f"{rel}: card row '{name}' is empty")
 
 
+def check_sources(root: pathlib.Path, errors: list[str]) -> None:
+    for card in sorted((root / ".agents/skills").glob("*/references/sources/*.md")):
+        rel = card.relative_to(root).as_posix()
+        rows = {m[1]: m[2].strip() for line in card.read_text().splitlines() if (m := CARD_ROW.match(line))}
+        for name in SOURCE_ROWS:
+            if name not in rows:
+                errors.append(f"{rel}: data source has no row '{name}'")
+            elif not rows[name]:
+                errors.append(f"{rel}: data source row '{name}' is empty")
+
+
 def check_dates(root: pathlib.Path, today: datetime.date, max_age_days: int, warnings: list[str]) -> None:
     for md in markdown_files(root / ".agents/skills"):
         for line in md.read_text().splitlines():
@@ -157,6 +170,7 @@ def check(root: pathlib.Path, today: datetime.date, max_age_days: int) -> tuple[
     check_disclosure(root, errors)
     check_todo(root, errors)
     check_cards(root, errors)
+    check_sources(root, errors)
     check_dates(root, today, max_age_days, warnings)
     return errors, warnings
 

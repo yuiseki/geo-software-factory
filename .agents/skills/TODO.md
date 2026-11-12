@@ -211,12 +211,14 @@
   - [x] references/testing.md
   - [x] references/data.md
   - [x] references/pitfalls.md
-- [x] geo-software-deploy (5/5)
+- [x] geo-software-deploy (7/7)
   - [x] SKILL.md
   - [x] references/preflight.md
   - [x] references/cloudflare-workers.md
   - [x] references/verify.md
   - [x] references/publish-repo.md
+  - [x] scripts/smoke.py
+  - [x] scripts/test_smoke.py
 - [ ] geo-software-growth (0/1)
   - [ ] SKILL.md
 - [ ] geo-software-monetize (0/1)

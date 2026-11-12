@@ -148,6 +148,13 @@ class Outcomes(unittest.TestCase):
         self.assertEqual(bench.final_outcome("accurate", negative=True, exit_code=0, has_answer=True), "false_accept")
         self.assertEqual(bench.final_outcome("inaccurate", negative=True, exit_code=0, has_answer=True), "false_accept")
 
+    def test_provider_failure_in_the_log_is_not_the_agents_outcome(self):
+        log = 'level=ERROR message="stream error" error.error="AI_APICallError: Free usage limit reached."'
+        self.assertEqual(bench.final_outcome("no_answer", negative=False, exit_code=124, has_answer=False,
+                                             provider_failed=bench.provider_failed(log)), "provider_error")
+        self.assertTrue(bench.provider_failed("Rate limit exceeded"))
+        self.assertFalse(bench.provider_failed("level=INFO message=ok"))
+
     def test_timeout_and_provider_error(self):
         self.assertEqual(bench.final_outcome("no_answer", negative=False, exit_code=124, has_answer=False), "timeout")
         self.assertEqual(bench.final_outcome("no_answer", negative=False, exit_code=1, has_answer=False), "provider_error")

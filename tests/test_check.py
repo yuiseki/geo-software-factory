@@ -82,6 +82,14 @@ class CheckTest(unittest.TestCase):
         self.assertIn("TODO.md: demo lists references/gone.md, which does not exist", errors)
         self.assertIn("TODO.md: demo says (1/2) but has 3/3", errors)
 
+    def test_data_source_cards_need_the_structured_rows(self):
+        f = good_files()
+        f[".agents/skills/demo/references/sources/x.md"] = "# x\n\n| 項目 | 値 |\n|---|---|\n| 確かめた日 | 2026-11-10 |\n| 提供者 | A |\n| 配布ページ | |\n"
+        f[".agents/skills/TODO.md"] = "# TODO\n\n- [x] demo (3/3)\n  - [x] SKILL.md\n  - [x] references/a.md\n  - [x] references/sources/\n"
+        errors, _ = self.run_check(f)
+        self.assertIn(".agents/skills/demo/references/sources/x.md: data source row '配布ページ' is empty", errors)
+        self.assertIn(".agents/skills/demo/references/sources/x.md: data source has no row '利用規約・ライセンス'", errors)
+
     def test_todo_ignores_python_bytecode_left_by_running_skill_scripts(self):
         f = good_files()
         f[".agents/skills/demo/references/__pycache__/a.cpython-312.pyc"] = "x"

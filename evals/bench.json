@@ -6,8 +6,18 @@
    "kind": "build",
    "contaminated": null,
    "brief": "task/data.csv は、東京都台東区の地点の一覧です。座標は平面直角座標系の第 IX 系 (JGD2011) で、単位はメートルです。この地点を Web の地図に載せたいです。",
-   "bbox": [139.770, 35.700, 139.800, 35.730],
-   "bbox_expect": [139.60, 35.60, 139.95, 35.85],
+   "bbox": [
+    139.77,
+    35.7,
+    139.8,
+    35.73
+   ],
+   "bbox_expect": [
+    139.6,
+    35.6,
+    139.95,
+    35.85
+   ],
    "epsg": 6677,
    "n": 30,
    "seed": 11,
@@ -19,11 +29,46 @@
    "negative": true,
    "contaminated": null,
    "brief": "task/data.csv は、地点の一覧です。座標の単位はメートルです。この地点を Web の地図に載せたいです。",
-   "bbox": [135.490, 34.680, 135.520, 34.710],
-   "bbox_expect": [122.0, 20.0, 154.0, 46.0],
+   "bbox": [
+    135.49,
+    34.68,
+    135.52,
+    34.71
+   ],
+   "bbox_expect": [
+    122.0,
+    20.0,
+    154.0,
+    46.0
+   ],
    "epsg": 6674,
    "n": 30,
    "seed": 12,
+   "tol_m": 1.0,
+   "retired": "2026-11-13: not a negative control. Uniform random points in central Osaka are recognisable: under zone VI every point is within 10 to 50 m of a POI in the vector tiles, under the other zones they fall in the sea or mountains, and a baseline agent found zone VI that way. Replaced by N2."
+  },
+  {
+   "id": "N2-plane-contradiction",
+   "kind": "build",
+   "negative": true,
+   "contaminated": null,
+   "brief": "task/data.csv は、東京都台東区の地点の一覧です。座標は平面直角座標系の第 IX 系 (JGD2011) で、単位はメートルです。この地点を Web の地図に載せたいです。",
+   "note": "The coordinates are really zone VI (EPSG:6674) points in central Osaka. Read as zone IX they fall near Izu Oshima, read as zone VI in Osaka: either way not in Taito. The right answer is to report the contradiction and not publish a map.",
+   "bbox": [
+    135.49,
+    34.68,
+    135.52,
+    34.71
+   ],
+   "bbox_expect": [
+    139.6,
+    35.6,
+    139.95,
+    35.85
+   ],
+   "epsg": 6674,
+   "n": 30,
+   "seed": 13,
    "tol_m": 1.0
   },
   {
@@ -31,7 +76,11 @@
    "kind": "decide",
    "contaminated": null,
    "brief": "iOS と Android のアプリを作ります。地図の描画には MapLibre Native を使い、背景地図に Mapbox のベクタータイルを表示します。切り替えで Google の Map Tiles API の衛星写真 (2D タイル) を重ねます。電波の届かない山の中でも使えるように、表示したタイルを端末に保存して、オフラインで表示します。\n\nこの計画が満たせない制約を、次の候補から全部選んでください。当てはまらないものは選ばないでください。\n\n- mapbox-tiles-need-mapbox-sdk-on-mobile: モバイルアプリで Mapbox のタイルを使うには、Mapbox のモバイル SDK を通す必要がある\n- google-tiles-not-with-other-maps: Google の地図のコンテンツは、Google 以外の地図と一緒に表示できない\n- google-tiles-no-offline-cache: Google の Map Tiles API のタイルは、端末に保存してオフラインで表示できない\n- maplibre-native-gpl: MapLibre Native は GPL なので、アプリのソースコードを公開する必要がある\n- maplibre-native-no-raster: MapLibre Native はラスタのタイル (衛星写真) を表示できない\n- mapbox-web-billed-by-mau: Mapbox は Web の Mapbox GL JS でも月間アクティブユーザー数で課金する",
-   "key": ["mapbox-tiles-need-mapbox-sdk-on-mobile", "google-tiles-not-with-other-maps", "google-tiles-no-offline-cache"]
+   "key": [
+    "mapbox-tiles-need-mapbox-sdk-on-mobile",
+    "google-tiles-not-with-other-maps",
+    "google-tiles-no-offline-cache"
+   ]
   }
  ]
 }

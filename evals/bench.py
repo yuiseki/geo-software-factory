@@ -35,9 +35,15 @@ sys.path.insert(0, str(ROOT / ".agents/skills/geo-software-eval/scripts"))
 import geocheck  # noqa: E402
 
 RUNNERS = {"opencode": HERE / "run_opencode_docker.sh", "codex": HERE / "run_codex_docker.sh"}
+# The model each runner uses when EVAL_MODEL is not set; recorded with every run.
+DEFAULT_MODEL = {"opencode": "opencode/deepseek-v4.1-flash-free", "codex": "codex default"}
 PUBLIC_OSM = re.compile(r"https?://((?:[a-z]\.)?tile\.openstreetmap\.org|nominatim\.openstreetmap\.org|overpass-api\.de|"
                         r"overpass\.kumi\.systems|api\.openstreetmap\.org)/")
 ATTRIBUTION = re.compile(r"OpenStreetMap", re.I)
+# The model provider failed, not the agent: a run that hit these is run again, not graded. OpenCode keeps retrying
+# silently on some of them, so the run can also end at the time limit (exit 124) with only this in its stderr.
+PROVIDER_FAILURE = re.compile(r"Free usage limit reached|Rate limit exceeded|Upstream request failed|"
+                              r"AI_APICallError|prepayment credits are depleted")
 
 
 def load_spec() -> dict:
@@ -176,8 +182,14 @@ def score_decide(answer, key) -> dict:
             "reasons": sorted(got ^ want)}
 
 
-def final_outcome(outcome: str, negative: bool, exit_code: int, has_answer: bool) -> str:
+def provider_failed(log_text: str) -> bool:
+    return bool(PROVIDER_FAILURE.search(log_text))
+
+
+def final_outcome(outcome: str, negative: bool, exit_code: int, has_answer: bool, provider_failed: bool = False) -> str:
     if not has_answer:
+        if provider_failed:
+            return "provider_error"
         if exit_code == 124:
             return "timeout"
         return "no_answer" if exit_code == 0 else "provider_error"
@@ -205,20 +217,23 @@ def run(spec, agent, cond, task_id, rep, minutes, rev):
     wd = prepare_workdir(ROOT, commit, d / "work", WORK / "tasks" / task_id / "task", cond == "skills")
     prompt = fill_prompt((HERE / "prompts" / f"{t['kind']}.md").read_text(encoding="utf-8"), "/work", cond == "skills", minutes)
     (d / "prompt.md").write_text(prompt, encoding="utf-8")
+    model = os.environ.get("EVAL_MODEL", DEFAULT_MODEL[agent])
     env = {**os.environ, "EVAL_MINUTES": str(minutes)}
+    if agent == "opencode":
+        env["EVAL_MODEL"] = model
     t0 = time.time()
     with open(d / "log.jsonl", "w") as log, open(d / "stderr.log", "w") as err:
         r = subprocess.run([str(RUNNERS[agent]), "--prompt", str(d / "prompt.md"), str(wd)], stdout=log, stderr=err, env=env)
     meta = {"agent": agent, "cond": cond, "task": task_id, "rep": rep, "exit": r.returncode, "rev": commit,
             "seconds": round(time.time() - t0), "minutes": minutes,
-            "model": os.environ.get("EVAL_MODEL", "runner default"), "image": os.environ.get("EVAL_IMAGE", "runner default")}
+            "model": model, "image": os.environ.get("EVAL_IMAGE", "runner default")}
     (d / "meta.json").write_text(json.dumps(meta, indent=2), encoding="utf-8")
     print(d, r.returncode, meta["seconds"])
 
 
 def score_all(spec):
     tasks = {t["id"]: t for t in spec["tasks"]}
-    cols = ["agent", "cond", "task", "rep", "outcome", "reasons", "matched", "precision", "recall", "exit", "seconds",
+    cols = ["agent", "model", "cond", "task", "rep", "outcome", "reasons", "matched", "precision", "recall", "exit", "seconds",
             "public_osm"]
     print("\t".join(cols))
     for m in sorted((WORK / "runs").glob("*/*/*/meta.json")):
@@ -234,9 +249,9 @@ def score_all(spec):
             key = json.loads((truth_dir / "key.json").read_text(encoding="utf-8"))
             s = score_decide(read_json(work / "answer.json"), key)
             has = (work / "answer.json").exists()
-        o = final_outcome(s["outcome"], t.get("negative", False), meta["exit"], has)
         logs = "".join(p.read_text(errors="replace") for p in (d / "log.jsonl", d / "stderr.log") if p.exists())
-        row = [meta["agent"], meta["cond"], meta["task"], meta["rep"], o, ",".join(s.get("reasons", [])) or "-",
+        o = final_outcome(s["outcome"], t.get("negative", False), meta["exit"], has, provider_failed(logs))
+        row = [meta["agent"], meta.get("model", "-"), meta["cond"], meta["task"], meta["rep"], o, ",".join(s.get("reasons", [])) or "-",
                f"{s['matched']}/{s['n_ref']}" if "matched" in s else "-",
                f"{s['precision']:.2f}" if "precision" in s else "-", f"{s['recall']:.2f}" if "recall" in s else "-",
                meta["exit"], meta["seconds"], ",".join(public_osm_hits(logs)) or "-"]

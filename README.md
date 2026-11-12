@@ -95,9 +95,22 @@ npx skills add yuiseki/geo-software-factory --skill geo-software-library  # 1 �
 
 この CLI が入れるのはスキルのディレクトリだけで、リポジトリ直下の [AGENTS.md](AGENTS.md) (どの段階でどのスキルを使うかの案内) は入らない。流れに沿って使いたいときは、AGENTS.md の中身を入れ先の AGENTS.md に写す。スキルは 1 つずつでも働くように書いてある。
 
+## プログラムが保証すること、スキルが導くこと
+
+スキルは手順と知識で、エージェントが従うかどうかは保証しない。同じスキルでも、エージェントやモデルによって結果は変わる。そこで、判定できるものはプログラムにし、スキルの効きは測る。
+
+| プログラムが判定する | 道具 |
+|---|---|
+| 配る GeoJSON の形、度の範囲、緯度と経度の取り違え、範囲の外、リングの閉じと自己交差、必ず要る属性 | [geocheck.py](.agents/skills/geo-software-eval/scripts/geocheck.py) |
+| 本番の疎通、状態コード、応答時間、`.git` や `.env` の露出、セキュリティのヘッダ、source map | [smoke.py](.agents/skills/geo-software-deploy/scripts/smoke.py) |
+| スキル集そのもの (frontmatter、行数、リンク、確認日、TODO の件数) | [scripts/check.py](scripts/check.py) |
+| スキルあり、なしで、同じエージェントが課題を解けるか | [evals/](evals/README.md) |
+
+スキルが導くだけのもの (まだプログラムで判定していないもの): 要件の聞き出し、データの出どころの選び方、ライセンスと規約の解釈、技術の選定、画面の設計。これらは、geo-software-eval のシナリオ (人間が昼に作り、別の評価者が判定する) と、evals の判断の課題で確かめる。evals の結果は [evals/results.md](evals/results.md) に置く。
+
 ## 書き足すとき
 
-`python3 scripts/check.py` で、frontmatter、SKILL.md の行数 (200 行まで)、リンク切れ、em ダッシュ、手元のパス、利害関係の開示の文面、TODO.md の一覧と件数を検査する。確認日 (「確かめた日」) が 90 日より古い reference は警告として出る。検査そのもののテストは `python3 -m unittest discover -s tests`。どちらも GitHub Actions で回る。スキルを書くときの決まりは [.agents/skills/AGENTS.md](.agents/skills/AGENTS.md)。
+`python3 scripts/check.py` で、frontmatter、SKILL.md の行数 (200 行まで)、リンク切れ、em ダッシュ、手元のパス、利害関係の開示の文面、TODO.md の一覧と件数を検査する。確認日 (「確かめた日」) が 90 日より古い reference は警告として出る。検査そのもののテストは `python3 -m unittest discover -s tests`、スキルに入れたスクリプトのテストは各スキルの `scripts/` の `test_*.py`、evals の道具のテストは `evals/test_bench.py`。どれも GitHub Actions で回る。スキルを書くときの決まりは [.agents/skills/AGENTS.md](.agents/skills/AGENTS.md)。
 
 ## 利害関係の開示
 
@@ -126,8 +139,14 @@ LICENSE                   Apache License 2.0
   geo-software-auth/
   geo-software-protocol/
   geo-software-migrate/
+  geo-software-eval/      scripts/geocheck.py を含む
+  geo-software-build/
+  geo-software-security-audit/
+  geo-software-deploy/    scripts/smoke.py を含む
+  geo-software-swarm/
 docs/images/              README の図
 scripts/check.py          公開前の検査 (tests/ にそのテスト)
+evals/                    スキルの効きを測る課題と道具 (作業場所には入らない)
 examples/                 スキルを通した記録 (seven-eleven-tokyo23、unlock-your-trip、livecam-wallpaper)
 ```
 

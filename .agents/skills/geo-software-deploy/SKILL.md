@@ -12,6 +12,7 @@ geo-software-build で完成の条件を満たしたものを、本番に出し�
 | [preflight](references/preflight.md) | 夜に入る前 (昼の準備) と、デプロイの直前 | 人間に先回りして頼むもの、値を出さずに確かめる方法 |
 | [cloudflare-workers](references/cloudflare-workers.md) | Cloudflare Workers と D1 に出すとき | マイグレーション、デプロイ、独自ドメイン、確かめ方、実際に踏んだ挙動 |
 | [verify](references/verify.md) | デプロイの後 | 本番の URL での確かめ方 |
+| [scripts/smoke.py](scripts/smoke.py) | デプロイの直後に | 本番の URL に GET だけで当て、疎通、状態コード、応答時間、`.git` や `.env` の露出、セキュリティのヘッダ、source map を判定する |
 | [publish-repo](references/publish-repo.md) | リポジトリを公開するとき | 公開前の履歴の点検、公開するブランチ、説明文 |
 
 ## 入力
@@ -25,7 +26,7 @@ geo-software-build で完成の条件を満たしたものを、本番に出し�
 1. 直前の確認: テスト、型検査、ビルドを通す。CLI が認証済みであること、使う鍵が設定されていることを、値を表示せずに確かめる ([preflight](references/preflight.md))。出す版が、評価者が最後に合格とした版と同じかを確かめる。合格のあとに変更を加えていたら、評価をやり直してから出す。
 2. DB のマイグレーション: 追加だけのもの (表や列を足す) は権限の範囲で当てる。消すもの、書き換えるもの (DROP、データの削除、型の変更) は取り消せないので、昼に承認を得ていなければ当てず、朝の報告に回す。
 3. デプロイ: 提供元の手順で出す ([cloudflare-workers](references/cloudflare-workers.md))。出た版の ID を記録する。
-4. 本番で確かめる ([verify](references/verify.md)): API と静的ファイルを取得し、geo-software-eval の評価者に、同じシナリオを本番の URL で動かしてもらう。代役で評価していた外部のサービスは、ここで本物で確かめる。デプロイの直後の数秒は古い版が返ることがあるので、少し待って確かめ直す。
+4. 本番で確かめる ([verify](references/verify.md)): まず [scripts/smoke.py](scripts/smoke.py) を当て、落ちたら前の版に戻してから直す。続けて、API と静的ファイルを取得し、geo-software-eval の評価者に、同じシナリオを本番の URL で動かしてもらう。代役で評価していた外部のサービスは、ここで本物で確かめる。デプロイの直後の数秒は古い版が返ることがあるので、少し待って確かめ直す。
 5. 独自ドメインの割り当てや、認証の許可するオリジンの追加は、[cloudflare-workers](references/cloudflare-workers.md) の注意に従う。以前の URL を使っている端末 (ホーム画面に入れた PWA など) を壊さない。
 6. リポジトリを公開する場合は、公開の範囲が昼に合意されていることを確かめ、[publish-repo](references/publish-repo.md) の点検をしてから出す。
 7. プロダクト概要に、出した URL、版の ID、確かめたこと、止めたことを書き、朝の報告にする。

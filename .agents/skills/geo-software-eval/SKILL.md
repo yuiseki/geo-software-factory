@@ -13,6 +13,7 @@ description: 地図プロダクトの正しさを、人間のコードレビュ�
 | [map-observables](references/map-observables.md) | シナリオの観測と判定を書くとき | 地図のアプリで外から観測できるもの (描画、地物、タイル、帰属表示、現在地、端末) |
 | [judging](references/judging.md) | 判定の仕方を決めるとき、夜に評価するとき | 機械の判定と LLM の判定の使い分け、評価者の独立、実装への返し方 |
 | [twins](references/twins.md) | 外部のサービスに頼る機能を評価するとき | 地図のタイル、認証、ジオコーダなどの代役と、その限界 |
+| [progress](references/progress.md) | 進み具合を報告するとき、群れを動かしているとき | マージ数でなく、価値づけされ、検証され、届き、持ちこたえた変更で測る。逃げた不具合の数え方 |
 | [eval-of-eval](references/eval-of-eval.md) | 評価を作ったとき、評価が全部通ったとき | 評価そのものが正しいかの確かめ方 (壊した版で落ちるか、甘い判定の見つけ方) |
 | [assets/scenario-template.md](assets/scenario-template.md) | シナリオを書くとき | シナリオ 1 本のひな形 |
 | [assets/eval-report-template.md](assets/eval-report-template.md) | 評価の結果を残すとき | 評価の証跡のひな形 |
@@ -25,6 +26,7 @@ description: 地図プロダクトの正しさを、人間のコードレビュ�
 4. 評価の基準は人間が昼に決める。何をもって利用者の役に立ったとするかは、価値の判断を含む。夜のエージェントは基準を足してよいが、緩めない。
 5. 評価そのものを疑う。全部通ったら、まず評価が甘くないかを確かめる ([eval-of-eval](references/eval-of-eval.md))。
 6. 証跡を残す。何を、いつ、どの版に対して、どう判定したかを残し、朝に人間が読めるようにする。
+7. 判定は遅れて覆ることがある。合格したものも、時間を置いて別の場面で確かめ直し、逃げた不具合を数える ([progress](references/progress.md))。
 
 ## 進め方
 

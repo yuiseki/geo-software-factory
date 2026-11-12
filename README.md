@@ -66,6 +66,7 @@
 | [geo-software-eval](.agents/skills/geo-software-eval/SKILL.md) | 正しさをコードレビューではなく評価で判定する。昼に人間と外から観測できるシナリオを作り、夜は実装と別の評価者が手元と本番で判定し、評価そのものも確かめる | 書いた |
 | [geo-software-build](.agents/skills/geo-software-build/SKILL.md) | 技術選定の済んだものを、テストを先に書いて実装し、データを出典つきで組み立て、画面まで確かめる | 書いた |
 | [geo-software-deploy](.agents/skills/geo-software-deploy/SKILL.md) | 昼に与えられた権限の範囲で出し、本番の URL で確かめる。リポジトリの公開前の点検も | 書いた |
+| [geo-software-swarm](.agents/skills/geo-software-swarm/SKILL.md) | 公開したあと、定期実行のエージェントの群れと掲示板 (GitHub) で長い尾を処理し続ける。統治の層を掛け、進み具合を届いて持ちこたえた変更で測る | 書いた |
 
 進み具合は [.agents/skills/TODO.md](.agents/skills/TODO.md)。スキルの使い分けはエージェント向けに [AGENTS.md](AGENTS.md) に書く。
 

@@ -39,7 +39,7 @@ description: 地図プロダクトを実装するためのライブラリや SDK
 | [cross-platform/maplibre-react-native](references/cross-platform/maplibre-react-native.md) | React Native で自前のタイルを使うとき | MapLibre React Native |
 | [cross-platform/flutter-map](references/cross-platform/flutter-map.md) | Flutter で地図を使うとき | flutter_map |
 | [niche](references/niche.md) | 上のどれも要件に合わないとき (屋内、完全オフライン、組み込み、非地理座標、印刷など) | 特定の要件でだけ候補になるもの |
-| [full-scratch](references/full-scratch.md) | コードの大きさ、起動時間、メモリ、1 フレームの時間を極端に重く見るとき、汎用のライブラリが載らない場所で描くとき | ライブラリを使わずに、その依頼のためだけの描画器を書く選択肢。向いている場面、自分で持つことになるもの、比べ方 |
+| [full-scratch](references/full-scratch.md) | 動く環境を限定でき、コードの大きさ、起動時間、メモリ、1 フレームの時間を極端に重く見るとき、汎用のライブラリが載らない場所で描くとき | ライブラリを使わずに、その依頼のためだけの描画器を書く選択肢。汎用のライブラリが引き受けているもの (環境の違い、操作の網羅、エッジケース、継続的な保守)、向いている場面、比べ方 |
 | [multi-sdk/mapconductor](references/multi-sdk/mapconductor.md) | 複数の地図 SDK を併用・乗り換えしたいとき、複数プラットフォームで同じ書き方をしたいとき | MapConductor |
 
 ## 入力
@@ -61,7 +61,7 @@ description: 地図プロダクトを実装するためのライブラリや SDK
 
 1. [criteria](references/criteria.md) を読み、「要件から軸の重みを決める」の表で、当てる足切りの条件と重くする軸を決める。
 2. タイルの供給元との関係を決める。[criteria](references/criteria.md) の「タイルの供給元との関係」の順に従う。供給元が決まっていなければ、map-compare-infra と並行して決める。
-3. 候補を集める。下の「最初の当たり」から要件に合うものを選び、表の「読むとき」に当てはまる reference を開く。ライブラリから組まずに済むか (`frameworks/`) と、特殊な要件 ([niche](references/niche.md)) も確かめる。フットプリントや性能の予算が厳しいなら、ライブラリを使わずに書く案 ([full-scratch](references/full-scratch.md)) も候補に入れる。
+3. 候補を集める。下の「最初の当たり」から要件に合うものを選び、表の「読むとき」に当てはまる reference を開く。ライブラリから組まずに済むか (`frameworks/`) と、特殊な要件 ([niche](references/niche.md)) も確かめる。動く環境を限定でき、フットプリントや性能の予算が厳しいなら、ライブラリを使わずに書く案 ([full-scratch](references/full-scratch.md)) も候補に入れる。
 4. 足切りの条件で候補を外す。ライセンスは本体だけでなく、主要な依存と推奨されるプラグインも見る。外した候補と理由を残す。
 5. 残った候補を評価の軸で比べる。値は各 reference から写し、reference に「未確認」とあるものは未確認のまま書く。性能が結論を左右するなら、要件の件数で試作して測ることを勧める。
 6. 版、ライセンス、課金は、答える前に公式ページやリポジトリで確かめ直す。reference の確認日から変わっていれば新しい値を使い、変わったことを書く。確かめ直せなければ、reference の確認日を添えて出す。
@@ -87,7 +87,7 @@ description: 地図プロダクトを実装するためのライブラリや SDK
 - 地点を手で載せて埋め込むだけ: ノーコードのサービス (Google マイマップ、uMap、Felt、ArcGIS StoryMaps)。件数、表示回数、製品の寿命で足りるかを確かめる
 - Next.js や Astro などの SSR のフレームワークで使う: 地図はブラウザでだけ作る (MapLibre GL JS と Leaflet の reference の「エコシステム」の SSR の項)
 - 地図 SDK の乗り換えや併用: 抽象化層 (MapConductor)
-- フットプリントや性能を極端に重く見る、機能が少なく要件が絞られている: full-scratch (ライブラリを使わずに描画器を書く)。汎用のライブラリ版と同じ条件で測って比べる
+- 動く環境を限定でき、フットプリントや性能を極端に重く見る、機能が少なく要件が絞られている: full-scratch (ライブラリを使わずに描画器を書く)。不特定多数が多様な環境から使うものには勧めない
 
 ## 出力
 

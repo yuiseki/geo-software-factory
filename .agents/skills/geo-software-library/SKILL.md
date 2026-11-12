@@ -1,6 +1,6 @@
 ---
 name: geo-software-library
-description: 地図プロダクトを実装するためのライブラリや SDK を、要件に応じて比較し技術選定する。Web (Leaflet, MapLibre GL JS, Mapbox GL JS, Google Maps JavaScript API, OpenLayers, CesiumJS, ArcGIS Maps SDK for JavaScript, deck.gl など)、ネイティブ (MapLibre Native, mln-rs, maplibre-native-rs, Mapbox Maps SDK, Google Maps SDK, Apple MapKit, Mapsui)、クロスプラットフォーム (react-native-maps, MapLibre React Native, flutter_map)、ゲームエンジン (Cesium for Unity / Unreal)、Python の地図 (folium、leafmap、geemap、plotly、GeoPandas、matplotlib、cartopy、geoai、地形の作品を書き出す forge3d)、サーバーで GPU を使わずにベクトルタイルを描く描画器 (ezu)、地図アプリの土台 (TerriaJS, Re:Earth Visualizer, kepler.gl)、複数 SDK の抽象化層 (MapConductor)、ライブラリを使わずに描画器やエンジンを書く full-scratch を、対象端末、タイルの供給元との組み合わせ、ライセンス (コピーレフトを含む)、描画の能力、性能、保守体制、移行のしやすさで比べる。「地図ライブラリはどれがいい」「Leaflet と MapLibre どっち」「3D 地図を作りたい」「スマホアプリに地図を入れたい」「React Native や Flutter で地図」「地図 SDK を乗り換えたい」「依存なしで軽い地図を書きたい」と言われたら使う。
+description: 地図プロダクトを実装するためのライブラリや SDK を、要件に応じて比較し技術選定する。Web (Leaflet, MapLibre GL JS, Mapbox GL JS, Google Maps JavaScript API, OpenLayers, CesiumJS, ArcGIS Maps SDK for JavaScript, deck.gl など)、ネイティブ (MapLibre Native, mln-rs, maplibre-native-rs, Mapbox Maps SDK, Google Maps SDK, Apple MapKit, Mapsui)、クロスプラットフォーム (react-native-maps, MapLibre React Native, flutter_map)、ゲームエンジン (Cesium for Unity / Unreal)、Python の地図 (folium、leafmap、geemap、plotly、GeoPandas、matplotlib、cartopy、geoai、地形の作品を書き出す forge3d)、サーバーで GPU を使わずにベクトルタイルを描く描画器 (ezu)、地図アプリの土台 (TerriaJS, Re:Earth Visualizer, kepler.gl)、既製の GIS (RustGIS)、複数 SDK の抽象化層 (MapConductor)、ライブラリを使わずに描画器やエンジンを書く full-scratch を、対象端末、タイルの供給元との組み合わせ、ライセンス (コピーレフトを含む)、描画の能力、性能、保守体制、移行のしやすさで比べる。「地図ライブラリはどれがいい」「Leaflet と MapLibre どっち」「3D 地図を作りたい」「スマホアプリに地図を入れたい」「React Native や Flutter で地図」「地図 SDK を乗り換えたい」「依存なしで軽い地図を書きたい」と言われたら使う。
 ---
 
 # geo-software-library
@@ -28,6 +28,7 @@ description: 地図プロダクトを実装するためのライブラリや SDK
 | [frameworks/terriajs](references/frameworks/terriajs.md) | ライブラリから組まずに、地図アプリの土台を使うか検討するとき | TerriaJS |
 | [frameworks/reearth-visualizer](references/frameworks/reearth-visualizer.md) | 同上。3D の Web GIS を組むとき | Re:Earth Visualizer |
 | [frameworks/kepler-gl](references/frameworks/kepler-gl.md) | 同上。位置データの分析画面を作るとき | kepler.gl |
+| [frameworks/rustgis](references/frameworks/rustgis.md) | 地図の作業や解析に、アプリを作らずに既製の GIS (デスクトップと Web) を使うか検討するとき。Python や Qt のアプリに GIS の地図を組み込みたいとき | RustGIS (純粋な Rust の GIS。Python のパッケージと WebAssembly のプラグインがある。0.x) |
 | [frameworks/no-code-maps](references/frameworks/no-code-maps.md) | 開発せずに地図を作って埋め込むか検討するとき (自治体、報道、ブログの地図) | Google マイマップ、ArcGIS Online のアプリ (StoryMaps、Experience Builder、Web AppBuilder の廃止)、uMap、Felt。ノーコードで足りるときと作るとき |
 | [native/maplibre-native](references/native/maplibre-native.md) | ネイティブアプリで候補に入れるとき | MapLibre Native |
 | [native/mln-rs](references/native/mln-rs.md) | Rust のアプリやサーバーに MapLibre Style の地図を組み込みたいとき、MapLibre Native の Rust への移植を比べるとき | mln-rs (MapLibre Native の描画の中核の Rust への移植。0.0.x) |
@@ -96,7 +97,7 @@ description: 地図プロダクトを実装するためのライブラリや SDK
 - .NET: Mapsui
 - ゲームエンジンで 3D の都市や地形: Cesium for Unity / Unreal (Cesium Native の reference の節)
 - Web とアプリで同じ見た目: MapLibre GL JS と MapLibre Native (同じスタイル仕様)
-- 開発の手間を減らしたい GIS 画面: 地図アプリの土台 (TerriaJS、Re:Earth Visualizer、kepler.gl)
+- 開発の手間を減らしたい GIS 画面: 地図アプリの土台 (TerriaJS、Re:Earth Visualizer、kepler.gl)。社内の地図の作業や解析なら、作らずに既製の GIS (RustGIS、QGIS) を使う案も並べる
 - 地点を手で載せて埋め込むだけ: ノーコードのサービス (Google マイマップ、uMap、Felt、ArcGIS StoryMaps)。件数、表示回数、製品の寿命で足りるかを確かめる
 - Next.js や Astro などの SSR のフレームワークで使う: 地図はブラウザでだけ作る (MapLibre GL JS と Leaflet の reference の「エコシステム」の SSR の項)
 - Python と Jupyter: データの下ごしらえは GeoPandas。対話の地図は folium (HTML だけ) か leafmap (双方向、描き方を選べる)。Earth Engine なら geemap。グラフと並べるなら plotly。静止画の地図は matplotlib と cartopy。どれも利用者向けの製品の画面には使わない

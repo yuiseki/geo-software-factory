@@ -62,7 +62,7 @@
   - [x] references/3d/plateau.md
   - [x] references/niche.md
   - [x] references/providers/mierune.md
-- [x] geo-software-library (45/45)
+- [x] geo-software-library (46/46)
   - [x] SKILL.md
   - [x] references/criteria.md
   - [x] references/libraries/leaflet.md
@@ -108,6 +108,7 @@
   - [x] references/python/matplotlib.md
   - [x] references/python/cartopy.md
   - [x] references/python/geoai.md
+  - [x] references/frameworks/rustgis.md
 - [x] geo-software-data (15/15)
   - [x] SKILL.md
   - [x] references/criteria.md

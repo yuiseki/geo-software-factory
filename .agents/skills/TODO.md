@@ -60,7 +60,7 @@
   - [x] references/3d/plateau.md
   - [x] references/niche.md
   - [x] references/providers/mierune.md
-- [x] map-compare-library (32/32)
+- [x] map-compare-library (33/33)
   - [x] SKILL.md
   - [x] references/criteria.md
   - [x] references/libraries/leaflet.md
@@ -93,6 +93,7 @@
   - [x] references/cross-platform/flutter-map.md
   - [x] references/niche.md
   - [x] references/frameworks/no-code-maps.md
+  - [x] references/full-scratch.md
 - [x] map-compare-data (15/15)
   - [x] SKILL.md
   - [x] references/criteria.md

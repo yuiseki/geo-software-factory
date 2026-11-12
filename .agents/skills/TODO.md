@@ -194,7 +194,7 @@
   - [x] references/from-leaflet-raster.md
   - [x] references/from-mapbox.md
   - [x] references/migration-plan.md
-- [x] geo-software-eval (22/22)
+- [x] geo-software-eval (24/24)
   - [x] SKILL.md
   - [x] references/scenarios.md
   - [x] references/map-observables.md
@@ -217,6 +217,8 @@
   - [x] scripts/check_isolation.py
   - [x] scripts/test_check_isolation.py
   - [x] assets/isolation/compose.yaml
+  - [x] scripts/dark_factory.py
+  - [x] scripts/test_dark_factory.py
 - [x] geo-software-swarm (9/9)
   - [x] SKILL.md
   - [x] references/roles.md
@@ -262,6 +264,48 @@
   - [ ] SKILL.md
 - [ ] geo-software-monetize (0/1)
   - [ ] SKILL.md
+
+## ダークファクトリー実装計画
+
+昼の仕様・評価設計から、夜の自律実装・独立評価・デプロイ関門、朝の報告、公開後の群れ運用までをプログラムで一貫して動かすためのチェックリスト。
+
+### 1. 汎用ダークファクトリー実行ハーネス (`geo-software-eval/scripts/dark_factory.py`)
+
+- [x] `preflight` サブコマンド: `check_brief.py` による `product-brief.md` 検査、シナリオの配置 (実装リポジトリ外) と JSON 形式検査、停止スイッチ (`AGENT_STOP_FILE`) 検査、`docker` モード時の `check_isolation.py` 呼び出し
+- [x] `eval-of-eval` サブコマンド: 手本 (`--good`) が全シナリオに通ること、壊した版 (`--break NAME=URL`) がそれぞれ少なくとも 1 本のシナリオで落ちることを機械判定し `out/eval-of-eval.json` に記録
+- [x] `run` サブコマンド: 作業場所 (`handoff/`、`feedback/`、`out/`、`state/`、Claude Code 用 `settings.json`、夜のプロンプト) の自動準備、`eval_watch.py` と実装者 (`claude` / `codex` / `opencode` / `custom`) の並列実行、停止スイッチと制限時間の監視、クリーンな `git clone` に対する最終判定 (`out/final.json`)、本番 URL への `smoke.py` と `run_eval.py` の実行 (`--verify-url`)
+- [x] `report` サブコマンド: `out/eval-report.md` と `out/morning-report.md` (できたもの、評価の結果と証跡、夜に決めたこと、止まったこと) および `out/summary.json` の出力
+- [x] 単体・結合テスト (`scripts/test_dark_factory.py`): preflight、eval-of-eval、ローカルの一晩ループと朝の報告生成の自動試験
+- [ ] Docker モード (`GSF_DOCKER_TESTS=1`) での `dark_factory.py` 通しテストの追加
+- [ ] `geo-software-eval/SKILL.md`、`AGENTS.md`、`README.md` の道具一覧表への `dark_factory.py` の追記
+
+### 2. デプロイ前関門とロールバック判定のプログラム化 (`geo-software-deploy`)
+
+- [ ] `geo-software-deploy/scripts/deploy_gate.py` (および `test_deploy_gate.py`) の実装:
+  - 作業ツリーに未コミットの変更があればデプロイを拒む (`preflight.md` の「戻る点を仕組みで作る」の強制)
+  - 出すコミット (`git rev-parse --short HEAD`) が、評価者の最新の合格報告 (`final.json` または最新の評価報告) の `version` と一致し `ok: true` であることを強制する
+  - 公開を止める深刻度のセキュリティ監査指摘 (`audit-report.json` 等) が残っていないか検査する
+
+### 3. セキュリティ監査ハーネスの機械検査補助 (`geo-software-security-audit`)
+
+- [ ] `geo-software-security-audit/scripts/audit_probe.py` (および `test_audit_probe.py`) の実装:
+  - 手元・プレビューの URL に対し、巨大な検索語・範囲外 bbox・不正な JSON/GeoJSON 入力・秘密ファイルの露出を送って応答時間と状態コードを観測し、再現できた問題を `geo-software-eval` 互換のシナリオ JSON として出力する
+
+### 4. 群れ (Swarm) の立ち上げ・進捗計測スクリプト (`geo-software-swarm`)
+
+- [ ] `geo-software-swarm/scripts/measure_progress.py` (および `test_measure_progress.py`) の実装:
+  - マージ数ではなく「人間が決めた重み × 独立評価の合格 × 本番到達 × 一定期間後の逃げた不具合なし」で進み具合を集計し、CI や評価を緩めた PR を別枠で警告する (`progress.md` のプログラム化)
+
+### 5. `evals/night` の統合とフィードバックループ検証
+
+- [ ] `evals/night/run_night.py` から `dark_factory.py` の報告生成 (`morning-report.md`、`eval-report.md`) を呼び出すよう統合
+- [ ] 初回では落ちやすく、`eval-feedback.md` の症状を読んで直す往復が発生する夜の課題の追加と、`skills` / `baseline` の比較実行
+
+### 6. 未着手スキルとドキュメントの整備
+
+- [ ] `.agents/skills/AGENTS.md` の「後で書く」節を正式な執筆規約に整理
+- [ ] `geo-software-growth/SKILL.md` の執筆 (方針が決まり次第)
+- [ ] `geo-software-monetize/SKILL.md` の執筆 (方針が決まり次第)
 
 ## 候補 (まだ作るか決めていない)
 

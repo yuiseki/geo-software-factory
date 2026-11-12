@@ -1,4 +1,4 @@
-# geo-app-factory
+# geo-software-factory
 
 「東京23区の区ごとのセブンイレブンの数を可視化したい」
 
@@ -72,8 +72,8 @@ reference の事実 (料金、規約、ライセンス、版) は 2026-11-10 に
 他のリポジトリに入れるときは、[skills](https://github.com/vercel-labs/skills) の CLI (Node.js 22.20 以降) を使う。
 
 ```sh
-npx skills add yuiseki/geo-app-factory                          # 全部のスキル
-npx skills add yuiseki/geo-app-factory --skill map-compare-library  # 1 つだけ
+npx skills add yuiseki/geo-software-factory                       # 全部のスキル
+npx skills add yuiseki/geo-software-factory --skill map-compare-library  # 1 つだけ
 ```
 
 この CLI が入れるのはスキルのディレクトリだけで、リポジトリ直下の [AGENTS.md](AGENTS.md) (どの段階でどのスキルを使うかの案内) は入らない。流れに沿って使いたいときは、AGENTS.md の中身を入れ先の AGENTS.md に写す。スキルは 1 つずつでも働くように書いてある。

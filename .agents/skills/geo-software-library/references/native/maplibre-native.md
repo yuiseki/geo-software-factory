@@ -46,6 +46,10 @@ MapLibre Style Spec に従うスタイルを読み、ベクタータイル・ラ
 
 - 同じスタイル仕様・同じ API の Web 版: MapLibre GL JS が同じ MapLibre Style Spec を使う。API はプラットフォームごとに別で、Android (Java/Kotlin) と iOS (Swift/Objective-C) の API は GL JS と一致しない。描画結果を GL JS に合わせる修正が続いている (例: line-pattern の大きさを GL JS に合わせた、[android-v13.7.1](https://github.com/maplibre/maplibre-native/releases/tag/android-v13.7.1))。
 
+## Rust への移植
+
+描画の中核を Rust に移した mln-rs (BSD-2-Clause、0.0.x、2026-11-03 作成の個人のリポジトリ) がある。C++ の元のコードとの差分テストを持つ。製品のモバイルアプリには、まだこちら (MapLibre Native) を使う。詳細は [mln-rs](mln-rs.md)。
+
 ## 開発の活発さ
 
 - 直近 1 年のリリース数: 2025-11-10 から 2026-11-10 の GitHub Releases で、Android の安定版 28 件 (プレリリースを含めると 38 件)、iOS の安定版 19 件 (同 28 件) ([Releases](https://github.com/maplibre/maplibre-native/releases))。

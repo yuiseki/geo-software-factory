@@ -12,12 +12,6 @@ Software Factory: ソフトウェア工学・ソフトウェア開発方法論
 
 ただし、ソフトウェアファクトリーには歴史を通じて単一の統一された定義が存在するわけではなく、時代や提唱者によって、その対象は開発組織、開発環境、方法論、自動化された生産システムなどに及ぶ。
 
-[image](https://www.google.com/s2/favicons?domain=https://onlinelibrary.wiley.com\&sz=32)
-
-Wiley Online Library+2
-
-
-
 ## 歴史
 
 ### 1960年代：概念の成立
@@ -37,12 +31,6 @@ Wiley Online Library+2
 
 これらは、後のソフトウェア再利用、コンポーネント指向開発、開発自動化などの考え方に通じている。
 
-[image](https://www.google.com/s2/favicons?domain=https://onlinelibrary.wiley.com\&sz=32)
-
-Wiley Online Library+1
-
-
-
 ### 1969〜1980年代：日本におけるソフトウェア工場の発展
 
 1969年、日立製作所はソフトウェア開発を専門とする事業所を設立し、「ソフトウェア工場」（Software Works）と名付けた。
@@ -57,19 +45,7 @@ Wiley Online Library+1
 
 同書は、日本のコンピュータメーカーの組織的なソフトウェア開発を、米国企業の開発方式と比較した代表的な研究として知られている。
 
-[image](https://www.google.com/s2/favicons?domain=https://academic.oup.com\&sz=32)
-
-OUP Academic+1
-
-
-
 また米国では、System Development Corporation（SDC）がソフトウェア開発環境の工場化を進め、1975年にHarvey BratmanとTerry Courtが論文「The Software Factory」を発表している。この研究は、開発工程を支援するツール群と標準的な作業手順を統合する試みとして知られる。
-
-[image](https://www.google.com/s2/favicons?domain=https://jglobal.jst.go.jp\&sz=32)
-
-J-GLOBAL+1
-
-
 
 ### 1990〜2000年代：モデル駆動型ソフトウェアファクトリー
 
@@ -83,12 +59,6 @@ J-GLOBAL+1
 
 従来のソフトウェア工場が主として人員・組織・作業工程の標準化を重視したのに対し、この方式では、開発対象のドメインモデル、再利用可能なアーキテクチャ、コード生成ツールなどが重視された。
 
-[image](https://www.google.com/s2/favicons?domain=https://s23m.com\&sz=32)
-
-s23m.com+2
-
-
-
 ### 2010〜2020年代前半：DevOps・DevSecOpsとの融合
 
 継続的インテグレーション（CI）、継続的デリバリー（CD）、Infrastructure as Code（IaC）、コンテナ技術などの普及により、ソフトウェアのビルド、テスト、リリース、デプロイを自動化する生産基盤が発展した。
@@ -98,12 +68,6 @@ s23m.com+2
 代表的な事例として、米国国防総省（DoD）のソフトウェア近代化政策がある。
 
 2021年の『DoD Enterprise DevSecOps Strategy Guide』では、ソフトウェアファクトリーが複数のCI/CDパイプラインを備える開発基盤として定義されている。セキュリティ検証を開発工程に組み込み、安全で継続的なソフトウェア供給を実現することが重視された。
-
-[image](https://www.google.com/s2/favicons?domain=https://dl.dod.cyber.mil\&sz=32)
-
-dl.dod.cyber.mil+1
-
-
 
 ### 2025〜2026年：AIエージェント型ソフトウェアファクトリー
 
@@ -115,23 +79,11 @@ dl.dod.cyber.mil+1
 
 ダークファクトリーとは、原則として人間がソースコードの記述やレビューに直接関与せず、仕様からソフトウェアを生成する方式を指す。この分類はShapiroによる提案であり、業界全体で標準化された成熟度モデルではない。
 
-[image](https://www.google.com/s2/favicons?domain=https://www.danshapiro.com\&sz=32)
-
-Dan Shapiro's Blog
-
-
-
 2026年2月6日、アクセス管理ソフトウェア企業のStrongDMは、AIエージェントによる非対話型ソフトウェア開発の実践を「Software Factory」として公開した。
 
 同社は、人間によるコードの記述とレビューを排し、仕様書、テストシナリオ、実行環境、評価ハーネスを利用して、AIエージェントが自律的に実装と検証を繰り返す方式を提唱した。
 
 特に、エージェントがテストコードを改変して形式的に成功条件を満たしてしまう問題を避けるため、開発対象のコードベースから分離した評価シナリオを利用することが重視されている。
-
-[image](https://www.google.com/s2/favicons?domain=https://factory.strongdm.ai\&sz=32)
-
-StrongDM+1
-
-
 
 ## 主な特徴
 
@@ -171,12 +123,6 @@ StrongDM+1
 
 クスマノは1991年の著書において、工場型開発が適切かどうかは、製品の種類、市場、競争戦略によって異なると指摘している。
 
-[image](https://www.google.com/s2/favicons?domain=https://academic.oup.com\&sz=32)
-
-OUP Academic
-
-
-
 ### 生産量と価値の相違
 
 ソフトウェアの生産量が増加しても、必ずしも利用者に提供される価値や事業収益が増加するとは限らない。
@@ -193,12 +139,6 @@ AIエージェント型ソフトウェアファクトリーには、生成され
 
 こうした問題に対して、開発工程から独立したテスト、評価シナリオ、監査可能な記録、人間による要件の検証などが重要な研究・実践上の課題となっている。
 
-[image](https://www.google.com/s2/favicons?domain=https://law.stanford.edu\&sz=32)
-
-Stanford Law School+1
-
-
-
 ## 関連項目
 
 - ソフトウェア工学
@@ -213,9 +153,9 @@ Stanford Law School+1
 ## 主要参考文献
 
 1. Bratman, H. & Court, T. (1975). 「The Software Factory」, IEEE Computer, 8(5), 28–37.
-2. Cusumano, M. A. (1991). 『Japan's Software Factories: A Challenge to U.S. Management』, Oxford University Press. [出版社による書誌情報](https://academic.oup.com/book/52424?utm_source=chatgpt.com)
-3. Cusumano, M. A. (2002). 「Software Factory」. DOI: [10.1002/0471028959.sof323](https://doi.org/10.1002/0471028959.sof323?utm_source=chatgpt.com)
-4. Greenfield, J. & Short, K. (2003). 「Software Factories」, OOPSLA '03. [論文PDF](https://s23m.com/oopsla2003/greenfield.pdf?utm_source=chatgpt.com)
-5. 米国国防総省 (2021). 『DoD Enterprise DevSecOps Strategy Guide』. [公式PDF](https://dl.dod.cyber.mil/wp-content/uploads/devsecops/pdf/DoDEnterpriseDevSecOpsStrategyGuide.pdf?utm_source=chatgpt.com)
-6. Shapiro, D. (2026). 「The Five Levels: from Spicy Autocomplete to the Dark Factory」. [原文](https://www.danshapiro.com/blog/2026/01/the-five-levels-from-spicy-autocomplete-to-the-software-factory/?utm_source=chatgpt.com)
-7. McCarthy, J. (2026). 「Software Factories And The Agentic Moment」, StrongDM. [原文](https://factory.strongdm.ai/?utm_source=chatgpt.com)
+2. Cusumano, M. A. (1991). 『Japan's Software Factories: A Challenge to U.S. Management』, Oxford University Press. [出版社による書誌情報](https://academic.oup.com/book/52424)
+3. Cusumano, M. A. (2002). 「Software Factory」. DOI: [10.1002/0471028959.sof323](https://doi.org/10.1002/0471028959.sof323)
+4. Greenfield, J. & Short, K. (2003). 「Software Factories」, OOPSLA '03. [論文PDF](https://s23m.com/oopsla2003/greenfield.pdf)
+5. 米国国防総省 (2021). 『DoD Enterprise DevSecOps Strategy Guide』. [公式PDF](https://dl.dod.cyber.mil/wp-content/uploads/devsecops/pdf/DoDEnterpriseDevSecOpsStrategyGuide.pdf)
+6. Shapiro, D. (2026). 「The Five Levels: from Spicy Autocomplete to the Dark Factory」. [原文](https://www.danshapiro.com/blog/2026/01/the-five-levels-from-spicy-autocomplete-to-the-software-factory/)
+7. McCarthy, J. (2026). 「Software Factories And The Agentic Moment」, StrongDM. [原文](https://factory.strongdm.ai/)

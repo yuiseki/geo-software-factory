@@ -99,7 +99,8 @@ def check_todo(root: pathlib.Path, errors: list[str]) -> None:
             current = None
     for name, entry in listed.items():
         skill_dir = root / ".agents/skills" / name
-        on_disk = {p.relative_to(skill_dir).as_posix() for p in skill_dir.rglob("*") if p.is_file()} if skill_dir.is_dir() else set()
+        on_disk = {p.relative_to(skill_dir).as_posix() for p in skill_dir.rglob("*")
+                   if p.is_file() and "__pycache__" not in p.parts} if skill_dir.is_dir() else set()
         # An entry ending in "/" (a directory of data, such as cards) covers every file under it.
         dirs = [p for p in entry["files"] if p.endswith("/")]
         covered = {p for p in on_disk if any(p.startswith(d) for d in dirs)}

@@ -16,6 +16,7 @@ description: 地図プロダクトの正しさを、人間のコードレビュ�
 | [progress](references/progress.md) | 進み具合を報告するとき、群れを動かしているとき | マージ数でなく、価値づけされ、検証され、届き、持ちこたえた変更で測る。逃げた不具合の数え方 |
 | [brakes](references/brakes.md) | 人間の確認を減らすかを決めるとき | ブレーキ (人間の確認) を評価の証拠で 1 つずつ外し、崩れたら戻す。外さないブレーキ |
 | [eval-of-eval](references/eval-of-eval.md) | 評価を作ったとき、評価が全部通ったとき | 評価そのものが正しいかの確かめ方 (壊した版で落ちるか、甘い判定の見つけ方) |
+| [scripts/geocheck.py](scripts/geocheck.py) | 配る GeoJSON を判定するとき | 形、度の範囲、緯度経度の取り違え、範囲の外、リングの閉じと自己交差、必ず要る属性を、プログラムで判定する (標準ライブラリだけ) |
 | [assets/scenario-template.md](assets/scenario-template.md) | シナリオを書くとき | シナリオ 1 本のひな形 |
 | [assets/eval-report-template.md](assets/eval-report-template.md) | 評価の結果を残すとき | 評価の証跡のひな形 |
 

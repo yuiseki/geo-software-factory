@@ -82,6 +82,12 @@ class CheckTest(unittest.TestCase):
         self.assertIn("TODO.md: demo lists references/gone.md, which does not exist", errors)
         self.assertIn("TODO.md: demo says (1/2) but has 3/3", errors)
 
+    def test_todo_ignores_python_bytecode_left_by_running_skill_scripts(self):
+        f = good_files()
+        f[".agents/skills/demo/references/__pycache__/a.cpython-312.pyc"] = "x"
+        errors, _ = self.run_check(f)
+        self.assertEqual(errors, [])
+
     def test_todo_may_list_a_directory_of_data_as_one_entry(self):
         f = good_files()
         f[".agents/skills/demo/assets/cards/one.md"] = "# one\n"

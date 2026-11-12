@@ -44,7 +44,7 @@
 - できる: 依頼から要件を読み、足りなければ選択肢で聞く。候補を足切りの条件で外し、残りを同じ軸で比べる。料金、規約、ライセンスは確かめた日つきの reference から引き、答える前に公式のページで確かめ直すよう促す
 - できない: 正しい件数や網羅率を保証すること。出どころ同士の食い違いは、隠さずに並べて見せる
 - できない: 法的な判断。規約や条文から読んだことと推測を分けて書くところまで
-- スキルは手順と事実の集まりで、プログラムは持たない。データを取って描くのはエージェントの道具 (DuckDB、osmium、ブラウザなど) で、道具が無い環境では比較と推奨までになる
+- スキルは手順と事実が中心で、判定できることだけを小さなプログラムにする (下の「プログラムが保証すること、スキルが導くこと」)。データを取って描くのはエージェントの道具 (DuckDB、osmium、ブラウザなど) で、道具が無い環境では比較と推奨までになる
 
 ## スキル
 
@@ -104,6 +104,10 @@ npx skills add yuiseki/geo-software-factory --skill geo-software-library  # 1 �
 |---|---|
 | 配る GeoJSON の形、度の範囲、緯度と経度の取り違え、範囲の外、リングの閉じと自己交差、必ず要る属性 | [geocheck.py](.agents/skills/geo-software-eval/scripts/geocheck.py) |
 | 本番の疎通、状態コード、応答時間、`.git` や `.env` の露出、セキュリティのヘッダ、source map | [smoke.py](.agents/skills/geo-software-deploy/scripts/smoke.py) |
+| 昼から夜へ渡すプロダクト概要がそろっているか (価値の芯、Must、シナリオの置き場所、判断の方針、鍵の名前が設定済みか、CLI があるか。値は読まない) | [check_brief.py](.agents/skills/geo-software-product-grilling/scripts/check_brief.py) |
+| 実装と切り離したシナリオを動かし、実装者には症状だけを返す (シナリオと報告が実装のリポジトリの中にあれば拒む。閾値とシナリオの本文は返さない) | [run_eval.py](.agents/skills/geo-software-eval/scripts/run_eval.py) |
+| 外部の地図サービスの代役 (手元のタイルと決まった答え、Range、5xx、429、空や途中で切れた応答、遅れを回数で決めて起こす) | [twin.py](.agents/skills/geo-software-eval/scripts/twin.py) |
+| 無人の実行の停止スイッチ、評価の症状と残り時間を道具の呼び出しのたびに届ける、終わろうとしたら上限つきで観点を 1 つずつ返す | [hooks.py](.agents/skills/geo-software-swarm/scripts/hooks.py)、[設定のひな形](.agents/skills/geo-software-swarm/assets/unattended-settings.json) |
 | スキル集そのもの (frontmatter、行数、リンク、確認日、TODO の件数) | [scripts/check.py](scripts/check.py) |
 | スキルあり、なしで、同じエージェントが課題を解けるか | [evals/](evals/README.md) |
 

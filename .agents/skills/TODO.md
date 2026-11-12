@@ -1,9 +1,11 @@
 # TODO
 
-- [x] geo-software-product-grilling (3/3)
+- [x] geo-software-product-grilling (5/5)
   - [x] SKILL.md
   - [x] references/question-bank.md
   - [x] assets/product-brief-template.md
+  - [x] scripts/check_brief.py
+  - [x] scripts/test_check_brief.py
 - [x] geo-software-research-competitor (7/7)
   - [x] SKILL.md
   - [x] references/search-channels.md
@@ -192,7 +194,7 @@
   - [x] references/from-leaflet-raster.md
   - [x] references/from-mapbox.md
   - [x] references/migration-plan.md
-- [x] geo-software-eval (12/12)
+- [x] geo-software-eval (16/16)
   - [x] SKILL.md
   - [x] references/scenarios.md
   - [x] references/map-observables.md
@@ -205,13 +207,20 @@
   - [x] assets/eval-report-template.md
   - [x] scripts/geocheck.py
   - [x] scripts/test_geocheck.py
-- [x] geo-software-swarm (6/6)
+  - [x] scripts/run_eval.py
+  - [x] scripts/test_run_eval.py
+  - [x] scripts/twin.py
+  - [x] scripts/test_twin.py
+- [x] geo-software-swarm (9/9)
   - [x] SKILL.md
   - [x] references/roles.md
   - [x] references/board.md
   - [x] references/governance.md
   - [x] references/bootstrap.md
   - [x] references/unattended-runs.md
+  - [x] scripts/hooks.py
+  - [x] scripts/test_hooks.py
+  - [x] assets/unattended-settings.json
 - [x] geo-software-tdd (7/7)
   - [x] SKILL.md
   - [x] references/kinds.md

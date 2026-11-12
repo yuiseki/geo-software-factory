@@ -1,0 +1,44 @@
+{
+  "$comment": "Claude Code settings for one unattended run. Copy to the run's own settings directory, replace HOOKS with the path to scripts/hooks.py and SCENARIOS with the absolute path of the evaluation scenarios' directory without its leading slash (a rule path starting with // is absolute; one starting with a single / is relative to the settings file and silently matches nothing). A Read rule also stops cat and the file tools, but not an allowed interpreter such as python3, so it is a guard against accidents, not isolation: keep the scenarios off the implementer's file system for that, and set RUN_STATE_DIR, AGENT_STOP_FILE, EVAL_FEEDBACK, RUN_DEADLINE, STOP_GUARD_CHECKLIST in the environment of the run. Every tool the agent may call is in allow or deny: a tool in neither waits on a permission dialog nobody answers. Adjust the lists to the product; do not replace them with allow-all.",
+  "permissions": {
+    "allow": [
+      "Read",
+      "Edit",
+      "Write",
+      "Glob",
+      "Grep",
+      "Bash(git status:*)",
+      "Bash(git diff:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git log:*)",
+      "Bash(npm test:*)",
+      "Bash(npm run:*)",
+      "Bash(python3:*)"
+    ],
+    "deny": [
+      "Bash(git push --force:*)",
+      "Bash(rm -rf:*)",
+      "Bash(sudo:*)",
+      "Bash(curl:*)",
+      "Bash(wget:*)",
+      "WebFetch",
+      "Read(~/.ssh/**)",
+      "Edit(~/.ssh/**)",
+      "Read(./.env)",
+      "Read(./.env.*)",
+      "Read(//SCENARIOS/**)"
+    ]
+  },
+  "hooks": {
+    "PreToolUse": [
+      {"matcher": "*", "hooks": [{"type": "command", "command": "python3 -I HOOKS stop-switch"}]}
+    ],
+    "PostToolUse": [
+      {"matcher": "*", "hooks": [{"type": "command", "command": "python3 -I HOOKS deliver"}]}
+    ],
+    "Stop": [
+      {"hooks": [{"type": "command", "command": "python3 -I HOOKS stop-guard"}]}
+    ]
+  }
+}

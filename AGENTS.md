@@ -130,7 +130,7 @@ geo-software-product-grilling       何を作るか (昼)
 - geo-software-data: 地図に載せる主題データ (施設、境界、統計、店舗など) が要るとき、geo-software-infra と並べて使う。背景の地図 (ベースマップ) と主題データは別々に選び、ライセンスを混ぜたときの条件はこのスキルで確かめる
 - geo-software-auth: ログインや、タイルとデータを限られた人だけに見せることが要るとき、geo-software-arch と並べて使う。認証のプロバイダーのアカウントと鍵は、昼の準備で頼んでおく
 - geo-software-protocol: リアルタイムの配信や、OGC API、STAC、NGSI-LD などの標準での受け渡しが要るとき、geo-software-arch と並べて使う
-- geo-software-ux-design: ライブラリが決まったあと、画面と操作を設計するときに使う。結果はプロダクト概要の「画面と操作」の節に書く
+- geo-software-ux-design: ライブラリが決まったあと、画面と操作を設計するときに使う。結果はプロダクト概要の「画面と操作」の節に書く。前に作ったものへの本人の指摘を一般化した [feedback-from-builds](.agents/skills/geo-software-ux-design/references/feedback-from-builds.md) は、聞かれなくても満たす既定として、設計にも実装 (geo-software-build) にも当てる
 - geo-software-poc-measure: 費用やデータの大きさなど、数字が比較の結論を左右するとき、どの段階からでも使う。測った値を、その段階に戻して比べ直す
 - geo-software-legal-check: 公開の前に、最後に使う。帰属表示、ODbL、写真の帰属、測量法、位置情報、地図 API の規約を確かめる。人間の判断が要りそうな論点は、昼の擦り合わせで先に聞いておく
 - geo-software-ops: 公開したあとの運用 (API キー、利用量と予算、データの更新、障害のときの切り替え) で使う。予算の上限と通知の先は、昼の準備で決めておく

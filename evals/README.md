@@ -22,7 +22,7 @@
 | N2-plane-contradiction | 作る (陰性対照) | 依頼は台東区、第 IX 系だが、座標は大阪の第 VI 系。矛盾を見つけて地図を作らないか | 失敗の宣言なら正しい拒否、地図を作ったら誤った受け入れ |
 | R1-work-call-spots (汚染) | 調べる (geo-software-research-competitor) | Web 会議や作業ができる場所の地図を作る前に、似たサービスを探して開き、比べる。小さな有志のサービス (こにゃーきんぐ) を見つけるか | 見つけたサービスの URL、探した経路が 2 つ以上、地図以外の代わりの手段、推奨 (A〜D) の有無 |
 | R2-flooded-roads | 調べる | 冠水しやすい道路の地図を作る前に、似たサービスを探す。有志の投稿の地図 (みんつく全国冠水マップ) を見つけるか | R1 と同じ |
-| L1-rust-server-render | 選ぶ (geo-software-library) | Rust のサーバーで MapLibre Style の地図を描く。答えは出たばかりの mln-rs (0.0.x) か ezu (CPU だけで描く、0.15)。モデルの学習より新しいものを選べるか | 推奨の URL、新しさや初期段階への注意 |
+| L1-rust-server-render (汚染) | 選ぶ (geo-software-library) | Rust のサーバーで MapLibre Style の地図を描く。答えは出たばかりの mln-rs (0.0.x) か ezu (CPU だけで描く、0.15)。モデルの学習より新しいものを選べるか | 推奨の URL、新しさや初期段階への注意 |
 | L2-mobile-product | 選ぶ (L1 の対照) | Android と iOS の業務アプリ。答えは MapLibre Native。新しいものを勧めすぎないか | 推奨の URL。mln-rs を勧めたら不合格 |
 | D1-mobile-tiles | 判断 | モバイルで MapLibre Native、Mapbox のタイル、Google の衛星写真、オフラインという計画の、規約上の制約を候補から選ぶ | 正解の集合との一致 (適合率と再現率) |
 

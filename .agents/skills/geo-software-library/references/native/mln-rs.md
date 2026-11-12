@@ -91,6 +91,8 @@ MapLibre Native の地図の描画の中核 (C++) を、Rust に移したもの 
 - Windows で動かすことが必須の製品 (CI に無い)
 - API の安定と長い保守の約束が要る受託の納品 (0.0.x で、組織のプロジェクトではない)
 - Web の地図の画面だけを作る場合 (MapLibre GL JS の方が、文書、プラグイン、利用者の数で厚い)
+- MapLibre Native と同じ見た目が必要で、C++ の中核を持ち込める場合 ([maplibre-native-rs](maplibre-native-rs.md) の方が成熟している)
+- GPU の無いサーバーで描く場合 (GPU の API で描くので、ソフトウェアの GPU が要る。CPU だけで描く [ezu](../server/ezu.md) も比べる)
 
 ## 出典
 

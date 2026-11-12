@@ -105,7 +105,7 @@
   {
    "id": "L1-rust-server-render",
    "kind": "choose",
-   "contaminated": null,
+   "contaminated": "2026-11-13: its baseline run showed the skills lacked ezu and maplibre-native-rs; both were added to geo-software-library from it.",
    "note": "The right answer is mln-rs (created 2026-11-03, 0.0.x), newer than the models' training. Written after mln-rs was added to the skills, before any run.",
    "brief": "# プロダクト概要 (抜粋)\n\n- 一行で: Rust で書いた Linux のサーバーが、MapLibre Style のスタイルとベクトルタイルから、地図の PNG 画像を返す API\n- 制約: サーバーは Rust だけでビルドしたい (C++ のツールチェーンと CMake を持ち込みたくない)。GPU の無いサーバーでも動くこと。ライセンスはコピーレフト不可 (MIT、BSD、Apache-2.0 なら可)\n- 時期: 社内の試作。API が変わることは受け入れる\n\n地図を描くライブラリか SDK を 1 つ選んで勧めてください。プロダクトの持ち主は今いないので、質問せずに決めてください。",
    "targets": [

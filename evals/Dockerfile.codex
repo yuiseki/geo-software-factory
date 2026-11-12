@@ -9,7 +9,9 @@ ARG TARGETARCH
 
 COPY --from=ghcr.io/astral-sh/uv:0.8 /uv /uvx /usr/local/bin/
 
-RUN apt-get update && apt-get install -y --no-install-recommends ca-certificates curl \
+# ripgrep: coding agents search files with rg first (Codex ran `rg --files` as its first step and failed
+# without it); an image without it is harder than the environments the skills are used in.
+RUN apt-get update && apt-get install -y --no-install-recommends ca-certificates curl ripgrep git \
  && rm -rf /var/lib/apt/lists/*
 
 # codex-code-mode-host is a separate release asset that codex starts to run commands.

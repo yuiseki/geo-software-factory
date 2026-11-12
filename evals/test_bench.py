@@ -142,6 +142,39 @@ class ScoreDecide(unittest.TestCase):
         self.assertEqual(bench.score_decide("unreadable", key=["a"])["outcome"], "invalid_answer")
 
 
+class ScoreResearch(unittest.TestCase):
+    TARGET = ["https://spotsharemap.github.io/sharewitheveryone"]
+
+    def answer(self, **kw):
+        a = {"status": "ok",
+             "services": [{"name": "こにゃーきんぐ", "url": "https://spotsharemap.github.io/sharewitheveryone/", "opened": True}],
+             "alternatives": ["Google マップで電源カフェを検索"],
+             "channels": [{"channel": "web", "query": "q"}, {"channel": "hatena", "query": "q"}],
+             "recommendation": "C", "reason": "r"}
+        a.update(kw)
+        return a
+
+    def test_complete_answer_is_accurate(self):
+        s = bench.score_research(self.answer(), self.TARGET)
+        self.assertEqual(s["outcome"], "accurate")
+        self.assertEqual(s["n_services"], 1)
+
+    def test_target_matched_by_url_prefix_without_scheme_or_slash(self):
+        a = self.answer(services=[{"name": "x", "url": "spotsharemap.github.io/sharewitheveryone/#/map"}])
+        self.assertEqual(bench.score_research(a, self.TARGET)["outcome"], "accurate")
+
+    def test_missing_target_one_channel_no_alternative_no_recommendation(self):
+        a = self.answer(services=[{"name": "x", "url": "https://example.com/"}], channels=[{"channel": "web", "query": "q"}],
+                        alternatives=[], recommendation="作らない")
+        s = bench.score_research(a, self.TARGET)
+        self.assertEqual(s["outcome"], "inaccurate")
+        self.assertEqual(sorted(s["reasons"]), ["no-alternatives", "no-recommendation", "one-channel", "target-missing"])
+
+    def test_unreadable(self):
+        self.assertEqual(bench.score_research("unreadable", self.TARGET)["outcome"], "invalid_answer")
+        self.assertEqual(bench.score_research(None, self.TARGET)["outcome"], "no_answer")
+
+
 class Outcomes(unittest.TestCase):
     def test_negative_task(self):
         self.assertEqual(bench.final_outcome("declared_failure", negative=True, exit_code=0, has_answer=True), "correct_reject")
@@ -171,7 +204,7 @@ class Spec(unittest.TestCase):
     def test_every_task_has_a_kind_and_a_prompt(self):
         spec = bench.load_spec()
         for t in spec["tasks"]:
-            self.assertIn(t["kind"], ("build", "decide"))
+            self.assertIn(t["kind"], ("build", "decide", "research"))
             self.assertTrue((HERE / "prompts" / f"{t['kind']}.md").exists())
 
 

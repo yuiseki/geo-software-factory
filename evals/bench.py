@@ -36,7 +36,8 @@ import geocheck  # noqa: E402
 
 RUNNERS = {"opencode": HERE / "run_opencode_docker.sh", "codex": HERE / "run_codex_docker.sh"}
 # The model each runner uses when EVAL_MODEL is not set; recorded with every run.
-DEFAULT_MODEL = {"opencode": "opencode/deepseek-v4.1-flash-free", "codex": "codex default"}
+DEFAULT_MODEL = {"opencode": "opencode/deepseek-v4.1-flash-free", "codex": "gpt-6-luna"}
+# Codex: reasoning effort from EVAL_EFFORT, and live web search (research tasks need it; the same for both conditions).
 PUBLIC_OSM = re.compile(r"https?://((?:[a-z]\.)?tile\.openstreetmap\.org|nominatim\.openstreetmap\.org|overpass-api\.de|"
                         r"overpass\.kumi\.systems|api\.openstreetmap\.org)/")
 ATTRIBUTION = re.compile(r"OpenStreetMap", re.I)
@@ -109,7 +110,7 @@ def make(spec):
             (d / "task" / "data.csv").write_text("\n".join(lines) + "\n", encoding="utf-8")
             (d / "truth" / "truth.json").write_text(json.dumps(pts, ensure_ascii=False, indent=0), encoding="utf-8")
         else:
-            (d / "truth" / "key.json").write_text(json.dumps(sorted(t["key"])), encoding="utf-8")
+            (d / "truth" / "key.json").write_text(json.dumps(sorted(t.get("key") or t.get("targets"))), encoding="utf-8")
         print(t["id"], "made", file=sys.stderr)
 
 
@@ -186,6 +187,35 @@ def provider_failed(log_text: str) -> bool:
     return bool(PROVIDER_FAILURE.search(log_text))
 
 
+def bare_url(u: str) -> str:
+    u = re.sub(r"^[a-z]+://", "", str(u).strip().lower())
+    return u.split("#")[0].split("?")[0].rstrip("/")
+
+
+def score_research(answer, targets) -> dict:
+    """A research-competitor answer: did it find the services it should, search more than one way, name the
+    non-map alternatives, and leave the choice (A use, B contribute, C differentiate, D learn) as a recommendation."""
+    if answer is None:
+        return {"outcome": "no_answer"}
+    if not isinstance(answer, dict) or not isinstance(answer.get("services", []), list):
+        return {"outcome": "invalid_answer"}
+    if answer.get("status") == "failed":
+        return {"outcome": "declared_failure"}
+    urls = [bare_url(s.get("url", "")) for s in answer.get("services", []) if isinstance(s, dict)]
+    reasons = []
+    for t in targets:
+        if not any(u.startswith(bare_url(t)) for u in urls):
+            reasons.append("target-missing")
+    channels = {str(c.get("channel", "")).strip().lower() for c in answer.get("channels", []) if isinstance(c, dict)}
+    if len(channels - {""}) < 2:
+        reasons.append("one-channel")
+    if not answer.get("alternatives"):
+        reasons.append("no-alternatives")
+    if str(answer.get("recommendation", "")).strip().upper() not in ("A", "B", "C", "D"):
+        reasons.append("no-recommendation")
+    return {"outcome": "inaccurate" if reasons else "accurate", "reasons": reasons, "n_services": len(urls)}
+
+
 def final_outcome(outcome: str, negative: bool, exit_code: int, has_answer: bool, provider_failed: bool = False) -> str:
     if not has_answer:
         if provider_failed:
@@ -222,11 +252,17 @@ def run(spec, agent, cond, task_id, rep, minutes, rev):
     if agent == "opencode":
         env["EVAL_MODEL"] = model
     t0 = time.time()
+    extra = []
+    if agent == "codex":
+        extra = ["-m", model, "-c", f"model_reasoning_effort={os.environ.get('EVAL_EFFORT', 'medium')}",
+                 "-c", 'web_search="live"']
     with open(d / "log.jsonl", "w") as log, open(d / "stderr.log", "w") as err:
-        r = subprocess.run([str(RUNNERS[agent]), "--prompt", str(d / "prompt.md"), str(wd)], stdout=log, stderr=err, env=env)
+        r = subprocess.run([str(RUNNERS[agent]), "--prompt", str(d / "prompt.md"), str(wd), *extra],
+                           stdout=log, stderr=err, env=env)
     meta = {"agent": agent, "cond": cond, "task": task_id, "rep": rep, "exit": r.returncode, "rev": commit,
             "seconds": round(time.time() - t0), "minutes": minutes,
-            "model": model, "image": os.environ.get("EVAL_IMAGE", "runner default")}
+            "model": model, "effort": os.environ.get("EVAL_EFFORT", "medium") if agent == "codex" else None,
+            "codex_home": os.environ.get("EVAL_CODEX_HOME") if agent == "codex" else None, "image": os.environ.get("EVAL_IMAGE", "runner default")}
     (d / "meta.json").write_text(json.dumps(meta, indent=2), encoding="utf-8")
     print(d, r.returncode, meta["seconds"])
 
@@ -245,6 +281,10 @@ def score_all(spec):
             truth = json.loads((truth_dir / "truth.json").read_text(encoding="utf-8"))
             s = score_build(work, truth, tuple(t["bbox_expect"]), t.get("tol_m", 1.0))
             has = (work / "answer.json").exists() or (work / "out" / "places.geojson").exists()
+        elif t["kind"] == "research":
+            targets = json.loads((truth_dir / "key.json").read_text(encoding="utf-8"))
+            s = score_research(read_json(work / "answer.json"), targets)
+            has = (work / "answer.json").exists()
         else:
             key = json.loads((truth_dir / "key.json").read_text(encoding="utf-8"))
             s = score_decide(read_json(work / "answer.json"), key)
@@ -252,7 +292,7 @@ def score_all(spec):
         logs = "".join(p.read_text(errors="replace") for p in (d / "log.jsonl", d / "stderr.log") if p.exists())
         o = final_outcome(s["outcome"], t.get("negative", False), meta["exit"], has, provider_failed(logs))
         row = [meta["agent"], meta.get("model", "-"), meta["cond"], meta["task"], meta["rep"], o, ",".join(s.get("reasons", [])) or "-",
-               f"{s['matched']}/{s['n_ref']}" if "matched" in s else "-",
+               f"{s['matched']}/{s['n_ref']}" if "matched" in s else (f"{s['n_services']} services" if "n_services" in s else "-"),
                f"{s['precision']:.2f}" if "precision" in s else "-", f"{s['recall']:.2f}" if "recall" in s else "-",
                meta["exit"], meta["seconds"], ",".join(public_osm_hits(logs)) or "-"]
         print("\t".join(str(v) for v in row))

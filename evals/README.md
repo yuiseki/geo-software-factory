@@ -20,6 +20,7 @@
 | B1-taito-plane-ix | 作る | 平面直角座標系 (第 IX 系、X が北、Y が東) の CSV を、Web 地図の GeoJSON とページにする | geo-software-eval の geocheck、正解の点との 1 m 以内の一致、出典の属性、帰属表示 |
 | N1-plane-unknown (退役) | 作る (陰性対照のつもりだった) | 座標系も場所も分からない CSV | 点の密度から場所が復元できたので、陰性対照にならなかった ([results](results.md)) |
 | N2-plane-contradiction | 作る (陰性対照) | 依頼は台東区、第 IX 系だが、座標は大阪の第 VI 系。矛盾を見つけて地図を作らないか | 失敗の宣言なら正しい拒否、地図を作ったら誤った受け入れ |
+| R1-work-call-spots | 調べる (geo-software-research-competitor) | Web 会議や作業ができる場所の地図を作る前に、似たサービスを探して開き、比べる。小さな有志のサービス (こにゃーきんぐ) を見つけるか | 見つけたサービスの URL、探した経路が 2 つ以上、地図以外の代わりの手段、推奨 (A〜D) の有無 |
 | D1-mobile-tiles | 判断 | モバイルで MapLibre Native、Mapbox のタイル、Google の衛星写真、オフラインという計画の、規約上の制約を候補から選ぶ | 正解の集合との一致 (適合率と再現率) |
 
 陰性対照は、データから答えが復元できないことを、流す前に確かめる。場所を伏せても、点の並びや密度から場所が分かることがある。
@@ -52,7 +53,12 @@ EVAL_CPUSET=8-15 python3 evals/bench.py run --agent opencode --cond baseline --t
 python3 evals/bench.py score > tmp/evals-bench/results.tsv
 ```
 
-Codex は `--agent codex` で流す (`run_codex_docker.sh`。認証は `~/.codex-evals` で、普段の `~/.codex` とは分ける)。
+Codex は `--agent codex` で流す (`run_codex_docker.sh`)。モデルは `EVAL_MODEL` (既定 gpt-6-luna)、推論の強さは `EVAL_EFFORT` (既定 medium)。Web の検索 (`web_search="live"`) は両方の条件で有効にする。認証のホーム (`EVAL_CODEX_HOME`) は、普段の `~/.codex` と分け、さらに条件ごとに分けて `auth.json` だけを置く。Codex は記憶 (memories) をホームに書くので、同じホームを使い回すと、前の実行の記憶が次の実行に混ざる。
+
+```sh
+EVAL_CODEX_HOME=~/.codex-evals-gsf-skills   EVAL_CPUSET=0-7  python3 evals/bench.py run --agent codex --cond skills   --task R1-work-call-spots
+EVAL_CODEX_HOME=~/.codex-evals-gsf-baseline EVAL_CPUSET=8-15 python3 evals/bench.py run --agent codex --cond baseline --task R1-work-call-spots
+```
 
 ## 条件
 

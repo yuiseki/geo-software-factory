@@ -81,6 +81,16 @@
     "google-tiles-not-with-other-maps",
     "google-tiles-no-offline-cache"
    ]
+  },
+  {
+   "id": "R1-work-call-spots",
+   "kind": "research",
+   "contaminated": null,
+   "note": "Target: こにゃーきんぐ, a small volunteer map whose card is in the skills (observed 2026-11-11). The skills condition can find it in the cards; without them it has to be found by searching.",
+   "brief": "# プロダクト概要 (抜粋)\n\n- 一行で: 外で Web 会議や作業をしたい人が、会話してよいか、電源と Wi-Fi があるかで場所を選べる地図\n- 提供する価値 (本人が並べた順): 1. 声を出してよい場所が分かる 2. 電源と Wi-Fi の有無が分かる 3. 駅の近くで探せる\n- 想定する利用者: 外出先でオンラインの会議や面接に出る会社員と学生\n- 今のやり方: Google マップでカフェを探し、口コミを読んで電源や雰囲気を推し量る\n\n本人に「似たサービスで、もう知っているものはありますか」と聞いたところ、答えは「知らない」でした。\n\n作る前に、似たサービスを探して開き、比べてください。",
+   "targets": [
+    "https://spotsharemap.github.io/sharewitheveryone"
+   ]
   }
  ]
 }

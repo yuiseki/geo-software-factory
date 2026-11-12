@@ -1,6 +1,6 @@
 ---
 name: map-compare-auth
-description: 地図プロダクトの認証と認可の仕組みを比較し選ぶ。管理型の認証サービス (Auth0、Clerk、Firebase Authentication、Supabase Auth、Amazon Cognito、WorkOS、Logto など) と OSS (Better Auth、Keycloak、Ory など) を、料金 (MAU)、機能 (SSO、パスキー、組織と役割)、DB の行単位アクセス制御との連携、エッジでの検証、日本リージョン、公共案件での利用、ロックインで比べる。タイルや地図データへのアクセス制御も扱う。「地図アプリに認証をつけたい」「どの認証サービスがいい」「自治体ごとにデータを出し分けたい」「タイルを限られた人だけに見せたい」と言われたら使う。
+description: 地図プロダクトの認証と認可の仕組みを比較し選ぶ。管理型の認証サービス (Auth0、Clerk、Firebase Authentication、Supabase Auth、Neon Auth、Amazon Cognito、WorkOS、Logto など) と OSS (Better Auth、Keycloak、Ory など) を、料金 (MAU)、機能 (SSO、パスキー、組織と役割)、DB の行単位アクセス制御との連携、エッジでの検証、日本リージョン、公共案件での利用、ロックインで比べる。タイルや地図データへのアクセス制御も扱う。「地図アプリに認証をつけたい」「どの認証サービスがいい」「自治体ごとにデータを出し分けたい」「タイルを限られた人だけに見せたい」と言われたら使う。
 ---
 
 # map-compare-auth
@@ -14,6 +14,7 @@ description: 地図プロダクトの認証と認可の仕組みを比較し選�
 | [providers/clerk](references/providers/clerk.md) | 候補に入れるとき | Clerk |
 | [providers/firebase-auth](references/providers/firebase-auth.md) | 候補に入れるとき | Firebase Authentication と Identity Platform |
 | [providers/supabase-auth](references/providers/supabase-auth.md) | 候補に入れるとき、PostGIS と RLS で地物を出し分けるとき | Supabase Auth |
+| [providers/neon-auth](references/providers/neon-auth.md) | 候補に入れるとき、Neon の Postgres と PostGIS を正本にするとき | Neon Auth (Managed Better Auth) |
 | [providers/amazon-cognito](references/providers/amazon-cognito.md) | 候補に入れるとき、AWS で配信するとき | Amazon Cognito |
 | [providers/workos](references/providers/workos.md) | 候補に入れるとき、企業 SSO が中心の B2B | WorkOS AuthKit |
 | [providers/logto](references/providers/logto.md) | 候補に入れるとき | Logto (OSS と Cloud) |
@@ -57,6 +58,7 @@ description: 地図プロダクトの認証と認可の仕組みを比較し選�
 候補を集めるときの出発点。どれも足切りと評価の軸で確かめてから推奨する。
 
 - 地物を PostGIS に置き、利用者や組織ごとに見える行を DB で強制したい: Supabase Auth (JWT をそのまま RLS で使える、東京リージョン)。Free は 1 週間使われないと止まる
+- 正本の DB を Neon の Postgres にする: Neon Auth (中身は Better Auth、利用者は自分の DB の `neon_auth` スキーマ、認証は別料金なしで 60,000 MAU まで無料)。Google は共用の資格情報で設定なしに試せる。Tokyo のリージョンは無い
 - React や Next.js の試作を早く: Clerk (50,000 MRU 無料、LINE あり)。データは米国だけ
 - 管理型でデータを日本に置きたい: Auth0 (JP)、Logto Cloud (Japan East)、Supabase (東京)、Cognito (リージョン)
 - AWS で地図を配る: Amazon Cognito と CloudFront の署名付き Cookie

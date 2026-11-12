@@ -14,18 +14,18 @@
 
 | 条件 | 何を確かめるか | 外れる例 (各 reference の記述) |
 |---|---|---|
-| データの保存地域 | 利用者のデータを日本に置く必要があるか | Clerk は地域を選べず米国 ([clerk](providers/clerk.md))。Firebase と WorkOS は保存地域を確かめられていない。Ory Network の日本は一般提供でない ([ory](providers/ory.md))。日本を選べるのは Auth0 (JP)、Supabase (東京)、Logto Cloud (Japan East)、Cognito (リージョンに作る) と、自前運用の OSS |
+| データの保存地域 | 利用者のデータを日本に置く必要があるか | Clerk は地域を選べず米国 ([clerk](providers/clerk.md))。Firebase と WorkOS は保存地域を確かめられていない。Ory Network の日本は一般提供でない ([ory](providers/ory.md))。Neon Auth はデータベースと同じリージョンで、アジアは Singapore と Sydney だけ ([neon-auth](providers/neon-auth.md))。日本を選べるのは Auth0 (JP)、Supabase (東京)、Logto Cloud (Japan East)、Cognito (リージョンに作る) と、自前運用の OSS |
 | 外部への通信 | 閉域網、LGWAN 接続系、オフラインか | 管理型のサービスは外れ、自前運用の OSS (Keycloak、Ory、Logto、Supabase Auth、Better Auth) に限られる ([niche](niche.md)) |
 | 調達の条件 | ISMAP クラウドサービスリストへの登録が求められるか | AWS は ISMAP に登録 (Cognito の個別の掲載は未確認、[amazon-cognito](providers/amazon-cognito.md))。他の管理型サービスはいずれも未確認。自前運用の OSS は動かす基盤で判断する |
-| 必須の認証方式 | 企業 SSO (SAML)、パスキー、LINE ログインが必須か | パスキーは Firebase に標準の記載なし、Supabase は実験的、Clerk は Pro 以上、Cognito は Essentials 以上。LINE は Firebase、Supabase、Keycloak の標準にない (独自の OIDC で足す) |
+| 必須の認証方式 | 企業 SSO (SAML)、パスキー、LINE ログインが必須か | パスキーは Firebase に標準の記載なし、Supabase は実験的、Neon Auth は記載なし、Clerk は Pro 以上、Cognito は Essentials 以上。LINE は Firebase、Supabase、Neon Auth、Keycloak の標準にない (独自の OIDC で足す) |
 | ライセンス | 自前運用するソフトウェアを改変して配布 (受託で納品) するか | Logto は MPL-2.0 で、改変したファイルは MPL-2.0 のままソースを渡す ([logto](providers/logto.md))。Keycloak、Ory、Supabase の OSS は Apache-2.0 か MIT |
 
 ## 評価の軸
 
 ### 1. 費用 (課金単位と無料枠)
 
-- 課金単位が提供者ごとに違う: MAU (Auth0、Firebase、Supabase、Cognito、Logto)、MRU (Clerk)、aDAU (Ory Network)、企業 SSO の接続数 (WorkOS、Auth0、Clerk)、トークン数 (Logto Cloud の Pro)、ソフトウェア代なし (Keycloak、Better Auth、各 OSS)。
-- 無料枠の例: Auth0 25,000 MAU、Clerk 50,000 MRU、Firebase 50,000 MAU、Supabase 50,000 MAU、Cognito Lite と Essentials 10,000 MAU、Logto 50,000 MAU、WorkOS 100 万 MAU。
+- 課金単位が提供者ごとに違う: MAU (Auth0、Firebase、Supabase、Neon Auth、Cognito、Logto)、MRU (Clerk)、aDAU (Ory Network)、企業 SSO の接続数 (WorkOS、Auth0、Clerk)、トークン数 (Logto Cloud の Pro)、ソフトウェア代なし (Keycloak、Better Auth、各 OSS)。
+- 無料枠の例: Auth0 25,000 MAU、Clerk 50,000 MRU、Firebase 50,000 MAU、Supabase 50,000 MAU、Neon Auth 60,000 MAU (認証は別料金なし、費用は Postgres の計算と保存)、Cognito Lite と Essentials 10,000 MAU、Logto 50,000 MAU、WorkOS 100 万 MAU。
 - 無料枠の条件: Supabase の Free は 1 週間使われないと止まる ([source-of-truth](../../map-compare-arch/references/capabilities/source-of-truth.md))。Clerk の Hobby ではパスキーが使えない。
 
 ### 2. 機能 (認証方式)
@@ -36,12 +36,12 @@
 ### 3. 認可のモデル
 
 - 組織 (テナント) と役割: 自治体ごと、顧客企業ごとにデータを分けるか。Auth0 Organizations、Clerk Organizations、Keycloak Organizations、Logto の組織と RBAC、Better Auth の Organization プラグイン。Ory の自前運用では B2B の組織が OEL 版だけ。
-- DB の行単位アクセス制御 (RLS) との結びつき: Supabase は JWT を RLS の `auth.uid()`、`auth.jwt()` でそのまま使える。他は PostgREST など JWT のクレームを DB に渡す層が要る。
+- DB の行単位アクセス制御 (RLS) との結びつき: Supabase は JWT を RLS の `auth.uid()`、`auth.jwt()` でそのまま使える。Neon Auth は Data API で `auth.user_id()` を使う。他は PostgREST など JWT のクレームを DB に渡す層が要る。
 - タイルやファイルの制御: [tile-access-control](tile-access-control.md) の手段と組み合わせられるか (JWKS で公開鍵を取れるか、短命のトークンか)。
 
 ### 4. エッジとの相性
 
-- JWKS で公開鍵を取り、Web Crypto のある環境で検証できるか。Clerk、Supabase、Cognito、Firebase は JWKS か公開鍵の場所を文書化している。
+- JWKS で公開鍵を取り、Web Crypto のある環境で検証できるか。Clerk、Supabase、Neon Auth、Cognito、Firebase は JWKS か公開鍵の場所を文書化している。
 - 認証の処理そのものをエッジで動かせるか: Better Auth は Cloudflare Workers の例がある。Keycloak、Ory、Logto の OSS は常時動くサーバー (推測)。
 - エッジ関数の制約は [edge-functions](../../map-compare-arch/references/edge/edge-functions.md)。CloudFront Functions は JWKS を取りに行けない。
 
@@ -52,7 +52,7 @@
 
 ### 6. ロックインと移行
 
-- パスワードのハッシュを持ち出せるか: Cognito は出せない。Auth0 はサポート経由で、Free では不可。Firebase の書き出しはスクリプトのハッシュだけ。Clerk はダッシュボードの CSV に入る。自前運用の OSS と Supabase は自分の DB にある。
+- パスワードのハッシュを持ち出せるか: Cognito は出せない。Auth0 はサポート経由で、Free では不可。Firebase の書き出しはスクリプトのハッシュだけ。Clerk はダッシュボードの CSV に入る。自前運用の OSS、Supabase、Neon Auth は自分の DB にある。
 - 取り込めるか: WorkOS と Firebase はハッシュの形式の一覧を出している。Cognito と Auth0 はログイン時に移す仕組みを持つ。
 - 認可のロジックが提供者の独自機能 (Supabase の `auth.uid()`、独自のクレーム) に依存するほど、移るときの書き換えが増える (推測)。
 

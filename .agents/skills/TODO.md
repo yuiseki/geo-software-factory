@@ -141,7 +141,7 @@
   - [x] references/data-update.md
   - [x] references/fallback.md
   - [x] references/usage-monitoring.md
-- [x] map-compare-auth (14/14)
+- [x] map-compare-auth (15/15)
   - [x] SKILL.md
   - [x] references/criteria.md
   - [x] references/niche.md
@@ -152,6 +152,7 @@
   - [x] references/providers/firebase-auth.md
   - [x] references/providers/keycloak.md
   - [x] references/providers/logto.md
+  - [x] references/providers/neon-auth.md
   - [x] references/providers/ory.md
   - [x] references/providers/supabase-auth.md
   - [x] references/providers/workos.md

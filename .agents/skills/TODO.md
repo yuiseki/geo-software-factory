@@ -175,6 +175,10 @@
   - [x] references/from-leaflet-raster.md
   - [x] references/from-mapbox.md
   - [x] references/migration-plan.md
+- [ ] map-app-growth (0/1)
+  - [ ] SKILL.md
+- [ ] map-app-monetize (0/1)
+  - [ ] SKILL.md
 
 ## 候補 (まだ作るか決めていない)
 

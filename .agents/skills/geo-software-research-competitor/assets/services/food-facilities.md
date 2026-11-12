@@ -1,6 +1,7 @@
 # 🍽️ Japan Food Facilities - 地図
 
 - URL: https://gl20percentclub.github.io/japan-food-facilities/map.html
+- ソース: https://github.com/gl20percentclub/japan-food-facilities (ライセンスの表示なし (OSS ではない)。CI で単体テスト (`npm run test:unit`)。2026-11-13 に確かめた)
 - 観測した日: 2026-11-11
 - 概要と収支を確かめた日: 2026-11-12
 - 探すときの語: 飲食店、食品営業許可、飲食施設、オープンデータ、保健所、店舗

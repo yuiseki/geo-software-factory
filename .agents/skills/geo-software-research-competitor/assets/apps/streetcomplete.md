@@ -1,6 +1,7 @@
 # StreetComplete
 
 - URL: https://streetcomplete.app/
+- ソース: https://github.com/streetcomplete/StreetComplete (GPL-3.0 (中身は読んでいない)。2026-11-13 に確かめた)
 - 観測した日: 2026-11-12
 - 概要と収支を確かめた日: 2026-11-12
 - 探すときの語: OpenStreetMap、OSM の編集、クエスト、地図の改善、貢献、マッピング

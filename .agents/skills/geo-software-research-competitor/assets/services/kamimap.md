@@ -1,6 +1,7 @@
 # 令和8年熊本地震関連情報 - 紙マップ
 
 - URL: https://kamimap.com/map/2026-kumamoto-earthquake/
+- ソース: https://github.com/codeforjapan/mapprint (ライセンスの表示なし (OSS ではない。紙マップの実装と推測)。CI に単体テスト、E2E、lint がある。2026-11-13 に確かめた)
 - 観測した日: 2026-11-11
 - 概要と収支を確かめた日: 2026-11-12
 - 探すときの語: 災害、支援情報、給水所、避難所、紙の地図、印刷、Code for Japan

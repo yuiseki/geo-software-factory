@@ -1,6 +1,7 @@
 # Navara, an open-source 3D map engine
 
 - URL: https://navara.world/
+- ソース: https://github.com/maplibre/navara (MIT OR Apache-2.0。CI で Rust と Web の試験 ([navara の reference](../../../geo-software-library/references/libraries/navara.md))。2026-11-13 に確かめた)
 - 観測した日: 2026-11-11
 - 概要と収支を確かめた日: 2026-11-12
 - 探すときの語: 3D 地図エンジン、地球儀、ライブラリ、OSS、3D 都市モデル、MapLibre

@@ -1,6 +1,7 @@
 # adsb.lol, unfiltered flight tracking
 
 - URL: https://www.adsb.lol/
+- ソース: https://github.com/adsblol/api (BSD-3-Clause (API の部分)。CI は Docker のイメージの公開。テストは少ない。2026-11-13 に確かめた)
 - 観測した日: 2026-11-11
 - 概要と収支を確かめた日: 2026-11-12
 - 探すときの語: 航空機、飛行機の追跡、フライトレーダー、ADS-B、flight tracker、オープンデータ

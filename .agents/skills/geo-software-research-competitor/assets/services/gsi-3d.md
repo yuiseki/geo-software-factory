@@ -1,6 +1,7 @@
 # 3次元地図可視化サイト
 
 - URL: https://gsi-cyberjapan.github.io/gsi-3d-2025/
+- ソース: https://github.com/gsi-cyberjapan/gsi-3d-2025 (BSD-2-Clause。CI でビルド、lint、整形、カバレッジつきの単体テスト (Vitest)。Playwright の設定がある。2026-11-13 に確かめた)
 - 観測した日: 2026-11-11
 - 概要と収支を確かめた日: 2026-11-12
 - 探すときの語: 国土地理院、3D 地図、地形、標高、点群、災害、空中写真

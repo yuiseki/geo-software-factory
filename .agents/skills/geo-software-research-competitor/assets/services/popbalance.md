@@ -1,6 +1,7 @@
 # 国勢調査 メッシュ年齢構成クラスターマップ
 
 - URL: https://klareswasser.github.io/map_popbalance/#5/37/137
+- ソース: https://github.com/klareswasser/map_popbalance (ライセンスの表示なし (OSS ではない)。CI なし、テストなし。2026-11-13 に確かめた)
 - 観測した日: 2026-11-11
 - 概要と収支を確かめた日: 2026-11-12
 - 探すときの語: 年齢構成、人口、国勢調査、住宅地、高齢化、子育てエリア、街の特徴

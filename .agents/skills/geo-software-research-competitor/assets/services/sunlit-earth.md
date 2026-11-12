@@ -1,6 +1,7 @@
 # Sunlit Earth: Earth from space as your wallpaper
 
 - URL: https://sunlit.earth/
+- ソース: https://github.com/sunlit-earth/sunlit-earth (GPL-3.0 (テストと CI の中身は読んでいない)。2026-11-13 に確かめた)
 - 観測した日: 2026-11-12
 - 概要と収支を確かめた日: 2026-11-12
 - 探すときの語: 壁紙、地球、宇宙から見た地球、昼と夜、デスクトップ

@@ -1,6 +1,7 @@
 # GeoLens: Open-Source Geospatial Data Catalog & Map Builder
 
 - URL: https://getgeolens.com/
+- ソース: https://github.com/geolens-io/geolens (Apache-2.0。CI で lint、型、pre-commit、秘密の検査 (gitleaks)、本番と同じ構成を Docker で立てて Playwright で当てる煙のテスト (`prod-smoke.yml`)、毎晩のブラウザをまたぐ E2E。テストのファイルが多い (約 2,000)。2026-11-13 に確かめた)
 - 観測した日: 2026-11-11
 - 概要と収支を確かめた日: 2026-11-12
 - 探すときの語: データカタログ、GIS、OGC API、セルフホスト、PostGIS、地図作成

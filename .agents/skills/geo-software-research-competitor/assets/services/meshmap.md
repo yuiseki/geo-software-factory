@@ -1,6 +1,7 @@
 # MeshMap - Meshtastic Node Map
 
 - URL: https://meshmap.net/
+- ソース: https://github.com/brianshea2/meshmap.net (AGPL-3.0 (中身は読んでいない)。2026-11-13 に確かめた)
 - 観測した日: 2026-11-11
 - 概要と収支を確かめた日: 2026-11-12
 - 探すときの語: Meshtastic、メッシュネットワーク、LoRa、無線、ノード、MQTT

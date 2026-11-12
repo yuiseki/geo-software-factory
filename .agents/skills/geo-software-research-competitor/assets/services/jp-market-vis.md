@@ -1,6 +1,7 @@
 # JP Market Vis - 日本の上場企業マップ
 
 - URL: https://mattyamonaca.github.io/JP_Market_Vis/
+- ソース: https://github.com/mattyamonaca/JP_Market_Vis (Apache-2.0。CI は GitHub Pages への公開だけ。テストのファイルがある (21)。2026-11-13 に確かめた)
 - 観測した日: 2026-11-11
 - 概要と収支を確かめた日: 2026-11-12
 - 探すときの語: 上場企業、企業の関係、ネットワーク図、資本関係、取引、投資

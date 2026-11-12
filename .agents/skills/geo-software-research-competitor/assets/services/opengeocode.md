@@ -1,6 +1,7 @@
 # OpenGeocode: free, open-source, self-hosted geocoding
 
 - URL: https://opengeocode.com/
+- ソース: https://github.com/open-geocode-rs/open-geocode (MIT。CI で整形、clippy、OS をまたぐ試験、依存のライセンスの一覧の生成 (cargo-about、生成できなければ落とす)。2026-11-13 に確かめた)
 - 観測した日: 2026-11-12
 - 概要と収支を確かめた日: 2026-11-12
 - 探すときの語: ジオコーディング、住所検索、逆ジオコーディング、セルフホスト、OSS、Rust

@@ -1,6 +1,7 @@
 # クマ遭遇AI予測マップ｜上智大学 深澤研究室
 
 - URL: https://fukazawa-lab.github.io/japan-bear-map/index.html
+- ソース: https://github.com/fukazawa-lab/japan-bear-map (ライセンスの表示なし (コードは見えるが OSS ではない)。CI なし、テストなし。2026-11-13 に確かめた)
 - 観測した日: 2026-11-11
 - 概要と収支を確かめた日: 2026-11-12
 - 探すときの語: クマ、熊、出没予測、遭遇リスク、AI 予測、獣害

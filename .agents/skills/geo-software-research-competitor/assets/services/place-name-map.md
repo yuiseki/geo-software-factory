@@ -1,6 +1,7 @@
 # 建物名 地名マップ v2.9.26
 
 - URL: https://tokyo26-sudo.github.io/place-name-map/
+- ソース: https://github.com/tokyo26-sudo/place-name-map (ライセンスの表示なし (OSS ではない)。CI なし、テストなし。2026-11-13 に確かめた)
 - 観測した日: 2026-11-12
 - 概要と収支を確かめた日: 2026-11-12
 - 探すときの語: 地名、建物名、名前の検索、駅、バス停、町名

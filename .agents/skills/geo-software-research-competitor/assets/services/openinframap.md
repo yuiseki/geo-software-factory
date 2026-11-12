@@ -1,6 +1,7 @@
 # Open Infrastructure Map
 
 - URL: https://openinframap.org/
+- ソース: https://github.com/openinframap/openinframap (BSD-3-Clause。CI で lint と、開発サーバーを立てて待ってから試験 (`web.yml`)。タイルの生成 (imposm) と SQL の CI もある。2026-11-13 に確かめた)
 - 観測した日: 2026-11-11
 - 概要と収支を確かめた日: 2026-11-12
 - 探すときの語: インフラ、送電線、発電所、電力、通信、パイプライン、OSM

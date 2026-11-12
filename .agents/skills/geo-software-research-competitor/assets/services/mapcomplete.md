@@ -1,6 +1,7 @@
 # MapComplete
 
 - URL: https://mapcomplete.org/
+- ソース: https://github.com/pietervdvn/MapComplete (GitHub は保存のみ (開発は source.mapcomplete.org に移った)。LICENSES に GPL と AGPL を含む (中身は読んでいない)。2026-11-13 に確かめた)
 - 観測した日: 2026-11-12
 - 概要と収支を確かめた日: 2026-11-12
 - 探すときの語: OpenStreetMap、OSM の編集、テーマ地図、ベンチ、自転車、カフェ、貢献

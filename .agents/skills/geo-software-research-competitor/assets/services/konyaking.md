@@ -1,6 +1,7 @@
 # こにゃーきんぐ
 
 - URL: https://spotsharemap.github.io/sharewitheveryone/
+- ソース: https://github.com/spotsharemap/sharewitheveryone (ライセンスの表示なし (OSS ではない)。CI なし、テストなし。2026-11-13 に確かめた)
 - 観測した日: 2026-11-11
 - 概要と収支を確かめた日: 2026-11-12
 - 探すときの語: 作業場所、カフェ作業、Web 会議、電源、Wi-Fi、通話できる場所、コワーキング

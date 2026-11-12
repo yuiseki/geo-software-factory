@@ -194,6 +194,15 @@
   - [x] references/board.md
   - [x] references/governance.md
   - [x] references/bootstrap.md
+- [x] geo-software-security-audit (8/8)
+  - [x] SKILL.md
+  - [x] references/entrypoints.md
+  - [x] references/auth.md
+  - [x] references/injection.md
+  - [x] references/abuse.md
+  - [x] references/exposure.md
+  - [x] references/triage.md
+  - [x] assets/audit-report-template.md
 - [x] geo-software-build (5/5)
   - [x] SKILL.md
   - [x] references/order.md

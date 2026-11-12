@@ -65,6 +65,7 @@
 | [geo-software-migrate](.agents/skills/geo-software-migrate/SKILL.md) | Google Maps、Mapbox、Leaflet などからの乗り換えを計画する | 書いた |
 | [geo-software-eval](.agents/skills/geo-software-eval/SKILL.md) | 正しさをコードレビューではなく評価で判定する。昼に人間と外から観測できるシナリオを作り、夜は実装と別の評価者が手元と本番で判定し、評価そのものも確かめる。人間の確認は評価の証拠で 1 つずつ外す | 書いた |
 | [geo-software-build](.agents/skills/geo-software-build/SKILL.md) | 技術選定の済んだものを、テストを先に書いて実装し、データを出典つきで組み立て、画面まで確かめる | 書いた |
+| [geo-software-security-audit](.agents/skills/geo-software-security-audit/SKILL.md) | 実装と別の監査者が、誰でも使える入口から認証、認可、注入、濫用、露出を調べる。漏れだけでなく、登録し放題、巨大な要求、メールの送られ放題、従量課金の食い潰しで壊れることも数え、確かめた問題を評価のシナリオにする | 書いた |
 | [geo-software-deploy](.agents/skills/geo-software-deploy/SKILL.md) | 昼に与えられた権限の範囲で出し、本番の URL で確かめる。リポジトリの公開前の点検も | 書いた |
 | [geo-software-swarm](.agents/skills/geo-software-swarm/SKILL.md) | 公開したあと、定期実行のエージェントの群れと掲示板 (GitHub) で長い尾を処理し続ける。統治の層を掛け、進み具合を届いて持ちこたえた変更で測る | 書いた |
 

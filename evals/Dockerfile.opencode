@@ -1,0 +1,51 @@
+# OpenCode CLI plus a small GIS toolchain, for the agent benchmark in evals/ under hard resource limits.
+# The approach (pinned release, checked digest, unprivileged user, limits set by the runner) follows the evals of
+# yuiseki/GeoAI-master-skills and yuiseki/Geo-Ref-skills.
+# Build:  docker build -f evals/Dockerfile.opencode -t geo-software-factory-evals-opencode evals
+# Run:    evals/run_opencode_docker.sh <workdir>     (the limits are set there, not here)
+FROM python:3.12-slim-bookworm
+
+# Pinned for reproducibility; record the version with the results. Digests are those GitHub publishes for the
+# v1.19.3 release assets.
+ARG OPENCODE_VERSION=1.19.3
+ARG OPENCODE_SHA256_X64=13a8fb2978302071b86f9d7e00da9c8895f9cd846978379c3bdc6a5333536c9b
+ARG OPENCODE_SHA256_ARM64=7900818a6a98881edbbadab4b7525940eff3b9750040c200481f9f56cacee405
+ARG TARGETARCH
+
+COPY --from=ghcr.io/astral-sh/uv:0.8 /uv /uvx /usr/local/bin/
+
+RUN apt-get update && apt-get install -y --no-install-recommends ca-certificates curl \
+ && rm -rf /var/lib/apt/lists/*
+
+RUN case "${TARGETARCH:-$(dpkg --print-architecture)}" in \
+      amd64) asset=opencode-linux-x64.tar.gz; sum=${OPENCODE_SHA256_X64} ;; \
+      arm64) asset=opencode-linux-arm64.tar.gz; sum=${OPENCODE_SHA256_ARM64} ;; \
+      *) echo "unsupported arch" >&2; exit 1 ;; \
+    esac \
+ && curl -fsSL -o /tmp/opencode.tar.gz \
+    "https://github.com/anomalyco/opencode/releases/download/v${OPENCODE_VERSION}/${asset}" \
+ && echo "${sum}  /tmp/opencode.tar.gz" | sha256sum -c - \
+ && tar -xzf /tmp/opencode.tar.gz -C /usr/local/bin opencode \
+ && rm /tmp/opencode.tar.gz && chmod 0755 /usr/local/bin/opencode \
+ && test "$(/usr/local/bin/opencode --version)" = "${OPENCODE_VERSION}"
+
+# What a map task may need: projections, geometry, tables. The same set goes in every agent's image.
+RUN uv venv /opt/venv && VIRTUAL_ENV=/opt/venv uv pip install --no-cache \
+    'pyproj==3.7.2' 'shapely==2.1.2' 'numpy==2.3.4' 'pandas==2.3.3' pytest
+
+ENV PATH=/opt/venv/bin:$PATH \
+    UV_CACHE_DIR=/opt/uv-cache \
+    HOME=/home/geo \
+    OMP_NUM_THREADS=8 \
+    OPENBLAS_NUM_THREADS=8 \
+    OPENCODE_DISABLE_AUTOUPDATE=1 \
+    OPENCODE_DISABLE_CLAUDE_CODE=1 \
+    OPENCODE_DISABLE_LSP_DOWNLOAD=1
+
+RUN echo 'export PATH=/opt/venv/bin:$PATH' > /etc/profile.d/venv.sh
+RUN useradd --uid 1000 --create-home --home-dir /home/geo geo \
+ && mkdir -p /opt/uv-cache /work && chown -R geo /opt/uv-cache /work /home/geo
+USER geo
+RUN python -c "import pyproj, shapely"
+WORKDIR /work
+CMD ["bash"]

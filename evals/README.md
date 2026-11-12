@@ -60,6 +60,8 @@ python3 evals/bench.py score > tmp/evals-bench/results.tsv
 
 Codex は `--agent codex` で流す (`run_codex_docker.sh`)。モデルは `EVAL_MODEL` (既定 gpt-6-luna)、推論の強さは `EVAL_EFFORT` (既定 medium)。Web の検索 (`web_search="live"`) は両方の条件で有効にする。認証のホーム (`EVAL_CODEX_HOME`) は、普段の `~/.codex` と分け、さらに条件ごとに分けて `auth.json` だけを置く。Codex は記憶 (memories) をホームに書くので、同じホームを使い回すと、前の実行の記憶が次の実行に混ざる。
 
+同様に Claude Code (`--agent claude`, `Dockerfile.claude`, `run_claude_docker.sh`)、Gemini / Antigravity CLI (`--agent gemini`, `Dockerfile.gemini`, `run_gemini_docker.sh`)、Qoder CLI (`--agent qoder`, `Dockerfile.qoder`, `run_qoder_docker.sh`) も同じ条件で流せる。
+
 ```sh
 EVAL_CODEX_HOME=~/.codex-evals-gsf-skills   EVAL_CPUSET=0-7  python3 evals/bench.py run --agent codex --cond skills   --task R1-work-call-spots
 EVAL_CODEX_HOME=~/.codex-evals-gsf-baseline EVAL_CPUSET=8-15 python3 evals/bench.py run --agent codex --cond baseline --task R1-work-call-spots

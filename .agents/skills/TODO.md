@@ -219,7 +219,7 @@
   - [x] assets/isolation/compose.yaml
   - [x] scripts/dark_factory.py
   - [x] scripts/test_dark_factory.py
-- [x] geo-software-swarm (9/9)
+- [x] geo-software-swarm (11/11)
   - [x] SKILL.md
   - [x] references/roles.md
   - [x] references/board.md
@@ -229,6 +229,8 @@
   - [x] scripts/hooks.py
   - [x] scripts/test_hooks.py
   - [x] assets/unattended-settings.json
+  - [x] scripts/swarm.py
+  - [x] scripts/test_swarm.py
 - [x] geo-software-tdd (7/7)
   - [x] SKILL.md
   - [x] references/kinds.md
@@ -273,11 +275,12 @@
 
 - [x] `preflight` サブコマンド: `check_brief.py` による `product-brief.md` 検査、シナリオの配置 (実装リポジトリ外) と JSON 形式検査、停止スイッチ (`AGENT_STOP_FILE`) 検査、`docker` モード時の `check_isolation.py` 呼び出し
 - [x] `eval-of-eval` サブコマンド: 手本 (`--good`) が全シナリオに通ること、壊した版 (`--break NAME=URL`) がそれぞれ少なくとも 1 本のシナリオで落ちることを機械判定し `out/eval-of-eval.json` に記録
-- [x] `run` サブコマンド: 作業場所 (`handoff/`、`feedback/`、`out/`、`state/`、Claude Code 用 `settings.json`、夜のプロンプト) の自動準備、`eval_watch.py` と実装者 (`claude` / `codex` / `opencode` / `custom`) の並列実行、停止スイッチと制限時間の監視、クリーンな `git clone` に対する最終判定 (`out/final.json`)、本番 URL への `smoke.py` と `run_eval.py` の実行 (`--verify-url`)
+- [x] `run` サブコマンド: 作業場所 (`handoff/`、`feedback/`、`out/`、`state/`、Claude Code 用 `settings.json`、夜のプロンプト) の自動準備、`eval_watch.py` と実装者 (`claude` / `codex` / `gemini` / `opencode` / `qoder` / `custom`) の並列実行、停止スイッチと制限時間の監視、クリーンな `git clone` に対する最終判定 (`out/final.json`)、本番 URL への `smoke.py` と `run_eval.py` の実行 (`--verify-url`)
 - [x] `report` サブコマンド: `out/eval-report.md` と `out/morning-report.md` (できたもの、評価の結果と証跡、夜に決めたこと、止まったこと) および `out/summary.json` の出力
 - [x] 単体・結合テスト (`scripts/test_dark_factory.py`): preflight、eval-of-eval、ローカルの一晩ループと朝の報告生成の自動試験
+- [x] 独立 LLM 評価エージェント (`run_eval.py` の `kind: "llm"`): 観点 (rubric) と観測に基づく判定、根拠の無い合格の却下、複数回投票 (`votes`) で割れたときの不合格倒し、低確信 (`low_confidence`) と Satisfaction の集計
+- [x] `geo-software-eval/SKILL.md`、`README.md` の道具一覧表への `dark_factory.py` の追記
 - [ ] Docker モード (`GSF_DOCKER_TESTS=1`) での `dark_factory.py` 通しテストの追加
-- [ ] `geo-software-eval/SKILL.md`、`AGENTS.md`、`README.md` の道具一覧表への `dark_factory.py` の追記
 
 ### 2. デプロイ前関門とロールバック判定のプログラム化 (`geo-software-deploy`)
 
@@ -293,11 +296,14 @@
 
 ### 4. 群れ (Swarm) の立ち上げ・進捗計測スクリプト (`geo-software-swarm`)
 
-- [ ] `geo-software-swarm/scripts/measure_progress.py` (および `test_measure_progress.py`) の実装:
-  - マージ数ではなく「人間が決めた重み × 独立評価の合格 × 本番到達 × 一定期間後の逃げた不具合なし」で進み具合を集計し、CI や評価を緩めた PR を別枠で警告する (`progress.md` のプログラム化)
+- [x] `geo-software-swarm/scripts/swarm.py` (および `test_swarm.py`) の実装:
+  - ステートレスな 1 回 1 仕事の起床ループ (`wake`: 停止スイッチ確認、役割に応じた 1 件選択、重複症状の排除、楽観ロックによる共有文の更新)
+  - 統治の関門 (`check-governance`: 保護パスや検査緩和の検出と `human-turn` 強制、外部テキストの境界付けと注入検出)
+  - マージ数ではなく「人間が決めた重み × 独立評価の合格 × 本番到達 × 一定期間後の逃げた不具合なし」で進み具合を集計し、CI や評価を緩めた PR を別枠で警告する (`progress` サブコマンド)
 
-### 5. `evals/night` の統合とフィードバックループ検証
+### 5. `evals/` マルチプロバイダー対応と `evals/night` の統合
 
+- [x] 5 つの AI プロバイダー (`claude`, `codex`, `gemini`, `opencode`, `qoder`) の `Dockerfile.*` と `run_*_docker.sh` を `evals/` に整備し、`bench.py` と `evals/night/run_night.py` で対応
 - [ ] `evals/night/run_night.py` から `dark_factory.py` の報告生成 (`morning-report.md`、`eval-report.md`) を呼び出すよう統合
 - [ ] 初回では落ちやすく、`eval-feedback.md` の症状を読んで直す往復が発生する夜の課題の追加と、`skills` / `baseline` の比較実行
 

@@ -54,7 +54,8 @@ import eval_watch  # noqa: E402
 import run_eval  # noqa: E402
 import smoke  # noqa: E402
 
-VALID_CHECK_KINDS = ("http", "geojson", "command")
+VALID_CHECK_KINDS = ("http", "geojson", "command", "llm")
+AGENTS = ("claude", "codex", "gemini", "opencode", "qoder", "custom")
 DEFAULT_CHECKLIST = (
     "評価者に最新のコミットで評価を頼み、全シナリオが合格したか確かめる",
     "地図データとタイルの帰属表示が画面と README の両方にあるか確かめる",
@@ -166,7 +167,10 @@ def prepare_workspace(app_dir: Path, work_dir: Path, scenarios_dir: Path, instal
         if (root / ".git").exists():
             tar = subprocess.run(["git", "-C", str(root), "archive", "HEAD"], check=True, capture_output=True).stdout
             with tarfile.open(fileobj=io.BytesIO(tar)) as t:
-                t.extractall(app_dir, filter="data")
+                try:
+                    t.extractall(app_dir, filter="data")
+                except TypeError:
+                    t.extractall(app_dir)
             for extra in ("examples", "scripts", "tests", ".github", "README.md", "TODO.md"):
                 p = app_dir / extra
                 if p.is_dir():
@@ -333,6 +337,14 @@ def default_agent_cmd(agent: str, work_dir: Path, model: str | None = None, effo
     if agent == "opencode":
         mflag = f"-m {shlex.quote(model)} " if model else ""
         return ["sh", "-c", f"opencode run {mflag}\"$(cat {shlex.quote(prompt_file)})\""]
+    if agent == "gemini":
+        m = model or "gemini-3.8-flash-low"
+        return ["sh", "-c", f"agy --print=\"$(cat {shlex.quote(prompt_file)})\" --output-format stream-json "
+                            f"--model {shlex.quote(m)} --effort {shlex.quote(effort)} --dangerously-skip-permissions"]
+    if agent == "qoder":
+        m = model or "Auto"
+        return ["sh", "-c", f"qodercli -p --output-format stream-json --dangerously-skip-permissions "
+                            f"--strict-mcp-config --no-session-persistence --model {shlex.quote(m)} < {shlex.quote(prompt_file)}"]
     raise ValueError(f"unknown agent {agent!r}")
 
 
@@ -409,7 +421,15 @@ def render_eval_report(app_dir: Path, scenarios_dir: Path, work_dir: Path, evalu
                              f"{res_jp} | {obs} (`out/prod-eval.json`) | 機械判定 |")
         passed = sum(1 for s in final["scenarios"] if s["result"] == "pass")
         total = len(final["scenarios"])
-        lines.extend(["", f"- 合格: {passed} / {total}", "- 判定が割れたもの: なし"])
+        sat = final.get("satisfaction", round(passed / total, 3) if total else 0.0)
+        splits = ", ".join(final.get("split_scenarios", [])) or "なし"
+        low_confs = ", ".join(final.get("low_confidence_scenarios", [])) or "なし"
+        lines.extend([
+            "",
+            f"- 合格: {passed} / {total} (Satisfaction: {sat})",
+            f"- 判定が割れたもの: {splits}",
+            f"- 確信が低いもの: {low_confs}",
+        ])
     else:
         lines.extend(["| (なし) | - | - | 未評価 | `out/final.json` が無い | - |", "", "- 合格: 0 / 0", "- 判定が割れたもの: なし"])
 
@@ -804,7 +824,7 @@ def main(argv=None) -> int:
     p_run.add_argument("--scenarios", type=Path, required=True)
     p_run.add_argument("--work-dir", type=Path, required=True)
     p_run.add_argument("--mode", choices=("local", "docker"), default="local")
-    p_run.add_argument("--agent", choices=("claude", "codex", "opencode", "custom"), default="claude")
+    p_run.add_argument("--agent", choices=AGENTS, default="claude")
     p_run.add_argument("--implementer-cmd", help="shell command for the implementer (required when --agent=custom)")
     p_run.add_argument("--start-cmd", default="sh start.sh")
     p_run.add_argument("--port", type=int, default=8787)

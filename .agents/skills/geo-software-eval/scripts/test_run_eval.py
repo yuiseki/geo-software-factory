@@ -171,5 +171,78 @@ class ContainerModeTest(Base):
             self.run_eval(app_repo=None, feedback=None)
 
 
+class LLMJudgeTest(Base):
+    """Independent LLM-as-a-Judge tests following judging.md rules."""
+
+    def test_llm_judge_passes_with_evidence_and_computes_satisfaction(self):
+        judge = self.scen / "judge_ok.py"
+        judge.write_text(
+            'import json\nprint(json.dumps({"pass": True, "confidence": 0.92, "evidence": "OpenStreetMap contributors", "observed": ""}))\n',
+            encoding="utf-8",
+        )
+        self.scenario("S1", "地図の説明が不自然", [{
+            "kind": "llm", "path": "/", "rubric": "SECRET_RUBRIC_TEXT: 帰属表示が自然か",
+            "judge_cmd": [sys.executable, "-I", str(judge)],
+        }])
+        r = self.run_eval()
+        self.assertTrue(r["ok"])
+        self.assertEqual(r["satisfaction"], 1.0)
+        self.assertEqual(r["split_scenarios"], [])
+        self.assertEqual(r["low_confidence_scenarios"], [])
+
+    def test_llm_judge_rejects_pass_without_evidence(self):
+        judge = self.scen / "judge_no_ev.py"
+        judge.write_text(
+            'import json\nprint(json.dumps({"pass": True, "confidence": 0.95, "evidence": "", "observed": ""}))\n',
+            encoding="utf-8",
+        )
+        self.scenario("S1", "根拠なき合格の防止", [{
+            "kind": "llm", "path": "/", "rubric": "SECRET_RUBRIC_TEXT",
+            "judge_cmd": [sys.executable, "-I", str(judge)],
+        }])
+        r = self.run_eval()
+        self.assertFalse(r["ok"])
+        self.assertEqual(r["scenarios"][0]["result"], "fail")
+        fb = (self.app / "eval-feedback.md").read_text(encoding="utf-8")
+        self.assertIn("判定の根拠の観測が無い", fb)
+        self.assertNotIn("SECRET_RUBRIC_TEXT", fb)
+
+    def test_llm_judge_multi_vote_split_defaults_to_fail_and_records_split(self):
+        state = self.scen / "vote_count.txt"
+        judge = self.scen / "judge_split.py"
+        judge.write_text(f"""import json
+from pathlib import Path
+p = Path({str(state)!r})
+n = int(p.read_text()) if p.exists() else 0
+p.write_text(str(n + 1))
+if n % 2 == 0:
+    print(json.dumps({{"pass": True, "confidence": 0.8, "evidence": "OpenStreetMap", "observed": ""}}))
+else:
+    print(json.dumps({{"pass": False, "confidence": 0.55, "evidence": "短い", "observed": "案内文が1行しかない"}}))
+""", encoding="utf-8")
+        self.scenario("S1", "案内文の分かりやすさ", [{
+            "kind": "llm", "path": "/", "rubric": "SECRET_RUBRIC_TEXT",
+            "votes": 3, "min_confidence": 0.7,
+            "judge_cmd": [sys.executable, "-I", str(judge)],
+        }])
+        r = self.run_eval()
+        self.assertFalse(r["ok"])
+        self.assertEqual(r["scenarios"][0]["result"], "fail")
+        self.assertEqual(r["split_scenarios"], ["S1"])
+        self.assertEqual(r["low_confidence_scenarios"], ["S1"])
+        fb = (self.app / "eval-feedback.md").read_text(encoding="utf-8")
+        self.assertIn("判定が割れたため不合格", fb)
+        self.assertIn("案内文が1行しかない", fb)
+        self.assertNotIn("SECRET_RUBRIC_TEXT", fb)
+
+    def test_llm_judge_unconfigured_marks_error_not_pass(self):
+        self.scenario("S1", "未設定の評価者", [{"kind": "llm", "path": "/", "rubric": "x"}])
+        r = self.run_eval()
+        self.assertFalse(r["ok"])
+        self.assertEqual(r["scenarios"][0]["result"], "error")
+        fb = (self.app / "eval-feedback.md").read_text(encoding="utf-8")
+        self.assertIn("評価者: 未評価", fb)
+
+
 if __name__ == "__main__":
     unittest.main()

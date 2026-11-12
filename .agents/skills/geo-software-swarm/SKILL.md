@@ -14,6 +14,7 @@ description: 公開した地図プロダクトを、定期的に起きるエー�
 | [governance](references/governance.md) | 群れを動かす前に、必ず | 停止スイッチ、取得した内容の指示の無視、権限の検証、マージの関門、評価と指示の変更の統治 |
 | [unattended-runs](references/unattended-runs.md) | 夜や定期の実行を、人間が見ずに走らせる前に | 薄く始めて失敗した所だけ足す、まっさらな起動、止まらない見張り、大事な結果を削れない経路で届ける、頭打ちの監査役、戻る点と回復の権限 |
 | [scripts/hooks.py](scripts/hooks.py)、[assets/unattended-settings.json](assets/unattended-settings.json) | 無人の実行の設定を作るとき | 停止スイッチ (止めるファイルがあれば全部の道具を拒む、未設定でも拒む)、評価の症状と残り時間を道具の呼び出しのたびに届ける、終わろうとしたら上限つきで観点を 1 つずつ返す。許可と拒否を書いた設定のひな形 |
+| [scripts/swarm.py](scripts/swarm.py) | 群れの 1 回の起床、統治の関門、進み具合の集計を動かすとき | 停止スイッチを確かめて 1 つだけ仕事をする `wake`、重複症状を防ぎ脆弱性を非公開に分ける `file-issue`、楽観ロックつきの `update-item`、保護パスと検査の緩和を検出して `human-turn` にする `check-governance`、届いて持ちこたえた変更だけで進み具合を測る `progress` |
 | [bootstrap](references/bootstrap.md) | 群れを立ち上げるとき | 1 回の設定の会話: 調べる、人間に 1 度だけ聞く、設定の PR、統治を試す、承認、予定を有効にする |
 | geo-software-eval の [progress](../geo-software-eval/references/progress.md) | 進み具合を測るとき、朝の報告を書くとき | マージ数でなく、独立に価値づけされ、検証され、届いた変更で測る。逃げた不具合の数え方 |
 

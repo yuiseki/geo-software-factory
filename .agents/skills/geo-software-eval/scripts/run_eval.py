@@ -29,6 +29,8 @@ import argparse
 import datetime
 import json
 import os
+import re
+import shlex
 import subprocess
 import sys
 import urllib.error
@@ -39,6 +41,7 @@ sys.path.insert(0, str(Path(__file__).parent))
 import geocheck  # noqa: E402
 
 OBSERVED = "OBSERVED:"
+JUDGE_AGENTS = ("claude", "codex", "gemini", "opencode", "qoder")
 
 
 class Refused(Exception):
@@ -59,6 +62,150 @@ def fetch(url: str, timeout: float):
         return e.code, e.read(1_000_000)
     except (urllib.error.URLError, OSError) as e:
         return None, str(e).encode()
+
+
+def default_judge_cmd(agent: str, model: str | None = None) -> list[str]:
+    if agent == "claude":
+        mflag = f"--model {shlex.quote(model)} " if model else ""
+        return ["sh", "-c", f"claude -p --output-format text --no-session-persistence {mflag}"]
+    if agent == "codex":
+        m = model or "gpt-6-luna"
+        return ["sh", "-c", f"codex exec --skip-git-repo-check -m {shlex.quote(m)} -"]
+    if agent == "gemini":
+        m = model or "gemini-3.8-flash-low"
+        return ["sh", "-c", f"agy --print=\"$(cat)\" --model {shlex.quote(m)} --dangerously-skip-permissions"]
+    if agent == "opencode":
+        mflag = f"-m {shlex.quote(model)} " if model else ""
+        return ["sh", "-c", f"opencode run --pure {mflag}\"$(cat)\""]
+    if agent == "qoder":
+        m = model or "Auto"
+        return ["sh", "-c", f"qodercli -p --output-format text --no-session-persistence --model {shlex.quote(m)}"]
+    raise ValueError(f"unknown judge agent {agent!r}")
+
+
+def parse_judge_json(text: str) -> dict | None:
+    text = text.strip()
+    if not text:
+        return None
+    for candidate in [text] + re.findall(r"\{[^{}]*\}", text, flags=re.DOTALL):
+        try:
+            doc = json.loads(candidate)
+            if isinstance(doc, dict) and "pass" in doc:
+                return doc
+        except ValueError:
+            continue
+    return None
+
+
+def invoke_judge(prompt: str, c: dict, cwd: Path, timeout: float) -> dict:
+    cmd = c.get("judge_cmd") or os.environ.get("EVAL_JUDGE_CMD")
+    if isinstance(cmd, str):
+        run_cmd = ["sh", "-c", cmd]
+    elif isinstance(cmd, list):
+        run_cmd = [str(x) for x in cmd]
+    else:
+        agent = c.get("agent") or os.environ.get("EVAL_JUDGE_AGENT")
+        model = c.get("model") or os.environ.get("EVAL_JUDGE_MODEL")
+        if not agent:
+            return {"error": "no_judge_configured"}
+        try:
+            run_cmd = default_judge_cmd(agent, model)
+        except ValueError as e:
+            return {"error": str(e)}
+    try:
+        p = subprocess.run(run_cmd, input=prompt, cwd=cwd, capture_output=True, text=True,
+                           timeout=c.get("timeout", timeout))
+    except subprocess.TimeoutExpired:
+        return {"error": "timeout"}
+    except OSError as e:
+        return {"error": str(e)}
+    if p.returncode != 0:
+        return {"error": f"exit {p.returncode}", "stderr": p.stderr[-1000:]}
+    parsed = parse_judge_json(p.stdout)
+    if parsed is None:
+        return {"error": "invalid_json", "stdout": p.stdout[-1000:]}
+    return {"doc": parsed}
+
+
+def run_llm_check(c: dict, base: str, cwd: Path, timeout: float) -> dict:
+    """Run an independent LLM-as-a-Judge check following judging.md rules."""
+    path = c.get("path", "/")
+    status, body = fetch(base + path, timeout)
+    observed: dict = {"kind": "llm", "path": path, "status": status}
+    if status is None:
+        observed["status"] = "応答なし"
+        return {"ok": False, "full": {**c, "error": body.decode(errors="replace")[:300]}, "observed": observed}
+    if status != c.get("status", 200):
+        return {"ok": False, "full": {**c, "got_status": status}, "observed": observed}
+    excerpt = body.decode(errors="replace")[:8000]
+    rubric = c.get("rubric", "")
+    votes_n = max(1, int(c.get("votes", 1)))
+    min_conf = float(c.get("min_confidence", 0.7))
+    prompt = "\n".join([
+        "あなたは独立した評価者 (LLM-as-a-Judge) です。実装のコードは読まず、下の観測と判定の観点だけで判定してください。",
+        "次の JSON 1 個だけを出力してください:",
+        '{"pass": true または false, "confidence": 0.0〜1.0, "evidence": "根拠にした観測の抜粋", "observed": "実装者に伝えてよい現象 1 行 (閾値や観点の文面は含めない)"}',
+        "根拠の観測が無い場合は pass を false にしてください。",
+        "",
+        f"判定の観点 (Rubric): {rubric}",
+        "",
+        f"観測 (Path: {path}, Status: {status}):",
+        "<<<OBSERVATION>>>",
+        excerpt,
+        "<<<END_OBSERVATION>>>",
+    ])
+    ballots = []
+    for _ in range(votes_n):
+        res = invoke_judge(prompt, c, cwd, timeout)
+        if "error" in res:
+            observed["judge"] = "未評価"
+            return {"ok": None, "full": {**c, "error": res["error"], "detail": res}, "observed": observed}
+        doc = res["doc"]
+        raw_pass = bool(doc.get("pass"))
+        evidence = str(doc.get("evidence") or "").strip()
+        # Rule: 根拠の無い合格は不合格として扱う
+        effective_pass = raw_pass and bool(evidence)
+        conf = float(doc.get("confidence", 0.0) or 0.0)
+        obs_line = str(doc.get("observed") or "").strip()
+        # Scrub rubric string if accidentally echoed in observed
+        if rubric and rubric in obs_line:
+            obs_line = "観点の基準を満たしていない"
+        ballots.append({
+            "raw_pass": raw_pass,
+            "effective_pass": effective_pass,
+            "missing_evidence": raw_pass and not evidence,
+            "confidence": conf,
+            "evidence": evidence,
+            "observed": obs_line,
+        })
+    passes = [b["effective_pass"] for b in ballots]
+    split = len(set(passes)) > 1
+    # Rule: 同じ観測で複数回判定させ、割れたら不合格の側に倒す
+    ok = all(passes) and not split
+    min_ballot_conf = min(b["confidence"] for b in ballots)
+    low_confidence = min_ballot_conf < min_conf
+    obs_lines = [b["observed"] for b in ballots if not b["effective_pass"] and b["observed"]]
+    if not ok:
+        if split:
+            observed["split"] = True
+        if any(b["raw_pass"] and not b["evidence"] for b in ballots):
+            observed["body"] = "判定の根拠の観測が無い"
+        elif obs_lines:
+            observed["body"] = obs_lines[0]
+        else:
+            observed["body"] = "観点の基準を満たしていない"
+    return {
+        "ok": ok,
+        "full": {
+            **c,
+            "got_status": status,
+            "split": split,
+            "low_confidence": low_confidence,
+            "confidence": round(min_ballot_conf, 3),
+            "ballots": ballots,
+        },
+        "observed": observed,
+    }
 
 
 def run_check(c: dict, base: str, cwd: Path, timeout: float) -> dict:
@@ -101,6 +248,8 @@ def run_check(c: dict, base: str, cwd: Path, timeout: float) -> dict:
         return {"ok": p.returncode == 0,
                 "full": {**c, "exit": p.returncode, "stdout": p.stdout[-20_000:], "stderr": p.stderr[-20_000:]},
                 "observed": {"kind": kind, "exit": p.returncode, "observed": lines}}
+    if kind == "llm":
+        return run_llm_check(c, base, cwd, timeout)
     return {"ok": None, "full": {**c, "error": f"unknown kind {kind!r}"}, "observed": {"kind": str(kind)}}
 
 
@@ -118,6 +267,10 @@ def describe(o: dict) -> str:
     if "path" not in o:
         return f"判定できない確かめの種類 ({o['kind']})"
     parts = [f"{o['path']}: 状態 {o['status']}"]
+    if o.get("judge") == "未評価":
+        parts.append("評価者: 未評価")
+    if o.get("split"):
+        parts.append("判定が割れたため不合格")
     if "features" in o:
         parts.append(f"地物 {o['features']} 件")
     if o.get("errors"):
@@ -145,18 +298,31 @@ def run(scenarios: Path, base: str, app_repo: Path | None, report: Path, feedbac
     base = base.rstrip("/")
     rev = version if version is not None else git_rev(app_repo)
     results = []
+    split_scenarios = []
+    low_confidence_scenarios = []
     for f in sorted(scenarios.glob("*.json")):
         s = json.loads(f.read_text(encoding="utf-8"))
+        sid = s.get("id", f.stem)
         checks = [run_check(c, base, scenarios, timeout) for c in s.get("checks", [])]
         if not checks or any(c["ok"] is None for c in checks):
             result = "error"
         else:
             result = "pass" if all(c["ok"] for c in checks) else "fail"
-        results.append({"id": s.get("id", f.stem), "name": s.get("name"), "symptom": s.get("symptom", ""),
-                        "result": result, "checks": checks})
+        split = any(c["full"].get("split") for c in checks)
+        low_conf = any(c["full"].get("low_confidence") for c in checks)
+        if split:
+            split_scenarios.append(sid)
+        if low_conf:
+            low_confidence_scenarios.append(sid)
+        results.append({"id": sid, "name": s.get("name"), "symptom": s.get("symptom", ""),
+                        "result": result, "split": split, "low_confidence": low_conf, "checks": checks})
     ok = bool(results) and all(r["result"] == "pass" for r in results)
+    passed_count = sum(1 for r in results if r["result"] == "pass")
+    satisfaction = round(passed_count / len(results), 3) if results else 0.0
     when = datetime.datetime.now(datetime.timezone.utc).isoformat(timespec="seconds")
-    out = {"when": when, "base": base, "version": rev, "ok": ok, "scenarios": results}
+    out = {"when": when, "base": base, "version": rev, "ok": ok, "satisfaction": satisfaction,
+           "split_scenarios": split_scenarios, "low_confidence_scenarios": low_confidence_scenarios,
+           "scenarios": results}
     report.parent.mkdir(parents=True, exist_ok=True)
     report.write_text(json.dumps(out, ensure_ascii=False, indent=2), encoding="utf-8")
     if feedback is not None:

@@ -34,9 +34,15 @@ WORK = ROOT / "tmp" / "evals-bench"
 sys.path.insert(0, str(ROOT / ".agents/skills/geo-software-eval/scripts"))
 import geocheck  # noqa: E402
 
-RUNNERS = {"opencode": HERE / "run_opencode_docker.sh", "codex": HERE / "run_codex_docker.sh"}
+RUNNERS = {a: HERE / f"run_{a}_docker.sh" for a in ("claude", "codex", "gemini", "opencode", "qoder")}
 # The model each runner uses when EVAL_MODEL is not set; recorded with every run.
-DEFAULT_MODEL = {"opencode": "opencode/deepseek-v4.1-flash-free", "codex": "gpt-6-luna"}
+DEFAULT_MODEL = {
+    "claude": "claude-sonnet-5-5",
+    "codex": "gpt-6-luna",
+    "gemini": "gemini-3.8-flash-low",
+    "opencode": "opencode/deepseek-v4.1-flash-free",
+    "qoder": "Auto",
+}
 # Codex: reasoning effort from EVAL_EFFORT, and live web search (research tasks need it; the same for both conditions).
 PUBLIC_OSM = re.compile(r"https?://((?:[a-z]\.)?tile\.openstreetmap\.org|nominatim\.openstreetmap\.org|overpass-api\.de|"
                         r"overpass\.kumi\.systems|api\.openstreetmap\.org)/")
@@ -297,6 +303,11 @@ def calls_in_log(text: str) -> list[str]:
             part = ev.get("part") or {}
             if part.get("type") == "tool":
                 calls.append(json.dumps((part.get("state") or {}).get("input", {}), ensure_ascii=False))
+            for block in (ev.get("message") or {}).get("content") or []:
+                if isinstance(block, dict) and block.get("type") == "tool_use":
+                    calls.append(json.dumps(block.get("input", {}), ensure_ascii=False))
+            if ev.get("type") == "tool_use" and "input" in ev:
+                calls.append(json.dumps(ev["input"], ensure_ascii=False))
     return calls
 
 
@@ -318,13 +329,15 @@ def run(spec, agent, cond, task_id, rep, minutes, rev):
     (d / "prompt.md").write_text(prompt, encoding="utf-8")
     model = os.environ.get("EVAL_MODEL", DEFAULT_MODEL[agent])
     env = {**os.environ, "EVAL_MINUTES": str(minutes)}
-    if agent == "opencode":
+    if agent in ("opencode", "gemini"):
         env["EVAL_MODEL"] = model
     t0 = time.time()
     extra = []
     if agent == "codex":
         extra = ["-m", model, "-c", f"model_reasoning_effort={os.environ.get('EVAL_EFFORT', 'medium')}",
                  "-c", 'web_search="live"']
+    elif agent in ("claude", "qoder"):
+        extra = ["--model", model]
     with open(d / "log.jsonl", "w") as log, open(d / "stderr.log", "w") as err:
         r = subprocess.run([str(RUNNERS[agent]), "--prompt", str(d / "prompt.md"), str(wd), *extra],
                            stdout=log, stderr=err, env=env)

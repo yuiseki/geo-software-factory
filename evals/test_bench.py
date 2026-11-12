@@ -271,5 +271,40 @@ class Spec(unittest.TestCase):
             self.assertTrue((HERE / "prompts" / f"{t['kind']}.md").exists())
 
 
+class Dockerfiles(unittest.TestCase):
+    AGENTS = ("claude", "codex", "gemini", "opencode", "qoder")
+    CLI_ARGS = {
+        "claude": "ARG CLAUDE_VERSION=",
+        "codex": "ARG CODEX_VERSION=",
+        "gemini": "ARG AGY_VERSION=",
+        "opencode": "ARG OPENCODE_VERSION=",
+        "qoder": "ARG QODER_VERSION=",
+    }
+    SHARED = (
+        "FROM python:3.12-slim-bookworm",
+        "COPY --from=ghcr.io/astral-sh/uv:0.8 /uv /uvx /usr/local/bin/",
+        "    'pyproj==3.7.2' 'shapely==2.1.2' 'numpy==2.3.4' 'pandas==2.3.3' pytest",
+        "RUN echo 'export PATH=/opt/venv/bin:$PATH' > /etc/profile.d/venv.sh",
+        "RUN python -c \"import pyproj, shapely\"",
+    )
+
+    def test_all_five_agents_have_dockerfiles_and_runners_with_shared_toolchain(self):
+        self.assertEqual(tuple(sorted(bench.RUNNERS)), self.AGENTS)
+        for agent in self.AGENTS:
+            df = HERE / f"Dockerfile.{agent}"
+            runner = HERE / f"run_{agent}_docker.sh"
+            self.assertTrue(df.is_file(), agent)
+            self.assertTrue(runner.is_file(), agent)
+            text = df.read_text(encoding="utf-8")
+            lines = text.splitlines()
+            self.assertIn(self.CLI_ARGS[agent], text)
+            self.assertIn("ripgrep", text)
+            for s in self.SHARED:
+                self.assertIn(s, lines, (agent, s))
+            rtext = runner.read_text(encoding="utf-8")
+            self.assertIn(f"geo-software-factory-evals-{agent}", rtext)
+            self.assertIn("EVAL_MINUTES", rtext)
+
+
 if __name__ == "__main__":
     unittest.main()

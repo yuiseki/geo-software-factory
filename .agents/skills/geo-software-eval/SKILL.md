@@ -17,7 +17,8 @@ description: 地図プロダクトの正しさを、人間のコードレビュ�
 | [brakes](references/brakes.md) | 人間の確認を減らすかを決めるとき | ブレーキ (人間の確認) を評価の証拠で 1 つずつ外し、崩れたら戻す。外さないブレーキ |
 | [eval-of-eval](references/eval-of-eval.md) | 評価を作ったとき、評価が全部通ったとき | 評価そのものが正しいかの確かめ方 (壊した版で落ちるか、甘い判定の見つけ方) |
 | [scripts/geocheck.py](scripts/geocheck.py) | 配る GeoJSON を判定するとき | 形、度の範囲、緯度経度の取り違え、範囲の外、リングの閉じと自己交差、必ず要る属性を、プログラムで判定する (標準ライブラリだけ) |
-| [scripts/run_eval.py](scripts/run_eval.py) | 夜に評価者として動かすとき | 実装の外に置いた JSON のシナリオ (http、geojson、command) を動かし、報告を評価者の側に、症状だけを実装のリポジトリの `eval-feedback.md` に書く。置き場所の取り違えを拒む |
+| [scripts/run_eval.py](scripts/run_eval.py) | 夜に評価者として動かすとき | 実装の外に置いた JSON のシナリオ (http、geojson、command、llm) を動かし、報告を評価者の側に、症状だけを実装のリポジトリの `eval-feedback.md` に書く。根拠の無い LLM 合格と割れた判定は不合格に倒し、置き場所の取り違えを拒む |
+| [scripts/dark_factory.py](scripts/dark_factory.py) | 夜の前の検査、評価の評価、夜の自律ループ、朝の報告を通しで動かすとき | `preflight` (概要・シナリオ・停止スイッチ・隔離の検査)、`eval-of-eval` (手本と壊した版の確かめ)、`run` (実装者と評価者のループとクリーン checkout の最終判定)、`report` (`eval-report.md` と `morning-report.md` の生成) |
 | [isolation](references/isolation.md) | 夜に、実装者と評価者を動かす前に | 別のコンテナに分け、依頼と症状の 2 つのディレクトリだけで受け渡す。[assets/isolation/compose.yaml](assets/isolation/compose.yaml)、評価者の待ち受け [scripts/eval_watch.py](scripts/eval_watch.py)、隔離を目印で試す [scripts/check_isolation.py](scripts/check_isolation.py) |
 | [scripts/twin.py](scripts/twin.py) | 外部のサービスの代役が要るとき | 手元のタイルと決まった答えを配り、障害 (5xx、429、空、途中で切れる、遅れ) を回数で決めて起こす。要求を記録する |
 | [assets/scenario-template.md](assets/scenario-template.md) | シナリオを書くとき | シナリオ 1 本のひな形 |

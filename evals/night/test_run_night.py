@@ -3,6 +3,7 @@ import subprocess
 import sys
 import tempfile
 import unittest
+import unittest.mock
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
@@ -44,6 +45,37 @@ class PrepareTest(unittest.TestCase):
         self.assertEqual(doc["services"]["implementer"]["volumes"], ["/h/codex:/home/geo/.codex"])
         self.assertEqual(doc["networks"]["night"]["ipam"]["config"][0]["subnet"], "10.213.57.0/24")
         self.assertNotIn("networks", json.loads(run_night.override(self.root / "p.yaml", Path("/h"), None, []).read_text()))
+
+    def test_agent_setup_supports_all_five_providers(self):
+        (self.root / "codex-home").mkdir()
+        with unittest.mock.patch.dict("os.environ", {"EVAL_CODEX_HOME": str(self.root / "codex-src")}):
+            (self.root / "codex-src").mkdir()
+            (self.root / "codex-src" / "auth.json").write_text("{}", encoding="utf-8")
+            img, cmd, mdir, mtgt, env, sec = run_night.agent_setup("codex", self.root, 30, "gpt-6-luna", "medium")
+            self.assertEqual(img, "geo-software-factory-evals-codex")
+            self.assertIn("codex exec", cmd[-1])
+        with unittest.mock.patch.dict("os.environ", {"GEMINI_API_KEY": "k1", "EVAL_GEMINI_HOME": str(self.root / "no-g")}):
+            img, cmd, mdir, mtgt, env, sec = run_night.agent_setup("gemini", self.root, 30, "gemini-3.8-flash-low", "medium")
+            self.assertEqual(img, "geo-software-factory-evals-gemini")
+            self.assertEqual(env.get("GEMINI_API_KEY"), "k1")
+            self.assertIn("agy", cmd[-1])
+        with unittest.mock.patch.dict("os.environ", {"EVAL_CLAUDE_HOME": str(self.root / "claude-src")}):
+            (self.root / "claude-src").mkdir()
+            (self.root / "claude-src" / "oauth_token").write_text("tok1", encoding="utf-8")
+            img, cmd, mdir, mtgt, env, sec = run_night.agent_setup("claude", self.root, 30, "claude-sonnet-5-5", "medium")
+            self.assertEqual(img, "geo-software-factory-evals-claude")
+            self.assertEqual(env.get("CLAUDE_CODE_OAUTH_TOKEN"), "tok1")
+            self.assertIn("claude -p", cmd[-1])
+        img, cmd, mdir, mtgt, env, sec = run_night.agent_setup("opencode", self.root, 30, "opencode/mimo", "medium")
+        self.assertEqual(img, "geo-software-factory-evals-opencode")
+        self.assertIn("opencode run", cmd[-1])
+        with unittest.mock.patch.dict("os.environ", {"EVAL_QODER_HOME": str(self.root / "qoder-src")}):
+            (self.root / "qoder-src").mkdir()
+            (self.root / "qoder-src" / "pat").write_text("pat1", encoding="utf-8")
+            img, cmd, mdir, mtgt, env, sec = run_night.agent_setup("qoder", self.root, 30, "Auto", "medium")
+            self.assertEqual(img, "geo-software-factory-evals-qoder")
+            self.assertEqual(env.get("QODER_PERSONAL_ACCESS_TOKEN"), "pat1")
+            self.assertIn("qodercli -p", cmd[-1])
 
 
 class SummaryTest(unittest.TestCase):

@@ -42,6 +42,14 @@ sys.path.insert(0, str(EVAL / "scripts"))
 import check_isolation  # noqa: E402
 
 IMAGE = "geo-software-factory-evals-codex"
+AGENTS = ("claude", "codex", "gemini", "opencode", "qoder")
+DEFAULT_MODELS = {
+    "claude": "claude-sonnet-5-5",
+    "codex": "gpt-6-luna",
+    "gemini": "gemini-3.8-flash-low",
+    "opencode": "opencode/deepseek-v4.1-flash-free",
+    "qoder": "Auto",
+}
 WATCH_FOR = ("tile.openstreetmap.org", "nominatim.openstreetmap.org", "overpass-api.de",
              "geo-software-factory/evals", "geo-software-factory/tree/main/evals", "evals/night")
 
@@ -55,7 +63,10 @@ def prepare_app(app: Path, condition: str) -> None:
     if condition == "skills":
         tar = subprocess.run(["git", "-C", str(REPO), "archive", "HEAD"], check=True, capture_output=True).stdout
         with tarfile.open(fileobj=io.BytesIO(tar)) as t:
-            t.extractall(app, filter="data")
+            try:
+                t.extractall(app, filter="data")
+            except TypeError:
+                t.extractall(app)
         # The factory's own docs stay; its examples and checker are not the app.
         for extra in ("examples", "scripts", "tests", ".github", "README.md", "TODO.md"):
             p = app / extra
@@ -71,15 +82,73 @@ def prepare_app(app: Path, condition: str) -> None:
     sh(git + ["commit", "-q", "-m", "day: the brief and the data"])
 
 
-def override(path: Path, codex_home: Path, subnet: str | None, command: list[str]) -> Path:
-    doc = {"services": {"implementer": {
-        "image": IMAGE, "command": command, "entrypoint": [],
-        "environment": {"HOME": "/home/geo"},
-        "volumes": [f"{codex_home}:/home/geo/.codex"]}}}
+def override(path: Path, codex_home: Path | None, subnet: str | None, command: list[str],
+             image: str = IMAGE, extra_env: dict | None = None, mount_target: str = "/home/geo/.codex") -> Path:
+    env = {"HOME": "/home/geo", **(extra_env or {})}
+    svc: dict = {"image": image, "command": command, "entrypoint": [], "environment": env}
+    if codex_home is not None:
+        svc["volumes"] = [f"{codex_home}:{mount_target}"]
+    doc: dict = {"services": {"implementer": svc}}
     if subnet:
         doc["networks"] = {"night": {"ipam": {"config": [{"subnet": subnet}]}}}
     path.write_text(json.dumps(doc, ensure_ascii=False, indent=1), encoding="utf-8")  # JSON is valid YAML
     return path
+
+
+def agent_setup(agent: str, root: Path, minutes: int, model: str, effort: str) -> tuple[str, list[str], Path | None, str, dict, Path | None]:
+    """Return (image, command, host_mount_dir, container_mount_target, extra_env, secret_file_to_clean)."""
+    image = os.environ.get("EVAL_IMAGE", f"geo-software-factory-evals-{agent}")
+    if agent == "codex":
+        auth = Path(os.environ.get("EVAL_CODEX_HOME", Path.home() / ".codex-evals")) / "auth.json"
+        if not auth.is_file():
+            sys.exit(f"no Codex login at {auth}; run evals/run_codex_docker.sh --login")
+        dst = root / "codex-home" / "auth.json"
+        shutil.copy(auth, dst)
+        os.chmod(dst, 0o600)
+        cmd = (f"timeout {minutes}m codex exec --dangerously-bypass-approvals-and-sandbox --skip-git-repo-check "
+               f"-C /work/app -m {model} -c model_reasoning_effort={effort} - < /work/handoff/prompt.md")
+        return image, ["sh", "-c", cmd], root / "codex-home", "/home/geo/.codex", {}, dst
+    if agent == "gemini":
+        g_home = Path(os.environ.get("EVAL_GEMINI_HOME", Path.home() / ".gemini-evals"))
+        tok = g_home / "antigravity-cli" / "antigravity-oauth-token"
+        dst_dir = root / "gemini-home" / "antigravity-cli"
+        dst_dir.mkdir(parents=True, exist_ok=True)
+        extra_env = {}
+        secret = None
+        if tok.is_file():
+            secret = dst_dir / "antigravity-oauth-token"
+            shutil.copy(tok, secret)
+            os.chmod(secret, 0o600)
+            (dst_dir / "settings.json").write_text("{}\n", encoding="utf-8")
+            m_args = f"--model {model}"
+        else:
+            key = os.environ.get("GEMINI_API_KEY") or os.environ.get("GOOGLE_GENERATIVE_AI_API_KEY")
+            if not key:
+                sys.exit(f"no Gemini OAuth token at {tok} and no GEMINI_API_KEY set; run evals/run_gemini_docker.sh --login")
+            extra_env["GEMINI_API_KEY"] = key
+            (dst_dir / "settings.json").write_text('{"modelProvider": "gemini"}\n', encoding="utf-8")
+            m_args = f"--model {model} --effort {effort}"
+        cmd = f'timeout {minutes}m agy --print="$(cat /work/handoff/prompt.md)" --output-format stream-json {m_args} --dangerously-skip-permissions'
+        return image, ["bash", "-c", cmd], root / "gemini-home", "/home/geo/.gemini", extra_env, secret
+    if agent == "claude":
+        tok = Path(os.environ.get("EVAL_CLAUDE_HOME", Path.home() / ".claude-evals")) / "oauth_token"
+        if not tok.is_file():
+            sys.exit(f"no Claude token at {tok}; save `claude setup-token` there")
+        cmd = (f"timeout {minutes}m claude -p --output-format stream-json --verbose --dangerously-skip-permissions "
+               f"--strict-mcp-config --no-session-persistence --model {model} < /work/handoff/prompt.md")
+        return image, ["sh", "-c", cmd], None, "", {"CLAUDE_CODE_OAUTH_TOKEN": tok.read_text(encoding="utf-8").strip()}, None
+    if agent == "qoder":
+        pat = Path(os.environ.get("EVAL_QODER_HOME", Path.home() / ".qoder-evals")) / "pat"
+        if not pat.is_file():
+            sys.exit(f"no Qoder PAT at {pat}")
+        cmd = (f"timeout {minutes}m qodercli -p --output-format stream-json --dangerously-skip-permissions "
+               f"--strict-mcp-config --no-session-persistence --model {model} < /work/handoff/prompt.md")
+        return image, ["sh", "-c", cmd], None, "", {"QODER_PERSONAL_ACCESS_TOKEN": pat.read_text(encoding="utf-8").strip()}, None
+    if agent == "opencode":
+        cfg = '{"$schema":"https://opencode.ai/config.json","share":"disabled","autoupdate":false}'
+        cmd = f"timeout {minutes}m opencode run --format json --auto --pure --print-logs --dir /work/app --model {model} < /work/handoff/prompt.md"
+        return image, ["sh", "-c", cmd], None, "", {"OPENCODE_CONFIG_CONTENT": cfg}, None
+    raise ValueError(f"unknown agent {agent!r}")
 
 
 def tree_state(app: Path) -> dict:
@@ -121,16 +190,18 @@ def wait_exit(compose, env, service, limit_s):
 def main(argv=None) -> int:
     ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     ap.add_argument("--condition", choices=("skills", "baseline"), required=True)
+    ap.add_argument("--agent", choices=AGENTS, default="codex")
     ap.add_argument("--minutes", type=int, default=45)
     ap.add_argument("--subnet", default=os.environ.get("GSF_DOCKER_SUBNET"))
-    ap.add_argument("--model", default="gpt-6-luna")
+    ap.add_argument("--model", default=None)
     ap.add_argument("--effort", default="medium")
     ap.add_argument("--run-id")
     ap.add_argument("--dry-run", action="store_true", help="prepare and prove the isolation, but run no agent")
     a = ap.parse_args(argv)
+    model = a.model or DEFAULT_MODELS[a.agent]
 
     stamp = datetime.datetime.now(datetime.timezone.utc).strftime("%Y%m%dT%H%M%SZ")
-    run_id = a.run_id or f"{stamp}-{a.condition}"
+    run_id = a.run_id or f"{stamp}-{a.agent}-{a.condition}"
     root = REPO / "tmp" / "evals-night" / run_id
     if root.exists():
         sys.exit(f"{root} exists")
@@ -138,27 +209,25 @@ def main(argv=None) -> int:
         (root / d).mkdir(parents=True)
     prepare_app(root / "app", a.condition)
     shutil.copytree(HERE / "scenarios", root / "scenarios")
-    auth = Path(os.environ.get("EVAL_CODEX_HOME", Path.home() / ".codex-evals")) / "auth.json"
-    if not auth.is_file():
-        sys.exit(f"no Codex login at {auth}; run evals/run_codex_docker.sh --login")
-    shutil.copy(auth, root / "codex-home" / "auth.json")
-    os.chmod(root / "codex-home" / "auth.json", 0o600)
     shutil.copy(HERE / "task" / "prompt.md", root / "handoff" / "prompt.md")
+    image, cmd_list, mount_dir, mount_target, extra_env, secret_file = agent_setup(
+        a.agent, root, a.minutes, model, a.effort
+    )
 
     env = {**os.environ, "RUN_NAME": f"gsf-night-{run_id.lower()}", "RUN_UID": str(os.getuid()),
            "RUN_GID": str(os.getgid()), "APP_DIR": str(root / "app"), "HANDOFF_DIR": str(root / "handoff"),
            "FEEDBACK_DIR": str(root / "feedback"), "SCENARIOS_DIR": str(root / "scenarios"),
            "REPORT_DIR": str(root / "out"), "EVAL_SCRIPTS": str(EVAL / "scripts")}
-    codex = (f"timeout {a.minutes}m codex exec --dangerously-bypass-approvals-and-sandbox --skip-git-repo-check "
-             f"-C /work/app -m {a.model} -c model_reasoning_effort={a.effort} - < /work/handoff/prompt.md")
-    night = override(root / "night.yaml", root / "codex-home", a.subnet, ["sh", "-c", codex])
+    night = override(root / "night.yaml", mount_dir, a.subnet, cmd_list,
+                     image=image, extra_env=extra_env, mount_target=mount_target)
     files = [COMPOSE, night]
     compose = ["docker", "compose"] + [x for f in files for x in ("-f", str(f))]
 
     iso = check_isolation.check(env, check_isolation.docker_runner(files, env))
     (root / "isolation.json").write_text(json.dumps(iso, ensure_ascii=False, indent=1), encoding="utf-8")
     if not iso["ok"] or a.dry_run:
-        (root / "codex-home" / "auth.json").unlink(missing_ok=True)
+        if secret_file is not None:
+            secret_file.unlink(missing_ok=True)
     if not iso["ok"]:
         print(json.dumps({"isolation": "failed", "root": str(root)}))
         return 1
@@ -182,7 +251,9 @@ def main(argv=None) -> int:
         # Final judgement: the last commit, started the agreed way, by the evaluator, once.
         sh(compose + ["stop", "evaluator"], env=env)
         rev = sh(["git", "-C", str(root / "app"), "rev-parse", "HEAD"]).stdout.strip()
-        final = override(root / "final.yaml", root / "codex-home", a.subnet, ["sh", "-c", "git clone -q /work/app /tmp/final && cd /tmp/final && exec sh start.sh"])
+        final = override(root / "final.yaml", mount_dir, a.subnet,
+                         ["sh", "-c", "git clone -q /work/app /tmp/final && cd /tmp/final && exec sh start.sh"],
+                         image=image, mount_target=mount_target)
         fcompose = ["docker", "compose"] + [x for f in (COMPOSE, final) for x in ("-f", str(f))]
         sh(fcompose + ["up", "-d", "--force-recreate", "implementer"], env=env)
         (root / "feedback-final").mkdir()
@@ -200,8 +271,9 @@ def main(argv=None) -> int:
                        stdout=open(root / "final-app.log", "w", encoding="utf-8"), stderr=subprocess.STDOUT)
     finally:
         subprocess.run(compose + ["down", "--remove-orphans", "-t", "2"], env=env, capture_output=True)
-        (root / "codex-home" / "auth.json").unlink(missing_ok=True)
-    summary = {"run": run_id, "condition": a.condition, "model": a.model, "effort": a.effort,
+        if secret_file is not None:
+            secret_file.unlink(missing_ok=True)
+    summary = {"run": run_id, "agent": a.agent, "condition": a.condition, "model": model, "effort": a.effort,
                "limit_minutes": a.minutes, **summarize(root, exit_code, seconds, tree)}
     (root / "summary.json").write_text(json.dumps(summary, ensure_ascii=False, indent=1), encoding="utf-8")
     print(json.dumps(summary, ensure_ascii=False, indent=1))

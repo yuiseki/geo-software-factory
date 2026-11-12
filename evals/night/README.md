@@ -1,8 +1,8 @@
 # evals/night: 一晩分を通しで流す
 
-昼に決めたプロダクト概要とデータを渡し、実装者 (Codex) が人間なしで作り、別のコンテナの評価者が見せないシナリオで判定する。evals/ のほかの課題が 1 つの判断を測るのに対し、これは昼から夜への受け渡し、評価の依頼と症状の往復、最後のコミットの判定までを通して測る。
+昼に決めたプロダクト概要とデータを渡し、実装者 (`codex`, `gemini`, `claude`, `opencode`, `qoder`) が人間なしで作り、別のコンテナの評価者が見せないシナリオで判定する。evals/ のほかの課題が 1 つの判断を測るのに対し、これは昼から夜への受け渡し、評価の依頼と症状の往復、最後のコミットの判定までを通して測る。
 
-    python3 evals/night/run_night.py --condition skills|baseline [--minutes 45] [--subnet 10.213.57.0/24]
+    python3 evals/night/run_night.py --condition skills|baseline [--agent codex|gemini|claude|opencode|qoder] [--minutes 45] [--subnet 10.213.57.0/24]
 
 | 置き場所 | 中身 |
 |---|---|

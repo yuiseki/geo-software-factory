@@ -185,7 +185,7 @@ class ScoreResearch(unittest.TestCase):
 
 class ScoreChoose(unittest.TestCase):
     T = {"targets": ["https://github.com/louwers/mln-rs", "https://crates.io/crates/mln-rs"],
-         "forbidden": ["https://github.com/maplibre/maplibre-rs"], "require_text": ["0.0"]}
+         "forbidden": ["https://github.com/maplibre/maplibre-rs"], "require_any": ["0.0", "新しい", "初期"]}
 
     def test_target_with_maturity_note_is_accurate(self):
         a = {"status": "ok", "recommendation": "mln-rs", "recommendation_url": "github.com/louwers/mln-rs/",
@@ -197,6 +197,10 @@ class ScoreChoose(unittest.TestCase):
              "caveats": []}
         s = bench.score_choose(a, **self.T)
         self.assertEqual(sorted(s["reasons"]), ["forbidden-choice", "missing-note", "target-missing"])
+
+    def test_any_of_the_notes_is_enough(self):
+        a = {"status": "ok", "recommendation_url": "https://github.com/louwers/mln-rs", "caveats": ["試作段階の比較的新しいプロジェクト"]}
+        self.assertEqual(bench.score_choose(a, **self.T)["outcome"], "accurate")
 
     def test_note_is_searched_in_reason_too(self):
         a = {"status": "ok", "recommendation_url": "https://crates.io/crates/mln-rs", "reason": "まだ 0.0.10"}

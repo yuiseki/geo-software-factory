@@ -67,3 +67,20 @@ ripgrep の有無だけを変えた。スキルは直す前の版 (b8e9fe6、`fi
 - スキルなしは、ripgrep があっても Web の検索だけで、目当てを見落とした。目当てのカードを持つことと、カードを引ける道具があることの両方がそろって、ギャップが出た。
 - 1 回ずつなので、偶然と分けられない。
 
+## 4 回目: 出たばかりのライブラリを選ぶ (2026-11-13、d83bfef)
+
+条件は 3 回目と同じ (Codex CLI 0.162.1、gpt-6-luna、medium、Web の検索あり、ripgrep のあるイメージ)。課題ごとに Codex の認証のホームを空にし直した。
+
+| 課題 | スキルあり | スキルなし |
+|---|---|---|
+| L1 Rust のサーバーで地図の画像を描く | mln-rs (0.0.x の注意つき)。64 秒 | ezu (reearth/ezu、新しいプロジェクトだという注意つき)。55 秒 |
+| L2 Android と iOS の業務アプリ (L1 の対照) | MapLibre Native。36 秒 | MapLibre Native。30 秒 |
+
+### 読み方
+
+- 答えの鍵が誤っていた。L1 は mln-rs だけを正解にしていたが、スキルなしが Web の検索で見つけた ezu (純粋な Rust で GPU を使わずに描く、MVT と PMTiles、MapLibre のスタイルを変換して描き、MapLibre GL JS との SSIM は 0.80〜0.87 と公表、MIT OR Apache-2.0、2026-05 作成、0.15.0) は、「Rust だけでビルド」「GPU の無いサーバー」に、mln-rs と同じかそれ以上に合う。mln-rs は GPU の API で描くので、GPU の無いサーバーではソフトウェアの GPU (lavapipe や llvmpipe) が要る。スキルありの答えも、その注意を書いていた。鍵に ezu を足し、成熟度の注意は「0.0」の文字に限らず、新しさや初期段階に触れていればよいとした。直した鍵では、両方とも正確。
+- ギャップは無かった。スキルなしも、学習より新しいライブラリを Web の検索で見つけ、成熟度の注意も書いた。スキルありは reference にある mln-rs を選び、reference に無い ezu には触れなかった。
+- スキルの抜けが見つかった。ezu も、スキルなしが代案に挙げた maplibre-native-rs (MapLibre の組織の、MapLibre Native への Rust のバインディング、Apache-2.0) も、geo-software-library に reference が無い。reference にあるものだけを比べると、より合う候補を見落とす。
+- L2 は、どちらも新しいものを勧めすぎず、MapLibre Native を選んだ。
+- 1 回ずつなので、偶然と分けられない。
+

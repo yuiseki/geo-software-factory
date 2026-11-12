@@ -110,7 +110,7 @@ def make(spec):
             (d / "task" / "data.csv").write_text("\n".join(lines) + "\n", encoding="utf-8")
             (d / "truth" / "truth.json").write_text(json.dumps(pts, ensure_ascii=False, indent=0), encoding="utf-8")
         else:
-            (d / "truth" / "key.json").write_text(json.dumps({k: t.get(k) for k in ("key", "targets", "forbidden", "require_text")}), encoding="utf-8")
+            (d / "truth" / "key.json").write_text(json.dumps({k: t.get(k) for k in ("key", "targets", "forbidden", "require_any")}), encoding="utf-8")
         print(t["id"], "made", file=sys.stderr)
 
 
@@ -227,7 +227,7 @@ def score_research(answer, targets) -> dict:
     return {"outcome": "inaccurate" if reasons else "accurate", "reasons": reasons, "n_services": len(urls), "channel_kinds": sorted(kinds)}
 
 
-def score_choose(answer, targets, forbidden=(), require_text=()) -> dict:
+def score_choose(answer, targets, forbidden=(), require_any=()) -> dict:
     """A library choice: the recommended project's URL must be one of the targets and none of the forbidden ones,
     and the answer must say what a careful recommendation would (for a brand-new library, that it is 0.0.x)."""
     if answer is None:
@@ -243,7 +243,7 @@ def score_choose(answer, targets, forbidden=(), require_text=()) -> dict:
     if any(url.startswith(bare_url(f)) for f in forbidden):
         reasons.append("forbidden-choice")
     text = json.dumps([answer.get("caveats", []), answer.get("reason", "")], ensure_ascii=False)
-    if any(t not in text for t in require_text):
+    if require_any and not any(t in text for t in require_any):
         reasons.append("missing-note")
     return {"outcome": "inaccurate" if reasons else "accurate", "reasons": reasons, "choice": url}
 
@@ -335,7 +335,7 @@ def score_all(spec):
             s = score_build(work, truth, tuple(t["bbox_expect"]), t.get("tol_m", 1.0))
             has = (work / "answer.json").exists() or (work / "out" / "places.geojson").exists()
         elif t["kind"] == "choose":
-            s = score_choose(read_json(work / "answer.json"), t["targets"], t.get("forbidden", []), t.get("require_text", []))
+            s = score_choose(read_json(work / "answer.json"), t["targets"], t.get("forbidden", []), t.get("require_any", []))
             has = (work / "answer.json").exists()
         elif t["kind"] == "research":
             s = score_research(read_json(work / "answer.json"), t["targets"])

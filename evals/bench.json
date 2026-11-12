@@ -111,12 +111,23 @@
    "targets": [
     "https://github.com/louwers/mln-rs",
     "https://crates.io/crates/mln-rs",
-    "https://docs.rs/mln-rs"
+    "https://docs.rs/mln-rs",
+    "https://github.com/reearth/ezu",
+    "https://crates.io/crates/ezu",
+    "https://reearth.github.io/ezu"
    ],
    "forbidden": [],
-   "require_text": [
-    "0.0"
-   ]
+   "require_any": [
+    "0.0",
+    "新しい",
+    "初期",
+    "若い",
+    "試作段階",
+    "成熟",
+    "new project",
+    "early"
+   ],
+   "key_corrected": "2026-11-13: the key accepted only mln-rs. The baseline run found ezu (reearth/ezu, pure-Rust CPU renderer of MVT/PMTiles with MapLibre style translation, MIT OR Apache-2.0, 0.15.0), which fits Rust-only and no-GPU at least as well. ezu is now accepted, and the maturity note may be any mention of being new or early, not only 0.0."
   },
   {
    "id": "L2-mobile-product",
@@ -131,7 +142,7 @@
     "https://github.com/louwers/mln-rs",
     "https://crates.io/crates/mln-rs"
    ],
-   "require_text": []
+   "require_any": []
   }
  ]
 }

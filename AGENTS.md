@@ -1,6 +1,6 @@
 # geo-software-factory: エージェントへの案内
 
-`geo-software-factory` は、ソフトウェアファクトリー レベル5、「ダークファクトリー（Dark Factory）」を実現するためのスキルとハーネスです ([WHAT_IS_SOFTWARE_FACTORY.md](WHAT_IS_SOFTWARE_FACTORY.md))。地図サービスや地図プロダクトを頼まれたら、この案内に従って進める。
+`geo-software-factory` は、ソフトウェアファクトリー レベル5、「ダークファクトリー（Dark Factory）」を実現するためのスキルとハーネスです ([WHAT_IS_SOFTWARE_FACTORY.md](WHAT_IS_SOFTWARE_FACTORY.md)、[WHAT_IS_DARK_FACTORY.md](WHAT_IS_DARK_FACTORY.md))。地図サービスや地図プロダクトを頼まれたら、この案内に従って進める。
 
 目指す姿: 人間は昼のうちにエージェントのいくつかの質問に答え、環境変数を設定し、認証を済ませておく。人間が寝ている間に、エージェントがソフトウェアを作り上げてデプロイしておく。
 

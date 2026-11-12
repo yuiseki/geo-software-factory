@@ -1,6 +1,6 @@
 # geo-software-factory
 
-`geo-software-factory` は、ソフトウェアファクトリー レベル5、「ダークファクトリー（Dark Factory）」を実現するためのスキルとハーネスです。ソフトウェアファクトリーについては [WHAT_IS_SOFTWARE_FACTORY.md](WHAT_IS_SOFTWARE_FACTORY.md) を参照。
+`geo-software-factory` は、ソフトウェアファクトリー レベル5、「ダークファクトリー（Dark Factory）」を実現するためのスキルとハーネスです。ソフトウェアファクトリーについては [WHAT_IS_SOFTWARE_FACTORY.md](WHAT_IS_SOFTWARE_FACTORY.md)、ダークファクトリーについては [WHAT_IS_DARK_FACTORY.md](WHAT_IS_DARK_FACTORY.md) を参照。
 
 「東京23区の区ごとのセブンイレブンの数を可視化したい」
 

@@ -15,7 +15,7 @@ description: 地図プロダクトの UI と UX を設計する。マーカー�
 | [mobile-interaction](references/mobile-interaction.md) | スマートフォンで使うとき、地図をページに埋め込むとき | スクロールの奪い合い (cooperative gestures)、タッチの的の大きさ、一覧と地図の切り替え |
 | [initial-load](references/initial-load.md) | 初期表示を速くしたいとき、地図が主役でないページのとき | 遅延読み込み、日本語のグリフ、場所の確保 (CLS)、静的な画像での代替 |
 | [cartography](references/cartography.md) | 配色や注記を決めるとき、主題図を描くとき | 注記の読みやすさ、色覚の多様性に配慮した配色、コロプレスの階級区分 |
-| [feedback-from-builds](references/feedback-from-builds.md) | 画面の部品と導線を決めるとき、夜に見た目で迷ったとき | 作ったものへの本人の指摘を一般化したもの: 既存の部品の使い回し、地図を最初の画面に、書けない人への見せ方 |
+| [feedback-from-builds](references/feedback-from-builds.md) | 画面の部品と導線を決めるとき、夜に見た目で迷ったとき | 作ったものへの本人の指摘を一般化した既定: 画面の主役と導線、地図の表示範囲、書けない人への見せ方、常時表示の画面、位置を示す 2 つの縮尺の地図、狭い場所の文字 |
 | [accessibility](references/accessibility.md) | 公開するとき、アクセシビリティが要件に入るとき | WCAG 2.2 の地図に関わる達成基準、キーボード、スクリーンリーダー、ライブラリごとの対応 |
 
 ブラウザの API の事実 (Geolocation、Wake Lock、Worker) は geo-software-arch の [device](../geo-software-arch/references/browser/device.md) と [workers](../geo-software-arch/references/browser/workers.md)、ライブラリの版とバンドルの大きさは geo-software-library の各 reference (例: [maplibre-gl-js](../geo-software-library/references/libraries/maplibre-gl-js.md))、帰属表示と位置情報の扱いは geo-software-legal-check の [attribution](../geo-software-legal-check/references/attribution.md) と [location-privacy](../geo-software-legal-check/references/location-privacy.md) にある。ここでは繰り返さず、リンクする。
@@ -35,7 +35,7 @@ description: 地図プロダクトの UI と UX を設計する。マーカー�
 
 ## 進め方
 
-1. 地図の役割を決める。主役でなければ、まず一覧 (表、カード) を画面の正本にし、地図は切り替えか脇に置く。一覧は地図を読めない人の代わりの手段にもなる ([accessibility](references/accessibility.md))。
+1. 地図の役割を決める。地図が主役でなければ、一覧、映像など利用者が主に見るものを基準にし、地図は切り替えか脇に置く。一覧は地図を読めない人の代わりの手段にもなる ([accessibility](references/accessibility.md))。
 2. 件数と形から地物の見せ方を選ぶ ([many-features](references/many-features.md))。件数は伸びたときの値でも確かめる。
 3. 検索をつけるなら、何を探すか (住所、施設名、自分のデータ) と、どの API や索引で引くかを分けて決める ([search-ux](references/search-ux.md))。検索の提供元は geo-software-infra で選ぶ。
 4. 現在地を使うなら、許可を求める時機、取れないときの代わり、取れたときの表示範囲を決める ([geolocation-ux](references/geolocation-ux.md))。閲覧するだけの人には求めない。

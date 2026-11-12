@@ -4,7 +4,7 @@
 
 「東京23区の区ごとのセブンイレブンの数を可視化したい」
 
-この一言から、地図に載せるデータの出どころ、ライセンスと出典表示、描画ライブラリまでを、AI エージェントが根拠つきで選ぶためのスキル集。「地図アプリを作りたい」のような曖昧な依頼なら、何を作るかの聞き取りから始める。
+この一言から、地図に載せるデータの出どころ、ライセンスと出典表示、描画ライブラリまでを AI エージェントが根拠つきで選び、テストを書いて作り、デプロイして本番で確かめるためのスキル集。「地図アプリを作りたい」のような曖昧な依頼なら、何を作るかの聞き取りから始める。
 
 ## 作例 1: 区ごとの店舗数を地図で見る
 
@@ -63,6 +63,8 @@
 | [geo-software-poc-measure](.agents/skills/geo-software-poc-measure/SKILL.md) | タイル数、表示回数、データの大きさ、端末での動作を試作して測る | 書いた |
 | [geo-software-ops](.agents/skills/geo-software-ops/SKILL.md) | API キー、利用量と予算、データの更新、障害時の切り替えを運用する | 書いた |
 | [geo-software-migrate](.agents/skills/geo-software-migrate/SKILL.md) | Google Maps、Mapbox、Leaflet などからの乗り換えを計画する | 書いた |
+| [geo-software-build](.agents/skills/geo-software-build/SKILL.md) | 技術選定の済んだものを、テストを先に書いて実装し、データを出典つきで組み立て、画面まで確かめる | 書いた |
+| [geo-software-deploy](.agents/skills/geo-software-deploy/SKILL.md) | 昼に与えられた権限の範囲で出し、本番の URL で確かめる。リポジトリの公開前の点検も | 書いた |
 
 進み具合は [.agents/skills/TODO.md](.agents/skills/TODO.md)。スキルの使い分けはエージェント向けに [AGENTS.md](AGENTS.md) に書く。
 

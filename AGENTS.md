@@ -76,7 +76,10 @@ geo-software-product-grilling       何を作るか (昼)
   -> geo-software-infra                どの地図データか (夜)
      (並べて geo-software-data)        地図に載せる主題データ
   -> geo-software-library              どのライブラリで描くか (夜)
+  -> geo-software-ux-design            画面と操作 (夜)
+  -> geo-software-build                作ってテストする (夜)
   -> geo-software-legal-check          公開の前に (夜)
+  -> geo-software-deploy               出して本番で確かめる (夜)
 ```
 
 4 段階のほかのスキルは、次の場所で使う。
@@ -92,7 +95,8 @@ geo-software-product-grilling       何を作るか (昼)
 - geo-software-migrate: 既存の地図を別のサービスやライブラリへ乗り換えるとき、geo-software-product-grilling の代わりの入口として使う。移行先の選定は geo-software-infra と geo-software-library に回す
 - geo-software-growth、geo-software-monetize: まだ中身がない。使わない
 
-実装、テスト、デプロイの手順は、まだスキルになっていない。夜の段階では、技術選定の結果と完成の条件に従って作り、確かめ、デプロイする。
+- geo-software-build: 技術選定のあと、完成の条件を満たすまで、テストを先に書いて小さく積む。データの組み立て、配線のテスト、利用者と同じ認証の経路での通しの確認、画面の目視まで
+- geo-software-deploy: geo-software-build と geo-software-legal-check のあと、昼に与えられた権限の範囲で出し、本番の URL で完成の条件を確かめ直す。許可の検査に拒まれたら、承認の要らない方法で成果物を残す。デプロイに要る認証と恒久的な許可は、昼の準備でこのスキルの preflight に沿って頼む
 
 各段階は、入口の条件がそろったら始め、出口のものを出したら次へ進む。依頼が途中の段階だけ (例: 「Leaflet と MapLibre どっち」) なら、その段階の入口の条件がそろっているかを確かめて、そこから始める。前の段階を飛ばした場合は、飛ばした段階で決まるはずのこと (例: タイルの供給元) を仮の前提として答えに書く。
 
@@ -119,6 +123,8 @@ geo-software-product-grilling       何を作るか (昼)
 | 地図の画面と操作を設計したい (大量の地物、検索、現在地、モバイル、アクセシビリティ) | geo-software-ux-design |
 | 技術選定の結論を左右する値 (タイル数、表示回数、データの大きさ、端末での動作) を測りたい | geo-software-poc-measure |
 | 公開の前に、法令、規約、帰属表示を確かめたい | geo-software-legal-check |
+| 技術選定が済んでいて、実装してテストしたい | geo-software-build |
+| 実装が済んでいて、デプロイして本番で確かめたい、リポジトリを公開したい | geo-software-deploy |
 | API キー、利用量、データの更新、障害への備えを運用したい | geo-software-ops |
 | 既存の地図を別のサービスやライブラリへ乗り換えたい | geo-software-migrate |
 | 技術選定を頼まれたが、要件が聞き出せていない | 下の「要件が足りないときの判定」に従う |

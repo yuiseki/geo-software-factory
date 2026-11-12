@@ -120,7 +120,7 @@
   - [x] references/survey-act.md
   - [x] references/youtube-embed.md
   - [x] references/itunes-search-api.md
-- [x] geo-software-ux-design (8/8)
+- [x] geo-software-ux-design (9/9)
   - [x] SKILL.md
   - [x] references/accessibility.md
   - [x] references/cartography.md
@@ -129,6 +129,7 @@
   - [x] references/many-features.md
   - [x] references/mobile-interaction.md
   - [x] references/search-ux.md
+  - [x] references/feedback-from-builds.md
 - [x] geo-software-poc-measure (6/6)
   - [x] SKILL.md
   - [x] references/data-size.md
@@ -176,6 +177,18 @@
   - [x] references/from-leaflet-raster.md
   - [x] references/from-mapbox.md
   - [x] references/migration-plan.md
+- [x] geo-software-build (5/5)
+  - [x] SKILL.md
+  - [x] references/order.md
+  - [x] references/testing.md
+  - [x] references/data.md
+  - [x] references/pitfalls.md
+- [x] geo-software-deploy (5/5)
+  - [x] SKILL.md
+  - [x] references/preflight.md
+  - [x] references/cloudflare-workers.md
+  - [x] references/verify.md
+  - [x] references/publish-repo.md
 - [ ] geo-software-growth (0/1)
   - [ ] SKILL.md
 - [ ] geo-software-monetize (0/1)

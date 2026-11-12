@@ -15,6 +15,7 @@ description: 地図プロダクトの UI と UX を設計する。マーカー�
 | [mobile-interaction](references/mobile-interaction.md) | スマートフォンで使うとき、地図をページに埋め込むとき | スクロールの奪い合い (cooperative gestures)、タッチの的の大きさ、一覧と地図の切り替え |
 | [initial-load](references/initial-load.md) | 初期表示を速くしたいとき、地図が主役でないページのとき | 遅延読み込み、日本語のグリフ、場所の確保 (CLS)、静的な画像での代替 |
 | [cartography](references/cartography.md) | 配色や注記を決めるとき、主題図を描くとき | 注記の読みやすさ、色覚の多様性に配慮した配色、コロプレスの階級区分 |
+| [feedback-from-builds](references/feedback-from-builds.md) | 画面の部品と導線を決めるとき、夜に見た目で迷ったとき | 作ったものへの本人の指摘を一般化したもの: 既存の部品の使い回し、地図を最初の画面に、書けない人への見せ方 |
 | [accessibility](references/accessibility.md) | 公開するとき、アクセシビリティが要件に入るとき | WCAG 2.2 の地図に関わる達成基準、キーボード、スクリーンリーダー、ライブラリごとの対応 |
 
 ブラウザの API の事実 (Geolocation、Wake Lock、Worker) は geo-software-arch の [device](../geo-software-arch/references/browser/device.md) と [workers](../geo-software-arch/references/browser/workers.md)、ライブラリの版とバンドルの大きさは geo-software-library の各 reference (例: [maplibre-gl-js](../geo-software-library/references/libraries/maplibre-gl-js.md))、帰属表示と位置情報の扱いは geo-software-legal-check の [attribution](../geo-software-legal-check/references/attribution.md) と [location-privacy](../geo-software-legal-check/references/location-privacy.md) にある。ここでは繰り返さず、リンクする。

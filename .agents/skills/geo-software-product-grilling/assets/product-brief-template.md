@@ -126,6 +126,14 @@ geo-software-research-competitor が書く。
 
 未定
 
+### 実装 (geo-software-build)
+
+未定
+
+### デプロイ (geo-software-deploy)
+
+未定
+
 ## 夜に決めたこと
 
 - <判断の方針に従って決めたことと、その理由>

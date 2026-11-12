@@ -101,6 +101,37 @@
    "targets": [
     "https://mintsuku-kansuimap.com"
    ]
+  },
+  {
+   "id": "L1-rust-server-render",
+   "kind": "choose",
+   "contaminated": null,
+   "note": "The right answer is mln-rs (created 2026-11-03, 0.0.x), newer than the models' training. Written after mln-rs was added to the skills, before any run.",
+   "brief": "# プロダクト概要 (抜粋)\n\n- 一行で: Rust で書いた Linux のサーバーが、MapLibre Style のスタイルとベクトルタイルから、地図の PNG 画像を返す API\n- 制約: サーバーは Rust だけでビルドしたい (C++ のツールチェーンと CMake を持ち込みたくない)。GPU の無いサーバーでも動くこと。ライセンスはコピーレフト不可 (MIT、BSD、Apache-2.0 なら可)\n- 時期: 社内の試作。API が変わることは受け入れる\n\n地図を描くライブラリか SDK を 1 つ選んで勧めてください。プロダクトの持ち主は今いないので、質問せずに決めてください。",
+   "targets": [
+    "https://github.com/louwers/mln-rs",
+    "https://crates.io/crates/mln-rs",
+    "https://docs.rs/mln-rs"
+   ],
+   "forbidden": [],
+   "require_text": [
+    "0.0"
+   ]
+  },
+  {
+   "id": "L2-mobile-product",
+   "kind": "choose",
+   "contaminated": null,
+   "note": "Control for L1: the new library must not be recommended where it does not fit. The right answer is MapLibre Native.",
+   "brief": "# プロダクト概要 (抜粋)\n\n- 一行で: 自治体の職員が現場で使う、Android と iOS の業務アプリ。自前で配信するベクトルタイル (MapLibre Style) の地図に、点検の記録を載せる\n- 制約: アプリのストアで配布し、5 年は保守する。ライセンスはコピーレフト不可。課金のある地図 SDK は使わない\n- 開発: Android は Kotlin、iOS は Swift でネイティブに作る\n\n地図を描くライブラリか SDK を 1 つ選んで勧めてください。プロダクトの持ち主は今いないので、質問せずに決めてください。",
+   "targets": [
+    "https://github.com/maplibre/maplibre-native"
+   ],
+   "forbidden": [
+    "https://github.com/louwers/mln-rs",
+    "https://crates.io/crates/mln-rs"
+   ],
+   "require_text": []
   }
  ]
 }

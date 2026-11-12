@@ -110,7 +110,7 @@ def make(spec):
             (d / "task" / "data.csv").write_text("\n".join(lines) + "\n", encoding="utf-8")
             (d / "truth" / "truth.json").write_text(json.dumps(pts, ensure_ascii=False, indent=0), encoding="utf-8")
         else:
-            (d / "truth" / "key.json").write_text(json.dumps(sorted(t.get("key") or t.get("targets"))), encoding="utf-8")
+            (d / "truth" / "key.json").write_text(json.dumps({k: t.get(k) for k in ("key", "targets", "forbidden", "require_text")}), encoding="utf-8")
         print(t["id"], "made", file=sys.stderr)
 
 
@@ -227,6 +227,27 @@ def score_research(answer, targets) -> dict:
     return {"outcome": "inaccurate" if reasons else "accurate", "reasons": reasons, "n_services": len(urls), "channel_kinds": sorted(kinds)}
 
 
+def score_choose(answer, targets, forbidden=(), require_text=()) -> dict:
+    """A library choice: the recommended project's URL must be one of the targets and none of the forbidden ones,
+    and the answer must say what a careful recommendation would (for a brand-new library, that it is 0.0.x)."""
+    if answer is None:
+        return {"outcome": "no_answer"}
+    if not isinstance(answer, dict):
+        return {"outcome": "invalid_answer"}
+    if answer.get("status") == "failed":
+        return {"outcome": "declared_failure"}
+    url = bare_url(answer.get("recommendation_url", ""))
+    reasons = []
+    if not any(url.startswith(bare_url(t)) for t in targets):
+        reasons.append("target-missing")
+    if any(url.startswith(bare_url(f)) for f in forbidden):
+        reasons.append("forbidden-choice")
+    text = json.dumps([answer.get("caveats", []), answer.get("reason", "")], ensure_ascii=False)
+    if any(t not in text for t in require_text):
+        reasons.append("missing-note")
+    return {"outcome": "inaccurate" if reasons else "accurate", "reasons": reasons, "choice": url}
+
+
 def final_outcome(outcome: str, negative: bool, exit_code: int, has_answer: bool, provider_failed: bool = False) -> str:
     if not has_answer:
         if provider_failed:
@@ -313,18 +334,20 @@ def score_all(spec):
             truth = json.loads((truth_dir / "truth.json").read_text(encoding="utf-8"))
             s = score_build(work, truth, tuple(t["bbox_expect"]), t.get("tol_m", 1.0))
             has = (work / "answer.json").exists() or (work / "out" / "places.geojson").exists()
+        elif t["kind"] == "choose":
+            s = score_choose(read_json(work / "answer.json"), t["targets"], t.get("forbidden", []), t.get("require_text", []))
+            has = (work / "answer.json").exists()
         elif t["kind"] == "research":
-            targets = json.loads((truth_dir / "key.json").read_text(encoding="utf-8"))
-            s = score_research(read_json(work / "answer.json"), targets)
+            s = score_research(read_json(work / "answer.json"), t["targets"])
             has = (work / "answer.json").exists()
         else:
-            key = json.loads((truth_dir / "key.json").read_text(encoding="utf-8"))
-            s = score_decide(read_json(work / "answer.json"), key)
+            s = score_decide(read_json(work / "answer.json"), t["key"])
             has = (work / "answer.json").exists()
         logs = "".join(p.read_text(errors="replace") for p in (d / "log.jsonl", d / "stderr.log") if p.exists())
         o = final_outcome(s["outcome"], t.get("negative", False), meta["exit"], has, provider_failed(logs))
         row = [meta["agent"], meta.get("model", "-"), meta["cond"], meta["task"], meta["rep"], o, ",".join(s.get("reasons", [])) or "-",
-               f"{s['matched']}/{s['n_ref']}" if "matched" in s else (f"{s['n_services']} services" if "n_services" in s else "-"),
+               f"{s['matched']}/{s['n_ref']}" if "matched" in s else (f"{s['n_services']} services" if "n_services" in s
+                                                                    else s.get("choice", "-")),
                f"{s['precision']:.2f}" if "precision" in s else "-", f"{s['recall']:.2f}" if "recall" in s else "-",
                meta["exit"], meta["seconds"], ",".join(public_osm_hits("\n".join(calls_in_log(logs)))) or "-"]
         print("\t".join(str(v) for v in row))

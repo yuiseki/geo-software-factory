@@ -183,6 +183,26 @@ class ScoreResearch(unittest.TestCase):
         self.assertEqual(bench.score_research(None, self.TARGET)["outcome"], "no_answer")
 
 
+class ScoreChoose(unittest.TestCase):
+    T = {"targets": ["https://github.com/louwers/mln-rs", "https://crates.io/crates/mln-rs"],
+         "forbidden": ["https://github.com/maplibre/maplibre-rs"], "require_text": ["0.0"]}
+
+    def test_target_with_maturity_note_is_accurate(self):
+        a = {"status": "ok", "recommendation": "mln-rs", "recommendation_url": "github.com/louwers/mln-rs/",
+             "caveats": ["0.0.x なので API が変わる"]}
+        self.assertEqual(bench.score_choose(a, **self.T)["outcome"], "accurate")
+
+    def test_other_choice_and_missing_note(self):
+        a = {"status": "ok", "recommendation": "x", "recommendation_url": "https://github.com/maplibre/maplibre-rs",
+             "caveats": []}
+        s = bench.score_choose(a, **self.T)
+        self.assertEqual(sorted(s["reasons"]), ["forbidden-choice", "missing-note", "target-missing"])
+
+    def test_note_is_searched_in_reason_too(self):
+        a = {"status": "ok", "recommendation_url": "https://crates.io/crates/mln-rs", "reason": "まだ 0.0.10"}
+        self.assertEqual(bench.score_choose(a, **self.T)["outcome"], "accurate")
+
+
 class Outcomes(unittest.TestCase):
     def test_negative_task(self):
         self.assertEqual(bench.final_outcome("declared_failure", negative=True, exit_code=0, has_answer=True), "correct_reject")
@@ -227,7 +247,7 @@ class Spec(unittest.TestCase):
     def test_every_task_has_a_kind_and_a_prompt(self):
         spec = bench.load_spec()
         for t in spec["tasks"]:
-            self.assertIn(t["kind"], ("build", "decide", "research"))
+            self.assertIn(t["kind"], ("build", "decide", "research", "choose"))
             self.assertTrue((HERE / "prompts" / f"{t['kind']}.md").exists())
 
 

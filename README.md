@@ -27,7 +27,17 @@
 
 - 聞き取りでは 1 問ずつ聞き、価値の芯を 2 回読み違えて、本人の答えで直した。外したことはスキルに書き足した
 - 予算 0 円、OSS (Apache-2.0)、他の人も登録できるサービスにする前提で、置き場所とライブラリを選んだ
-- 記録は [examples/unlock-your-trip](examples/unlock-your-trip/)、アプリは https://unlock-your-trip.yuiseki.workers.dev
+- 記録は [examples/unlock-your-trip](examples/unlock-your-trip/)、アプリは https://trip.yuiseki.net
+
+## 作例 3: ライブカメラで世界を眺める
+
+部屋で過ごしながら世界のどこかと繋がっている感覚を得る、という価値から始めて、公開ライブカメラを 4 画面で巡り、それぞれに地球と詳細地図を添える壁紙のようなページを作った。MapLibre GL JS と OpenFreeMap、Natural Earth の行政区画で、Cloudflare Workers に置いている。
+
+![ライブカメラ 4 画面と、それぞれの地球と行政区画の地図](docs/images/livecam-wallpaper.png)
+
+- 小さな地球でカメラの所在国を塗り、詳細地図ではカメラが属する行政区画を塗ってピンを立てる。行政区画との照合は、エージェントが Natural Earth とカメラの位置から作った
+- カメラの一覧は出典と再配布の条件を確かめていないので、リポジトリには形式の見本だけを置いた
+- 記録は [examples/livecam-wallpaper](examples/livecam-wallpaper/)、ページは https://livecams.yuiseki.net
 
 ## できること、できないこと
 
@@ -113,7 +123,7 @@ LICENSE                   Apache License 2.0
   geo-software-migrate/
 docs/images/              README の図
 scripts/check.py          公開前の検査 (tests/ にそのテスト)
-examples/                 スキルを通した記録 (seven-eleven-tokyo23、unlock-your-trip)
+examples/                 スキルを通した記録 (seven-eleven-tokyo23、unlock-your-trip、livecam-wallpaper)
 ```
 
 ## ライセンス

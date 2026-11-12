@@ -2,7 +2,7 @@
 
 「旅先で定番の名所を訪れることを、ゲームの実績解除みたいに演出してくれるアプリがほしい」という依頼を、このリポジトリのスキルの 4 段階 (geo-software-product-grilling、geo-software-arch、geo-software-infra、geo-software-library) に沿って Claude Code が企画から公開まで通した記録 (2026-11-10)。
 
-- アプリ: https://unlock-your-trip.yuiseki.workers.dev
+- アプリ: https://trip.yuiseki.net
 - ソース: https://github.com/yuiseki/unlock-your-trip (Apache-2.0)
 
 ![旅の実績解除！の一覧と地図](../../docs/images/unlock-your-trip.png)

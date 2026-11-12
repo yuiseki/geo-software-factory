@@ -4,7 +4,7 @@
 
 「東京23区の区ごとのセブンイレブンの数を可視化したい」
 
-この一言から、地図に載せるデータの出どころ、ライセンスと出典表示、描画ライブラリまでを AI エージェントが根拠つきで選び、テストを書いて作り、デプロイして本番で確かめるためのスキル集。「地図アプリを作りたい」のような曖昧な依頼なら、何を作るかの聞き取りから始める。
+この一言から、地図に載せるデータの出どころ、ライセンスと出典表示、描画ライブラリまでを AI エージェントが根拠つきで選び、テストを書いて作り、デプロイして本番で確かめるためのスキル集。正しさは人間のコードレビューではなく、実装から切り離した評価で判定する。人間は昼に、その評価の基準を一緒に作る。「地図アプリを作りたい」のような曖昧な依頼なら、何を作るかの聞き取りから始める。
 
 ## 作例 1: 区ごとの店舗数を地図で見る
 
@@ -63,6 +63,7 @@
 | [geo-software-poc-measure](.agents/skills/geo-software-poc-measure/SKILL.md) | タイル数、表示回数、データの大きさ、端末での動作を試作して測る | 書いた |
 | [geo-software-ops](.agents/skills/geo-software-ops/SKILL.md) | API キー、利用量と予算、データの更新、障害時の切り替えを運用する | 書いた |
 | [geo-software-migrate](.agents/skills/geo-software-migrate/SKILL.md) | Google Maps、Mapbox、Leaflet などからの乗り換えを計画する | 書いた |
+| [geo-software-eval](.agents/skills/geo-software-eval/SKILL.md) | 正しさをコードレビューではなく評価で判定する。昼に人間と外から観測できるシナリオを作り、夜は実装と別の評価者が手元と本番で判定し、評価そのものも確かめる | 書いた |
 | [geo-software-build](.agents/skills/geo-software-build/SKILL.md) | 技術選定の済んだものを、テストを先に書いて実装し、データを出典つきで組み立て、画面まで確かめる | 書いた |
 | [geo-software-deploy](.agents/skills/geo-software-deploy/SKILL.md) | 昼に与えられた権限の範囲で出し、本番の URL で確かめる。リポジトリの公開前の点検も | 書いた |
 

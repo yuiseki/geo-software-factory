@@ -177,6 +177,15 @@
   - [x] references/from-leaflet-raster.md
   - [x] references/from-mapbox.md
   - [x] references/migration-plan.md
+- [x] geo-software-eval (8/8)
+  - [x] SKILL.md
+  - [x] references/scenarios.md
+  - [x] references/map-observables.md
+  - [x] references/judging.md
+  - [x] references/twins.md
+  - [x] references/eval-of-eval.md
+  - [x] assets/scenario-template.md
+  - [x] assets/eval-report-template.md
 - [x] geo-software-build (5/5)
   - [x] SKILL.md
   - [x] references/order.md

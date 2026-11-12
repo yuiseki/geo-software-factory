@@ -65,6 +65,14 @@ Google の地図、航空写真、ストリートビューを Web ページに�
 - 最終コミット日: 対象外 (ソースが非公開)。最新のリリースノートは 2026-11-04 ([リリースノート](https://developers.google.com/maps/documentation/javascript/releases))
 - 近年の大きな破壊的変更: Heatmap レイヤー (2025-05 非推奨、2026-05 廃止)、Drawing ライブラリ (2025-08 非推奨、2026-05 廃止)、45° 航空写真 (v3.65 で終了)、KmlLayer (2026-04 非推奨、使用不可に) ([非推奨一覧](https://developers.google.com/maps/deprecations))。DirectionsService / DirectionsRenderer / DistanceMatrixService は 2026-02-25 に非推奨 (3.64.2b) ([リリースノート](https://developers.google.com/maps/documentation/javascript/releases))
 
+## 環境の違いと保守
+
+- ブラウザ間の互換: 文書でうたう対応は、Windows の Microsoft Edge の現行版 (IE モードを除く)、Windows と macOS と Linux の Firefox と Chrome の最新 2 つのメジャー安定版、macOS の Safari の最新 2 つのメジャー安定版である (https://developers.google.com/maps/documentation/javascript/browsersupport)。本体は非公開で、Google がどのブラウザで自動テストしているかは未確認。
+- OS 間の互換: 文書でうたうモバイルの対応は、Android 4.1 以上の Chrome の現行版、Android 4.4 以上の Chrome WebView、iOS の現行と一つ前のメジャー版の Mobile Safari と WKWebView、Chrome for iOS の現行版である (https://developers.google.com/maps/documentation/javascript/browsersupport)。ベクター地図は WebGL で GPU を使って描くと説明されるが (https://developers.google.com/maps/documentation/javascript/vector-map)、WebGL が使えない端末での挙動、GPU とドライバの違い、メモリ上限への対応を述べた文書は未確認。
+- 操作の網羅: `gestureHandling` に `cooperative` (ページを普通にスクロールでき、地図は二本指かズームボタンで動かす)、`greedy` (すべてのタッチとスクロールに反応する)、`none` (操作を止める)、`auto` (iframe の中なら `cooperative`、それ以外は `greedy`) がある (https://developers.google.com/maps/documentation/javascript/interaction)。ベクター地図では、傾きと回転を有効にすると Shift を押したドラッグと Shift と矢印キーで傾きと方位を変えられる (https://developers.google.com/maps/documentation/javascript/vector-map)。慣性とペン入力の扱いを述べた文書は未確認。
+- エッジケースへの対応: 本体が非公開で、日付変更線、精度、WebGL のコンテキスト喪失、タイルの読み込み失敗への対応は、利用者が設定する対象としては文書に見当たらない (未確認)。地図画像もライブラリも Google が配るので、これらは Google 側が引き受ける作り (推測)。
+- 継続的な保守: CSP の文書があり、nonce を使う strict CSP を勧め、`script` と `style` の両方の要素に nonce を付けるよう求める。例示のポリシーには `worker-src blob:` と `'unsafe-eval'` が入っているが、要る理由は書かれていない (https://developers.google.com/maps/documentation/javascript/content-security-policy)。対応ブラウザは「最新 2 つのメジャー版」のように相対的に決めてあり、ブラウザの更新に合わせて自動的に動く方針である (https://developers.google.com/maps/documentation/javascript/browsersupport)。ブラウザ固有の不具合の変更履歴と、不具合の追跡の分類は未確認。
+
 ## 向いている場面
 
 - Google の地図データ、航空写真、ストリートビュー、Places を使いたい場合

@@ -65,6 +65,14 @@ d3-geo は、球面の GeoJSON を投影法で平面に写し、SVG のパス文
 - 最終コミット日: 2026-11-03 (JST、main ブランチ、https://github.com/d3/d3-geo/commits/main)
 - 近年の大きな破壊的変更: 3.0.0 (2021-06-06 JST) で `type: module` になり Node.js 12 以上が必要になった (https://github.com/d3/d3-geo/releases/tag/v3.0.0)。3.1.2 は個別のソースファイルでなく ES モジュールのバンドルを公開する形に変わり、package.json の `files` は `dist` のみ、`exports` は `umd` と `default` のみになった (https://github.com/d3/d3-geo/releases/tag/v3.1.2, https://github.com/d3/d3-geo/blob/main/package.json)。このため `d3-geo/src/...` のような深い import は 3.1.2 で使えなくなったと考えられる (推測)。
 
+## 環境の違いと保守
+
+- ブラウザ間の互換: 文書は「D3 works in any JavaScript environment」とだけ書き、ブラウザの一覧はない (https://d3js.org/getting-started)。CI は Node の上で Vitest を回すだけで、ブラウザでの自動テストはない (https://github.com/d3/d3-geo/blob/main/.github/workflows/test.yml, https://github.com/d3/d3-geo/blob/main/package.json)。d3-geo は座標の計算と SVG のパスや Canvas への描画命令の生成を受け持ち、描画はブラウザの SVG か Canvas 2D に任せるので、ブラウザ間の違いを吸収する層は持たない (推測)。
+- OS 間の互換: 対応 OS と端末を述べた文書はない (未確認)。GPU を使わないので、ドライバの違いへの対応は対象外である。
+- 操作の網羅: d3-geo は操作を持たない。ドラッグやズームは別のモジュール d3-zoom と d3-drag が受け持ち、文書の目次の「Interaction」に並ぶ (https://d3js.org/d3-geo)。ピンチ、慣性、キーボード、ページのスクロールとの両立は、利用者がそれらのモジュールで組む。
+- エッジケースへの対応: 球面幾何の扱いについて文書が厚い。投影の既定は日付変更線での切断で (`clipAngle` が null)、`geoClipAntimeridian` が日付変更線を跨ぐ線と面を両側に切り分ける。投影は大円に沿って適応的に再標本化し、その閾値 `precision` の既定は √0.5 ピクセルである。投影できない点では `projection(point)` が null を返す (https://d3js.org/d3-geo/projection)。球面の多角形は巻き方向で内側を決め、半球より小さい外周は時計回りという約束で、GeoJSON の RFC 7946 とは逆である (https://d3js.org/d3-geo)。逆向きのデータを渡すと面が地球の残りを覆う描画になる (推測)。全文に antimeridian を含む issue は 16 件である (`repo:d3/d3-geo antimeridian`、2026-11-12)。
+- 継続的な保守: CSP についての文書は未確認。worker や WebGL を使わない純粋な計算のライブラリなので、ブラウザや OS の変化に追随する必要は小さい (推測)。ブラウザ別のラベルはなく、タイトルに Safari を含む issue は 0 件である (GitHub の issue 検索、2026-11-12)。
+
 ## 向いている場面
 
 - タイルを使わず、投影法を選んで描く静的な主題図 (コロプレス図、分布図) や、報道の図解。

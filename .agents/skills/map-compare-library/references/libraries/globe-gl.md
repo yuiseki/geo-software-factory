@@ -65,6 +65,14 @@ three.js (WebGL) の上に作られた、3D の地球儀にデータ可視化レ
 - 最終コミット日: 2026-08-22 (master ブランチ、JST)。中核の three-globe は 2026-10-14 に push がある ([three-globe](https://github.com/vasturiano/three-globe))
 - 近年の大きな破壊的変更: メジャー版は 2019-09 の 2.0.0 から 2.x のまま ([npm](https://www.npmjs.com/package/globe.gl))。CHANGELOG と GitHub Releases がないため、マイナー版での破壊的変更の有無は未確認
 
+## 環境の違いと保守
+
+- ブラウザ間の互換: 対応ブラウザを示した公式文書は未確認。リポジトリに `.github/workflows` がなく (GitHub API で 404、2026-11-12)、package.json にテストのスクリプトもない (https://github.com/vasturiano/globe.gl/blob/master/package.json)。CI での自動テストは行っていない。
+- OS 間の互換: 対応 OS と端末、GPU の違い、メモリ上限への対応を述べた文書は未確認。描画は three.js (`>=0.179 <1`) に任せる (https://github.com/vasturiano/globe.gl/blob/master/package.json)。タイトルに mobile を含む issue は 11 件、iOS は 1 件である (GitHub の issue 検索、`repo:vasturiano/globe.gl` に各条件を付けて、2026-11-12)。
+- 操作の網羅: カメラは three.js の OrbitControls (`controlType: 'orbit'`) で動かし、減衰による慣性 (`enableDamping`) を有効にし、平行移動を切り、地表の少し上から半径の 100 倍までに距離を制限する (https://github.com/vasturiano/globe.gl/blob/master/src/globe.js)。`controls()` で OrbitControls を取り出して設定を変えられる (同)。ピンチとキーボードの扱いは OrbitControls の既定に従う (推測)。`enablePointerInteraction` でマウスの追跡 (ホバーとクリックとツールチップ) を切り替え、`pauseAnimation` で描画と操作を止める (https://github.com/vasturiano/globe.gl/blob/master/README.md)。ページのスクロールと両立させる設定は未確認。
+- エッジケースへの対応: 球の曲面を何度刻みで分割するかを `globeCurvatureResolution` で決める (https://github.com/vasturiano/globe.gl/blob/master/README.md)。日付変更線、精度、WebGL のコンテキスト喪失、読み込み失敗の扱いを述べた文書は未確認。
+- 継続的な保守: CSP についての公式文書と変更履歴のファイルは未確認。three.js の版の上限 (`<1`) を package.json で管理している (https://github.com/vasturiano/globe.gl/blob/master/package.json)。ブラウザ別のラベルはなく、タイトルに Safari を含む issue は 1 件、Firefox は 0 件である (同 issue 検索)。
+
 ## 向いている場面
 
 - 全球規模のデータ (航路、通信ケーブル、人口、地震、衛星など) を地球儀上で見せる展示・ランディングページ・ダッシュボードの演出

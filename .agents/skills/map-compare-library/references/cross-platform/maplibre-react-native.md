@@ -56,6 +56,14 @@ React Native から MapLibre Native (Android / iOS) を使うためのラッパ�
 - 最終コミット日: 2026-10-30 JST (main、`chore(release): 11.5.1`)
 - 主なメンテナー (個人か組織か): MapLibre Organization のプロジェクト。直近 1 年の人間のコミットは KiwiKilian が大半を占め、次いで tyrauber。累計では mfazekas (分岐元の rnmapbox 時代を含む)、KiwiKilian、ferdicus が多い (https://github.com/maplibre/maplibre-react-native/graphs/contributors)
 
+## 環境の違いと保守
+
+- ブラウザ間の互換: Web は非対応なので対象外 (上の「対応プラットフォーム」)。描画は MapLibre Native が行い、Android では `nativeVariant` で OpenGL ES (既定) と Vulkan を選べ、iOS は Metal である (上の「対応プラットフォーム」、[MapLibre Native の Platforms](https://maplibre.org/maplibre-native/docs/book/platforms/index.html))。CI で Vulkan 版を試しているかは未確認。
+- OS 間の互換: 文書でうたう最低版は Android API 23 (`gradle.properties` は 24) と、React Native の既定に従う iOS である (上の「対応プラットフォーム」)。CI では、Android は ubuntu-latest で example アプリをリリースビルドし、API 33 の x86_64 エミュレーターに入れて Maestro の E2E テストを回す ([review-android.yml](https://github.com/maplibre/maplibre-react-native/blob/main/.github/workflows/review-android.yml))。iOS は macos-26 でシミュレーター向けにビルドし、「iPhone 17 Pro」のシミュレーターで同じ Maestro のテストを回す ([review-ios.yml](https://github.com/maplibre/maplibre-react-native/blob/main/.github/workflows/review-ios.yml))。実機での試験と、複数の OS の版での試験は CI に無い (同)。GPU とメモリの上限は MapLibre Native の側の担当である (推測)。
+- 操作の網羅: `MapView` の props で、ドラッグでの移動 (`dragPan`)、ピンチでのズーム (`touchZoom`)、ダブルタップでのズーム (`doubleTapZoom`)、ダブルタップ後の長押しでのズーム (`doubleTapHoldZoom`)、回転 (`touchRotate`)、傾き (`touchPitch`) を個別に切り替えられる ([MapViewNativeComponent.ts](https://github.com/maplibre/maplibre-react-native/blob/main/package/src/components/map/MapViewNativeComponent.ts))。慣性は MapLibre Native の既定に従う (推測)。キーボードとスクロールする親ビューとの両立の設定は未確認。
+- エッジケースへの対応: オフラインは `OfflineManager` のオフラインパックで扱う (上の「対応するタイル・データ」)。リリースノートには端末側の不安定さへの修正が並び、Android の地図の ANR を起こすデッドロック 2 件とカメラの NullPointerException の修正 (v11.3.8、2026-09-01)、大きさ 0 の地図ビューで余白が NaN になる iOS の不具合の修正 (同)、iOS のスタイル画像の読み込みを直列にしてヒープの破損を避ける修正 (v11.3.9、2026-09-05) がある ([Releases](https://github.com/maplibre/maplibre-react-native/releases))。日付変更線、タイル読み込みの再試行、アプリのバックグラウンド移行の扱いは MapLibre Native に依存し、このラッパーとしての文書は未確認。
+- 継続的な保守: v11 から React Native の New Architecture のみに絞った (上の「対応プラットフォーム」)。Issue には `Platform: Android`、`Platform: iOS`、`Architecture: New`、`Upstream` などのラベルがあり、`Platform: Android` と `Platform: iOS` はそれぞれ 32 件 (未解決は各 1 件) である (`repo:maplibre/maplibre-react-native is:issue label:"Platform: Android"`、同 iOS、2026-11-12 検索) ([labels](https://github.com/maplibre/maplibre-react-native/labels))。MapLibre Native の更新に追随しており、v11.4.0 (2026-09-19) で Android を 13.6.1、iOS を 6.31.0 に上げた ([Releases](https://github.com/maplibre/maplibre-react-native/releases))。Android Gradle Plugin の組み込み Kotlin への対応 (v11.3.9) のように、ビルド環境の変化にも追随している (同)。
+
 ## 向いている場面
 
 - React Native アプリで、自前のベクトルタイルやスタイル JSON、PMTiles を使いたいとき。

@@ -75,6 +75,14 @@ MapConductor は、複数の地図 SDK を 1 つの共通 API で操作するた
 
 - 主要リポジトリの最終コミット日、リリース数、コントリビュータ数: 最終コミットは android-sdk、ios-sdk、react-sdk とも 2026-11-09 (develop ブランチ)。GitHub Releases は使っておらず、版はタグとレジストリで出している。Android は Maven Central の core が 1.0.0 から 1.3.1 まで 12 版、iOS は ios-sdk-core に 12 タグ、npm の `@mapconductor/js-sdk-core` は 2026-07-22 の初回公開から 7 版。コントリビュータ (bot を除く) は org 全体で 5 アカウントで、2025-11-10 以降のコアリポジトリへのコミットは android-sdk-core 181 件中 179 件、ios-sdk-core 120 件中 120 件、js-sdk-core 106 件中 101 件が同じ 1 アカウント (wf9a5m75、表示名 Masashi Katsumata) による。リポジトリ作成は android-sdk が 2025-04、ios-sdk-core が 2026-01、js-sdk-core が 2026-07 で、全体に新しい。android-sdk の Star は 15 (確かめた日)。
 
+## 環境の違いと保守
+
+- ブラウザ間の互換: 描画は下にある各地図 SDK が行うので、ブラウザ、描画 API の違いはそれらが引き受ける (上の「何が楽にならないか」)。React 版の README は、どのプロバイダーもリリース前に実ブラウザで描画を確かめていると書くが、どのブラウザかは書いていない (https://github.com/MapConductor/react-sdk)。CI の `npm test` は ubuntu-latest で動き、ブラウザの上で動かすテストは見当たらない (https://github.com/MapConductor/react-sdk/blob/develop/.github/workflows/test.yml)。対応ブラウザの記述は未確認。
+- OS 間の互換: CI では、Android はコア、Compose、KML、GeoJSON、アイコンの JVM 単体テストを ubuntu-latest で回し、エミュレーターと実機での実行は無い (https://github.com/MapConductor/android-sdk/blob/develop/.github/workflows/test.yml)。iOS はコアの単体テストを macos-15 の iOS シミュレーターで `xcodebuild test` で回す。ワークフローの注記によると、それ以前はテストを走らせるワークフローが無く、依存する `TilePng.xcframework` が ios-arm64 と ios-arm64-simulator しか持たないため `swift test` (macOS) では回せない (https://github.com/MapConductor/ios-sdk/blob/develop/.github/workflows/test.yml)。プロバイダーごとの SDK を載せた状態での試験と、対応する OS の版の記述は未確認。
+- 操作の網羅: 共通 API の `MapUISettings` は、移動、ズーム、回転、傾きの身ぶりをそれぞれ有効、無効にする 4 つの設定を持つ (https://github.com/MapConductor/android-sdk-core/blob/develop/src/main/java/com/mapconductor/core/map/MapUISettings.kt)。身ぶりの実装と慣性は下の SDK に任せている (推測)。キーボード、マウス、ペンの扱いは未確認。
+- エッジケースへの対応: コアの `GeoRectBounds` は日付変更線をまたぐ範囲を扱うよう設計されていると文書が書き、中心の計算と重なりの判定で日付変更線をまたぐ場合を扱い、単体テストもある (https://github.com/MapConductor/android-sdk-core/blob/develop/docs/features/GeoRectBounds.kt.md 、https://github.com/MapConductor/android-sdk-core/blob/develop/src/test/java/com/mapconductor/core/features/GeoRectBoundsTest.kt)。React 版は SSR や Node の解決で一部プロバイダーが読み込めないことを表で示している (https://github.com/MapConductor/react-sdk)。描画コンテキストの喪失、タイル読み込みの再試行、オフラインは下の SDK の担当で、MapConductor としての文書は未確認。
+- 継続的な保守: 下の SDK の更新への追随が要る (上の「何が楽にならないか」)。Issue は android-sdk に 13 件、ios-sdk と react-sdk は 0 件で、プラットフォーム固有の不具合を追う仕組みはまだ読み取れない (`repo:MapConductor/<リポジトリ> is:issue`、2026-11-12 検索)。React Native の New Architecture、新しい iOS と Android の版への対応方針の文書は未確認。
+
 ## ライセンス
 
 2026-11-10 に GitHub API のライセンス判定と、LICENSE ファイル・パッケージのメタデータで確かめた値。

@@ -51,6 +51,14 @@ Google の地図 (道路地図、航空写真、地形など) を Android / iOS 
 - 直近 1 年のリリース数: Android はリリースノートで 2 件 (20.0.0: 2026-01-31、20.1.0: 2026-10-12) ([Android リリースノート](https://developers.google.com/maps/documentation/android-sdk/release-notes))。iOS は ios-maps-sdk の GitHub Releases で 13 件 (10.x から 11.3.0) ([ios-maps-sdk Releases](https://github.com/googlemaps/ios-maps-sdk/releases))。android-maps-compose は同期間に 18 件 (うち RC 3 件)。
 - 最終コミット日: 本体は非公開のため対象外。ios-maps-sdk は 2026-11-02、android-maps-compose は 2026-11-09。
 
+## 環境の違いと保守
+
+- ブラウザ間の互換: ネイティブ SDK なので、代わりに描画 API を見る。Android と iOS の地図の描画 API は文書に無く未確認 (上の「描画方式」)。iOS では 9.4.0 (2025-03-24) でストリートビューの `PanoramaView` を OpenGL から Metal に移し始め、これでシミュレーターの描画の不具合も直ると書いている ([iOS リリースノート](https://developers.google.com/maps/documentation/ios-sdk/release-notes))。本体は非公開で、CI で確かめている描画 API と端末は未確認。Web の対象は無く、Web は Maps JavaScript API の担当である。
+- OS 間の互換: 文書でうたう最低版は Android の `minSdk` 23 (Google Play 開発者サービスが必要) と iOS 17 である (上の「対応プラットフォーム」)。iOS は 10.0.0 (2025-05-19) で iOS 15、11.3.0 (2026-11-02) で iOS 16 の対応を凍結しており、おおむね年 1 版ずつ最低版を上げている ([iOS リリースノート](https://developers.google.com/maps/documentation/ios-sdk/release-notes))。Android では Android 12 (API 31) 以上で `StrictMode` の `detectIncorrectContextUse` が違反を出す既知の問題があり、回避策だけが示されている ([Android リリースノート](https://developers.google.com/maps/documentation/android-sdk/release-notes))。試験している端末、GPU、メモリの上限への対応は未確認。
+- 操作の網羅: Android の文書は、ズーム (ダブルタップ、二本指タップでの縮小、ピンチ、ダブルタップ後のスライド)、移動、傾き (二本指の上下)、回転 (二本指のひねり) を挙げ、`UiSettings` でそれぞれ無効にできる。ライトモードでは地図はビットマップで、移動もズームもできない ([コントロールと操作](https://developers.google.com/maps/documentation/android-sdk/controls))。iOS も同様の操作の設定がある (https://developers.google.com/maps/documentation/ios-sdk/controls)。キーボード、マウス、ペン、スクロールする親ビューの中での扱いは文書に無く未確認。
+- エッジケースへの対応: iOS の 10.4.0 (2025-10-02) で、端末の回転を含むフレームの大きさのアニメーション中に地図のレイヤーがずれる不具合を直し、10.2.0 (2025-08-12) で異常終了を数える MetricKit を入れた ([iOS リリースノート](https://developers.google.com/maps/documentation/ios-sdk/release-notes))。開発者向けのオフライン領域の API は見つからない (上の「対応するタイル・データ」)。日付変更線、バックグラウンド移行、描画コンテキストの喪失、タイル読み込みの再試行についての文書は未確認。
+- 継続的な保守: Android の地図の描画器は Google Play 開発者サービスの側で更新される面があり、20.0.0 で `org.apache.http.legacy` を外した結果、旧レンダラーを読むアプリが `NoClassDefFoundError` で落ちうるが、Google Play 開発者サービス 25.50.34 以降は影響を受けないと書いている ([Android リリースノート](https://developers.google.com/maps/documentation/android-sdk/release-notes))。iOS は 10.8.0 (2026-01-27) から Xcode 26 でのビルドを必須にした ([iOS リリースノート](https://developers.google.com/maps/documentation/ios-sdk/release-notes))。本体の不具合の追跡の仕方とプラットフォーム別の件数は未確認。
+
 ## 向いている場面
 
 - Google の地図データ、POI、ストリートビューを使いたい場合。

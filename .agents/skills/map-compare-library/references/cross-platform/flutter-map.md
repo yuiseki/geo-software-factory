@@ -54,6 +54,14 @@ Flutter 用の地図ウィジェット。Leaflet に似たレイヤー構成で�
 - 最終コミット日: 2026-11-04 JST (master、Dependabot による GitHub Actions の更新)
 - 主なメンテナー (個人か組織か): `fleaflet` Organization。直近 1 年の人間のコミットは JaffaKetchup が最多で、ben-milanko、monsieurtanuki が続く。累計では johnpryan (初期の作者)、JaffaKetchup、kengu、josxha が多い (https://github.com/fleaflet/flutter_map/graphs/contributors)
 
+## 環境の違いと保守
+
+- ブラウザ間の互換: Web でも Flutter の描画で地図を組み立てるので、ブラウザの違いは Flutter の Web エンジンが引き受ける (上の「描画方式」)。文書でうたう対応ブラウザの一覧は未確認。CI では PR ごとに `flutter build web --wasm` で Web (WebAssembly) 版のデモをビルドするが、ブラウザの上で動かすテストは無い ([branch.yml](https://github.com/fleaflet/flutter_map/blob/master/.github/workflows/branch.yml))。8.3.0 (2026-04-14) で `dart:io` への参照を取り除き、pana が WASM 対応と認めるようにした ([CHANGELOG](https://github.com/fleaflet/flutter_map/blob/master/CHANGELOG.md))。Web では User-Agent ヘッダーを付けないようにした修正もある (同)。
+- OS 間の互換: CI のテストは ubuntu-latest の上の `flutter test` (ウィジェットテスト) で、最低版の Flutter 3.27.0 と最新の stable の 2 つで回す ([branch.yml](https://github.com/fleaflet/flutter_map/blob/master/.github/workflows/branch.yml))。デモのビルドは Android の APK (Flutter 3.27.0 と最新)、Windows (windows-2022 の 3.27.0 と windows-latest の最新)、Web である (同)。iOS、macOS、Linux のビルドは CI に無く、実機やエミュレーターでの実行も無い (同)。GPU とメモリの上限への対応の文書は未確認。
+- 操作の網羅: `InteractiveFlag` で、ドラッグ、フリングの慣性、ピンチでの移動、ピンチでのズーム、ダブルタップでのズーム、ダブルタップ後のドラッグでのズーム、ホイールでのズーム、回転を個別に有効、無効にできる ([interactive_flag.dart](https://github.com/fleaflet/flutter_map/blob/master/lib/src/gestures/interactive_flag.dart))。回転、ピンチのズーム、ピンチの移動のどれが勝つかのしきい値と「多指の身ぶりの競争」の設定がある ([interaction.dart](https://github.com/fleaflet/flutter_map/blob/master/lib/src/map/options/interaction.dart))。キーボードでの移動、ズーム、回転をアニメーションつきで受け、カーソルとキーで回転する設定もある (8.0.0 で追加、[keyboard.dart](https://github.com/fleaflet/flutter_map/blob/master/lib/src/map/options/keyboard.dart)、[CHANGELOG](https://github.com/fleaflet/flutter_map/blob/master/CHANGELOG.md))。傾きは無い (2D)。スクロールする親ビューとの両立の設定は未確認。
+- エッジケースへの対応: 日付変更線は 8.0.0 (2025-02-02) で、既定の投影法で横方向に無限に移動でき、レイヤーが日付変更線をまたげるようになり、8.1.0 でポリゴンとポリラインが複数の世界に対応した ([CHANGELOG](https://github.com/fleaflet/flutter_map/blob/master/CHANGELOG.md))。`LatLngBounds.center` が世界の境界をまたいで正しく働く修正もある (同)。タイルは 8.2.0 (2025-07-10) で `NetworkTileProvider` に組み込みのキャッシュが入り、8.2.1 で HTTP の仕様に沿わない応答でキャッシュに失敗してもタイルを読み込むよう直した (同)。再試行は 5.0.0 で `NetworkNoRetryTileProvider` を外し、`NetworkTileProvider.httpClient` を差し替えて決める形にした (同)。端末へのオフライン保存は本体ではなく `flutter_map_tile_caching` などのプラグインが担う (上の「エコシステム」)。描画コンテキストの喪失とアプリのバックグラウンド移行の扱いは未確認。
+- 継続的な保守: CI で、対応する最低版の Flutter (3.27.0) と最新の stable の両方を試しており、Flutter の新版への追随を毎回確かめている ([branch.yml](https://github.com/fleaflet/flutter_map/blob/master/.github/workflows/branch.yml))。Issue のラベルは優先度と分類 (`P: 2` など、`plugins`) で、プラットフォーム別のラベルは無い ([labels](https://github.com/fleaflet/flutter_map/labels))。
+
 ## 向いている場面
 
 - Flutter で Android、iOS、Web、デスクトップのすべてに同じ地図を出したいとき。

@@ -38,6 +38,14 @@
 - react-map-gl / @rnmapbox/maps: ラッパーは MIT だが、Mapbox 側の SDK (mapbox-gl v2 以降、Mapbox Maps SDK for iOS / Android) は有効な Mapbox アカウントと Mapbox TOS が前提の独自ライセンス。Mapbox の製品と組み合わせる場合に限り使える。MapLibre GL JS と組み合わせる react-map-gl はこの制約を受けない。
 - iTowns: CeCILL-B はフランス法準拠の BSD 型ライセンスで SPDX では OSI 非承認。MIT とのデュアルなので、MIT を選べばこの点は問題にならない。
 
+## 環境の違いと保守
+
+- ブラウザ間の互換: Web 用のものでは、iTowns が機能テストを puppeteer (Chrome) で回している (https://github.com/iTowns/itowns/blob/master/package.json 、https://github.com/iTowns/itowns/blob/master/test/hooks_functional.js)。MapLibre Native Qt は WASM のビルドを CI に持つ (https://github.com/maplibre/maplibre-native-qt/tree/main/.github/workflows)。React のラッパー (react-map-gl、@vis.gl/react-google-maps、react-leaflet) のブラウザ間の互換は下の地図ライブラリに従う (推測)。Mappedin のような商用のプラットフォームでは提供元が持ち、対応ブラウザの記述は未確認。他の製品の対応ブラウザと CI のブラウザは未確認。
+- OS 間の互換: MapLibre Native Qt は CI に Android、iOS、Linux、macOS、Windows、WASM のワークフローを持つ (https://github.com/maplibre/maplibre-native-qt/tree/main/.github/workflows)。@rnmapbox/maps は Android と iOS の CI を持ち、iOS はシミュレーターで回す (https://github.com/rnmapbox/maps/blob/main/.github/workflows/ios-actions.yml)。Mapsforge / VTM、MapLibre for Flutter などの試験の範囲は未確認。
+- 操作の網羅: React と React Native と Flutter のラッパーは、下の地図ライブラリや SDK の操作をそのまま引き継ぐ (推測)。OpenSeadragon、ECharts、Observable Plot は地図専用の操作ではなく、それぞれの画像ビューアやグラフの操作になる (推測)。個別の確かめは未確認。
+- エッジケースへの対応: 日付変更線、描画コンテキストの喪失、タイル読み込みの再試行の扱いは製品ごとに調べておらず未確認。Mapsforge / VTM は通信なしでの描画そのものが目的である (上の表)。
+- 継続的な保守: @rnmapbox/maps は CI の入力で React Native の New Architecture の有効、無効を切り替えてビルドする (https://github.com/rnmapbox/maps/blob/main/.github/workflows/android-actions.yml 、https://github.com/rnmapbox/maps/blob/main/.github/workflows/ios-actions.yml)。それ以外の製品の OS とフレームワークの新版への追随、CSP の文書は未確認。
+
 ## 出典
 
 - https://giro3d.org/

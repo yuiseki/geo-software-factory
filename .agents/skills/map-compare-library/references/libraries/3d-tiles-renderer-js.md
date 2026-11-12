@@ -65,6 +65,14 @@ OGC 3D Tiles を読み込み、three.js、Babylon.js、PlayCanvas のシーン�
 - 最終コミット日: 2026-11-07 JST (master ブランチ) ([commits](https://github.com/NASA-AMMOS/3DTilesRendererJS/commits/master))。
 - 近年の大きな破壊的変更: 1.0 前。v0.5.0 (2026-07-15) で非推奨 API を削除し、TilesRenderer の各種キューとキャッシュを既定で全インスタンス共有に変えた。v0.4.0 (2024-12-25) で three.js の最低版を r166 に上げ、非推奨関数を削除 ([CHANGELOG](https://github.com/NASA-AMMOS/3DTilesRendererJS/blob/master/CHANGELOG.md))。
 
+## 環境の違いと保守
+
+- ブラウザ間の互換: 対応ブラウザを示した公式文書は未確認。CI は型の検査と Vitest を Node の環境で回すだけで、ブラウザでの自動テストはない (https://github.com/NASA-AMMOS/3DTilesRendererJS/blob/master/.github/workflows/node.js.yml, https://github.com/NASA-AMMOS/3DTilesRendererJS/blob/master/vitest.config.js)。描画は three.js などのエンジンに任せるので、ブラウザ間の違いはそのエンジンが吸収する (推測)。
+- OS 間の互換: 対応 OS と端末、GPU の違いを述べた文書は未確認。メモリについては、タイルのキャッシュ (LRUCache) が `maxBytesSize` と `cachedBytes` でバイト数を数えて上限を設ける (https://github.com/NASA-AMMOS/3DTilesRendererJS/blob/master/src/core/renderer/API.md)。WebXR のように `requestAnimationFrame` が使えない場面向けに、読み込みの予定を差し替える `schedulingCallback` を持つ (https://github.com/NASA-AMMOS/3DTilesRendererJS/blob/master/CHANGELOG.md)。
+- 操作の網羅: three.js 向けの EnvironmentControls がドラッグでのパン、スクロールでのズーム、右クリックでの回転、任意の減衰による慣性を持ち、`enableFlight` で W/A/S/D と矢印キーのキーボード飛行ができる。GlobeControls は楕円体に沿った回転と地球儀の慣性を持つ (https://github.com/NASA-AMMOS/3DTilesRendererJS/blob/master/src/three/renderer/API.md)。ポインタの追跡は `PointerTracker` が受け持つ (https://github.com/NASA-AMMOS/3DTilesRendererJS/tree/master/src/three/renderer/controls)。ページのスクロールと両立させる設定は未確認。
+- エッジケースへの対応: タイルの読み込み失敗は `load-error` イベント (タイル、エラー、URL を渡す) で受ける (https://github.com/NASA-AMMOS/3DTilesRendererJS/blob/master/src/core/renderer/API.md)。自動の再試行は未確認。精度については、ReorientationPlugin でタイルセットを原点付近に置き直してローカルなシーンとして扱える (https://github.com/NASA-AMMOS/3DTilesRendererJS/blob/master/src/three/plugins/API.md)。WebGL のコンテキスト喪失の扱いはコード検索で見つからなかった (`repo:NASA-AMMOS/3DTilesRendererJS contextlost`、2026-11-12、未確認)。
+- 継続的な保守: CSP についての公式文書は未確認。ブラウザ別のラベルはなく、タイトルに Safari を含む issue は 1 件、Firefox は 3 件、iOS は 0 件である (GitHub の issue 検索、`repo:NASA-AMMOS/3DTilesRendererJS` に各条件を付けて、2026-11-12)。
+
 ## 向いている場面
 
 - three.js (または Babylon.js、PlayCanvas、React Three Fiber) で作る 3D 表現に、PLATEAU、Google Photorealistic 3D Tiles、点群などの 3D Tiles を組み込む場合。

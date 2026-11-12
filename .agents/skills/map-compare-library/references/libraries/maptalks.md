@@ -65,6 +65,14 @@ maptalks.js は 2D 地図を傾け・回転させて 2D と 3D を統合して�
 - 最終コミット日: 2026-10-22 (master)
 - 近年の大きな破壊的変更: Canvas 2D 図層 (VectorLayer など) の廃止と WebGL/WebGPU への一本化の方針 (Issue #2471、2024-11)。README は旧来の maptalks を「legacy maptalks」(maptalks/maptalks-canvas) と呼び、maptalks-gl へ移行できるとしている (移行手順は TBD)。実際にどの版で何が削除されたかは未確認
 
+## 環境の違いと保守
+
+- ブラウザ間の互換: 対応ブラウザを示した公式文書は未確認。旧来のコアのテストは Karma で Chrome を起動して回す設定だが (https://github.com/maptalks/maptalks.js/blob/master/packages/maptalks/build/karma.config.js)、GitHub Actions の workflow は公開用の `publish.yml` だけで、テストを回す手順はない (https://github.com/maptalks/maptalks.js/tree/master/.github/workflows)。CI でブラウザを確かめている形跡は見当たらない。
+- OS 間の互換: 対応 OS と端末、GPU の違い、メモリ上限への対応を述べた文書は未確認。
+- 操作の網羅: 地図の操作の部品として、端での自動パン (`Map.AutoPanAtEdge`)、範囲ズーム (`Map.BoxZoom`)、ダブルクリックズーム (`Map.DoubleClickZoom`)、ドラッグ (`Map.Drag`)、ホイールズーム (`Map.ScrollWheelZoom`)、タッチ (`Map.Touch`) を持つ (https://github.com/maptalks/maptalks.js/tree/master/packages/maptalks/src/map/handler)。キーボード操作の部品はこの一覧に見当たらない。ページのスクロールと両立させる設定と慣性の扱いは未確認。
+- エッジケースへの対応: 日付変更線、精度、読み込み失敗を述べた文書は未確認。コード検索で `webglcontextlost` が見つかるのはベクトルタイルの文字描画の 1 ファイルだけで (`repo:maptalks/maptalks.js webglcontextlost`、2026-11-12)、地図全体でのコンテキスト喪失の扱いは未確認。
+- 継続的な保守: CSP についての公式文書は未確認。旧来のコアの CHANGELOG は版ごとの短い記述で、ブラウザ固有の修正は見当たらない (https://github.com/maptalks/maptalks.js/blob/master/packages/maptalks/CHANGELOG.md)。ブラウザ別のラベルはなく、タイトルに Safari を含む issue は 2 件、Firefox は 6 件、iOS は 5 件である (GitHub の issue 検索、`repo:maptalks/maptalks.js` に各条件を付けて、2026-11-12)。
+
 ## 向いている場面
 
 - 平面地図 (独自投影を含む) に 3D モデル・3D Tiles・地形を重ねる 2.5D の表現

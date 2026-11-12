@@ -51,6 +51,14 @@ Apple Maps の地図と航空写真をアプリのビューに埋め込み、注
 - 直近 1 年のリリース数: 対象外。OS の更新とともに提供されるため、MapKit 単独のリリースはない。
 - 最終コミット日: 対象外 (ソース非公開)。
 
+## 環境の違いと保守
+
+- ブラウザ間の互換: ネイティブの MapKit は OS のフレームワークで、描画 API は文書に無く未確認 (上の「描画方式」)。Web 版の MapKit JS は、最新版の Safari (macOS のみ)、Edge、Chrome、Firefox を、モバイルでは Safari (iOS と iPadOS のみ)、Edge、Chrome、Firefox を推奨ブラウザとしている ([Understanding Browser Support](https://developer.apple.com/documentation/mapkitjs/browser-support))。どのブラウザで自動テストしているかは非公開で未確認。
+- OS 間の互換: 対応する OS は iOS、iPadOS、macOS、Mac Catalyst、tvOS、watchOS、visionOS で、API ごとに使える最低版が文書にある (上の「対応プラットフォーム」、[MapKit](https://developer.apple.com/documentation/mapkit))。地図は OS に含まれるため、端末と OS の組み合わせの確かめは Apple が持つ。Android、Windows、Linux はネイティブ非対応で MapKit JS を使う。GPU とメモリの上限への対応の文書は未確認。
+- 操作の網羅: `MKMapView` はフリックとピンチでの移動とズームを既定で有効にし、`isScrollEnabled`、`isZoomEnabled`、`isRotateEnabled`、`isPitchEnabled` で切り替え、`cameraZoomRange` でズームの範囲を絞れる ([MKMapView](https://developer.apple.com/documentation/mapkit/mkmapview))。SwiftUI の `Map` は `MapInteractionModes` の `pan`、`zoom`、`pitch`、`rotate`、`all` で許す操作を選ぶ ([MapInteractionModes](https://developer.apple.com/documentation/mapkit/mapinteractionmodes))。macOS のトラックパッドとキーボード、visionOS の視線と手の操作の細部は未確認。
+- エッジケースへの対応: 日付変更線、浮動小数点の精度、バックグラウンド移行、タイル読み込みの再試行の扱いを説明した文書は見つからなかった (未確認)。開発者向けのオフライン領域の API は見つからない (上の「対応するタイル・データ」)。MapKit JS は v6 で、タイル画像と注釈の画像を含むすべての画像に CORS を求めるようになった ([Migrating from version 5 to version 6](https://developer.apple.com/documentation/mapkitjs/migrating-from-version-5-to-version-6))。
+- 継続的な保守: OS の更新とともに Apple が追随するため、利用者側の作業は OS の新版で非推奨になった API の置き換えが中心になる (推測)。iOS 17 で `MapStyle` などの新しい SwiftUI の API が入った (上の「対応プラットフォーム」)。MapKit JS の CSP の文書、プラットフォーム固有の不具合の公開の一覧はどちらも未確認。
+
 ## 向いている場面
 
 - iOS / macOS / watchOS / tvOS / visionOS だけを対象にするアプリで、SwiftUI で地図を書きたい場合。

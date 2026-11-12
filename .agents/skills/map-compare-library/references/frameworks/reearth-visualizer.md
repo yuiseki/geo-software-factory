@@ -56,6 +56,14 @@ Re:Earth Visualizer は、ブラウザ上の編集画面でデータを 3D/2D �
 - 直近 1 年のリリース数: 57 件 (2025-11-10 以降の GitHub Releases。v1.0.0-beta.* が 56 件、nightly が 1 件)。おおむね週 1 回のペースで beta を出している。
 - 最終コミット日: 2026-11-09 (main)。
 
+## 環境の違いと保守
+
+- ブラウザ間の互換: 公開済みの文書で対応ブラウザを書いたページは見つからなかった。ドキュメントサイトの deploy preview に「ブラウザの設定」のページがあり、Chrome 58 以降、Firefox 57 以降、Safari 11 以降 (macOS のみ)、Microsoft Edge、iOS 11 以降の Safari、Android 10 以降の Chrome を挙げ、Internet Explorer は対象外、WebGL の使えるグラフィックスと編集時 1000x700 以上の画面を求めている (https://deploy-preview-44--reearth-document.netlify.app/user-manual/getting-started/environment-setting/browser-setup)。本番のドキュメントに載った版かは未確認。CI では、Web のジョブは型検査、lint、単体テスト (`yarn run coverage`) を回す (https://github.com/reearth/reearth-visualizer/blob/main/.github/workflows/ci_web.yml)。Playwright の UI テストは WebKit (Desktop Safari) と、見た目の比較用の Chromium の 2 つの project を持つが、ワークフローは手動起動 (`workflow_dispatch`) で対象 URL を指定して回す形である (https://github.com/reearth/reearth-visualizer/blob/main/e2e/playwright.config.ts 、https://github.com/reearth/reearth-visualizer/blob/main/.github/workflows/playwright_ui_tests.yml)。Firefox は CI に無い。Vite のビルドの目標は `esnext` である (https://github.com/reearth/reearth-visualizer/blob/main/web/vite.config.ts)。
+- OS 間の互換: 同じ deploy preview のページは、編集画面はスマートフォンに対応せず、公開したプロジェクトはスマートフォンで見られると書いている (https://deploy-preview-44--reearth-document.netlify.app/user-manual/getting-started/environment-setting/browser-setup)。CI は ubuntu-latest だけで、OS ごとの確かめは未確認 (https://github.com/reearth/reearth-visualizer/blob/main/.github/workflows/ci_web.yml)。モバイル向けのウィジェット配置やストーリーテリングの不具合の Issue があり、いずれも解決済み (https://github.com/reearth/reearth-visualizer/issues/163 、https://github.com/reearth/reearth-visualizer/issues/239)。GPU とメモリの上限への対応は未確認。
+- 操作の網羅: 地図の操作は下の CesiumJS に任せている (推測)。プラグイン API からはクリック、マウスの上下と移動、ホイールなどのイベントを受け取れる (https://docs.reearth.io/llms-full.txt)。キーボード操作、タッチの身ぶり、ページのスクロールとの両立の設定は未確認。
+- エッジケースへの対応: 日付変更線、GPU のコンテキストの喪失、読み込みの再試行、オフラインについての文書や Issue は見つからなかった (未確認)。Issue の検索で「antimeridian」「context lost」は 0 件である (`repo:reearth/reearth-visualizer is:issue`、2026-11-12 検索)。deploy preview のページはインターネット接続を前提にしている (https://deploy-preview-44--reearth-document.netlify.app/user-manual/getting-started/environment-setting/browser-setup)。
+- 継続的な保守: CSP の文書は見つからなかった (未確認)。プラグインは iframe と WebAssembly の中で動く (https://docs.reearth.io/llms-full.txt)。ブラウザや OS 固有の不具合を分けるラベルは無く、`web`、`frontend`、`bug` などで扱っている (https://github.com/reearth/reearth-visualizer/labels)。Issue の「safari」を含むものは 5 件 (`repo:reearth/reearth-visualizer is:issue safari`、2026-11-12 検索) で、ブラウザ固有の修正をまとめて追える変更履歴は無い。CesiumJS は `web/package.json` で 1.145.0 に追随している (https://github.com/reearth/reearth-visualizer/blob/main/web/package.json)。
+
 ## 向いている場面
 
 - 3D Tiles や CZML など 3D データを、開発者でない担当者が地図に並べてストーリー付きで公開したいとき。

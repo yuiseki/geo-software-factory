@@ -65,6 +65,14 @@ Esri が提供する Web 向けの地図・空間解析用 SDK で、2D の MapV
 - 最終コミット日: 対象外 (ソースリポジトリが非公開)。npm パッケージの最終更新は 2026-11-09 JST ([npm @arcgis/core](https://www.npmjs.com/package/@arcgis/core))。
 - 近年の大きな破壊的変更: 5.0 (2026-02) で全ウィジェットが非推奨になり、6.0 (2027 年第 1 四半期予定) から削除が始まる。5.1 で `arcgis-popup` の `triggerAction()` 削除、複数のコンポーネント名の置き換えなど ([Release notes](https://developers.arcgis.com/javascript/latest/release-notes/))。
 
+## 環境の違いと保守
+
+- ブラウザ間の互換: 文書でうたう対応は Chrome 154 以上 (デスクトップと Android)、Edge 154 以上、Firefox 159 以上と Firefox 153 (ESR)、Safari 26 以上と iOS の Safari 26 以上で、WebGL2 が使える 64 ビットのブラウザだけを対象とする (https://developers.arcgis.com/javascript/latest/system-requirements/)。ソースは非公開で、Esri がどのブラウザで自動テストしているかは未確認。
+- OS 間の互換: 対応 OS の一覧は文書にない (未確認)。ハードウェアの要件として、デスクトップは 8 GB 以上、モバイルは 4 GB 以上のメモリを求め、GPU のハードウェアアクセラレーションがないとソフトウェア描画に落ちて遅くなると書く。仮想デスクトップ (VDI、RDS) ではユーザーごとに同じ要件、2 vCPU 以上、物理 GPU の vGPU を求め、SceneView は 4K を超える解像度の画面に対応しない。一部の機能は WebGL2 の拡張 (`EXT_color_buffer_float` など) を要し、`EXT_float_blend` のない端末では描画がわずかに変わると書く (https://developers.arcgis.com/javascript/latest/system-requirements/)。FAQ は、モバイルはメモリと CPU の制約がデスクトップより厳しいと書く (https://developers.arcgis.com/javascript/latest/faq/)。
+- 操作の網羅: `view.navigation` に、マウスボタンごとのドラッグの動作を決める `actionMap`、ゲームパッドの操作 `gamepad`、指を離した後も少し動き続ける慣性 `momentumEnabled` がある。`browserTouchPanEnabled` を false にすると一本指ではパンせずページがスクロールし、二本指のパン、ズーム、回転は残る (https://developers.arcgis.com/javascript/latest/references/core/views/navigation/Navigation/)。キーボードとペンの扱いを述べた箇所は未確認。
+- エッジケースへの対応: FAQ は WebGL2 のコンテキストの数の上限 (端末により 8 から 16) を書き、上限を超えるとブラウザが最も古いコンテキストを捨て、そのビューが描画を止めるので、ダッシュボードのような画面ではビューの数を抑えるよう勧める (https://developers.arcgis.com/javascript/latest/faq/)。日付変更線、精度、読み込み失敗の再試行を述べた文書は未確認。
+- 継続的な保守: FAQ に CSP の記述がある。`script-src` に `wasm-unsafe-eval` が要り、`worker-src` で `blob:` を許可しないと worker のコードがメインスレッドで動く。`default-src` か `style-src` がすべてのスタイルを許さないなら `style-src-attr` に `unsafe-inline` が要る (https://developers.arcgis.com/javascript/latest/faq/)。対応ブラウザの版は現行のブラウザの版に合わせた具体的な数字で書かれており、リリースごとに更新している (推測)。ブラウザ固有の不具合の追跡の方法は未確認。
+
 ## 向いている場面
 
 - ArcGIS Online / Enterprise を既に導入している組織 (日本では自治体の導入事例が ESRI ジャパンのサイトに 256 件あり、防災や道路・上下水道の管理が多い) が、その上で Web アプリを作る場合 ([ESRI ジャパン 導入事例](https://www.esrij.com/case-studies/list/?tx=local-governments))。ただしこれらは ArcGIS 製品全体の事例で、この SDK を直接使った事例かは区別されていない。

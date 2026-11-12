@@ -65,6 +65,14 @@ OpenGlobus は TypeScript/JavaScript で書かれた、3D 地図と地理空間�
 - 最終コミット日: 2026-11-06 (master)
 - 近年の大きな破壊的変更: 1.0.0-rc 系で多数の変更が続いている。CHANGELOG の Unreleased には `Projector` の `sourceType` 引数の削除などがある (https://github.com/openglobus/openglobus/blob/master/CHANGELOG.md)。0.28 から 1.0 への移行ガイドは未確認
 
+## 環境の違いと保守
+
+- ブラウザ間の互換: 対応ブラウザを示した公式文書は未確認。CI のテストは Vitest を jsdom の環境で回し、シェーダーは模擬に差し替える (https://github.com/openglobus/openglobus/blob/master/.github/workflows/push.yml, https://github.com/openglobus/openglobus/blob/master/vitest.config.ts)。実際のブラウザでの自動テストは CI 設定に見当たらない。
+- OS 間の互換: 対応 OS と端末、GPU の違い、メモリ上限への対応を述べた文書は未確認。公開の CI は Ubuntu だけである (同 push.yml)。
+- 操作の網羅: 操作の部品として、マウスの `Navigation`、`KeyboardNavigation`、`TouchNavigation`、簡易版の `SimpleNavigation` と `SimpleTouchNavigation`、地表付近を自由に動く `FreeNavigation` を持つ (https://github.com/openglobus/openglobus/tree/master/src/control)。ペン入力、慣性、ページのスクロールと両立させる設定は未確認。
+- エッジケースへの対応: README は「Precision at all scales」をうたうが (https://github.com/openglobus/openglobus/blob/master/README.md)、精度を保つ仕組みを説明した文書は未確認。コード検索で `webglcontextlost` は 0 件で (`repo:openglobus/openglobus webglcontextlost`、2026-11-12)、コンテキスト喪失の扱いは未確認。日付変更線と極、読み込み失敗の扱いも未確認。
+- 継続的な保守: CSP についての公式文書は未確認。CHANGELOG は短く、ブラウザ固有の修正は見当たらない (https://github.com/openglobus/openglobus/blob/master/CHANGELOG.md)。ブラウザ別のラベルはなく、タイトルに Safari、Firefox、iOS を含む issue はそれぞれ 1 件である (GitHub の issue 検索、`repo:openglobus/openglobus` に各条件を付けて、2026-11-12)。
+
 ## 向いている場面
 
 - Cesium ion などの外部サービスに頼らず、地球儀上にラスタ画像・地形・glTF モデル・エンティティを表示したい場合

@@ -54,6 +54,14 @@
 - 最終コミット日: 2026-11-09 JST (main、WFS 2.0 の GetFeature フィルタの修正のマージ)
 - 主なメンテナー (個人か組織か): Organization 管理だが、実質は pauldendulk 個人が中心。直近 1 年のコミットは pauldendulk が 438 件で、次の Copilot (15 件) 以下を大きく引き離す。累計では pauldendulk、inforithmics、charlenni が多い (https://github.com/Mapsui/Mapsui/graphs/contributors)
 
+## 環境の違いと保守
+
+- ブラウザ間の互換: 描画は全プラットフォームで SkiaSharp を通すので、OpenGL、Metal などの違いは SkiaSharp と各 UI フレームワークのビューが引き受ける (上の「描画方式」)。Web は Blazor と、Avalonia、Uno Platform の WebAssembly 版で動く (上の「対応プラットフォーム」)。CI は WebAssembly のワークロードを入れてビルドするが、ブラウザの上で動かすテストは見当たらず、対応ブラウザの記述も未確認 ([dotnet.yml](https://github.com/Mapsui/Mapsui/blob/main/.github/workflows/dotnet.yml))。5.1.0 では Avalonia の WebAssembly でホイールのズームの向きが固まる不具合を直している ([5.1.0](https://github.com/Mapsui/Mapsui/releases/tag/5.1.0))。
+- OS 間の互換: CI は ubuntu-latest、macos-26、windows-latest の 3 つで、各 OS 向けのソリューションをビルドし、コア、NTS、Skia の描画のテストを net9.0 で回す ([dotnet.yml](https://github.com/Mapsui/Mapsui/blob/main/.github/workflows/dotnet.yml))。Skia の描画のテストは、サンプルの地図を画像に描いて元の画像と比べる回帰テストを含む ([MapRegressionTests.cs](https://github.com/Mapsui/Mapsui/blob/main/Tests/Mapsui.Rendering.Skia.Tests/MapRegressionTests.cs))。Android と iOS はビルドだけで、エミュレーター、シミュレーター、実機での実行は CI に無い (同)。メモリについては、MAUI の `MapControl` が画面遷移のあと SKGLView を解放しないメモリリークの修正が 5.1.0 にある ([5.1.0](https://github.com/Mapsui/Mapsui/releases/tag/5.1.0))。
+- 操作の網羅: 2D の地図で、`Navigator` の `PanLock`、`ZoomLock`、`RotationLock` で移動、ズーム、回転を個別に止められる ([Navigator.cs](https://github.com/Mapsui/Mapsui/blob/main/Mapsui/Navigator.cs))。身ぶりはシングルタップ、ダブルタップ、長押し、ホバーを区別し、フリングの慣性とホイールのズームのアニメーションを持つ ([GestureType.cs](https://github.com/Mapsui/Mapsui/blob/main/Mapsui/Manipulations/GestureType.cs)、[FlingTracker.cs](https://github.com/Mapsui/Mapsui/blob/main/Mapsui/Manipulations/FlingTracker.cs)、[MouseWheelAnimation.cs](https://github.com/Mapsui/Mapsui/blob/main/Mapsui/Animations/MouseWheelAnimation.cs))。5.1.0 でホイールの連続ズームが入った ([5.1.0](https://github.com/Mapsui/Mapsui/releases/tag/5.1.0))。傾きは無い。キーボード操作とペンの扱いは未確認。
+- エッジケースへの対応: 日付変更線は、線を日付変更線で分ける方法を尋ねた Issue が 1 件あるだけで、ライブラリとしての扱いの文書は未確認 ([#1490](https://github.com/Mapsui/Mapsui/issues/1490))。オフラインは MBTiles で扱う (上の「対応するタイル・データ」)。タイル読み込みの失敗と再試行、描画コンテキストの喪失、アプリのバックグラウンド移行の扱いは未確認。
+- 継続的な保守: UI フレームワークの新版への追随が続いており、5.1.0 で Avalonia 12 向けの `Mapsui.UI.Avalonia12` を足し、Uno SDK を 6.5.31 に上げて .NET 8 の対象を外した ([5.1.0](https://github.com/Mapsui/Mapsui/releases/tag/5.1.0))。CI の macOS ジョブは、macos-26 のランナーが Android 35 以上しか持たないため API 34 を明示して入れている ([dotnet.yml](https://github.com/Mapsui/Mapsui/blob/main/.github/workflows/dotnet.yml))。プラットフォーム別のラベルは無く、`bug-in-dependency` などで分ける ([labels](https://github.com/Mapsui/Mapsui/labels))。Issue で「android」を含むものは 408 件、「ios」は 284 件ある (`repo:Mapsui/Mapsui is:issue android`、同 `ios`、2026-11-12 検索)。
+
 ## 向いている場面
 
 - .NET (MAUI、WPF、Avalonia、Uno、Blazor など) のアプリに、ライセンス費の無い 2D 地図を入れたいとき。

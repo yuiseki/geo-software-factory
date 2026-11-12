@@ -69,6 +69,14 @@
 - 販売する製品に地図を組み込むとき (Felt は Platform アドオンが要り、Google は Maps Platform を案内している)。
 - 長く同じ形で公開しつづけたい地図で、製品の廃止に付き合えないとき (Web AppBuilder は 2027 年第 2 四半期に動かなくなる)。
 
+## 環境の違いと保守
+
+- ブラウザ間の互換: ホスティング型のサービスでは、ブラウザ間の互換は提供元が引き受け、利用者が確かめられるのは対応ブラウザのページだけである。Google マイマップは Chrome、Firefox、Safari でよく動くと書く (https://support.google.com/maps/answer/80785?hl=en)。ArcGIS Online は Chrome 154 以降、Edge 154 以降、Firefox 159 以降と 153 ESR、Safari 26 以降を挙げ、WebGL の使える 64 ビットのブラウザだけを対象とし、Scene Viewer などは別の要件に従う (https://doc.esri.com/en/arcgis-online/latest/reference/browsers.html)。uMap は CI で Playwright の統合テストを Chromium (headless shell) だけで回している (https://github.com/umap-project/umap/blob/master/justfile 、https://github.com/umap-project/umap/blob/master/.github/workflows/test-docs.yml)。Felt の対応ブラウザのページは見つからなかった (未確認)。
+- OS 間の互換: Google マイマップのヘルプは、パソコン、Android、iPhone と iPad の版に分かれている (https://support.google.com/maps/answer/80785?hl=en)。ArcGIS Online の対応ブラウザのページはモバイルのブラウザに触れていない (https://doc.esri.com/en/arcgis-online/latest/reference/browsers.html)。uMap の CI は ubuntu-latest だけである (https://github.com/umap-project/umap/blob/master/.github/workflows/test-docs.yml)。各サービスが試験している OS と端末は未確認。
+- 操作の網羅: 地図の操作は各サービスの下の地図ライブラリ (Google の地図、ArcGIS Maps SDK for JavaScript、uMap は Leaflet) に従う (推測)。埋め込んだ地図でページのスクロールと両立させる設定がどのサービスにあるかは未確認。
+- エッジケースへの対応: 各サービスとも、日付変更線、描画コンテキストの喪失、タイル読み込みの再試行、オフラインについての文書は見つからなかった (未確認)。ArcGIS Online はローカルストレージを有効にしないと正しく動かないと書く (https://doc.esri.com/en/arcgis-online/latest/reference/browsers.html)。
+- 継続的な保守: ホスティング型ではブラウザと OS の変化への追随は提供元が行う。ArcGIS Online は対応ブラウザの版を引き上げ続けており、最新版の使用を勧めている (https://doc.esri.com/en/arcgis-online/latest/reference/browsers.html)。一方で、製品そのものの廃止 (Web AppBuilder、旧版 Story Maps) に合わせた移行は利用者の作業になる (上の「ArcGIS Online のアプリ」)。uMap を自前で立てる場合は、追随の作業は運用者が持つ (推測)。
+
 ## 出典
 
 - https://support.google.com/mymaps/answer/3024836?hl=en

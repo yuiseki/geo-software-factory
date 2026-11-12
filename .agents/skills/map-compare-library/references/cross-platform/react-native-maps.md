@@ -54,6 +54,14 @@ React Native 用の地図コンポーネント。`<MapView />` の子要素と�
 - 最終コミット日: 2026-09-28 JST (master、`chore(release): 1.29.11`)
 - 主なメンテナー (個人か組織か): Organization 管理で、直近 1 年の人間のコミットは salah-ghanim が最多。累計では monholm、lelandrichardson、salah-ghanim が多い (https://github.com/react-native-maps/react-native-maps/graphs/contributors)
 
+## 環境の違いと保守
+
+- ブラウザ間の互換: Web は非対応なので対象外 (上の「対応プラットフォーム」)。描画は下にある Google Maps SDK と Apple MapKit が行い、描画 API の違いはそれらが引き受ける (上の「描画方式」)。
+- OS 間の互換: 文書でうたう最低版は Android の `minSdkVersion` 21 (既定値) と iOS 15.1 である (上の「対応プラットフォーム」)。CI では、Android は ubuntu-latest で example アプリと計装テストの APK をビルドし (`assembleDebug assembleAndroidTest`)、iOS は macos-latest で example アプリを iOS シミュレーター向けにビルドする ([androidBuild.yml](https://github.com/react-native-maps/react-native-maps/blob/master/.github/workflows/androidBuild.yml)、[iosBuild.yml](https://github.com/react-native-maps/react-native-maps/blob/master/.github/workflows/iosBuild.yml))。エミュレーター、シミュレーター、実機の上でテストを走らせる手順は見当たらない (同)。PR では lint、型検査、Jest のテストを回す ([pullRequest.yml](https://github.com/react-native-maps/react-native-maps/blob/master/.github/workflows/pullRequest.yml))。一部の Android 端末で `doDestroy` が落ちる不具合の修正 (v1.26.18、2025-10-22) のような端末固有の修正がある ([Releases](https://github.com/react-native-maps/react-native-maps/releases))。GPU とメモリの上限は下の SDK の担当である (推測)。
+- 操作の網羅: `MapView` の props で、ピンチでのズーム (`zoomEnabled`)、ダブルタップでのズーム (`zoomTapEnabled`)、回転 (`rotateEnabled`)、移動 (`scrollEnabled`)、傾き (`pitchEnabled`)、回転とズームの間に中心を固定する設定 (`scrollDuringRotateOrZoomEnabled`、Google Maps のみ) を切り替えられる ([mapview.md](https://github.com/react-native-maps/react-native-maps/blob/master/docs/mapview.md))。慣性やキーボードの扱いは下の SDK の挙動に従う (推測)。スクロールする親ビューとの両立の設定は未確認。
+- エッジケースへの対応: `onMapReady` より前に `mapPadding` を設定したときに GoogleMap に触れて落ちる不具合の修正 (v1.29.6) や、null のオーバーレイを外すときの防御 (v1.29.1) のように、初期化と後始末の競合を直す修正が続いている ([Releases](https://github.com/react-native-maps/react-native-maps/releases))。地図をキャッシュした画像として表示する `cacheEnabled` と、読み込み中の表示 `loadingEnabled` がある ([mapview.md](https://github.com/react-native-maps/react-native-maps/blob/master/docs/mapview.md))。日付変更線は Issue の検索で「antimeridian」が 0 件で、扱いは未確認 (`repo:react-native-maps/react-native-maps is:issue antimeridian`、2026-11-12 検索)。オフライン、タイル読み込みの再試行は未確認。
+- 継続的な保守: React Native の New Architecture (Fabric) に 1.21.0 で移り、Old Architecture をやめた (上の「対応プラットフォーム」)。その後も Fabric の上での iOS の Google Maps のマーカーとポリゴンの対応 (v1.29.0、2026-06-28) や、Fabric のレイアウトからマーカーの大きさを決める修正 (v1.29.9、2026-09-27) が続く ([Releases](https://github.com/react-native-maps/react-native-maps/releases))。リリースノートは semantic-release で `android:`、`ios:` の接頭辞を付けて書かれ、プラットフォームごとの修正を追える (同)。Issue のラベルにはプラットフォーム別のものが無い ([labels](https://github.com/react-native-maps/react-native-maps/labels))。
+
 ## 向いている場面
 
 - iOS と Android のアプリで、Google マップや Apple マップの見た目と操作をそのまま使いたいとき。

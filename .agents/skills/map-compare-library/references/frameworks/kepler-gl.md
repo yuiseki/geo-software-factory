@@ -48,6 +48,14 @@ kepler.gl は大量の位置データを可視化して探索するための Web
 - 直近 1 年のリリース数: 27 件 (2025-11-10 以降の GitHub Releases)。内訳は安定版 5 件 (v3.2.2 から v3.2.6)、v3.3.0-alpha 系 21 件 (alpha.0 から alpha.20)、skill-v0.0.1 が 1 件。
 - 最終コミット日: 2026-11-09 (master)。
 
+## 環境の違いと保守
+
+- ブラウザ間の互換: 文書でうたう対応ブラウザの一覧は見つからなかった (未確認)。CI は ubuntu-latest の上で Jest と tape のテストを `xvfb-run` で回す (https://github.com/keplergl/kepler.gl/blob/master/.github/workflows/test.yml)。tape の「browser」のテストは jsdom の上で動く (`test/js-dom.js`、https://github.com/keplergl/kepler.gl/blob/master/package.json)。実ブラウザを動かす `test-headless` (`test/browser-drive.js`) のスクリプトはあるが CI の手順には無く、puppeteer を入れる手順はコメントアウトされている (同、https://github.com/keplergl/kepler.gl/blob/master/.github/workflows/test.yml)。つまり CI で実ブラウザの描画は確かめていない。Firefox で NYC タクシーのデモが描画されない不具合 (#822) や Firefox での Dropbox アップロードの修正のように、ブラウザ固有の不具合は個別に直されてきた (https://github.com/keplergl/kepler.gl/issues/822 、https://github.com/keplergl/kepler.gl/blob/master/CHANGELOG.md)。
+- OS 間の互換: OS ごとの動作確認の記述は見つからなかった (未確認)。`windows` ラベルはあるが付いた Issue は 1 件である (`repo:keplergl/kepler.gl is:issue label:windows`、2026-11-12 検索)。モバイルでは 3.3.0-alpha.1 (2026-06-01) にヒートマップのレイヤーがモバイルで落ちる不具合の修正が 2 件入っている (https://github.com/keplergl/kepler.gl/blob/master/CHANGELOG.md)。メモリについて FAQ は、ファイルの大きさの上限は設けておらず、ブラウザで読むので使えるメモリが上限になり、大きなファイルはタブを固めたり落としたりすると書き、メモリに収まらないデータはタイル (ベクトルタイル、COG、PMTiles) にするよう勧めている (https://github.com/keplergl/kepler.gl/blob/master/docs/user-guides/i-FAQ.md)。
+- 操作の網羅: 地図の操作は下の deck.gl と MapLibre GL JS (または Mapbox GL JS) に任せている (推測、依存は https://github.com/keplergl/kepler.gl/blob/master/package.json)。kepler.gl 自身の文書で、キーボード操作、タッチの身ぶり、ページのスクロールとの両立を説明したものは見つからなかった (未確認)。
+- エッジケースへの対応: GPU のコンテキストの喪失については、地図を分割、統合するたびに WebGL のコンテキストが漏れる不具合 (#1492) が解決済みで、ベースマップやレイヤーのコンテキストの喪失を検知して再読み込みのボタンを出す提案 (#1272) は未解決である (https://github.com/keplergl/kepler.gl/issues/1492 、https://github.com/keplergl/kepler.gl/issues/1272)。日付変更線は Issue の検索で「antimeridian」「dateline」とも 0 件で、扱いは未確認 (`repo:keplergl/kepler.gl is:issue`、2026-11-12 検索)。読み込みの再試行とオフラインは未確認。
+- 継続的な保守: deck.gl、luma.gl、loaders.gl の更新に追随しており、deck.gl 9.2 への更新 (#3271) と 9.3.1 への更新後の退行の修正 (#3396) が変更履歴にある (https://github.com/keplergl/kepler.gl/blob/master/CHANGELOG.md)。CSP の文書は見つからなかった (未確認)。ブラウザ別のラベルは無い (https://github.com/keplergl/kepler.gl/labels)。Issue で「safari」を含むものは 195 件 (未解決 7 件) あるが、不具合報告の雛形のブラウザ欄に書かれた分を含むため、Safari 固有の不具合の数ではない (推測) (`repo:keplergl/kepler.gl is:issue safari`、2026-11-12 検索)。
+
 ## 向いている場面
 
 - 大量の点、移動軌跡、OD データなどを分析者が手早く可視化し、フィルターや時間再生で探索したいとき。

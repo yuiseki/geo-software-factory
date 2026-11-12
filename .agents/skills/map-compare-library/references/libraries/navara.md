@@ -65,6 +65,14 @@ Navara は拡張性を重視した汎用の 3D 地図エンジンで、衛星画
 - 最終コミット日: 2026-11-09 (main)
 - 近年の大きな破壊的変更: v0.3.0 で MapLibre Style の color-relief 対応と、テキスト・スプライトのアンカー指定の変更が BREAKING とされている (https://github.com/maplibre/navara/blob/main/CHANGELOG.md)。0.x のため今後も変わりうる
 
+## 環境の違いと保守
+
+- ブラウザ間の互換: 対応ブラウザを示した公式文書は未確認。CI は `cargo make test` で Rust のテストと Web のパッケージの Vitest を回す (https://github.com/maplibre/navara/blob/main/.github/workflows/ci.yml, https://github.com/maplibre/navara/blob/main/Makefile.toml)。`web/navara_three` は Playwright を開発用の依存に持つが (https://github.com/maplibre/navara/blob/main/web/navara_three/package.json)、CI の手順に特定のブラウザでテストを回す設定は見当たらない。利用者の視点の結合テストのプロジェクトはあるが、テストはまだない (`"test": "echo 'No tests yet'"`、https://github.com/maplibre/navara/blob/main/web/integration-tests/navara-three/package.json)。
+- OS 間の互換: リポジトリに、実機の iPhone と iPad の Safari、Android でだけ起きる不具合 (WebGL のコンテキスト喪失、白い地図、再読み込みの繰り返し) を調べるためのエージェント向けスキルがある。デスクトップや Playwright の端末エミュレーションではモバイルの GPU の不具合とメモリによる強制終了が再現しないことが多く、実機で調べるという前提を書いている (https://github.com/maplibre/navara/blob/main/skills/navara-mobile-device-debug/SKILL.md)。v0.3.0 で iOS のカメラ移動とモバイルでのシェーダー起因のクラッシュを直した (https://github.com/maplibre/navara/blob/main/CHANGELOG.md)。
+- 操作の網羅: v0.1.1 でタッチ操作に対応し、マウスのイベントを Pointer Events にまとめる破壊的変更を入れた (https://github.com/maplibre/navara/blob/main/CHANGELOG.md)。キーボード操作、慣性、ページのスクロールと両立させる設定は未確認。
+- エッジケースへの対応: v0.2.0 で極の穴を埋めた (https://github.com/maplibre/navara/blob/main/CHANGELOG.md)。精度では、地形上の位置の拾い (`pickTerrainPosition`) と影 (CSM) の精度を上げた記録がある (同)。WebGL のコンテキスト喪失は上のスキルで調べる対象として扱うが、ライブラリでの復帰の仕組みは未確認。読み込み失敗の再試行は未確認。
+- 継続的な保守: CSP についての公式文書は未確認。README は、WASM のコンパイルが終わるまでブラウザにエラーが出ると書く (https://github.com/maplibre/navara/blob/main/README.md)。ブラウザ別のラベルはなく、タイトルに Safari や Firefox を含む issue は 0 件である (GitHub の issue 検索、`repo:maplibre/navara` に各条件を付けて、2026-11-12)。リポジトリが若く、件数の少なさは保守の厚さの証拠にならない (推測)。
+
 ## 向いている場面
 
 - MapLibre の生態系 (MVT、PMTiles、MapLibre Style) のデータを 3D 地球儀上で使いたい場合

@@ -65,6 +65,14 @@
 - 最終コミット日: 2026-11-09 (main ブランチ、JST)
 - 近年の大きな破壊的変更: v3.0.0 (2023-11-29) で WebGL 1 対応をやめた。v3.5.0 で TypeScript へ移り `@types/mapbox-gl` と非互換になった。v3.21.0 で `mapbox-gl-unminified.js` を削除、v3.25.0 で ESM 入口を名前付きエクスポートに変え `mapboxgl.accessToken` を `Map` の `accessToken` オプションに置き換え、v3.33.0 で `setRTLTextPlugin` を削除した ([CHANGELOG](https://github.com/mapbox/mapbox-gl-js/blob/main/CHANGELOG.md))。マイナー版でも破壊的変更が入る
 
+## 環境の違いと保守
+
+- ブラウザ間の互換: 文書でうたうのは「supported in most modern browsers」で、Mapbox Studio と同じ要件 (Safari 9 以上、最新の Chrome と Firefox、Edge 13 以上) が当てはまるという記述である。v2.0.0 から Internet Explorer では動かない (https://docs.mapbox.com/help/dive-deeper/mapbox-browser-support/)。この Studio の要件の版は古く、現行の v3 の実態と合っているかは未確認。公開の CI で確かめているのは Chromium だけで、Playwright の Chromium で単体テスト、ESM、CSP、バンドラーのテストを回す (https://github.com/mapbox/mapbox-gl-js/blob/main/.github/workflows/ci.yml)。package.json には Firefox と WebKit で描画テストを回すスクリプト (`test-render-firefox`、`test-render-safari`) があるが、公開の CI からは呼ばれていない (https://github.com/mapbox/mapbox-gl-js/blob/main/package.json)。社内の CI で回しているかは未確認。
+- OS 間の互換: 公開の CI は Ubuntu だけである (https://github.com/mapbox/mapbox-gl-js/blob/main/.github/workflows/ci.yml)。CHANGELOG には OS と端末に固有の修正が続き、3.10.0 で macOS の Firefox 136 以降のマウス操作、3.17.0 で iOS 18.4 未満で `raster-array` レイヤーが動かない問題、3.23.0 で Safari のプライベートブラウズでの陰影の描画、未リリース分で Android での raster array の標本化を直している (https://github.com/mapbox/mapbox-gl-js/blob/main/CHANGELOG.md)。iOS の Safari で WebGL が回復できない状態に落ちる問題を直した記録もある (同)。メモリ上限への対応を述べた文書は未確認。
+- 操作の網羅: `dragRotate`、`touchZoomRotate`、`touchPitch`、`keyboard` などの対話のオプションと、Ctrl か ⌘ を押したときだけホイールでズームする `cooperativeGestures`、OS の動きを減らす設定に従う `respectPrefersReducedMotion` を持つ (https://docs.mapbox.com/mapbox-gl-js/api/map/)。
+- エッジケースへの対応: `renderWorldCopies` で経度 ±180 度の外に世界の複製を描く (https://docs.mapbox.com/mapbox-gl-js/api/map/)。WebGL のコンテキスト喪失は `webglcontextlost` と `webglcontextrestored` のイベントで受け (同)、3.10.0 で喪失後に地図が白くなる問題、3.14.0 でパターンやヒートマップ、画像、動画、ラスタの復元、3.30.0 で喪失後の記号レイヤーのエラーを直した (https://github.com/mapbox/mapbox-gl-js/blob/main/CHANGELOG.md)。テスト向けに、トークンなしで手元の素材から読み、画面を出さない `testMode` がある (https://docs.mapbox.com/mapbox-gl-js/guides/browsers-and-testing/)。タイルの読み込み失敗の自動の再試行と、浮動小数点の精度への対策を述べた文書は未確認。
+- 継続的な保守: CSP の文書がある。`worker-src blob:`、`img-src data: blob:`、`connect-src https://api.mapbox.com https://events.mapbox.com` が要り、Standard スタイルや 3D 機能を使うなら `script-src 'wasm-unsafe-eval'` も要る。厳しい CSP には `mapbox-gl-csp.js` と同一オリジンに置いた `mapbox-gl-csp-worker.js` を使う。ESM 版は `worker-src blob:` が必須で、厳しい CSP 向けの代わりがない (https://docs.mapbox.com/mapbox-gl-js/guides/browsers-and-testing/)。CI で CSP のテスト (`test-csp`) を回している (https://github.com/mapbox/mapbox-gl-js/blob/main/.github/workflows/ci.yml)。ブラウザ別のラベルは見当たらない。タイトルに Safari を含む issue は 112 件、Firefox は 65 件、iOS は 96 件、CSP は 32 件である (GitHub の issue 検索、`repo:mapbox/mapbox-gl-js` に各条件を付けて、2026-11-12)。
+
 ## 向いている場面
 
 - Mapbox のスタイル、タイル、Geocoding、Directions などをまとめて使い、地図データの整備を Mapbox に任せたい場合

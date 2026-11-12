@@ -1,0 +1,12 @@
+{
+"count": 1,
+"liveChecked": false,
+"liveSource": "youtube",
+"checkedAt": "2026-01-01T00:00:00.000Z",
+"cams": [
+{"id":"VIDEO_ID","city":"都市名","spot":"場所の名前","cityEn":"City","spotEn":"Spot name","names":{"ja":{"city":"都市名","spot":"場所の名前"},"en":{"city":"City","spot":"Spot name"}},"country":"JP","area":"jp","category":"city","grade":"A","lat":35.0,"lng":135.0,"tz":"Asia/Tokyo","channel":"チャンネル名","title":"動画のタイトル","embed":"https://www.youtube.com/embed/VIDEO_ID","page":"/live/city/spot/","stability":1,"live":true,"viewers":0,"radios":[]}
+],
+"walks": [
+{"id":"VIDEO_ID","city":"都市名","spot":"散歩の場所","cityEn":"City","spotEn":"Walk name","names":{"ja":{"city":"都市名","spot":"散歩の場所"},"en":{"city":"City","spot":"Walk name"}},"country":"JP","area":"jp","category":"walk","grade":"A","lat":35.0,"lng":135.0,"tz":"Asia/Tokyo","channel":"チャンネル名","title":"動画のタイトル","duration":3600,"night":false,"radios":[]}
+]
+}

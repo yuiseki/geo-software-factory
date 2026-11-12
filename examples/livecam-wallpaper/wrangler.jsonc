@@ -1,0 +1,6 @@
+{
+  "name": "livecam-wallpaper",
+  "compatibility_date": "2026-11-12",
+  "assets": { "directory": "./assets" },
+  "routes": [{ "pattern": "livecams.yuiseki.net", "custom_domain": true }]
+}

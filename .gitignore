@@ -3,3 +3,6 @@ node_modules/
 tmp/
 .env
 __pycache__/
+
+# Camera list for examples/livecam-wallpaper: source and redistribution terms unconfirmed
+examples/livecam-wallpaper/public/livecams.json

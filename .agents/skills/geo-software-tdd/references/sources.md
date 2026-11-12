@@ -17,7 +17,7 @@
 | 同 | タイルの URL の確かめと data URI のタイル | `spec/suites/layer/tile/TileLayerSpec.js` |
 | 同 | 縮めた配布物に対する試験、ツリーシェイキングの試験 | `spec/dist.js`、`spec/tree_shaking.js` |
 | openlayers/openlayers (BSD-2-Clause) | 試験のあとにページに `<div>` が残っていたら落とす | `test/browser/test-extensions.js` (確) |
-| 同 | WMS や ArcGIS の偽の口 | `test/browser/vite-plugin-ol-fixtures.mjs` |
+| 同 | WMS や ArcGIS の偽のエンドポイント | `test/browser/vite-plugin-ol-fixtures.mjs` |
 | 同 | Node の試験とブラウザの試験を分ける、試験の書き方の決まり | `test/README.md` |
 | CesiumGS/cesium (Apache-2.0) | WebGL を要る試験を分け、CI では WebGL の代役で動かす | `Specs/getWebGLStub.js`、`Documentation/Contributors/TestingGuide/README.md` |
 | 同 | 例のページを時計を止めて全部撮る | `Specs/e2e/playwright.config.js`、`sandcastle.spec.js` |

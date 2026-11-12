@@ -205,12 +205,13 @@
   - [x] assets/eval-report-template.md
   - [x] scripts/geocheck.py
   - [x] scripts/test_geocheck.py
-- [x] geo-software-swarm (5/5)
+- [x] geo-software-swarm (6/6)
   - [x] SKILL.md
   - [x] references/roles.md
   - [x] references/board.md
   - [x] references/governance.md
   - [x] references/bootstrap.md
+  - [x] references/unattended-runs.md
 - [x] geo-software-tdd (7/7)
   - [x] SKILL.md
   - [x] references/kinds.md

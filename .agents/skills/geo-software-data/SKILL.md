@@ -19,7 +19,7 @@ description: 地図に載せる主題データ (ベースマップ以外) の出
 | [sources/municipal-open-data](references/sources/municipal-open-data.md) | 自治体のデータが要るとき | 自治体のオープンデータと G空間情報センター |
 | [sources/alltheplaces](references/sources/alltheplaces.md) | チェーン店の店舗が要るとき | 公式の店舗検索から集めた店舗データ (CC0) |
 | [sources/wikidata](references/sources/wikidata.md) | 名所や施設の代表点、写真、ID での突き合わせが要るとき | Wikidata (構造化データは CC0) |
-| [sources/jma](references/sources/jma.md) | 雨雲、アメダス、警報、地震、津波を重ねるとき | 気象庁のデータ (公式の配布と画面の非公開の口)、利用規約、気象業務法 |
+| [sources/jma](references/sources/jma.md) | 雨雲、アメダス、警報、地震、津波を重ねるとき | 気象庁のデータ (公式の配布と画面の非公開のエンドポイント)、利用規約、気象業務法 |
 | [sources/live-tracking](references/sources/live-tracking.md) | 航空機や船舶の生きた位置が要るとき | ADS-B と AIS の出どころ、非商用の条件、プライバシー |
 | [license-mixing](references/license-mixing.md) | 複数のデータを混ぜるとき | ライセンスを混ぜたときの条件 |
 | [ai-collected-data](references/ai-collected-data.md) | AI エージェントで集めた、確かめたデータを載せるとき | 記録する列、地図での表示、抜き取り検査、ライセンスと ODbL |

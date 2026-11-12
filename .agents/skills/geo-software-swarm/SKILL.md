@@ -12,6 +12,7 @@ description: 公開した地図プロダクトを、定期的に起きるエー�
 | [roles](references/roles.md) | 群れの役割を決めるとき | 見つける、直す、関門、舵取りの役割と、地図のプロダクトで足す役割 |
 | [board](references/board.md) | 掲示板の使い方を決めるとき | issue、PR、チェック、ラベル、メモの書き方。各回は起きて、読んで、1 つだけして、終わる |
 | [governance](references/governance.md) | 群れを動かす前に、必ず | 停止スイッチ、取得した内容の指示の無視、権限の検証、マージの関門、評価と指示の変更の統治 |
+| [unattended-runs](references/unattended-runs.md) | 夜や定期の実行を、人間が見ずに走らせる前に | 薄く始めて失敗した所だけ足す、まっさらな起動、止まらない見張り、大事な結果を削れない経路で届ける、頭打ちの監査役、戻る点と回復の権限 |
 | [bootstrap](references/bootstrap.md) | 群れを立ち上げるとき | 1 回の設定の会話: 調べる、人間に 1 度だけ聞く、設定の PR、統治を試す、承認、予定を有効にする |
 | geo-software-eval の [progress](../geo-software-eval/references/progress.md) | 進み具合を測るとき、朝の報告を書くとき | マージ数でなく、独立に価値づけされ、検証され、届いた変更で測る。逃げた不具合の数え方 |
 

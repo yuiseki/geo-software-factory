@@ -5,7 +5,7 @@
 ## 公開の面
 
 - リポジトリとデプロイの設定から、外に出るサービス、ポート、名前を書き出す ([entrypoints](entrypoints.md))。
-- 取れてはいけないものが取れないか: `.git`、`.env`、source map、デバッグや metrics の口、管理の画面、DB や KV や保存先の直接の口、ステージングの環境。
+- 取れてはいけないものが取れないか: `.git`、`.env`、source map、デバッグや metrics のエンドポイント、管理の画面、DB や KV や保存先に直接つながるエンドポイント、ステージングの環境。
 - プレビューや版ごとの URL: 本番に割り当てていない版の URL が、誰でも開ける状態になっていないか。独自ドメインを割り当てたあと、元の URL (Workers なら workers.dev) が開いたままか閉じたかを確かめ、どちらにするかを決めて書く (geo-software-deploy の cloudflare-workers)。
 
 ## ヘッダと通信

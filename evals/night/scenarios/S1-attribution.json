@@ -1,0 +1,2 @@
+{"id": "S1", "name": "出典の表示", "symptom": "トップページに、決めた出典の表示が見当たらない",
+ "checks": [{"kind": "http", "path": "/", "status": 200, "contains": "地点データ: 評価用 (CC0)"}]}

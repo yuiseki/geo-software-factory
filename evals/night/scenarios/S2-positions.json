@@ -1,0 +1,4 @@
+{"id": "S2", "name": "全件が正しい位置に載る", "symptom": "名所のデータが、地図の正しい位置に載らない",
+ "checks": [{"kind": "geojson", "path": "/places.geojson", "bbox": [139.75, 35.69, 139.81, 35.735],
+             "min_features": 12, "require": ["name", "kind"]},
+            {"kind": "command", "run": ["python3", "-B", "-E", "-s", "geo_check.py", "/places.geojson", "12", "上野駅", "139.7774", "35.7138"]}]}

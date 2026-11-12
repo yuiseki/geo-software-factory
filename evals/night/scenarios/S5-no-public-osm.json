@@ -1,0 +1,2 @@
+{"id": "S5", "name": "公開の OSM のサーバーを使わない", "symptom": "画面が、使わないと決めた外部のサーバーを参照している",
+ "checks": [{"kind": "command", "run": ["python3", "-B", "-E", "-s", "no_public_osm.py"]}]}

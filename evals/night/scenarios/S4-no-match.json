@@ -1,0 +1,2 @@
+{"id": "S4", "name": "見つからない絞り込み", "symptom": "どの名所にも合わない絞り込みで、空の結果が返らない",
+ "checks": [{"kind": "command", "run": ["python3", "-B", "-E", "-s", "search_check.py", "存在しない名前", "0"]}]}

@@ -62,7 +62,7 @@
   - [x] references/3d/plateau.md
   - [x] references/niche.md
   - [x] references/providers/mierune.md
-- [x] geo-software-library (33/33)
+- [x] geo-software-library (34/34)
   - [x] SKILL.md
   - [x] references/criteria.md
   - [x] references/libraries/leaflet.md
@@ -96,6 +96,7 @@
   - [x] references/niche.md
   - [x] references/frameworks/no-code-maps.md
   - [x] references/full-scratch.md
+  - [x] references/python/forge3d.md
 - [x] geo-software-data (15/15)
   - [x] SKILL.md
   - [x] references/criteria.md

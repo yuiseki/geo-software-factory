@@ -1,6 +1,6 @@
 ---
 name: geo-software-library
-description: 地図プロダクトを実装するためのライブラリや SDK を、要件に応じて比較し技術選定する。Web (Leaflet, MapLibre GL JS, Mapbox GL JS, Google Maps JavaScript API, OpenLayers, CesiumJS, ArcGIS Maps SDK for JavaScript, deck.gl など)、ネイティブ (MapLibre Native, Mapbox Maps SDK, Google Maps SDK, Apple MapKit, Mapsui)、クロスプラットフォーム (react-native-maps, MapLibre React Native, flutter_map)、ゲームエンジン (Cesium for Unity / Unreal)、地図アプリの土台 (TerriaJS, Re:Earth Visualizer, kepler.gl)、複数 SDK の抽象化層 (MapConductor)、ライブラリを使わずに描画器やエンジンを書く full-scratch を、対象端末、タイルの供給元との組み合わせ、ライセンス (コピーレフトを含む)、描画の能力、性能、保守体制、移行のしやすさで比べる。「地図ライブラリはどれがいい」「Leaflet と MapLibre どっち」「3D 地図を作りたい」「スマホアプリに地図を入れたい」「React Native や Flutter で地図」「地図 SDK を乗り換えたい」「依存なしで軽い地図を書きたい」と言われたら使う。
+description: 地図プロダクトを実装するためのライブラリや SDK を、要件に応じて比較し技術選定する。Web (Leaflet, MapLibre GL JS, Mapbox GL JS, Google Maps JavaScript API, OpenLayers, CesiumJS, ArcGIS Maps SDK for JavaScript, deck.gl など)、ネイティブ (MapLibre Native, Mapbox Maps SDK, Google Maps SDK, Apple MapKit, Mapsui)、クロスプラットフォーム (react-native-maps, MapLibre React Native, flutter_map)、ゲームエンジン (Cesium for Unity / Unreal)、Python で地形や主題図の作品を書き出すレンダラー (forge3d)、地図アプリの土台 (TerriaJS, Re:Earth Visualizer, kepler.gl)、複数 SDK の抽象化層 (MapConductor)、ライブラリを使わずに描画器やエンジンを書く full-scratch を、対象端末、タイルの供給元との組み合わせ、ライセンス (コピーレフトを含む)、描画の能力、性能、保守体制、移行のしやすさで比べる。「地図ライブラリはどれがいい」「Leaflet と MapLibre どっち」「3D 地図を作りたい」「スマホアプリに地図を入れたい」「React Native や Flutter で地図」「地図 SDK を乗り換えたい」「依存なしで軽い地図を書きたい」と言われたら使う。
 ---
 
 # geo-software-library
@@ -38,6 +38,7 @@ description: 地図プロダクトを実装するためのライブラリや SDK
 | [cross-platform/react-native-maps](references/cross-platform/react-native-maps.md) | React Native で OS 標準の地図を使うとき | react-native-maps |
 | [cross-platform/maplibre-react-native](references/cross-platform/maplibre-react-native.md) | React Native で自前のタイルを使うとき | MapLibre React Native |
 | [cross-platform/flutter-map](references/cross-platform/flutter-map.md) | Flutter で地図を使うとき | flutter_map |
+| [python/forge3d](references/python/forge3d.md) | Python で、地形や主題のラスタを 3D にした地図の静止画や動画を、印刷の品質で書き出したいとき | forge3d (Rust と wgpu のレンダラーを Python で使う。一部は商用のライセンスキーが要る Pro 機能) |
 | [niche](references/niche.md) | 上のどれも要件に合わないとき (屋内、完全オフライン、組み込み、非地理座標、印刷など) | 特定の要件でだけ候補になるもの |
 | [full-scratch](references/full-scratch.md) | フットプリントや性能を極端に重く見るとき、汎用のライブラリの前提 (Web メルカトルなど) と要件がずれるとき、汎用のライブラリが載らない場所で描くとき、地図エンジンそのものを持つと決めているとき | ライブラリを使わずに、依頼専用の描画器や自前の地図エンジンを書く選択肢。汎用のライブラリが引き受けているもの (環境の違い、操作の網羅、エッジケース、継続的な保守)、向いている場面、互換の採点と実機での確かめの進め方 |
 | [multi-sdk/mapconductor](references/multi-sdk/mapconductor.md) | 複数の地図 SDK を併用・乗り換えしたいとき、複数プラットフォームで同じ書き方をしたいとき | MapConductor |
@@ -86,6 +87,7 @@ description: 地図プロダクトを実装するためのライブラリや SDK
 - 開発の手間を減らしたい GIS 画面: 地図アプリの土台 (TerriaJS、Re:Earth Visualizer、kepler.gl)
 - 地点を手で載せて埋め込むだけ: ノーコードのサービス (Google マイマップ、uMap、Felt、ArcGIS StoryMaps)。件数、表示回数、製品の寿命で足りるかを確かめる
 - Next.js や Astro などの SSR のフレームワークで使う: 地図はブラウザでだけ作る (MapLibre GL JS と Leaflet の reference の「エコシステム」の SSR の項)
+- Python で地形の 3D の地図の作品 (ポスター、動画) を書き出す: forge3d。利用者が操作する地図の画面には使わない
 - 地図 SDK の乗り換えや併用: 抽象化層 (MapConductor)
 - フットプリントや性能を極端に重く見る、汎用のライブラリの前提と要件がずれる、地図エンジンそのものを持つ: full-scratch (ライブラリを使わずに描画器やエンジンを書く)。実機での確かめと継続的な保守を続ける体制があるときに限る
 

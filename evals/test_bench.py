@@ -207,6 +207,22 @@ class ScoreChoose(unittest.TestCase):
         self.assertEqual(bench.score_choose(a, **self.T)["outcome"], "accurate")
 
 
+class ScoreApproach(unittest.TestCase):
+    def test_expected_approach_with_note(self):
+        a = {"status": "ok", "approach": "full-scratch", "caveats": ["OSM の帰属表示を自分で出す"]}
+        self.assertEqual(bench.score_approach(a, "full-scratch", ["帰属"])["outcome"], "accurate")
+
+    def test_wrong_approach_and_missing_note(self):
+        a = {"status": "ok", "approach": "library", "recommendation": "MapLibre GL JS", "caveats": []}
+        s = bench.score_approach(a, "full-scratch", ["帰属"])
+        self.assertEqual(sorted(s["reasons"]), ["missing-note", "wrong-approach"])
+        self.assertEqual(s["choice"], "library")
+
+    def test_approach_is_normalised(self):
+        a = {"status": "ok", "approach": "Full Scratch"}
+        self.assertEqual(bench.score_approach(a, "full-scratch", [])["outcome"], "accurate")
+
+
 class Outcomes(unittest.TestCase):
     def test_negative_task(self):
         self.assertEqual(bench.final_outcome("declared_failure", negative=True, exit_code=0, has_answer=True), "correct_reject")
@@ -251,7 +267,7 @@ class Spec(unittest.TestCase):
     def test_every_task_has_a_kind_and_a_prompt(self):
         spec = bench.load_spec()
         for t in spec["tasks"]:
-            self.assertIn(t["kind"], ("build", "decide", "research", "choose"))
+            self.assertIn(t["kind"], ("build", "decide", "research", "choose", "approach"))
             self.assertTrue((HERE / "prompts" / f"{t['kind']}.md").exists())
 
 

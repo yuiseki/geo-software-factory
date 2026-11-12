@@ -248,6 +248,22 @@ def score_choose(answer, targets, forbidden=(), require_any=()) -> dict:
     return {"outcome": "inaccurate" if reasons else "accurate", "reasons": reasons, "choice": url}
 
 
+def score_approach(answer, expect, require_any=()) -> dict:
+    """Whether to use a general-purpose library or write a purpose-built renderer (full-scratch)."""
+    if answer is None:
+        return {"outcome": "no_answer"}
+    if not isinstance(answer, dict):
+        return {"outcome": "invalid_answer"}
+    if answer.get("status") == "failed":
+        return {"outcome": "declared_failure"}
+    got = re.sub(r"[\s_]+", "-", str(answer.get("approach", "")).strip().lower())
+    reasons = [] if got == expect else ["wrong-approach"]
+    text = json.dumps([answer.get("caveats", []), answer.get("reason", "")], ensure_ascii=False)
+    if require_any and not any(t in text for t in require_any):
+        reasons.append("missing-note")
+    return {"outcome": "inaccurate" if reasons else "accurate", "reasons": reasons, "choice": got or "-"}
+
+
 def final_outcome(outcome: str, negative: bool, exit_code: int, has_answer: bool, provider_failed: bool = False) -> str:
     if not has_answer:
         if provider_failed:
@@ -334,6 +350,9 @@ def score_all(spec):
             truth = json.loads((truth_dir / "truth.json").read_text(encoding="utf-8"))
             s = score_build(work, truth, tuple(t["bbox_expect"]), t.get("tol_m", 1.0))
             has = (work / "answer.json").exists() or (work / "out" / "places.geojson").exists()
+        elif t["kind"] == "approach":
+            s = score_approach(read_json(work / "answer.json"), t["expect_approach"], t.get("require_any", []))
+            has = (work / "answer.json").exists()
         elif t["kind"] == "choose":
             s = score_choose(read_json(work / "answer.json"), t["targets"], t.get("forbidden", []), t.get("require_any", []))
             has = (work / "answer.json").exists()

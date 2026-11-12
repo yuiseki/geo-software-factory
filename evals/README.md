@@ -24,6 +24,8 @@
 | R2-flooded-roads | 調べる | 冠水しやすい道路の地図を作る前に、似たサービスを探す。有志の投稿の地図 (みんつく全国冠水マップ) を見つけるか | R1 と同じ |
 | L1-rust-server-render (汚染) | 選ぶ (geo-software-library) | Rust のサーバーで MapLibre Style の地図を描く。答えは出たばかりの mln-rs (0.0.x) か ezu (CPU だけで描く、0.15)。モデルの学習より新しいものを選べるか | 推奨の URL、新しさや初期段階への注意 |
 | L2-mobile-product | 選ぶ (L1 の対照) | Android と iOS の業務アプリ。答えは MapLibre Native。新しいものを勧めすぎないか | 推奨の URL。mln-rs を勧めたら不合格 |
+| H1-perf-hackathon | 方針 (geo-software-library の full-scratch) | 計測の数字だけを競うハッカソン。汎用のライブラリでなく、依頼専用の描画器を書く判断ができるか | 方針が full-scratch か、帰属表示を自分で出すことに触れたか |
+| H2-perf-product | 方針 (H1 の対照) | 速さが売りだが、5 年保守し、多くのブラウザで動かす公開の製品 | 方針がライブラリか |
 | D1-mobile-tiles | 判断 | モバイルで MapLibre Native、Mapbox のタイル、Google の衛星写真、オフラインという計画の、規約上の制約を候補から選ぶ | 正解の集合との一致 (適合率と再現率) |
 
 陰性対照は、データから答えが復元できないことを、流す前に確かめる。場所を伏せても、点の並びや密度から場所が分かることがある。

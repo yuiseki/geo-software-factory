@@ -143,6 +143,29 @@
     "https://crates.io/crates/mln-rs"
    ],
    "require_any": []
+  },
+  {
+   "id": "H1-perf-hackathon",
+   "kind": "approach",
+   "contaminated": null,
+   "note": "Expected: full-scratch. Only measured performance in one fixed environment counts, there is no upkeep, and the data and style are fixed. Written before any run; the full-scratch reference of geo-software-library was not changed for it.",
+   "brief": "# 依頼\n\n- 場: 24 時間のハッカソン。地図の描画の速さと小ささだけを競う。見た目の作り込みや機能の多さは採点しない\n- 採点: 審査員が 1 台の決まった PC (デスクトップの最新の Chrome、GPU あり) で、次の 3 つを測る。配るコードの大きさ (gzip 後)、ページを開いてから地図が描き終わるまでの時間、地図をパンしているあいだの 1 フレームの時間\n- 描くもの: 主催者が配る、ある 1 都市のベクトルタイルの PMTiles (道路、建物、水域) を、主催者が決めた配色 (塗りと線の色だけ、文字のラベルは無し) で描く。操作はドラッグでのパンと、ホイールでのズームだけ\n- その後: 発表は 1 回きり。公開や保守はしない\n- 体制: 1 人とコーディングエージェント。ライブラリのライセンスの制限は無い",
+   "expect_approach": "full-scratch",
+   "require_any": [
+    "帰属",
+    "attribution",
+    "©",
+    "OpenStreetMap"
+   ]
+  },
+  {
+   "id": "H2-perf-product",
+   "kind": "approach",
+   "contaminated": null,
+   "note": "Control for H1: speed matters but the product is maintained for years on many browsers without a device lab. Expected: library.",
+   "brief": "# 依頼\n\n- 場: 公開する Web の地図のサービス。地図が速く軽く出ることを、売りの 1 つにしたい\n- 対象: デスクトップの Chrome、Safari、Firefox と、iPhone と Android のブラウザ\n- 描くもの: 自前で配るベクトルタイル (道路、建物、水域、ラベル) と、利用者が載せる点のデータ。操作はパン、ズーム、回転、ピンチ、キーボード\n- その後: 5 年は保守し、公開を続ける\n- 体制: 2 人とコーディングエージェント。実機の端末で確かめる手段は無い",
+   "expect_approach": "library",
+   "require_any": []
   }
  ]
 }

@@ -62,7 +62,7 @@
   - [x] references/3d/plateau.md
   - [x] references/niche.md
   - [x] references/providers/mierune.md
-- [x] geo-software-library (37/37)
+- [x] geo-software-library (45/45)
   - [x] SKILL.md
   - [x] references/criteria.md
   - [x] references/libraries/leaflet.md
@@ -100,6 +100,14 @@
   - [x] references/native/mln-rs.md
   - [x] references/native/maplibre-native-rs.md
   - [x] references/server/ezu.md
+  - [x] references/python/folium.md
+  - [x] references/python/leafmap.md
+  - [x] references/python/geemap.md
+  - [x] references/python/plotly.md
+  - [x] references/python/geopandas.md
+  - [x] references/python/matplotlib.md
+  - [x] references/python/cartopy.md
+  - [x] references/python/geoai.md
 - [x] geo-software-data (15/15)
   - [x] SKILL.md
   - [x] references/criteria.md

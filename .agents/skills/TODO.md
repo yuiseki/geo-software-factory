@@ -211,6 +211,14 @@
   - [x] references/board.md
   - [x] references/governance.md
   - [x] references/bootstrap.md
+- [x] geo-software-tdd (7/7)
+  - [x] SKILL.md
+  - [x] references/kinds.md
+  - [x] references/fixtures.md
+  - [x] references/ci.md
+  - [x] references/discipline.md
+  - [x] references/sources.md
+  - [x] assets/ci-checklist.md
 - [x] geo-software-security-audit (8/8)
   - [x] SKILL.md
   - [x] references/entrypoints.md

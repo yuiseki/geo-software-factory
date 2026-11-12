@@ -115,6 +115,7 @@ geo-software-product-grilling       何を作るか (昼)
   -> geo-software-library              どのライブラリで描くか (夜)
   -> geo-software-ux-design            画面と操作 (夜)
   -> geo-software-build                作ってテストする (夜)
+     (並べて geo-software-tdd)         試験を先に書き、CI で落とす仕組みを組む
      <-> geo-software-eval             実装と別の評価者が評価し、症状を返す (夜)
   -> geo-software-security-audit      実装と別の監査者が、濫用と使い切りまで調べる (夜)
   -> geo-software-legal-check          公開の前に (夜)
@@ -139,6 +140,7 @@ geo-software-product-grilling       何を作るか (昼)
 - geo-software-eval: 昼に、完成の条件を外から観測できるシナリオと判定にし、実装から切り離して置く。夜に、実装と別の評価者として手元の版と本番を評価し、症状だけを実装に返し、壊した版で評価そのものを確かめる
 - geo-software-swarm: 初版を出したあと、定期実行のエージェントの群れと掲示板で、不具合の発見、修正、評価、公開を回し続ける。統治の層を必ず掛け、進み具合を届いて持ちこたえた変更で測る
 - geo-software-security-audit: geo-software-build のあと、geo-software-deploy の前に、実装と別の監査者が、誰でも使える入口から認証、認可、注入、濫用、露出を調べる。漏れや改ざんだけでなく、登録し放題、巨大な要求、メールの送られ放題、従量課金の食い潰しで壊れることも数える。手元かプレビューで再現して確かめ、確かめた問題は評価のシナリオにする。誰が登録できるか、濫用の予算、位置の扱い、公開を止める深刻度は、昼の擦り合わせで先に聞く。公開のあとは本番に読み出しだけの確認をし、群れでは定期の監査の役割にする
+- geo-software-tdd: geo-software-build と並べて、作るあいだずっと使う。試験を先に書き、地図に載せるデータ、サーバー、配線、本物のブラウザでの地図、描画の比較、操作の試験を、地図のライブラリと OSS の地図アプリの作法に沿って書く。試験は手元で閉じ、CI は 1 つの合否にまとめ、不安定な試験は期限つきで隔離する。人間が見る前に品質を上げきるための道具で、完成の判定は geo-software-eval で行う
 - geo-software-build: 技術選定のあと、評価に通るまで、テストを先に書いて小さく積む。データの組み立て、配線のテスト、利用者と同じ認証の経路での通しの確認、画面の目視まで
 - geo-software-deploy: geo-software-build と geo-software-legal-check のあと、昼に与えられた権限の範囲で出し、本番の URL で完成の条件を確かめ直す。許可の検査に拒まれたら、承認の要らない方法で成果物を残す。デプロイに要る認証と恒久的な許可は、昼の準備でこのスキルの preflight に沿って頼む
 
@@ -169,6 +171,7 @@ geo-software-product-grilling       何を作るか (昼)
 | 公開の前に、法令、規約、帰属表示を確かめたい | geo-software-legal-check |
 | 完成の条件を決めたい、受け入れのシナリオを作りたい、本当に動くか評価したい | geo-software-eval |
 | 技術選定が済んでいて、実装してテストしたい | geo-software-build |
+| テストを先に書きたい、CI を組みたい、回帰を防ぎたい、人間が見る前に品質を上げたい | geo-software-tdd |
 | セキュリティが心配、脆弱性を調べたい、濫用やレートリミットの要否を確かめたい | geo-software-security-audit |
 | 実装が済んでいて、デプロイして本番で確かめたい、リポジトリを公開したい | geo-software-deploy |
 | 公開したあと、エージェントに保守と改善を続けさせたい、定期実行で回したい | geo-software-swarm |

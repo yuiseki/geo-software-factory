@@ -15,7 +15,8 @@ The evaluator runs this, never the implementer. Scenarios are JSON files outside
 A command runs in the scenario directory with EVAL_BASE_URL set, passes on exit 0, and may print lines starting
 with "OBSERVED:" for the implementer; the rest of its output stays in the report.
 
-Separation is enforced, not promised: it refuses scenarios or a report inside the app repository (they hold the
+Separation is enforced, not promised (with --app-repo; in the isolated containers of assets/isolation/ the mounts
+do it, and the version comes from --version): it refuses scenarios or a report inside the app repository (they hold the
 thresholds), and a feedback file outside it. The feedback names the version judged, each failed scenario's
 symptom line, the paths requested and what was observed there (status, feature count, error codes), and never
 the scenario's name, expected values or thresholds. The report holds everything, for the morning.
@@ -126,16 +127,23 @@ def describe(o: dict) -> str:
     return "、".join(parts)
 
 
-def run(scenarios: Path, base: str, app_repo: Path, report: Path, feedback: Path | None = None,
-        timeout: float = 15) -> dict:
-    if inside(scenarios, app_repo):
-        raise Refused("シナリオが実装のリポジトリの中にある。外に置く")
-    if inside(report, app_repo):
-        raise Refused("報告には閾値が入るので、実装のリポジトリの外に書く")
-    if feedback is not None and not inside(feedback, app_repo):
-        raise Refused("症状の返し先は、実装のリポジトリの中にする")
+def run(scenarios: Path, base: str, app_repo: Path | None, report: Path, feedback: Path | None = None,
+        timeout: float = 15, version: str | None = None) -> dict:
+    if app_repo is not None:
+        if inside(scenarios, app_repo):
+            raise Refused("シナリオが実装のリポジトリの中にある。外に置く")
+        if inside(report, app_repo):
+            raise Refused("報告には閾値が入るので、実装のリポジトリの外に書く")
+        if feedback is not None and not inside(feedback, app_repo):
+            raise Refused("症状の返し先は、実装のリポジトリの中にする")
+    else:
+        # Isolated containers: the feedback directory is the only one shared with the implementer.
+        if version is None:
+            raise Refused("実装のリポジトリが無いときは、判定する版を --version で渡す")
+        if feedback is not None and (inside(feedback, scenarios) or inside(feedback, report.parent)):
+            raise Refused("症状の返し先を、シナリオや報告と同じ場所に置かない")
     base = base.rstrip("/")
-    rev = git_rev(app_repo)
+    rev = version if version is not None else git_rev(app_repo)
     results = []
     for f in sorted(scenarios.glob("*.json")):
         s = json.loads(f.read_text(encoding="utf-8"))
@@ -180,13 +188,14 @@ def main(argv=None) -> int:
     ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     ap.add_argument("--scenarios", type=Path, required=True)
     ap.add_argument("--base", required=True)
-    ap.add_argument("--app-repo", type=Path, required=True)
+    ap.add_argument("--app-repo", type=Path, help="omit only in the isolated containers, with --version")
+    ap.add_argument("--version", help="the version judged, when there is no app repo to ask")
     ap.add_argument("--report", type=Path, required=True)
     ap.add_argument("--feedback", type=Path)
     ap.add_argument("--timeout", type=float, default=15)
     a = ap.parse_args(argv)
     try:
-        out = run(a.scenarios, a.base, a.app_repo, a.report, a.feedback, a.timeout)
+        out = run(a.scenarios, a.base, a.app_repo, a.report, a.feedback, a.timeout, a.version)
     except Refused as e:
         print(json.dumps({"refused": str(e)}, ensure_ascii=False))
         return 2

@@ -106,6 +106,7 @@ npx skills add yuiseki/geo-software-factory --skill geo-software-library  # 1 �
 | 本番の疎通、状態コード、応答時間、`.git` や `.env` の露出、セキュリティのヘッダ、source map | [smoke.py](.agents/skills/geo-software-deploy/scripts/smoke.py) |
 | 昼から夜へ渡すプロダクト概要がそろっているか (価値の芯、Must、シナリオの置き場所、判断の方針、鍵の名前が設定済みか、CLI があるか。値は読まない) | [check_brief.py](.agents/skills/geo-software-product-grilling/scripts/check_brief.py) |
 | 実装と切り離したシナリオを動かし、実装者には症状だけを返す (シナリオと報告が実装のリポジトリの中にあれば拒む。閾値とシナリオの本文は返さない) | [run_eval.py](.agents/skills/geo-software-eval/scripts/run_eval.py) |
+| 実装者と評価者を別のコンテナに分け、実装者の側からシナリオが見えないことを、目印を置いて探させて確かめる (評価者の側で見つかることを対照にする) | [compose.yaml](.agents/skills/geo-software-eval/assets/isolation/compose.yaml)、[check_isolation.py](.agents/skills/geo-software-eval/scripts/check_isolation.py)、[eval_watch.py](.agents/skills/geo-software-eval/scripts/eval_watch.py) |
 | 外部の地図サービスの代役 (手元のタイルと決まった答え、Range、5xx、429、空や途中で切れた応答、遅れを回数で決めて起こす) | [twin.py](.agents/skills/geo-software-eval/scripts/twin.py) |
 | 無人の実行の停止スイッチ、評価の症状と残り時間を道具の呼び出しのたびに届ける、終わろうとしたら上限つきで観点を 1 つずつ返す | [hooks.py](.agents/skills/geo-software-swarm/scripts/hooks.py)、[設定のひな形](.agents/skills/geo-software-swarm/assets/unattended-settings.json) |
 | スキル集そのもの (frontmatter、行数、リンク、確認日、TODO の件数) | [scripts/check.py](scripts/check.py) |

@@ -194,7 +194,7 @@
   - [x] references/from-leaflet-raster.md
   - [x] references/from-mapbox.md
   - [x] references/migration-plan.md
-- [x] geo-software-eval (16/16)
+- [x] geo-software-eval (22/22)
   - [x] SKILL.md
   - [x] references/scenarios.md
   - [x] references/map-observables.md
@@ -211,6 +211,12 @@
   - [x] scripts/test_run_eval.py
   - [x] scripts/twin.py
   - [x] scripts/test_twin.py
+  - [x] references/isolation.md
+  - [x] scripts/eval_watch.py
+  - [x] scripts/test_eval_watch.py
+  - [x] scripts/check_isolation.py
+  - [x] scripts/test_check_isolation.py
+  - [x] assets/isolation/compose.yaml
 - [x] geo-software-swarm (9/9)
   - [x] SKILL.md
   - [x] references/roles.md

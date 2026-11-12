@@ -11,7 +11,7 @@ permissions:
 jobs:
   check:
     runs-on: ubuntu-24.04
-    timeout-minutes: 5
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
@@ -23,6 +23,10 @@ jobs:
           for d in .agents/skills/*/scripts; do
             python3 -I -m unittest discover -s "$d" -p 'test_*.py'
           done
+      - name: Test the evaluator isolation against Docker
+        env:
+          GSF_DOCKER_TESTS: "1"
+        run: python3 -I -m unittest discover -s .agents/skills/geo-software-eval/scripts -p 'test_check_isolation.py' -v
       - name: Test the evals harness
         run: |
           python3 -m pip install --quiet 'pyproj==3.7.2'

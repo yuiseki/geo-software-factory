@@ -1,0 +1,61 @@
+# Implementer and evaluator in separate containers, sharing only two directories.
+#
+#   implementer: the app repo (rw), handoff (rw), feedback (ro). Never the scenarios or the reports.
+#   evaluator:   scenarios (ro), reports (rw), handoff (ro), feedback (rw), the eval scripts (ro). Never the app repo.
+#
+# The implementer asks for an evaluation by writing handoff/ready.json ({"rev": ..., "port": ...}) after
+# starting the app on that port; the evaluator judges http://implementer:<port> and writes symptoms to
+# feedback/eval-feedback.md, which hooks.py deliver hands to the implementer (EVAL_FEEDBACK).
+#
+# Every path is set by the environment, absolute, on the host. Before the night, run scripts/check_isolation.py
+# with the same environment: a mount added later (a home directory, the Docker socket) breaks the isolation
+# silently.
+name: ${RUN_NAME:-night}
+
+services:
+  implementer:
+    image: ${IMPLEMENTER_IMAGE:-python:3.12-slim-bookworm}
+    command: ${IMPLEMENTER_CMD:-sleep infinity}
+    user: "${RUN_UID:-1000}:${RUN_GID:-1000}"
+    working_dir: /work/app
+    volumes:
+      - ${APP_DIR:?APP_DIR}:/work/app
+      - ${HANDOFF_DIR:?HANDOFF_DIR}:/work/handoff
+      - ${FEEDBACK_DIR:?FEEDBACK_DIR}:/work/feedback:ro
+    environment:
+      HOME: /tmp/home
+      EVAL_FEEDBACK: /work/feedback/eval-feedback.md
+      EVAL_HANDOFF: /work/handoff/ready.json
+    cap_drop: [ALL]
+    security_opt: ["no-new-privileges:true"]
+    cpus: ${IMPLEMENTER_CPUS:-4}
+    mem_limit: ${IMPLEMENTER_MEMORY:-8g}
+    pids_limit: 512
+    networks: [night]
+
+  evaluator:
+    image: ${EVALUATOR_IMAGE:-python:3.12-slim-bookworm}
+    command: >-
+      python3 -I /eval/bin/eval_watch.py --handoff /eval/handoff --scenarios /eval/scenarios
+      --report-dir /eval/out --feedback /eval/feedback/eval-feedback.md --app-host implementer
+    user: "${RUN_UID:-1000}:${RUN_GID:-1000}"
+    working_dir: /eval/scenarios
+    volumes:
+      - ${SCENARIOS_DIR:?SCENARIOS_DIR}:/eval/scenarios:ro
+      - ${REPORT_DIR:?REPORT_DIR}:/eval/out
+      - ${HANDOFF_DIR:?HANDOFF_DIR}:/eval/handoff:ro
+      - ${FEEDBACK_DIR:?FEEDBACK_DIR}:/eval/feedback
+      - ${EVAL_SCRIPTS:?EVAL_SCRIPTS}:/eval/bin:ro
+    environment:
+      HOME: /tmp/home
+    read_only: true
+    tmpfs: [/tmp]
+    cap_drop: [ALL]
+    security_opt: ["no-new-privileges:true"]
+    cpus: ${EVALUATOR_CPUS:-2}
+    mem_limit: ${EVALUATOR_MEMORY:-4g}
+    pids_limit: 512
+    networks: [night]
+
+networks:
+  night: {}

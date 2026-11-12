@@ -150,5 +150,26 @@ class LeakTest(Base):
         self.assertIn(rev, (self.app / "eval-feedback.md").read_text(encoding="utf-8"))
 
 
+class ContainerModeTest(Base):
+    """In the isolated setup the evaluator has no app repo: the version comes from the implementer's request."""
+
+    def test_runs_without_an_app_repo_and_names_the_given_version(self):
+        self.scenario("S1", "x", [{"kind": "http", "path": "/"}])
+        fb = self.out.parent / "feedback" / "eval-feedback.md"
+        fb.parent.mkdir()
+        r = self.run_eval(app_repo=None, feedback=fb, version="abc1234")
+        self.assertTrue(r["ok"])
+        self.assertIn("abc1234", fb.read_text(encoding="utf-8"))
+
+    def test_without_an_app_repo_refuses_feedback_beside_the_scenarios_or_report(self):
+        for bad in (self.scen / "eval-feedback.md", self.out / "eval-feedback.md"):
+            with self.assertRaises(run_eval.Refused):
+                self.run_eval(app_repo=None, feedback=bad, version="abc1234")
+
+    def test_needs_a_version_from_somewhere(self):
+        with self.assertRaises(run_eval.Refused):
+            self.run_eval(app_repo=None, feedback=None)
+
+
 if __name__ == "__main__":
     unittest.main()

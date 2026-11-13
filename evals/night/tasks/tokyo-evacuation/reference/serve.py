@@ -21,8 +21,8 @@ def _to_wgs84(x_north: float, y_east: float) -> tuple[float, float]:
         from pyproj import Transformer
         t = Transformer.from_crs("EPSG:6677", "EPSG:4326", always_xy=True)
         return t.transform(y_east, x_north)
-    except ImportError:
-        # Fallback for environments without pyproj (accurate to <5m around Tokyo EPSG:6677 origin 36N, 139d50mE)
+    except Exception:
+        # Fallback when pyproj or proj.db is unavailable (accurate to <5m around Tokyo EPSG:6677 origin 36N, 139d50mE)
         lat0 = 36.0
         lon0 = 139.0 + 50.0 / 60.0
         scale = 0.9999

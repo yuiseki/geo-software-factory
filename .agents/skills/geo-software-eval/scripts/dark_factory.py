@@ -44,12 +44,19 @@ COMPOSE = EVAL_SKILL / "assets" / "isolation" / "compose.yaml"
 UNATTENDED_SETTINGS = SKILLS_DIR / "geo-software-swarm" / "assets" / "unattended-settings.json"
 HOOKS_SCRIPT = SKILLS_DIR / "geo-software-swarm" / "scripts" / "hooks.py"
 
-for p in (HERE, SKILLS_DIR / "geo-software-product-grilling" / "scripts", SKILLS_DIR / "geo-software-deploy" / "scripts"):
+for p in (
+    HERE,
+    SKILLS_DIR / "geo-software-product-grilling" / "scripts",
+    SKILLS_DIR / "geo-software-deploy" / "scripts",
+    SKILLS_DIR / "geo-software-security-audit" / "scripts",
+):
     if str(p) not in sys.path:
         sys.path.insert(0, str(p))
 
+import audit_probe  # noqa: E402
 import check_brief  # noqa: E402
 import check_isolation  # noqa: E402
+import deploy_gate  # noqa: E402
 import eval_watch  # noqa: E402
 import run_eval  # noqa: E402
 import smoke  # noqa: E402
@@ -356,6 +363,7 @@ def judge_clean_checkout(app_dir: Path, scenarios_dir: Path, work_dir: Path, sta
     if checkout.exists():
         shutil.rmtree(checkout)
     sh(["git", "clone", "-q", str(app_dir), str(checkout)])
+    shutil.rmtree(checkout / ".git", ignore_errors=True)
     port = free_port()
     env = {**os.environ, "PORT": str(port)}
     log_path = work_dir / "out" / "final-app.log"
@@ -375,6 +383,8 @@ def judge_clean_checkout(app_dir: Path, scenarios_dir: Path, work_dir: Path, sta
                 if not no_answer or time.monotonic() >= deadline or proc.poll() is not None:
                     break
                 time.sleep(0.25)
+            audit_probe.probe(base=f"http://127.0.0.1:{port}", report_path=work_dir / "out" / "audit.json",
+                              timeout=eval_timeout)
             return out
         finally:
             terminate_process(proc)
@@ -475,6 +485,7 @@ def render_morning_report(app_dir: Path, scenarios_dir: Path, work_dir: Path, su
     eoe = json.loads((out_dir / "eval-of-eval.json").read_text(encoding="utf-8")) if (out_dir / "eval-of-eval.json").is_file() else None
     prod_smoke = json.loads((out_dir / "prod-smoke.json").read_text(encoding="utf-8")) if (out_dir / "prod-smoke.json").is_file() else None
     prod_eval = json.loads((out_dir / "prod-eval.json").read_text(encoding="utf-8")) if (out_dir / "prod-eval.json").is_file() else None
+    audit = json.loads((out_dir / "audit.json").read_text(encoding="utf-8")) if (out_dir / "audit.json").is_file() else None
 
     history = []
     for p in sorted(out_dir.glob("*.json")):
@@ -548,6 +559,9 @@ def render_morning_report(app_dir: Path, scenarios_dir: Path, work_dir: Path, su
     if final and not final.get("ok"):
         failed_ids = [f"{s['id']} ({s.get('symptom', '')})" for s in final.get("scenarios", []) if s["result"] != "pass"]
         stopped.append("最終判定で落ちたシナリオがある: " + "、".join(failed_ids))
+    if audit and not audit.get("ok"):
+        audit_ids = [f"{f['id']} ({f.get('title', '')})" for f in audit.get("findings", []) if f.get("status") == "問題あり"]
+        stopped.append("セキュリティ監査で問題が見つかったため本番公開を止めた: " + "、".join(audit_ids))
     if prod_smoke and prod_smoke.get("errors"):
         stopped.append("本番の smoke 検査でエラーが出た: " + "、".join(e["code"] for e in prod_smoke["errors"]))
 
@@ -760,7 +774,12 @@ def run_factory(app_dir: Path, scenarios_dir: Path, work_dir: Path, mode: str = 
     out_dir = work_dir / "out"
     requests = sorted(p.name for p in out_dir.glob("*.json") if re.match(r"^\d{8}T\d{6}Z-", p.name))
     final_ok = bool(final and final.get("ok"))
-    deploy_ready = final_ok and not tree["left_dirty"] and stopped_by != "stop_switch"
+    audit_path = out_dir / "audit.json"
+    audit_doc = json.loads(audit_path.read_text(encoding="utf-8")) if audit_path.is_file() else None
+    audit_ok = bool(audit_doc["ok"]) if audit_doc is not None else True
+    gate = deploy_gate.check(app_repo=app_dir, eval_report=out_dir / "final.json",
+                             audit_report=audit_path if audit_path.is_file() else None)
+    deploy_ready = final_ok and gate["ok"] and stopped_by != "stop_switch"
 
     prod_smoke = None
     prod_eval = None
@@ -780,6 +799,7 @@ def run_factory(app_dir: Path, scenarios_dir: Path, work_dir: Path, mode: str = 
         "final": {s["id"]: s["result"] for s in final["scenarios"]} if final else None,
         "final_ok": final_ok,
         "final_version": final["version"] if final else None,
+        "audit_ok": audit_ok,
         "deploy_ready": deploy_ready,
         **tree,
         "verify_url": verify_url,

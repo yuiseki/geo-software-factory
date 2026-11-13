@@ -14,7 +14,7 @@
   scripts/       (必要になったら) 手順で使うスクリプトとそのテスト
 ```
 
-## 後で書く
+## 執筆と実装の規約
 
 - SKILL.md の frontmatter の description の書き方 (いつ発火させたいかを書く)
 - SKILL.md の冒頭に置く reference の表 (reference / 読むとき / 中身)

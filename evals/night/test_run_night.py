@@ -97,6 +97,35 @@ class SummaryTest(unittest.TestCase):
             self.assertEqual(s["mentions"], {"tile.openstreetmap.org": 1})
             self.assertEqual(s["minutes"], 10.0)
 
+    def test_write_morning_reports_creates_eval_and_morning_markdown(self):
+        with tempfile.TemporaryDirectory() as d:
+            root = Path(d)
+            for sub in ("app", "scenarios", "out", "feedback", "handoff"):
+                (root / sub).mkdir()
+            (root / "app" / "product-brief.md").write_text(
+                "# プロダクト概要: 台東区の名所マップ\n\n## 夜に決めたこと\n\n- MapLibre を採用した\n\n## 止まったこと\n\n- なし\n",
+                encoding="utf-8",
+            )
+            (root / "out" / "final.json").write_text(json.dumps({
+                "when": "2026-11-13T01:20:00+00:00",
+                "base": "http://implementer:8787",
+                "version": "def5678",
+                "ok": True,
+                "satisfaction": 1.0,
+                "split_scenarios": [],
+                "low_confidence_scenarios": [],
+                "scenarios": [{
+                    "id": "S1", "name": "名所表示", "symptom": "名所が出ない", "result": "pass",
+                    "checks": [{"ok": True, "observed": {"kind": "http", "path": "/", "status": 200}}],
+                }],
+            }, ensure_ascii=False), encoding="utf-8")
+            summary = {"final_version": "def5678", "commits_after_day": 2, "left_dirty": False,
+                       "deploy_ready": True, "minutes": 12.5}
+            paths = run_night.write_reports(root, summary)
+            self.assertTrue(Path(paths["eval_report"]).is_file())
+            self.assertTrue(Path(paths["morning_report"]).is_file())
+            self.assertIn("MapLibre を採用した", Path(paths["morning_report"]).read_text(encoding="utf-8"))
+
 
 if __name__ == "__main__":
     unittest.main()

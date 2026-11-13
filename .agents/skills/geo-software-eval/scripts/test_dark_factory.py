@@ -161,6 +161,29 @@ finally:
         eval_rep = (self.work / "out" / "eval-report.md").read_text(encoding="utf-8")
         self.assertIn("# 評価の報告: 台東区テストマップ", eval_rep)
 
+    def test_deploy_ready_is_false_when_audit_probe_finds_blocking_vulnerability(self):
+        port = dark_factory.free_port()
+        impl_script = self.root / "impl_vuln.py"
+        impl_script.write_text(f"""import json, os, subprocess
+from pathlib import Path
+app = Path.cwd()
+(app / "index.html").write_text("<html>CC0</html>", encoding="utf-8")
+(app / ".env").write_text("SECRET=1\\n", encoding="utf-8")
+(app / "start.sh").write_text("exec python3 -m http.server ${{PORT:-{port}}}\\n", encoding="utf-8")
+subprocess.run(["git", "-c", "user.email=a@example.invalid", "-c", "user.name=a", "add", "-A"], check=True)
+subprocess.run(["git", "-c", "user.email=a@example.invalid", "-c", "user.name=a", "commit", "-q", "-m", "vuln"], check=True)
+""", encoding="utf-8")
+        summary = dark_factory.run_factory(
+            app_dir=self.app, scenarios_dir=self.scen, work_dir=self.work, mode="local",
+            agent="custom", implementer_cmd=[sys.executable, "-I", str(impl_script)],
+            port=port, minutes=1.0, watch_interval=0.05, startup_timeout=5.0,
+        )
+        self.assertTrue(summary["final_ok"])
+        self.assertFalse(summary["audit_ok"])
+        self.assertFalse(summary["deploy_ready"])
+        morning = (self.work / "out" / "morning-report.md").read_text(encoding="utf-8")
+        self.assertIn("EXPOSURE-ENV", morning)
+
 
 if __name__ == "__main__":
     unittest.main()

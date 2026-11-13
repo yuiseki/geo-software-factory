@@ -117,7 +117,10 @@ npx skills add yuiseki/geo-software-factory --skill geo-software-library  # 1 �
 | プログラムが判定する | 道具 |
 |---|---|
 | 配る GeoJSON の形、度の範囲、緯度と経度の取り違え、範囲の外、リングの閉じと自己交差、必ず要る属性 | [geocheck.py](.agents/skills/geo-software-eval/scripts/geocheck.py) |
+| デプロイ直前の関門 (未コミットの変更、評価した版との不一致、監査の重大指摘、破壊的 SQL の拒否) とロールバック台帳 | [deploy_gate.py](.agents/skills/geo-software-deploy/scripts/deploy_gate.py) |
 | 本番の疎通、状態コード、応答時間、`.git` や `.env` の露出、セキュリティのヘッダ、source map | [smoke.py](.agents/skills/geo-software-deploy/scripts/smoke.py) |
+| 手元・プレビューの監査プローブ (秘密の露出、1 万文字の検索語、全世界 bbox、HTML 反射) と評価シナリオ JSON の自動生成 | [audit_probe.py](.agents/skills/geo-software-security-audit/scripts/audit_probe.py) |
+| 不安定な試験の隔離台帳 (理由・担当・期限切れ・通った試験の検出)、減る方向にだけ動く上限、試験中の外部通信遮断 | [tdd_guard.py](.agents/skills/geo-software-tdd/scripts/tdd_guard.py) |
 | 昼から夜へ渡すプロダクト概要がそろっているか (価値の芯、Must、シナリオの置き場所、判断の方針、鍵の名前が設定済みか、CLI があるか。値は読まない) | [check_brief.py](.agents/skills/geo-software-product-grilling/scripts/check_brief.py) |
 | 実装と切り離したシナリオを動かし、実装者には症状だけを返す (シナリオと報告が実装のリポジトリの中にあれば拒む。閾値とシナリオの本文は返さない) | [run_eval.py](.agents/skills/geo-software-eval/scripts/run_eval.py) |
 | 実装者と評価者を別のコンテナに分け、実装者の側からシナリオが見えないことを、目印を置いて探させて確かめる (評価者の側で見つかることを対照にする) | [compose.yaml](.agents/skills/geo-software-eval/assets/isolation/compose.yaml)、[check_isolation.py](.agents/skills/geo-software-eval/scripts/check_isolation.py)、[eval_watch.py](.agents/skills/geo-software-eval/scripts/eval_watch.py) |

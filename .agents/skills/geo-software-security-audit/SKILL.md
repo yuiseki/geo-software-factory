@@ -17,6 +17,7 @@ description: 自分たちの地図プロダクトのセキュリティを、実�
 | [abuse](references/abuse.md) | 濫用と使い切りを調べるとき | 登録と決済、巨大な要求、メールと SMS、従量課金の上流、応答の違いからの推測。対策が新しい DoS にならないか |
 | [exposure](references/exposure.md) | 公開されるものを調べるとき | 公開の面、ヘッダ、配布物の中の秘密、プレビューの URL、利用者の位置の露出、依存と CI |
 | [triage](references/triage.md) | 見つけたものを判定するとき | 4 つの状態、再現、深刻度の付け方と見直し、仕様と誤検知の除外、重複、評価のシナリオへの変換 |
+| [scripts/audit_probe.py](scripts/audit_probe.py) | 手元かプレビューで入口を試すとき | 秘密の露出、1 万文字の検索語、全世界 bbox、HTML 反射を 1 回ずつ送って応答時間と状態コードを測り、観測つきの 4 状態に分け、再現した問題を geo-software-eval のシナリオ JSON に変換する |
 | [assets/audit-report-template.md](assets/audit-report-template.md) | 結果を残すとき | 監査の報告のひな形 |
 
 ## 監査の原則

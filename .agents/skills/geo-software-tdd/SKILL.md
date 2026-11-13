@@ -16,6 +16,7 @@ description: 地図プロダクトを作る実装者が、人間の確認の前�
 | [ci](references/ci.md) | CI を組むとき | 段の分け方、1 つの合否、GPU の無い CI での描画、版の両端、ライセンスと大きさの関門 |
 | [discipline](references/discipline.md) | 試験を書くとき、試験が落ちたとき、不安定なとき | エージェントが試験を書くときの決まり、不安定な試験の隔離、許容の扱い、試験の仕組みそのものの確かめ |
 | [sources](references/sources.md) | 作法の根拠を確かめたいとき | どのライブラリやアプリが、どのファイルでそうしているか |
+| [scripts/tdd_guard.py](scripts/tdd_guard.py) | CI の関門と試験の隔離・通信遮断を動かすとき | 不安定な試験の隔離台帳の検証 (理由・担当・期限切れ・通った試験の検出)、TODO/FIXME の減る方向にだけ動く上限 (ratchet)、外部ホストへのソケット通信遮断 |
 | [assets/ci-checklist.md](assets/ci-checklist.md) | CI を組み終えたとき | 組んだ CI の点検表 |
 
 ## 原則

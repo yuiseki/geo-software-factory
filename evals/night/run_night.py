@@ -40,6 +40,7 @@ EVAL = REPO / ".agents" / "skills" / "geo-software-eval"
 COMPOSE = EVAL / "assets" / "isolation" / "compose.yaml"
 sys.path.insert(0, str(EVAL / "scripts"))
 import check_isolation  # noqa: E402
+import dark_factory  # noqa: E402
 
 IMAGE = "geo-software-factory-evals-codex"
 AGENTS = ("claude", "codex", "gemini", "opencode", "qoder")
@@ -187,6 +188,17 @@ def wait_exit(compose, env, service, limit_s):
     return None
 
 
+def write_reports(root: Path, summary: dict) -> dict:
+    out = root / "out"
+    out.mkdir(parents=True, exist_ok=True)
+    eval_path = out / "eval-report.md"
+    morning_path = out / "morning-report.md"
+    eval_path.write_text(dark_factory.render_eval_report(root / "app", root / "scenarios", root), encoding="utf-8")
+    morning_path.write_text(dark_factory.render_morning_report(root / "app", root / "scenarios", root, summary),
+                            encoding="utf-8")
+    return {"eval_report": str(eval_path), "morning_report": str(morning_path)}
+
+
 def main(argv=None) -> int:
     ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     ap.add_argument("--condition", choices=("skills", "baseline"), required=True)
@@ -275,7 +287,9 @@ def main(argv=None) -> int:
             secret_file.unlink(missing_ok=True)
     summary = {"run": run_id, "agent": a.agent, "condition": a.condition, "model": model, "effort": a.effort,
                "limit_minutes": a.minutes, **summarize(root, exit_code, seconds, tree)}
+    summary["deploy_ready"] = bool(summary.get("final_ok") and not summary.get("left_dirty"))
     (root / "summary.json").write_text(json.dumps(summary, ensure_ascii=False, indent=1), encoding="utf-8")
+    write_reports(root, summary)
     print(json.dumps(summary, ensure_ascii=False, indent=1))
     return 0
 

@@ -231,7 +231,7 @@
   - [x] assets/unattended-settings.json
   - [x] scripts/swarm.py
   - [x] scripts/test_swarm.py
-- [x] geo-software-tdd (7/7)
+- [x] geo-software-tdd (9/9)
   - [x] SKILL.md
   - [x] references/kinds.md
   - [x] references/fixtures.md
@@ -239,7 +239,9 @@
   - [x] references/discipline.md
   - [x] references/sources.md
   - [x] assets/ci-checklist.md
-- [x] geo-software-security-audit (8/8)
+  - [x] scripts/tdd_guard.py
+  - [x] scripts/test_tdd_guard.py
+- [x] geo-software-security-audit (10/10)
   - [x] SKILL.md
   - [x] references/entrypoints.md
   - [x] references/auth.md
@@ -248,13 +250,15 @@
   - [x] references/exposure.md
   - [x] references/triage.md
   - [x] assets/audit-report-template.md
+  - [x] scripts/audit_probe.py
+  - [x] scripts/test_audit_probe.py
 - [x] geo-software-build (5/5)
   - [x] SKILL.md
   - [x] references/order.md
   - [x] references/testing.md
   - [x] references/data.md
   - [x] references/pitfalls.md
-- [x] geo-software-deploy (7/7)
+- [x] geo-software-deploy (9/9)
   - [x] SKILL.md
   - [x] references/preflight.md
   - [x] references/cloudflare-workers.md
@@ -262,6 +266,8 @@
   - [x] references/publish-repo.md
   - [x] scripts/smoke.py
   - [x] scripts/test_smoke.py
+  - [x] scripts/deploy_gate.py
+  - [x] scripts/test_deploy_gate.py
 - [ ] geo-software-growth (0/1)
   - [ ] SKILL.md
 - [ ] geo-software-monetize (0/1)
@@ -282,17 +288,20 @@
 - [x] `geo-software-eval/SKILL.md`、`README.md` の道具一覧表への `dark_factory.py` の追記
 - [ ] Docker モード (`GSF_DOCKER_TESTS=1`) での `dark_factory.py` 通しテストの追加
 
-### 2. デプロイ前関門とロールバック判定のプログラム化 (`geo-software-deploy`)
+### 2. デプロイ前関門とロールバック判定のプログラム化 (`geo-software-deploy` / `geo-software-tdd`)
 
-- [ ] `geo-software-deploy/scripts/deploy_gate.py` (および `test_deploy_gate.py`) の実装:
+- [x] `geo-software-deploy/scripts/deploy_gate.py` (および `test_deploy_gate.py`) の実装:
   - 作業ツリーに未コミットの変更があればデプロイを拒む (`preflight.md` の「戻る点を仕組みで作る」の強制)
   - 出すコミット (`git rev-parse --short HEAD`) が、評価者の最新の合格報告 (`final.json` または最新の評価報告) の `version` と一致し `ok: true` であることを強制する
-  - 公開を止める深刻度のセキュリティ監査指摘 (`audit-report.json` 等) が残っていないか検査する
+  - 公開を止める深刻度のセキュリティ監査指摘 (`audit.json` 等) や破壊的な SQL マイグレーションが残っていないか検査する
+  - 出した版とコミット SHA を対で記録しロールバック先を返す (`record` / `rollback`)
+- [x] `geo-software-tdd/scripts/tdd_guard.py` (および `test_tdd_guard.py`) の実装:
+  - 不安定な試験の隔離台帳 (`quarantine`) の必須項目・期限切れ・通った試験の検出、減る方向にだけ動く上限 (`ratchet`)、外部通信遮断 (`block_external_network`)
 
 ### 3. セキュリティ監査ハーネスの機械検査補助 (`geo-software-security-audit`)
 
-- [ ] `geo-software-security-audit/scripts/audit_probe.py` (および `test_audit_probe.py`) の実装:
-  - 手元・プレビューの URL に対し、巨大な検索語・範囲外 bbox・不正な JSON/GeoJSON 入力・秘密ファイルの露出を送って応答時間と状態コードを観測し、再現できた問題を `geo-software-eval` 互換のシナリオ JSON として出力する
+- [x] `geo-software-security-audit/scripts/audit_probe.py` (および `test_audit_probe.py`) の実装:
+  - 手元・プレビューの URL に対し、巨大な検索語・全世界 bbox・HTML 反射・秘密ファイルの露出を送って応答時間と状態コードを観測し、再現できた問題を `geo-software-eval` 互換のシナリオ JSON として出力する
 
 ### 4. 群れ (Swarm) の立ち上げ・進捗計測スクリプト (`geo-software-swarm`)
 
@@ -304,12 +313,12 @@
 ### 5. `evals/` マルチプロバイダー対応と `evals/night` の統合
 
 - [x] 5 つの AI プロバイダー (`claude`, `codex`, `gemini`, `opencode`, `qoder`) の `Dockerfile.*` と `run_*_docker.sh` を `evals/` に整備し、`bench.py` と `evals/night/run_night.py` で対応
-- [ ] `evals/night/run_night.py` から `dark_factory.py` の報告生成 (`morning-report.md`、`eval-report.md`) を呼び出すよう統合
+- [x] `evals/night/run_night.py` から `dark_factory.py` の報告生成 (`morning-report.md`、`eval-report.md`) を呼び出すよう統合
 - [ ] 初回では落ちやすく、`eval-feedback.md` の症状を読んで直す往復が発生する夜の課題の追加と、`skills` / `baseline` の比較実行
 
 ### 6. 未着手スキルとドキュメントの整備
 
-- [ ] `.agents/skills/AGENTS.md` の「後で書く」節を正式な執筆規約に整理
+- [x] `.agents/skills/AGENTS.md` の「後で書く」節を正式な執筆規約に整理
 - [ ] `geo-software-growth/SKILL.md` の執筆 (方針が決まり次第)
 - [ ] `geo-software-monetize/SKILL.md` の執筆 (方針が決まり次第)
 

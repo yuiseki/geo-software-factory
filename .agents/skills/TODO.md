@@ -14,7 +14,7 @@
   - [x] assets/apps/
   - [x] scripts/find_cards.py
   - [x] scripts/test_find_cards.py
-- [x] geo-software-arch (21/21)
+- [x] geo-software-arch (22/22)
   - [x] SKILL.md
   - [x] references/criteria.md
   - [x] references/self-hosting.md
@@ -36,6 +36,7 @@
   - [x] references/edge/near-user-servers.md
   - [x] references/app/native-runtime.md
   - [x] references/hosting/static-hosting.md
+  - [x] references/hosting/cloud-containers.md
 - [x] geo-software-infra (27/27)
   - [x] SKILL.md
   - [x] references/criteria.md
@@ -258,10 +259,11 @@
   - [x] references/testing.md
   - [x] references/data.md
   - [x] references/pitfalls.md
-- [x] geo-software-deploy (9/9)
+- [x] geo-software-deploy (10/10)
   - [x] SKILL.md
   - [x] references/preflight.md
   - [x] references/cloudflare-workers.md
+  - [x] references/cloud-deploy.md
   - [x] references/verify.md
   - [x] references/publish-repo.md
   - [x] scripts/smoke.py

@@ -16,7 +16,8 @@ description: 地図プロダクトのアーキテクチャを、保存・計算�
 | [capabilities/routing](references/capabilities/routing.md) | ルート検索の置き場所を決めるとき | 同上 |
 | [capabilities/analysis](references/capabilities/analysis.md) | 解析の置き場所を決めるとき | 同上 |
 | [capabilities/source-of-truth](references/capabilities/source-of-truth.md) | 地物を書き換える機能があるとき、正本をどこに置くかを決めるとき | 正本の候補、強い整合性とトランザクション、成果物への反映 |
-| [hosting/static-hosting](references/hosting/static-hosting.md) | アプリやデータのファイルを GitHub Pages、Cloudflare Pages、Vercel などに置くとき | Range への応答、1 ファイルとサイトの上限、無料枠と超えたとき、商用利用、大きな JSON のキャッシュ |
+| [hosting/static-hosting](references/hosting/static-hosting.md) | アプリやデータのファイルを GitHub Pages、Cloudflare Pages、Vercel、Netlify、Render、AWS/GCP/Azure に置くとき | Range への応答、1 ファイルとサイトの上限、無料枠と超えたとき、商用利用、大きな JSON のキャッシュ |
+| [hosting/cloud-containers](references/hosting/cloud-containers.md) | クラウドで常駐サーバーやコンテナ (Cloud Run、AWS App Runner、Azure Container Apps、Render、Fly.io 等) を動かすとき | Scale-to-Zero、CPU/メモリ上限、無料枠と待機課金、PostGIS やルート検索エンジンとの相性 |
 | [formats/cloud-native-formats](references/formats/cloud-native-formats.md) | ファイルのまま置いて読む構成を考えるとき | PMTiles、COG、GeoParquet などの性質 |
 | [browser/service-worker](references/browser/service-worker.md) | ブラウザに置けるかを考えるとき、いつも | Service Worker、Cache Storage、PWA |
 | [browser/storage](references/browser/storage.md) | 同上 | OPFS、IndexedDB、容量と退避 |

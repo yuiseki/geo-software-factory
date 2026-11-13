@@ -1,0 +1,5 @@
+{"id": "S1", "name": "出典と公開OSM非依存", "symptom": "出典表示が無いか禁止された公開サーバーへ接続しようとしている",
+ "checks": [
+   {"kind": "http", "path": "/", "status": 200, "contains": "避難場所データ: 評価用 (CC0)"},
+   {"kind": "command", "run": ["python3", "-B", "-E", "-s", "no_public_osm.py"]}
+ ]}

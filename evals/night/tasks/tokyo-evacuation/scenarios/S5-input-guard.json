@@ -1,0 +1,4 @@
+{"id": "S5", "name": "入力検証と反射防御", "symptom": "不正入力で400を返さないかHTMLを安全に扱えていない",
+ "checks": [
+   {"kind": "command", "run": ["python3", "-B", "-E", "-s", "guard_check.py"]}
+ ]}

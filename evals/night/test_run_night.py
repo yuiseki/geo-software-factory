@@ -127,5 +127,46 @@ class SummaryTest(unittest.TestCase):
             self.assertIn("MapLibre を採用した", Path(paths["morning_report"]).read_text(encoding="utf-8"))
 
 
+class TokyoEvacuationTaskTest(unittest.TestCase):
+    def test_task_paths_and_prepare_app_for_tokyo_evacuation(self):
+        tdir, sdir = run_night.task_paths("tokyo-evacuation")
+        self.assertTrue((tdir / "product-brief.md").is_file())
+        self.assertTrue((sdir / "S3-spatial-filter.json").is_file())
+        with tempfile.TemporaryDirectory() as d:
+            app = Path(d) / "app"
+            run_night.prepare_app(app, "baseline", task_dir=tdir)
+            self.assertTrue((app / "data" / "shelters.csv").is_file())
+            self.assertTrue((app / "data" / "hazard_zones.geojson").is_file())
+
+    def test_eval_of_eval_on_tokyo_evacuation_reference(self):
+        import os
+        import time
+        tdir, sdir = run_night.task_paths("tokyo-evacuation")
+        serve = tdir.parent / "reference" / "serve.py"
+        procs = []
+        urls = {}
+        try:
+            for brk in ("none", "osm", "swap", "bbox", "nearest", "guard"):
+                port = run_night.dark_factory.free_port()
+                p = subprocess.Popen([sys.executable, str(serve)],
+                                     env={**os.environ, "PORT": str(port), "REF_BREAK": brk})
+                procs.append(p)
+                urls[brk] = f"http://127.0.0.1:{port}"
+            time.sleep(0.4)
+            with tempfile.TemporaryDirectory() as d:
+                rep = run_night.dark_factory.eval_of_eval(
+                    sdir, urls["none"], {k: v for k, v in urls.items() if k != "none"}, Path(d) / "eoe.json"
+                )
+                self.assertTrue(rep["ok"], rep)
+                self.assertEqual(rep["breaks"]["osm"]["failed_scenarios"], ["S1"])
+                self.assertEqual(rep["breaks"]["bbox"]["failed_scenarios"], ["S3"])
+                self.assertEqual(rep["breaks"]["nearest"]["failed_scenarios"], ["S4"])
+                self.assertEqual(rep["breaks"]["guard"]["failed_scenarios"], ["S5"])
+        finally:
+            for p in procs:
+                p.terminate()
+                p.wait(timeout=3)
+
+
 if __name__ == "__main__":
     unittest.main()

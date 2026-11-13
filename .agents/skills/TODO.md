@@ -288,7 +288,7 @@
 - [x] 単体・結合テスト (`scripts/test_dark_factory.py`): preflight、eval-of-eval、ローカルの一晩ループと朝の報告生成の自動試験
 - [x] 独立 LLM 評価エージェント (`run_eval.py` の `kind: "llm"`): 観点 (rubric) と観測に基づく判定、根拠の無い合格の却下、複数回投票 (`votes`) で割れたときの不合格倒し、低確信 (`low_confidence`) と Satisfaction の集計
 - [x] `geo-software-eval/SKILL.md`、`README.md` の道具一覧表への `dark_factory.py` の追記
-- [ ] Docker モード (`GSF_DOCKER_TESTS=1`) での `dark_factory.py` 通しテストの追加
+- [x] Docker モード (`GSF_DOCKER_TESTS=1`) での `dark_factory.py` 通しテストの追加
 
 ### 2. デプロイ前関門とロールバック判定のプログラム化 (`geo-software-deploy` / `geo-software-tdd`)
 
@@ -316,7 +316,8 @@
 
 - [x] 5 つの AI プロバイダー (`claude`, `codex`, `gemini`, `opencode`, `qoder`) の `Dockerfile.*` と `run_*_docker.sh` を `evals/` に整備し、`bench.py` と `evals/night/run_night.py` で対応
 - [x] `evals/night/run_night.py` から `dark_factory.py` の報告生成 (`morning-report.md`、`eval-report.md`) を呼び出すよう統合
-- [ ] 初回では落ちやすく、`eval-feedback.md` の症状を読んで直す往復が発生する夜の課題の追加と、`skills` / `baseline` の比較実行
+- [x] 初回では落ちやすく、`eval-feedback.md` の症状を読んで直す往復が発生する夜の課題の追加 (`evals/night/tasks/tokyo-evacuation/`)
+- [ ] `tokyo-evacuation` での `skills` / `baseline` の比較実行 (`z-t` での実モデル評価)
 
 ### 6. 未着手スキルとドキュメントの整備
 

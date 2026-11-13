@@ -1,0 +1,5 @@
+{"id": "S3", "name": "浸水想定区域の空間フィルタ", "symptom": "safe_only=true の空間判定が正しく動かない",
+ "checks": [
+   {"kind": "command", "run": ["python3", "-B", "-E", "-s", "hazard_check.py"]},
+   {"kind": "geojson", "path": "/api/shelters?wheelchair=true&safe_only=true", "min_features": 7}
+ ]}

@@ -1,0 +1,6 @@
+{"id": "S2", "name": "全件の座標変換と位置精度", "symptom": "避難場所の座標が正しい位置に載らない",
+ "checks": [
+   {"kind": "geojson", "path": "/api/shelters", "bbox": [139.75, 35.69, 139.81, 35.735],
+    "min_features": 12, "require": ["id", "name", "ward", "capacity", "wheelchair", "in_hazard"]},
+   {"kind": "command", "run": ["python3", "-B", "-E", "-s", "geo_check.py"]}
+ ]}

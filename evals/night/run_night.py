@@ -59,7 +59,17 @@ def sh(cmd, **kw):
     return subprocess.run(cmd, check=True, capture_output=True, text=True, **kw)
 
 
-def prepare_app(app: Path, condition: str) -> None:
+def task_paths(task_name: str = "default") -> tuple[Path, Path]:
+    base = HERE if task_name == "default" else HERE / "tasks" / task_name
+    task_dir = base / "task"
+    scen_dir = base / "scenarios"
+    if not task_dir.is_dir() or not scen_dir.is_dir():
+        sys.exit(f"unknown night task {task_name!r}: missing {task_dir} or {scen_dir}")
+    return task_dir, scen_dir
+
+
+def prepare_app(app: Path, condition: str, task_dir: Path | None = None) -> None:
+    task_dir = task_dir or (HERE / "task")
     app.mkdir(parents=True)
     if condition == "skills":
         tar = subprocess.run(["git", "-C", str(REPO), "archive", "HEAD"], check=True, capture_output=True).stdout
@@ -75,8 +85,8 @@ def prepare_app(app: Path, condition: str) -> None:
                 shutil.rmtree(p)
             elif p.exists():
                 p.unlink()
-    shutil.copy(HERE / "task" / "product-brief.md", app / "product-brief.md")
-    shutil.copytree(HERE / "task" / "data", app / "data")
+    shutil.copy(task_dir / "product-brief.md", app / "product-brief.md")
+    shutil.copytree(task_dir / "data", app / "data")
     git = ["git", "-C", str(app), "-c", "user.email=day@example.invalid", "-c", "user.name=day"]
     sh(["git", "init", "-q", "-b", "main", str(app)])
     sh(git + ["add", "-A"])
@@ -202,6 +212,7 @@ def write_reports(root: Path, summary: dict) -> dict:
 def main(argv=None) -> int:
     ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     ap.add_argument("--condition", choices=("skills", "baseline"), required=True)
+    ap.add_argument("--task", default="default", help="task name under evals/night/tasks/ (default: default)")
     ap.add_argument("--agent", choices=AGENTS, default="codex")
     ap.add_argument("--minutes", type=int, default=45)
     ap.add_argument("--subnet", default=os.environ.get("GSF_DOCKER_SUBNET"))
@@ -212,16 +223,18 @@ def main(argv=None) -> int:
     a = ap.parse_args(argv)
     model = a.model or DEFAULT_MODELS[a.agent]
 
+    task_dir, scen_dir = task_paths(a.task)
     stamp = datetime.datetime.now(datetime.timezone.utc).strftime("%Y%m%dT%H%M%SZ")
-    run_id = a.run_id or f"{stamp}-{a.agent}-{a.condition}"
+    task_tag = "" if a.task == "default" else f"-{a.task}"
+    run_id = a.run_id or f"{stamp}-{a.agent}-{a.condition}{task_tag}"
     root = REPO / "tmp" / "evals-night" / run_id
     if root.exists():
         sys.exit(f"{root} exists")
     for d in ("handoff", "feedback", "out", "codex-home"):
         (root / d).mkdir(parents=True)
-    prepare_app(root / "app", a.condition)
-    shutil.copytree(HERE / "scenarios", root / "scenarios")
-    shutil.copy(HERE / "task" / "prompt.md", root / "handoff" / "prompt.md")
+    prepare_app(root / "app", a.condition, task_dir=task_dir)
+    shutil.copytree(scen_dir, root / "scenarios")
+    shutil.copy(task_dir / "prompt.md", root / "handoff" / "prompt.md")
     image, cmd_list, mount_dir, mount_target, extra_env, secret_file = agent_setup(
         a.agent, root, a.minutes, model, a.effort
     )
@@ -285,7 +298,7 @@ def main(argv=None) -> int:
         subprocess.run(compose + ["down", "--remove-orphans", "-t", "2"], env=env, capture_output=True)
         if secret_file is not None:
             secret_file.unlink(missing_ok=True)
-    summary = {"run": run_id, "agent": a.agent, "condition": a.condition, "model": model, "effort": a.effort,
+    summary = {"run": run_id, "task": a.task, "agent": a.agent, "condition": a.condition, "model": model, "effort": a.effort,
                "limit_minutes": a.minutes, **summarize(root, exit_code, seconds, tree)}
     summary["deploy_ready"] = bool(summary.get("final_ok") and not summary.get("left_dirty"))
     (root / "summary.json").write_text(json.dumps(summary, ensure_ascii=False, indent=1), encoding="utf-8")

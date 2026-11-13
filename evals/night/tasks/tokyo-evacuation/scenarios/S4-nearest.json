@@ -1,0 +1,4 @@
+{"id": "S4", "name": "最寄り避難場所と測地距離", "symptom": "最寄り検索の結果または距離が正しくない",
+ "checks": [
+   {"kind": "command", "run": ["python3", "-B", "-E", "-s", "nearest_check.py"]}
+ ]}

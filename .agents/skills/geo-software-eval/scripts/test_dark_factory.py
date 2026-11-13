@@ -1,5 +1,6 @@
 import http.server
 import json
+import os
 import subprocess
 import sys
 import tempfile
@@ -183,6 +184,61 @@ subprocess.run(["git", "-c", "user.email=a@example.invalid", "-c", "user.name=a"
         self.assertFalse(summary["deploy_ready"])
         morning = (self.work / "out" / "morning-report.md").read_text(encoding="utf-8")
         self.assertIn("EXPOSURE-ENV", morning)
+
+
+@unittest.skipUnless(os.environ.get("GSF_DOCKER_TESTS") == "1", "set GSF_DOCKER_TESTS=1 to run against Docker")
+class DarkFactoryDockerTest(unittest.TestCase):
+    def setUp(self):
+        self.tmp = tempfile.TemporaryDirectory()
+        self.root = Path(self.tmp.name)
+        self.app = self.root / "app"
+        self.scen = self.root / "scenarios"
+        self.work = self.root / "work"
+        self.app.mkdir()
+        self.scen.mkdir()
+        (self.app / "product-brief.md").write_text(BRIEF, encoding="utf-8")
+        (self.scen / "S1.json").write_text(json.dumps({
+            "id": "S1", "name": "出典表示", "symptom": "トップページに出典が無い",
+            "checks": [{"kind": "http", "path": "/", "status": 200, "contains": "CC0"}],
+        }, ensure_ascii=False), encoding="utf-8")
+
+    def tearDown(self):
+        self.tmp.cleanup()
+
+    def test_end_to_end_docker_mode(self):
+        impl_py = """
+import json, os, subprocess, time
+from pathlib import Path
+
+app = Path('/work/app')
+(app / 'index.html').write_text('<html>CC0</html>', encoding='utf-8')
+(app / 'start.sh').write_text('exec python3 -m http.server ${PORT:-8787}\\n', encoding='utf-8')
+srv = subprocess.Popen(['sh', 'start.sh'], cwd=str(app), env={**os.environ, 'PORT': '8787'})
+try:
+    time.sleep(0.5)
+    Path('/work/handoff/ready.json').write_text(json.dumps({'rev': 'abc1234', 'port': 8787}), encoding='utf-8')
+    fb = Path('/work/feedback/eval-feedback.md')
+    for _ in range(40):
+        if fb.is_file() and 'abc1234' in fb.read_text(encoding='utf-8'):
+            break
+        time.sleep(0.5)
+finally:
+    srv.terminate()
+    srv.wait(timeout=5)
+"""
+        summary = dark_factory.run_factory(
+            app_dir=self.app, scenarios_dir=self.scen, work_dir=self.work, mode="docker",
+            agent="custom", implementer_cmd=["python3", "-c", impl_py],
+            port=8787, minutes=2.0, subnet=os.environ.get("GSF_DOCKER_SUBNET"),
+        )
+        pre = json.loads((self.work / "out" / "preflight.json").read_text(encoding="utf-8"))
+        self.assertTrue(pre["ok"], pre)
+        self.assertTrue(summary["final_ok"], summary)
+        self.assertGreaterEqual(summary["eval_requests"], 1)
+        morning = (self.work / "out" / "morning-report.md").read_text(encoding="utf-8")
+        self.assertIn("1/1 合格", morning)
+        eval_rep = (self.work / "out" / "eval-report.md").read_text(encoding="utf-8")
+        self.assertIn("# 評価の報告: 台東区テストマップ", eval_rep)
 
 
 if __name__ == "__main__":

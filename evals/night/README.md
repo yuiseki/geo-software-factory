@@ -2,11 +2,12 @@
 
 昼に決めたプロダクト概要とデータを渡し、実装者 (`codex`, `gemini`, `claude`, `opencode`, `qoder`) が人間なしで作り、別のコンテナの評価者が見せないシナリオで判定する。evals/ のほかの課題が 1 つの判断を測るのに対し、これは昼から夜への受け渡し、評価の依頼と症状の往復、最後のコミットの判定までを通して測る。
 
-    python3 evals/night/run_night.py --condition skills|baseline [--agent codex|gemini|claude|opencode|qoder] [--minutes 45] [--subnet 10.213.57.0/24]
+    python3 evals/night/run_night.py --condition skills|baseline [--task default|tokyo-evacuation] [--agent codex|gemini|claude|opencode|qoder] [--minutes 45] [--subnet 10.213.57.0/24]
 
 | 置き場所 | 中身 |
 |---|---|
 | `task/` | 実装者に渡すもの: プロダクト概要、データ (台東区の名所 12 件、平面直角座標系 第 IX 系)、夜の指示 |
+| `tasks/tokyo-evacuation/` | 症状を読んで直す往復が起きやすい 2 つ目の課題 (浸水想定区域の空間判定、最寄り測地距離、入力検証) |
 | `scenarios/` | 評価者だけが持つ 5 本のシナリオと、評価者の側の確かめのスクリプト。`OBSERVED:` の行だけが実装者に届く |
 | `reference/` | シナリオを確かめるための手本。`REF_BREAK=swap`、`osm`、`search` の 3 つの壊し方で、それぞれ別のシナリオが落ちる |
 | `run_night.py` | 用意、隔離の確かめ、夜、最後の判定、要約 (`tmp/evals-night/<run>/summary.json`) |

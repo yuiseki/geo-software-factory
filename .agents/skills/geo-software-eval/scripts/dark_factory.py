@@ -691,7 +691,7 @@ def run_docker(app_dir: Path, scenarios_dir: Path, work_dir: Path, cmd: list[str
             if rows and rows[0].get("State") == "exited":
                 exit_code = rows[0].get("ExitCode")
                 break
-            time.sleep(5)
+            time.sleep(2)
         else:
             stopped_by = "timeout"
             exit_code = 124
@@ -708,7 +708,8 @@ def run_docker(app_dir: Path, scenarios_dir: Path, work_dir: Path, cmd: list[str
         rev = sh(["git", "-C", str(app_dir), "rev-parse", "--short", "HEAD"]).stdout.strip()
         final_yaml = docker_override(
             work_dir / "final.yaml", image,
-            ["sh", "-c", f"git clone -q /work/app /tmp/final && cd /tmp/final && PORT={port} exec {start_cmd}"],
+            ["sh", "-c", (f"if command -v git >/dev/null 2>&1; then git clone -q /work/app /tmp/final; "
+                          f"else cp -a /work/app /tmp/final; fi && cd /tmp/final && PORT={port} exec {start_cmd}")],
             subnet=subnet,
         )
         fcompose = ["docker", "compose"] + [x for f in (COMPOSE, final_yaml) for x in ("-f", str(f))]

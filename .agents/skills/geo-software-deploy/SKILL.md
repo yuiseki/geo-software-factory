@@ -12,6 +12,7 @@ geo-software-build で完成の条件を満たしたものを、本番に出し�
 | [preflight](references/preflight.md) | 夜に入る前 (昼の準備) と、デプロイの直前 | 人間に先回りして頼むもの、値を出さずに確かめる方法 |
 | [cloudflare-workers](references/cloudflare-workers.md) | Cloudflare Workers と D1 に出すとき | マイグレーション、デプロイ、独自ドメイン、確かめ方、実際に踏んだ挙動 |
 | [cloud-deploy](references/cloud-deploy.md) | AWS、Google Cloud、Microsoft Azure、Vercel、Netlify、Render に出すとき | CLI 認証、プレビュー先行デプロイ、ロールバック、台帳記録の比較と共通手順 |
+| [airgap-onprem](references/airgap-onprem.md) | LGWAN・閉域網・オンプレ VM/IIS へ納品するとき | 外部通信ゼロ確認、イメージ/wheel/タイル同梱バンドル、IIS/systemd 配備要点 |
 | [verify](references/verify.md) | デプロイの後 | 本番の URL での確かめ方 |
 | [scripts/deploy_gate.py](scripts/deploy_gate.py) | デプロイの直前とロールバックのとき | 未コミットの変更、評価した版との不一致、公開を止める監査指摘、破壊的な SQL をプログラムで拒み、出した版とコミットを対で台帳に記録して前の版を返す |
 | [scripts/smoke.py](scripts/smoke.py) | デプロイの直後に | 本番の URL に GET だけで当て、疎通、状態コード、応答時間、`.git` や `.env` の露出、セキュリティのヘッダ、source map を判定する |

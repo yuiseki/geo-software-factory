@@ -13,6 +13,7 @@ description: 地図プロダクトを運用する。地図 API のキーの管�
 | [usage-monitoring](references/usage-monitoring.md) | 予算を決めるとき、請求が急に増えたとき | 提供元ごとの利用量の見え方、通知、ハードキャップの有無、超過時の振る舞い |
 | [data-update](references/data-update.md) | 地図データやタイルを更新するとき | 生成と取得、版ごとの別名での配置、ETag、CDN のキャッシュの消し方、帰属表示の日付 |
 | [fallback](references/fallback.md) | 障害に備えるとき、地図が出なくなったとき | ステータスページの一覧、原因の見分け方、予備のスタイル、キャッシュの規約、利用者への見せ方 |
+| [handover-sla](references/handover-sla.md) | 受託開発や自治体案件で引き渡すとき | SLA・RPO/RTO 定義、バックアップ・DR、1 次切り分けフロー、引き渡し文書一式 |
 | geo-software-infra の [providers](../geo-software-infra/references/providers/) | 提供元の単価、無料枠、規約を確かめるとき | 提供元ごとの事実 (2026-11-10 確認) |
 | geo-software-arch の [self-hosting](../geo-software-arch/references/self-hosting.md) と [edge-functions](../geo-software-arch/references/edge/edge-functions.md) | 自前で配信しているとき | タイルの生成と配信、Cloudflare Workers と D1 の上限 |
 

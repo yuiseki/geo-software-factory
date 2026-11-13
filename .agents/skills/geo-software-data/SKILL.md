@@ -23,6 +23,7 @@ description: 地図に載せる主題データ (ベースマップ以外) の出
 | [sources/live-tracking](references/sources/live-tracking.md) | 航空機や船舶の生きた位置が要るとき | ADS-B と AIS の出どころ、非商用の条件、プライバシー |
 | [license-mixing](references/license-mixing.md) | 複数のデータを混ぜるとき | ライセンスを混ぜたときの条件 |
 | [ai-collected-data](references/ai-collected-data.md) | AI エージェントで集めた、確かめたデータを載せるとき | 記録する列、地図での表示、抜き取り検査、ライセンスと ODbL |
+| [legacy-cad-cadastral](references/legacy-cad-cadastral.md) | Shapefile、CAD、登記所備付地図、庁内 CSV を取り込むとき | CP932 文字化け・10 文字制限、DXF/DWG/SXF、任意座標系、地番と住居表示の名寄せ |
 
 ## 入力
 

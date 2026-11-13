@@ -1,8 +1,9 @@
 # TODO
 
-- [x] geo-software-product-grilling (5/5)
+- [x] geo-software-product-grilling (6/6)
   - [x] SKILL.md
   - [x] references/question-bank.md
+  - [x] references/enterprise-contract.md
   - [x] assets/product-brief-template.md
   - [x] scripts/check_brief.py
   - [x] scripts/test_check_brief.py
@@ -112,10 +113,11 @@
   - [x] references/python/cartopy.md
   - [x] references/python/geoai.md
   - [x] references/frameworks/rustgis.md
-- [x] geo-software-data (15/15)
+- [x] geo-software-data (16/16)
   - [x] SKILL.md
   - [x] references/criteria.md
   - [x] references/license-mixing.md
+  - [x] references/legacy-cad-cadastral.md
   - [x] references/sources/abr.md
   - [x] references/sources/alltheplaces.md
   - [x] references/sources/estat.md
@@ -138,10 +140,11 @@
   - [x] references/survey-act.md
   - [x] references/youtube-embed.md
   - [x] references/itunes-search-api.md
-- [x] geo-software-ux-design (9/9)
+- [x] geo-software-ux-design (10/10)
   - [x] SKILL.md
   - [x] references/accessibility.md
   - [x] references/cartography.md
+  - [x] references/enterprise-gis-ui.md
   - [x] references/geolocation-ux.md
   - [x] references/initial-load.md
   - [x] references/many-features.md
@@ -155,11 +158,12 @@
   - [x] references/map-load-estimation.md
   - [x] references/render-performance.md
   - [x] references/tiles-per-view.md
-- [x] geo-software-ops (5/5)
+- [x] geo-software-ops (6/6)
   - [x] SKILL.md
   - [x] references/api-key-management.md
   - [x] references/data-update.md
   - [x] references/fallback.md
+  - [x] references/handover-sla.md
   - [x] references/usage-monitoring.md
 - [x] geo-software-auth (15/15)
   - [x] SKILL.md
@@ -242,13 +246,14 @@
   - [x] assets/ci-checklist.md
   - [x] scripts/tdd_guard.py
   - [x] scripts/test_tdd_guard.py
-- [x] geo-software-security-audit (10/10)
+- [x] geo-software-security-audit (11/11)
   - [x] SKILL.md
   - [x] references/entrypoints.md
   - [x] references/auth.md
   - [x] references/injection.md
   - [x] references/abuse.md
   - [x] references/exposure.md
+  - [x] references/gov-enterprise-audit.md
   - [x] references/triage.md
   - [x] assets/audit-report-template.md
   - [x] scripts/audit_probe.py
@@ -259,11 +264,12 @@
   - [x] references/testing.md
   - [x] references/data.md
   - [x] references/pitfalls.md
-- [x] geo-software-deploy (10/10)
+- [x] geo-software-deploy (11/11)
   - [x] SKILL.md
   - [x] references/preflight.md
   - [x] references/cloudflare-workers.md
   - [x] references/cloud-deploy.md
+  - [x] references/airgap-onprem.md
   - [x] references/verify.md
   - [x] references/publish-repo.md
   - [x] scripts/smoke.py

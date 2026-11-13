@@ -10,6 +10,7 @@ description: 作りたい地図プロダクトについて、誰にどんな価�
 | reference | 読むとき | 中身 |
 |---|---|---|
 | [question-bank](references/question-bank.md) | 質問を組み立てるとき | 観点ごとの質問と選択肢の作り方、2026-11-10 の聞き取りの実例 |
+| [enterprise-contract](references/enterprise-contract.md) | 業務用・受託・自治体案件のとき | 検収条件、納入物、既存台帳連携、閉域網、SLA、アクセシビリティの追加質問 |
 
 ひな形は [assets/product-brief-template.md](assets/product-brief-template.md)。夜に渡す前に [scripts/check_brief.py](scripts/check_brief.py) で、価値の芯、Must、シナリオの置き場所、判断の方針が埋まり、「準備したもの」の鍵の名前が設定済みで CLI があるかを確かめる (値は読まない)。
 

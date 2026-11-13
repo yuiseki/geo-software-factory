@@ -17,6 +17,7 @@ description: 地図プロダクトの UI と UX を設計する。マーカー�
 | [cartography](references/cartography.md) | 配色や注記を決めるとき、主題図を描くとき | 注記の読みやすさ、色覚の多様性に配慮した配色、コロプレスの階級区分 |
 | [feedback-from-builds](references/feedback-from-builds.md) | 画面の部品と導線を決めるとき、夜に見た目で迷ったとき | 作ったものへの本人の指摘を一般化した既定: 画面の主役と導線、地図の表示範囲、書けない人への見せ方、常時表示の画面、位置を示す 2 つの縮尺の地図、狭い場所の文字 |
 | [accessibility](references/accessibility.md) | 公開するとき、アクセシビリティが要件に入るとき | WCAG 2.2 の地図に関わる達成基準、キーボード、スクリーンリーダー、ライブラリごとの対応 |
+| [enterprise-gis-ui](references/enterprise-gis-ui.md) | 業務・行政 GIS の画面を設計するとき | 属性テーブル連動、作図・編集と排他制御、測地計測、定型 PDF 印刷、オフライン調査、JIS X 8341-3 AA |
 
 ブラウザの API の事実 (Geolocation、Wake Lock、Worker) は geo-software-arch の [device](../geo-software-arch/references/browser/device.md) と [workers](../geo-software-arch/references/browser/workers.md)、ライブラリの版とバンドルの大きさは geo-software-library の各 reference (例: [maplibre-gl-js](../geo-software-library/references/libraries/maplibre-gl-js.md))、帰属表示と位置情報の扱いは geo-software-legal-check の [attribution](../geo-software-legal-check/references/attribution.md) と [location-privacy](../geo-software-legal-check/references/location-privacy.md) にある。ここでは繰り返さず、リンクする。
 

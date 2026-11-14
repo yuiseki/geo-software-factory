@@ -78,6 +78,11 @@ ArcGIS Location Platform は、Esri が開発者向けに出している PaaS �
 - 帰属表示 (Powered by Esri と提供元) を出せない画面設計の場合。
 - 月 1,000 万ロード級でタイル方式を使う場合。公開単価に段階割引がなく、概算は月 2 万 USD を超える。
 
+## プライバシーとテレメトリ (2026-11-14 確認)
+
+- **位置づけと越境移転**: Esri Products & Services Privacy Statement Supplement により、顧客がデータ管理者、Esri がデータ処理者 (Data Processor) として位置づけられ、EU-U.S. Data Privacy Framework (DPF)、SCC、DPA に対応している。
+- **利用計測とストア開示**: Location Platform ダッシュボードで API キーごとのリクエスト数や地図ロード等の利用指標を計測する。ネイティブ SDK (Swift / .NET MAUI / Unreal / Qt 等) には Apple 向け Privacy Manifest が同梱されているが、エンドユーザー向けの位置テレメトリ自動収集やオプトアウトの詳細は利用する SDK 構成ごとに要確認 (未確認)。
+
 ## 出典
 
 - https://location.arcgis.com/

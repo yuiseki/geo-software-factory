@@ -59,6 +59,11 @@
 - 日本の地形を高解像度で見せたい場合に Cesium World Terrain だけを使う構成 (日本は高解像度地域に挙がっていない。Japan Regional Terrain を使う)。
 - 稼働率の契約上の保証が必要な用途 (標準の規約に SLA がない)。
 
+## プライバシーとテレメトリ (2026-11-14 確認)
+
+- **Cesium ion とサイト解析**: Cesium の Privacy Policy / Cookie Policy により、Web サイトやアカウント管理画面では Cookie や解析ツールが利用される。Cesium ion のトークン経由でアセットを配信する際は利用量計測と認証のための接続ログが処理される。
+- **エンドユーザーの位置テレメトリ**: CesiumJS 自体は OSS ライブラリであり、Cesium 社へエンドユーザーの現在地を自動送信するテレメトリ機能の記載は未確認。ただし Cesium ion 経由で Bing Maps や Google Photorealistic 3D Tiles を配信する場合は、各供給元のプライバシー・接続先要件が適用される。
+
 ## 出典
 
 - https://cesium.com/platform/cesium-ion/

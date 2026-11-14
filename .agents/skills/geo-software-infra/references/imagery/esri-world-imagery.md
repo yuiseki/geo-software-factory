@@ -54,6 +54,10 @@ Esri World Imagery は、全球の低解像度衛星画像と、世界の大半�
 - 撮影日がそろった最新画像が必要な場合や、特定の日付の画像を指定して取得したい場合。モザイクは地点ごとに撮影日が違う。
 - 国内の特定地域で解像度や撮影時期の保証が必要な場合。国内の範囲と解像度の一覧が公表されていない。
 
+## プライバシーとテレメトリ (2026-11-14 確認)
+
+- **Esri プラットフォームの扱い**: `esri-arcgis-location-platform` と同様、Esri Products & Services Privacy Statement Supplement の対象であり、API キーによる利用計測が行われる。衛星画像タイルのみを標準 HTTP で取得する場合のエンドユーザー位置テレメトリの有無やネイティブ SDK 利用時の開示項目は、利用形態に応じて [esri-arcgis-location-platform](../providers/esri-arcgis-location-platform.md) とあわせて確認する (画像単体でのログ保持詳細は未確認)。
+
 ## 出典
 
 - https://www.arcgis.com/home/item.html?id=10df2279f9684e4a9f6a7f08febac2a9

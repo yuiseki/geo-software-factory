@@ -78,6 +78,11 @@ Stadia Maps は、OpenStreetMap ベースのベクトルタイルとラスタタ
 - 公開 SLA が必要で、Enterprise 契約を結ばない場合。
 - 100MB を超えるオフライン地図をアプリに持たせたい場合 (Enterprise か Embedded の個別契約になる)。
 
+## プライバシーとテレメトリ (2026-11-14 確認)
+
+- **クッキーレス・匿名設計**: Stadia Maps は「phone home するクライアント SDK」を使わず、タイル・ルート・ジオコーディング等の API リクエストは Cookie レス・ステートレスで、エンドユーザーの横断追跡や広告利用を行わないと明記している。
+- **EU 専用エンドポイントと DPA**: 厳格なデータ所在地要件向けに、ネットワークエッジで PII を除去してフランクフルト・パリのみで処理する EU 専用エンドポイント (`tiles-eu.stadiamaps.com` / `api-eu.stadiamaps.com`) と DPA を提供している。
+
 ## 出典
 
 - https://stadiamaps.com/

@@ -78,6 +78,15 @@
 
 日本語の窓口、請求書払い、国内法人との契約が要るか。公共案件では、国内の契約主体と請求書払いが要件になることが多い。
 
+### 9. プライバシーとテレメトリ
+
+無償または低価格の商用 SDK でも、利用者の端末情報や位置情報が提供元へ自動送信されることがある。要件にプライバシー重視、閉域・機微業務、ストア申請が含まれる場合は以下を並べて比べる。
+
+- **自動テレメトリ送信**: 地図 SDK やタイル取得の裏で、端末識別子、OS/アプリ情報、利用統計、または位置情報が提供元へ自動送信されるか ([google-maps](providers/google-maps.md)、[mapbox](providers/mapbox.md))。
+- **オプトアウト可否と義務**: エンドユーザーがテレメトリを拒否 (オプトアウト) できるか、またアプリ側にオプトアウト UI の実装義務が課されるか (例: Mapbox Telemetry)。
+- **ストア開示・法対応の負担**: Apple `PrivacyInfo.xcprivacy` や Google Play Data safety での開示項目が増えるか。外国の事業者へ位置や識別子が送られる場合、電気通信事業法の外部送信規律 ([external-transmission](../../geo-software-legal-check/references/external-transmission.md)) と個情法 第 28 条の外国第三者提供 ([location-privacy](../../geo-software-legal-check/references/location-privacy.md)) の対応が必要になる。
+- **テレメトリを避ける選択肢**: 端末識別子や位置テレメトリの送信を完全に避けたい場合は、自前配信 (PMTiles 等) とオープンソース SDK (MapLibre GL JS / MapLibre Native) の組み合わせを選ぶ。
+
 ## 費用の見積もり方
 
 ### 課金単位と経路を先に決める

@@ -88,6 +88,12 @@ Google Maps Platform は Google マップの地図、ストリートビュー、
 - 運営の継続性 (運営主体、資金源): Google LLC が運営する。規約の重要な変更は通知から 30 日後に発効し、SLA に不利な変更は 90 日前までに通知する ([利用規約 1.3(b)](https://cloud.google.com/maps-platform/terms))。旧 Places API、Directions API、Distance Matrix API は Legacy 扱いで、廃止の 12 か月以上前に告知すると説明されている ([March 2025 changes](https://developers.google.com/maps/billing-and-pricing/march-2025))。
 - 障害情報の公開先: https://status.cloud.google.com/maps-platform/
 
+## プライバシーとテレメトリ (2026-11-14 確認)
+
+- **モバイル SDK の自動送信**: Maps SDK for Android / iOS は標準の地図表示の無料枠が `Unlimited` である一方、Google Play Data safety 向け公式ガイド ([Android Data safety](https://developers.google.com/maps/documentation/android-sdk/data-safety)) および iOS Privacy Manifest (`PrivacyInfo.xcprivacy`) 向けガイドによると、端末・OS・SDK 版、アプリ名・API キー、アプリ横断の匿名識別子 (Internal Usage Attribution Identifier)、診断・パフォーマンス指標をサービスの維持・保護・改善のために自動で Google へ送信する。
+- **位置情報の扱い**: アプリ側で現在地表示 (My Location レイヤー等) や位置権限を有効にした場合は、設定に応じて「おおよその位置」または「正確な位置」も処理・送信対象となり、ストア上のデータ開示 (Data safety / App Privacy) へ反映する必要がある。
+- **実務上の注意**: 自動テレメトリを SDK 単体で無効化する一般向け設定は見当たらず（未確認）、端末識別子や利用指標を外部 (外国事業者) へ一切送りたくない業務・自治体案件では不向きになりやすい。
+
 ## Photorealistic 3D Tiles
 
 - 何を提供するか (形式、カバー範囲、国内の都市): 衛星・航空写真を貼った 3D メッシュを OGC 3D Tiles 形式で配る ([3D Tiles overview](https://developers.google.com/maps/documentation/tile/3d-tiles-overview))。ルートタイルセット `https://tile.googleapis.com/v1/3dtiles/root.json?key=...` を取得し、そこから辿ってタイルを読む。1 回のルートタイルセット取得で少なくとも 3 時間はタイルを取得でき、その後はルートを取り直す ([3D Tiles](https://developers.google.com/maps/documentation/tile/3d-tiles))。カバー範囲は国単位で示され、日本は Map Tiles 2D / 3D ともに「good data quality and availability」とされる ([Coverage](https://developers.google.com/maps/coverage))。国内のどの都市が 3D メッシュで覆われているかの一覧は公開されていない (未確認)。EEA に請求先がある開発者は 2025-07-08 から EEA 向け規約が適用され、一部のコンテンツが返らなくなる ([3D Tiles](https://developers.google.com/maps/documentation/tile/3d-tiles))。

@@ -86,6 +86,12 @@ Mapbox は地図タイル (ベクトル・ラスタ)、スタイル編集ツー�
 - 運営の継続性 (運営主体、資金源): Mapbox, Inc. はベンチャーキャピタルの出資を受けた未上場企業で、2017 年に SoftBank Vision Fund が主導するシリーズ C で 1 億 6,400 万ドルを調達した ([TechCrunch 2017-10-10](https://techcrunch.com/2017/10/10/mapbox-raises-164m-to-expand-its-location-platform-to-cars-vr-ar-and-asia/))。2020 年に SoftBank との合弁 Mapbox Japan を設立した ([TechCrunch 2020-05-20](https://techcrunch.com/2020/05/20/mapbox-and-softbank-form-joint-venture-to-provide-mapping-tech-to-japanese-developers/))。現在の財務状況は未確認。
 - 障害情報の公開先: https://status.mapbox.com/
 
+## プライバシーとテレメトリ (2026-11-14 確認)
+
+- **Mapbox Telemetry**: Mapbox のモバイル SDK (Android / iOS / Flutter) には位置分析基盤である Mapbox Telemetry が内蔵されており、地図とナビゲーションの改善のために匿名化された位置データと利用データを収集する ([Mapbox Telemetry](https://docs.mapbox.com/help/troubleshooting/telemetry/))。
+- **オプトアウト提供の規約義務**: 規約上、開発者はエンドユーザーが位置テレメトリを個別にオプトアウトできる手段を必ず提供しなければならない。既定の Mapbox 帰属表示コントロール (info アイコン) にはオプトアウト用メニューが含まれているが、帰属表示を非表示・独自実装する場合は、アプリの設定画面等に代替のオプトアウト UI を設ける義務がある。
+- **ストア開示**: iOS Privacy Manifest 等のストア開示で、位置情報・診断データの収集とユーザーによるオプトアウト可否を整合させて記載する。
+
 ## 向いている場面
 
 - Mapbox GL JS を使い、Web の地図ロードが月 5 万以下に収まる、または地図ロード単位の予算見積もりで足りる Web アプリ。

@@ -12,6 +12,7 @@ description: 既存の地図プロダクトを、別の地図サービスやラ�
 | [from-google-maps](references/from-google-maps.md) | Google Maps Platform から移るとき | Google Maps JavaScript API、Places、Geocoding、Directions から MapLibre GL JS、OpenLayers、Leaflet などへの API の対応と、併用とデータの持ち越しの規約 |
 | [from-mapbox](references/from-mapbox.md) | Mapbox から移るとき | Mapbox GL JS v1 / v2 以降から MapLibre GL JS への置き換え (パッケージ、トークン、`mapbox://`、スタイル仕様の違い、プラグイン) と、Studio のスタイルとタイルの規約 |
 | [from-leaflet-raster](references/from-leaflet-raster.md) | ラスタタイルと Leaflet から移るとき | Leaflet に残してベクトルの層を足すか、MapLibre GL JS や OpenLayers に移るかの目安と、プラグインの対応 |
+| [legacy-rewrite-and-upgrade](references/legacy-rewrite-and-upgrade.md) | 既存ソフトの改修、依存関係の更新、モダン構成への全面作り直しのとき | 旧ソフトを正本とする特性テスト、新環境への厳密なテスト移植、新旧突合による TDD 移行 |
 | [migration-plan](references/migration-plan.md) | どの移行でも、計画を立てるとき | 棚卸しの項目、機能フラグや段階的な公開、比較、戻し方、移行元を止める手順 |
 
 ## 入力

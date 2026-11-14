@@ -193,11 +193,12 @@
   - [x] references/standards/ogc-classic.md
   - [x] references/standards/sensorthings.md
   - [x] references/standards/stac-api.md
-- [x] geo-software-migrate (5/5)
+- [x] geo-software-migrate (6/6)
   - [x] SKILL.md
   - [x] references/from-google-maps.md
   - [x] references/from-leaflet-raster.md
   - [x] references/from-mapbox.md
+  - [x] references/legacy-rewrite-and-upgrade.md
   - [x] references/migration-plan.md
 - [x] geo-software-eval (24/24)
   - [x] SKILL.md
@@ -236,8 +237,9 @@
   - [x] assets/unattended-settings.json
   - [x] scripts/swarm.py
   - [x] scripts/test_swarm.py
-- [x] geo-software-tdd (9/9)
+- [x] geo-software-tdd (10/10)
   - [x] SKILL.md
+  - [x] references/characterization-legacy.md
   - [x] references/kinds.md
   - [x] references/fixtures.md
   - [x] references/ci.md

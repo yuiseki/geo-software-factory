@@ -11,6 +11,7 @@ description: 地図プロダクトを作る実装者が、人間の確認の前�
 
 | reference | 読むとき | 中身 |
 |---|---|---|
+| [characterization-legacy](references/characterization-legacy.md) | 既存ソフトの改修・機能追加、依存更新、全面作り直しのとき | 旧ソフトを正本として特性テストを追加し、新環境へ厳密に移植してから TDD で進める手順 |
 | [kinds](references/kinds.md) | 何の試験を書くか決めるとき | 地図のプロダクトの試験の種類と、それぞれの書き方と合否の決め方 |
 | [fixtures](references/fixtures.md) | 試験のデータと通信を用意するとき | 手元で閉じる試験、タイルとフォントの持ち方、通信の差し替え、公開のサーバーを呼ばない仕組み |
 | [ci](references/ci.md) | CI を組むとき | 段の分け方、1 つの合否、GPU の無い CI での描画、版の両端、ライセンスと大きさの関門 |

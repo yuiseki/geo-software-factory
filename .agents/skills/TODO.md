@@ -200,8 +200,9 @@
   - [x] references/from-mapbox.md
   - [x] references/legacy-rewrite-and-upgrade.md
   - [x] references/migration-plan.md
-- [x] geo-software-eval (24/24)
+- [x] geo-software-eval (25/25)
   - [x] SKILL.md
+  - [x] references/design-review.md
   - [x] references/scenarios.md
   - [x] references/map-observables.md
   - [x] references/judging.md

@@ -66,7 +66,7 @@
   - [x] references/3d/plateau.md
   - [x] references/niche.md
   - [x] references/providers/mierune.md
-- [x] geo-software-library (46/46)
+- [x] geo-software-library (47/47)
   - [x] SKILL.md
   - [x] references/criteria.md
   - [x] references/libraries/leaflet.md
@@ -80,6 +80,7 @@
   - [x] references/libraries/maptalks.md
   - [x] references/libraries/openglobus.md
   - [x] references/libraries/navara.md
+  - [x] references/libraries/ortho-earth.md
   - [x] references/libraries/globe-gl.md
   - [x] references/libraries/d3-geo.md
   - [x] references/frameworks/terriajs.md

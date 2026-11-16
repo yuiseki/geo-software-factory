@@ -289,6 +289,8 @@
 - [x] modern-web-guidance (2/2)
   - [x] SKILL.md
   - [x] guides/
+- [x] stop-describing-ui (1/1)
+  - [x] SKILL.md
 
 ## ダークファクトリー実装計画
 

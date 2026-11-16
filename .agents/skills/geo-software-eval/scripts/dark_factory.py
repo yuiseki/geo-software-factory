@@ -162,6 +162,117 @@ def eval_of_eval(scenarios_dir: Path, good_base: str, broken_bases: dict[str, st
     return out
 
 
+def ledger_path(work_dir: Path) -> Path:
+    return work_dir / "state" / "ledger.json"
+
+
+def load_ledger(work_dir: Path, initial_rev: str | None = None, day_commits: int = 1) -> dict:
+    p = ledger_path(work_dir)
+    if p.is_file():
+        return json.loads(p.read_text(encoding="utf-8"))
+    return {
+        "version": 1,
+        "resume_epoch": 0,
+        "day_commits": day_commits,
+        "best_rev": initial_rev,
+        "best_satisfaction": -1.0,
+        "consecutive_no_progress": 0,
+        "dead_ends": [],
+        "rounds": [],
+    }
+
+
+def save_ledger(work_dir: Path, ledger: dict) -> None:
+    p = ledger_path(work_dir)
+    p.parent.mkdir(parents=True, exist_ok=True)
+    tmp = p.with_suffix(".tmp")
+    tmp.write_text(json.dumps(ledger, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    tmp.replace(p)
+
+
+def rollback_to_best(app_dir: Path, best_rev: str, round_num: int) -> str | None:
+    """Save the regressed HEAD on a dead-end branch and reset the working tree to best_rev."""
+    if not best_rev:
+        return None
+    branch = f"dead-end/round-{round_num}"
+    subprocess.run(["git", "-C", str(app_dir), "branch", "-f", branch, "HEAD"], capture_output=True)
+    sh(["git", "-C", str(app_dir), "reset", "--hard", best_rev])
+    sh(["git", "-C", str(app_dir), "clean", "-fd"])
+    return branch
+
+
+def render_round_prompt(base_prompt: str, ledger: dict, round_num: int, max_rounds: int,
+                        remaining_minutes: float, feedback_path: Path, stagnation_limit: int = 3) -> str:
+    lines = [base_prompt.rstrip(), "", "## ハーネスからの現在状態 (Round Ledger)", ""]
+    lines.append(f"- ラウンド: {round_num} / {max_rounds} (resume_epoch: {ledger.get('resume_epoch', 0)})")
+    lines.append(f"- 残り時間: 約 {max(0.0, remaining_minutes):.1f} 分")
+    best_rev = ledger.get("best_rev") or "なし"
+    best_sat = ledger.get("best_satisfaction", -1.0)
+    sat_str = f"{best_sat:.3f}" if best_sat >= 0 else "未評価"
+    lines.append(f"- 現在の最高到達コミット: `{best_rev}` (Satisfaction: {sat_str})")
+
+    dead_ends = ledger.get("dead_ends") or []
+    if dead_ends:
+        lines.append("- 過去に試して失敗・退行した手 (同じ手は繰り返さない):")
+        for item in dead_ends[-5:]:
+            lines.append(f"  - {item}")
+
+    if ledger.get("consecutive_no_progress", 0) >= stagnation_limit:
+        lines.extend([
+            "",
+            "## 停滞監査の指示 (重要)",
+            f"- 直近 {ledger['consecutive_no_progress']} ラウンド連続で評価が改善していません。",
+            "- 同じ箇所の小手先の修正を止め、原因を根本から切り分けて別アプローチを設計・実装してください。",
+        ])
+
+    if feedback_path.is_file():
+        fb = feedback_path.read_text(encoding="utf-8").strip()
+        if fb:
+            if len(fb) > 4000:
+                fb = fb[:4000] + "\n...(省略)"
+            lines.extend(["", "## 直近の評価症状 (eval-feedback.md)", "", fb])
+
+    lines.append("")
+    return "\n".join(lines)
+
+
+def doctor(agent: str = "claude", mode: str = "local", app_dir: Path | None = None,
+           env: dict | None = None) -> dict:
+    """Check runtime prerequisites (git, python3, agent CLI, docker, and optional brief env/CLIs)."""
+    env = os.environ if env is None else env
+    checks: dict[str, dict] = {}
+
+    def probe_cmd(name: str, cmd: list[str]) -> dict:
+        exe = shutil.which(cmd[0])
+        if not exe:
+            return {"ok": False, "error": f"{cmd[0]} が PATH に無い"}
+        try:
+            p = subprocess.run(cmd, capture_output=True, text=True, timeout=10)
+            out = (p.stdout or p.stderr).strip().splitlines()
+            return {"ok": p.returncode == 0, "path": exe, "version": out[0] if out else ""}
+        except (OSError, subprocess.TimeoutExpired) as e:
+            return {"ok": False, "path": exe, "error": str(e)}
+
+    checks["python3"] = probe_cmd("python3", [sys.executable, "--version"])
+    checks["git"] = probe_cmd("git", ["git", "--version"])
+    agent_bins = {
+        "claude": ["claude", "--version"],
+        "codex": ["codex", "--version"],
+        "gemini": ["agy", "--version"],
+        "opencode": ["opencode", "--version"],
+        "qoder": ["qodercli", "--version"],
+    }
+    if agent in agent_bins:
+        checks[f"agent:{agent}"] = probe_cmd(agent, agent_bins[agent])
+    if mode == "docker":
+        checks["docker_compose"] = probe_cmd("docker", ["docker", "compose", "version"])
+    if app_dir is not None and (app_dir / "product-brief.md").is_file():
+        checks["brief"] = check_brief.check(app_dir / "product-brief.md", env=env)
+
+    ok = all(v.get("ok") for v in checks.values())
+    return {"ok": ok, "agent": agent, "mode": mode, "checks": checks}
+
+
 def prepare_workspace(app_dir: Path, work_dir: Path, scenarios_dir: Path, install_skills: bool = False,
                       repo_root: Path | None = None, deadline: datetime.datetime | None = None,
                       port: int = 8787, start_cmd: str = "sh start.sh", mode: str = "local") -> dict:
@@ -223,6 +334,7 @@ def prepare_workspace(app_dir: Path, work_dir: Path, scenarios_dir: Path, instal
     ])
     prompt_path = work_dir / "handoff" / "prompt.md"
     prompt_path.write_text(prompt, encoding="utf-8")
+    (work_dir / "state" / "base-prompt.md").write_text(prompt, encoding="utf-8")
 
     checklist_path = work_dir / "state" / "checklist.txt"
     if not checklist_path.exists():
@@ -356,7 +468,9 @@ def default_agent_cmd(agent: str, work_dir: Path, model: str | None = None, effo
 
 
 def judge_clean_checkout(app_dir: Path, scenarios_dir: Path, work_dir: Path, start_cmd: str = "sh start.sh",
-                         startup_timeout: float = 15.0, eval_timeout: float = 15.0) -> dict:
+                         startup_timeout: float = 15.0, eval_timeout: float = 15.0,
+                         report_path: Path | None = None, feedback_path: Path | None = None,
+                         run_audit: bool = True) -> dict:
     """Clone HEAD into a clean directory, start the app on a free port, and judge it once with run_eval.py."""
     rev = sh(["git", "-C", str(app_dir), "rev-parse", "--short", "HEAD"]).stdout.strip()
     checkout = work_dir / "final-checkout"
@@ -367,8 +481,8 @@ def judge_clean_checkout(app_dir: Path, scenarios_dir: Path, work_dir: Path, sta
     port = free_port()
     env = {**os.environ, "PORT": str(port)}
     log_path = work_dir / "out" / "final-app.log"
-    report_path = work_dir / "out" / "final.json"
-    feedback_path = work_dir / "feedback" / "final-feedback.md"
+    rep_path = report_path or (work_dir / "out" / "final.json")
+    fb_path = feedback_path or (work_dir / "feedback" / "final-feedback.md")
     with open(log_path, "w", encoding="utf-8") as log_file:
         proc = subprocess.Popen(["sh", "-c", start_cmd], cwd=checkout, env=env,
                                 stdout=log_file, stderr=subprocess.STDOUT, start_new_session=True)
@@ -377,14 +491,15 @@ def judge_clean_checkout(app_dir: Path, scenarios_dir: Path, work_dir: Path, sta
             out = None
             while True:
                 out = run_eval.run(scenarios=scenarios_dir, base=f"http://127.0.0.1:{port}", app_repo=None,
-                                   report=report_path, feedback=feedback_path, timeout=eval_timeout, version=rev)
+                                   report=rep_path, feedback=fb_path, timeout=eval_timeout, version=rev)
                 no_answer = any(c["observed"].get("status") == "応答なし"
                                 for s in out["scenarios"] for c in s["checks"])
                 if not no_answer or time.monotonic() >= deadline or proc.poll() is not None:
                     break
                 time.sleep(0.25)
-            audit_probe.probe(base=f"http://127.0.0.1:{port}", report_path=work_dir / "out" / "audit.json",
-                              timeout=eval_timeout)
+            if run_audit:
+                audit_probe.probe(base=f"http://127.0.0.1:{port}", report_path=work_dir / "out" / "audit.json",
+                                  timeout=eval_timeout)
             return out
         finally:
             terminate_process(proc)
@@ -504,7 +619,9 @@ def render_morning_report(app_dir: Path, scenarios_dir: Path, work_dir: Path, su
         f"(昼のあとのコミット {summary.get('commits_after_day', 0)} 本、未コミットの変更: "
         f"{'あり' if summary.get('left_dirty') else 'なし'})",
         f"- デプロイ可能か (Deploy Gate): {'はい' if summary.get('deploy_ready') else 'いいえ'}",
-        f"- かかった時間: {summary.get('minutes', 0)} 分",
+        f"- かかった時間: {summary.get('minutes', 0)} 分 "
+        f"(ラウンド数: {summary.get('rounds_executed', 1)}、ロールバック: {summary.get('rollbacks', 0)} 回、"
+        f"resume_epoch: {summary.get('resume_epoch', 0)})",
     ]
     if prod_smoke:
         smoke_ok = not prod_smoke.get("errors")
@@ -575,9 +692,26 @@ def render_morning_report(app_dir: Path, scenarios_dir: Path, work_dir: Path, su
     return "\n".join(lines) + "\n"
 
 
+def _activity_fingerprint(log_path: Path, ready_path: Path, app_dir: Path) -> tuple:
+    log_sz = log_path.stat().st_size if log_path.is_file() else 0
+    ready_mt = ready_path.stat().st_mtime_ns if ready_path.is_file() else 0
+    git_mt = 0
+    for p in app_dir.rglob("*"):
+        if ".git" in p.parts:
+            continue
+        try:
+            mt = p.stat().st_mtime_ns
+            if mt > git_mt:
+                git_mt = mt
+        except OSError:
+            pass
+    return (log_sz, ready_mt, git_mt)
+
+
 def run_local(app_dir: Path, scenarios_dir: Path, work_dir: Path, cmd: list[str], port: int = 8787,
               start_cmd: str = "sh start.sh", minutes: float = 45.0, watch_interval: float = 0.2,
-              startup_timeout: float = 15.0) -> tuple[int | None, str | None]:
+              startup_timeout: float = 15.0, inactivity_seconds: float | None = 600.0,
+              round_num: int | None = None) -> tuple[int | None, str | None]:
     handoff = work_dir / "handoff"
     feedback = work_dir / "feedback" / "eval-feedback.md"
     out_dir = work_dir / "out"
@@ -608,27 +742,45 @@ def run_local(app_dir: Path, scenarios_dir: Path, work_dir: Path, cmd: list[str]
         "RUN_DEADLINE": deadline_dt.isoformat(),
         "STOP_GUARD_CHECKLIST": str((work_dir / "state" / "checklist.txt").resolve()),
         "APP_PORT": str(port),
+        "GSF_ROUND": str(round_num or 1),
     }
 
-    log_path = work_dir / "implementer.log"
+    log_name = f"implementer-r{round_num:03d}.log" if round_num else "implementer.log"
+    log_path = work_dir / log_name
+    ready_path = handoff / "ready.json"
     stopped_by = None
     exit_code = None
     deadline_mono = time.monotonic() + minutes * 60.0
+    last_fp = _activity_fingerprint(log_path, ready_path, app_dir)
+    last_activity = time.monotonic()
+    last_fp_check = last_activity
     try:
         with open(log_path, "w", encoding="utf-8") as log_file:
             proc = subprocess.Popen(cmd, cwd=app_dir, env=env, stdout=log_file, stderr=subprocess.STDOUT,
                                     start_new_session=True)
             while proc.poll() is None:
+                now_mono = time.monotonic()
                 if stop_file.exists():
                     stopped_by = "stop_switch"
                     terminate_process(proc)
                     break
-                if time.monotonic() >= deadline_mono:
+                if now_mono >= deadline_mono:
                     stopped_by = "timeout"
                     terminate_process(proc)
                     exit_code = 124
                     break
-                time.sleep(0.1)
+                if inactivity_seconds is not None and now_mono - last_fp_check >= 0.2:
+                    last_fp_check = now_mono
+                    fp = _activity_fingerprint(log_path, ready_path, app_dir)
+                    if fp != last_fp:
+                        last_fp = fp
+                        last_activity = now_mono
+                    elif now_mono - last_activity >= inactivity_seconds:
+                        stopped_by = "stalled"
+                        terminate_process(proc)
+                        exit_code = 125
+                        break
+                time.sleep(0.05)
             if exit_code is None:
                 exit_code = proc.returncode
     finally:
@@ -734,11 +886,31 @@ def run_factory(app_dir: Path, scenarios_dir: Path, work_dir: Path, mode: str = 
                 start_cmd: str = "sh start.sh", port: int = 8787, minutes: float = 45.0,
                 verify_url: str | None = None, install_skills: bool = False, dry_run: bool = False,
                 model: str | None = None, effort: str = "medium", image: str = "python:3.12-slim-bookworm",
-                subnet: str | None = None, watch_interval: float = 0.2, startup_timeout: float = 15.0) -> dict:
+                subnet: str | None = None, watch_interval: float = 0.2, startup_timeout: float = 15.0,
+                max_rounds: int = 5, round_minutes: float | None = None,
+                inactivity_seconds: float | None = 600.0, stagnation_limit: int = 3,
+                resume: bool = False, extra_rounds: int = 0) -> dict:
     deadline_dt = datetime.datetime.now(datetime.timezone.utc) + datetime.timedelta(minutes=minutes)
-    prep = prepare_workspace(app_dir=app_dir, work_dir=work_dir, scenarios_dir=scenarios_dir,
-                             install_skills=install_skills, deadline=deadline_dt, port=port,
-                             start_cmd=start_cmd, mode=mode)
+    out_dir = work_dir / "out"
+    feedback_file = work_dir / "feedback" / "eval-feedback.md"
+    stop_file = Path(os.environ.get("AGENT_STOP_FILE", work_dir / "STOP"))
+
+    if resume:
+        if not ledger_path(work_dir).is_file():
+            raise FileNotFoundError(f"resume に必要な台帳が無い: {ledger_path(work_dir)}")
+        prep = {
+            "prompt": str(work_dir / "handoff" / "prompt.md"),
+            "settings": str(work_dir / "claude-settings" / "settings.json"),
+            "checklist": str(work_dir / "state" / "checklist.txt"),
+            "handoff_file": "/work/handoff/ready.json" if mode == "docker" else str((work_dir / "handoff" / "ready.json").resolve()),
+            "feedback_file": "/work/feedback/eval-feedback.md" if mode == "docker" else str(feedback_file.resolve()),
+            "deadline": deadline_dt.isoformat(),
+        }
+    else:
+        prep = prepare_workspace(app_dir=app_dir, work_dir=work_dir, scenarios_dir=scenarios_dir,
+                                 install_skills=install_skills, deadline=deadline_dt, port=port,
+                                 start_cmd=start_cmd, mode=mode)
+
     compose_files = [COMPOSE]
     if mode == "docker":
         cmd_preview = (["sh", "-c", implementer_cmd] if isinstance(implementer_cmd, str)
@@ -748,70 +920,208 @@ def run_factory(app_dir: Path, scenarios_dir: Path, work_dir: Path, mode: str = 
 
     pre = preflight(app_dir=app_dir, scenarios_dir=scenarios_dir, work_dir=work_dir, mode=mode,
                     compose_files=compose_files)
-    (work_dir / "out" / "preflight.json").write_text(json.dumps(pre, ensure_ascii=False, indent=2), encoding="utf-8")
+    (out_dir / "preflight.json").write_text(json.dumps(pre, ensure_ascii=False, indent=2), encoding="utf-8")
     if not pre["ok"] or dry_run:
         return {"ok": pre["ok"], "dry_run": dry_run, "preflight": pre, "work_dir": str(work_dir)}
 
-    day_commits = int(sh(["git", "-C", str(app_dir), "rev-list", "--count", "HEAD"]).stdout.strip())
+    initial_rev = sh(["git", "-C", str(app_dir), "rev-parse", "--short", "HEAD"]).stdout.strip()
+    day_commits_now = int(sh(["git", "-C", str(app_dir), "rev-list", "--count", "HEAD"]).stdout.strip())
+    ledger = load_ledger(work_dir, initial_rev=initial_rev, day_commits=day_commits_now)
+    if resume:
+        ledger["resume_epoch"] = int(ledger.get("resume_epoch", 0)) + 1
+        target_rounds = len(ledger["rounds"]) + (extra_rounds or max_rounds)
+    else:
+        target_rounds = max(1, max_rounds)
+    day_commits = int(ledger.get("day_commits", day_commits_now))
+    save_ledger(work_dir, ledger)
+
     if implementer_cmd is not None:
         cmd = ["sh", "-c", implementer_cmd] if isinstance(implementer_cmd, str) else list(implementer_cmd)
     else:
         cmd = default_agent_cmd(agent, work_dir, model=model, effort=effort, mode=mode)
 
+    base_prompt_path = work_dir / "state" / "base-prompt.md"
+    base_prompt = (base_prompt_path.read_text(encoding="utf-8")
+                   if base_prompt_path.is_file()
+                   else (work_dir / "handoff" / "prompt.md").read_text(encoding="utf-8"))
+
     t0 = time.monotonic()
-    if mode == "docker":
-        exit_code, stopped_by, final = run_docker(app_dir, scenarios_dir, work_dir, cmd, port=port,
-                                                  start_cmd=start_cmd, minutes=minutes, image=image, subnet=subnet)
+    overall_deadline = t0 + minutes * 60.0
+    exit_code: int | None = None
+    stopped_by: str | None = None
+    final: dict | None = None
+    fatal_error: str | None = None
+
+    try:
+        if mode == "docker":
+            round_num = len(ledger["rounds"]) + 1
+            exit_code, stopped_by, final = run_docker(app_dir, scenarios_dir, work_dir, cmd, port=port,
+                                                      start_cmd=start_cmd, minutes=minutes, image=image, subnet=subnet)
+            end_rev = sh(["git", "-C", str(app_dir), "rev-parse", "--short", "HEAD"]).stdout.strip()
+            sat = float(final.get("satisfaction", 0.0)) if final else 0.0
+            eval_ok = bool(final and final.get("ok"))
+            ledger["rounds"].append({
+                "round": round_num,
+                "epoch": ledger["resume_epoch"],
+                "start_rev": initial_rev,
+                "end_rev": end_rev,
+                "satisfaction": sat,
+                "eval_ok": eval_ok,
+                "status": "passed" if eval_ok else (stopped_by or "failed"),
+                "rolled_back": False,
+            })
+            if sat > float(ledger.get("best_satisfaction", -1.0)):
+                ledger["best_rev"] = end_rev
+                ledger["best_satisfaction"] = sat
+            save_ledger(work_dir, ledger)
+        else:
+            start_round = len(ledger["rounds"]) + 1
+            for round_num in range(start_round, target_rounds + 1):
+                if stop_file.exists():
+                    stopped_by = "stop_switch"
+                    break
+                remaining_min = (overall_deadline - time.monotonic()) / 60.0
+                if remaining_min <= 0:
+                    stopped_by = "timeout"
+                    exit_code = 124
+                    break
+
+                round_budget = min(remaining_min, round_minutes) if round_minutes else remaining_min
+                prompt_text = render_round_prompt(
+                    base_prompt, ledger, round_num=round_num, max_rounds=target_rounds,
+                    remaining_minutes=remaining_min, feedback_path=feedback_file,
+                    stagnation_limit=stagnation_limit,
+                )
+                (work_dir / "handoff" / "prompt.md").write_text(prompt_text, encoding="utf-8")
+
+                start_rev = sh(["git", "-C", str(app_dir), "rev-parse", "--short", "HEAD"]).stdout.strip()
+                started_at = datetime.datetime.now(datetime.timezone.utc).isoformat(timespec="seconds")
+                exit_code, r_stopped = run_local(
+                    app_dir, scenarios_dir, work_dir, cmd, port=port, start_cmd=start_cmd,
+                    minutes=round_budget, watch_interval=watch_interval,
+                    startup_timeout=startup_timeout, inactivity_seconds=inactivity_seconds,
+                    round_num=round_num,
+                )
+                ended_at = datetime.datetime.now(datetime.timezone.utc).isoformat(timespec="seconds")
+                end_rev = sh(["git", "-C", str(app_dir), "rev-parse", "--short", "HEAD"]).stdout.strip()
+
+                if r_stopped == "stop_switch":
+                    stopped_by = "stop_switch"
+                    ledger["rounds"].append({
+                        "round": round_num, "epoch": ledger["resume_epoch"],
+                        "started_at": started_at, "ended_at": ended_at,
+                        "start_rev": start_rev, "end_rev": end_rev,
+                        "satisfaction": 0.0, "eval_ok": False,
+                        "status": "stop_switch", "rolled_back": False,
+                    })
+                    save_ledger(work_dir, ledger)
+                    break
+
+                round_rep_path = out_dir / f"round-{round_num:03d}.json"
+                round_eval = judge_clean_checkout(
+                    app_dir, scenarios_dir, work_dir, start_cmd=start_cmd,
+                    startup_timeout=startup_timeout, report_path=round_rep_path,
+                    feedback_path=feedback_file, run_audit=False,
+                )
+                sat = float(round_eval.get("satisfaction", 0.0))
+                eval_ok = bool(round_eval.get("ok"))
+                best_sat = float(ledger.get("best_satisfaction", -1.0))
+                rolled_back = False
+                r_status = "passed" if eval_ok else (r_stopped or "failed")
+
+                if eval_ok:
+                    ledger["best_rev"] = end_rev
+                    ledger["best_satisfaction"] = sat
+                    ledger["consecutive_no_progress"] = 0
+                elif best_sat >= 0.0 and sat < best_sat and ledger.get("best_rev"):
+                    branch = rollback_to_best(app_dir, ledger["best_rev"], round_num)
+                    rolled_back = True
+                    r_status = "regressed"
+                    ledger["consecutive_no_progress"] = int(ledger.get("consecutive_no_progress", 0)) + 1
+                    ledger.setdefault("dead_ends", []).append(
+                        f"round {round_num} ({end_rev}): satisfaction が {best_sat:.3f} -> {sat:.3f} に退行したため "
+                        f"`{ledger['best_rev']}` に戻した (退避ブランチ: `{branch}`)"
+                    )
+                elif sat > best_sat:
+                    ledger["best_rev"] = end_rev
+                    ledger["best_satisfaction"] = sat
+                    ledger["consecutive_no_progress"] = 0
+                else:
+                    ledger["consecutive_no_progress"] = int(ledger.get("consecutive_no_progress", 0)) + 1
+                    if r_stopped == "stalled":
+                        ledger.setdefault("dead_ends", []).append(
+                            f"round {round_num} ({end_rev}): 無活動タイムアウトにより中断"
+                        )
+
+                ledger["rounds"].append({
+                    "round": round_num, "epoch": ledger["resume_epoch"],
+                    "started_at": started_at, "ended_at": ended_at,
+                    "start_rev": start_rev, "end_rev": end_rev,
+                    "satisfaction": sat, "eval_ok": eval_ok,
+                    "status": r_status, "rolled_back": rolled_back,
+                })
+                save_ledger(work_dir, ledger)
+
+                if eval_ok:
+                    stopped_by = None
+                    break
+                if r_stopped == "timeout" and (overall_deadline - time.monotonic()) <= 0:
+                    stopped_by = "timeout"
+                    break
+
+            final = judge_clean_checkout(app_dir, scenarios_dir, work_dir, start_cmd=start_cmd,
+                                         startup_timeout=startup_timeout)
+    except BaseException as e:
+        fatal_error = f"{type(e).__name__}: {e}"
+        stopped_by = stopped_by or "error"
+    finally:
+        save_ledger(work_dir, ledger)
         tree = tree_state(app_dir, day_commits=day_commits)
-    else:
-        exit_code, stopped_by = run_local(app_dir, scenarios_dir, work_dir, cmd, port=port, start_cmd=start_cmd,
-                                          minutes=minutes, watch_interval=watch_interval,
-                                          startup_timeout=startup_timeout)
-        tree = tree_state(app_dir, day_commits=day_commits)
-        final = judge_clean_checkout(app_dir, scenarios_dir, work_dir, start_cmd=start_cmd,
-                                     startup_timeout=startup_timeout)
+        elapsed_min = round((time.monotonic() - t0) / 60.0, 2)
+        requests = sorted(p.name for p in out_dir.glob("*.json") if re.match(r"^\d{8}T\d{6}Z-", p.name))
+        final_ok = bool(final and final.get("ok"))
+        audit_path = out_dir / "audit.json"
+        audit_doc = json.loads(audit_path.read_text(encoding="utf-8")) if audit_path.is_file() else None
+        audit_ok = bool(audit_doc["ok"]) if audit_doc is not None else True
+        gate = deploy_gate.check(app_repo=app_dir, eval_report=out_dir / "final.json",
+                                 audit_report=audit_path if audit_path.is_file() else None)
+        deploy_ready = final_ok and gate["ok"] and stopped_by != "stop_switch" and not fatal_error
 
-    elapsed_min = round((time.monotonic() - t0) / 60.0, 2)
-    out_dir = work_dir / "out"
-    requests = sorted(p.name for p in out_dir.glob("*.json") if re.match(r"^\d{8}T\d{6}Z-", p.name))
-    final_ok = bool(final and final.get("ok"))
-    audit_path = out_dir / "audit.json"
-    audit_doc = json.loads(audit_path.read_text(encoding="utf-8")) if audit_path.is_file() else None
-    audit_ok = bool(audit_doc["ok"]) if audit_doc is not None else True
-    gate = deploy_gate.check(app_repo=app_dir, eval_report=out_dir / "final.json",
-                             audit_report=audit_path if audit_path.is_file() else None)
-    deploy_ready = final_ok and gate["ok"] and stopped_by != "stop_switch"
+        prod_smoke = None
+        prod_eval = None
+        if verify_url and not fatal_error:
+            prod_smoke = smoke.check(verify_url)
+            (out_dir / "prod-smoke.json").write_text(json.dumps(prod_smoke, ensure_ascii=False, indent=2), encoding="utf-8")
+            prod_eval = run_eval.run(scenarios=scenarios_dir, base=verify_url, app_repo=None,
+                                     report=out_dir / "prod-eval.json", feedback=None, version=verify_url)
 
-    prod_smoke = None
-    prod_eval = None
-    if verify_url:
-        prod_smoke = smoke.check(verify_url)
-        (out_dir / "prod-smoke.json").write_text(json.dumps(prod_smoke, ensure_ascii=False, indent=2), encoding="utf-8")
-        prod_eval = run_eval.run(scenarios=scenarios_dir, base=verify_url, app_repo=None,
-                                 report=out_dir / "prod-eval.json", feedback=None, version=verify_url)
-
-    summary = {
-        "ok": deploy_ready and (prod_eval["ok"] if prod_eval else True) and (not prod_smoke["errors"] if prod_smoke else True),
-        "mode": mode,
-        "exit": exit_code,
-        "stopped_by": stopped_by,
-        "minutes": elapsed_min,
-        "eval_requests": len(requests),
-        "final": {s["id"]: s["result"] for s in final["scenarios"]} if final else None,
-        "final_ok": final_ok,
-        "final_version": final["version"] if final else None,
-        "audit_ok": audit_ok,
-        "deploy_ready": deploy_ready,
-        **tree,
-        "verify_url": verify_url,
-        "prod_smoke_ok": (not prod_smoke["errors"]) if prod_smoke else None,
-        "prod_eval_ok": prod_eval["ok"] if prod_eval else None,
-        "workspace": prep,
-    }
-    (out_dir / "summary.json").write_text(json.dumps(summary, ensure_ascii=False, indent=2), encoding="utf-8")
-    (out_dir / "eval-report.md").write_text(render_eval_report(app_dir, scenarios_dir, work_dir), encoding="utf-8")
-    (out_dir / "morning-report.md").write_text(render_morning_report(app_dir, scenarios_dir, work_dir, summary),
-                                               encoding="utf-8")
+        summary = {
+            "ok": deploy_ready and (prod_eval["ok"] if prod_eval else True) and (not prod_smoke["errors"] if prod_smoke else True),
+            "mode": mode,
+            "exit": exit_code,
+            "stopped_by": stopped_by,
+            "fatal_error": fatal_error,
+            "minutes": elapsed_min,
+            "rounds_executed": len(ledger.get("rounds", [])),
+            "rollbacks": sum(1 for r in ledger.get("rounds", []) if r.get("rolled_back")),
+            "resume_epoch": ledger.get("resume_epoch", 0),
+            "best_rev": ledger.get("best_rev"),
+            "eval_requests": len(requests),
+            "final": {s["id"]: s["result"] for s in final["scenarios"]} if final else None,
+            "final_ok": final_ok,
+            "final_version": final["version"] if final else None,
+            "audit_ok": audit_ok,
+            "deploy_ready": deploy_ready,
+            **tree,
+            "verify_url": verify_url,
+            "prod_smoke_ok": (not prod_smoke["errors"]) if prod_smoke else None,
+            "prod_eval_ok": prod_eval["ok"] if prod_eval else None,
+            "workspace": prep,
+        }
+        (out_dir / "summary.json").write_text(json.dumps(summary, ensure_ascii=False, indent=2), encoding="utf-8")
+        (out_dir / "eval-report.md").write_text(render_eval_report(app_dir, scenarios_dir, work_dir), encoding="utf-8")
+        (out_dir / "morning-report.md").write_text(render_morning_report(app_dir, scenarios_dir, work_dir, summary),
+                                                   encoding="utf-8")
     return summary
 
 
@@ -820,6 +1130,29 @@ def pair_arg(s: str) -> tuple[str, str]:
     if not sep or not name or not url:
         raise argparse.ArgumentTypeError(f"expected NAME=URL, got {s!r}")
     return name, url
+
+
+def _add_run_args(p: argparse.ArgumentParser) -> None:
+    p.add_argument("--app-dir", type=Path, required=True)
+    p.add_argument("--scenarios", type=Path, required=True)
+    p.add_argument("--work-dir", type=Path, required=True)
+    p.add_argument("--mode", choices=("local", "docker"), default="local")
+    p.add_argument("--agent", choices=AGENTS, default="claude")
+    p.add_argument("--implementer-cmd", help="shell command for the implementer (required when --agent=custom)")
+    p.add_argument("--start-cmd", default="sh start.sh")
+    p.add_argument("--port", type=int, default=8787)
+    p.add_argument("--minutes", type=float, default=45.0)
+    p.add_argument("--max-rounds", type=int, default=5)
+    p.add_argument("--round-minutes", type=float)
+    p.add_argument("--inactivity-seconds", type=float, default=600.0)
+    p.add_argument("--stagnation-limit", type=int, default=3)
+    p.add_argument("--verify-url", help="deployed URL to run smoke.py and scenarios against")
+    p.add_argument("--install-skills", action="store_true")
+    p.add_argument("--dry-run", action="store_true")
+    p.add_argument("--model")
+    p.add_argument("--effort", default="medium")
+    p.add_argument("--image", default="python:3.12-slim-bookworm")
+    p.add_argument("--subnet", default=os.environ.get("GSF_DOCKER_SUBNET"))
 
 
 def main(argv=None) -> int:
@@ -833,6 +1166,11 @@ def main(argv=None) -> int:
     p_pre.add_argument("--mode", choices=("local", "docker"), default="local")
     p_pre.add_argument("--compose", type=Path, action="append")
 
+    p_doc = sub.add_parser("doctor", help="check runtime prerequisites (git, python3, agent CLI, docker, brief)")
+    p_doc.add_argument("--agent", choices=AGENTS, default="claude")
+    p_doc.add_argument("--mode", choices=("local", "docker"), default="local")
+    p_doc.add_argument("--app-dir", type=Path)
+
     p_eoe = sub.add_parser("eval-of-eval", help="verify reference passes and broken variants fail")
     p_eoe.add_argument("--scenarios", type=Path, required=True)
     p_eoe.add_argument("--report", type=Path, required=True)
@@ -841,22 +1179,11 @@ def main(argv=None) -> int:
     p_eoe.add_argument("--timeout", type=float, default=15.0)
 
     p_run = sub.add_parser("run", help="run preflight, the night loop, final judgement, and write morning reports")
-    p_run.add_argument("--app-dir", type=Path, required=True)
-    p_run.add_argument("--scenarios", type=Path, required=True)
-    p_run.add_argument("--work-dir", type=Path, required=True)
-    p_run.add_argument("--mode", choices=("local", "docker"), default="local")
-    p_run.add_argument("--agent", choices=AGENTS, default="claude")
-    p_run.add_argument("--implementer-cmd", help="shell command for the implementer (required when --agent=custom)")
-    p_run.add_argument("--start-cmd", default="sh start.sh")
-    p_run.add_argument("--port", type=int, default=8787)
-    p_run.add_argument("--minutes", type=float, default=45.0)
-    p_run.add_argument("--verify-url", help="deployed URL to run smoke.py and scenarios against")
-    p_run.add_argument("--install-skills", action="store_true")
-    p_run.add_argument("--dry-run", action="store_true")
-    p_run.add_argument("--model")
-    p_run.add_argument("--effort", default="medium")
-    p_run.add_argument("--image", default="python:3.12-slim-bookworm")
-    p_run.add_argument("--subnet", default=os.environ.get("GSF_DOCKER_SUBNET"))
+    _add_run_args(p_run)
+
+    p_res = sub.add_parser("resume", help="resume an interrupted or incomplete run from state/ledger.json")
+    _add_run_args(p_res)
+    p_res.add_argument("--extra-rounds", type=int, default=0)
 
     p_rep = sub.add_parser("report", help="render eval-report.md and morning-report.md from an existing work-dir")
     p_rep.add_argument("--app-dir", type=Path, required=True)
@@ -868,17 +1195,24 @@ def main(argv=None) -> int:
         r = preflight(a.app_dir, a.scenarios, a.work_dir, mode=a.mode, compose_files=a.compose)
         print(json.dumps(r, ensure_ascii=False, indent=2))
         return 0 if r["ok"] else 1
+    if a.subcmd == "doctor":
+        r = doctor(agent=a.agent, mode=a.mode, app_dir=a.app_dir)
+        print(json.dumps(r, ensure_ascii=False, indent=2))
+        return 0 if r["ok"] else 1
     if a.subcmd == "eval-of-eval":
         r = eval_of_eval(a.scenarios, a.good, dict(a.breaks), a.report, timeout=a.timeout)
         print(json.dumps(r, ensure_ascii=False, indent=2))
         return 0 if r["ok"] else 1
-    if a.subcmd == "run":
+    if a.subcmd in ("run", "resume"):
         if a.agent == "custom" and not a.implementer_cmd:
             ap.error("--implementer-cmd is required when --agent=custom")
         r = run_factory(app_dir=a.app_dir, scenarios_dir=a.scenarios, work_dir=a.work_dir, mode=a.mode,
                         agent=a.agent, implementer_cmd=a.implementer_cmd, start_cmd=a.start_cmd, port=a.port,
                         minutes=a.minutes, verify_url=a.verify_url, install_skills=a.install_skills,
-                        dry_run=a.dry_run, model=a.model, effort=a.effort, image=a.image, subnet=a.subnet)
+                        dry_run=a.dry_run, model=a.model, effort=a.effort, image=a.image, subnet=a.subnet,
+                        max_rounds=a.max_rounds, round_minutes=a.round_minutes,
+                        inactivity_seconds=a.inactivity_seconds, stagnation_limit=a.stagnation_limit,
+                        resume=(a.subcmd == "resume"), extra_rounds=getattr(a, "extra_rounds", 0))
         print(json.dumps(r, ensure_ascii=False, indent=2))
         return 0 if r["ok"] else 1
     if a.subcmd == "report":

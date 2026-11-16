@@ -185,6 +185,94 @@ subprocess.run(["git", "-c", "user.email=a@example.invalid", "-c", "user.name=a"
         morning = (self.work / "out" / "morning-report.md").read_text(encoding="utf-8")
         self.assertIn("EXPOSURE-ENV", morning)
 
+    def test_doctor_checks_python_git_and_brief(self):
+        rep = dark_factory.doctor(agent="custom", mode="local", app_dir=self.app)
+        self.assertTrue(rep["ok"], rep)
+        self.assertTrue(rep["checks"]["python3"]["ok"])
+        self.assertTrue(rep["checks"]["git"]["ok"])
+        self.assertTrue(rep["checks"]["brief"]["ok"])
+
+    def test_multi_round_rollback_on_regression_and_resume(self):
+        (self.scen / "S2.json").write_text(json.dumps({
+            "id": "S2", "name": "データ配信", "symptom": "places.json が無い",
+            "checks": [{"kind": "http", "path": "/places.json", "status": 200, "contains": "Ueno"}],
+        }, ensure_ascii=False), encoding="utf-8")
+
+        port = dark_factory.free_port()
+        impl_script = self.root / "impl_rounds.py"
+        impl_script.write_text(f"""import os, subprocess
+from pathlib import Path
+
+app = Path.cwd()
+r = int(os.environ["GSF_ROUND"])
+prompt = Path(os.environ["EVAL_PROMPT"]).read_text(encoding="utf-8")
+(app / "start.sh").write_text("exec python3 -m http.server ${{PORT:-{port}}}\\n", encoding="utf-8")
+if r == 1:
+    (app / "index.html").write_text("<html>CC0</html>", encoding="utf-8")
+elif r == 2:
+    # Regress S1
+    (app / "index.html").write_text("<html>broken</html>", encoding="utf-8")
+elif r == 3:
+    # After rollback in round 2, index.html must be restored to CC0 and prompt must mention rollback
+    assert "CC0" in (app / "index.html").read_text(encoding="utf-8"), "rollback did not restore best_rev"
+    assert "退行" in prompt, "prompt did not include dead_ends from ledger"
+    (app / "places.json").write_text('{{"name":"Ueno"}}', encoding="utf-8")
+
+subprocess.run(["git", "-c", "user.email=a@example.invalid", "-c", "user.name=a", "add", "-A"], check=True)
+subprocess.run(["git", "-c", "user.email=a@example.invalid", "-c", "user.name=a", "commit", "-q", "--allow-empty", "-m", f"round {{r}}"], check=True)
+""", encoding="utf-8")
+
+        s1 = dark_factory.run_factory(
+            app_dir=self.app, scenarios_dir=self.scen, work_dir=self.work, mode="local",
+            agent="custom", implementer_cmd=[sys.executable, "-I", str(impl_script)],
+            port=port, minutes=1.0, max_rounds=2, watch_interval=0.05, startup_timeout=5.0,
+        )
+        self.assertFalse(s1["ok"], s1)
+        self.assertEqual(s1["rounds_executed"], 2)
+        self.assertEqual(s1["rollbacks"], 1)
+        self.assertEqual(s1["resume_epoch"], 0)
+        self.assertIn("CC0", (self.app / "index.html").read_text(encoding="utf-8"))
+
+        s2 = dark_factory.run_factory(
+            app_dir=self.app, scenarios_dir=self.scen, work_dir=self.work, mode="local",
+            agent="custom", implementer_cmd=[sys.executable, "-I", str(impl_script)],
+            port=port, minutes=1.0, watch_interval=0.05, startup_timeout=5.0,
+            resume=True, extra_rounds=2,
+        )
+        self.assertTrue(s2["ok"], s2)
+        self.assertEqual(s2["rounds_executed"], 3)
+        self.assertEqual(s2["rollbacks"], 1)
+        self.assertEqual(s2["resume_epoch"], 1)
+
+    def test_stalled_process_is_terminated_and_recovered(self):
+        port = dark_factory.free_port()
+        impl_script = self.root / "impl_stall.py"
+        impl_script.write_text(f"""import os, subprocess, time
+from pathlib import Path
+
+app = Path.cwd()
+r = int(os.environ["GSF_ROUND"])
+if r == 1:
+    time.sleep(10)
+else:
+    (app / "index.html").write_text("<html>CC0</html>", encoding="utf-8")
+    (app / "start.sh").write_text("exec python3 -m http.server ${{PORT:-{port}}}\\n", encoding="utf-8")
+    subprocess.run(["git", "-c", "user.email=a@example.invalid", "-c", "user.name=a", "add", "-A"], check=True)
+    subprocess.run(["git", "-c", "user.email=a@example.invalid", "-c", "user.name=a", "commit", "-q", "-m", "recovered"], check=True)
+""", encoding="utf-8")
+
+        summary = dark_factory.run_factory(
+            app_dir=self.app, scenarios_dir=self.scen, work_dir=self.work, mode="local",
+            agent="custom", implementer_cmd=[sys.executable, "-I", str(impl_script)],
+            port=port, minutes=1.0, max_rounds=3, inactivity_seconds=0.4,
+            watch_interval=0.05, startup_timeout=5.0,
+        )
+        self.assertTrue(summary["ok"], summary)
+        self.assertEqual(summary["rounds_executed"], 2)
+        ledger = dark_factory.load_ledger(self.work)
+        self.assertEqual(ledger["rounds"][0]["status"], "stalled")
+        self.assertEqual(ledger["rounds"][1]["status"], "passed")
+
 
 @unittest.skipUnless(os.environ.get("GSF_DOCKER_TESTS") == "1", "set GSF_DOCKER_TESTS=1 to run against Docker")
 class DarkFactoryDockerTest(unittest.TestCase):

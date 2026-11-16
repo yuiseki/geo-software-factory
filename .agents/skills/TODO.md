@@ -154,6 +154,12 @@
   - [x] references/mobile-interaction.md
   - [x] references/search-ux.md
   - [x] references/feedback-from-builds.md
+- [x] geo-software-ui-design (5/5)
+  - [x] SKILL.md
+  - [x] references/map-layout-and-overlays.md
+  - [x] references/detail-panels-and-padding.md
+  - [x] references/controls-modes-and-layers.md
+  - [x] references/general-ui-principles.md
 - [x] geo-software-poc-measure (6/6)
   - [x] SKILL.md
   - [x] references/data-size.md

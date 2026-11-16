@@ -1,0 +1,14 @@
+title = "gitleaks config"
+
+[extend]
+useDefault = true
+
+[[allowlists]]
+description = "Allow WebCrypto post-quantum algorithm name MLKEM768-X25519 in modern-web-guidance docs"
+condition = "AND"
+paths = [
+  '''^\.agents/skills/modern-web-guidance/guides/security/client-side-encryption\.md$''',
+]
+regexes = [
+  '''MLKEM768-X25519''',
+]

@@ -67,6 +67,20 @@ class CheckTest(unittest.TestCase):
         self.assertIn(".agents/skills/demo/references/a.md:5: local path", errors)
         self.assertEqual(len([e for e in errors if "local path" in e]), 1)
 
+    def test_vendored_skills_are_exempt_from_the_em_dash_rule_only(self):
+        f = good_files()
+        f[".agents/skills/modern-web-guidance/SKILL.md"] = (
+            "---\nname: modern-web-guidance\ndescription: d\n---\n# m\na — b\nsee /home/someone/x\n[x](missing.md)\n")
+        errors, _ = self.run_check(f)
+        vendored = [e for e in errors if "modern-web-guidance/SKILL.md" in e]
+        self.assertFalse(any("em dash" in e for e in vendored))
+        self.assertTrue(any("local path" in e for e in vendored))
+        self.assertTrue(any("broken link" in e for e in vendored))
+        # 同じ名前を含むだけの別の場所は外さない
+        f[".agents/skills/demo/references/modern-web-guidance.md"] = "a — b\n"
+        errors, _ = self.run_check(f)
+        self.assertIn(".agents/skills/demo/references/modern-web-guidance.md:1: em dash", errors)
+
     def test_disclosure_lines_must_match_agents_md(self):
         f = good_files()
         f[".agents/skills/demo/SKILL.md"] = f[".agents/skills/demo/SKILL.md"].replace("X に関係している", "Y に関係している")

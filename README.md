@@ -135,7 +135,7 @@ npx skills add yuiseki/geo-software-factory --skill geo-software-library  # 1 �
 
 ## 書き足すとき
 
-`python3 scripts/check.py` で、frontmatter、SKILL.md の行数 (200 行まで)、リンク切れ、em ダッシュ、手元のパス、利害関係の開示の文面、TODO.md の一覧と件数を検査する。確認日 (「確かめた日」) が 90 日より古い reference は警告として出る。検査そのもののテストは `python3 -m unittest discover -s tests`、スキルに入れたスクリプトのテストは各スキルの `scripts/` の `test_*.py`、evals の道具のテストは `evals/test_bench.py`。どれも GitHub Actions で回る。スキルを書くときの決まりは [.agents/skills/AGENTS.md](.agents/skills/AGENTS.md)。
+`python3 scripts/check.py` で、frontmatter、SKILL.md の行数 (200 行まで)、リンク切れ、em ダッシュ (外から入れたスキルの `modern-web-guidance` は、入れ直すたびに戻るのでこの項目だけ除く)、手元のパス、利害関係の開示の文面、TODO.md の一覧と件数を検査する。確認日 (「確かめた日」) が 90 日より古い reference は警告として出る。検査そのもののテストは `python3 -m unittest discover -s tests`、スキルに入れたスクリプトのテストは各スキルの `scripts/` の `test_*.py`、evals の道具のテストは `evals/test_bench.py`。どれも GitHub Actions で回る。スキルを書くときの決まりは [.agents/skills/AGENTS.md](.agents/skills/AGENTS.md)。
 
 ## 利害関係の開示
 

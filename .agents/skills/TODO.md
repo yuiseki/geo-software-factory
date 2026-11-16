@@ -286,6 +286,9 @@
   - [ ] SKILL.md
 - [ ] geo-software-monetize (0/1)
   - [ ] SKILL.md
+- [x] modern-web-guidance (2/2)
+  - [x] SKILL.md
+  - [x] guides/
 
 ## ダークファクトリー実装計画
 

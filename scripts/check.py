@@ -14,6 +14,10 @@ import sys
 import urllib.parse
 
 SKIP_DIRS = {".git", "tmp", "node_modules"}
+# Skills installed from elsewhere (e.g. `npx modern-web-guidance@latest install`), not written here.
+# Our writing rules would be undone by every reinstall, so only the em dash rule is waived for them.
+# Links, local paths, frontmatter, line counts and TODO.md still apply.
+VENDORED_SKILLS = {"modern-web-guidance"}
 MAX_SKILL_LINES = 200
 LINK = re.compile(r"\]\(([^)\s]+)\)")
 LOCAL_PATH = re.compile(r"(?<![\w.])/(home|Workspaces|sata_hdd\w*)/")
@@ -59,8 +63,10 @@ def check_text(root: pathlib.Path, errors: list[str]) -> None:
     for md in markdown_files(root):
         rel = md.relative_to(root).as_posix()
         text = md.read_text()
+        parts = md.relative_to(root).parts
+        vendored = parts[:2] == (".agents", "skills") and len(parts) > 3 and parts[2] in VENDORED_SKILLS
         for n, line in enumerate(text.splitlines(), 1):
-            if "—" in line:
+            if "—" in line and not vendored:
                 errors.append(f"{rel}:{n}: em dash")
             if LOCAL_PATH.search(line):
                 errors.append(f"{rel}:{n}: local path")

@@ -21,41 +21,118 @@
 
 | カード | 運営 | 商用か | 描画 | 配信 |
 |---|---|---|---|---|
+| [7NOW](7now.md) | 企業 | 商用 | 未確認 | App Store、Google Play |
+| [Alto](alto.md) | 企業 | 商用 | 未確認 | App Store、Google Play |
 | [Appleマップ](apple-maps.md) | 企業 | 非商用と見られる | 未確認 | App Store |
 | [バスNAVITIME 時刻表&乗り換え案内&路線図ナビ](bus-navitime.md) | 企業 | 商用 | 未確認 | App Store、Google Play |
 | [CoMaps](comaps.md) | 団体 | 商用 | 自前の C++ の地図エンジン (Organic Maps から分かれた) | App Store、Google Play |
+| [DiDi（モビリティ）](didi.md) | 企業 | 商用 | 未確認 | App Store、Google Play |
 | [Dokoka - 矢印だけの散歩ナビ](dokoka.md) | 個人 | 非商用 | 未確認 | App Store、Google Play |
+| [DoorDash](doordash.md) | 企業 | 商用 | 未確認 | App Store、Google Play |
+| [ドラゴンクエストウォーク](dq-walk.md) | 企業 | 商用 | 未確認 | App Store、Google Play |
 | [Every Door](everydoor.md) | 個人 | 非商用と見られる | flutter_map と vector_map_tiles | App Store、Google Play |
 | [ジオクエ-写真を撮ってポイントに！ポイ活アプリ](geoquest.md) | 企業 | 商用 | 未確認 | App Store、Google Play |
+| [Ghostbusters World](ghostbusters-world.md) | 企業 | 商用 | 未確認 | かつて App Store、Google Play で配信 (2020-08-13 終了によりプレイ不可) |
+| [GO（タクシーアプリ）](go-taxi.md) | 企業 | 商用 | 未確認 | App Store、Google Play |
 | [Google マップ](google-maps.md) | 企業 | 商用 | 未確認 | App Store、Google Play |
+| [Grab](grab.md) | 企業 | 商用 | 未確認 | App Store、Google Play |
 | [本コレ](honcolle.md) | 企業 | 商用 | 未確認 | App Store、Google Play |
+| [Instacart](instacart.md) | 企業 | 商用 | 未確認 | App Store、Google Play |
+| [Jurassic World Alive](jurassic-world-alive.md) | 企業 | 商用 | 未確認 | App Store、Google Play |
 | [KAKUNIN MAP](kakunin-map.md) | 企業 | 非商用と見られる | 未確認 | App Store、Google Play |
+| [LINE GO](line-go.md) | 企業 | 商用 | 未確認 | App Store、Google Play |
+| [Lyft](lyft.md) | 企業 | 商用 | 未確認 | App Store、Google Play |
 | [Maply](maply.md) | 企業 | 商用と見られる | 未確認 | App Store |
 | [オフライン地図、GPSナビ:MAPS.ME](mapsme.md) | 企業 | 商用 | 自前の C++ の地図エンジン (Organic Maps と CoMaps の元になった omim、Apache-2.0。今の版の中は未確認) | App Store、Google Play |
 | [ドライブサポーター by NAVITIME (カーナビ)](navitime-drive.md) | 企業 | 商用 | 未確認 | App Store、Google Play |
+| [Ola](ola.md) | 企業 | 商用 | 未確認 | App Store、Google Play |
 | [Organic マップ: オフライン地図](organicmaps.md) | 企業 | 商用 | 自前の C++ の地図エンジン (MAPS.ME の omim から分かれた) | App Store、Google Play、Obtainium (GitHub のリリース) |
+| [Pokémon GO](pokemon-go.md) | 企業 | 商用 | 未確認 | App Store、Google Play |
+| [S.RIDE](s-ride.md) | 企業 | 商用 | 未確認 | App Store、Google Play |
 | [StreetComplete](streetcomplete.md) | 個人 | 商用 | MapLibre (maplibre-compose 0.20.0) | Google Play、App Store |
 | [スーパー地形](superdem.md) | 個人 | 商用 | 未確認 | App Store、Google Play |
 | [トリマ-歩数・移動でポイント！散歩やウォーキングでお金を稼ぐ](trima.md) | 企業 | 商用 | 未確認 | App Store、Google Play |
+| [Uber](uber.md) | 企業 | 商用 | 未確認 | App Store、Google Play |
 | [V2X2MAP - live receiver and map for ITS-G5 / V2X](v2x2map.md) | 個人 | 商用 | 地図ライブラリの名前は見つからなかった | Cloudflare |
+| [The Walking Dead: Our World](walking-dead-our-world.md) | 企業 | 商用 | 未確認 | かつて App Store、Google Play で配信 (2023-01-31 終了によりストアから削除・プレイ不可) |
+| [WhatsApp](whatsapp.md) | 企業 | 商用 | 未確認 | App Store、Google Play |
 | [Yahoo!防災速報](yahoo-bousai.md) | 企業 | 非商用と見られる | 未確認 | App Store、Google Play |
+| [妖怪ウォッチ ワールド](youkai-watch-world.md) | 企業 | 商用 | 未確認 | かつて App Store、Google Play で配信 (2022-12-23 終了) |
 
 ## アプリもあるウェブのサービス
 
 ウェブの地図とアプリの両方があるものは [../services/](../services/README.md) に置いている。
 
-- [ダジック・アース - ダジック・アース](../services/dagik.md)
-- [【推し活カフェ】日本最大級の推し活・コラボカフェ検索 ｜ imako推し活カフェ](../services/imako.md)
-- [熊出没マップ2026年 - 全国165,975件 - クママップ](../services/kumamap.md)
+- [2GIS](../services/2gis.md)
+- [ArcGIS Online](../services/arcgis-online.md)
+- [Atlas Obscura](../services/atlas-obscura.md)
+- [Bikemap](../services/bikemap.md)
+- [CellMapper](../services/cellmapper.md)
+- [CHINTAI](../services/chintai.md)
+- [DeepStateMap](../services/deepstatemap.md)
+- [Domino's（Pinpoint Delivery / 店舗検索）](../services/dominos.md)
+- [EarthCam](../services/earthcam.md)
+- [EMSC](../services/emsc.md)
+- [Expedia](../services/expedia.md)
+- [FlightAware](../services/flightaware.md)
+- [Garmin Explore](../services/garmin-explore.md)
+- [Geocaching](../services/geocaching.md)
+- [Hotels.com](../services/hotels-com.md)
+- [Idealista](../services/idealista.md)
+- [IKEA（店舗検索）](../services/ikea.md)
+- [ImmoScout24](../services/immoscout24.md)
+- [iOverlander](../services/ioverlander.md)
+- [IQAir Earth](../services/iqair-earth.md)
+- [J-SHIS 地震ハザードステーション](../services/j-shis.md)
+- [Light Pollution Map](../services/light-pollution-map.md)
+- [LiveUAmap](../services/liveuamap.md)
 - [LivMap (リブマップ) - チームで使う共有地図](../services/livmap.md)
+- [MapChart](../services/mapchart.md)
+- [MapFan](../services/mapfan.md)
 - [Mapillary](../services/mapillary.md)
 - [MapQuest](../services/mapquest.md)
-- [地図マピオン（Mapion）｜地図検索/ルート検索/天気予報](../services/mapion.md)
+- [Mapy.com（旧 Mapy.cz）](../services/mapy-com.md)
+- [Meteoblue](../services/meteoblue.md)
+- [NAVITIME（ウェブ総合版）](../services/navitime.md)
+- [onX](../services/onx.md)
 - [OsmAnd Map](../services/osmand.md)
-- [裁判官マップ - 日本地図から裁判官を探す ｜ 裁判官マップ](../services/saibankan.md)
+- [Outdooractive](../services/outdooractive.md)
+- [Park4Night](../services/park4night.md)
+- [Polarsteps](../services/polarsteps.md)
+- [RadarBox（AirNav Radar）](../services/radarbox.md)
+- [RainViewer](../services/rainviewer.md)
+- [Realtor.com](../services/realtor.md)
+- [Redfin](../services/redfin.md)
+- [Relive](../services/relive.md)
+- [Rightmove](../services/rightmove.md)
+- [Roadtrippers](../services/roadtrippers.md)
+- [Rome2Rio](../services/rome2rio.md)
+- [Seterra](../services/seterra.md)
+- [Starbucks（Global Store Locator）](../services/starbucks.md)
+- [Stellarium Web](../services/stellarium-web.md)
+- [SunCalc](../services/suncalc.md)
+- [tenki.jp](../services/tenki-jp.md)
+- [TomTom](../services/tomtom.md)
+- [Trailforks](../services/trailforks.md)
+- [TripAdvisor](../services/tripadvisor.md)
+- [Trulia](../services/trulia.md)
+- [Ushahidi](../services/ushahidi.md)
+- [Wanderlog](../services/wanderlog.md)
+- [Watch Duty](../services/watch-duty.md)
+- [Wayfair](../services/wayfair.md)
+- [Wheelmap](../services/wheelmap.md)
+- [Wikiloc](../services/wikiloc.md)
 - [Yahoo!マップ](../services/yahoo-map.md)
 - [YAMAP / ヤマップ ｜ 登山をもっと楽しく、登山情報プラットフォーム](../services/yamap.md)
+- [Yandex Maps](../services/yandex-maps.md)
+- [【推し活カフェ】日本最大級の推し活・コラボカフェ検索 ｜ imako推し活カフェ](../services/imako.md)
+- [ウェザーニュース](../services/weathernews.md)
+- [ジョルダン乗換案内](../services/jorudan.md)
+- [ダジック・アース - ダジック・アース](../services/dagik.md)
+- [地図マピオン（Mapion）｜地図検索/ルート検索/天気予報](../services/mapion.md)
 - [気象衛星とレーダーマップ ｜ Zoom Earth](../services/zoomearth.md)
+- [熊出没マップ2026年 - 全国165,975件 - クママップ](../services/kumamap.md)
+- [裁判官マップ - 日本地図から裁判官を探す ｜ 裁判官マップ](../services/saibankan.md)
 
 ## カードを足すとき
 

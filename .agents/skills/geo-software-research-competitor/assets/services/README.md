@@ -9,47 +9,48 @@
 
 ## 統計まとめ
 
-2026-11-11〜16 時点で収録していた **177 件** の地図サービスカード (一般の不動産・グルメ・旅行予約・店舗検索・観光サイトの埋め込み地図を含む) を集計した傾向 (その後 97 件を追加し、現在 **274 件** を収録)。1 つのサービスで複数を使っている場合はそれぞれ数えている。
+このディレクトリに収録した **296 件** の地図サービスカード (2026-11-11〜16 観測、一般の不動産・グルメ・旅行予約・店舗検索・観光サイトの埋め込み地図を含む) を集計した傾向。1 つのサービスで複数を使っている場合はそれぞれ数えている。
 
 ### 使われている地図ライブラリの傾向
 
-描画ライブラリを特定できた **128 サービス (延べ 149 件)** (未検出・未確認が 49 件) の内訳では、地図が主役の個人・OSS サービスで主流の **MapLibre GL JS** と **Leaflet** に加え、一般のグルメ・不動産・予約・店舗検索サイトを含めると **Google Maps JavaScript API** (24 件・16.1%) や **Mapbox GL JS / SDK** (18 件・12.1%)、国内法人向けの **NAVITIME 地図 API** などの存在感が大きく現れる。
+描画ライブラリを特定できた **222 サービス (延べ 266 件)** (未検出・未確認・埋め込みなし 74 件) の内訳では、地図が主役の個人・OSS サービスで主流の **MapLibre GL JS** (58 件・21.8%) や **Leaflet** (52 件・19.5%) と並び、一般のグルメ・不動産・予約・店舗検索サイトを含めると **Google Maps JavaScript API** (55 件・20.7%) や **Mapbox GL JS / SDK** (37 件・13.9%)、国内法人向けの **ゼンリン / AreaMarker** (9 件・3.4%)、**NAVITIME 地図 API** (5 件・1.9%) などの存在感が大きく現れる。
 
 ![観測した地図サービスの描画ライブラリ](../../../../../docs/images/services-map-libraries.png)
 
 | 描画ライブラリ | 件数 | 傾向 |
 |---|---:|---|
-| MapLibre GL JS | 41 | 延べ 149 件中 27.5%。ベクトルタイルや 3D、PMTiles との相性から新規・商用・個人を問わず主流 |
-| Leaflet | 34 | 同 22.8%。個人開発、災害・防災マップ、歴史地図比較、地理院タイルや OSM ラスタを載せる用途で根強い |
-| Google Maps JavaScript API | 24 | 同 16.1%。グルメ (食べログ・ホットペッパー・ぐるなび)、不動産 (LIFULL HOME'S)、旅行 (楽天トラベル・Airbnb)、店舗検索 (ユニクロ・マクドナルド) など一般サイトの埋め込み地図で強い |
-| Mapbox GL JS / SDK | 18 | 同 12.1%。Yahoo!不動産、Airbnb、海外のアウトドア (AllTrails、Gaia GPS)、トラッキング (Strava) など |
-| 自前 WebGL / 独自 3D・Canvas | 10 | 同 6.7%。F4map、Google Earth (Wasm/WebGL)、Ventusky、Naver/Kakao/Baidu/Amap 等 |
-| Three.js | 5 | 同 3.4%。3D 地球儀や独自の空間表現 |
-| OpenLayers | 4 | 同 2.7%。公的機関のシステム (国交省、地質図Navi) や航空機追跡 (ADS-B Exchange 等) |
-| deck.gl | 4 | 同 2.7%。CARTO、kepler.gl、Felt など大規模空間データ可視化 |
-| NAVITIME 地図 API | 3 | 同 2.0%。スターバックス、イオン、ニトリなど国内大手チェーンの店舗検索 (ストアロケーター) で採用 |
-| その他 | 6 | ゼンリンデータコムの地図 API (2 件)、HERE Maps API for JS、MapTiler SDK JS、Mapillary JS、Bing Maps Web Control (各 1 件) |
+| MapLibre GL JS | 58 | 延べ 266 件中 21.8%。ベクトルタイルや 3D、PMTiles との相性から新規・商用・個人・OSS を問わず主流 |
+| Google Maps JavaScript API | 55 | 同 20.7%。グルメ、不動産、旅行、国内外の店舗検索・ストアロケーター (GOGA 含む) などの埋め込み地図で強い |
+| Leaflet | 52 | 同 19.5%。個人開発、災害・防災マップ、歴史地図比較、OSM コミュニティツール等で根強い |
+| Mapbox GL JS / SDK | 37 | 同 13.9%。不動産、海外アウトドア、トラッキング、開発者向けプラットフォーム等で広く利用 |
+| 自前 WebGL / 独自 3D・Canvas | 17 | 同 6.4%。F4map、Google Earth (Wasm/WebGL)、Ventusky、Naver/Kakao/Baidu/Amap、MapFan 等 |
+| OpenLayers | 14 | 同 5.3%。公的機関のシステム、地球観測・気象・航空機追跡・OSS ルーティング基盤等 |
+| ゼンリン / AreaMarker | 9 | 同 3.4%。セブン-イレブン、ローソン、デイリーヤマザキ等の店舗検索 ASP や避難施設等 |
+| NAVITIME 地図 API | 5 | 同 1.9%。スターバックス、イオン、ニトリ、サイゼリヤ、NewDays など国内大手チェーンの店舗検索で採用 |
+| Three.js | 5 | 同 1.9%。3D 地球儀や独自の空間表現 |
+| deck.gl | 5 | 同 1.9%。CARTO、kepler.gl、Felt、iOverlander など大規模空間データ可視化 |
+| その他 | 9 | CesiumJS (PLATEAU VIEW、Cesium ion)、ArcGIS Maps SDK、D3.js / SVG (Datawrapper、Seterra)、HERE、Bing Maps Web Control、Mapillary JS 等 |
 
 ### 使われている地図インフラの傾向
 
-背景の地図・タイルを特定できた **131 サービス (延べ 187 件)** (未検出・未確認 43 件、背景タイル不使用 1 件、内蔵/URL のみ 2 件) では、**自前のタイル配信** や **OpenStreetMap**、**地理院タイル** と並び、一般サイトの埋め込み地図を中心に **Google Maps** (27 件) や **Mapbox** (14 件)、国内法人向けの **ゼンリン** (5 件)・**NAVITIME** (3 件) が上位に入る。
+背景の地図・タイルを特定できた **227 サービス (延べ 295 件)** (未検出・不使用等 69 件) では、**自前のタイル配信** (75 件・25.4%) や **Google Maps** (62 件・21.0%)、**OpenStreetMap** (50 件・16.9%)、**地理院タイル** (35 件・11.9%) が上位を占め、**Mapbox** (29 件・9.8%) や国内法人向けの **ゼンリン** (12 件・4.1%)、**OpenFreeMap** (9 件・3.1%)、**CARTO** (6 件・2.0%)、**NAVITIME** (5 件・1.7%) が続く。
 
 ![観測した地図サービスの背景地図・タイル](../../../../../docs/images/services-map-tiles.png)
 
 | 背景の地図・タイル | 件数 | 傾向 |
 |---|---:|---|
-| 自前タイル / 同一ドメイン等 | 50 | Cloudflare R2、Amazon S3 + CloudFront、自前サーバー、PMTiles 等で直接配信 |
-| OpenStreetMap (OSM 財団等) | 27 | Leaflet との組み合わせやコミュニティ系・一部不動産 (Yahoo!不動産等) で利用 |
-| Google Maps | 27 | グルメ・不動産・旅行予約・店舗検索などの一般サイトの埋め込み地図で広く利用 |
-| 地理院タイル (国土地理院) | 26 | 国内サービスにおける背景図・航空写真・標高データ・防災マップの定番 |
-| Mapbox | 14 | スタイルや各種 API の利用 |
+| 自前タイル / 同一ドメイン等 | 75 | Cloudflare R2、Amazon S3 + CloudFront、自前サーバー、PMTiles 等で直接配信 |
+| Google Maps | 62 | グルメ・不動産・旅行予約・店舗検索などの一般サイトの埋め込み地図で広く利用 |
+| OpenStreetMap (OSM 財団等) | 50 | Leaflet / MapLibre との組み合わせやコミュニティ系・OSS エコシステム・一部不動産等で利用 |
+| 地理院タイル (国土地理院) | 35 | 国内サービスにおける背景図・航空写真・標高データ・防災マップの定番 |
+| Mapbox | 29 | スタイルや各種 API の利用 |
+| ゼンリン | 12 | 国内の拠点案内・店舗検索 (AreaMarker、佐川急便、西濃運輸、いつもNAVI 等) で利用 |
 | OpenFreeMap | 9 | MapLibre GL JS と組み合わせて無償で使えるベクトルタイル基盤として採用が多い |
 | CARTO | 6 | ダーク/ライトのベースマップ (Basemaps) として利用 |
-| ゼンリン | 5 | 国内の拠点案内 (日本郵便、避難施設、いつもNAVI 等) で利用 |
-| NAVITIME | 3 | 国内大手チェーンの店舗検索で地図・ルート案内基盤として利用 |
-| その他 | 20 | Protomaps (3)、Esri / ArcGIS (3)、HERE (3)、USGS / NASA / Copernicus (3)、Geolonia、MIERUNE、MapTiler 等 |
+| NAVITIME | 5 | 国内大手チェーンの店舗検索 (スターバックス、イオン、ニトリ、サイゼリヤ、NewDays) で利用 |
+| その他 | 12 | Protomaps、Esri / ArcGIS、HERE、USGS / NASA / Copernicus、Geolonia、MIERUNE、MapTiler、GeoTechnologies 等 |
 
-配信先 (CDN / ホスティング、全 177 件) は **Cloudflare** (59 件・33.3%) が最多で、次いで **Amazon S3 + CloudFront** (30 件・16.9%)、**nginx (配信元不明等)** (21 件・11.9%)、**Apache** (14 件・7.9%)、**GitHub Pages** (13 件・7.3%)、**Vercel** (8 件・4.5%)、**Google Cloud / ESF / Fastly 等** (8 件・4.5%)、その他 (自社 CDN・Akamai・Imperva 等 14 件・7.9%)、不明・未確認 (10 件・5.6%) となっている。
+配信先 (CDN / ホスティング、全 296 件) は **Cloudflare** (86 件・29.1%) が最多で、次いで **Amazon S3 + CloudFront** (57 件・19.3%)、**nginx (配信元不明等)** (38 件・12.8%)、**Apache** (28 件・9.5%)、**不明・未確認** (25 件・8.4%)、**その他 (自社 CDN・Akamai・Imperva 等)** (22 件・7.4%)、**Google Cloud / ESF / Fastly 等** (16 件・5.4%)、**GitHub Pages** (15 件・5.1%)、**Vercel** (9 件・3.0%) となっている。
 
 ![観測した地図サービスの配信先](../../../../../docs/images/services-hosting-cdn.png)
 
@@ -92,12 +93,14 @@
 | [Airbnb](airbnb.md) | ウェブ | 企業 | 商用 | Google Maps JavaScript API と Mapbox の併用 | Envoy プロキシおよび自社 CDN ドメイン `a0.muscache.com` |
 | [AllTrails](alltrails.md) | ウェブ | 企業 | 商用 | Mapbox | nginx + Amazon CloudFront |
 | [高徳地図 (Amap / AutoNavi)](amap.md) | アプリとウェブ | 企業 | 商用 | WebGL および独自レンダリングパイプライン | Tengine + Alibaba Cloud |
+| [Amazon ロッカー／カウンター検索](amazon-locker.md) | アプリとウェブ | 企業 | 商用 | 未確認 | Amazon CloudFront |
 | [ArcGIS Online](arcgis-online.md) | アプリとウェブ | 企業 | 商用 | ArcGIS Maps SDK for JavaScript | ArcGIS Online サーバー + Amazon CloudFront |
 | [アットホーム (at home)](athome.md) | ウェブ | 企業 | 商用 | 未確認 | Amazon CloudFront |
 | [Atlas Obscura](atlas-obscura.md) | アプリとウェブ | 企業 | 商用 | 未確認 | Cloudflare |
 | [百度地図 (Baidu Maps)](baidu-maps.md) | ウェブ | 企業 | 商用 | WebGL ベースの独自エンジン | 百度フロントエンド (`Server: bfe` ヘッダーを確認) |
 | [クマ遭遇AI予測マップ｜上智大学 深澤研究室](bear-ai.md) | ウェブ | 大学の研究室 | 非商用 | - | GitHub Pages |
 | [Bikemap](bikemap.md) | アプリとウェブ | 企業 | 商用 | 未確認 | nginx + Amazon CloudFront |
+| [びっくりドンキー 店舗検索](bikkuri-donkey-store.md) | アプリとウェブ | 企業 | 商用 | Google Maps | Amazon S3 + Amazon CloudFront |
 | [Bing Maps (Bing 地図)](bing-maps.md) | ウェブ | 企業 | 商用 | 未確認 | Microsoft Azure / CDN |
 | [Booking.com](booking.md) | ウェブ | 企業 | 商用 | 未確認 | Amazon CloudFront + Istio/Envoy |
 | [浸水センサ表示システム（国土交通省）](c-sensor.md) | ウェブ | 公的機関 | 非商用 | OpenLayers | CloudFront 経由 (nginx/1.14.1) |
@@ -112,14 +115,18 @@
 | [ChizuZu - 地図比較アプリ](chizuzu.md) | ウェブ | 個人と見られる | 非商用 | Leaflet | Cloudflare |
 | [JR東海道本線（東京〜熱海）｜吉田初三郎風・鳥瞰路線図](chokanzu.md) | ウェブ | 個人 | 非商用と見られる | - | Cloudflare |
 | [Citymapper](citymapper.md) | アプリとウェブ | 企業 | 商用 | Google Maps JavaScript API | Cloudflare (`server: cloudflare`, `cf-ray` ヘッダーを確認) |
+| [ココス 店舗検索](cocos-store.md) | アプリとウェブ | 企業 | 商用 | 埋め込み地図は未確認 | Apache |
 | [賃貸を地図で探す - 家賃相場が一目でわかる物件検索 ｜ Comfy](comfy-maison.md) | ウェブ | 企業 | 商用 | MapLibre GL JS | Vercel |
 | [CSTB Japan and NW Pacific 2026](cstb.md) | ウェブ | 個人と見られる | 非商用 | Leaflet 1.9.4 | Cloudflare |
 | [方位図法世界地図作成ツール](cubbit.md) | ウェブ | 個人 | 非商用 | Google Maps JavaScript API | Cloudflare |
 | [ダジック・アース - ダジック・アース](dagik.md) | アプリとウェブ | 団体と大学 | 非商用 | - | Cloudflare |
+| [デイリーヤマザキ 店舗検索](daily-yamazaki-store.md) | ウェブ | 企業 | 商用 | AreaMarker | Amazon S3 + Amazon CloudFront |
 | [Datawrapper](datawrapper.md) | ウェブ | 企業 | 商用 | D3.js + 自前の SVG/Canvas 地図レンダリングエンジン | Cloudflare (`server: cloudflare`) |
 | [David Rumsey Map Collection](davidrumsey.md) | ウェブ | 企業・大学連携 | 非商用 | LUNA Viewer | Apache/2.4.41 (Ubuntu) |
 | [DeepStateMap](deepstatemap.md) | アプリとウェブ | 非営利団体 | 非商用 | Leaflet 1.9.3 + PixiJS 6.4.2 | Cloudflare |
 | [DeFlock Maps ｜ ALPR Camera Map & Privacy Routes](deflock.md) | ウェブ | 団体 | 非商用と見られる | MapLibre GL JS | Cloudflare |
+| [デニーズ 店舗検索](dennys-store.md) | アプリとウェブ | 企業 | 商用 | Google Maps JavaScript API + GOGA 店舗検索サービス。一次 HTTP 取得 HTML で Maps JavaScript API の読み込み | Google Frontend |
+| [DHL ジャパン 拠点検索](dhl-locator.md) | アプリとウェブ | 企業 | 商用 | Google Maps JavaScript API | 未確認 |
 | [JAPAN CIVIL WORKS MONITOR ｜ 日本の大規模土木プロジェクト進捗マップ](doboku-map.md) | ウェブ | 企業と見られる | 非商用と見られる | Leaflet 1.9.4 | Amazon S3 + CloudFront |
 | [Domino's（Pinpoint Delivery / 店舗検索）](dominos.md) | アプリとウェブ | 企業 | 商用 | 未確認 | `Server: Apache`、`x-powered-by: Express` |
 | [EarthCam](earthcam.md) | アプリとウェブ | 企業 | 商用 | Leaflet | Cloudflare |
@@ -127,7 +134,9 @@
 | [EO Browser (Sentinel Hub / Copernicus Browser)](eo-browser.md) | ウェブ | 企業 | 商用基盤上の無償提供 | Leaflet | Amazon CloudFront (`via: CloudFront`) |
 | [Expedia](expedia.md) | アプリとウェブ | 企業 | 商用 | 未確認 | 未確認 |
 | [F4map](f4map.md) | ウェブ | 企業 | 商用 | 自前の WebGL 3D エンジン | nginx + Varnish (配信先の事業者は不明) |
+| [ファミリーマート 店舗検索](familymart-store.md) | アプリとウェブ | 企業 | 商用 | Google Maps ベース | Google Frontend |
 | [FATMAP](fatmap.md) | ウェブ | 企業 | 商用・終了済み | 未確認 | 未確認 |
+| [FedEx ジャパン 拠点検索](fedex-locator.md) | アプリとウェブ | 企業 | 商用 | Google Maps JavaScript API | Cloudflare |
 | [Felt](felt.md) | ウェブ | 企業 | 商用 | MapLibre GL JS (および deck.gl 等の WebGL ベース高速描画) | Cloudflare (`server: cloudflare`) |
 | [Flight Atlas](flightatlas.md) | ウェブ | 個人 | 非商用 | MapLibre GL JS 5.24.0 | GitHub Pages |
 | [FlightAware](flightaware.md) | アプリとウェブ | 企業 | 商用フリーミアム | OpenLayers | Cloudflare |
@@ -135,6 +144,7 @@
 | [Flock camera map: Find the Flock cameras watching you ｜ Proton](flock.md) | ウェブ | 企業 | 商用 | MapLibre GL JS | 不明 (応答ヘッダーに手がかりが無い) |
 | [Flourish](flourish.md) | ウェブ | 企業 | 商用フリーミアム | テンプレートごとに D3.js / Canvas / WebGL や Mapbox / MapLibre 等を組み合わせた独自埋め込みエンジン | Amazon S3 + Amazon CloudFront |
 | [🍽️ Japan Food Facilities - 地図](food-facilities.md) | ウェブ | 団体か個人 | 非商用と見られる | MapLibre GL JS | GitHub Pages |
+| [福山通運 営業所検索](fukutsu-locations.md) | アプリとウェブ | 企業 | 商用 | 埋め込み地図なし | nginx |
 | [Hail Mary - Star Map](gaia-mary.md) | ウェブ | 個人 | 非商用 | - | GitHub Pages |
 | [Gaia GPS](gaiagps.md) | アプリとウェブ | 企業 | 商用 | Mapbox Maps SDK | nginx (`server: nginx` を応答ヘッダーで確認) |
 | [Garmin Explore](garmin-explore.md) | アプリとウェブ | 企業 | 商用 | Leaflet | Cloudflare |
@@ -186,6 +196,7 @@
 | [防災インタフェース](jaxa-bousai.md) | ウェブ | 公的機関 | 非商用 | - | volt-adc (配信先の事業者は不明) |
 | [日本地図の陣とりバトル](jintori.md) | ウェブ | 個人と見られる | 非商用と見られる | - | nginx/1.24.0 (Ubuntu) (配信先の事業者は不明) |
 | [ジョルダン乗換案内](jorudan.md) | アプリとウェブ | 企業 | 商用 | 未確認 | Amazon CloudFront |
+| [ジョイフル 店舗検索](joyfull-store.md) | アプリとウェブ | 企業 | 商用 | Google Maps。ブラウザ観測で「マップ表示」タブの地図に「地図データ ©2026 Google」を確認 | Cloudflare + Amazon CloudFront |
 | [JP Market Vis - 日本の上場企業マップ](jp-market-vis.md) | ウェブ | 個人 | 非商用 | - | GitHub Pages |
 | [jSTAT MAP（地図で見る統計）](jstat-map.md) | ウェブ | 公的機関 | 非商用 | 未確認 | ZENEDGE |
 | [ライブハウス検索マップ - JVMAP｜全国の音楽会場を地図で探す](jvmap.md) | ウェブ | 企業 | 商用 | MapLibre GL JS | Vercel |
@@ -209,6 +220,7 @@
 | [くまっぷ - クマ目撃・痕跡情報を共有するマップアプリ](kumap-xenon.md) | ウェブ | 企業 | 商用と見られる | Leaflet | 不明 (応答ヘッダーに手がかりが無い) |
 | [京都観光Navi](kyoto-travel.md) | ウェブ | 京都市・公益社団法人京都市観光協会 | 非商用 | スポット詳細ページ | Cloudflare |
 | [東京終電マップ｜TOKYO LAST TRAIN MAP](last-train.md) | ウェブ | 個人と見られる | 非商用と見られる | - | Cloudflare |
+| [ローソン 店舗検索](lawson-store.md) | アプリとウェブ | 企業 | 商用 | AreaMarker | Amazon S3 + Amazon CloudFront |
 | [ラズリマップ｜図面から、測る手間を消す](lazuri.md) | ウェブ | 企業 | 商用と見られる | MapLibre GL JS | Fly.io |
 | [Light Pollution Map](light-pollution-map.md) | アプリとウェブ | 個人運営 | 商用・個人運営 | 未確認 | Apache/2.4.58 on Ubuntu |
 | [LightningMaps.org](lightningmaps.md) | ウェブ | コミュニティ・非営利プロジェクト | 非商用 | Leaflet | nginx (`server: nginx` ヘッダーを確認。インフラ事業者は未確認) |
@@ -234,6 +246,7 @@
 | [Meteoblue](meteoblue.md) | アプリとウェブ | 企業 | 商用 | OpenLayers | Cloudflare |
 | [Interactive Middle-earth Map - LOTR, Hobbit & Silmarillion](middle-earth.md) | ウェブ | 個人と見られる | 非商用 | Leaflet | 不明 (応答ヘッダーに手がかりが無い) |
 | [みんなの行政地図](minchizu.md) | ウェブ | 個人と見られる | 商用 | - | LiteSpeed (配信先の事業者は不明) |
+| [ミニストップ 店舗検索](ministop-store.md) | アプリとウェブ | 企業 | 商用 | Google Maps | 未確認 |
 | [みんなでつくる全国冠水道路マップ｜みんつく全国冠水マップ](mintsuku.md) | ウェブ | 有志 | 商用 | MapLibre GL JS 6.6.0 | Cloudflare |
 | [Mobility Maps: Making Public Transport Infrastructure Transparent](mobility.md) | ウェブ | 大学 | 非商用 | MapLibre GL JS 5.0.1、deck.gl | nginx/1.29.8 (配信先の事業者は不明) |
 | [THE MODAL EARTH - 旋法の地球儀｜世界35の旋法を、本当の音程で聴き比べる ｜ Música Terra PLAYGROUND](modalearth.md) | ウェブ | 企業か個人 | 商用 | three.js | nginx (配信先の事業者は不明) |
@@ -247,6 +260,7 @@
 | [Navara, an open-source 3D map engine](navara.md) | ウェブ | 団体 | 非商用 | - | Cloudflare |
 | [Naver Map (ネイバー地図)](naver-map.md) | ウェブ | 企業 | 商用 | WebGL ベースのベクタータイル描画 | NAVER 自社インフラ |
 | [NAVITIME（ウェブ総合版）](navitime.md) | アプリとウェブ | 企業 | 商用 | 自社地図基盤 + Mapbox 関連記述 | Apache + Amazon CloudFront |
+| [NewDays 店舗検索](newdays-store.md) | アプリとウェブ | 企業 | 商用 | NAVITIME 地図 API | Apache |
 | [withfs ニュースマップ｜ニュースの舞台を地図で俯瞰する ｜ withfs](newsmap.md) | ウェブ | 個人と見られる | 商用 | - | Google (Blogger) |
 | [電界強度マップ - 電磁環境研究室モニタリングプロジェクト](nict-emc.md) | ウェブ | 公的機関 | 非商用 | - | Apache (配信先の事業者は不明) |
 | [ニトリ 店舗検索](nitori-store.md) | ウェブ | 企業 | 商用 | NAVITIME 地図 API | Apache (`server: Apache`) |
@@ -271,6 +285,7 @@
 | [PLATEAU VIEW](plateau-view.md) | ウェブ | 公的機関 | 非商用 | CesiumJS 1.118.0 + Re:Earth | Google Frontend |
 | [Polarsteps](polarsteps.md) | アプリとウェブ | 企業 | 商用 | 未確認 | `server: uvicorn` |
 | [国勢調査 メッシュ年齢構成クラスターマップ](popbalance.md) | ウェブ | 個人 | 非商用 | MapLibre GL JS | GitHub Pages |
+| [ポプラ 店舗検索](poplar-store.md) | ウェブ | 企業 | 商用 | Google マイマップ埋め込み | nginx |
 | [PurpleAir](purpleair.md) | ウェブ | 企業 | 商用 | Mapbox | Google Frontend |
 | [全国農業用ため池マップについて ｜ 全国Q地図](qchizu-pond.md) | ウェブ | 個人か団体 | 商用 | - | Cloudflare |
 | [RadarBox（AirNav Radar）](radarbox.md) | アプリとウェブ | 企業 | 商用フリーミアム | 未確認 | Cloudflare |
@@ -290,15 +305,21 @@
 | [どこでもロケハン](rokehan.md) | ウェブ | 個人 | 非商用と見られる | - | nginx (配信先の事業者は不明) |
 | [Rome2Rio](rome2rio.md) | アプリとウェブ | 企業 | 商用 | 未確認 | Cloudflare |
 | [路線価図・評価倍率表](rosenka.md) | ウェブ | 公的機関 | 非商用 | 静的 HTML の一覧と PDF 図面 | Apache + Amazon CloudFront |
+| [ロイヤルホスト 店舗検索](royalhost-store.md) | アプリとウェブ | 企業 | 商用 | Google Maps。ブラウザ観測で店舗詳細の埋め込み地図に「地図データ ©2026 Google」を確認 | Amazon CloudFront |
 | [全国のトレランコースと大会コース｜Runnable](runnable.md) | ウェブ | 個人と見られる | 商用 | MapLibre GL JS | Vercel |
+| [佐川急便 営業所検索](sagawa-locations.md) | アプリとウェブ | 企業 | 商用 | ゼンリンデータコム地図 API | Apache |
 | [裁判官マップ - 日本地図から裁判官を探す ｜ 裁判官マップ](saibankan.md) | アプリとウェブ | 個人 | 非商用と見られる | - | Cloudflare |
+| [サイゼリヤ 店舗検索](saizeriya-store.md) | ウェブ | 企業 | 商用 | NAVITIME Location Cloud。ブラウザ観測で地図上に「© NAVITIME JAPAN」「地図 ©ゼンリン」、フッターに「Powered by NAVITIME Location Cloud」を確認 | Apache |
 | [Scribble Maps](scribble-maps.md) | ウェブ | 企業 | 商用フリーミアム | Google Maps JavaScript API ベースのカスタム描画・空間解析エンジン | Cloudflare |
 | [おでかけ航路マップ ｜ 日本全国の旅客船・フェリー航路情報と時刻表リンク](searoute.md) | ウェブ | 個人 | 商用 | MapLibre GL JS | Cloudflare |
+| [セイコーマート 店舗検索](seicomart-store.md) | アプリとウェブ | 企業 | 商用 | 埋め込み地図なし | Apache |
 | [生活利便性マップ](seikatsu-map.md) | ウェブ | 個人 | 非商用 | Leaflet 1.9.4 | Cloudflare |
+| [西濃運輸 営業所検索](seino-locations.md) | アプリとウェブ | 企業 | 商用 | ゼンリンデータコム地図 API | nginx |
 | [せんべろ東京マップ（東京都内の立ち飲み・大衆酒場・居酒屋を地図から検索） ｜ せんべろnet](senbero.md) | ウェブ | 個人 | 商用 | Google Maps JavaScript API | nginx (配信先の事業者は不明) |
 | [Seterra](seterra.md) | アプリとウェブ | 企業 | 商用 | SVG + D3.js | Amazon S3 + Amazon CloudFront |
-| [セブン-イレブン 店舗検索](seven-eleven-store.md) | ウェブ | 企業 | 商用 | 未確認 | Apache + Imperva (`server: Apache`、`x-cdn: Imperva`) |
+| [セブン-イレブン 店舗検索](seven-eleven-store.md) | ウェブ | 企業 | 商用 | AreaMarker (ゼンリン) | Apache + Imperva (`server: Apache`、`x-cdn: Imperva`) |
 | [showhand - 全晒しAI不動産周辺マップ](showhand.md) | ウェブ | 企業 | 商用 | - | Vercel |
+| [すかいらーくグループ 店舗検索](skylark-store.md) | アプリとウェブ | 企業 | 商用 | Google Maps ベース | Google Frontend |
 | [SkylineWebcams](skylinewebcams.md) | ウェブ | 企業 | 商用 | 未確認 | nginx |
 | [SNS災害情報集約マップAI](solafune-alert.md) | ウェブ | 企業 | 商用と見られる | MapLibre GL JS | Amazon S3 + CloudFront |
 | [THE SOUNDING EARTH](sounding-earth.md) | ウェブ | 企業か個人 | 商用 | three.js | nginx (静的な配信) |
@@ -328,6 +349,7 @@
 | [Trulia](trulia.md) | アプリとウェブ | 企業 | 商用 | 未確認 | Amazon CloudFront |
 | [uMap - Online map creator](umap.md) | ウェブ | 団体 | 非商用 | Leaflet | nginx/1.31.6 (配信先の事業者は不明) |
 | [ユニクロ 店舗検索 (UNIQLO Store Locator)](uniqlo-store.md) | ウェブ | 企業 | 商用 | Google Maps JavaScript API | nginx + Akamai |
+| [UPS ジャパン 取扱店検索](ups-locations.md) | アプリとウェブ | 企業 | 商用 | 埋め込み地図なし | Akamai |
 | [Urbanist Map](urbanistmap.md) | ウェブ | 個人 | 非商用 | MapLibre GL JS | Cloudflare |
 | [USGS Earthquake Map](usgs-earthquake.md) | ウェブ | 政府機関 | 非商用 | Leaflet / MapLibre / ArcGIS | nginx + Amazon CloudFront |
 | [Ushahidi](ushahidi.md) | アプリとウェブ | 非営利団体 | 非商用・商用両対応 | Leaflet / Mapbox | 未確認 |
@@ -353,6 +375,7 @@
 | [非公式 山岡家 Map](yamaokaya.md) | ウェブ | 個人 | 非商用 | MapLibre GL JS | Amazon S3 + CloudFront |
 | [YAMAP / ヤマップ ｜ 登山をもっと楽しく、登山情報プラットフォーム](yamap.md) | アプリとウェブ | 企業 | 商用 | - | CloudFront 経由 (配信元は不明)。アプリは App Store、Google Play |
 | [ヤマレコ (Yamareco)](yamareco.md) | ウェブ | 企業 | 商用 | Leaflet | Cloudflare 経由 |
+| [ヤマト運輸 営業所・取扱店検索](yamato-locations.md) | アプリとウェブ | 企業 | 商用 | GeoTechnologies 地図 API | Amazon CloudFront + Amazon S3 |
 | [Yandex Maps](yandex-maps.md) | アプリとウェブ | 企業 | 商用 | MapLibre GL JS + Yandex Maps JavaScript API | 未確認 |
 | [Yelp](yelp.md) | ウェブ | 企業 | 商用 | 未確認 | Varnish |
 | [Zillow](zillow.md) | ウェブ | 企業 | 商用 | 未確認 | Amazon CloudFront |

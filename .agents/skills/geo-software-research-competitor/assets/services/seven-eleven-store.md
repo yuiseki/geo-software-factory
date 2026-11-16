@@ -21,18 +21,18 @@
 
 | 項目 | 観測したもの |
 |---|---|
-| 描画 | 未確認 (`https://www.sej.co.jp/shop/` は Imperva WAF の JS チャレンジにより本文を取得できず、`https://map.sej.co.jp/` は応答が得られなかった) |
-| フレームワーク | 未確認 (Imperva WAF により HTML 本文を取得できず) |
-| 背景の地図とタイル | 未確認 (公開情報ではゼンリンデータコムのいつもNAVI や Google Maps Platform 等の活用に言及があるが、現行店舗検索ページの通信は未確認) |
-| 投稿やデータの保存先 | 未確認 (Imperva WAF により取得できず) |
-| 配信 | Apache + Imperva (`server: Apache`、`x-cdn: Imperva`) |
+| 描画 | AreaMarker (2026-11-16 に実ブラウザで確認。`https://www.sej.co.jp/shop/` から `https://seven-eleven.areamarker.com/711map/top` へ転送される。なお `curl` での直接取得では Imperva WAF の JS チャレンジが返る) |
+| フレームワーク | 未確認 (AreaMarker 基盤) |
+| 背景の地図とタイル | ゼンリン (`©2026 ZENRIN CO., LTD.` を地図右下で確認) |
+| 投稿やデータの保存先 | 株式会社セブン-イレブン・ジャパン / AreaMarker 基盤 |
+| 配信 | Apache + Imperva (`www.sej.co.jp` で `server: Apache`、`x-cdn: Imperva` を確認。転送先の AreaMarker は別途配信) |
 
 メモ:
 
-- `curl -sL` で `https://www.sej.co.jp/shop/` へアクセスしたところ、HTTP 200 で Imperva (Incapsula) のボット対策スクリプト (`/_Incapsula_Resource`) のみが返却され、店舗検索ページの本体や地図スクリプトは取得できなかった
-- `https://map.sej.co.jp/` への接続はタイムアウトまたは応答なしとなった
+- 2026-11-16 のブラウザ実地観測により、`https://www.sej.co.jp/shop/` から `https://seven-eleven.areamarker.com/711map/top` へ転送され、ゼンリンの店舗検索 ASP「AreaMarker」が利用されていることを確認した (`©2026 ZENRIN CO., LTD.`)。
+- `curl -sL` で `https://www.sej.co.jp/shop/` へアクセスした場合は Imperva (Incapsula) のボット対策スクリプト (`/_Incapsula_Resource`) のみが返却される。
 
 データの出どころ (2026-11-16):
 
-- 店舗データ: 株式会社セブン-イレブン・ジャパン (詳細の API 経路は未確認)
-- 背景地図・タイル: 未確認
+- 店舗データ: 株式会社セブン-イレブン・ジャパン
+- 背景地図・タイル: 株式会社ゼンリン (`©2026 ZENRIN CO., LTD.`、AreaMarker 経由)

@@ -15,17 +15,7 @@
 
 描画ライブラリを特定できた **70 件** (未検出・未確認・自前描画・アプリ主体が 37 件) の内訳では、オープンソースの WebGL ライブラリである **MapLibre GL JS** が最多で、従来の軽量なラスタ中心ライブラリである **Leaflet** がそれに続く。商用 API 付属の描画 SDK (Google Maps、Mapbox GL JS) は少数派にとどまる。
 
-```mermaid
-pie showData
-    title 観測した地図サービスの描画ライブラリ (延べ 73 件 / 70 サービス)
-    "MapLibre GL JS" : 33
-    "Leaflet" : 21
-    "Google Maps JS API" : 5
-    "Mapbox GL JS" : 4
-    "Three.js" : 4
-    "OpenLayers" : 2
-    "その他 (deck.gl / Mapillary / ゼンリン / Bing)" : 4
-```
+![観測した地図サービスの描画ライブラリ](../../../../../docs/images/services-map-libraries.png)
 
 | 描画ライブラリ | 件数 | 傾向 |
 |---|---:|---|
@@ -41,20 +31,7 @@ pie showData
 
 背景の地図・タイルを特定できた **67 件** (未検出・未確認 38 件、背景タイル不使用 1 件、URL のみ記載 1 件) では、商用地図 API への従量課金を避け、**自前のタイル配信** や **無償の公開タイル (地理院タイル、OSM、OpenFreeMap)** を組み合わせる構成が大半を占める。
 
-```mermaid
-pie showData
-    title 背景の地図・タイル (延べ 88 件 / 67 サービス)
-    "自前タイル / 同一ドメイン等" : 24
-    "地理院タイル (国土地理院)" : 19
-    "OpenStreetMap" : 11
-    "OpenFreeMap" : 9
-    "Google Maps" : 5
-    "Mapbox" : 4
-    "CARTO" : 4
-    "Protomaps" : 3
-    "Esri / ArcGIS" : 3
-    "その他 (Geolonia / MIERUNE / HERE 等)" : 6
-```
+![観測した地図サービスの背景地図・タイル](../../../../../docs/images/services-map-tiles.png)
 
 | 背景の地図・タイル | 件数 | 傾向 |
 |---|---:|---|
@@ -71,17 +48,7 @@ pie showData
 
 配信先 (CDN / ホスティング、全 107 件) は **Cloudflare** (44 件) が最多で、次いで **nginx (配信元不明等)** (14 件)、**Amazon S3 + CloudFront** (13 件)、**GitHub Pages** (13 件)、**Vercel** (8 件)、その他 (6 件)、不明・手がかりなし (9 件) となっている。静的ホスティングやエッジキャッシュに載せ、タイルも無償公開または自前配信にする低コスト構成が主流である。
 
-```mermaid
-pie showData
-    title 配信先・ホスティング (全 107 サービス)
-    "Cloudflare" : 44
-    "nginx (配信元不明等)" : 14
-    "Amazon S3 + CloudFront" : 13
-    "GitHub Pages" : 13
-    "Vercel" : 8
-    "その他" : 6
-    "不明・手がかりなし" : 9
-```
+![観測した地図サービスの配信先](../../../../../docs/images/services-hosting-cdn.png)
 
 ## ソースの行
 

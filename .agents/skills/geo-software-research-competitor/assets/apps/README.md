@@ -22,15 +22,19 @@
 | カード | 運営 | 商用か | 描画 | 配信 |
 |---|---|---|---|---|
 | [7NOW](7now.md) | 企業 | 商用 | 未確認 | App Store、Google Play |
+| [AlpineQuest](alpinequest.md) | 個人 / 小規模開発元 | 商用 | 未確認 | Google Play、公式サイト (直接購入版) |
 | [Alto](alto.md) | 企業 | 商用 | 未確認 | App Store、Google Play |
 | [Appleマップ](apple-maps.md) | 企業 | 非商用と見られる | 未確認 | App Store |
 | [バスNAVITIME 時刻表&乗り換え案内&路線図ナビ](bus-navitime.md) | 企業 | 商用 | 未確認 | App Store、Google Play |
+| [c:geo](cgeo.md) | 団体 | 商用 | Mapsforge | Google Play (GitHub Releases からも APK 配布) |
+| [地図ロイド](chizroid.md) | 個人 | 商用 | 未確認 | Google Play |
 | [CoMaps](comaps.md) | 団体 | 商用 | 自前の C++ の地図エンジン (Organic Maps から分かれた) | App Store、Google Play |
 | [DiDi（モビリティ）](didi.md) | 企業 | 商用 | 未確認 | App Store、Google Play |
 | [Dokoka - 矢印だけの散歩ナビ](dokoka.md) | 個人 | 非商用 | 未確認 | App Store、Google Play |
 | [DoorDash](doordash.md) | 企業 | 商用 | 未確認 | App Store、Google Play |
 | [ドラゴンクエストウォーク](dq-walk.md) | 企業 | 商用 | 未確認 | App Store、Google Play |
 | [Every Door](everydoor.md) | 個人 | 非商用と見られる | flutter_map と vector_map_tiles | App Store、Google Play |
+| [ジオグラフィカ](geographica.md) | 個人 | 商用 | 未確認 | App Store、Google Play |
 | [ジオクエ-写真を撮ってポイントに！ポイ活アプリ](geoquest.md) | 企業 | 商用 | 未確認 | App Store、Google Play |
 | [Ghostbusters World](ghostbusters-world.md) | 企業 | 商用 | 未確認 | かつて App Store、Google Play で配信 (2020-08-13 終了によりプレイ不可) |
 | [GO（タクシーアプリ）](go-taxi.md) | 企業 | 商用 | 未確認 | App Store、Google Play |
@@ -44,6 +48,7 @@
 | [Lyft](lyft.md) | 企業 | 商用 | 未確認 | App Store、Google Play |
 | [Maply](maply.md) | 企業 | 商用と見られる | 未確認 | App Store |
 | [オフライン地図、GPSナビ:MAPS.ME](mapsme.md) | 企業 | 商用 | 自前の C++ の地図エンジン (Organic Maps と CoMaps の元になった omim、Apache-2.0。今の版の中は未確認) | App Store、Google Play |
+| [MoodGo](moodgo.md) | 個人 | 商用 | 未確認 | App Store |
 | [ドライブサポーター by NAVITIME (カーナビ)](navitime-drive.md) | 企業 | 商用 | 未確認 | App Store、Google Play |
 | [Ola](ola.md) | 企業 | 商用 | 未確認 | App Store、Google Play |
 | [Organic マップ: オフライン地図](organicmaps.md) | 企業 | 商用 | 自前の C++ の地図エンジン (MAPS.ME の omim から分かれた) | App Store、Google Play、Obtainium (GitHub のリリース) |
@@ -51,13 +56,16 @@
 | [S.RIDE](s-ride.md) | 企業 | 商用 | 未確認 | App Store、Google Play |
 | [StreetComplete](streetcomplete.md) | 個人 | 商用 | MapLibre (maplibre-compose 0.20.0) | Google Play、App Store |
 | [スーパー地形](superdem.md) | 個人 | 商用 | 未確認 | App Store、Google Play |
+| [登山記録 - 百名山・GPS・オフライン地図](tozan-kiroku.md) | 個人 | 商用 | 未確認 | App Store |
 | [トリマ-歩数・移動でポイント！散歩やウォーキングでお金を稼ぐ](trima.md) | 企業 | 商用 | 未確認 | App Store、Google Play |
+| [Trip Supporter](trip-supporter.md) | 個人 | 商用 | Mapbox | App Store |
 | [Uber](uber.md) | 企業 | 商用 | 未確認 | App Store、Google Play |
 | [V2X2MAP - live receiver and map for ITS-G5 / V2X](v2x2map.md) | 個人 | 商用 | 地図ライブラリの名前は見つからなかった | Cloudflare |
 | [The Walking Dead: Our World](walking-dead-our-world.md) | 企業 | 商用 | 未確認 | かつて App Store、Google Play で配信 (2023-01-31 終了によりストアから削除・プレイ不可) |
 | [WhatsApp](whatsapp.md) | 企業 | 商用 | 未確認 | App Store、Google Play |
 | [Yahoo!防災速報](yahoo-bousai.md) | 企業 | 非商用と見られる | 未確認 | App Store、Google Play |
 | [妖怪ウォッチ ワールド](youkai-watch-world.md) | 企業 | 商用 | 未確認 | かつて App Store、Google Play で配信 (2022-12-23 終了) |
+| [ずぼ旅（DriftLog）](zubotabi.md) | 個人 | 商用 | 未確認 | App Store、Google Play |
 
 ## アプリもあるウェブのサービス
 
@@ -107,6 +115,7 @@
 - [Park4Night](../services/park4night.md)
 - [Polarsteps](../services/polarsteps.md)
 - [RadarBox（AirNav Radar）](../services/radarbox.md)
+- [Radio Garden](../services/radio-garden.md)
 - [RainViewer](../services/rainviewer.md)
 - [Realtor.com](../services/realtor.md)
 - [Redfin](../services/redfin.md)
@@ -119,6 +128,7 @@
 - [Stellarium Web](../services/stellarium-web.md)
 - [SunCalc](../services/suncalc.md)
 - [tenki.jp](../services/tenki-jp.md)
+- [TimeGuessr](../services/timeguessr.md)
 - [TomTom](../services/tomtom.md)
 - [Trailforks](../services/trailforks.md)
 - [TripAdvisor](../services/tripadvisor.md)
@@ -130,6 +140,8 @@
 - [Wayfair](../services/wayfair.md)
 - [Wheelmap](../services/wheelmap.md)
 - [Wikiloc](../services/wikiloc.md)
+- [WorldGuessr](../services/worldguessr.md)
+- [Worldle](../services/worldle.md)
 - [Yahoo!マップ](../services/yahoo-map.md)
 - [YAMAP / ヤマップ ｜ 登山をもっと楽しく、登山情報プラットフォーム](../services/yamap.md)
 - [Yandex Maps](../services/yandex-maps.md)
@@ -164,6 +176,7 @@
 - [ドン・キホーテ 店舗検索](../services/donki-store.md)
 - [ビックカメラ 店舗検索](../services/biccamera-store.md)
 - [ファミリーマート 店舗検索](../services/familymart-store.md)
+- [ポストマップ](../services/postmap.md)
 - [マツモトキヨシ 店舗検索](../services/matsukiyo-store.md)
 - [ミスタードーナツ 店舗検索](../services/misterdonut-store.md)
 - [ミニストップ 店舗検索](../services/ministop-store.md)

@@ -29,6 +29,7 @@ description: 地図プロダクトを実装するためのライブラリや SDK
 | [frameworks/terriajs](references/frameworks/terriajs.md) | ライブラリから組まずに、地図アプリの土台を使うか検討するとき | TerriaJS |
 | [frameworks/reearth-visualizer](references/frameworks/reearth-visualizer.md) | 同上。3D の Web GIS を組むとき | Re:Earth Visualizer |
 | [frameworks/kepler-gl](references/frameworks/kepler-gl.md) | 同上。位置データの分析画面を作るとき | kepler.gl |
+| [frameworks/versatiles-frontend](references/frameworks/versatiles-frontend.md) | VersaTiles のタイルを自前のサーバーから、地図のページ、スタイル、フォントごと配るとき | VersaTiles Frontend (MapLibre GL JS、スタイル、フォント、スプライトを 1 つの tar にした一式。MIT) |
 | [frameworks/rustgis](references/frameworks/rustgis.md) | 地図の作業や解析に、アプリを作らずに既製の GIS (デスクトップと Web) を使うか検討するとき。Python や Qt のアプリに GIS の地図を組み込みたいとき | RustGIS (純粋な Rust の GIS。Python のパッケージと WebAssembly のプラグインがある。0.x) |
 | [frameworks/no-code-maps](references/frameworks/no-code-maps.md) | 開発せずに地図を作って埋め込むか検討するとき (自治体、報道、ブログの地図) | Google マイマップ、ArcGIS Online のアプリ (StoryMaps、Experience Builder、Web AppBuilder の廃止)、uMap、Felt。ノーコードで足りるときと作るとき |
 | [native/maplibre-native](references/native/maplibre-native.md) | ネイティブアプリで候補に入れるとき | MapLibre Native |

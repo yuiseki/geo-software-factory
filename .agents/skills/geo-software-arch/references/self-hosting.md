@@ -36,6 +36,7 @@
 - 生成済みのタイルを配布しているところと利用条件:
   - Protomaps: v4 の planet ビルドを毎日 `maps.protomaps.com/builds` で公開している。z0〜15 で約 120GB。ODbL の Produced Work として配布し、OpenStreetMap の帰属表示が要る。URL は変わりうるのでホットリンクせず自分のストレージへコピーするよう求めている。過去 1 週間分と各パッチ版の最新が残る ([Protomaps: Downloads](https://docs.protomaps.com/basemaps/downloads))。
   - OpenFreeMap: OpenMapTiles スキーマ (無改変) を Planetiler で生成し、公開インスタンスを無料で提供している。商用利用可、帰属表示が要る、地図表示回数とリクエスト数の制限は無い、SLA は無い。オフライン用の一括ダウンロードは 3,000 タイルまたは 50MB まで。planet の Btrfs イメージと MBTiles を毎週公開し、自前配信もできる ([OpenFreeMap](https://openfreemap.org/))。プロジェクトのコードは MIT ([LICENSE.md](https://github.com/hyperknot/openfreemap/blob/main/LICENSE.md))。
+  - VersaTiles: Shortbread スキーマの planet (z0〜14、約 62GB)、標高、衛星、陰影、土地被覆を `.versatiles` で配布する。変換は `versatiles convert` で PMTiles と MBTiles にもでき、配信は Rust の単一バイナリ `versatiles serve` (TLS とキャッシュは含まれない)。ソフトウェアは MIT、データは OSM の ODbL などで帰属表示が要る。商用ホスティングは無く、公開デモは無保証 ([VersaTiles の reference](../../geo-software-infra/references/providers/versatiles.md)、確かめた日 2026-11-16)。
   - MapTiler: OpenMapTiles の planet を配布している (tileserver-gl の README からリンクされる [data.maptiler.com](https://data.maptiler.com/downloads/planet/))。利用条件と価格は未確認。
 
 ## 配信

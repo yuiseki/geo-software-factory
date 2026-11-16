@@ -1,6 +1,6 @@
 ---
 name: geo-software-infra
-description: 地図プロダクトの要件に応じて、ベースマップ、衛星・航空写真、3D データの供給元を比較し技術選定する。商用サービス (Google Maps, Mapbox, MapTiler, Esri, HERE, TomTom, Geolonia Maps, ZENRIN, MapFan など)、無償の公開タイル (OpenStreetMap, OpenFreeMap)、公的データ (地理院タイル, PLATEAU)を、足切り (商用可否、公共案件、地域の法規制、ライブラリとの組み合わせ)、地図の詳しさ、安定性、ライセンス、移行のしやすさ、課金単位を揃えた費用で比べる。「どの地図タイルを使うべき」「ベースマップの選定」「Google Maps の代わり」「地図 API の料金比較」「衛星画像はどこから」「中国や韓国の地図」「国内の POI 検索 API」と言われたら使う。自前で配信するかどうかは geo-software-arch で決める。
+description: 地図プロダクトの要件に応じて、ベースマップ、衛星・航空写真、3D データの供給元を比較し技術選定する。商用サービス (Google Maps, Mapbox, MapTiler, Esri, HERE, TomTom, Geolonia Maps, ZENRIN, MapFan など)、無償の公開タイル (OpenStreetMap, OpenFreeMap)、セルフホスト前提の一式 (VersaTiles)、公的データ (地理院タイル, PLATEAU)を、足切り (商用可否、公共案件、地域の法規制、ライブラリとの組み合わせ)、地図の詳しさ、安定性、ライセンス、移行のしやすさ、課金単位を揃えた費用で比べる。「どの地図タイルを使うべき」「ベースマップの選定」「Google Maps の代わり」「地図 API の料金比較」「衛星画像はどこから」「中国や韓国の地図」「国内の POI 検索 API」と言われたら使う。自前で配信するかどうかは geo-software-arch で決める。
 ---
 
 # geo-software-infra
@@ -14,6 +14,7 @@ description: 地図プロダクトの要件に応じて、ベースマップ、�
 | [providers/tile-openstreetmap-org](references/providers/tile-openstreetmap-org.md) | 候補に入れるとき | OSMF の公式タイル |
 | [providers/tile-openstreetmap-jp](references/providers/tile-openstreetmap-jp.md) | 候補に入れるとき | OSMFJ のタイル |
 | [providers/openfreemap](references/providers/openfreemap.md) | 候補に入れるとき | OpenFreeMap |
+| [providers/versatiles](references/providers/versatiles.md) | セルフホスト前提で、タイル生成から配信までをオープンソースの一式で自前に持つとき。商用ホスティングは無い | VersaTiles (Shortbread のベクトルタイル、標高、衛星。配信は Rust の単一バイナリ。公開デモは無保証) |
 | [providers/mapbox](references/providers/mapbox.md) | 候補に入れるとき | Mapbox |
 | [providers/google-maps](references/providers/google-maps.md) | 候補に入れるとき | Google Maps Platform |
 | [providers/geolonia-maps](references/providers/geolonia-maps.md) | 候補に入れるとき | Geolonia Maps |

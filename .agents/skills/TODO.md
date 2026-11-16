@@ -38,12 +38,13 @@
   - [x] references/app/native-runtime.md
   - [x] references/hosting/static-hosting.md
   - [x] references/hosting/cloud-containers.md
-- [x] geo-software-infra (27/27)
+- [x] geo-software-infra (28/28)
   - [x] SKILL.md
   - [x] references/criteria.md
   - [x] references/providers/tile-openstreetmap-org.md
   - [x] references/providers/tile-openstreetmap-jp.md
   - [x] references/providers/openfreemap.md
+  - [x] references/providers/versatiles.md
   - [x] references/providers/mapbox.md
   - [x] references/providers/google-maps.md
   - [x] references/providers/geolonia-maps.md
@@ -66,7 +67,7 @@
   - [x] references/3d/plateau.md
   - [x] references/niche.md
   - [x] references/providers/mierune.md
-- [x] geo-software-library (47/47)
+- [x] geo-software-library (48/48)
   - [x] SKILL.md
   - [x] references/criteria.md
   - [x] references/libraries/leaflet.md
@@ -86,6 +87,7 @@
   - [x] references/frameworks/terriajs.md
   - [x] references/frameworks/reearth-visualizer.md
   - [x] references/frameworks/kepler-gl.md
+  - [x] references/frameworks/versatiles-frontend.md
   - [x] references/native/maplibre-native.md
   - [x] references/native/mapbox-maps-sdk.md
   - [x] references/native/google-maps-sdk.md

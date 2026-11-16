@@ -278,6 +278,82 @@ def update_item(board: dict, kind: str, item_id: int, expected_rev: str, new_bod
     return target
 
 
+TOOL_BROKEN_EXITS = (126, 127)
+
+
+def _shell_runner(cmd: str, timeout: int = 600) -> tuple[int | None, str]:
+    """Run a reproduction command. None as the exit code means it did not finish."""
+    try:
+        p = subprocess.run(["sh", "-c", cmd], capture_output=True, text=True, timeout=timeout)
+    except subprocess.TimeoutExpired:
+        return None, "timeout"
+    return p.returncode, (p.stdout + p.stderr)[-2000:]
+
+
+def _find_pr(board: dict, pr_id: int) -> dict:
+    for p in board.get("prs", []):
+        if int(p["id"]) == int(pr_id):
+            return p
+    raise KeyError(f"PR #{pr_id} not found")
+
+
+def open_blocking_findings(pr: dict) -> list[dict]:
+    return [f for f in pr.get("findings", []) if f.get("blocking") and f.get("status") == "open"]
+
+
+def record_finding(board: dict, pr_id: int, summary: str, repro_cmd: str | None = None,
+                   by: str = "gate-review", runner=None, now: datetime.datetime | None = None) -> dict:
+    """Record a review finding. A finding is a hypothesis; only a reproduction that fails blocks the merge.
+
+    The reproduction is a command (a test or a scenario) that must FAIL on this PR's version.
+    Exit 0 means it did not reproduce. 126/127 or a timeout means the tool itself did not run,
+    which is not evidence of anything.
+    """
+    ts = iso(now)
+    pr = _find_pr(board, pr_id)
+    finding = {"id": len(pr.get("findings", [])) + 1, "at": ts, "by": by, "summary": summary,
+               "kind": "hypothesis", "blocking": False, "status": "open", "evidence": None}
+    if not repro_cmd:
+        finding["note"] = "再現の手段が無い。仮説として記録し、マージを止めない"
+    else:
+        code, out = (runner or _shell_runner)(repro_cmd)
+        finding["evidence"] = {"cmd": repro_cmd, "exit": code, "output": out[-2000:] if out else ""}
+        if code is None or code in TOOL_BROKEN_EXITS:
+            finding["note"] = f"再現の道具が動かなかった (exit {code})。証拠にならないので仮説として記録する"
+        elif code == 0:
+            finding["note"] = "再現の手段を動かしたが落ちなかった。仮説として記録し、マージを止めない"
+        else:
+            finding["kind"] = "reproduced"
+            finding["blocking"] = True
+            finding["note"] = "再現した。直して同じ手段が通るまでマージを止める"
+    pr.setdefault("findings", []).append(finding)
+    pr.setdefault("notes", []).append({"at": ts, "by": by, "note": f"指摘 {finding['id']} ({finding['kind']}): {summary}"})
+    return finding
+
+
+def recheck_findings(board: dict, pr_id: int, runner=None, by: str = "fixer-impl",
+                     now: datetime.datetime | None = None) -> dict:
+    """Rerun the reproduction of each open blocking finding. Close it only when it now passes."""
+    ts = iso(now)
+    pr = _find_pr(board, pr_id)
+    closed = []
+    for f in open_blocking_findings(pr):
+        code, out = (runner or _shell_runner)(f["evidence"]["cmd"])
+        f.setdefault("rechecks", []).append({"at": ts, "exit": code, "output": out[-500:] if out else ""})
+        if code == 0:
+            f["status"] = "resolved"
+            f["resolved_at"] = ts
+            closed.append(f["id"])
+    still = open_blocking_findings(pr)
+    if closed and not still:
+        # 直した版は新しいコミットなので、最新のコミットへの独立のレビューをやり直す
+        pr["independent_review"] = False
+        pr["reviewer"] = None
+        pr["state"] = "needs-review"
+        pr.setdefault("notes", []).append({"at": ts, "by": by, "note": f"再現した指摘 {closed} が通った。レビューをやり直す"})
+    return {"closed": closed, "still_open": len(still)}
+
+
 def select_one_task(board: dict, role: str, now: datetime.datetime | None = None, hold_hours: float = 24.0) -> dict | None:
     """Pick at most 1 item for `role`, skipping items claimed by another worker or waiting on a human (`human-turn`)."""
     now = now or now_utc()
@@ -324,6 +400,8 @@ def select_one_task(board: dict, role: str, now: datetime.datetime | None = None
                 continue
             gov = check_governance(p.get("changed_files", []), p.get("diff_text", ""))
             if gov["requires_human_approval"] and not p.get("human_approved"):
+                continue
+            if open_blocking_findings(p):
                 continue
             if p.get("checks_passed") and p.get("eval_passed") and p.get("independent_review"):
                 if p.get("reviewer") and p.get("reviewer") == p.get("author"):
@@ -428,6 +506,11 @@ def wake(board_path: Path, role: str, cmd: str | None = None, now: datetime.date
                     item["labels"].append(lb)
             item.setdefault("notes", []).append({"at": ts, "by": role, "note": "独立レビュー完了。統治対象のファイルを含むため人間の承認待ち (human-turn)"})
             did_summary = f"PR #{item['id']} -> human-turn"
+        elif open_blocking_findings(item):
+            item["state"] = "changes-requested"
+            ids = [f["id"] for f in open_blocking_findings(item)]
+            item.setdefault("notes", []).append({"at": ts, "by": role, "note": f"再現した指摘 {ids} が開いている。直して再現の手段が通るまで止める"})
+            did_summary = f"PR #{item['id']} -> changes-requested"
         else:
             item["draft"] = False
             item["state"] = "ready-to-merge"
@@ -658,6 +741,16 @@ def main(argv=None) -> int:
     p_wake.add_argument("--cmd")
     p_wake.add_argument("--hold-hours", type=float, default=24.0)
 
+    p_fd = sub.add_parser("review-finding", help="record a review finding; only a failing reproduction blocks the merge")
+    p_fd.add_argument("--board", type=Path, required=True)
+    p_fd.add_argument("--pr", type=int, required=True)
+    p_fd.add_argument("--summary", required=True)
+    p_fd.add_argument("--repro-cmd", help="a test or scenario that must FAIL on this PR's version")
+
+    p_rc = sub.add_parser("recheck-findings", help="rerun reproductions of open blocking findings")
+    p_rc.add_argument("--board", type=Path, required=True)
+    p_rc.add_argument("--pr", type=int, required=True)
+
     p_gov = sub.add_parser("check-governance", help="check PR changed files, diff, and untrusted text")
     p_gov.add_argument("--files", nargs="*", default=[])
     p_gov.add_argument("--diff-text", default="")
@@ -689,6 +782,18 @@ def main(argv=None) -> int:
             return 0
         if a.subcmd == "wake":
             res = wake(a.board, a.role, cmd=a.cmd, hold_hours=a.hold_hours)
+            print(json.dumps(res, ensure_ascii=False, indent=2))
+            return 0
+        if a.subcmd == "review-finding":
+            b = load_board(a.board)
+            res = record_finding(b, a.pr, a.summary, repro_cmd=a.repro_cmd)
+            save_board(a.board, b)
+            print(json.dumps(res, ensure_ascii=False, indent=2))
+            return 0
+        if a.subcmd == "recheck-findings":
+            b = load_board(a.board)
+            res = recheck_findings(b, a.pr)
+            save_board(a.board, b)
             print(json.dumps(res, ensure_ascii=False, indent=2))
             return 0
         if a.subcmd == "check-governance":

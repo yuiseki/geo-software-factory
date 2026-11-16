@@ -66,6 +66,84 @@ class SwarmTest(unittest.TestCase):
         self.assertTrue(gov["untrusted_check"]["suspicious"])
         self.assertIn("<untrusted-data", gov["untrusted_check"]["wrapped"])
 
+    def _pr_ready_for_review(self):
+        b = swarm.load_board(self.board_path)
+        swarm.file_issue(b, "月末の集計", "月末 23 時台の地物が翌月に入る", purpose="map-display", now=T0)
+        swarm.save_board(self.board_path, b, env=self.env)
+        swarm.wake(self.board_path, "fixer-impl", now=T0, env=self.env)
+        return 1
+
+    @staticmethod
+    def _runner(exit_code, out="FAILED test_month_end"):
+        calls = []
+
+        def run(cmd):
+            calls.append(cmd)
+            return exit_code, out
+        run.calls = calls
+        return run
+
+    def test_review_finding_without_reproduction_is_a_hypothesis_and_does_not_block(self):
+        pr_id = self._pr_ready_for_review()
+        b = swarm.load_board(self.board_path)
+        f1 = swarm.record_finding(b, pr_id, "total という変数名は曖昧", now=T0)
+        f2 = swarm.record_finding(b, pr_id, "将来の複数通貨に備えるべき", repro_cmd="pytest -k currency",
+                                  runner=self._runner(0, "1 passed"), now=T0)
+        self.assertEqual(f1["kind"], "hypothesis")
+        self.assertFalse(f1["blocking"])
+        self.assertEqual(f2["kind"], "hypothesis")
+        self.assertIn("落ちなかった", f2["note"])
+        swarm.save_board(self.board_path, b, env=self.env)
+        self.assertIn("ready-to-merge", swarm.wake(self.board_path, "gate-review", now=T0, env=self.env)["did"])
+        self.assertEqual(swarm.wake(self.board_path, "gate-merge", now=T0, env=self.env)["did"], f"merged PR #{pr_id}")
+        # 仮説は issue にならず、直す仕事を生まない
+        b = swarm.load_board(self.board_path)
+        self.assertEqual(len(b["issues"]), 1)
+
+    def test_broken_reproduction_tool_is_not_evidence(self):
+        pr_id = self._pr_ready_for_review()
+        b = swarm.load_board(self.board_path)
+        for code in (126, 127, None):
+            f = swarm.record_finding(b, pr_id, "道具が無い", repro_cmd="no-such-tool",
+                                     runner=self._runner(code, "not found"), now=T0)
+            self.assertFalse(f["blocking"])
+            self.assertIn("動かなかった", f["note"])
+
+    def test_reproduced_finding_blocks_merge_until_recheck_passes(self):
+        pr_id = self._pr_ready_for_review()
+        b = swarm.load_board(self.board_path)
+        f = swarm.record_finding(b, pr_id, "月末 23:30 JST の支出が翌月に入る",
+                                 repro_cmd="pytest tests/test_month_end.py", runner=self._runner(1), now=T0)
+        self.assertEqual(f["kind"], "reproduced")
+        self.assertTrue(f["blocking"])
+        self.assertEqual(f["evidence"]["exit"], 1)
+        self.assertIn("FAILED", f["evidence"]["output"])
+        swarm.save_board(self.board_path, b, env=self.env)
+
+        self.assertIn("changes-requested", swarm.wake(self.board_path, "gate-review", now=T0, env=self.env)["did"])
+        # 関門の役割が「レビュー済み」にしても、再現した指摘が開いている間はマージしない
+        b = swarm.load_board(self.board_path)
+        b["prs"][0]["independent_review"] = True
+        swarm.save_board(self.board_path, b, env=self.env)
+        self.assertEqual(swarm.wake(self.board_path, "gate-merge", now=T0, env=self.env)["did"], "idle")
+
+        # 直したあと、同じ再現の手段がまだ落ちるなら開いたまま
+        b = swarm.load_board(self.board_path)
+        r = swarm.recheck_findings(b, pr_id, runner=self._runner(1), now=T0)
+        self.assertEqual(r["still_open"], 1)
+        # 道具が動かなかったときも、閉じない
+        r = swarm.recheck_findings(b, pr_id, runner=self._runner(127, "not found"), now=T0)
+        self.assertEqual(r["still_open"], 1)
+        # 通ったら閉じ、最新のコミットへのレビューをやり直す
+        r = swarm.recheck_findings(b, pr_id, runner=self._runner(0, "1 passed"), now=T0)
+        self.assertEqual(r["still_open"], 0)
+        pr = b["prs"][0]
+        self.assertFalse(pr["independent_review"])
+        self.assertEqual(pr["state"], "needs-review")
+        swarm.save_board(self.board_path, b, env=self.env)
+        self.assertIn("ready-to-merge", swarm.wake(self.board_path, "gate-review", now=T0, env=self.env)["did"])
+        self.assertEqual(swarm.wake(self.board_path, "gate-merge", now=T0, env=self.env)["did"], f"merged PR #{pr_id}")
+
     def test_full_stigmergic_lifecycle_and_endogenous_progress(self):
         b = swarm.load_board(self.board_path)
         swarm.file_issue(b, "ピン欠落", "ピンが出ない", purpose="map-display", weight=3, now=T0)

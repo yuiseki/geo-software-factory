@@ -156,3 +156,20 @@ Qoder CLI 1.1.86、モデルは `Auto` (裏で動いたモデルの名前は記�
 - スキルありは、外した理由を正しく書いた。L6 では MachGL を「建物は独自の .bld で、3D Tiles は点群だけ」、L7 では Ortho Earth を「GPL-3.0-or-later で、ブラウザに送るコードの公開が要る」として候補から外した。スキルなしは、どちらも候補に挙げていない。
 - 対照なので、スキルなしも通るのは想定どおり。7 回目の L4、L5 と並べると、スキルありの答えは条件の 1 か所の違いで切り替わった。
 - 1 回ずつで、モデルは `Auto`。言えるのはここまで。
+
+## 9 回目: Cesium のロゴを出さずに PLATEAU (2026-11-18、fe21969)
+
+7 回目と同じ条件。L8 は「PLATEAU の建物を Web の地図に出したいが、Cesium のロゴは出したくない」。
+
+| 課題 | スキルあり | スキルなし |
+|---|---|---|
+| L8-plateau-no-cesium-logo | accurate: CesiumJS、ロゴは隠す (40 秒、1.00 クレジット) | accurate: CesiumJS、ion を使わない (119 秒、45 回、1.26) |
+
+### 読み方
+
+- どちらも CesiumJS を選び、Cesium ion に触れたので採点は通った。CesiumJS 以外 (MachGL、3DTilesRendererJS など) を選んだ回は無い。
+- 採点は通ったが、ロゴの事実の説明はどちらも正確でない。CesiumJS の main の `CreditDisplay.js` (2026-11-18 に読んだ) では、既定のロゴ (`CreditDisplay.cesiumCredit`) は「Cesium ion」の画像で、ion を使わなくても最初から出る。差し替えは公開の API (`CreditDisplay.cesiumCredit` の setter) でできる。
+  - スキルなしは「現行版は ion を使わなければロゴは出ない」と書いた。上のソースと合わない。
+  - スキルありは「既定で Cesium のロゴを出し、ion を使うと ion のロゴになる」「CSS か creditContainer の差し替えで隠せる」と書いた。隠すときにデータの帰属表示 (PLATEAU、地理院タイル) を残すよう注意したのは良い。
+- 今のスキルには、ion のロゴが規約で必須なこと (geo-software-infra の cesium-ion) はあるが、CesiumJS の既定のロゴの扱いが無い。答えの正確さの差は、その欠けで説明できる。
+- 採点は「ion に触れたか」しか見ないので、誤った説明でも通る。正確さを機械で見るなら、答えの形を「ロゴの扱い」の欄を持つ形に変える必要がある。

@@ -263,6 +263,55 @@
     "https://www.npmjs.com/package/@ortho-earth"
    ],
    "require_any": []
+  },
+  {
+   "id": "L8-plateau-no-cesium-logo",
+   "kind": "choose",
+   "contaminated": null,
+   "note": "Written 2026-11-18 at the user's request, before any agent ran it; the user thinks this is the most common trouble. CesiumJS shows the Cesium logo by default and replaces it with the Cesium ion logo when ion is used, which ion's terms require (2.2.3). Cesium staff say the logo may be removed when neither ion nor attribution-bearing data is used, but the Viewer's default imagery and geocoder go through ion. So CesiumJS passes only with a note on not using ion; another library that draws PLATEAU buildings passes as it is. At the time of writing, the skills state the ion logo rule (geo-software-infra cesium-ion) but not the CesiumJS default logo.",
+   "brief": "# プロダクト概要 (抜粋)\n\n- 一行で: PLATEAU の 3D 都市モデルの建物を、Web の地図に表示するサイト\n- 制約: 画面に Cesium のロゴを出したくない\n\n地図を描くライブラリか SDK を 1 つ選んで勧めてください。プロダクトの持ち主は今いないので、質問せずに決めてください。",
+   "targets": [
+    "https://github.com/CesiumGS/cesium",
+    "https://cesium.com/platform/cesiumjs",
+    "https://www.npmjs.com/package/cesium",
+    "https://github.com/geolonia/machgl",
+    "https://geolonia.github.io/machgl",
+    "https://cdn.geolonia.com/machgl",
+    "https://github.com/NASA-AMMOS/3DTilesRendererJS",
+    "https://github.com/visgl/deck.gl",
+    "https://deck.gl",
+    "https://github.com/maplibre/navara",
+    "https://github.com/maplibre/maplibre-gl-js",
+    "https://maplibre.org",
+    "https://github.com/kenjiyoshidahome2026-bit/ortho-earth",
+    "https://www.ortho-earth.com",
+    "https://ortho-earth.com"
+   ],
+   "forbidden": [],
+   "require_any": [],
+   "require_if": [
+    {
+     "targets": [
+      "https://github.com/CesiumGS/cesium",
+      "https://cesium.com/platform/cesiumjs",
+      "https://www.npmjs.com/package/cesium"
+     ],
+     "any": [
+      "Cesium ion",
+      "Cesium Ion",
+      "cesium ion",
+      "ion を",
+      "ion の",
+      "ion な",
+      "ion に",
+      "ion で",
+      "Ion を",
+      "Ion の",
+      "without ion",
+      "no ion"
+     ]
+    }
+   ]
   }
  ]
 }

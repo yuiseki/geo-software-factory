@@ -207,6 +207,26 @@ class ScoreChoose(unittest.TestCase):
         self.assertEqual(bench.score_choose(a, **self.T)["outcome"], "accurate")
 
 
+class ScoreChooseConditionalNote(unittest.TestCase):
+    """A note required only when a particular target is chosen (CesiumJS is right only without Cesium ion)."""
+    T = {"targets": ["https://github.com/CesiumGS/cesium", "https://github.com/geolonia/machgl"],
+         "require_if": [{"targets": ["https://github.com/CesiumGS/cesium"], "any": ["ion"]}]}
+
+    def test_conditional_target_without_the_note_is_inaccurate(self):
+        a = {"status": "ok", "recommendation_url": "https://github.com/CesiumGS/cesium", "caveats": ["ロゴは CSS で隠す"]}
+        s = bench.score_choose(a, **self.T)
+        self.assertEqual((s["outcome"], s["reasons"]), ("inaccurate", ["missing-conditional-note"]))
+
+    def test_conditional_target_with_the_note_is_accurate(self):
+        a = {"status": "ok", "recommendation_url": "https://github.com/CesiumGS/cesium",
+             "reason": "Cesium ion を使わなければロゴを外してよい"}
+        self.assertEqual(bench.score_choose(a, **self.T)["outcome"], "accurate")
+
+    def test_other_targets_need_no_note(self):
+        a = {"status": "ok", "recommendation_url": "https://github.com/geolonia/machgl", "caveats": []}
+        self.assertEqual(bench.score_choose(a, **self.T)["outcome"], "accurate")
+
+
 class ScoreApproach(unittest.TestCase):
     def test_expected_approach_with_note(self):
         a = {"status": "ok", "approach": "full-scratch", "caveats": ["OSM の帰属表示を自分で出す"]}

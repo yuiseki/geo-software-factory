@@ -116,7 +116,7 @@ def make(spec):
             (d / "task" / "data.csv").write_text("\n".join(lines) + "\n", encoding="utf-8")
             (d / "truth" / "truth.json").write_text(json.dumps(pts, ensure_ascii=False, indent=0), encoding="utf-8")
         else:
-            (d / "truth" / "key.json").write_text(json.dumps({k: t.get(k) for k in ("key", "targets", "forbidden", "require_any")}), encoding="utf-8")
+            (d / "truth" / "key.json").write_text(json.dumps({k: t.get(k) for k in ("key", "targets", "forbidden", "require_any", "require_if")}), encoding="utf-8")
         print(t["id"], "made", file=sys.stderr)
 
 
@@ -233,9 +233,10 @@ def score_research(answer, targets) -> dict:
     return {"outcome": "inaccurate" if reasons else "accurate", "reasons": reasons, "n_services": len(urls), "channel_kinds": sorted(kinds)}
 
 
-def score_choose(answer, targets, forbidden=(), require_any=()) -> dict:
+def score_choose(answer, targets, forbidden=(), require_any=(), require_if=()) -> dict:
     """A library choice: the recommended project's URL must be one of the targets and none of the forbidden ones,
-    and the answer must say what a careful recommendation would (for a brand-new library, that it is 0.0.x)."""
+    and the answer must say what a careful recommendation would (for a brand-new library, that it is 0.0.x).
+    require_if holds notes needed only when one of its targets is chosen: [{"targets": [...], "any": [...]}]."""
     if answer is None:
         return {"outcome": "no_answer"}
     if not isinstance(answer, dict):
@@ -251,6 +252,9 @@ def score_choose(answer, targets, forbidden=(), require_any=()) -> dict:
     text = json.dumps([answer.get("caveats", []), answer.get("reason", "")], ensure_ascii=False)
     if require_any and not any(t in text for t in require_any):
         reasons.append("missing-note")
+    for rule in require_if:
+        if any(url.startswith(bare_url(t)) for t in rule["targets"]) and not any(n in text for n in rule["any"]):
+            reasons.append("missing-conditional-note")
     return {"outcome": "inaccurate" if reasons else "accurate", "reasons": reasons, "choice": url}
 
 
@@ -367,7 +371,8 @@ def score_all(spec):
             s = score_approach(read_json(work / "answer.json"), t["expect_approach"], t.get("require_any", []))
             has = (work / "answer.json").exists()
         elif t["kind"] == "choose":
-            s = score_choose(read_json(work / "answer.json"), t["targets"], t.get("forbidden", []), t.get("require_any", []))
+            s = score_choose(read_json(work / "answer.json"), t["targets"], t.get("forbidden", []), t.get("require_any", []),
+                             t.get("require_if", []))
             has = (work / "answer.json").exists()
         elif t["kind"] == "research":
             s = score_research(read_json(work / "answer.json"), t["targets"])

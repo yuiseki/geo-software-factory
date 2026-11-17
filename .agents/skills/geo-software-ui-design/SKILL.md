@@ -15,6 +15,7 @@ description: 地図プロダクトの UI (画面構造、レイアウトの型�
 | [detail-panels-and-padding](references/detail-panels-and-padding.md) | 地物の詳細や一覧を出すとき | Popup / サイドパネル / スナップ式ボトムシートの使い分け、地図 `padding` 連動、一覧と地図の同期 UI |
 | [controls-modes-and-layers](references/controls-modes-and-layers.md) | ツールバー・モード・レイヤーを置くとき | 閲覧/計測/作図モードの明示と終了導線、レイヤー・凡例の折りたたみ、ベースマップに負けないコントラスト |
 | [general-ui-principles](references/general-ui-principles.md) | 部品・余白・文字・色・動きを整えるとき | `ibelick/ui-skills` を基にした Web UI の一般原則 (`h-dvh`、固定 `z-index`、`tabular-nums`、1 アクセントカラー、アクセシビリティ等) |
+| [unslop-ai-app](references/unslop-ai-app.md) | AI らしさを抜いた画面・日本語組版・モバイル実機確認を行うとき | `minorun365/unslop-ai-app` を基にした情報の引き算、AI 定番の型の回避、日本語組版、コントラスト測定、モバイル実機相当の検証 |
 
 ## 入力
 
@@ -32,8 +33,8 @@ description: 地図プロダクトの UI (画面構造、レイアウトの型�
 2. **四隅と必須表示の定位置を固定する**: 帰属表示 (Attribution)、スケールバー、検索欄、ズーム・コンパス・現在地ボタンの角を割り当て、ボトムシートやパネル展開時にも帰属表示が隠れないことを確かめる。高さは `100vh` ではなく `100dvh` を使い、セーフエリアを確保する。
 3. **詳細表示の器と地図 `padding` 連動を決める**: [detail-panels-and-padding](references/detail-panels-and-padding.md) に沿って Popup / サイドパネル / スナップ式ボトムシートを選び、パネル展開時に選択地物が隠れないよう地図側の `padding` を連動させる仕様を明記する。一覧がある場合はホバー・選択・フィルタの同期方式を決める。
 4. **操作モードとレイヤー UI を整理する**: [controls-modes-and-layers](references/controls-modes-and-layers.md) に沿って、既定の閲覧モードと編集・計測モードの見た目・終了導線 (`Escape`・キャンセルボタン) を決める。レイヤーや凡例は初期状態で折りたたみ、地図面積の圧迫を防ぐ。
-5. **一般的な UI 原則とコントラストを当てる**: [general-ui-principles](references/general-ui-principles.md) に沿って `z-index` スケール、タッチ領域 (`44px` 以上)、数値の `tabular-nums`、1 行省略 (`truncate`)、アイコンボタンの `aria-label`、空状態の次アクション、ベースマップ (航空写真やダークマップ含む) の上で読める不透明面・枠線・影を決める。UI の文言は `stop-describing-ui` の原則に沿って説明文を省き短い動詞・名詞にする。
-6. **壊れやすい条件を実寸で確認する**: 狭いスマホ幅、ソフトキーボード展開時、長文の施設名・住所、航空写真やダークマップへ切り替えた状態、ボトムシートを最大展開した状態でも帰属表示・閉じる操作・選択地物が見失われないかを設計チェックリストに含める。
+5. **一般的な UI 原則とコントラストを当てる**: [general-ui-principles](references/general-ui-principles.md) と [unslop-ai-app](references/unslop-ai-app.md) に沿って `z-index` スケール、タッチ領域 (`44px` 以上)、数値の `tabular-nums`、1 行省略 (`truncate`)、アイコンボタンの `aria-label`、空状態の次アクション、情報の引き算、AI らしい定番の型の排除、日本語組版 (`palt`・行間)、ベースマップ (航空写真やダークマップ含む) の上で読める不透明面・枠線・影を決める。UI の文言は `stop-describing-ui` の原則に沿って説明文を省き短い動詞・名詞にする。
+6. **壊れやすい条件を実寸で確認する**: [unslop-ai-app](references/unslop-ai-app.md) のコントラスト測定とモバイル確認手順も踏まえ、狭いスマホ幅 (セーフエリア・入力欄 `16px` 以上・横はみ出しなし)、ソフトキーボード展開時、長文の施設名・住所、航空写真やダークマップへ切り替えた状態、ボトムシートを最大展開した状態でも帰属表示・閉じる操作・選択地物が見失われないかを設計チェックリストに含める。
 
 ## 出力
 

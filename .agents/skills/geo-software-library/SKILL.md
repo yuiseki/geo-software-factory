@@ -15,7 +15,7 @@ description: 地図プロダクトを実装するためのライブラリや SDK
 | [libraries/mapbox-gl-js](references/libraries/mapbox-gl-js.md) | Web で候補に入れるとき | Mapbox GL JS |
 | [libraries/geolonia-maps](references/libraries/geolonia-maps.md) | Web で候補に入れるとき、Geolonia Maps のタイルを使うとき、GeoJSON をコロプレス図やヒートマップで素早く可視化したいとき | Geolonia Maps SDK (embed、maps-suite、maps-react、maps-core) |
 | [libraries/google-maps-js](references/libraries/google-maps-js.md) | Web で候補に入れるとき | Google Maps JavaScript API |
-| [libraries/cesiumjs](references/libraries/cesiumjs.md) | Web で候補に入れるとき | CesiumJS |
+| [libraries/cesiumjs](references/libraries/cesiumjs.md) | Web で候補に入れるとき、Cesium のロゴを出したくないとき (ion を使わなければ外せる。使うなら必須) | CesiumJS |
 | [libraries/openlayers](references/libraries/openlayers.md) | Web で候補に入れるとき | OpenLayers |
 | [libraries/deck-gl](references/libraries/deck-gl.md) | Web で候補に入れるとき | deck.gl |
 | [libraries/maptalks](references/libraries/maptalks.md) | Web で 2D と 3D を 1 つで扱いたいとき | maptalks.js |

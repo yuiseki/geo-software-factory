@@ -4,7 +4,7 @@
 
 | 項目 | 値 |
 |---|---|
-| 確かめた日 | 2026-11-10 |
+| 確かめた日 | 2026-11-10 (Cesium のロゴの扱いは 2026-11-18) |
 | 最新の安定版 (リリース日) | 1.147 (2026-11-02)。毎月 1 日前後に 1 版ずつ出る (https://github.com/CesiumGS/cesium/releases) |
 | リポジトリ | https://github.com/CesiumGS/cesium |
 | ドキュメント | https://cesium.com/learn/cesiumjs/ref-doc/ |
@@ -38,6 +38,10 @@ CesiumJS は Web ブラウザで 3D 地球儀と地図を描く JavaScript ラ�
 
 - 使えない、または規約上使ってはならないタイルサービス: 既定の背景 `ImageryLayer.fromWorldImagery()` は「ion の既定の全球画像、現在は Bing Maps」であり、Cesium ion の利用条件に従う (https://cesium.com/learn/cesiumjs/ref-doc/ImageryLayer.html)。ion を使わない構成では、背景画像・地形・建物を自前か他のサービスで用意する必要がある。ライブラリとして特定のサービスを禁じる記述は見当たらない
 - API キー・アカウントの要否: ライブラリ自体は不要。ただし既定の Viewer は Cesium ion の資産 (Bing 画像、ジオコーダ) を使い、公式クイックスタートは ion のアクセストークンを設定する前提で書かれている (https://cesium.com/learn/cesiumjs-learn/cesiumjs-quickstart/)。ion を使わない場合は `baseLayer` などを自前のプロバイダに差し替える
+- Cesium のロゴ: 画面の左下に出るロゴは、ion を使わなくても既定で出る。main の 1.147.0 (2026-11-18 に読んだ) では、既定のロゴ `CreditDisplay.cesiumCredit` が「Cesium ion」の画像 (`Assets/Images/ion-credit.png`) で、データの帰属表示とは別の枠に置かれる (https://github.com/CesiumGS/cesium/blob/main/packages/engine/Source/Scene/CreditDisplay.js)。
+  - ion の資産 (既定の背景画像、既定のジオコーダー、Cesium World Terrain、ion に置いたデータ) を使うなら、ion のロゴは規約で必須で、外してはならない ([cesium-ion](../../../geo-software-infra/references/3d/cesium-ion.md)、規約 2.2.3)。Viewer は既定で ion を通るので、`baseLayer` を ion 以外に替え、`geocoder: false` (か ion 以外のジオコーダー) にし、地形も ion 以外にする (https://github.com/CesiumGS/cesium/blob/main/packages/widgets/Source/Viewer/Viewer.js の既定値)
+  - ion も帰属表示の要るデータも使わないなら、外してよいと Cesium の社員がフォーラムで答えている (公式の文書は見つからなかった。https://community.cesium.com/t/remove-cesiumion-logo/25502)。外すときは、公開の setter で `CreditDisplay.cesiumCredit` を差し替える。クレジットの枠 (`creditContainer`) ごと CSS で隠すと、データの帰属表示 (PLATEAU、地理院タイル、OSM など) まで消えるので、それはしない
+  - ロゴを出さない要件のとき、PLATEAU は ion を通さずに取れる (3D Tiles と MVT はキーなし。地形の ion 版は除く。[plateau](../../../geo-software-infra/references/3d/plateau.md))。ロゴの無いライブラリ (3DTilesRendererJS、deck.gl、Navara、MachGL など) と比べるのは、ion を外したうえで CesiumJS の成熟度を取るかどうかである
 
 ## ライセンスと費用
 

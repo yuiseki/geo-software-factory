@@ -20,6 +20,7 @@ description: 地図プロダクトを実装するためのライブラリや SDK
 | [libraries/deck-gl](references/libraries/deck-gl.md) | Web で候補に入れるとき | deck.gl |
 | [libraries/maptalks](references/libraries/maptalks.md) | Web で 2D と 3D を 1 つで扱いたいとき | maptalks.js |
 | [libraries/openglobus](references/libraries/openglobus.md) | 地球儀型の 3D を CesiumJS 以外でも比べるとき | OpenGlobus |
+| [libraries/machgl](references/libraries/machgl.md) | Web で軽さを優先するとき、日本語の注記をフォントの配信なしで出したいとき、Geolonia Maps (embed) を置き換えるとき、PLATEAU の建物をスマートフォンで出したいとき | MachGL (Geolonia の WebGL2 の描画ライブラリ。MapLibre のスタイルの一部を読むが API は別。0.1 版、CDN だけで配布) |
 | [libraries/ortho-earth](references/libraries/ortho-earth.md) | 地球儀が主役の地図をブラウザだけで出したいとき、MapLibre や Cesium のコードを地球儀に載せ替えたいとき。GPL-3.0 なので配布形態を先に確かめる | Ortho Earth (メルカトルの平面を持たない 3D の地球儀。GPL-3.0-or-later、商用ライセンスあり。個人と AI の開発) |
 | [libraries/navara](references/libraries/navara.md) | MapLibre 系で 3D を扱いたいとき | Navara |
 | [libraries/globe-gl](references/libraries/globe-gl.md) | 全球のデータを地球儀で見せたいとき | globe.gl |

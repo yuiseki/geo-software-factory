@@ -15,6 +15,8 @@
 
 Geolonia Maps SDK は、Geolonia が配信する地図を Web サイトとアプリケーションに組み込むための JavaScript ライブラリ群である (https://docs.geolonia.com/)。基盤の maps-core の `GeoloniaMap` は MapLibre GL JS の `Map` を継承し、API キーによる認証、Geolonia のスタイルとタイルへの接続、PMTiles プロトコルの登録、既定のコントロール、simplestyle による GeoJSON 表示などを足したものである (https://docs.geolonia.com/reference/core/Class.GeoloniaMap/)。その上に、HTML の属性だけで使う embed、JavaScript から命令的に操作する maps-suite、React 向けの maps-react の 3 つがあり、公式は「いずれのライブラリでも同じ機能を実装できます」とする (https://docs.geolonia.com/tutorials/)。地図インスタンスから MapLibre GL JS の API をそのまま呼べる (https://docs.geolonia.com/howto/maps-core-access/)。
 
+Geolonia は 2026-11-16 に、MapLibre GL JS を使わない別の描画ライブラリ MachGL を出し、embed を置き換えて使えると告知した。HTML の属性は embed と同じものを読むが、JavaScript の API は MapLibre と互換が無い ([machgl](machgl.md))。
+
 ## 描画方式
 
 - レンダリング (DOM / Canvas 2D / WebGL / WebGPU): WebGL。描画は MapLibre GL JS が行う (https://docs.geolonia.com/reference/)。maps-core、maps-suite、maps-react と embed 6.0.0-pre 系は MapLibre GL JS v6 系に依存するので、WebGL2 が必須になる (推測。MapLibre GL JS v6 の要件から)。WebGL が使えない端末では、地図の代わりに対処法を示すメッセージを出す (`errorMessage` オプション、https://www.npmjs.com/package/@geolonia/maps-core)。

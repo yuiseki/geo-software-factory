@@ -27,6 +27,8 @@
 | L3-react-geojson-concise | 選ぶ (geo-software-library) | React で、GeoJSON を簡潔な記述で可視化する。答えは Geolonia Maps の maps-react (塗り分けとヒートマップを props で出す) | 推奨の URL |
 | L4-plateau-light | 選ぶ | PLATEAU の建物を、軽いライブラリでスマートフォンでも速く出す。フルスクラッチはしない。答えは出たばかりの MachGL (0.1) | 推奨の URL |
 | L5-globe-non-mercator | 選ぶ | 地球全域を、ウェブメルカトルでない投影で 3D に速く出す。ライブラリ・ライセンスは問わない。答えは Ortho Earth (GPL) | 推奨の URL |
+| L6-plateau-3dtiles-as-is | 選ぶ (L4 の対照) | L4 に「PLATEAU の 3D Tiles をそのまま読む」を足す。MachGL は建物の 3D Tiles を読めない | 推奨の URL。MachGL を勧めたら不合格 |
+| L7-globe-permissive | 選ぶ (L5 の対照) | L5 のライセンスを「コピーレフト不可」に替える。Ortho Earth は GPL | 推奨の URL。Ortho Earth を勧めたら不合格 |
 | H1-perf-hackathon | 方針 (geo-software-library の full-scratch) | 計測の数字だけを競うハッカソン。汎用のライブラリでなく、依頼専用の描画器を書く判断ができるか | 方針が full-scratch か、帰属表示を自分で出すことに触れたか |
 | H2-perf-product | 方針 (H1 の対照) | 速さが売りだが、5 年保守し、多くのブラウザで動かす公開の製品 | 方針がライブラリか |
 | D1-mobile-tiles | 判断 | モバイルで MapLibre Native、Mapbox のタイル、Google の衛星写真、オフラインという計画の、規約上の制約を候補から選ぶ | 正解の集合との一致 (適合率と再現率) |

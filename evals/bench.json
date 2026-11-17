@@ -210,6 +210,59 @@
    ],
    "forbidden": [],
    "require_any": []
+  },
+  {
+   "id": "L6-plateau-3dtiles-as-is",
+   "kind": "choose",
+   "contaminated": null,
+   "note": "Written 2026-11-18 at the user's request, before any agent ran it. Control for L4: the same brief plus one condition, reading PLATEAU's 3D Tiles as they are. MachGL reads only point-cloud 3D Tiles and needs buildings converted to its own .bld tiles, so recommending it fails. Any library that reads 3D Tiles meshes in the browser is accepted, Ortho Earth included (its Cesium layer reads 3D Tiles and the brief sets no licence).",
+   "brief": "# プロダクト概要 (抜粋)\n\n- 一行で: PLATEAU の 3D 都市モデルの建物を、ブラウザで街全体まで表示する Web のサイト\n- 望むこと: 軽量なライブラリで、スマートフォンでも高速に表示したい\n- 制約: 描画器を一から自分で書くこと (フルスクラッチ) はしない。既存のライブラリを使う。PLATEAU が配っている 3D Tiles をそのまま読む (形式の変換はしない)\n\n地図を描くライブラリか SDK を 1 つ選んで勧めてください。プロダクトの持ち主は今いないので、質問せずに決めてください。",
+   "targets": [
+    "https://github.com/CesiumGS/cesium",
+    "https://cesium.com/platform/cesiumjs",
+    "https://www.npmjs.com/package/cesium",
+    "https://github.com/visgl/deck.gl",
+    "https://deck.gl",
+    "https://github.com/NASA-AMMOS/3DTilesRendererJS",
+    "https://github.com/maplibre/navara",
+    "https://github.com/kenjiyoshidahome2026-bit/ortho-earth",
+    "https://www.ortho-earth.com",
+    "https://ortho-earth.com",
+    "https://www.npmjs.com/package/@ortho-earth"
+   ],
+   "forbidden": [
+    "https://github.com/geolonia/machgl",
+    "https://geolonia.github.io/machgl",
+    "https://cdn.geolonia.com/machgl"
+   ],
+   "require_any": []
+  },
+  {
+   "id": "L7-globe-permissive",
+   "kind": "choose",
+   "contaminated": null,
+   "note": "Written 2026-11-18 at the user's request, before any agent ran it. Control for L5: the same brief with the licence condition flipped to no copyleft. Ortho Earth is GPL-3.0-or-later, so recommending it fails. Permissively licensed globe libraries are accepted.",
+   "brief": "# プロダクト概要 (抜粋)\n\n- 一行で: 地球全域のデータを、3D の地球儀で見せる Web のサイト\n- 望むこと: ウェブメルカトルではない投影法で、高速に表示したい\n- 制約: ソースを公開しない商用のサイトなので、コピーレフトのライセンスは使えない (MIT、BSD、Apache-2.0 なら可)\n\n地図を描くライブラリか SDK を 1 つ選んで勧めてください。プロダクトの持ち主は今いないので、質問せずに決めてください。",
+   "targets": [
+    "https://github.com/CesiumGS/cesium",
+    "https://cesium.com/platform/cesiumjs",
+    "https://www.npmjs.com/package/cesium",
+    "https://github.com/visgl/deck.gl",
+    "https://deck.gl",
+    "https://github.com/openglobus/openglobus",
+    "https://openglobus.org",
+    "https://github.com/vasturiano/globe.gl",
+    "https://globe.gl",
+    "https://github.com/maplibre/maplibre-gl-js",
+    "https://maplibre.org"
+   ],
+   "forbidden": [
+    "https://github.com/kenjiyoshidahome2026-bit/ortho-earth",
+    "https://www.ortho-earth.com",
+    "https://ortho-earth.com",
+    "https://www.npmjs.com/package/@ortho-earth"
+   ],
+   "require_any": []
   }
  ]
 }

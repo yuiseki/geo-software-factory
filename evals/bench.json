@@ -166,6 +166,50 @@
    "brief": "# 依頼\n\n- 場: 公開する Web の地図のサービス。地図が速く軽く出ることを、売りの 1 つにしたい\n- 対象: デスクトップの Chrome、Safari、Firefox と、iPhone と Android のブラウザ\n- 描くもの: 自前で配るベクトルタイル (道路、建物、水域、ラベル) と、利用者が載せる点のデータ。操作はパン、ズーム、回転、ピンチ、キーボード\n- その後: 5 年は保守し、公開を続ける\n- 体制: 2 人とコーディングエージェント。実機の端末で確かめる手段は無い",
    "expect_approach": "library",
    "require_any": []
+  },
+  {
+   "id": "L3-react-geojson-concise",
+   "kind": "choose",
+   "contaminated": null,
+   "note": "Written 2026-11-18 at the user's request, before any agent ran it. The expected answer is Geolonia Maps maps-react (its choropleth and heatmap props draw GeoJSON without writing layers). The skills' author is related to Geolonia, so a skills run must not be read as a reason to favour Geolonia in the skills; the skills ask for a disclosure when a Geolonia product is a candidate.",
+   "brief": "# プロダクト概要 (抜粋)\n\n- 一行で: React で作っている Web アプリに、GeoJSON のデータ (区ごとの件数を持つポリゴン、店舗の点) を地図で見せる画面を足す\n- 望むこと: 地図の部分は、できるだけ簡潔な記述で書きたい。塗り分けやヒートマップも、短いコードで出したい\n- 対象: 日本国内のデータ\n\n地図を描くライブラリか SDK を 1 つ選んで勧めてください。プロダクトの持ち主は今いないので、質問せずに決めてください。",
+   "targets": [
+    "https://www.npmjs.com/package/@geolonia/maps-react",
+    "https://github.com/geolonia/maps-react",
+    "https://docs.geolonia.com/tutorials/maps-react",
+    "https://docs.geolonia.com/en/tutorials/maps-react"
+   ],
+   "forbidden": [],
+   "require_any": []
+  },
+  {
+   "id": "L4-plateau-light",
+   "kind": "choose",
+   "contaminated": null,
+   "note": "Written 2026-11-18 at the user's request, before any agent ran it. The expected answer is MachGL (released 2026-11-16, 0.1.x, newer than the models' training). The skills' author is related to Geolonia, which makes MachGL.",
+   "brief": "# プロダクト概要 (抜粋)\n\n- 一行で: PLATEAU の 3D 都市モデルの建物を、ブラウザで街全体まで表示する Web のサイト\n- 望むこと: 軽量なライブラリで、スマートフォンでも高速に表示したい\n- 制約: 描画器を一から自分で書くこと (フルスクラッチ) はしない。既存のライブラリを使う\n\n地図を描くライブラリか SDK を 1 つ選んで勧めてください。プロダクトの持ち主は今いないので、質問せずに決めてください。",
+   "targets": [
+    "https://github.com/geolonia/machgl",
+    "https://geolonia.github.io/machgl",
+    "https://cdn.geolonia.com/machgl"
+   ],
+   "forbidden": [],
+   "require_any": []
+  },
+  {
+   "id": "L5-globe-non-mercator",
+   "kind": "choose",
+   "contaminated": null,
+   "note": "Written 2026-11-18 at the user's request, before any agent ran it. The expected answer is Ortho Earth (a 3D globe with no Mercator plane, GPL-3.0-or-later; the brief allows any licence).",
+   "brief": "# プロダクト概要 (抜粋)\n\n- 一行で: 地球全域のデータを、3D の地球儀で見せる Web のサイト\n- 望むこと: ウェブメルカトルではない投影法で、高速に表示したい\n- 制約: ライブラリ・ライセンスは問わない\n\n地図を描くライブラリか SDK を 1 つ選んで勧めてください。プロダクトの持ち主は今いないので、質問せずに決めてください。",
+   "targets": [
+    "https://github.com/kenjiyoshidahome2026-bit/ortho-earth",
+    "https://www.ortho-earth.com",
+    "https://ortho-earth.com",
+    "https://www.npmjs.com/package/@ortho-earth/globe"
+   ],
+   "forbidden": [],
+   "require_any": []
   }
  ]
 }

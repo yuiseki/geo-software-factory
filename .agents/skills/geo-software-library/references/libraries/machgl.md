@@ -53,7 +53,7 @@ Geolonia の告知は、Geolonia Maps (embed) を埋め込んだページは、�
 
 ## 性能と規模
 
-- バンドルサイズ: CDN の v0.1.1 を 2026-11-17 に取得し、`gzip -9` で測った。`machgl.js` は 372,778 バイト、gzip 後 約 134 kB。`bld.js` は 364,506 バイト、gzip 後 約 190 kB (README の「約 80 KB」とは合わない。測り方の違いは未確認)。`controls.js` は gzip 後 約 7 kB。比べると、MapLibre GL JS を同梱する Geolonia embed v6 は gzip 後 約 471 kB ([geolonia-maps](geolonia-maps.md))。
+- バンドルサイズ: CDN の v0.1.1 を 2026-11-17 に取得し、`gzip -9` で測った。`machgl.js` は 372,778 バイト、gzip 後 約 134 kB。`bld.js` は 364,506 バイト、gzip 後 約 190 kB (README の「約 80 KB」とは合わない。測り方の違いは未確認)。`controls.js` は gzip 後 約 7 kB。比べると、MapLibre GL JS を同梱する Geolonia embed 6.1.0 は gzip 後 約 487 kB (2026-11-18、[geolonia-maps](geolonia-maps.md))。
 - 2026-10-21 の告知は「gzip で約 98 KB、依存は 1 つ」と書き、README (2026-11-11 測定) は約 132 KB、依存なしと書く。リリースまでに機能が増えた分だと読める (推測)。
 - 公式のベンチマーク (README、`npm run bench`、Apple M2 Max、headless Chromium + SwiftShader、OpenFreeMap の liberty、東京 z13、3 回の中央値): 読み込みと評価 14 ms、最初の描画完了 283 ms、待機後の JS ヒープ 41.9 MB。パン 120 フレームのメインスレッドの CPU は 2,601 ms で、同じ回の MapLibre GL JS は約 290 ms。GPU を使った同じ機械では MachGL 約 230 ms、MapLibre 約 310 ms。SwiftShader では回ごとのばらつきが大きいと README は注記している。本リポジトリでは測っていない。
 - PLATEAU の建物を、スマートフォンでも速く出すことを主な狙いにしている (https://www.geolonia.com/news/2026-11-16-machgl-release/)。CI に性能の検査 (perf.yml、`bench/perf-budget.json`) がある。

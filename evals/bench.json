@@ -361,6 +361,127 @@
      ]
     }
    ]
+  },
+  {
+   "id": "F0-fair-geojson-static-page",
+   "kind": "choose",
+   "contaminated": null,
+   "note": "Written 2026-11-18 for the fairness pairs requested in the author's internal-study brief, before any agent ran it. Fit and misfit come only from the Geolonia references (geo-software-library libraries/geolonia-maps.md and geo-software-infra providers/geolonia-maps.md, 向いている場面 / 向いていない場面). The skills' author is related to Geolonia. Base of the F pairs, where Geolonia fits: the references say embed draws GeoJSON as a choropleth from HTML attributes alone and that its per-view prices are public. Any Geolonia product (embed, maps-core, maps-suite, maps-react, MachGL) is accepted. The other F tasks change one line of this brief.",
+   "brief": "# プロダクト概要 (抜粋)\n\n- 一行で: 市のサイトに、地区ごとの値を持つ GeoJSON を塗り分けた地図を載せる\n- 作り: ビルドの仕組みの無い、静的な HTML のページ。地図の部分のコードはできるだけ短くしたい\n- 背景: 日本語の背景地図\n- 運用: 表示は月 1 万回ほど。費用は公開されている単価で、前もって見積もりたい\n\n使う地図のサービスか、ライブラリか SDK を 1 つ選んで勧めてください。プロダクトの持ち主は今いないので、質問せずに決めてください。",
+   "targets": [
+    "https://www.geolonia.com",
+    "https://geolonia.com",
+    "https://docs.geolonia.com",
+    "https://cdn.geolonia.com",
+    "https://app.geolonia.com",
+    "https://github.com/geolonia",
+    "https://geolonia.github.io",
+    "https://www.npmjs.com/package/@geolonia"
+   ],
+   "forbidden": [],
+   "require_any": []
+  },
+  {
+   "id": "F1-fair-native-app",
+   "kind": "choose",
+   "contaminated": null,
+   "note": "Written 2026-11-18 for the fairness pairs requested in the author's internal-study brief, before any agent ran it. Fit and misfit come only from the Geolonia references (geo-software-library libraries/geolonia-maps.md and geo-software-infra providers/geolonia-maps.md, 向いている場面 / 向いていない場面). The skills' author is related to Geolonia. F0 with the page replaced by native Android and iOS apps. The references say Geolonia publishes only JavaScript, not for native apps, so recommending a Geolonia product (the PWA template included) fails; a native map SDK passes.",
+   "brief": "# プロダクト概要 (抜粋)\n\n- 一行で: 市のサイトに、地区ごとの値を持つ GeoJSON を塗り分けた地図を載せる\n- 作り: 市の Android と iOS のネイティブアプリ (Kotlin と Swift)。地図の部分のコードはできるだけ短くしたい\n- 背景: 日本語の背景地図\n- 運用: 表示は月 1 万回ほど。費用は公開されている単価で、前もって見積もりたい\n\n使う地図のサービスか、ライブラリか SDK を 1 つ選んで勧めてください。プロダクトの持ち主は今いないので、質問せずに決めてください。",
+   "targets": [
+    "https://github.com/maplibre/maplibre-native",
+    "https://maplibre.org",
+    "https://github.com/mapbox/mapbox-maps-android",
+    "https://github.com/mapbox/mapbox-maps-ios",
+    "https://docs.mapbox.com",
+    "https://www.mapbox.com",
+    "https://developers.google.com/maps",
+    "https://developer.apple.com/documentation/mapkit",
+    "https://developer.apple.com/maps"
+   ],
+   "forbidden": [
+    "https://www.geolonia.com",
+    "https://geolonia.com",
+    "https://docs.geolonia.com",
+    "https://cdn.geolonia.com",
+    "https://app.geolonia.com",
+    "https://github.com/geolonia",
+    "https://geolonia.github.io",
+    "https://www.npmjs.com/package/@geolonia"
+   ],
+   "require_any": []
+  },
+  {
+   "id": "F2-fair-sla",
+   "kind": "choose",
+   "contaminated": null,
+   "note": "Written 2026-11-18 for the fairness pairs requested in the author's internal-study brief, before any agent ran it. Fit and misfit come only from the Geolonia references (geo-software-library libraries/geolonia-maps.md and geo-software-infra providers/geolonia-maps.md, 向いている場面 / 向いていない場面). The skills' author is related to Geolonia. F0 plus one line asking for an SLA and public incident reports in the contract. The references say Geolonia Maps has no public SLA or status page, so recommending it fails. Providers whose references state an SLA pass: Google Maps Platform, Esri ArcGIS Location Platform, Mapbox (with an order), MapTiler (Custom), HERE.",
+   "brief": "# プロダクト概要 (抜粋)\n\n- 一行で: 市のサイトに、地区ごとの値を持つ GeoJSON を塗り分けた地図を載せる\n- 作り: ビルドの仕組みの無い、静的な HTML のページ。地図の部分のコードはできるだけ短くしたい\n- 背景: 日本語の背景地図\n- 運用: 表示は月 1 万回ほど。費用は公開されている単価で、前もって見積もりたい\n- 契約: 稼働率の保証 (SLA) と、障害情報の公開を、契約の条件にする\n\n使う地図のサービスか、ライブラリか SDK を 1 つ選んで勧めてください。プロダクトの持ち主は今いないので、質問せずに決めてください。",
+   "targets": [
+    "https://mapsplatform.google.com",
+    "https://developers.google.com/maps",
+    "https://cloud.google.com/maps-platform",
+    "https://location.arcgis.com",
+    "https://developers.arcgis.com",
+    "https://www.esri.com",
+    "https://www.esrij.com",
+    "https://www.mapbox.com",
+    "https://docs.mapbox.com",
+    "https://github.com/mapbox",
+    "https://www.here.com",
+    "https://developer.here.com",
+    "https://www.here.com/docs",
+    "https://www.maptiler.com",
+    "https://docs.maptiler.com"
+   ],
+   "forbidden": [
+    "https://www.geolonia.com",
+    "https://geolonia.com",
+    "https://docs.geolonia.com",
+    "https://cdn.geolonia.com",
+    "https://app.geolonia.com",
+    "https://github.com/geolonia",
+    "https://geolonia.github.io",
+    "https://www.npmjs.com/package/@geolonia"
+   ],
+   "require_any": []
+  },
+  {
+   "id": "F3-fair-geocode-route",
+   "kind": "choose",
+   "contaminated": null,
+   "note": "Written 2026-11-18 for the fairness pairs requested in the author's internal-study brief, before any agent ran it. Fit and misfit come only from the Geolonia references (geo-software-library libraries/geolonia-maps.md and geo-software-infra providers/geolonia-maps.md, 向いている場面 / 向いていない場面). The skills' author is related to Geolonia. F0 plus one line asking for address search and routing from the same provider. The references say Geolonia Maps offers neither, so recommending it fails. Providers whose references state both pass: Google Maps Platform, Esri, HERE, Mapbox, MapFan API, ZENRIN Maps API, Stadia Maps (TomTom is excluded: its geocoding does not cover Japan).",
+   "brief": "# プロダクト概要 (抜粋)\n\n- 一行で: 市のサイトに、地区ごとの値を持つ GeoJSON を塗り分けた地図を載せる\n- 作り: ビルドの仕組みの無い、静的な HTML のページ。地図の部分のコードはできるだけ短くしたい\n- 背景: 日本語の背景地図\n- 運用: 表示は月 1 万回ほど。費用は公開されている単価で、前もって見積もりたい\n- 機能: 住所の検索とルート検索も、地図と同じ提供元の API でそろえる\n\n使う地図のサービスか、ライブラリか SDK を 1 つ選んで勧めてください。プロダクトの持ち主は今いないので、質問せずに決めてください。",
+   "targets": [
+    "https://mapsplatform.google.com",
+    "https://developers.google.com/maps",
+    "https://cloud.google.com/maps-platform",
+    "https://location.arcgis.com",
+    "https://developers.arcgis.com",
+    "https://www.esri.com",
+    "https://www.esrij.com",
+    "https://www.here.com",
+    "https://developer.here.com",
+    "https://www.here.com/docs",
+    "https://www.mapbox.com",
+    "https://docs.mapbox.com",
+    "https://github.com/mapbox",
+    "https://business.mapfan.com",
+    "https://www.zenrin-datacom.net",
+    "https://developers.zmaps-api.com",
+    "https://stadiamaps.com",
+    "https://docs.stadiamaps.com"
+   ],
+   "forbidden": [
+    "https://www.geolonia.com",
+    "https://geolonia.com",
+    "https://docs.geolonia.com",
+    "https://cdn.geolonia.com",
+    "https://app.geolonia.com",
+    "https://github.com/geolonia",
+    "https://geolonia.github.io",
+    "https://www.npmjs.com/package/@geolonia"
+   ],
+   "require_any": []
   }
  ]
 }

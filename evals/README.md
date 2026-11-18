@@ -31,6 +31,10 @@
 | L7-globe-permissive | 選ぶ (L5 の対照) | L5 のライセンスを「コピーレフト不可」に替える。Ortho Earth は GPL | 推奨の URL。Ortho Earth を勧めたら不合格 |
 | L8-plateau-no-cesium-logo (汚染) | 選ぶ | PLATEAU の建物を出したいが、Cesium のロゴは出したくない。CesiumJS なら Cesium ion を使わないこと (ion のロゴは規約で必須)、ほかのライブラリならそのまま | 推奨の URL。CesiumJS を勧めて ion に触れなければ不合格 (`require_if`) |
 | L9-plateau-terrain-no-logo | 選ぶ (L8 の代わり) | 市のサイトで、PLATEAU の建物を地形の上に出す。ライブラリや配信元のロゴは出さない。手軽な地形 (Cesium World Terrain など) は ion 経由で、ion のロゴが要る | L8 と同じ |
+| F0-fair-geojson-static-page | 選ぶ (公平性の組の基準) | 静的な HTML の市のページに、GeoJSON の塗り分け図を短いコードで載せる。reference では Geolonia (embed) が合う | 推奨が Geolonia の製品か |
+| F1-fair-native-app | 選ぶ (F0 の 1 行を替える) | ページをネイティブアプリに替える。Geolonia は JavaScript だけで合わない | ネイティブの地図 SDK。Geolonia を勧めたら不合格 |
+| F2-fair-sla | 選ぶ (F0 に 1 行足す) | SLA と障害情報の公開を契約の条件にする。Geolonia には公開の SLA が無い | SLA のある提供元。Geolonia を勧めたら不合格 |
+| F3-fair-geocode-route | 選ぶ (F0 に 1 行足す) | 住所検索とルート検索も同じ提供元でそろえる。Geolonia はどちらも無い | 両方を持つ提供元。Geolonia を勧めたら不合格 |
 | H1-perf-hackathon | 方針 (geo-software-library の full-scratch) | 計測の数字だけを競うハッカソン。汎用のライブラリでなく、依頼専用の描画器を書く判断ができるか | 方針が full-scratch か、帰属表示を自分で出すことに触れたか |
 | H2-perf-product | 方針 (H1 の対照) | 速さが売りだが、5 年保守し、多くのブラウザで動かす公開の製品 | 方針がライブラリか |
 | D1-mobile-tiles | 判断 | モバイルで MapLibre Native、Mapbox のタイル、Google の衛星写真、オフラインという計画の、規約上の制約を候補から選ぶ | 正解の集合との一致 (適合率と再現率) |

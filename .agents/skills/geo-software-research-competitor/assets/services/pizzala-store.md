@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # ピザーラ 店舗検索・注文サイト
 
 - URL: https://www.pizza-la.co.jp/

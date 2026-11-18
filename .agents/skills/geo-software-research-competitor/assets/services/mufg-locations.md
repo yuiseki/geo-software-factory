@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # 三菱UFJ銀行 ATM・店舗のご案内
 
 - URL: https://map.bk.mufg.jp/b/bk_mufg/

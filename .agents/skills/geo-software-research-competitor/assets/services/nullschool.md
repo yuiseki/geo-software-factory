@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-smb
+---
+
 # earth :: a global map of wind, weather, and ocean conditions
 
 - URL: https://earth.nullschool.net/

@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-smb
+---
+
 # OldMapsOnline
 
 - URL: https://www.oldmapsonline.org/

@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: individual
+---
+
 # c:geo
 
 - URL: https://www.cgeo.org/

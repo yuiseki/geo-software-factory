@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-smb
+---
+
 # Felt
 
 - URL: https://felt.com/

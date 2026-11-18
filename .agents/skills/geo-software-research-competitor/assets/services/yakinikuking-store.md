@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # 焼肉きんぐ 店舗検索
 
 - URL: https://www.yakiniku-king.jp/shop/

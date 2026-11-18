@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # 日産 販売店(ディーラー)検索
 
 - URL: https://www3.nissan.co.jp/dealers.html

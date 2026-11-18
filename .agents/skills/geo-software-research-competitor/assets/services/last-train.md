@@ -1,3 +1,8 @@
+---
+financial: non-commercial
+organization: individual
+---
+
 # 東京終電マップ｜TOKYO LAST TRAIN MAP
 
 - URL: https://tokyo-last-train-map.pages.dev/

@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: individual
+---
+
 # 地図ロイド
 
 - URL: https://www.chizroid.info/

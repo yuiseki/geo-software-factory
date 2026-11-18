@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # デイリーヤマザキ 店舗検索
 
 - URL: https://www.areamarker.com/daily-yamazaki/map

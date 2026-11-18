@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # デニーズ 店舗検索
 
 - URL: https://shop.dennys.jp/

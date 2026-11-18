@@ -1,3 +1,8 @@
+---
+financial: non-commercial
+organization: individual
+---
+
 # trainsworld
 
 - URL: https://anita.garden/trainsworld/

@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # GU 店舗検索
 
 - URL: https://map.gu-global.com/jp/ja/

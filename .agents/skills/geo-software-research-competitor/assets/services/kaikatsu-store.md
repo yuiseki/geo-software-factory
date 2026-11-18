@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # 快活CLUB 店舗検索・料金案内
 
 - URL: https://www.kaikatsu.jp/shop/

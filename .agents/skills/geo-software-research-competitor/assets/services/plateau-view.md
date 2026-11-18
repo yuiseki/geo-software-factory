@@ -1,3 +1,8 @@
+---
+financial: public-service
+organization: gov-central
+---
+
 # PLATEAU VIEW
 
 - URL: https://plateauview.mlit.go.jp/ (ポータル: https://www.mlit.go.jp/plateau/)

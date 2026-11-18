@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # 食べログ
 
 - URL: https://tabelog.com/

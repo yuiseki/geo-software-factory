@@ -1,3 +1,8 @@
+---
+financial: non-commercial
+organization: individual
+---
+
 # 印刷地図作成ツール - 移転のお知らせ
 
 - URL: https://birdtaka.com/gpxmapprint/

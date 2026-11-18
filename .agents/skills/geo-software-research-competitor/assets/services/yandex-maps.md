@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # Yandex Maps
 
 - URL: https://yandex.com/maps

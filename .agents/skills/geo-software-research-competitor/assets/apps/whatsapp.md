@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # WhatsApp
 
 - URL: https://apps.apple.com/jp/app/whatsapp-messenger/id310633997

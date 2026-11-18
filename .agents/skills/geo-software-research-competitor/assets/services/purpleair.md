@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-smb
+---
+
 # PurpleAir
 
 - URL: https://map.purpleair.com/

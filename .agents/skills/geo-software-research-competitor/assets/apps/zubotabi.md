@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: individual
+---
+
 # ずぼ旅（DriftLog）
 
 - URL: https://ja.getdriftlog.com/

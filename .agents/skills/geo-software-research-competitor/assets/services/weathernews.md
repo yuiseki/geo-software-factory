@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # ウェザーニュース
 
 - URL: https://weathernews.jp

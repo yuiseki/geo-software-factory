@@ -1,3 +1,8 @@
+---
+financial: non-commercial
+organization: individual
+---
+
 # どこでもロケハン
 
 - URL: https://tools.oyasumi-gamedev.com/rokehan/

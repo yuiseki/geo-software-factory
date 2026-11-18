@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-smb
+---
+
 # 安楽亭 店舗検索
 
 - URL: https://anrakutei.jp/map/

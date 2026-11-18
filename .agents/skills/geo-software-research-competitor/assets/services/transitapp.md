@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-smb
+---
+
 # Transit
 
 - URL: https://transitapp.com/

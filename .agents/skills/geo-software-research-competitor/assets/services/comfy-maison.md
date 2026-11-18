@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-smb
+---
+
 # 賃貸を地図で探す - 家賃相場が一目でわかる物件検索 | Comfy
 
 - URL: https://comfy.maison/

@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-smb
+---
+
 # LINE GO
 
 - URL: https://apps.apple.com/tw/app/id1538897906

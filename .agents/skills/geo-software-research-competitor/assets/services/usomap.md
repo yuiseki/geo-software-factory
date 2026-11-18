@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-smb
+---
+
 # USOMAP - 架空世界地図ジェネレーター｜無料の地図メーカー
 
 - URL: https://amix-design.com/asoboad/tools/d-usomap/

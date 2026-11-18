@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # サイゼリヤ 店舗検索
 
 - URL: https://shop.saizeriya.co.jp/sz_restaurant/

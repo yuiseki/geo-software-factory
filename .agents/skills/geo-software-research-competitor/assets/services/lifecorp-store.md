@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # ライフ 店舗検索
 
 - URL: https://store.lifecorp.jp/

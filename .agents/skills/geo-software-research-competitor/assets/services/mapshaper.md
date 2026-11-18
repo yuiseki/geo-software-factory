@@ -1,3 +1,8 @@
+---
+financial: non-commercial
+organization: individual
+---
+
 # Mapshaper
 
 - URL: https://mapshaper.org

@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # ニッポンレンタカー 店舗検索
 
 - URL: https://www.nipponrentacar.co.jp/shop/

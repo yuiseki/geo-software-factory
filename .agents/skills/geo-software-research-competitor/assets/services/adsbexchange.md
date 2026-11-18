@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-smb
+---
+
 # ADS-B Exchange
 
 - URL: https://www.adsbexchange.com/ (地図: https://globe.adsbexchange.com/)

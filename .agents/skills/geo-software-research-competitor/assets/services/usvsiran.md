@@ -1,3 +1,8 @@
+---
+financial: non-commercial
+organization: individual
+---
+
 # Trump Deadline Countdown | CENTCOM Theater Operations Map | US vs Iran Force Tracker
 
 - URL: https://bamqam.com/

@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # Flourish
 
 - URL: https://flourish.studio

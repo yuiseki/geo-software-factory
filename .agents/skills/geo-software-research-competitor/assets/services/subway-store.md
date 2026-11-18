@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # サブウェイ 店舗検索
 
 - URL: https://subway.co.jp/shop/

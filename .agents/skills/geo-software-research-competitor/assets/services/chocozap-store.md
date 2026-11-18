@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # chocoZAP (チョコザップ) 店舗検索
 
 - URL: https://chocozap.jp/studios/search/area

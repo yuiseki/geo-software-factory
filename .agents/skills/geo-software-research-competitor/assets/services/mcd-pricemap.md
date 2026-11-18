@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: individual
+---
+
 # 近くの安いマックがわかる｜マクドナルド価格帯マップ
 
 - URL: https://pricemap.s-otk.com/mcdonalds/

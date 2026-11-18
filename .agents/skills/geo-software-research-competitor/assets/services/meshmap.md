@@ -1,3 +1,8 @@
+---
+financial: non-commercial
+organization: individual
+---
+
 # MeshMap - Meshtastic Node Map
 
 - URL: https://meshmap.net/

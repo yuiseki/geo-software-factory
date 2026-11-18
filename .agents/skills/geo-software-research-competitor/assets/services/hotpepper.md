@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # ホットペッパーグルメ
 
 - URL: https://www.hotpepper.jp/

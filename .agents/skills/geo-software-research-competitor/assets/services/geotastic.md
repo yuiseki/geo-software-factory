@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: individual
+---
+
 # Geotastic
 
 - URL: https://geotastic.net/

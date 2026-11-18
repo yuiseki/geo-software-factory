@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-smb
+---
+
 # God's Eye View | Official Site: Real-Time 3D Globe
 
 - URL: https://godseyeview.ai/

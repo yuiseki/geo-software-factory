@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-smb
+---
+
 # 明光義塾 教室検索
 
 - URL: https://www.meikogijuku.jp/school/

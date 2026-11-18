@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: individual
+---
+
 # V2X2MAP - live receiver and map for ITS-G5 / V2X
 
 - URL: https://v2x2map.com/

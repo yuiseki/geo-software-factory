@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # オートバックス 店舗検索
 
 - URL: https://shop.autobacs.com/retail

@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-smb
+---
+
 # バスNAVITIME 時刻表&乗り換え案内&路線図ナビ
 
 - URL: https://apps.apple.com/jp/app/id589399930

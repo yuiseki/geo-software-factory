@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: individual
+---
+
 # StreetComplete
 
 - URL: https://streetcomplete.app/

@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-smb
+---
+
 # トリマ-歩数・移動でポイント！散歩やウォーキングでお金を稼ぐ
 
 - URL: https://www.trima.jp/

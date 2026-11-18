@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: individual
+---
+
 # VidEarth
 
 - URL: https://virtualvacation.us/videarth

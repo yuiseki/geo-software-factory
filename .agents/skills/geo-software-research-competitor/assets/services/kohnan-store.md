@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # コーナン 店舗検索
 
 - URL: https://map.hc-kohnan.com/shop

@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # ロピア 店舗情報
 
 - URL: https://lopia.jp/shops/

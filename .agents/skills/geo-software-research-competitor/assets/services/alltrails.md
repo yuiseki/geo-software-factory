@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-smb
+---
+
 # AllTrails
 
 - URL: https://www.alltrails.com/

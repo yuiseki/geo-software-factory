@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # コメダ珈琲店 店舗検索
 
 - URL: https://www.komeda.co.jp/shop/

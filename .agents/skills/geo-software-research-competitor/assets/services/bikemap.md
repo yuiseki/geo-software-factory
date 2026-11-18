@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-smb
+---
+
 # Bikemap
 
 - URL: https://www.bikemap.net/

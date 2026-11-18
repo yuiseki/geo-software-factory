@@ -1,3 +1,8 @@
+---
+financial: non-commercial
+organization: individual
+---
+
 # ChizuZu - 地図比較アプリ
 
 - URL: https://chizuzu.highwide.net/

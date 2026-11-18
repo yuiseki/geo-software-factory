@@ -1,3 +1,8 @@
+---
+financial: non-commercial
+organization: individual
+---
+
 # 生活利便性マップ
 
 - URL: https://seikatsu-map.pages.dev/

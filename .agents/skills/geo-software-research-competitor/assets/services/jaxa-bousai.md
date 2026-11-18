@@ -1,3 +1,8 @@
+---
+financial: public-service
+organization: gov-central
+---
+
 # 防災インタフェース
 
 - URL: https://daichi-bousai.dpif.jaxa.jp/static/html/pre_top.html

@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-smb
+---
+
 # Scribble Maps
 
 - URL: https://www.scribblemaps.com

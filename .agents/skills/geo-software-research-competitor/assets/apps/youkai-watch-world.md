@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # 妖怪ウォッチ ワールド
 
 - URL: https://apps.apple.com/jp/app/id1356061228

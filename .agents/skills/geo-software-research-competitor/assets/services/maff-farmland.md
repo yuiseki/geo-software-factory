@@ -1,3 +1,8 @@
+---
+financial: public-service
+organization: gov-central
+---
+
 # 農地ナビ
 
 - URL: https://map.maff.go.jp

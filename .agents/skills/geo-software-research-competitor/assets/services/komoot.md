@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-smb
+---
+
 # Komoot
 
 - URL: https://www.komoot.com/

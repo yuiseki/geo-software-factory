@@ -1,3 +1,8 @@
+---
+financial: non-commercial
+organization: individual
+---
+
 # 国勢調査 メッシュ年齢構成クラスターマップ
 
 - URL: https://klareswasser.github.io/map_popbalance/#5/37/137

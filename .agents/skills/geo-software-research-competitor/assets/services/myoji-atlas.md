@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: individual
+---
+
 # 日本苗字アトラス
 
 - URL: https://www.myoji-atlas.com/

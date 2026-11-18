@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # 幸楽苑 店舗検索
 
 - URL: https://stores.kourakuen.co.jp/

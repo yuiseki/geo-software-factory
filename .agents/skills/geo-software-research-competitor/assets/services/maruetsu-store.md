@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # マルエツ 店舗検索 (地図から探す)
 
 - URL: https://www.maruetsu.co.jp/stores/map/

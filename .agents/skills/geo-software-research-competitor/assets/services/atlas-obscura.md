@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-smb
+---
+
 # Atlas Obscura
 
 - URL: https://www.atlasobscura.com

@@ -1,3 +1,8 @@
+---
+financial: non-commercial
+organization: individual
+---
+
 # DeepStateMap
 
 - URL: https://deepstatemap.live/

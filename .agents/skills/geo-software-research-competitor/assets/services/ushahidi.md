@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: individual
+---
+
 # Ushahidi
 
 - URL: https://www.ushahidi.com

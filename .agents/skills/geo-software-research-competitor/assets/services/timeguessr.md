@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-smb
+---
+
 # TimeGuessr
 
 - URL: https://timeguessr.com/

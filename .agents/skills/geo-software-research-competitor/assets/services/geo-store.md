@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # ゲオ 店舗検索
 
 - URL: https://geo-online.co.jp/store/

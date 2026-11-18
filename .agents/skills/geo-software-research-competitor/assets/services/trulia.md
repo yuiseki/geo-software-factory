@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # Trulia
 
 - URL: https://www.trulia.com/

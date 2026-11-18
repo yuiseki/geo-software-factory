@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # キャンドゥ 店舗検索
 
 - URL: https://shopinfo.cando-web.co.jp/

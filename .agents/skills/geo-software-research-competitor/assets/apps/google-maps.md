@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # Google マップ
 
 - URL: https://apps.apple.com/jp/app/id585027354

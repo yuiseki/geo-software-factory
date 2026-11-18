@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # ダイソー 店舗検索
 
 - URL: https://www.daiso-sangyo.co.jp/shop

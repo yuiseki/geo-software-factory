@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # FlightAware
 
 - URL: https://www.flightaware.com

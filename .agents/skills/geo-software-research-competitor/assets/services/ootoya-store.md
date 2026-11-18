@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-smb
+---
+
 # 大戸屋 店舗検索
 
 - URL: https://store.ootoya.com/

@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # 成城石井 店舗情報
 
 - URL: https://shop.seijoishii.com/seijoishii/

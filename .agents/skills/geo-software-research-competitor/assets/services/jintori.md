@@ -1,3 +1,8 @@
+---
+financial: non-commercial
+organization: individual
+---
+
 # 日本地図の陣とりバトル
 
 - URL: https://keigamesstudio.com/baka/jintori/

@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # JINS 店舗検索
 
 - URL: https://www.jins.com/jp/shop/

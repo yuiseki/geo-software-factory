@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-smb
+---
+
 # GeoGuessr
 
 - URL: https://www.geoguessr.com/

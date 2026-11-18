@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-smb
+---
+
 # ドライブサポーター by NAVITIME (カーナビ)
 
 - URL: https://apps.apple.com/jp/app/id413487517

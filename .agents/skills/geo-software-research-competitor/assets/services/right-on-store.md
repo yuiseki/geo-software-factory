@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # ライトオン 店舗検索 (ワールド オンラインストア)
 
 - URL: https://store.world.co.jp/real-store-search?pcf=1&dbr=BD001

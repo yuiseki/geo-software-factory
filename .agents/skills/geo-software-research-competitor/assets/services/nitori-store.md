@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # ニトリ 店舗検索
 
 - URL: https://shop.nitori-net.jp/nitori/

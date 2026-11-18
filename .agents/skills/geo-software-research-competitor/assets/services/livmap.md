@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-smb
+---
+
 # LivMap (リブマップ) - チームで使う共有地図
 
 - URL: https://livmap.co/

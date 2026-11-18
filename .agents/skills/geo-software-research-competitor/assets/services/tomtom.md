@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # TomTom
 
 - URL: https://www.tomtom.com

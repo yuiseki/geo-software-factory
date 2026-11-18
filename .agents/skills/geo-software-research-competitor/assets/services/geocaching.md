@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-smb
+---
+
 # Geocaching
 
 - URL: https://www.geocaching.com/

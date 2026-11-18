@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # FedEx ジャパン 拠点検索
 
 - URL: https://local.fedex.com/ja/search

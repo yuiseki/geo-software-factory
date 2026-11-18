@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # オリックスレンタカー 店舗検索
 
 - URL: https://car.orix.co.jp/

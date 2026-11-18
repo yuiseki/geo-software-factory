@@ -1,3 +1,8 @@
+---
+financial: non-commercial
+organization: individual
+---
+
 # いちおくるクン
 
 - URL: https://kzi.jp/gps.html

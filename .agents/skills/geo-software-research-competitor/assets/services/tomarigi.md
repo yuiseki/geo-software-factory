@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-smb
+---
+
 # 日本のライブカメラ地図 | とまり木
 
 - URL: https://tomarigi.me/

@@ -1,3 +1,8 @@
+---
+financial: non-commercial
+organization: individual
+---
+
 # EMSC
 
 - URL: https://www.emsc-csem.org/

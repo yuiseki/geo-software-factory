@@ -1,3 +1,8 @@
+---
+financial: non-commercial
+organization: individual
+---
+
 # OpenRailwayMap
 
 - URL: https://www.openrailwaymap.org

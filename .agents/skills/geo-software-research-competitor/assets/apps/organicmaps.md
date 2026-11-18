@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-smb
+---
+
 # Organic マップ: オフライン地図
 
 - URL: https://organicmaps.app/

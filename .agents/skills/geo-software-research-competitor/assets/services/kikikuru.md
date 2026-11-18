@@ -1,3 +1,8 @@
+---
+financial: public-service
+organization: gov-central
+---
+
 # 気象庁 キキクル
 
 - URL: https://www.jma.go.jp/bosai/risk/

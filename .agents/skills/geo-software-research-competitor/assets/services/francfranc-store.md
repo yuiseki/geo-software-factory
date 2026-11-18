@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # Francfranc 店舗一覧
 
 - URL: https://francfranc.com/pages/stores

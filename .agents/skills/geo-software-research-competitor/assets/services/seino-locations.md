@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # 西濃運輸 営業所検索
 
 - URL: https://www.seino.co.jp/seino/branch/

@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-smb
+---
+
 # EO Browser (Sentinel Hub / Copernicus Browser)
 
 - URL: https://apps.sentinel-hub.com/eo-browser/ (Copernicus 公式版: https://browser.dataspace.copernicus.eu/)

@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-smb
+---
+
 # プロント 店舗検索
 
 - URL: https://shop.pronto.co.jp/

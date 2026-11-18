@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: individual
+---
+
 # OpenGuessr
 
 - URL: https://openguessr.com/

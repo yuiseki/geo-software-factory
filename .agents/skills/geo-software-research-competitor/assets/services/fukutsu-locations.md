@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # 福山通運 営業所検索
 
 - URL: https://corp.fukutsu.co.jp/corp/base/shop/

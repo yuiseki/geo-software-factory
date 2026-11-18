@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # ドラゴンクエストウォーク
 
 - URL: https://apps.apple.com/jp/app/id1439417234

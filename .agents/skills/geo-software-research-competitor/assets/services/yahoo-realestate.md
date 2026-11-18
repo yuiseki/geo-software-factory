@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # Yahoo!不動産
 
 - URL: https://realestate.yahoo.co.jp/

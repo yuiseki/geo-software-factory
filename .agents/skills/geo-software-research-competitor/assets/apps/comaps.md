@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: individual
+---
+
 # CoMaps
 
 - URL: https://www.comaps.app/

@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # コジマ 店舗一覧
 
 - URL: https://www.kojima.net/shop/shoplist/index.html

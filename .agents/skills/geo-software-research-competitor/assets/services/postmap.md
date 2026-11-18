@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-smb
+---
+
 # ポストマップ
 
 - URL: https://www.postmap.org/

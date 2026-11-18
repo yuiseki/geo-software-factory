@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # モスバーガー 店舗検索
 
 - URL: https://www.mos.jp/shop/

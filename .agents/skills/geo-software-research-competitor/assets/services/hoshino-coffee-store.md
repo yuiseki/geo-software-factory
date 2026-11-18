@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # 星乃珈琲店 店舗情報
 
 - URL: https://www.hoshinocoffee.com/shop.html

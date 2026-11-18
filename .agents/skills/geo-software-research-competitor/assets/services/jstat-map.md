@@ -1,3 +1,8 @@
+---
+financial: public-service
+organization: gov-central
+---
+
 # jSTAT MAP（地図で見る統計）
 
 - URL: https://jstatmap.e-stat.go.jp/

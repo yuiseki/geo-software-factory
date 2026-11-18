@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # Wayfair
 
 - URL: https://www.wayfair.com/

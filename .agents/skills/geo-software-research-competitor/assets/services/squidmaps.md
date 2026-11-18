@@ -1,3 +1,8 @@
+---
+financial: non-commercial
+organization: individual
+---
+
 # squidmaps
 
 - URL: https://squidmaps.io/

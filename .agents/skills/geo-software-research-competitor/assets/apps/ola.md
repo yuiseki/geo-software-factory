@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # Ola
 
 - URL: https://apps.apple.com/in/app/ola-book-cab-auto-bike-taxi/id539179365

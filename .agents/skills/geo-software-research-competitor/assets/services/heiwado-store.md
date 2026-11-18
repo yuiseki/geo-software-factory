@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # 平和堂 店舗検索
 
 - URL: https://shoplist.heiwado.jp/

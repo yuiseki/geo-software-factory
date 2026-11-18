@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: individual
+---
+
 # 熊出没マップ2026年 - 全国165,975件 - クママップ
 
 - URL: https://kumamap.com/ja

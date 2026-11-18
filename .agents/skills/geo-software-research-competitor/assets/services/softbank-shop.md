@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # ソフトバンクショップ 店舗検索
 
 - URL: https://www.softbank.jp/shop/search/

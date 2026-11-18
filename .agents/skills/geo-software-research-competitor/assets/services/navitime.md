@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-smb
+---
+
 # NAVITIME（ウェブ総合版）
 
 - URL: https://www.navitime.co.jp

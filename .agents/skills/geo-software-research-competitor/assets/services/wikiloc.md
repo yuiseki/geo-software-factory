@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-smb
+---
+
 # Wikiloc
 
 - URL: https://www.wikiloc.com/

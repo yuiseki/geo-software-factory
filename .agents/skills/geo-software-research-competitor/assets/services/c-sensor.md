@@ -1,3 +1,8 @@
+---
+financial: public-service
+organization: gov-central
+---
+
 # 浸水センサ表示システム（国土交通省）
 
 - URL: https://c-sensor.river.go.jp/map/index?x=15028131.25709&y=4478521.57355&z=5.23368&r=0

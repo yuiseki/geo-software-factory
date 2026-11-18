@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # ゲンキー 店舗検索
 
 - URL: https://genky.co.jp/shop/

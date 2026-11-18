@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # 東急ハンズ (現ハンズ) 店舗一覧
 
 - URL: https://info.hands.net/list/

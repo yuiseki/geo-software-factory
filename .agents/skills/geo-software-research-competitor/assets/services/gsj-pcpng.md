@@ -1,3 +1,8 @@
+---
+financial: public-service
+organization: gov-central
+---
+
 # 点群PNGタイルの実例
 
 - URL: https://tiles.gsj.jp/tiles/pcpng/mixed/index.html

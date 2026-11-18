@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-smb
+---
+
 # Transitland
 
 - URL: https://www.transit.land

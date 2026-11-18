@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # 三井のリパーク 駐車場検索
 
 - URL: https://www.repark.jp/

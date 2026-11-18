@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # イオンシネマ 劇場検索
 
 - URL: https://www.aeoncinema.com/theater/

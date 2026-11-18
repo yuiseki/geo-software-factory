@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-smb
+---
+
 # ライブハウス検索マップ - JVMAP｜全国の音楽会場を地図で探す
 
 - URL: https://jvmap.live/

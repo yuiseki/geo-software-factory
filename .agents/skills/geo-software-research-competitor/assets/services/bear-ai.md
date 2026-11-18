@@ -1,3 +1,8 @@
+---
+financial: non-commercial
+organization: individual
+---
+
 # クマ遭遇AI予測マップ｜上智大学 深澤研究室
 
 - URL: https://fukazawa-lab.github.io/japan-bear-map/index.html

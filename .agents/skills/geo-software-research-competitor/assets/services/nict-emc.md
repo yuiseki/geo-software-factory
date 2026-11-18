@@ -1,3 +1,8 @@
+---
+financial: public-service
+organization: gov-central
+---
+
 # 電界強度マップ - 電磁環境研究室モニタリングプロジェクト
 
 - URL: https://emc.nict.go.jp/mnt/gis_map.html

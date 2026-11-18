@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # 日本郵便 郵便局・ATMをさがす
 
 - URL: https://map.japanpost.jp/p/search/

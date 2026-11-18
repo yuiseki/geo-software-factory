@@ -1,3 +1,8 @@
+---
+financial: non-commercial
+organization: individual
+---
+
 # 方位図法世界地図作成ツール
 
 - URL: https://maps.cubbit.app/

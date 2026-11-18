@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # Redfin
 
 - URL: https://www.redfin.com

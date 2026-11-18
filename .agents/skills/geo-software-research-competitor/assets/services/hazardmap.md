@@ -1,3 +1,8 @@
+---
+financial: public-service
+organization: gov-central
+---
+
 # 重ねるハザードマップ
 
 - URL: https://disaportal.gsi.go.jp/maps/

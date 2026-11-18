@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # DHL ジャパン 拠点検索
 
 - URL: https://locator.dhl.com/

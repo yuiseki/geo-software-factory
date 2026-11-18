@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: individual
+---
+
 # WorldGuessr
 
 - URL: https://www.worldguessr.com/

@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-smb
+---
+
 # オフライン地図、GPSナビ:MAPS.ME
 
 - URL: https://maps.me/

@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # DCM 店舗検索
 
 - URL: https://www.dcm-hc.co.jp/shop/search/list_point.html

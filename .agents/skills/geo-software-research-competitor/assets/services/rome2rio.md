@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-smb
+---
+
 # Rome2Rio
 
 - URL: https://www.rome2rio.com

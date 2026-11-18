@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # スタジオアリス 店舗検索
 
 - URL: https://www.studio-alice.co.jp/shop/

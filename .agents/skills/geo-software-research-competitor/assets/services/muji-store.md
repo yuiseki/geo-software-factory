@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # 無印良品 店舗検索
 
 - URL: https://www.muji.com/jp/ja/shop/

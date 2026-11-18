@@ -1,3 +1,8 @@
+---
+financial: non-commercial
+organization: individual
+---
+
 # SunCalc
 
 - URL: https://www.suncalc.org

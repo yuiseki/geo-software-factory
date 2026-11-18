@@ -1,3 +1,8 @@
+---
+financial: non-commercial
+organization: individual
+---
+
 # Rennes Transit Map - Visualisation temps réel du réseau STAR
 
 - URL: https://nahelou.github.io/rennes-transit-map/

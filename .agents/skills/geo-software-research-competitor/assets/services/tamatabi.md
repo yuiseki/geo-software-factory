@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: individual
+---
+
 # 世界のライブカメラ地図｜いま見れるライブ映像 - たま旅ライブ
 
 - URL: https://tamatabi.world/ja/

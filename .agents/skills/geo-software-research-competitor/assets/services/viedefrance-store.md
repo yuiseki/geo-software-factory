@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-smb
+---
+
 # ヴィ・ド・フランス 店舗検索
 
 - URL: https://shop.viedefrance.co.jp/

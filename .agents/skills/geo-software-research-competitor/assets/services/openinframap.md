@@ -1,3 +1,8 @@
+---
+financial: non-commercial
+organization: individual
+---
+
 # Open Infrastructure Map
 
 - URL: https://openinframap.org/

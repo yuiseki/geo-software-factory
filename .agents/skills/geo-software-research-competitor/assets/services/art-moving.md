@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # アート引越センター 引越ネットワーク
 
 - URL: https://www.the0123.com/company/network.html

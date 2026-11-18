@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-smb
+---
+
 # SkylineWebcams
 
 - URL: https://www.skylinewebcams.com

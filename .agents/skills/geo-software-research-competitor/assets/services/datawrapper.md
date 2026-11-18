@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-smb
+---
+
 # Datawrapper
 
 - URL: https://www.datawrapper.de/

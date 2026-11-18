@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # ジョイフル本田 店舗情報
 
 - URL: https://www.joyfulhonda.com/shop/list

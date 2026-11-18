@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-smb
+---
+
 # 無料の商圏分析・統計データマッピング|47maps
 
 - URL: https://47maps.com/

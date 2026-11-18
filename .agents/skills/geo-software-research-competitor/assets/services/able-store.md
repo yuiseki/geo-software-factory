@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # エイブル 店舗検索
 
 - URL: https://www.able.co.jp/shop/

@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-smb
+---
+
 # Park4Night
 
 - URL: https://park4night.com

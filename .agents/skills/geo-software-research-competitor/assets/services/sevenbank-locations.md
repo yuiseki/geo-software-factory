@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # セブン銀行 ATM検索
 
 - URL: https://location.sevenbank.co.jp/sevenbank/

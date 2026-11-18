@@ -1,3 +1,8 @@
+---
+financial: non-commercial
+organization: individual
+---
+
 # ACLED
 
 - URL: https://acleddata.com/

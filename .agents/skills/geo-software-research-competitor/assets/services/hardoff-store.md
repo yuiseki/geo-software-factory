@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # ハードオフ 店舗検索
 
 - URL: https://www.hardoff.co.jp/shop/

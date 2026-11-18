@@ -1,3 +1,8 @@
+---
+financial: non-commercial
+organization: individual
+---
+
 # 国道マップ
 
 - URL: https://nanase.cc/kokudo-map/#4.62/35.79/137.92

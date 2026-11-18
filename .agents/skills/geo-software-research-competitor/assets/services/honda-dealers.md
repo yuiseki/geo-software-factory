@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # ホンダ 四輪販売店検索
 
 - URL: https://shopsearch.honda.co.jp/auto/search/

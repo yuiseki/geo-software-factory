@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # Starbucks（Global Store Locator）
 
 - URL: https://www.starbucks.com/store-locator

@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # クリエイト エス・ディー 店舗検索
 
 - URL: https://store.create-sd.co.jp/

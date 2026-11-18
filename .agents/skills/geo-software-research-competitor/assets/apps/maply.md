@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # Maply
 
 - URL: https://apps.apple.com/jp/app/id6755756254

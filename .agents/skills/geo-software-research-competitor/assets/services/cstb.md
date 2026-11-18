@@ -1,3 +1,8 @@
+---
+financial: non-commercial
+organization: individual
+---
+
 # CSTB Japan and NW Pacific 2026
 
 - URL: https://gis.ikgm.net/cstb/

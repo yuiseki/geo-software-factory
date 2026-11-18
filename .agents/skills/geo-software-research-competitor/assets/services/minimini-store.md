@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # ミニミニ 店舗検索
 
 - URL: https://minimini.jp/shop/

@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # 紀伊國屋書店 Store Locator
 
 - URL: https://store.kinokuniya.co.jp/store-locator/

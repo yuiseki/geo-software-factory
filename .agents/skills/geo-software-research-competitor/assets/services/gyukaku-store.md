@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # 牛角 店舗検索
 
 - URL: https://map.reins.co.jp/gyukaku

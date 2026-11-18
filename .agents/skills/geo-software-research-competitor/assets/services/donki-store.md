@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # ドン・キホーテ 店舗検索
 
 - URL: https://www.donki.com/store/

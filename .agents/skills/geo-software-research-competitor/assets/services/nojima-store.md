@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # ノジマ 店舗案内
 
 - URL: https://www.nojima.co.jp/shop/

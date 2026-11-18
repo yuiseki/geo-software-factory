@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-smb
+---
+
 # CalTopo
 
 - URL: https://caltopo.com/

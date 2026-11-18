@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # はるやま 店舗検索
 
 - URL: https://haruyama.jp/cojp/shop_info/list

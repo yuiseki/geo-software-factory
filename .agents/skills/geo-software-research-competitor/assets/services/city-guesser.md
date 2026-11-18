@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: individual
+---
+
 # City Guesser
 
 - URL: https://virtualvacation.us/guess

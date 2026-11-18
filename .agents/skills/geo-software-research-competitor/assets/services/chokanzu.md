@@ -1,3 +1,8 @@
+---
+financial: non-commercial
+organization: individual
+---
+
 # JR東海道本線（東京〜熱海）｜吉田初三郎風・鳥瞰路線図
 
 - URL: https://maps.chizutodesign.com/chokanzu/ (開いた路線は JR東海道本線 東京〜熱海)

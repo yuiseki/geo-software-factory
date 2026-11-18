@@ -1,3 +1,8 @@
+---
+financial: non-commercial
+organization: individual
+---
+
 # Urbanist Map
 
 - URL: https://urbanistmap.org/

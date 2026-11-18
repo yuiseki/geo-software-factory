@@ -1,3 +1,8 @@
+---
+financial: non-commercial
+organization: corp-smb
+---
+
 # 令和8年熊本地震 生活支援・被害状況マップ｜給水所・避難所・断水
 
 - URL: https://kumamoto-quake-map.sagri.workers.dev/

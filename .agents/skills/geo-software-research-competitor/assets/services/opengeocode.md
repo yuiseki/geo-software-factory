@@ -1,3 +1,8 @@
+---
+financial: non-commercial
+organization: individual
+---
+
 # OpenGeocode: free, open-source, self-hosted geocoding
 
 - URL: https://opengeocode.com/

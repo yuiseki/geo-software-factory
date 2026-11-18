@@ -1,3 +1,8 @@
+---
+financial: non-commercial
+organization: individual
+---
+
 # Dig a Hole to China? See Where You'd Come Out | Through Earth
 
 - URL: https://throughearth.com/

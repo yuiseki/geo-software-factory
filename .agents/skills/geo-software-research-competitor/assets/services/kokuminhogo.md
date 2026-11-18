@@ -1,3 +1,8 @@
+---
+financial: public-service
+organization: gov-central
+---
+
 # 避難施設のご案内
 
 - URL: https://www.kokuminhogo-map.go.jp/kokuminhogo/map

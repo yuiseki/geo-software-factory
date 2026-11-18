@@ -1,3 +1,8 @@
+---
+financial: public-service
+organization: gov-central
+---
+
 # NASA FIRMS
 
 - URL: https://firms.modaps.eosdis.nasa.gov/

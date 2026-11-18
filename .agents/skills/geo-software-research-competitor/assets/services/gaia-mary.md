@@ -1,3 +1,8 @@
+---
+financial: non-commercial
+organization: individual
+---
+
 # Hail Mary - Star Map
 
 - URL: https://valhovey.github.io/gaia-mary/

@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: individual
+---
+
 # せんべろ東京マップ（東京都内の立ち飲み・大衆酒場・居酒屋を地図から検索） | せんべろnet
 
 - URL: https://1000bero.net/tokyo_map/

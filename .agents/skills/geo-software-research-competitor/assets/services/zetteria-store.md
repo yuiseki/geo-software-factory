@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # ゼッテリア（旧ロッテリア） 店舗検索
 
 - URL: https://maps.zetteria.jp/shop

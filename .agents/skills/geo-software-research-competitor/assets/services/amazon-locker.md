@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # Amazon ロッカー／カウンター検索
 
 - URL: https://www.amazon.co.jp/locker

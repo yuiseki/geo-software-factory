@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-smb
+---
+
 # Ventusky
 
 - URL: https://www.ventusky.com/

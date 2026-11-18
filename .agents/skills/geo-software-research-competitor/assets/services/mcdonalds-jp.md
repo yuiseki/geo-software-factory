@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # マクドナルド 店舗検索
 
 - URL: https://map.mcdonalds.co.jp/

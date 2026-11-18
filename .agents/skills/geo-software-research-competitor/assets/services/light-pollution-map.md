@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: individual
+---
+
 # Light Pollution Map
 
 - URL: https://www.lightpollutionmap.info/

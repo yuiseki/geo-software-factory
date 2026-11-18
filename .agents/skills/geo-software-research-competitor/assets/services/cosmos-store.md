@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # コスモス薬品 店舗検索
 
 - URL: https://www.cosmospc.co.jp/shop/

@@ -1,3 +1,8 @@
+---
+financial: public-service
+organization: gov-central
+---
+
 # 地理院地図 / GSI Maps
 
 - URL: https://maps.gsi.go.jp/

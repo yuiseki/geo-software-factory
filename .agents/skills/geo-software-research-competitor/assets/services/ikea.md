@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # IKEA（店舗検索）
 
 - URL: https://www.ikea.com/de/de/stores/

@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # 島忠・HOME'S 店舗検索
 
 - URL: https://www.shimachu.co.jp/shop/

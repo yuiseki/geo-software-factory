@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: individual
+---
+
 # 街レンズ
 
 - URL: https://map.machilens.jp/

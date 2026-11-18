@@ -1,3 +1,8 @@
+---
+financial: non-commercial
+organization: corp-ent
+---
+
 # トヨタ | 通れた道マップ
 
 - URL: https://www.toyota.co.jp/jpn/auto/passable_route/map/

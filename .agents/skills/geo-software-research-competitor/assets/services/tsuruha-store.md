@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # ツルハドラッグ 店舗検索
 
 - URL: https://shop.tsuruha-g.com/shop

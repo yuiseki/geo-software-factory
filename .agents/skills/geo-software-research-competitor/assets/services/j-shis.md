@@ -1,3 +1,8 @@
+---
+financial: public-service
+organization: gov-central
+---
+
 # J-SHIS 地震ハザードステーション
 
 - URL: https://www.j-shis.bosai.go.jp

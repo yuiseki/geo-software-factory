@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # りそな銀行 店舗・ATMのご案内
 
 - URL: https://www.resonabank.co.jp/kojin/tenpo_atm/map/

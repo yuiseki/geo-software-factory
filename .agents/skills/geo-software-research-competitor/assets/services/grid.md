@@ -1,3 +1,8 @@
+---
+financial: non-commercial
+organization: individual
+---
+
 # 電力系統マップ - Electrical Grid Map
 
 - URL: https://maps.chizutodesign.com/electrical-grid/

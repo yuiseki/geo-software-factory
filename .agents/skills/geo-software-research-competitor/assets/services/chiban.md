@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: individual
+---
+
 # 全国地番マップ｜公図（法務局地図）・地番図を全国で検索・ダウンロード
 
 - URL: https://chiban.koaza.net/#11/35.6845/139.754

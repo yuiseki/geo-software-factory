@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-smb
+---
+
 # Ride with GPS
 
 - URL: https://ridewithgps.com/

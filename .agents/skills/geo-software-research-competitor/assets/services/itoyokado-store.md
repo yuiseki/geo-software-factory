@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # イトーヨーカドー 店舗検索
 
 - URL: https://stores.itoyokado.co.jp/

@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # 7NOW
 
 - URL: https://apps.apple.com/jp/app/id1672881483

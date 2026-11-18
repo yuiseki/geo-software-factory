@@ -1,3 +1,8 @@
+---
+financial: non-commercial
+organization: individual
+---
+
 # Navara, an open-source 3D map engine
 
 - URL: https://navara.world/

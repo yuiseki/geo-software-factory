@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # Microsoft Planetary Computer
 
 - URL: https://planetarycomputer.microsoft.com

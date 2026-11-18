@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # 百度地図 (Baidu Maps)
 
 - URL: https://map.baidu.com/

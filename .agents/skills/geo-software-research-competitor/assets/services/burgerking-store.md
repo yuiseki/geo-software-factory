@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-smb
+---
+
 # バーガーキング 店舗検索
 
 - URL: https://www.burgerking.co.jp/store

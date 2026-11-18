@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # ミニストップ 店舗検索
 
 - URL: https://map.ministop.co.jp/

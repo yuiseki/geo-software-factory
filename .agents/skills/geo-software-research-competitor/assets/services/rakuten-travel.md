@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # 楽天トラベル
 
 - URL: https://travel.rakuten.co.jp/

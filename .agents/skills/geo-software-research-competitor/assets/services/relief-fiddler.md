@@ -1,3 +1,8 @@
+---
+financial: non-commercial
+organization: corp-smb
+---
+
 # Relief Fiddler Demo
 
 - URL: https://mite-shiru.co.jp/maps/labo/relief_fiddler/

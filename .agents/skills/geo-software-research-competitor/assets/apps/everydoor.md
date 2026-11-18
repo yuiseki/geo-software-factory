@@ -1,3 +1,8 @@
+---
+financial: non-commercial
+organization: individual
+---
+
 # Every Door
 
 - URL: https://every-door.app/

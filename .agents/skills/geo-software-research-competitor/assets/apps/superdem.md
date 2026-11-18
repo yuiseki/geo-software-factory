@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: individual
+---
+
 # スーパー地形
 
 - URL: https://www.kashmir3d.com/superdem/

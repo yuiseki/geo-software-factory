@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-smb
+---
+
 # Radio Garden
 
 - URL: https://radio.garden/

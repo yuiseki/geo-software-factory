@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # Booking.com
 
 - URL: https://www.booking.com/

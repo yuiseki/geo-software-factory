@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: individual
+---
+
 # MapChart
 
 - URL: https://www.mapchart.net

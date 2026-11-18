@@ -1,3 +1,8 @@
+---
+financial: public-service
+organization: gov-local
+---
+
 # 京都観光Navi
 
 - URL: https://ja.kyoto.travel/

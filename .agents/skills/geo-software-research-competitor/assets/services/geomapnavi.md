@@ -1,3 +1,8 @@
+---
+financial: public-service
+organization: gov-central
+---
+
 # 地質図Navi (GeomapNavi)
 
 - URL: https://gbank.gsj.jp/geonavi/ (マップ本体: https://gbank.gsj.jp/geonavi/geonavi.php)

@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # 東急ストア 店舗・チラシ検索
 
 - URL: https://www.tokyu-store.co.jp/shop/

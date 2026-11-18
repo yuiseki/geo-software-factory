@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # 公文式 教室検索
 
 - URL: https://www.kumon.ne.jp/enter/search/search.php

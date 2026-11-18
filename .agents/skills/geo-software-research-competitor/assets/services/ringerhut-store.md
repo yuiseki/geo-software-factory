@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # リンガーハット 店舗検索
 
 - URL: https://shop.ringerhut.jp/

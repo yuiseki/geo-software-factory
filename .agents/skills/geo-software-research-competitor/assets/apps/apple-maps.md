@@ -1,3 +1,8 @@
+---
+financial: non-commercial
+organization: corp-ent
+---
+
 # Appleマップ
 
 - URL: https://apps.apple.com/jp/app/id915056765

@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # ワークマン 店舗検索
 
 - URL: https://www.workman.co.jp/store

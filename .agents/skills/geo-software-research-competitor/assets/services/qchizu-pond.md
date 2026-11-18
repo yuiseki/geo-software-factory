@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: individual
+---
+
 # 全国農業用ため池マップについて | 全国Q地図
 
 - URL: https://qchizu.jp/tile-pond/

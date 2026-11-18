@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: individual
+---
+
 # 国会議員マップ - あなたに近い議員がわかる
 
 - URL: https://kokkaimap.jp/

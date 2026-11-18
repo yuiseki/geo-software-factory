@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-smb
+---
+
 # Polarsteps
 
 - URL: https://www.polarsteps.com

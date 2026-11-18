@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # ドトールコーヒー 店舗検索
 
 - URL: https://shop.doutor.co.jp/

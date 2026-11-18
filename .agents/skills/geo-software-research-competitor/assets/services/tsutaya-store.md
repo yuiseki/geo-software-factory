@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # TSUTAYA／蔦屋書店 店舗一覧
 
 - URL: https://store.tsite.jp/portal/storelist/

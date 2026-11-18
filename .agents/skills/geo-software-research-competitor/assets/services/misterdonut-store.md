@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # ミスタードーナツ 店舗検索
 
 - URL: https://md.mapion.co.jp/b/misterdonut/

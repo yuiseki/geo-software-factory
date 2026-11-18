@@ -1,3 +1,8 @@
+---
+financial: non-commercial
+organization: individual
+---
+
 # uMap - Online map creator
 
 - URL: https://umap.hotosm.org/en/

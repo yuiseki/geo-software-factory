@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-smb
+---
+
 # The Walking Dead: Our World
 
 - URL: https://play.google.com/store/apps/details?id=com.nextgames.android.ourworld

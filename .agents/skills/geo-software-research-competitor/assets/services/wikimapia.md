@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-smb
+---
+
 # Wikimapia
 
 - URL: https://wikimapia.org/

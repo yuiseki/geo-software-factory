@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-smb
+---
+
 # Alto
 
 - URL: https://apps.apple.com/us/app/alto/id1442044302

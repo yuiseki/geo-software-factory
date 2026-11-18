@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # Mapy.com（旧 Mapy.cz）
 
 - URL: https://mapy.com

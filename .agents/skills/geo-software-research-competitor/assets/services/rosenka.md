@@ -1,3 +1,8 @@
+---
+financial: public-service
+organization: gov-central
+---
+
 # 路線価図・評価倍率表
 
 - URL: https://www.rosenka.nta.go.jp

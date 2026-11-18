@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-smb
+---
+
 # RadarBox（AirNav Radar）
 
 - URL: https://www.radarbox.com

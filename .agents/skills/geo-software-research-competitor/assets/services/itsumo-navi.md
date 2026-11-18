@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-smb
+---
+
 # いつもNAVI
 
 - URL: https://www.its-mo.com/

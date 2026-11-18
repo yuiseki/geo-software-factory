@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-smb
+---
+
 # Ghostbusters World
 
 - URL: https://play.google.com/store/apps/details?id=com.ftt.gbworld.aos

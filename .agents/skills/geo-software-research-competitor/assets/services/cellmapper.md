@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: individual
+---
+
 # CellMapper
 
 - URL: https://www.cellmapper.net

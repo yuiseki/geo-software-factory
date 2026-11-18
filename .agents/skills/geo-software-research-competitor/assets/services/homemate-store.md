@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # ホームメイト 店舗検索
 
 - URL: https://www.homemate.co.jp/shop/

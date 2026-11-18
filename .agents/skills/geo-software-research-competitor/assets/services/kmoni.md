@@ -1,3 +1,8 @@
+---
+financial: public-service
+organization: gov-central
+---
+
 # 強震モニタ
 
 - URL: http://www.kmoni.bosai.go.jp/

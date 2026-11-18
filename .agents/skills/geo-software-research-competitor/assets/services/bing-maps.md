@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # Bing Maps (Bing 地図)
 
 - URL: https://www.bing.com/maps

@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-smb
+---
+
 # Official MapQuest - Maps, Driving Directions, Live Traffic
 
 - URL: https://www.mapquest.com/

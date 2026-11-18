@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-smb
+---
+
 # いこーよ
 
 - URL: https://iko-yo.net/

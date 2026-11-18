@@ -1,3 +1,8 @@
+---
+financial: non-commercial
+organization: individual
+---
+
 # 令和８年千葉連続風水害 復旧・復興アーカイブ | Ri2MAPS
 
 - URL: https://www.ri2maps-public.com/chiba-disaster-ri2maps-view/

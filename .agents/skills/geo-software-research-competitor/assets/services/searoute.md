@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: individual
+---
+
 # おでかけ航路マップ | 日本全国の旅客船・フェリー航路情報と時刻表リンク
 
 - URL: https://searoute.info/

@@ -1,3 +1,8 @@
+---
+financial: non-commercial
+organization: individual
+---
+
 # HOT Tasking Manager
 
 - URL: https://tasks.hotosm.org

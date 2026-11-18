@@ -1,3 +1,8 @@
+---
+financial: non-commercial
+organization: corp-ent
+---
+
 # Google My Maps
 
 - URL: https://www.google.com/maps/d/

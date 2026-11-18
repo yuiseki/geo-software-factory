@@ -1,3 +1,8 @@
+---
+financial: non-commercial
+organization: individual
+---
+
 # 県境王｜KSKだぜGAMES
 
 - URL: https://kskdazegames.com/games/kenkyo

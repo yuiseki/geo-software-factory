@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # LIFULL HOME'S
 
 - URL: https://www.homes.co.jp/

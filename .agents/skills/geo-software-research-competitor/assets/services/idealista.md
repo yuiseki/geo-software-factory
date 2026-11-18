@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-smb
+---
+
 # Idealista
 
 - URL: https://www.idealista.com

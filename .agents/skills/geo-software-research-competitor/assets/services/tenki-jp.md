@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-smb
+---
+
 # tenki.jp
 
 - URL: https://tenki.jp

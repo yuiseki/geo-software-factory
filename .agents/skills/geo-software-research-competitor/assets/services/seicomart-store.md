@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # セイコーマート 店舗検索
 
 - URL: https://store.seicomart.co.jp/

@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # ドコモショップ 店舗検索
 
 - URL: https://shop.smt.docomo.ne.jp/

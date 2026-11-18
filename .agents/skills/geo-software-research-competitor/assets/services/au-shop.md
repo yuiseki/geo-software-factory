@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # auショップ 店舗検索
 
 - URL: https://www.au.com/storelocator/

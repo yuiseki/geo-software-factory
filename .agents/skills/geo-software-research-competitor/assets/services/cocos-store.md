@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # ココス 店舗検索
 
 - URL: https://maps.cocos-jpn.co.jp/jp/index.html

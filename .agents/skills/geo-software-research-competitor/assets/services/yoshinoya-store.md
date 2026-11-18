@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # 吉野家 店舗検索
 
 - URL: https://stores.yoshinoya.com/yoshinoya/

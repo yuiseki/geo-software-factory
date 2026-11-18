@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # ウエルシア 店舗検索
 
 - URL: https://store.welcia.co.jp/welcia/

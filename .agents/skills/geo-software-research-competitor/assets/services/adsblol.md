@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: individual
+---
+
 # adsb.lol, unfiltered flight tracking
 
 - URL: https://www.adsb.lol/

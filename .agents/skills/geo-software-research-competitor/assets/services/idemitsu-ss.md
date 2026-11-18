@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # 出光 (apollostation) SS検索サービス
 
 - URL: https://map.idemitsu.com/b/a/

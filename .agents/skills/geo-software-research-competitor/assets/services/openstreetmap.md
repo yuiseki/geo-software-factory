@@ -1,3 +1,8 @@
+---
+financial: non-commercial
+organization: individual
+---
+
 # OpenStreetMap
 
 - URL: https://www.openstreetmap.org/

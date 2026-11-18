@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-smb
+---
+
 # Flock camera map: Find the Flock cameras watching you | Proton
 
 - URL: https://proton.me/flock-camera-map

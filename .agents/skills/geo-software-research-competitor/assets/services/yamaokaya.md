@@ -1,3 +1,8 @@
+---
+financial: non-commercial
+organization: individual
+---
+
 # 非公式 山岡家 Map
 
 - URL: https://www.yama.dayjournal.dev/

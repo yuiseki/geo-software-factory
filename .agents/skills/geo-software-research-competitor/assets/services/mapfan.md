@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # MapFan
 
 - URL: https://mapfan.com

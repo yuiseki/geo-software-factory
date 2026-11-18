@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # ヨドバシカメラ 店舗検索
 
 - URL: https://www.yodobashi.com/ec/store/list/

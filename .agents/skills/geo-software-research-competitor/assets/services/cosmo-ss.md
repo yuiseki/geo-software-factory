@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # コスモ石油 サービスステーション検索
 
 - URL: https://map.cosmo-energy.co.jp/

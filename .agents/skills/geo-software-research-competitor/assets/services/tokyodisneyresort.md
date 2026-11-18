@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # 東京ディズニーリゾート 施設マップ
 
 - URL: https://www.tokyodisneyresort.jp/tdl/map.html

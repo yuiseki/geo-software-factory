@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # Pokémon GO
 
 - URL: https://apps.apple.com/jp/app/id1094591345

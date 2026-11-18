@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # タイムズカー ステーション検索
 
 - URL: https://share.timescar.jp/place/

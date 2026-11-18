@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # すかいらーくグループ 店舗検索
 
 - URL: https://store-info.skylark.co.jp/

@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-smb
+---
+
 # GO（タクシーアプリ）
 
 - URL: https://apps.apple.com/jp/app/id1254341709

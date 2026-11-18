@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # Grab
 
 - URL: https://apps.apple.com/sg/app/grab-food-delivery-taxi-ride/id647268330

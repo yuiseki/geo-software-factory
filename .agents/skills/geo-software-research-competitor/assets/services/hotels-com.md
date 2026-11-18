@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # Hotels.com
 
 - URL: https://www.hotels.com/

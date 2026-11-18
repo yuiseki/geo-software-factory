@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # サンマルクカフェ 店舗検索
 
 - URL: https://www.saint-marc-hd.com/saintmarccafe/search/

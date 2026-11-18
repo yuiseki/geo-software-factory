@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # ロフト 店舗検索
 
 - URL: https://www.loft.co.jp/shop_list/

@@ -1,3 +1,8 @@
+---
+financial: public-service
+organization: gov-central
+---
+
 # USGS Earthquake Map
 
 - URL: https://earthquake.usgs.gov/earthquakes/map/

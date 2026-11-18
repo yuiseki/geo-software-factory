@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # 佐川急便 営業所検索
 
 - URL: https://www2.sagawa-exp.co.jp/branch_search/

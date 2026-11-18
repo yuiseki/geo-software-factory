@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # Lyft
 
 - URL: https://apps.apple.com/us/app/lyft/id529379082

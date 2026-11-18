@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-smb
+---
+
 # LiveUAmap
 
 - URL: https://liveuamap.com/

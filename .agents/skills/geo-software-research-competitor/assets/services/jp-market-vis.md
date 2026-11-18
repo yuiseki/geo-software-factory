@@ -1,3 +1,8 @@
+---
+financial: non-commercial
+organization: individual
+---
+
 # JP Market Vis - 日本の上場企業マップ
 
 - URL: https://mattyamonaca.github.io/JP_Market_Vis/

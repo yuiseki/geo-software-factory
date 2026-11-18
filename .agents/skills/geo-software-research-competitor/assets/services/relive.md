@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-smb
+---
+
 # Relive
 
 - URL: https://www.relive.com/

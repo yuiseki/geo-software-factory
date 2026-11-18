@@ -1,3 +1,8 @@
+---
+financial: non-commercial
+organization: individual
+---
+
 # どこでも北海道マップ
 
 - URL: https://kishobosai.github.io/-Map/

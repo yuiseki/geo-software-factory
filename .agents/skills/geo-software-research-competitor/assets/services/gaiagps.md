@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-smb
+---
+
 # Gaia GPS
 
 - URL: https://www.gaiagps.com/

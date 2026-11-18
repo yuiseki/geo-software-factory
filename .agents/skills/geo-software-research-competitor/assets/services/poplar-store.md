@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-smb
+---
+
 # ポプラ 店舗検索
 
 - URL: https://www.poplar-cvs.co.jp/shop_search/

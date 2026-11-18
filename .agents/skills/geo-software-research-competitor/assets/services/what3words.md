@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-smb
+---
+
 # what3words
 
 - URL: https://what3words.com/

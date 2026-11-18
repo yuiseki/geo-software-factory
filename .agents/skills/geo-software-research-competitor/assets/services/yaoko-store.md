@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # ヤオコー チラシ・店舗情報
 
 - URL: https://www.yaoko-net.com/store/

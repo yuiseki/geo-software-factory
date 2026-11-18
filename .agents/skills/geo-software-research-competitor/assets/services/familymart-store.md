@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # ファミリーマート 店舗検索
 
 - URL: https://store.family.co.jp/

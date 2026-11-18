@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # 西友 店舗検索
 
 - URL: https://www.seiyu.co.jp/searchshop/

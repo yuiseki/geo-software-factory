@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # サミット 店舗検索・チラシ情報
 
 - URL: https://www.summitstore.co.jp/store/

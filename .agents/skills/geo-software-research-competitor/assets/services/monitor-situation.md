@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: individual
+---
+
 # Monitor the Situation | Live World News Map & OSINT Dashboard
 
 - URL: https://monitor-the-situation.com/

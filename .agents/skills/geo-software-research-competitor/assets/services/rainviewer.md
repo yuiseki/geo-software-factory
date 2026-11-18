@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: individual
+---
+
 # RainViewer
 
 - URL: https://www.rainviewer.com/

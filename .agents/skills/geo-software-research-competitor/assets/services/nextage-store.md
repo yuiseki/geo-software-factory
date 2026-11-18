@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # ネクステージ (NEXTAGE) 店舗検索
 
 - URL: https://www.nextage.jp/shop/

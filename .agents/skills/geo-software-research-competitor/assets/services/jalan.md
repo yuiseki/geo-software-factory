@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # じゃらんnet
 
 - URL: https://www.jalan.net/

@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # ワイモバイルショップ 店舗検索
 
 - URL: https://www.ymobile.jp/shop/

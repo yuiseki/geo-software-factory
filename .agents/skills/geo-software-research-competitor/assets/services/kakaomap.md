@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # KakaoMap (カカオマップ)
 
 - URL: https://map.kakao.com/

@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # しまむら 店舗検索
 
 - URL: https://www.shimamura.gr.jp/shop/

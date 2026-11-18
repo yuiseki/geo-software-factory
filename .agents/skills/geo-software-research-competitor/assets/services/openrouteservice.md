@@ -1,3 +1,8 @@
+---
+financial: non-commercial
+organization: individual
+---
+
 # OpenRouteService
 
 - URL: https://openrouteservice.org

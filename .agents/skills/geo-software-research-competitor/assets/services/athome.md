@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # アットホーム (at home)
 
 - URL: https://www.athome.co.jp/

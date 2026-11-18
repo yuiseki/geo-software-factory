@@ -1,3 +1,8 @@
+---
+financial: non-commercial
+organization: individual
+---
+
 # MapComplete
 
 - URL: https://mapcomplete.org/

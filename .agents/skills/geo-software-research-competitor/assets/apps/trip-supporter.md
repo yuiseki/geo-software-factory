@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: individual
+---
+
 # Trip Supporter
 
 - URL: https://chicchi.work/tripsupporter/

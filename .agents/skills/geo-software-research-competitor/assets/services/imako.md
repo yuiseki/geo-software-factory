@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-smb
+---
+
 # 【推し活カフェ】日本最大級の推し活・コラボカフェ検索 | imako推し活カフェ
 
 - URL: https://oshikatsu.imakoapp.com/

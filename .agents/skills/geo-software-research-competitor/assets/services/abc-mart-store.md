@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # ABCマート 店舗検索
 
 - URL: https://www.abc-mart.net/shop/

@@ -1,3 +1,8 @@
+---
+financial: non-commercial
+organization: individual
+---
+
 # 探す｜今からほんや
 
 - URL: https://imahon.jp/

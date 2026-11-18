@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-smb
+---
+
 # Roadtrippers
 
 - URL: https://roadtrippers.com

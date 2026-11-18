@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # Strava Global Heatmap
 
 - URL: https://www.strava.com/maps/global-heatmap

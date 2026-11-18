@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # DiDi（モビリティ）
 
 - URL: https://apps.apple.com/jp/app/id1362398401

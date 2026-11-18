@@ -1,3 +1,8 @@
+---
+financial: non-commercial
+organization: individual
+---
+
 # Dokoka - 矢印だけの散歩ナビ
 
 - URL: https://apps.apple.com/jp/app/id6761375037

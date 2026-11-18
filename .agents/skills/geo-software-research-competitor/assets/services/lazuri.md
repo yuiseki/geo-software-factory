@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-smb
+---
+
 # ラズリマップ｜図面から、測る手間を消す
 
 - URL: https://lazurimap.com/

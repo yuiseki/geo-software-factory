@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # ロイヤルホスト 店舗検索
 
 - URL: https://locations.royalhost.jp/

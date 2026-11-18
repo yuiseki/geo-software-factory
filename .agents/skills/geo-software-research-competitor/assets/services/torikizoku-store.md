@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # 鳥貴族 店舗検索
 
 - URL: https://map.torikizoku.co.jp/

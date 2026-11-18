@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # アパホテル 地図検索
 
 - URL: https://map.apahotel.com/map

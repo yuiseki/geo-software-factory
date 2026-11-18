@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # ダイエー 店舗一覧・店舗検索
 
 - URL: https://www.daiei.co.jp/stores/

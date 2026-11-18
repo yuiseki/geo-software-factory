@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # Zoff 店舗検索
 
 - URL: https://www.zoff.co.jp/shop/store/search.aspx

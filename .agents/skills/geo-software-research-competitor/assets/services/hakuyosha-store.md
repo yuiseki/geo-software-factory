@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # 白洋舎 店舗検索
 
 - URL: https://map.hakuyosha.co.jp/

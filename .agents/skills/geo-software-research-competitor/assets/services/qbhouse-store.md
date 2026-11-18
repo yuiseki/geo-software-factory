@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # QBハウス 店舗検索
 
 - URL: https://www.qbhouse.co.jp/search/

@@ -1,3 +1,8 @@
+---
+financial: non-commercial
+organization: individual
+---
+
 # Map Studio
 
 - URL: https://map.enoki.xyz/

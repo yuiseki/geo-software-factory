@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # ハニーズ 店舗検索
 
 - URL: https://www.honeys.co.jp/shop

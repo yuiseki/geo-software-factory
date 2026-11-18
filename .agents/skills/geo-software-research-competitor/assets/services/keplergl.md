@@ -1,3 +1,8 @@
+---
+financial: non-commercial
+organization: individual
+---
+
 # kepler.gl
 
 - URL: https://kepler.gl/

@@ -1,3 +1,8 @@
+---
+financial: non-commercial
+organization: individual
+---
+
 # Global Forest Watch
 
 - URL: https://www.globalforestwatch.org/map/ (2026-11-16 時点では https://globalnaturewatch.org/map/ へ 301 リダイレクト)

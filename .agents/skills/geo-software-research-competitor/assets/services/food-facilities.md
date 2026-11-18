@@ -1,3 +1,8 @@
+---
+financial: non-commercial
+organization: individual
+---
+
 # 🍽️ Japan Food Facilities - 地図
 
 - URL: https://gl20percentclub.github.io/japan-food-facilities/map.html

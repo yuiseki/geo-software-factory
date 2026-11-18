@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-smb
+---
+
 # Flightradar24
 
 - URL: https://www.flightradar24.com/

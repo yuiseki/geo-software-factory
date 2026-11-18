@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # ベルク 店舗情報・チラシ
 
 - URL: https://www.belc.jp/shop

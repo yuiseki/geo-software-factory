@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # Airbnb
 
 - URL: https://www.airbnb.jp/ (グローバル: https://www.airbnb.com/)

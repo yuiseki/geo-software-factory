@@ -1,3 +1,8 @@
+---
+financial: non-commercial
+organization: corp-ent
+---
+
 # Yahoo!防災速報
 
 - URL: https://apps.apple.com/jp/app/id481914139

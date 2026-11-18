@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # 日高屋 店舗検索
 
 - URL: https://hidakaya.hiday.co.jp/hits/ja/shop/99/index.html

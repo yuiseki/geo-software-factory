@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-smb
+---
+
 # Trailforks
 
 - URL: https://www.trailforks.com/

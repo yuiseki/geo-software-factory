@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # カフェ・ベローチェ (C-United) 店舗検索
 
 - URL: https://c-united.co.jp/search/

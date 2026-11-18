@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # 楽天モバイルショップ 店舗検索
 
 - URL: https://network.mobile.rakuten.co.jp/shop/

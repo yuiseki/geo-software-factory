@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # 眼鏡市場 店舗検索
 
 - URL: https://shop.meganeichiba.jp/meganeichiba/

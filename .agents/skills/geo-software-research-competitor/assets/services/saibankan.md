@@ -1,3 +1,8 @@
+---
+financial: non-commercial
+organization: individual
+---
+
 # 裁判官マップ - 日本地図から裁判官を探す | 裁判官マップ
 
 - URL: https://saibankan-map.jp/judges/map

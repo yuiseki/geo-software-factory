@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: individual
+---
+
 # 全国のトレランコースと大会コース｜Runnable
 
 - URL: https://runnable.jp/

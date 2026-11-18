@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # ImmoScout24
 
 - URL: https://www.immobilienscout24.de

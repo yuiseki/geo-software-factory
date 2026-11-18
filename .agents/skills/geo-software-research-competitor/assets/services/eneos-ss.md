@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # ENEOS サービスステーション検索
 
 - URL: https://eneos-ss.com/search/ss/pc/top.php

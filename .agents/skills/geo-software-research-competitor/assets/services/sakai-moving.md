@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # サカイ引越センター 支社検索
 
 - URL: https://www.hikkoshi-sakai.co.jp/area/all.html

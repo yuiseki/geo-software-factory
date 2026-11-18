@@ -1,3 +1,8 @@
+---
+financial: non-commercial
+organization: individual
+---
+
 # Interactive Middle-earth Map - LOTR, Hobbit & Silmarillion
 
 - URL: https://middle-earth-interactive-map.web.app/

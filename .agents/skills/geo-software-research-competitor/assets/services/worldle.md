@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-smb
+---
+
 # Worldle
 
 - URL: https://worldle.teuteuf.fr/

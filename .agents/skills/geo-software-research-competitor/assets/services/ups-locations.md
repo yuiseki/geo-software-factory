@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # UPS ジャパン 取扱店検索
 
 - URL: https://www.ups.com/jp/ja/locations

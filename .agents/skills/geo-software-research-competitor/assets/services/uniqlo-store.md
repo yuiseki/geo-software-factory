@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # ユニクロ 店舗検索 (UNIQLO Store Locator)
 
 - URL: https://map.uniqlo.com/jp/ja/

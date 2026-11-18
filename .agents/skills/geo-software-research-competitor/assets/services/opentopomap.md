@@ -1,3 +1,8 @@
+---
+financial: non-commercial
+organization: individual
+---
+
 # OpenTopoMap
 
 - URL: https://opentopomap.org

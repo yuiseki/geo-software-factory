@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-smb
+---
+
 # 本コレ
 
 - URL: https://apps.apple.com/jp/app/id391429128

@@ -1,3 +1,8 @@
+---
+financial: non-commercial
+organization: individual
+---
+
 # 自分のサーバーで日本地図を表示する｜Japan PMTiles
 
 - URL: https://armd-01.sakura.ne.jp/tiles/

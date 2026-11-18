@@ -1,3 +1,8 @@
+---
+financial: public-service
+organization: gov-central
+---
+
 # 3次元地図可視化サイト
 
 - URL: https://gsi-cyberjapan.github.io/gsi-3d-2025/

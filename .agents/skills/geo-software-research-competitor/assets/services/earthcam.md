@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-smb
+---
+
 # EarthCam
 
 - URL: https://www.earthcam.com

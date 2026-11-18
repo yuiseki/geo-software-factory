@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-smb
+---
+
 # Jurassic World Alive
 
 - URL: https://apps.apple.com/jp/app/id1231085864

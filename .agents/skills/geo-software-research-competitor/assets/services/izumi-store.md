@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # イズミ・ゆめタウン 店舗・チラシ検索
 
 - URL: https://www.izumi.jp/tenpo

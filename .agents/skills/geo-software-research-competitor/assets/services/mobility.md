@@ -1,3 +1,8 @@
+---
+financial: non-commercial
+organization: individual
+---
+
 # Mobility Maps: Making Public Transport Infrastructure Transparent
 
 - URL: https://mobility.dbvis.de/

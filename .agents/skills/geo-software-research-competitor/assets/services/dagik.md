@@ -1,3 +1,8 @@
+---
+financial: non-commercial
+organization: individual
+---
+
 # ダジック・アース - ダジック・アース
 
 - URL: https://www.dagik.net/

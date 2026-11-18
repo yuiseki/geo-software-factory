@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # 薬王堂 店舗・チラシを探す
 
 - URL: https://www.yakuodo.co.jp/shop/

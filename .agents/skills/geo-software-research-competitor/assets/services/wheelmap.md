@@ -1,3 +1,8 @@
+---
+financial: non-commercial
+organization: individual
+---
+
 # Wheelmap
 
 - URL: https://wheelmap.org

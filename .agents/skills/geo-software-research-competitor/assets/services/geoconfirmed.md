@@ -1,3 +1,8 @@
+---
+financial: non-commercial
+organization: individual
+---
+
 # GeoConfirmed - Open-Source Conflict Geolocation & Verification
 
 - URL: https://geoconfirmed.org/map/iran

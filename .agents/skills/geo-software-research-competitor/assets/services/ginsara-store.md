@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # 銀のさら 店舗検索
 
 - URL: https://www.ginsara.jp/shop_search.html

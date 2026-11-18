@@ -1,3 +1,8 @@
+---
+financial: non-commercial
+organization: corp-smb
+---
+
 # David Rumsey Map Collection
 
 - URL: https://www.davidrumsey.com/ (ビューア: https://www.davidrumsey.com/luna/servlet)

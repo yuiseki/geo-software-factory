@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # Yahoo!マップ
 
 - URL: https://map.yahoo.co.jp/

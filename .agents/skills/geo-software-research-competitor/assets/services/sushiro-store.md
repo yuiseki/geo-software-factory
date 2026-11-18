@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # スシロー 店舗検索
 
 - URL: https://www.akindo-sushiro.co.jp/shop/

@@ -1,3 +1,8 @@
+---
+financial: non-commercial
+organization: corp-smb
+---
+
 # KAKUNIN MAP
 
 - URL: https://apps.apple.com/jp/app/id6815502563

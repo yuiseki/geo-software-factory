@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-smb
+---
+
 # くまっぷ - クマ目撃・痕跡情報を共有するマップアプリ
 
 - URL: https://kumap-xenon.web.app/

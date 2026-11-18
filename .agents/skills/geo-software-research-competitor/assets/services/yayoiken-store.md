@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # やよい軒 店舗検索
 
 - URL: https://store.yayoiken.com/b/yayoiken/

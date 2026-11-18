@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-smb
+---
+
 # S.RIDE
 
 - URL: https://apps.apple.com/jp/app/id1458325928

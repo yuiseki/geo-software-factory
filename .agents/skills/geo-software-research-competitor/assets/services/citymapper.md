@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-smb
+---
+
 # Citymapper
 
 - URL: https://citymapper.com/ (Web アプリ: https://citymapper.com/webapp)

@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-smb
+---
+
 # 気象衛星とレーダーマップ | Zoom Earth
 
 - URL: https://zoom.earth/maps/satellite/

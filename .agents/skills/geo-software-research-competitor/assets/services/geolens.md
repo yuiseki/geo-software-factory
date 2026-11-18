@@ -1,3 +1,8 @@
+---
+financial: non-commercial
+organization: individual
+---
+
 # GeoLens: Open-Source Geospatial Data Catalog & Map Builder
 
 - URL: https://getgeolens.com/

@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # ルートインホテルズ 地図から探す・ホテル一覧
 
 - URL: https://www.route-inn.co.jp/hotel_list/area/

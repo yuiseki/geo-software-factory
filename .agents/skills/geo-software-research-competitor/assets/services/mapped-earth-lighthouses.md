@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: individual
+---
+
 # Every lighthouse in the world | mapped.earth
 
 - URL: https://mapped.earth/lighthouses/world

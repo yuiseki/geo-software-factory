@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-smb
+---
+
 # ジオクエ-写真を撮ってポイントに！ポイ活アプリ
 
 - URL: https://apps.apple.com/jp/app/id6475946493

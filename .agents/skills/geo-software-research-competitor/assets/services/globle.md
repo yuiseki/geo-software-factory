@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: individual
+---
+
 # Globle
 
 - URL: https://globle-game.com/

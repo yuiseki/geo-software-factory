@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # 上島珈琲店 (UFS) 店舗検索
 
 - URL: https://shop.ufs.co.jp/ufs/

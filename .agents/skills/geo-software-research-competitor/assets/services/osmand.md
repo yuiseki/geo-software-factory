@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-smb
+---
+
 # OsmAnd Map
 
 - URL: https://osmand.net/map/

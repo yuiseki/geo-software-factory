@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: individual
+---
+
 # THE SOUNDING EARTH
 
 - URL: https://musica-terra.com/interactive/the-sounding-earth/

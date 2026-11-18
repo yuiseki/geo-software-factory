@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # 高徳地図 (Amap / AutoNavi)
 
 - URL: https://www.amap.com/

@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # アパマンショップ 店舗検索
 
 - URL: https://www.apamanshop.com/shop/

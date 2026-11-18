@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # ビックカメラ 店舗検索
 
 - URL: https://www.biccamera.com/bc/i/shop/shoplist/

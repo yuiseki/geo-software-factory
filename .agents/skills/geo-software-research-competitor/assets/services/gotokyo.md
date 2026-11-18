@@ -1,3 +1,8 @@
+---
+financial: non-commercial
+organization: individual
+---
+
 # 東京観光公式サイト GO TOKYO
 
 - URL: https://www.gotokyo.org/

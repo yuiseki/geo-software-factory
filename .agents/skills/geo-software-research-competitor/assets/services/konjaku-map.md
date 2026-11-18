@@ -1,3 +1,8 @@
+---
+financial: non-commercial
+organization: individual
+---
+
 # 今昔マップ on the web
 
 - URL: https://ktgis.net/kjmapw/ (マップ画面: https://ktgis.net/kjmapw/kjmapw.html)

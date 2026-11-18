@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # ジョーシン 店舗検索
 
 - URL: https://store.joshin.co.jp/

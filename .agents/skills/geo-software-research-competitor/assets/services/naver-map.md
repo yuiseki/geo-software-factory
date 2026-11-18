@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # Naver Map (ネイバー地図)
 
 - URL: https://map.naver.com/

@@ -1,3 +1,8 @@
+---
+financial: non-commercial
+organization: corp-ent
+---
+
 # KartaView
 
 - URL: https://kartaview.org/

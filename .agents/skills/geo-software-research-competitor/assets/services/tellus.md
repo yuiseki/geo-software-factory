@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-smb
+---
+
 # Tellus
 
 - URL: https://www.tellusxdp.com

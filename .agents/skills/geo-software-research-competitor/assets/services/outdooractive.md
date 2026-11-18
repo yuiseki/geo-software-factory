@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-smb
+---
+
 # Outdooractive
 
 - URL: https://www.outdooractive.com/

@@ -1,3 +1,8 @@
+---
+financial: non-commercial
+organization: individual
+---
+
 # Global Fishing Watch
 
 - URL: https://globalfishingwatch.org/

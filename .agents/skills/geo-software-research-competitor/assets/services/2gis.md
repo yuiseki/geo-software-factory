@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # 2GIS
 
 - URL: https://2gis.com

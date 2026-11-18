@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # ドーミーイン (dormy inn) ホテル一覧・店舗検索
 
 - URL: https://dormy-hotels.com/dormyinn/

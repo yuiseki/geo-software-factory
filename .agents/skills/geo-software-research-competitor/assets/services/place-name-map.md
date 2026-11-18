@@ -1,3 +1,8 @@
+---
+financial: non-commercial
+organization: individual
+---
+
 # 建物名 地名マップ v2.9.26
 
 - URL: https://tokyo26-sudo.github.io/place-name-map/

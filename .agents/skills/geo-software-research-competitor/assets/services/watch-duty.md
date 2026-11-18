@@ -1,3 +1,8 @@
+---
+financial: non-commercial
+organization: individual
+---
+
 # Watch Duty
 
 - URL: https://www.watchduty.org/

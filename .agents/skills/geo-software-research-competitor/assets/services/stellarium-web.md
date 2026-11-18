@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-smb
+---
+
 # Stellarium Web
 
 - URL: https://stellarium-web.org

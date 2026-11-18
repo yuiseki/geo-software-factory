@@ -1,3 +1,8 @@
+---
+financial: non-commercial
+organization: individual
+---
+
 # ChicagoCrime.org
 
 - URL: https://www.chicagocrime.org/

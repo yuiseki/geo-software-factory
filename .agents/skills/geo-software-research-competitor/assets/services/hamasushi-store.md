@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # はま寿司 店舗検索
 
 - URL: https://maps.hama-sushi.co.jp/jp/index.html

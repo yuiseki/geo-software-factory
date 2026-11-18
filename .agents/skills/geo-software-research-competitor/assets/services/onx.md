@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-smb
+---
+
 # onX
 
 - URL: https://www.onxmaps.com/

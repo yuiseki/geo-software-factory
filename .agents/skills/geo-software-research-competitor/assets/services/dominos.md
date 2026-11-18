@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # Domino's（Pinpoint Delivery / 店舗検索）
 
 - URL: https://www.dominos.com/

@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-smb
+---
+
 # YAMAP / ヤマップ | 登山をもっと楽しく、登山情報プラットフォーム
 
 - URL: https://yamap.com/

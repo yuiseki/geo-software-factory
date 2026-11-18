@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # カーブス (Curves) 店舗一覧・店舗検索
 
 - URL: https://www.curves.co.jp/search/

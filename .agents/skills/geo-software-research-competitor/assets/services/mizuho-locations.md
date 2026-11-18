@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # みずほ銀行 ATM・店舗検索
 
 - URL: https://shop.www.mizuhobank.co.jp/b/mhbk/

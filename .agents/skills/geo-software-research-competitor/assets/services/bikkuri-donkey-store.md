@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # びっくりドンキー 店舗検索
 
 - URL: https://www.bikkuri-donkey.com/shop_search/

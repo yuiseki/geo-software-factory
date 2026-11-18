@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # フレッシュネスバーガー 店舗検索
 
 - URL: https://search.freshnessburger.co.jp/

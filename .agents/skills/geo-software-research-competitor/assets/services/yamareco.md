@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-smb
+---
+
 # ヤマレコ (Yamareco)
 
 - URL: https://www.yamareco.com/

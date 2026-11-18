@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # すき家 店舗検索
 
 - URL: https://maps.sukiya.jp/jp/index.html

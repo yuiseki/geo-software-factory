@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-smb
+---
+
 # Global Threat Map | Intelligence Platform
 
 - URL: https://globalthreatmap.up.railway.app/

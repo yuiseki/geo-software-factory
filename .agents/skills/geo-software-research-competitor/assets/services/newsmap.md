@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: individual
+---
+
 # withfs ニュースマップ｜ニュースの舞台を地図で俯瞰する | withfs
 
 - URL: https://fs.with-field.net/p/news-map.html

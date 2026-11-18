@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-smb
+---
+
 # Windy
 
 - URL: https://www.windy.com/

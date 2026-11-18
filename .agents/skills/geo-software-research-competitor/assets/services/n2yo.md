@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: individual
+---
+
 # N2YO
 
 - URL: https://www.n2yo.com

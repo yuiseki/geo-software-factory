@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # かっぱ寿司 店舗検索
 
 - URL: https://www.kappasushi.jp/shop2

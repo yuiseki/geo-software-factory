@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: individual
+---
+
 # MoodGo
 
 - URL: https://moodgo-qvmk.vercel.app/

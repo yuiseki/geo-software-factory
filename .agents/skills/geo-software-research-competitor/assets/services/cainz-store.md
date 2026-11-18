@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # カインズ 店舗検索
 
 - URL: https://map.cainz.com/

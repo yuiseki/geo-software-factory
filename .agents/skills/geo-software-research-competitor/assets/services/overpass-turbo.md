@@ -1,3 +1,8 @@
+---
+financial: non-commercial
+organization: individual
+---
+
 # Overpass Turbo
 
 - URL: https://overpass-turbo.eu

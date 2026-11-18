@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # タイムズパーキング (タイムズ駐車場検索)
 
 - URL: https://times-info.net/

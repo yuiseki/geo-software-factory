@@ -1,3 +1,8 @@
+---
+financial: non-commercial
+organization: individual
+---
+
 # 熊本地震（2026-07-28）支援拠点マップ
 
 - URL: https://tomo3141592653.github.io/self-driving-ai-prototype/kumamoto-quake-2026/

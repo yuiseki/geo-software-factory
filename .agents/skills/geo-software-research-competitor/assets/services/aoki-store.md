@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # AOKI 店舗検索
 
 - URL: https://www.aoki-style.com/shop/storeTop

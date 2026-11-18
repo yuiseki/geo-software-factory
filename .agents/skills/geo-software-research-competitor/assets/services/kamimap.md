@@ -1,3 +1,8 @@
+---
+financial: non-commercial
+organization: individual
+---
+
 # 令和8年熊本地震関連情報 - 紙マップ
 
 - URL: https://kamimap.com/map/2026-kumamoto-earthquake/

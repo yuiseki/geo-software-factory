@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: individual
+---
+
 # MapCrunch
 
 - URL: https://www.mapcrunch.com/

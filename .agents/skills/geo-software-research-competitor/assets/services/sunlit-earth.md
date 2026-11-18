@@ -1,3 +1,8 @@
+---
+financial: non-commercial
+organization: individual
+---
+
 # Sunlit Earth: Earth from space as your wallpaper
 
 - URL: https://sunlit.earth/

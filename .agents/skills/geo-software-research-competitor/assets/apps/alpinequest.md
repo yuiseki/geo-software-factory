@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: individual
+---
+
 # AlpineQuest
 
 - URL: https://alpinequest.net/

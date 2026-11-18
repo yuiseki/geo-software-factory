@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # ヤマト運輸 営業所・取扱店検索
 
 - URL: https://locations2.kuronekoyamato.co.jp/yamato01/

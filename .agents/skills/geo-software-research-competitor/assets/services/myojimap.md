@@ -1,3 +1,8 @@
+---
+financial: non-commercial
+organization: individual
+---
+
 # 名字マップ
 
 - URL: https://www.dmuchgis.com/myojimap/

@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # スーパーホテル 店舗・ホテル検索
 
 - URL: https://www.superhotel.co.jp/

@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-smb
+---
+
 # ジョルダン乗換案内
 
 - URL: https://www.jorudan.co.jp/norikae/

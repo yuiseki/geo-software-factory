@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # カワチ薬品 店舗検索
 
 - URL: https://www.cawachi.co.jp/customer/store/

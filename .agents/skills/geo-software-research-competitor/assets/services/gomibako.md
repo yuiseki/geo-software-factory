@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: individual
+---
+
 # ゴミ箱マップ | 街中のゴミ箱情報をシェアしよう！
 
 - URL: https://gomibako-map.com/

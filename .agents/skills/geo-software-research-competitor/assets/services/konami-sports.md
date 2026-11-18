@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # コナミスポーツクラブ 施設検索
 
 - URL: https://www.konami.com/sportsclub/shisetsu/

@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # Expedia
 
 - URL: https://www.expedia.com/

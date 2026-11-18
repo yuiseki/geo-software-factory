@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # 丸亀製麺 店舗検索
 
 - URL: https://stores.marugame.com/search

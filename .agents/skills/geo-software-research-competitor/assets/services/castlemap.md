@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: individual
+---
+
 # Custom Sydney Maps - Floor Plans On A Map
 
 - URL: https://castlemap.au/

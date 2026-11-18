@@ -1,3 +1,8 @@
+---
+financial: non-commercial
+organization: individual
+---
+
 # OpenSky Network
 
 - URL: https://opensky-network.org

@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # 洋服の青山 店舗検索
 
 - URL: https://stores.y-aoyama.jp/

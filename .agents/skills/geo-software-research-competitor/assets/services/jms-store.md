@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # ジェームス (jms) 店舗検索
 
 - URL: https://www.jms-car.com/shop/

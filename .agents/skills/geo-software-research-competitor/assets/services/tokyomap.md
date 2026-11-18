@@ -1,3 +1,8 @@
+---
+financial: public-service
+organization: gov-local
+---
+
 # TokyoMap（東京都地図情報サイト）
 
 - URL: https://tokyomap.metro.tokyo.lg.jp/

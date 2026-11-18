@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: individual
+---
+
 # ジオグラフィカ
 
 - URL: https://geographica.biz/

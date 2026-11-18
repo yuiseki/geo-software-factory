@@ -1,3 +1,8 @@
+---
+financial: non-commercial
+organization: individual
+---
+
 # OpenHistoricalMap
 
 - URL: https://www.openhistoricalmap.org/

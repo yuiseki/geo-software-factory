@@ -1,3 +1,8 @@
+---
+financial: non-commercial
+organization: individual
+---
+
 # Interactive Map (WebMCP)
 
 - URL: https://webmcp-googlemap.pages.dev/

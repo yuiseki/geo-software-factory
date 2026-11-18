@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: individual
+---
+
 # 地理院ルートビルダー｜峠名がわかる自転車ルート作成（GPX無料）
 
 - URL: https://wheelwhirlpool.com/route/

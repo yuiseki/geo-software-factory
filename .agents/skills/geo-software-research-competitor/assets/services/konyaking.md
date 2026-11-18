@@ -1,3 +1,8 @@
+---
+financial: non-commercial
+organization: individual
+---
+
 # こにゃーきんぐ
 
 - URL: https://spotsharemap.github.io/sharewitheveryone/

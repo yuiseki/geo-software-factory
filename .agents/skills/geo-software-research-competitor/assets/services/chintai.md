@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-smb
+---
+
 # CHINTAI
 
 - URL: https://www.chintai.net

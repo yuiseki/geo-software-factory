@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # トヨタレンタカー 店舗検索
 
 - URL: https://rent.toyota.co.jp/shop/

@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: individual
+---
+
 # みんなでつくる全国冠水道路マップ｜みんつく全国冠水マップ
 
 - URL: https://mintsuku-kansuimap.com/

@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # SUUMO
 
 - URL: https://suumo.jp/

@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # 松屋 店舗検索
 
 - URL: https://www.matsuyafoods.co.jp/shop/

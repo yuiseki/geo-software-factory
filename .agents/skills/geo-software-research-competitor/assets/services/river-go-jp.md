@@ -1,3 +1,8 @@
+---
+financial: public-service
+organization: gov-central
+---
+
 # 川の防災情報
 
 - URL: https://www.river.go.jp

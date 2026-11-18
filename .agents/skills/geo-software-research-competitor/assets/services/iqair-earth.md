@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-smb
+---
+
 # IQAir Earth
 
 - URL: https://www.iqair.com/earth

@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-smb
+---
+
 # 地図マピオン（Mapion）｜地図検索/ルート検索/天気予報
 
 - URL: https://www.mapion.co.jp/

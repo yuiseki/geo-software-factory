@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: individual
+---
+
 # みんなの行政地図
 
 - URL: https://minchizu.jp/

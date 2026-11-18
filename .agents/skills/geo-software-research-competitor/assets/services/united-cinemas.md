@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # ユナイテッド・シネマ 劇場案内・アクセスマップ
 
 - URL: https://www.unitedcinemas.jp/

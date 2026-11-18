@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-smb
+---
+
 # 一休.com
 
 - URL: https://www.ikyu.com/

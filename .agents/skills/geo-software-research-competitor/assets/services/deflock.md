@@ -1,3 +1,8 @@
+---
+financial: non-commercial
+organization: individual
+---
+
 # DeFlock Maps | ALPR Camera Map & Privacy Routes
 
 - URL: https://maps.deflock.org/

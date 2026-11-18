@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # ケーズデンキ 店舗検索
 
 - URL: https://www.ksdenki.co.jp/store/

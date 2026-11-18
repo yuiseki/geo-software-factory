@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # 東横イン ホテル一覧・検索
 
 - URL: https://www.toyoko-inn.com/hotel_list/

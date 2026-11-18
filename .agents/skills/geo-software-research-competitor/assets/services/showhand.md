@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-smb
+---
+
 # showhand - 全晒しAI不動産周辺マップ
 
 - URL: https://showhand.jp/

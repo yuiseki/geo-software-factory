@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # ローソン 店舗検索
 
 - URL: https://www.areamarker.com/lawson/map/13

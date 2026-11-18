@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # オーケー 店舗一覧と検索
 
 - URL: https://ok-corporation.jp/shop/

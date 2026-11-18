@@ -1,3 +1,8 @@
+---
+financial: non-commercial
+organization: individual
+---
+
 # geojson.io
 
 - URL: https://geojson.io

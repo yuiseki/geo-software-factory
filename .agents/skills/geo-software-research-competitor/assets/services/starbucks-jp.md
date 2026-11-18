@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # スターバックス コーヒー ジャパン 店舗検索
 
 - URL: https://store.starbucks.co.jp/

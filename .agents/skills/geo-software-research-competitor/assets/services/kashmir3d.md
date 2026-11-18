@@ -1,3 +1,8 @@
+---
+financial: non-commercial
+organization: individual
+---
+
 # カシミール3D
 
 - URL: https://kashmir3d.com/

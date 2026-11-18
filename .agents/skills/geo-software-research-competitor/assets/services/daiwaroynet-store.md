@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # ダイワロイネットホテルズ ホテル一覧
 
 - URL: https://www.daiwaroynet.jp/hotelist/

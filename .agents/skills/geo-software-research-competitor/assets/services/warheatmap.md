@@ -1,3 +1,8 @@
+---
+financial: non-commercial
+organization: individual
+---
+
 # WAR 3.0 - Live World War 3 Heat Map & Real-Time Conflict Tracker
 
 - URL: https://warheatmap.app/

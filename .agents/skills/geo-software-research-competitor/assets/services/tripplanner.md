@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: individual
+---
+
 # Trip Planner 山行計画サポートマップ|日本雪崩ネットワーク
 
 - URL: https://nadare.jp/snow/trip_planner.html

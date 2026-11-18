@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # スギ薬局 店舗検索
 
 - URL: https://www.sugi-net.jp/stores

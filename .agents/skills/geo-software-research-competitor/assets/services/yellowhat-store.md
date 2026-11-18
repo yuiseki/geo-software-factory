@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # イエローハット 店舗検索
 
 - URL: https://www.yellowhat.jp/yellowhat/store

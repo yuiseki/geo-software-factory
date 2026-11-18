@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # セブン-イレブン 店舗検索
 
 - URL: https://www.sej.co.jp/shop/

@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: individual
+---
+
 # 登山記録 - 百名山・GPS・オフライン地図
 
 - URL: https://apps.apple.com/jp/app/id6762605490

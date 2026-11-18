@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # TOHOシネマズ 劇場検索・アクセス案内
 
 - URL: https://www.tohotheater.jp/theater/find.html

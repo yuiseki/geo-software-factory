@@ -1,3 +1,8 @@
+---
+financial: non-commercial
+organization: corp-ent
+---
+
 # Mapillary
 
 - URL: https://www.mapillary.com/

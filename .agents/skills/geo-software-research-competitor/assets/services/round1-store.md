@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # ラウンドワン 店舗検索・店舗案内
 
 - URL: https://www.round1.co.jp/

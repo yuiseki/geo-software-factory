@@ -1,3 +1,8 @@
+---
+financial: non-commercial
+organization: individual
+---
+
 # Flight Atlas
 
 - URL: https://flights.theojaffee.net/

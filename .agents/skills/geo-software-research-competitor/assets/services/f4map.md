@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-smb
+---
+
 # F4map
 
 - URL: https://www.f4map.com/ (デモ: https://demo.f4map.com/)

@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # ガリバー (Gulliver) 店舗検索
 
 - URL: https://221616.com/maps/

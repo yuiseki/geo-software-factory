@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # エディオン 店舗・チラシ検索
 
 - URL: https://search.edion.com/e_store/

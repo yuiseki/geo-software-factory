@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # MarineTraffic
 
 - URL: https://www.marinetraffic.com/

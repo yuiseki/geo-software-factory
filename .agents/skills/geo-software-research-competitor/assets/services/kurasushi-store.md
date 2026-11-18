@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # くら寿司 店舗検索
 
 - URL: https://shop.kurasushi.co.jp/

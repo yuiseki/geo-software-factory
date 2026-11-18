@@ -1,3 +1,8 @@
+---
+financial: non-commercial
+organization: corp-smb
+---
+
 # JAPAN CIVIL WORKS MONITOR ｜ 日本の大規模土木プロジェクト進捗マップ
 
 - URL: https://doboku-map.h1den.com/

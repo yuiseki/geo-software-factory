@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-smb
+---
+
 # SNS災害情報集約マップAI
 
 - URL: https://alert.solafune.com/

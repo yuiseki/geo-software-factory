@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # ぐるなび
 
 - URL: https://www.gnavi.co.jp/ (店舗検索: https://r.gnavi.co.jp/)

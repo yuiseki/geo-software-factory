@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-smb
+---
+
 # FATMAP
 
 - URL: https://fatmap.com/ (2024 年 10 月 1 日に単独サービス終了。現在は Strava へ統合・リダイレクト)

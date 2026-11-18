@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # ヤマダデンキ 店舗検索
 
 - URL: https://www.yamada-denki.jp/store/

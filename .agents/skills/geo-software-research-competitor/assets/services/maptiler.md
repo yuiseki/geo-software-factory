@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-smb
+---
+
 # MapTiler
 
 - URL: https://www.maptiler.com

@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # ブックオフ 店舗検索
 
 - URL: https://www.bookoff.co.jp/shop/

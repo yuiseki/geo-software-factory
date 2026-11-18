@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # ジョイフル 店舗検索
 
 - URL: https://www.joyfull.co.jp/shop

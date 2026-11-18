@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # Yelp
 
 - URL: https://www.yelp.com/

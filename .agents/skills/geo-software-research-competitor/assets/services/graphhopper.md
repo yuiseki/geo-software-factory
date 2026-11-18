@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-smb
+---
+
 # GraphHopper
 
 - URL: https://www.graphhopper.com

@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # イオン銀行 店舗・ATM検索
 
 - URL: https://map.aeonbank.co.jp/aeonbank/

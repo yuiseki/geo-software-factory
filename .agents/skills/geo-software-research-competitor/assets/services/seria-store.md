@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-ent
+---
+
 # セリア 店舗検索
 
 - URL: https://shop.seria-group.com/seria/top

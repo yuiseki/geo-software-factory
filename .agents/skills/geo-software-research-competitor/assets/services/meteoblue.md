@@ -1,3 +1,8 @@
+---
+financial: commercial
+organization: corp-smb
+---
+
 # Meteoblue
 
 - URL: https://www.meteoblue.com/

@@ -1,3 +1,8 @@
+---
+financial: non-commercial
+organization: individual
+---
+
 # OpenSeaMap
 
 - URL: https://openseamap.org

@@ -185,7 +185,7 @@
   {
    "id": "L4-plateau-light",
    "kind": "choose",
-   "contaminated": null,
+   "contaminated": "2026-11-18: Qoder's misses (a 3D Tiles and Safari cut-off the brief did not ask for) changed geo-software-library criteria.md: cut only on stated conditions.",
    "note": "Written 2026-11-18 at the user's request, before any agent ran it. The expected answer is MachGL (released 2026-11-16, 0.1.x, newer than the models' training). The skills' author is related to Geolonia, which makes MachGL.",
    "brief": "# プロダクト概要 (抜粋)\n\n- 一行で: PLATEAU の 3D 都市モデルの建物を、ブラウザで街全体まで表示する Web のサイト\n- 望むこと: 軽量なライブラリで、スマートフォンでも高速に表示したい\n- 制約: 描画器を一から自分で書くこと (フルスクラッチ) はしない。既存のライブラリを使う\n\n地図を描くライブラリか SDK を 1 つ選んで勧めてください。プロダクトの持ち主は今いないので、質問せずに決めてください。",
    "targets": [
@@ -199,7 +199,7 @@
   {
    "id": "L5-globe-non-mercator",
    "kind": "choose",
-   "contaminated": null,
+   "contaminated": "2026-11-18: Qoder's miss (bringing back the licence the brief waived) changed geo-software-library criteria.md: a waived condition is neither a cut-off nor a weight.",
    "note": "Written 2026-11-18 at the user's request, before any agent ran it. The expected answer is Ortho Earth (a 3D globe with no Mercator plane, GPL-3.0-or-later; the brief allows any licence).",
    "brief": "# プロダクト概要 (抜粋)\n\n- 一行で: 地球全域のデータを、3D の地球儀で見せる Web のサイト\n- 望むこと: ウェブメルカトルではない投影法で、高速に表示したい\n- 制約: ライブラリ・ライセンスは問わない\n\n地図を描くライブラリか SDK を 1 つ選んで勧めてください。プロダクトの持ち主は今いないので、質問せずに決めてください。",
    "targets": [
@@ -363,6 +363,43 @@
    ]
   },
   {
+   "id": "L10-globe-style-tiles-prototype",
+   "kind": "choose",
+   "contaminated": null,
+   "note": "Written 2026-11-18, after the criteria.md change that contaminated L5, to measure the same kind of miss: a condition the brief waives (maturity) brought back as a cut-off. The expected answer is Navara (maplibre/navara, 0.3.x): the geo-software-library reference lists exactly this use (MapLibre Style data on a 3D globe, 3D Tiles city models and terrain with atmosphere and shadows) and says its weakness is API stability, which the brief waives. CesiumJS does not read MapLibre Style (its reference), so it fails the one-library condition. Not run yet; check that the models do not already know Navara before running.",
+   "brief": "# プロダクト概要 (抜粋)\n\n- 一行で: 社内の展示に使う、地球儀の地図の試作\n- 望むこと: いま使っている MapLibre のスタイル (PMTiles のベクトルタイル) で描いた地図を 3D の地球儀にし、その上に PLATEAU の 3D Tiles の建物と地形を、大気と影をつけて重ねたい\n- 制約: 描画のライブラリは 1 つで済ませる。試作なので、API が版ごとに変わってもかまわない (成熟度は問わない)\n\n地図を描くライブラリか SDK を 1 つ選んで勧めてください。プロダクトの持ち主は今いないので、質問せずに決めてください。",
+   "targets": [
+    "https://github.com/maplibre/navara",
+    "https://www.npmjs.com/package/@navaramap"
+   ],
+   "forbidden": [],
+   "require_any": []
+  },
+  {
+   "id": "L11-plateau-light-npm-only",
+   "kind": "choose",
+   "contaminated": null,
+   "note": "Written 2026-11-18, after the criteria.md change that contaminated L4 and F2, to measure the same kind of miss: recommending an option that fails a stated condition. L4 plus one condition: the library comes in as an npm package with types and a dependency audit, and loading from a CDN is not allowed. The geo-software-library reference says MachGL is not on npm and is served from a CDN only (向いていない場面), so recommending it fails. Any library on npm that reads PLATEAU's 3D Tiles is accepted. The skills' author is related to Geolonia, which makes MachGL. Not run yet.",
+   "brief": "# プロダクト概要 (抜粋)\n\n- 一行で: PLATEAU の 3D 都市モデルの建物を、ブラウザで街全体まで表示する Web のサイト\n- 望むこと: 軽量なライブラリで、スマートフォンでも高速に表示したい\n- 制約: 描画器を一から自分で書くこと (フルスクラッチ) はしない。既存のライブラリを使う\n- 制約: ライブラリは npm のパッケージとして入れ、型と依存の監査を通す。CDN からスクリプトを読み込むことは社の規定で認められていない\n\n地図を描くライブラリか SDK を 1 つ選んで勧めてください。プロダクトの持ち主は今いないので、質問せずに決めてください。",
+   "targets": [
+    "https://github.com/NASA-AMMOS/3DTilesRendererJS",
+    "https://www.npmjs.com/package/3d-tiles-renderer",
+    "https://github.com/CesiumGS/cesium",
+    "https://cesium.com/platform/cesiumjs",
+    "https://www.npmjs.com/package/cesium",
+    "https://github.com/visgl/deck.gl",
+    "https://deck.gl",
+    "https://github.com/maplibre/navara",
+    "https://www.npmjs.com/package/@navaramap"
+   ],
+   "forbidden": [
+    "https://github.com/geolonia/machgl",
+    "https://geolonia.github.io/machgl",
+    "https://cdn.geolonia.com/machgl"
+   ],
+   "require_any": []
+  },
+  {
    "id": "F0-fair-geojson-static-page",
    "kind": "choose",
    "contaminated": null,
@@ -413,7 +450,7 @@
   {
    "id": "F2-fair-sla",
    "kind": "choose",
-   "contaminated": null,
+   "contaminated": "2026-11-18: Qoder's misses (recommending options it said lack the stated SLA) changed geo-software-infra and geo-software-library criteria.md: do not recommend an option that fails a stated condition.",
    "note": "Written 2026-11-18 for the fairness pairs requested in the author's internal-study brief, before any agent ran it. Fit and misfit come only from the Geolonia references (geo-software-library libraries/geolonia-maps.md and geo-software-infra providers/geolonia-maps.md, 向いている場面 / 向いていない場面). The skills' author is related to Geolonia. F0 plus one line asking for an SLA and public incident reports in the contract. The references say Geolonia Maps has no public SLA or status page, so recommending it fails. Providers whose references state an SLA pass: Google Maps Platform, Esri ArcGIS Location Platform, Mapbox (with an order), MapTiler (Custom), HERE.",
    "brief": "# プロダクト概要 (抜粋)\n\n- 一行で: 市のサイトに、地区ごとの値を持つ GeoJSON を塗り分けた地図を載せる\n- 作り: ビルドの仕組みの無い、静的な HTML のページ。地図の部分のコードはできるだけ短くしたい\n- 背景: 日本語の背景地図\n- 運用: 表示は月 1 万回ほど。費用は公開されている単価で、前もって見積もりたい\n- 契約: 稼働率の保証 (SLA) と、障害情報の公開を、契約の条件にする\n\n使う地図のサービスか、ライブラリか SDK を 1 つ選んで勧めてください。プロダクトの持ち主は今いないので、質問せずに決めてください。",
    "targets": [

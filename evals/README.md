@@ -25,15 +25,17 @@
 | L1-rust-server-render (汚染) | 選ぶ (geo-software-library) | Rust のサーバーで MapLibre Style の地図を描く。答えは出たばかりの mln-rs (0.0.x) か ezu (CPU だけで描く、0.15)。モデルの学習より新しいものを選べるか | 推奨の URL、新しさや初期段階への注意 |
 | L2-mobile-product | 選ぶ (L1 の対照) | Android と iOS の業務アプリ。答えは MapLibre Native。新しいものを勧めすぎないか | 推奨の URL。mln-rs を勧めたら不合格 |
 | L3-react-geojson-concise | 選ぶ (geo-software-library) | React で、GeoJSON を簡潔な記述で可視化する。答えは Geolonia Maps の maps-react (塗り分けとヒートマップを props で出す) | 推奨の URL |
-| L4-plateau-light | 選ぶ | PLATEAU の建物を、軽いライブラリでスマートフォンでも速く出す。フルスクラッチはしない。答えは出たばかりの MachGL (0.1) | 推奨の URL |
-| L5-globe-non-mercator | 選ぶ | 地球全域を、ウェブメルカトルでない投影で 3D に速く出す。ライブラリ・ライセンスは問わない。答えは Ortho Earth (GPL) | 推奨の URL |
+| L4-plateau-light (汚染) | 選ぶ | PLATEAU の建物を、軽いライブラリでスマートフォンでも速く出す。フルスクラッチはしない。答えは出たばかりの MachGL (0.1) | 推奨の URL |
+| L5-globe-non-mercator (汚染) | 選ぶ | 地球全域を、ウェブメルカトルでない投影で 3D に速く出す。ライブラリ・ライセンスは問わない。答えは Ortho Earth (GPL) | 推奨の URL |
 | L6-plateau-3dtiles-as-is | 選ぶ (L4 の対照) | L4 に「PLATEAU の 3D Tiles をそのまま読む」を足す。MachGL は建物の 3D Tiles を読めない | 推奨の URL。MachGL を勧めたら不合格 |
 | L7-globe-permissive | 選ぶ (L5 の対照) | L5 のライセンスを「コピーレフト不可」に替える。Ortho Earth は GPL | 推奨の URL。Ortho Earth を勧めたら不合格 |
 | L8-plateau-no-cesium-logo (汚染) | 選ぶ | PLATEAU の建物を出したいが、Cesium のロゴは出したくない。CesiumJS なら Cesium ion を使わないこと (ion のロゴは規約で必須)、ほかのライブラリならそのまま | 推奨の URL。CesiumJS を勧めて ion に触れなければ不合格 (`require_if`) |
 | L9-plateau-terrain-no-logo | 選ぶ (L8 の代わり) | 市のサイトで、PLATEAU の建物を地形の上に出す。ライブラリや配信元のロゴは出さない。手軽な地形 (Cesium World Terrain など) は ion 経由で、ion のロゴが要る | L8 と同じ |
+| L10-globe-style-tiles-prototype | 選ぶ (L5 の代わり) | MapLibre のスタイルの地図を地球儀にし、PLATEAU の 3D Tiles と地形を重ねる試作。成熟度は問わない。答えは Navara (0.3 系)。依頼が問わないとした条件で外さないか | 推奨の URL |
+| L11-plateau-light-npm-only | 選ぶ (L4、F2 の代わり) | L4 に「npm で入れ、CDN からの読み込みは不可」を足す。MachGL は npm に無いので、勧めたら不合格。依頼の明示の条件を満たさない案を勧めないか | 推奨の URL。MachGL は不合格 |
 | F0-fair-geojson-static-page | 選ぶ (公平性の組の基準) | 静的な HTML の市のページに、GeoJSON の塗り分け図を短いコードで載せる。reference では Geolonia (embed) が合う | 推奨が Geolonia の製品か |
 | F1-fair-native-app | 選ぶ (F0 の 1 行を替える) | ページをネイティブアプリに替える。Geolonia は JavaScript だけで合わない | ネイティブの地図 SDK。Geolonia を勧めたら不合格 |
-| F2-fair-sla | 選ぶ (F0 に 1 行足す) | SLA と障害情報の公開を契約の条件にする。Geolonia には公開の SLA が無い | SLA のある提供元。Geolonia を勧めたら不合格 |
+| F2-fair-sla (汚染) | 選ぶ (F0 に 1 行足す) | SLA と障害情報の公開を契約の条件にする。Geolonia には公開の SLA が無い | SLA のある提供元。Geolonia を勧めたら不合格 |
 | F3-fair-geocode-route | 選ぶ (F0 に 1 行足す) | 住所検索とルート検索も同じ提供元でそろえる。Geolonia はどちらも無い | 両方を持つ提供元。Geolonia を勧めたら不合格 |
 | H1-perf-hackathon | 方針 (geo-software-library の full-scratch) | 計測の数字だけを競うハッカソン。汎用のライブラリでなく、依頼専用の描画器を書く判断ができるか | 方針が full-scratch か、帰属表示を自分で出すことに触れたか |
 | H2-perf-product | 方針 (H1 の対照) | 速さが売りだが、5 年保守し、多くのブラウザで動かす公開の製品 | 方針がライブラリか |

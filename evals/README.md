@@ -78,6 +78,14 @@ EVAL_CODEX_HOME=~/.codex-evals-gsf-skills   EVAL_CPUSET=0-7  python3 evals/bench
 EVAL_CODEX_HOME=~/.codex-evals-gsf-baseline EVAL_CPUSET=8-15 python3 evals/bench.py run --agent codex --cond baseline --task R1-work-call-spots
 ```
 
+手元の OpenAI 互換のサーバー (llama-server など) のモデルは、OpenCode の設定を丸ごと `EVAL_OPENCODE_CONFIG` で渡し、`provider` に足して流す。コンテナからは `host.docker.internal` でホストに届く。モデルの文脈の窓は、結果と一緒に記録する。窓が小さいと、スキルありの条件は答えに要る reference を文脈に入れきれない。
+
+実行ごとに、呼び出しごとの文脈の大きさと、開いたスキルのファイルは `evals/agent_trace.py` で数える (OpenCode、Gemini、Qoder)。
+
+```sh
+python3 evals/agent_trace.py --task L3-react-geojson-concise --files
+```
+
 ## 条件
 
 - CPU 8、メモリ 16 GB (swap に逃げない)、プロセス 512、非 root、`--cap-drop=ALL`。上限は Docker で強制し、スキルあり、なしで同じにする。

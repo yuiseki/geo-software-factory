@@ -353,35 +353,39 @@ def run(spec, agent, cond, task_id, rep, minutes, rev):
     print(d, r.returncode, meta["seconds"])
 
 
+def outcome_of(spec, d: Path, meta: dict):
+    """The graded outcome of the run in directory d, and the score it came from."""
+    t = next(x for x in spec["tasks"] if x["id"] == meta["task"])
+    work = d / "work"
+    truth_dir = WORK / "tasks" / t["id"] / "truth"
+    if t["kind"] == "build":
+        truth = json.loads((truth_dir / "truth.json").read_text(encoding="utf-8"))
+        s = score_build(work, truth, tuple(t["bbox_expect"]), t.get("tol_m", 1.0))
+        has = (work / "answer.json").exists() or (work / "out" / "places.geojson").exists()
+    elif t["kind"] == "approach":
+        s = score_approach(read_json(work / "answer.json"), t["expect_approach"], t.get("require_any", []))
+        has = (work / "answer.json").exists()
+    elif t["kind"] == "choose":
+        s = score_choose(read_json(work / "answer.json"), t["targets"], t.get("forbidden", []), t.get("require_any", []),
+                         t.get("require_if", []))
+        has = (work / "answer.json").exists()
+    elif t["kind"] == "research":
+        s = score_research(read_json(work / "answer.json"), t["targets"])
+        has = (work / "answer.json").exists()
+    else:
+        s = score_decide(read_json(work / "answer.json"), t["key"])
+        has = (work / "answer.json").exists()
+    logs = "".join(p.read_text(errors="replace") for p in (d / "log.jsonl", d / "stderr.log") if p.exists())
+    return final_outcome(s["outcome"], t.get("negative", False), meta["exit"], has, provider_failed(logs)), s, logs
+
+
 def score_all(spec):
-    tasks = {t["id"]: t for t in spec["tasks"]}
     cols = ["agent", "model", "cond", "task", "rep", "outcome", "reasons", "matched", "precision", "recall", "exit", "seconds",
             "public_osm"]
     print("\t".join(cols))
     for m in sorted((WORK / "runs").glob("*/*/*/meta.json")):
         meta = json.loads(m.read_text())
-        d, t = m.parent, tasks[meta["task"]]
-        work = d / "work"
-        truth_dir = WORK / "tasks" / t["id"] / "truth"
-        if t["kind"] == "build":
-            truth = json.loads((truth_dir / "truth.json").read_text(encoding="utf-8"))
-            s = score_build(work, truth, tuple(t["bbox_expect"]), t.get("tol_m", 1.0))
-            has = (work / "answer.json").exists() or (work / "out" / "places.geojson").exists()
-        elif t["kind"] == "approach":
-            s = score_approach(read_json(work / "answer.json"), t["expect_approach"], t.get("require_any", []))
-            has = (work / "answer.json").exists()
-        elif t["kind"] == "choose":
-            s = score_choose(read_json(work / "answer.json"), t["targets"], t.get("forbidden", []), t.get("require_any", []),
-                             t.get("require_if", []))
-            has = (work / "answer.json").exists()
-        elif t["kind"] == "research":
-            s = score_research(read_json(work / "answer.json"), t["targets"])
-            has = (work / "answer.json").exists()
-        else:
-            s = score_decide(read_json(work / "answer.json"), t["key"])
-            has = (work / "answer.json").exists()
-        logs = "".join(p.read_text(errors="replace") for p in (d / "log.jsonl", d / "stderr.log") if p.exists())
-        o = final_outcome(s["outcome"], t.get("negative", False), meta["exit"], has, provider_failed(logs))
+        o, s, logs = outcome_of(spec, m.parent, meta)
         row = [meta["agent"], meta.get("model", "-"), meta["cond"], meta["task"], meta["rep"], o, ",".join(s.get("reasons", [])) or "-",
                f"{s['matched']}/{s['n_ref']}" if "matched" in s else (f"{s['n_services']} services" if "n_services" in s
                                                                     else s.get("choice", "-")),

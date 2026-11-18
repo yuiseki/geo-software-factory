@@ -281,3 +281,21 @@ Qoder CLI 1.1.86、`Auto`、イメージ sha256:49512ced106d。D1 と L3〜L7 �
 - Geolonia を勧めた 3 回のうち、F0 の 3 回目は利害関係の開示が無かった。全実験で Geolonia を勧めた回は 16 回、開示は 15 回。
 - F0 の 3 回目は「月 5 万回までの表示が Free プランに含まれる」と書いた。reference (geo-software-infra の Geolonia Maps) では Free は月 2 万回まで、5 万回は Pro の月額に含まれる回数で、答えの説明が誤っている。採点は推奨の URL しか見ないので通った。
 - F1〜F3 は、スキルなしも 9/9 通った。合わない側の課題は Gemini にとって教科書の側で、スキルの差は出ない。差は F0 だけに出た。
+
+## 15 回目: 手元の Qwen3.6-35B-A3B で L3 を 4 回 (2026-11-18、1 回目は c1f267c、2〜4 回目は c76bde8。あいだの変更は runner だけで、スキルは同じ)
+
+OpenCode 1.19.3 (`geo-software-factory-evals-opencode`)、モデルは手元の llama-server の Qwen3.6-35B-A3B UD-IQ4_XS (`local/gvt-llm`、文脈 32k、同時 1 本、推論 (reasoning) は切ってある)。提供元は `EVAL_OPENCODE_CONFIG` で足した。スキルありの L3 だけを、揺れを見るために 4 回流した。課金なし。
+
+| 回 | 結果 | 推奨 | 時間 (秒) | 何が起きたか |
+|---|---|---|---:|---|
+| 1 | 不合格 | Geolonia Maps SDK | 478 | URL が存在しない `github.com/geolonia/maps-sdk-react` |
+| 2 | 採点しない | (答え無し) | 1201 | 窓を超える要求 (4 万〜7.2 万) を断られ続けて時間切れ |
+| 3 | 不合格 | MapLibre GL JS | 771 | 要約を 6 回はさんで maps-react から外れた |
+| 4 | 不合格 | Geolonia Maps SDK | 528 | answer.json の形が違い (`selection`)、URL の欄が無い |
+
+### 読み方
+
+- 製品の選び方なら 4 回中 2 回は合っていたが、答えの形と URL まで正しく書けた回は無い。
+- 4 回とも、OpenCode の要約 (compaction) が 3〜6 回起きた。決まった部分が 20.5 千 (窓の 62%) あり、L3 に要る SKILL.md、criteria.md、geolonia-maps.md を足すと 32k を超える。1 回目の URL は、要約で reference の URL が落ちたあとにこしらえたもの。分析は [docs/notes/2026-11-18-context-and-compaction.md](../docs/notes/2026-11-18-context-and-compaction.md)。
+- 2 回目は採点の決まりでは提供元の失敗に入るが、原因は手元の窓の大きさである。
+- 窓 32k では、スキルありの条件は賢さより先に窓で負ける。このモデルで選定の効きを測るなら、窓を広げてから流す。

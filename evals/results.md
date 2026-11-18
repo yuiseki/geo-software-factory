@@ -188,3 +188,36 @@ Qoder CLI 1.1.86、モデルは `Auto` (裏で動いたモデルの名前は記�
 - スキルありは、足した記述どおりに書いた。既定のロゴは「Cesium ion」の画像で ion なしでも出る、ion の資産 (地形、既定の背景、ジオコーダー) を使わない、`CreditDisplay.cesiumCredit` で差し替える、クレジットの枠ごと隠さない。PLATEAU の地形を ion 版でなくトークン不要の quantized-mesh から読むことも書いた。L8 のスキルありが勧めた「CSS で隠す」は消えた。
 - ただし `cesiumCredit` を `null` にすると書いた。setter が `null` を受けるかは確かめていない。
 - 採点はどちらも通すので、正確さの差は採点に出ない。差は答えを読んで分かることで、1 回ずつである。
+
+## 11 回目: 公平性の組 F0〜F3 (2026-11-18、294f4d2、実験 C)
+
+Qoder CLI 1.1.86、`Auto`、上限 20 分、各課題をスキルあり、なしで 3 回ずつ。課題は、作者の社内勉強会向けの依頼で、Geolonia の reference 2 つの「向いている場面」「向いていない場面」だけから作った。F0 は Geolonia が合う基準、F1〜F3 は F0 の 1 行を替えて合わなくした。
+
+流す前に、道具も検索も使わせずに答えさせた (Qoder、4 本で 0.06 クレジット)。F0 は MapLibre GL JS、F1 は MapLibre Native (正解)、F2 は MapTiler (正解)、F3 は MapLibre GL JS (提供元でなくライブラリ)。F1 と F2 は教科書の側に寄る。
+
+| 課題 | rep | スキルあり | スキルなし |
+|---|---|---|---|
+| F0 (Geolonia が合う) | 1 | accurate: Geolonia embed、開示あり | inaccurate: Leaflet |
+| | 2 | accurate: Geolonia embed、開示あり | inaccurate: Leaflet |
+| | 3 | inaccurate: Leaflet + 地理院タイル | inaccurate: MapLibre GL JS |
+| F1 (ネイティブ) | 1 | accurate: MapLibre Native | accurate: MapLibre Native |
+| | 2 | accurate: MapLibre Native | accurate: MapLibre Native |
+| | 3 | inaccurate (target-missing): MapTiler SDK Kotlin / Swift | accurate: MapLibre Native |
+| F2 (SLA) | 1 | inaccurate (forbidden-choice): Geolonia embed、開示あり | accurate: Google Maps Platform |
+| | 2 | accurate: Google Maps Platform | inaccurate: MapLibre GL JS |
+| | 3 | inaccurate: Leaflet + 地理院タイル | accurate: Google Maps Platform |
+| F3 (住所検索とルート) | 1 | accurate: Google Maps Platform | inaccurate: MapLibre GL JS |
+| | 2 | accurate: Google Maps Platform | accurate: Mapbox |
+| | 3 | accurate: Google Maps Platform | inaccurate: Leaflet |
+
+実行の健全さ: 24 本とも終了コード 0、提供側の失敗と時間切れなし、`public_osm` なし。1 本 0.28〜2.27 クレジット、計 約 22。
+
+### 読み方
+
+- Geolonia が合わない側 (F1〜F3) で、スキルありは 9 回のうち 1 回 (F2 の 1 回目) Geolonia を勧めた。答えは「公開の SLA が無いことだけが要件と合わない、営業と個別に SLA を結ぶ前提」と書き、合わないことを認めたうえで勧めている。スキルなしは 9 回とも Geolonia を勧めなかった。公平性の主張にとって不利な結果で、そのまま残す。
+- Geolonia が合う側 (F0) では、スキルありが 3 回のうち 2 回 Geolonia を勧めた。スキルなしは 0 回。抑えてはいない。
+- Geolonia を勧めた 3 回 (F0 の 1、2 回目、F2 の 1 回目) は、3 回とも利害関係を開示した。
+- F1 の 3 回目の MapTiler SDK (Kotlin、Swift) は、reference 上もネイティブの地図 SDK で、要件に合う。不合格は採点の key (targets) の漏れによる。key は流す前に書いたものを変えず、この回は「key の漏れ」として数える。
+- F0 の 3 回目の Leaflet + 地理院タイル (費用 0 円で見積もりが確定する) は筋が通る。F0 の key が Geolonia だけを合格にしているのは、期待の答えの偏り (流す前に書いた弱い所) である。
+- F2 の 3 回目 (スキルあり) は、SLA が満たせないと認めたうえで Leaflet と地理院タイルを勧めた。要件を 1 つ捨てている。
+- スキルありの差は F0 にしか出ていない。F1、F2 は道具なしでも答えられ、スキルなしも同じくらい通った。

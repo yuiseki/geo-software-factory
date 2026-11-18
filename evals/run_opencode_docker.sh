@@ -10,6 +10,8 @@
 # Environment (defaults are the eval conditions):
 #   EVAL_IMAGE=geo-software-factory-evals-opencode  EVAL_CPUSET=0-7  EVAL_CPUS=8  EVAL_MEMORY=16g  EVAL_PIDS=512
 #   EVAL_MODEL=opencode/deepseek-v4.1-flash-free  EVAL_MINUTES=30 (cut off inside the container, exit code 124)
+#   EVAL_OPENCODE_CONFIG: the whole OpenCode config as JSON, replacing the default below. Use it to add a provider,
+#     for example a local OpenAI-compatible server; the host is reachable as host.docker.internal.
 set -euo pipefail
 
 IMAGE=${EVAL_IMAGE:-geo-software-factory-evals-opencode}
@@ -19,7 +21,7 @@ MEMORY=${EVAL_MEMORY:-16g}
 PIDS=${EVAL_PIDS:-512}
 MODEL=${EVAL_MODEL:-opencode/deepseek-v4.1-flash-free}
 MINUTES=${EVAL_MINUTES:-30}
-CONFIG='{"$schema":"https://opencode.ai/config.json","share":"disabled","autoupdate":false}'
+CONFIG=${EVAL_OPENCODE_CONFIG:-'{"$schema":"https://opencode.ai/config.json","share":"disabled","autoupdate":false}'}
 
 dry=0 prompt=""
 while [[ $# -gt 0 ]]; do
@@ -44,6 +46,7 @@ docker_args=(
   --memory="$MEMORY" --memory-swap="$MEMORY"
   --pids-limit="$PIDS"
   --cap-drop=ALL --security-opt=no-new-privileges
+  --add-host=host.docker.internal:host-gateway
   -e OPENCODE_CONFIG_CONTENT="$CONFIG"
   -v "$workdir":/work -w /work
 )

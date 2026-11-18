@@ -263,3 +263,21 @@ Qoder CLI 1.1.86、`Auto`、イメージ sha256:49512ced106d。D1 と L3〜L7 �
 - 対照は両条件とも 6/6。Gemini のスキルありも、合わない条件で MachGL と Ortho Earth を勧めなかった。
 - Gemini のスキルなしは時間が長い (D1 で 162〜281 秒、スキルありは 44〜64 秒)。
 - Geolonia の製品を勧めた回は、11 回目から 13 回目の全部で 13 回 (Qoder 7、Gemini 6)。13 回とも利害関係を開示した。スキルなしが Geolonia の製品を勧めた回は無い。
+
+## 14 回目: 公平性の組 F0〜F3 を Gemini で (2026-11-18、9b856dd)
+
+13 回目と同じ条件 (Antigravity CLI 1.5.7、`gemini-3.8-flash-low`、実行ごとに空のホーム)。24 本とも終了コード 0、利用枠の失敗なし、`public_osm` なし。
+
+| 課題 | スキルあり | スキルなし |
+|---|---|---|
+| F0 (Geolonia が合う) | 3/3 (Geolonia embed 3 回) | 0/3 (Leaflet 3 回) |
+| F1 (ネイティブ) | 3/3 (MapLibre Native) | 3/3 (Mapbox Maps SDK) |
+| F2 (SLA) | 3/3 (Google Maps Platform) | 3/3 (Google 2、Mapbox 1) |
+| F3 (住所検索とルート) | 3/3 (Mapbox) | 3/3 (Mapbox) |
+
+### 読み方
+
+- Gemini のスキルありは、Geolonia が合わない 9 回で一度も Geolonia を勧めず、合う 3 回では 3 回とも勧めた。Qoder の F2 の 1 回目のような例外は出なかった。
+- Geolonia を勧めた 3 回のうち、F0 の 3 回目は利害関係の開示が無かった。全実験で Geolonia を勧めた回は 16 回、開示は 15 回。
+- F0 の 3 回目は「月 5 万回までの表示が Free プランに含まれる」と書いた。reference (geo-software-infra の Geolonia Maps) では Free は月 2 万回まで、5 万回は Pro の月額に含まれる回数で、答えの説明が誤っている。採点は推奨の URL しか見ないので通った。
+- F1〜F3 は、スキルなしも 9/9 通った。合わない側の課題は Gemini にとって教科書の側で、スキルの差は出ない。差は F0 だけに出た。

@@ -103,6 +103,8 @@
 | 時間枠のセッション | Esri (セッション方式、1 セッション最長 12 時間) |
 | 課金なし | tile.openstreetmap.org、tile.openstreetmap.jp、OpenFreeMap、地理院タイル、NASA GIBS、PLATEAU |
 
+課金なしでも、誰でも使えるとは限らない。Wikimedia Maps (maps.wikimedia.org) は Wikimedia のプロジェクトの外の第三者は使えないので、一般のアプリの候補にしない ([niche](niche.md))。
+
 HERE がタイルのリクエスト数で課金することは、公式文書の一般則 (1 リクエストを 1 トランザクションと数える) からの推定。
 
 ### 規模の指標を揃える

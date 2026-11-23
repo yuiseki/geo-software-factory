@@ -22,6 +22,7 @@
 | 2GIS | 地図 API と SDK (MapGL JS、モバイル、検索、ナビ) | ロシアと CIS の都市の建物入口や施設情報まで含む詳しい地図 | 提供中。ロシア企業なので、利用前に制裁 (米 OFAC、EU、日本の外為法など) の確認が要る。制裁対象かどうかは今回確かめていない (未確認) | デモキーは 1 か月、リクエスト数に上限あり。商用は問い合わせ | 問い合わせ制。金額は未確認 | [dev.2gis.com](https://dev.2gis.com/)、[MapGL JS API](https://docs.2gis.com/en/mapgl/overview) |
 | Mappls (MapmyIndia) | インドの地図 SDK、検索、ジオコーディング、ルート API | インドの番地レベルの地図と、インド特有の交通手段を含むルート検索 | 提供中 | インド政府が主張する国境で地図を描く必要があるかを確かめる。インドの刑法改正法 1961 年 2 条 2 項は、Survey of India の地図と一致しないインドの地図を公表した者を 6 か月以下の懲役または罰金 (併科あり) とする。訴追は政府の告発に限る | 「Start for free」の登録はあるが、金額と無料枠は公開ページで確かめられなかった (未確認) | [Mappls API](https://about.mappls.com/api/)、[Criminal Law Amendment Act 1961](https://www.uppolice.gov.in/Site-Content/uploaded-content/pdf/cl_amendment_act_1961.pdf) |
 | Longdo Map | タイの地図 API と SDK、オンプレミスの地図サーバー (Longdo Box) | タイ語の地名と施設、タイ国内の検索とルート。閉域網で使うオンプレミス版がある | Metamedia Technology (バンコク) が提供中。SLA で稼働率 99.9% | 一般向けのサービスなら無料枠内で無償。地図ロゴや権利表示を消してはならない。無料利用には将来広告を入れる権利を留保している | 月額 Free (地図 80 万、サービス 10 万トランザクション、1 日 5,000 リクエスト)、Starter 8,250 バーツ〜Premium 27,500 バーツ、Super Power は問い合わせ (THB、2026-11-10) | [pricing](https://map.longdo.com/products/pricing)、[terms](https://map.longdo.com/api/terms/?locale=en)、[products](https://map.longdo.com/products) |
+| Wikimedia Maps | OSM 由来のラスタタイルと静的地図 (maps.wikimedia.org、Wikipedia の Kartographer が使う) | Wikimedia のプロジェクトを支える道具 (Wikimedia Cloud Services で動くコミュニティの道具など) で、Wikipedia と同じ地図を出すこと。それ以外の用途では候補にしない | Wikimedia Foundation が運営。SLA は無く、予告なく遮断や制限をしうると明記している | Wikimedia のプロジェクトの外の第三者は使えない ("may not be used by third-party services outside of the Wikimedia projects")。関係の無いアプリや事業には使えない。オフライン用の一括取得と、User-Agent か Referer の無い取得は禁止。User-Agent にはアプリ名、版、連絡先を入れる。データは OSM (ODbL)、スタイルは OSM Bright (CC BY 3.0)。規約は 2021-04-05 発効、ページの最終更新は 2024-12-03 (2026-11-23 に読んだ) | 無料 (使える用途に限る) | [Terms of Use for Wikimedia Maps](https://foundation.wikimedia.org/wiki/Policy:Terms_of_Use_for_Wikimedia_Maps) |
 
 ## 出典
 
@@ -56,6 +57,7 @@
 - https://map.longdo.com/products
 - https://map.longdo.com/products/pricing
 - https://map.longdo.com/api/terms/?locale=en
+- https://foundation.wikimedia.org/wiki/Policy:Terms_of_Use_for_Wikimedia_Maps
 
 ## 未確認のこと
 
@@ -66,3 +68,4 @@
 - 2GIS と Yandex の制裁上の現在の扱い: OFAC の SDN リスト、EU の統合リスト、日本の資産凍結等の対象者リストを今回は照合していない。2GIS の料金は公開ページに無い。
 - Mappls の料金と無料枠、インドの国境表示に関する Mappls 自身の方針: 公開ページに記載が無く、料金ページは API の紹介ページへ転送された。刑法改正法の条文は州警察が掲載する PDF で読み、India Code の公式版は 403 で取得できなかった。
 - 地理院最適化ベクトルタイルと重ねるハザードマップのタイルの利用規約の本文 (測量法に基づく承認が要る場面など): 今回は規約の本文を読んでいない。
+- Wikimedia Maps: Wikimedia のプロジェクトを支える道具に、営利の団体が作るものを含めてよいか。規約は商用かどうかに触れていない。数値の回数制限も書かれていない (API_usage_guidelines は読んでいない)。

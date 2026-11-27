@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2022-07-01
+first_seen_by: wayback
 ---
 
 # ココス 店舗検索

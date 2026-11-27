@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2009-07-02
+first_seen_by: wayback
 ---
 
 # TOHOシネマズ 劇場検索・アクセス案内

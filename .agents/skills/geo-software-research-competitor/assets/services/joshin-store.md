@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2024-10-03
+first_seen_by: wayback
 ---
 
 # ジョーシン 店舗検索

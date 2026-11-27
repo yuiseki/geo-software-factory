@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2007-10-25
+first_seen_by: wayback
 ---
 
 # 公文式 教室検索

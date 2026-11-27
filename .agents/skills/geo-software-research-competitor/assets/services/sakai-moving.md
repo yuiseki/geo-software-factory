@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2025-11-18
+first_seen_by: wayback
 ---
 
 # サカイ引越センター 支社検索

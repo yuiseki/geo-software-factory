@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2026-03-16
+first_seen_by: wayback
 ---
 
 # ゼッテリア（旧ロッテリア） 店舗検索

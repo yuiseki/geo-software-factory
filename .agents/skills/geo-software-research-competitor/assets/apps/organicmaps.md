@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-smb
+first_seen: 2020-12-27
+first_seen_by: github
 ---
 
 # Organic マップ: オフライン地図

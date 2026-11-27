@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-smb
+first_seen: 2021-03-16
+first_seen_by: store
 ---
 
 # LINE GO

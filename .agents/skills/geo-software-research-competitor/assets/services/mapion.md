@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-smb
+first_seen: 1997-03-30
+first_seen_by: wayback
 ---
 
 # 地図マピオン（Mapion）｜地図検索/ルート検索/天気予報

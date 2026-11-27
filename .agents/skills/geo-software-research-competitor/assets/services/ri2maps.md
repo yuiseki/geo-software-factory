@@ -1,6 +1,8 @@
 ---
 financial: non-commercial
 organization: individual
+first_seen: none
+first_seen_by: none
 ---
 
 # 令和８年千葉連続風水害 復旧・復興アーカイブ | Ri2MAPS

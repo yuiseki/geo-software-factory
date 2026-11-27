@@ -1,6 +1,8 @@
 ---
 financial: non-commercial
 organization: individual
+first_seen: 2020-05-25
+first_seen_by: github
 ---
 
 # MapComplete

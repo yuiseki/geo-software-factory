@@ -1,6 +1,8 @@
 ---
 financial: public-service
 organization: gov-central
+first_seen: none
+first_seen_by: none
 ---
 
 # 点群PNGタイルの実例

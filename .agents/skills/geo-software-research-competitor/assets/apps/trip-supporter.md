@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: individual
+first_seen: 2026-08-28
+first_seen_by: store
 ---
 
 # Trip Supporter

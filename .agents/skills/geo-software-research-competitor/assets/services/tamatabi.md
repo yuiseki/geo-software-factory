@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: individual
+first_seen: 2026-11-06
+first_seen_by: wayback
 ---
 
 # 世界のライブカメラ地図｜いま見れるライブ映像 - たま旅ライブ

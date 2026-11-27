@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2022-09-16
+first_seen_by: wayback
 ---
 
 # ミニストップ 店舗検索

@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2023-08-18
+first_seen_by: wayback
 ---
 
 # ガリバー (Gulliver) 店舗検索

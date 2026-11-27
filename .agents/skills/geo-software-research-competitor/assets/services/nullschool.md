@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-smb
+first_seen: 2013-12-14
+first_seen_by: wayback
 ---
 
 # earth :: a global map of wind, weather, and ocean conditions

@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2016-10-12
+first_seen_by: wayback
 ---
 
 # 上島珈琲店 (UFS) 店舗検索

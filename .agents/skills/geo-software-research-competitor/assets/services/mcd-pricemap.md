@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: individual
+first_seen: 2026-04-08
+first_seen_by: wayback
 ---
 
 # 近くの安いマックがわかる｜マクドナルド価格帯マップ

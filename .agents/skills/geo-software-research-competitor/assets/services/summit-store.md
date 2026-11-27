@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2020-08-09
+first_seen_by: wayback
 ---
 
 # サミット 店舗検索・チラシ情報

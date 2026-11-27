@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2019-03-31
+first_seen_by: wayback
 ---
 
 # ワークマン 店舗検索

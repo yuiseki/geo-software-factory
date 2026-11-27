@@ -1,6 +1,8 @@
 ---
 financial: public-service
 organization: gov-central
+first_seen: 2024-11-15
+first_seen_by: wayback
 ---
 
 # 浸水センサ表示システム（国土交通省）

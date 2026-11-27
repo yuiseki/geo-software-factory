@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2010-07-09
+first_seen_by: wayback
 ---
 
 # ENEOS サービスステーション検索

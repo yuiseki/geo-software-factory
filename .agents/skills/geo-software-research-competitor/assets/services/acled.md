@@ -1,6 +1,8 @@
 ---
 financial: non-commercial
 organization: individual
+first_seen: 2009-09-15
+first_seen_by: wayback
 ---
 
 # ACLED

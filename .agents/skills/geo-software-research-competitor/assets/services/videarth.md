@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: individual
+first_seen: 2021-05-28
+first_seen_by: wayback
 ---
 
 # VidEarth

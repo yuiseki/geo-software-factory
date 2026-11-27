@@ -1,6 +1,8 @@
 ---
 financial: public-service
 organization: gov-central
+first_seen: 2021-03-08
+first_seen_by: wayback
 ---
 
 # 防災インタフェース

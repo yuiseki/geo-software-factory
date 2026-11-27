@@ -1,6 +1,8 @@
 ---
 financial: public-service
 organization: gov-central
+first_seen: 2026-03-26
+first_seen_by: wayback
 ---
 
 # 避難施設のご案内

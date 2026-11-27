@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2019-01-28
+first_seen_by: wayback
 ---
 
 # ライトオン 店舗検索 (ワールド オンラインストア)

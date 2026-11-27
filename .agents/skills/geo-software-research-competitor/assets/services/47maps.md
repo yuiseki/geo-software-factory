@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-smb
+first_seen: none
+first_seen_by: none
 ---
 
 # 無料の商圏分析・統計データマッピング|47maps

@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2001-04-04
+first_seen_by: wayback
 ---
 
 # 楽天トラベル

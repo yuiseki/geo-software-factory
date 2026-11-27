@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: individual
+first_seen: 2026-01-29
+first_seen_by: wayback
 ---
 
 # 熊出没マップ2026年 - 全国165,975件 - クママップ

@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 1998-02-08
+first_seen_by: wayback
 ---
 
 # Hotels.com

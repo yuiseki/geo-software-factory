@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2010-11-11
+first_seen_by: wayback
 ---
 
 # ジョイフル 店舗検索

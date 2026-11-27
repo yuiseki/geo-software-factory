@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-smb
+first_seen: 2017-03-22
+first_seen_by: wayback
 ---
 
 # EO Browser (Sentinel Hub / Copernicus Browser)

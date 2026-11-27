@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2019-10-16
+first_seen_by: wayback
 ---
 
 # AOKI 店舗検索

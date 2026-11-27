@@ -1,6 +1,8 @@
 ---
 financial: public-service
 organization: gov-central
+first_seen: none
+first_seen_by: none
 ---
 
 # jSTAT MAP（地図で見る統計）

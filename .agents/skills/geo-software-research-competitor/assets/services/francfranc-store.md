@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2025-11-01
+first_seen_by: wayback
 ---
 
 # Francfranc 店舗一覧

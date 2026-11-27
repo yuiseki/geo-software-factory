@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-smb
+first_seen: 2023-03-13
+first_seen_by: wayback
 ---
 
 # TimeGuessr

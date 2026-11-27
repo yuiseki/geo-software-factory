@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 1998-12-05
+first_seen_by: wayback
 ---
 
 # Redfin

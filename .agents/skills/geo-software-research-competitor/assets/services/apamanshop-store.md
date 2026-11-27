@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2006-03-01
+first_seen_by: wayback
 ---
 
 # アパマンショップ 店舗検索

@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2022-05-06
+first_seen_by: wayback
 ---
 
 # コメダ珈琲店 店舗検索

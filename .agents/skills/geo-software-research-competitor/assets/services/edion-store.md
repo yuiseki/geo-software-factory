@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2024-03-23
+first_seen_by: wayback
 ---
 
 # エディオン 店舗・チラシ検索

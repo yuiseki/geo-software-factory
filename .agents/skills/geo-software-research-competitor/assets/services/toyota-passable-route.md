@@ -1,6 +1,8 @@
 ---
 financial: non-commercial
 organization: corp-ent
+first_seen: 2016-04-06
+first_seen_by: wayback
 ---
 
 # トヨタ | 通れた道マップ

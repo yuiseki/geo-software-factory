@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-smb
+first_seen: 2001-09-25
+first_seen_by: wayback
 ---
 
 # CHINTAI

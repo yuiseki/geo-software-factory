@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2008-08-20
+first_seen_by: wayback
 ---
 
 # ABCマート 店舗検索

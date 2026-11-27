@@ -1,6 +1,8 @@
 ---
 financial: non-commercial
 organization: corp-ent
+first_seen: 2011-12-13
+first_seen_by: store
 ---
 
 # Yahoo!防災速報

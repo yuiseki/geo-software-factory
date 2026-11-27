@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2023-02-03
+first_seen_by: wayback
 ---
 
 # chocoZAP (チョコザップ) 店舗検索

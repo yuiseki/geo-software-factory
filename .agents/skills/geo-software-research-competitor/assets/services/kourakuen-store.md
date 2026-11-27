@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2019-12-06
+first_seen_by: wayback
 ---
 
 # 幸楽苑 店舗検索

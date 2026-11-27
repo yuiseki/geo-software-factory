@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2003-02-24
+first_seen_by: wayback
 ---
 
 # ハニーズ 店舗検索

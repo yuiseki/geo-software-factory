@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2023-11-27
+first_seen_by: wayback
 ---
 
 # ツルハドラッグ 店舗検索

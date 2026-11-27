@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2023-10-09
+first_seen_by: wayback
 ---
 
 # デイリーヤマザキ 店舗検索

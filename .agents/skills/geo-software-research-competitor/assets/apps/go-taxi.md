@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-smb
+first_seen: 2017-09-12
+first_seen_by: store
 ---
 
 # GO（タクシーアプリ）

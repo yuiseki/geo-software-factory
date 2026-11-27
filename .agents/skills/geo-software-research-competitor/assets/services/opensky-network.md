@@ -1,6 +1,8 @@
 ---
 financial: non-commercial
 organization: individual
+first_seen: 2015-04-03
+first_seen_by: wayback
 ---
 
 # OpenSky Network

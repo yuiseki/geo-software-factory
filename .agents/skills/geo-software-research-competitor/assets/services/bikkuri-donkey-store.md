@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2022-10-15
+first_seen_by: wayback
 ---
 
 # びっくりドンキー 店舗検索

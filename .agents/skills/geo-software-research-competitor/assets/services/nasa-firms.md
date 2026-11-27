@@ -1,6 +1,8 @@
 ---
 financial: public-service
 organization: gov-central
+first_seen: 2012-05-17
+first_seen_by: wayback
 ---
 
 # NASA FIRMS

@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2014-12-02
+first_seen_by: wayback
 ---
 
 # ハードオフ 店舗検索

@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2020-06-29
+first_seen_by: wayback
 ---
 
 # サイゼリヤ 店舗検索

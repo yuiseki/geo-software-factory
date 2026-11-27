@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 1998-01-12
+first_seen_by: wayback
 ---
 
 # ピザーラ 店舗検索・注文サイト

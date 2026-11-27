@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2004-04-28
+first_seen_by: wayback
 ---
 
 # イエローハット 店舗検索

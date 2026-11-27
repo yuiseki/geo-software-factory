@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 1997-12-11
+first_seen_by: wayback
 ---
 
 # MapFan

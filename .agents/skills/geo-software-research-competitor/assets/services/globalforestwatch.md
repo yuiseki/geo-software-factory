@@ -1,6 +1,8 @@
 ---
 financial: non-commercial
 organization: individual
+first_seen: 2014-03-31
+first_seen_by: wayback
 ---
 
 # Global Forest Watch

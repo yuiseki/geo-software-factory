@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 1999-02-24
+first_seen_by: wayback
 ---
 
 # ノジマ 店舗案内

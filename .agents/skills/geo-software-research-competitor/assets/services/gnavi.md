@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2001-02-06
+first_seen_by: wayback
 ---
 
 # ぐるなび

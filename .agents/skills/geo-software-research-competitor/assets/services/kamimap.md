@@ -1,6 +1,8 @@
 ---
 financial: non-commercial
 organization: individual
+first_seen: 2018-07-10
+first_seen_by: github
 ---
 
 # 令和8年熊本地震関連情報 - 紙マップ

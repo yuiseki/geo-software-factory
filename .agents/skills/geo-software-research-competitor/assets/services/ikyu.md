@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-smb
+first_seen: 2000-06-19
+first_seen_by: wayback
 ---
 
 # 一休.com

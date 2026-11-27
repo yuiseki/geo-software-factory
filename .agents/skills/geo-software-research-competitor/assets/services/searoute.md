@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: individual
+first_seen: 2024-12-07
+first_seen_by: github
 ---
 
 # おでかけ航路マップ | 日本全国の旅客船・フェリー航路情報と時刻表リンク

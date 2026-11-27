@@ -29,6 +29,7 @@ TODO_FILE = re.compile(r"^  - \[( |x)\] (\S+)$")
 CARD_ROWS = ("一行で", "提供する価値", "想定する利用者", "商用か非商用か", "推定の売上", "運営", "推定の運用費")
 # What every data source reference must state, so that sources can be compared field by field.
 SOURCE_ROWS = ("確かめた日", "提供者", "配布ページ", "利用規約・ライセンス")
+FIRST_SEEN_BY = {"wayback", "github", "store", "none"}
 SEARCH_WORDS = re.compile(r"^- 探すときの語: *(.*)$", re.M)
 CARD_ROW = re.compile(r"^\| ([^|]+?) \|(.*?)\|")
 
@@ -141,6 +142,13 @@ def check_cards(root: pathlib.Path, errors: list[str]) -> None:
         words = SEARCH_WORDS.search(text)
         if not words or not words[1].strip():
             errors.append(f"{rel}: card has no words to search it by (- 探すときの語:)")
+        # first_seen comes from scripts/first_seen.py of geo-software-research-competitor, never from a guess.
+        meta = frontmatter(text)
+        if "first_seen" in meta:
+            if meta["first_seen"] != "none" and not re.fullmatch(r"\d{4}-\d{2}-\d{2}", meta["first_seen"]):
+                errors.append(f"{rel}: first_seen '{meta['first_seen']}' is not YYYY-MM-DD or none")
+            if meta.get("first_seen_by") not in FIRST_SEEN_BY:
+                errors.append(f"{rel}: first_seen_by '{meta.get('first_seen_by')}' is not one of {', '.join(sorted(FIRST_SEEN_BY))}")
         for name in CARD_ROWS:
             if name not in rows:
                 errors.append(f"{rel}: card has no row '{name}'")

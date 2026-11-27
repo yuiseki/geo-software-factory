@@ -1,6 +1,8 @@
 ---
 financial: public-service
 organization: gov-central
+first_seen: 2015-01-12
+first_seen_by: wayback
 ---
 
 # 地理院地図 / GSI Maps

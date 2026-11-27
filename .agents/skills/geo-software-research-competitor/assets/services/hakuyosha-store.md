@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2025-02-07
+first_seen_by: wayback
 ---
 
 # 白洋舎 店舗検索

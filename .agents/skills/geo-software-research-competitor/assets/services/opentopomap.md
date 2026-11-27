@@ -1,6 +1,8 @@
 ---
 financial: non-commercial
 organization: individual
+first_seen: 2008-04-30
+first_seen_by: wayback
 ---
 
 # OpenTopoMap

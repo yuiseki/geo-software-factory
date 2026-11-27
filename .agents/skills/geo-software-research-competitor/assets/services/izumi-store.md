@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2014-07-14
+first_seen_by: wayback
 ---
 
 # イズミ・ゆめタウン 店舗・チラシ検索

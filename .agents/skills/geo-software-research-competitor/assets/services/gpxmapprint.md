@@ -1,6 +1,8 @@
 ---
 financial: non-commercial
 organization: individual
+first_seen: 2026-10-11
+first_seen_by: wayback
 ---
 
 # 印刷地図作成ツール - 移転のお知らせ

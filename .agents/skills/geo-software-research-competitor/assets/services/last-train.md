@@ -1,6 +1,8 @@
 ---
 financial: non-commercial
 organization: individual
+first_seen: 2026-01-12
+first_seen_by: wayback
 ---
 
 # 東京終電マップ｜TOKYO LAST TRAIN MAP

@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-smb
+first_seen: 2002-09-21
+first_seen_by: wayback
 ---
 
 # Bikemap

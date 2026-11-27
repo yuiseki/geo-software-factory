@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-smb
+first_seen: 2007-03-10
+first_seen_by: wayback
 ---
 
 # Meteoblue

@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: individual
+first_seen: 2026-09-09
+first_seen_by: wayback
 ---
 
 # 全国地番マップ｜公図（法務局地図）・地番図を全国で検索・ダウンロード

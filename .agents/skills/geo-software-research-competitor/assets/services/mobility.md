@@ -1,6 +1,8 @@
 ---
 financial: non-commercial
 organization: individual
+first_seen: 2025-02-12
+first_seen_by: wayback
 ---
 
 # Mobility Maps: Making Public Transport Infrastructure Transparent

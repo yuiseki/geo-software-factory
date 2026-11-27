@@ -7,7 +7,7 @@
   - [x] assets/product-brief-template.md
   - [x] scripts/check_brief.py
   - [x] scripts/test_check_brief.py
-- [x] geo-software-research-competitor (7/7)
+- [x] geo-software-research-competitor (9/9)
   - [x] SKILL.md
   - [x] references/search-channels.md
   - [x] references/comparison.md
@@ -15,6 +15,8 @@
   - [x] assets/apps/
   - [x] scripts/find_cards.py
   - [x] scripts/test_find_cards.py
+  - [x] scripts/first_seen.py
+  - [x] scripts/test_first_seen.py
 - [x] geo-software-arch (22/22)
   - [x] SKILL.md
   - [x] references/criteria.md

@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2005-03-29
+first_seen_by: wayback
 ---
 
 # 食べログ

@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: individual
+first_seen: 2023-01-27
+first_seen_by: wayback
 ---
 
 # adsb.lol, unfiltered flight tracking

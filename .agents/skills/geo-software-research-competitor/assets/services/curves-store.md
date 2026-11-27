@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2010-03-31
+first_seen_by: wayback
 ---
 
 # カーブス (Curves) 店舗一覧・店舗検索

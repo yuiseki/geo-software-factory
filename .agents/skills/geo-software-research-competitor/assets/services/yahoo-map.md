@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 1999-01-25
+first_seen_by: wayback
 ---
 
 # Yahoo!マップ

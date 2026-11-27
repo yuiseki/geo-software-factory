@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: individual
+first_seen: 2026-05-08
+first_seen_by: wayback
 ---
 
 # V2X2MAP - live receiver and map for ITS-G5 / V2X

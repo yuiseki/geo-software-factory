@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2026-11-05
+first_seen_by: wayback
 ---
 
 # ヤマト運輸 営業所・取扱店検索

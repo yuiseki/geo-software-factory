@@ -1,6 +1,8 @@
 ---
 financial: non-commercial
 organization: individual
+first_seen: 2026-03-25
+first_seen_by: wayback
 ---
 
 # 方位図法世界地図作成ツール

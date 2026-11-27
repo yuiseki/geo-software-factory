@@ -1,6 +1,8 @@
 ---
 financial: non-commercial
 organization: individual
+first_seen: 2026-04-03
+first_seen_by: github
 ---
 
 # 建物名 地名マップ v2.9.26

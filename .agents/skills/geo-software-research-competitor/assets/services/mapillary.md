@@ -1,6 +1,8 @@
 ---
 financial: non-commercial
 organization: corp-ent
+first_seen: 2013-11-22
+first_seen_by: store
 ---
 
 # Mapillary

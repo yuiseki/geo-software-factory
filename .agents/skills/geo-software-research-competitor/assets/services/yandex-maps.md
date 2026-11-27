@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2016-03-12
+first_seen_by: wayback
 ---
 
 # Yandex Maps

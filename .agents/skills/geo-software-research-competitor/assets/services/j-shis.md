@@ -1,6 +1,8 @@
 ---
 financial: public-service
 organization: gov-central
+first_seen: 2005-05-10
+first_seen_by: wayback
 ---
 
 # J-SHIS 地震ハザードステーション

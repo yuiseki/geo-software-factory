@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-smb
+first_seen: 2001-04-28
+first_seen_by: wayback
 ---
 
 # ジョルダン乗換案内

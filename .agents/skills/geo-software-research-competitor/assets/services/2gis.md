@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2002-09-13
+first_seen_by: wayback
 ---
 
 # 2GIS

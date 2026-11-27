@@ -1,6 +1,8 @@
 ---
 financial: non-commercial
 organization: individual
+first_seen: 2026-03-05
+first_seen_by: wayback
 ---
 
 # WAR 3.0 - Live World War 3 Heat Map & Real-Time Conflict Tracker

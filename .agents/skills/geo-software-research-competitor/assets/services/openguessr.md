@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: individual
+first_seen: 2024-02-09
+first_seen_by: wayback
 ---
 
 # OpenGuessr

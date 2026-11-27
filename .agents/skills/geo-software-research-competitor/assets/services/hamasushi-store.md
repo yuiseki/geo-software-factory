@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2021-06-27
+first_seen_by: wayback
 ---
 
 # はま寿司 店舗検索

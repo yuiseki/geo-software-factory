@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2021-01-23
+first_seen_by: wayback
 ---
 
 # はるやま 店舗検索

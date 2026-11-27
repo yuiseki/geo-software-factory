@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2002-10-12
+first_seen_by: wayback
 ---
 
 # 東急ストア 店舗・チラシ検索

@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-smb
+first_seen: 1996-12-22
+first_seen_by: wayback
 ---
 
 # EarthCam

@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2018-11-07
+first_seen_by: wayback
 ---
 
 # セイコーマート 店舗検索

@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2022-01-21
+first_seen_by: wayback
 ---
 
 # 佐川急便 営業所検索

@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 1996-12-20
+first_seen_by: wayback
 ---
 
 # 高徳地図 (Amap / AutoNavi)

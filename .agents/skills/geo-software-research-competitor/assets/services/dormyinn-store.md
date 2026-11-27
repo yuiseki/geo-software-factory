@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2024-02-01
+first_seen_by: wayback
 ---
 
 # ドーミーイン (dormy inn) ホテル一覧・店舗検索

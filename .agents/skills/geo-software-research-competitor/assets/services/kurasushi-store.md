@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2022-04-21
+first_seen_by: wayback
 ---
 
 # くら寿司 店舗検索

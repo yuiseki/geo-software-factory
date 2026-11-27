@@ -1,6 +1,8 @@
 ---
 financial: public-service
 organization: gov-central
+first_seen: 2022-04-02
+first_seen_by: wayback
 ---
 
 # 農地ナビ

@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2022-07-13
+first_seen_by: wayback
 ---
 
 # タリーズコーヒー 店舗検索

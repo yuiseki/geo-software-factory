@@ -1,6 +1,8 @@
 ---
 financial: non-commercial
 organization: individual
+first_seen: 2026-11-09
+first_seen_by: wayback
 ---
 
 # Watched · Something watched you this week

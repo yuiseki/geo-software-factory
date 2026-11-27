@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2017-12-14
+first_seen_by: wayback
 ---
 
 # 薬王堂 店舗・チラシを探す

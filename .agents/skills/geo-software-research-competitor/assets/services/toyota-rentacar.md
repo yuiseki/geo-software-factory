@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2014-07-04
+first_seen_by: wayback
 ---
 
 # トヨタレンタカー 店舗検索

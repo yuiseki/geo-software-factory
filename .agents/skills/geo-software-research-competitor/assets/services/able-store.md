@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2006-02-24
+first_seen_by: wayback
 ---
 
 # エイブル 店舗検索

@@ -1,6 +1,8 @@
 ---
 financial: non-commercial
 organization: individual
+first_seen: 2025-10-15
+first_seen_by: github
 ---
 
 # クマ遭遇AI予測マップ｜上智大学 深澤研究室

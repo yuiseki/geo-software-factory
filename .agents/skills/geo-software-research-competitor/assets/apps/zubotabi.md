@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: individual
+first_seen: 2026-07-06
+first_seen_by: store
 ---
 
 # ずぼ旅（DriftLog）

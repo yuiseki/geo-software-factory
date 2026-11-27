@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: individual
+first_seen: 2014-10-17
+first_seen_by: store
 ---
 
 # ジオグラフィカ

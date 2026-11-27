@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-smb
+first_seen: 2010-09-25
+first_seen_by: store
 ---
 
 # 本コレ

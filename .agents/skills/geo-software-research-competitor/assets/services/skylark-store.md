@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2019-05-03
+first_seen_by: wayback
 ---
 
 # すかいらーくグループ 店舗検索

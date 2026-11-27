@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2016-07-09
+first_seen_by: wayback
 ---
 
 # 日本郵便 郵便局・ATMをさがす

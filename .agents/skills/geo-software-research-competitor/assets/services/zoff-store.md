@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2018-09-08
+first_seen_by: wayback
 ---
 
 # Zoff 店舗検索

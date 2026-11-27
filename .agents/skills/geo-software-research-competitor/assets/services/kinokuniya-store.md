@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: none
+first_seen_by: none
 ---
 
 # 紀伊國屋書店 Store Locator

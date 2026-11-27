@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2009-05-28
+first_seen_by: wayback
 ---
 
 # ハウスメイト 店舗検索

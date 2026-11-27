@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2011-03-07
+first_seen_by: wayback
 ---
 
 # スターバックス コーヒー ジャパン 店舗検索

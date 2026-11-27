@@ -1,6 +1,8 @@
 ---
 financial: public-service
 organization: gov-central
+first_seen: 2013-01-05
+first_seen_by: wayback
 ---
 
 # 強震モニタ

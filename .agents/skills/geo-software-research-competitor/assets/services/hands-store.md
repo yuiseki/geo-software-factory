@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2022-09-27
+first_seen_by: wayback
 ---
 
 # 東急ハンズ (現ハンズ) 店舗一覧

@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2016-10-23
+first_seen_by: wayback
 ---
 
 # コナミスポーツクラブ 施設検索

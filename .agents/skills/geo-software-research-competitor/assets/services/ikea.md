@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2019-03-27
+first_seen_by: wayback
 ---
 
 # IKEA（店舗検索）

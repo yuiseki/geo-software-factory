@@ -1,6 +1,8 @@
 ---
 financial: non-commercial
 organization: individual
+first_seen: 2026-04-07
+first_seen_by: wayback
 ---
 
 # Interactive Middle-earth Map - LOTR, Hobbit & Silmarillion

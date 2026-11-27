@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-smb
+first_seen: 2026-10-11
+first_seen_by: wayback
 ---
 
 # ラズリマップ｜図面から、測る手間を消す

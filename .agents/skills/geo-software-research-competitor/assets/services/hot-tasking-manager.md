@@ -1,6 +1,8 @@
 ---
 financial: non-commercial
 organization: individual
+first_seen: 2011-10-10
+first_seen_by: wayback
 ---
 
 # HOT Tasking Manager

@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: individual
+first_seen: none
+first_seen_by: none
 ---
 
 # withfs ニュースマップ｜ニュースの舞台を地図で俯瞰する | withfs

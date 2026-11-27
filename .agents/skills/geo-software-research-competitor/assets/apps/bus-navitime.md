@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-smb
+first_seen: 2013-04-26
+first_seen_by: store
 ---
 
 # バスNAVITIME 時刻表&乗り換え案内&路線図ナビ

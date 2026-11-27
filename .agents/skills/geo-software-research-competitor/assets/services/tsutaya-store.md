@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2021-06-12
+first_seen_by: wayback
 ---
 
 # TSUTAYA／蔦屋書店 店舗一覧

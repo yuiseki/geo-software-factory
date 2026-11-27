@@ -1,6 +1,8 @@
 ---
 financial: non-commercial
 organization: corp-smb
+first_seen: 2026-10-13
+first_seen_by: wayback
 ---
 
 # JAPAN CIVIL WORKS MONITOR ｜ 日本の大規模土木プロジェクト進捗マップ

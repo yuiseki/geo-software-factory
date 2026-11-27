@@ -1,6 +1,8 @@
 ---
 financial: non-commercial
 organization: individual
+first_seen: 2007-10-11
+first_seen_by: wayback
 ---
 
 # MeshMap - Meshtastic Node Map

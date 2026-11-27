@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2023-01-10
+first_seen_by: wayback
 ---
 
 # スギ薬局 店舗検索

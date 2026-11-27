@@ -1,6 +1,8 @@
 ---
 financial: non-commercial
 organization: individual
+first_seen: 2026-10-18
+first_seen_by: wayback
 ---
 
 # Flight Atlas

@@ -1,6 +1,8 @@
 ---
 financial: public-service
 organization: gov-central
+first_seen: 2001-06-05
+first_seen_by: wayback
 ---
 
 # 川の防災情報

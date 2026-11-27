@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2009-01-03
+first_seen_by: wayback
 ---
 
 # 焼肉きんぐ 店舗検索

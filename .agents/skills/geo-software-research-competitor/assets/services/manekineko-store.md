@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2023-01-12
+first_seen_by: wayback
 ---
 
 # カラオケまねきねこ 店舗一覧・店舗検索

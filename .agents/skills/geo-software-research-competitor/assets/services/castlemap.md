@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: individual
+first_seen: none
+first_seen_by: none
 ---
 
 # Custom Sydney Maps - Floor Plans On A Map

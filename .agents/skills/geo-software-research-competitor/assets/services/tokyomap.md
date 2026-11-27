@@ -1,6 +1,8 @@
 ---
 financial: public-service
 organization: gov-local
+first_seen: 2026-08-21
+first_seen_by: wayback
 ---
 
 # TokyoMap（東京都地図情報サイト）

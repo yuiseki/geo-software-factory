@@ -1,6 +1,8 @@
 ---
 financial: non-commercial
 organization: individual
+first_seen: 2015-09-27
+first_seen_by: wayback
 ---
 
 # OpenGeocode: free, open-source, self-hosted geocoding

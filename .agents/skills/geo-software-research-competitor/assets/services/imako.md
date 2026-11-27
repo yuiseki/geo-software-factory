@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-smb
+first_seen: 2026-05-05
+first_seen_by: store
 ---
 
 # 【推し活カフェ】日本最大級の推し活・コラボカフェ検索 | imako推し活カフェ

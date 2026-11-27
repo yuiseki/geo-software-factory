@@ -176,5 +176,21 @@ class CheckTest(unittest.TestCase):
         ])
 
 
+    def test_first_seen_is_a_date_or_none_with_where_it_came_from(self):
+        f = good_files()
+        rows = "".join(f"| {r} | x |\n" for r in check.CARD_ROWS)
+        body = f"# c\n\n- 探すときの語: x\n\n| 項目 | 内容 |\n|---|---|\n{rows}"
+        for name, head in {"date": "first_seen: 2015-03-02\nfirst_seen_by: wayback", "none": "first_seen: none\nfirst_seen_by: none",
+                           "absent": "financial: commercial", "bad": "first_seen: 2015\nfirst_seen_by: wayback",
+                           "unsourced": "first_seen: 2015-03-02\nfirst_seen_by: guess"}.items():
+            f[f".agents/skills/demo/assets/services/{name}.md"] = f"---\n{head}\n---\n\n{body}"
+        f[".agents/skills/TODO.md"] = "# TODO\n\n- [x] demo (3/3)\n  - [x] SKILL.md\n  - [x] references/a.md\n  - [x] assets/services/\n"
+        errors, _ = self.run_check(f)
+        self.assertEqual(sorted(e for e in errors if "assets/services/" in e), [
+            ".agents/skills/demo/assets/services/bad.md: first_seen '2015' is not YYYY-MM-DD or none",
+            ".agents/skills/demo/assets/services/unsourced.md: first_seen_by 'guess' is not one of github, none, store, wayback",
+        ])
+
+
 if __name__ == "__main__":
     unittest.main()

@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: individual
+first_seen: 2004-04-13
+first_seen_by: wayback
 ---
 
 # N2YO

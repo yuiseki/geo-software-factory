@@ -1,6 +1,8 @@
 ---
 financial: non-commercial
 organization: individual
+first_seen: 2024-09-30
+first_seen_by: github
 ---
 
 # DeFlock Maps | ALPR Camera Map & Privacy Routes

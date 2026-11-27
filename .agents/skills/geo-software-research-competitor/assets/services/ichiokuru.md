@@ -1,6 +1,8 @@
 ---
 financial: non-commercial
 organization: individual
+first_seen: 2024-05-30
+first_seen_by: wayback
 ---
 
 # いちおくるクン

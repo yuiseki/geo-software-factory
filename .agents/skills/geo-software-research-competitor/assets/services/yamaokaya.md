@@ -1,6 +1,8 @@
 ---
 financial: non-commercial
 organization: individual
+first_seen: 2025-12-15
+first_seen_by: wayback
 ---
 
 # 非公式 山岡家 Map

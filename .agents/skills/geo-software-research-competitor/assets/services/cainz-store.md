@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2015-04-02
+first_seen_by: wayback
 ---
 
 # カインズ 店舗検索

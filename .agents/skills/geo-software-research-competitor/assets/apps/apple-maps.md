@@ -1,6 +1,8 @@
 ---
 financial: non-commercial
 organization: corp-ent
+first_seen: 2016-06-01
+first_seen_by: store
 ---
 
 # Appleマップ

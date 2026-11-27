@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-smb
+first_seen: 2000-04-07
+first_seen_by: wayback
 ---
 
 # NAVITIME（ウェブ総合版）

@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2016-03-09
+first_seen_by: wayback
 ---
 
 # ゲンキー 店舗検索

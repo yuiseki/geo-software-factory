@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: individual
+first_seen: 2016-07-02
+first_seen_by: github
 ---
 
 # StreetComplete

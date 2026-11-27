@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2003-08-31
+first_seen_by: wayback
 ---
 
 # ホットペッパーグルメ

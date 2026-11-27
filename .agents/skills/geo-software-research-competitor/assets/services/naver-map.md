@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 1999-10-13
+first_seen_by: wayback
 ---
 
 # Naver Map (ネイバー地図)

@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-smb
+first_seen: 2011-02-28
+first_seen_by: store
 ---
 
 # ドライブサポーター by NAVITIME (カーナビ)

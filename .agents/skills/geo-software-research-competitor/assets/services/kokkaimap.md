@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: individual
+first_seen: 2026-05-13
+first_seen_by: wayback
 ---
 
 # 国会議員マップ - あなたに近い議員がわかる

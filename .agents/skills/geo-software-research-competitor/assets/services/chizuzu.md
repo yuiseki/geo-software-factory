@@ -1,6 +1,8 @@
 ---
 financial: non-commercial
 organization: individual
+first_seen: 2026-02-22
+first_seen_by: wayback
 ---
 
 # ChizuZu - 地図比較アプリ

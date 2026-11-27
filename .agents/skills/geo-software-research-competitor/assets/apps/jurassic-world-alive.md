@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-smb
+first_seen: 2018-06-27
+first_seen_by: store
 ---
 
 # Jurassic World Alive

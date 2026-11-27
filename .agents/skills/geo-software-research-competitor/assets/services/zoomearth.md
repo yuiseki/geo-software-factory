@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-smb
+first_seen: 2023-04-11
+first_seen_by: wayback
 ---
 
 # 気象衛星とレーダーマップ | Zoom Earth

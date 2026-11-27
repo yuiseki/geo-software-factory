@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2008-06-18
+first_seen_by: wayback
 ---
 
 # ベルク 店舗情報・チラシ

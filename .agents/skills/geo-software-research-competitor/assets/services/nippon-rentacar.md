@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2020-02-07
+first_seen_by: wayback
 ---
 
 # ニッポンレンタカー 店舗検索

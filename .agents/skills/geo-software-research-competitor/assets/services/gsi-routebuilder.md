@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: individual
+first_seen: 2026-10-09
+first_seen_by: wayback
 ---
 
 # 地理院ルートビルダー｜峠名がわかる自転車ルート作成（GPX無料）

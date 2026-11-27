@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2019-03-01
+first_seen_by: wayback
 ---
 
 # KakaoMap (カカオマップ)

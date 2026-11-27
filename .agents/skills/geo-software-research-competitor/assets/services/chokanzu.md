@@ -1,6 +1,8 @@
 ---
 financial: non-commercial
 organization: individual
+first_seen: 2026-10-04
+first_seen_by: wayback
 ---
 
 # JR東海道本線（東京〜熱海）｜吉田初三郎風・鳥瞰路線図

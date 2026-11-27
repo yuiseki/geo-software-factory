@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: individual
+first_seen: 2016-03-31
+first_seen_by: store
 ---
 
 # スーパー地形

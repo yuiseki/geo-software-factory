@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: individual
+first_seen: 2008-01-16
+first_seen_by: wayback
 ---
 
 # Ushahidi

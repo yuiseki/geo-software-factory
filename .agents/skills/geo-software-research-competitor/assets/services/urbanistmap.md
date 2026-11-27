@@ -1,6 +1,8 @@
 ---
 financial: non-commercial
 organization: individual
+first_seen: 2025-05-14
+first_seen_by: github
 ---
 
 # Urbanist Map

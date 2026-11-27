@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: individual
+first_seen: 2026-09-26
+first_seen_by: wayback
 ---
 
 # 全国のトレランコースと大会コース｜Runnable

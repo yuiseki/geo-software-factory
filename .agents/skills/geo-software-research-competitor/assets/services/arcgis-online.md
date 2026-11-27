@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2004-06-02
+first_seen_by: wayback
 ---
 
 # ArcGIS Online

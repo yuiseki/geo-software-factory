@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: individual
+first_seen: none
+first_seen_by: none
 ---
 
 # Trip Planner 山行計画サポートマップ|日本雪崩ネットワーク

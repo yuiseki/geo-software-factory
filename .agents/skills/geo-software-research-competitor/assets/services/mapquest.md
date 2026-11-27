@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-smb
+first_seen: 1997-04-10
+first_seen_by: wayback
 ---
 
 # Official MapQuest - Maps, Driving Directions, Live Traffic

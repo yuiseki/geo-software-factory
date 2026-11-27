@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2026-02-19
+first_seen_by: wayback
 ---
 
 # セリア 店舗検索

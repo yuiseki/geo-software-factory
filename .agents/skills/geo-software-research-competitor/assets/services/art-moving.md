@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2004-10-23
+first_seen_by: wayback
 ---
 
 # アート引越センター 引越ネットワーク

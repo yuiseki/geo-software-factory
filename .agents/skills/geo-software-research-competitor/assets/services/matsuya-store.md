@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2001-06-24
+first_seen_by: wayback
 ---
 
 # 松屋 店舗検索

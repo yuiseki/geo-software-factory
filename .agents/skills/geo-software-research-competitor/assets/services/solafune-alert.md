@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-smb
+first_seen: 2026-07-29
+first_seen_by: wayback
 ---
 
 # SNS災害情報集約マップAI

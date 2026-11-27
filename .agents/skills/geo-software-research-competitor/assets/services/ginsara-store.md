@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2026-10-12
+first_seen_by: wayback
 ---
 
 # 銀のさら 店舗検索

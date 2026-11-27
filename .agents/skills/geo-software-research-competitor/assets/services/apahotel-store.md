@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2019-07-20
+first_seen_by: wayback
 ---
 
 # アパホテル 地図検索

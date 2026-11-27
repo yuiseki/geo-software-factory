@@ -1,6 +1,8 @@
 ---
 financial: non-commercial
 organization: individual
+first_seen: 2023-10-18
+first_seen_by: github
 ---
 
 # Navara, an open-source 3D map engine

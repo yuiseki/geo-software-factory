@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2025-04-26
+first_seen_by: wayback
 ---
 
 # コスモ石油 サービスステーション検索

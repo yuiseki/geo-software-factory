@@ -1,6 +1,8 @@
 ---
 financial: public-service
 organization: gov-local
+first_seen: 2019-03-29
+first_seen_by: wayback
 ---
 
 # 京都観光Navi

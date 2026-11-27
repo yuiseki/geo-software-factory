@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2021-01-18
+first_seen_by: wayback
 ---
 
 # 無印良品 店舗検索

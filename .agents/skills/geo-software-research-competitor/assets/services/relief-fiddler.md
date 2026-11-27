@@ -1,6 +1,8 @@
 ---
 financial: non-commercial
 organization: corp-smb
+first_seen: 2026-10-02
+first_seen_by: wayback
 ---
 
 # Relief Fiddler Demo

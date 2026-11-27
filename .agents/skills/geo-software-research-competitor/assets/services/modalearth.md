@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-smb
+first_seen: 2026-11-07
+first_seen_by: wayback
 ---
 
 # THE MODAL EARTH - 旋法の地球儀｜世界35の旋法を、本当の音程で聴き比べる | Música Terra PLAYGROUND

@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2026-04-19
+first_seen_by: wayback
 ---
 
 # ビバホーム・ムサシ 店舗検索

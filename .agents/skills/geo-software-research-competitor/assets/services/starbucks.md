@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2010-02-27
+first_seen_by: wayback
 ---
 
 # Starbucks（Global Store Locator）

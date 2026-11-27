@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-smb
+first_seen: 2023-09-26
+first_seen_by: wayback
 ---
 
 # プロント 店舗検索

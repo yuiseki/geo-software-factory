@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-smb
+first_seen: 2020-03-24
+first_seen_by: wayback
 ---
 
 # IQAir Earth

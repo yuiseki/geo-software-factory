@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2023-01-18
+first_seen_by: wayback
 ---
 
 # セブン銀行 ATM検索

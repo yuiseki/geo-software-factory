@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2024-09-14
+first_seen_by: wayback
 ---
 
 # 鳥貴族 店舗検索

@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-smb
+first_seen: 2021-07-18
+first_seen_by: wayback
 ---
 
 # 賃貸を地図で探す - 家賃相場が一目でわかる物件検索 | Comfy

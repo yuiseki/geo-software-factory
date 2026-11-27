@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-smb
+first_seen: 2016-01-11
+first_seen_by: wayback
 ---
 
 # Ventusky

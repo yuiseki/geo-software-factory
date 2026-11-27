@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2025-01-19
+first_seen_by: wayback
 ---
 
 # 福山通運 営業所検索

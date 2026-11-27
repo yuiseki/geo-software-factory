@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2026-06-24
+first_seen_by: wayback
 ---
 
 # UPS ジャパン 取扱店検索

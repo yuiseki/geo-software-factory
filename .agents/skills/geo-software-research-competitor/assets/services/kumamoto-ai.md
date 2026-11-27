@@ -1,6 +1,8 @@
 ---
 financial: non-commercial
 organization: individual
+first_seen: none
+first_seen_by: none
 ---
 
 # 熊本地震（2026-07-28）支援拠点マップ

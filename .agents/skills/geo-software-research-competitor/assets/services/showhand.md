@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-smb
+first_seen: 2026-02-19
+first_seen_by: wayback
 ---
 
 # showhand - 全晒しAI不動産周辺マップ

@@ -1,6 +1,8 @@
 ---
 financial: non-commercial
 organization: individual
+first_seen: none
+first_seen_by: none
 ---
 
 # 生活利便性マップ

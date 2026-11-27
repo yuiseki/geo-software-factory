@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2017-01-20
+first_seen_by: wayback
 ---
 
 # ソフトバンクショップ 店舗検索

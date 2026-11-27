@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2004-10-28
+first_seen_by: wayback
 ---
 
 # 西濃運輸 営業所検索

@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2012-12-13
+first_seen_by: store
 ---
 
 # Google マップ

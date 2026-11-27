@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2023-08-01
+first_seen_by: wayback
 ---
 
 # ルートインホテルズ 地図から探す・ホテル一覧

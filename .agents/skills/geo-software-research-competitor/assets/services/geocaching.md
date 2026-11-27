@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-smb
+first_seen: 2000-10-17
+first_seen_by: wayback
 ---
 
 # Geocaching

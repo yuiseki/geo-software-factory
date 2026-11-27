@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-smb
+first_seen: 2026-11-03
+first_seen_by: wayback
 ---
 
 # God's Eye View | Official Site: Real-Time 3D Globe

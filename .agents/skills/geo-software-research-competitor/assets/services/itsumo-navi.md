@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-smb
+first_seen: 2004-02-09
+first_seen_by: wayback
 ---
 
 # いつもNAVI

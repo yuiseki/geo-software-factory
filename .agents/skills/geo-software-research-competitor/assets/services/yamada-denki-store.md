@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2005-03-11
+first_seen_by: wayback
 ---
 
 # ヤマダデンキ 店舗検索

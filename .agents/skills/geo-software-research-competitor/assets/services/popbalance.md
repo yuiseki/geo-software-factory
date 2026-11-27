@@ -1,6 +1,8 @@
 ---
 financial: non-commercial
 organization: individual
+first_seen: 2026-05-19
+first_seen_by: github
 ---
 
 # 国勢調査 メッシュ年齢構成クラスターマップ

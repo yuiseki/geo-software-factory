@@ -1,6 +1,8 @@
 ---
 financial: non-commercial
 organization: individual
+first_seen: 2026-09-08
+first_seen_by: github
 ---
 
 # JP Market Vis - 日本の上場企業マップ

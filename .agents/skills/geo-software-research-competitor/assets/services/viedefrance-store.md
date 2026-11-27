@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-smb
+first_seen: 2023-01-03
+first_seen_by: wayback
 ---
 
 # ヴィ・ド・フランス 店舗検索

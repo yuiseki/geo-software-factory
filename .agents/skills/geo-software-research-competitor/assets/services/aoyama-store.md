@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2024-12-25
+first_seen_by: wayback
 ---
 
 # 洋服の青山 店舗検索

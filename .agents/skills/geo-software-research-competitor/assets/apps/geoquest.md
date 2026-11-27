@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-smb
+first_seen: 2024-06-10
+first_seen_by: store
 ---
 
 # ジオクエ-写真を撮ってポイントに！ポイ活アプリ

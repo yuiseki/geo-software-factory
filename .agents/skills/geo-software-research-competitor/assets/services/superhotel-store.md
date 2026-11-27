@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2000-04-08
+first_seen_by: wayback
 ---
 
 # スーパーホテル 店舗・ホテル検索

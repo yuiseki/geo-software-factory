@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-smb
+first_seen: 2007-10-18
+first_seen_by: wayback
 ---
 
 # Ride with GPS

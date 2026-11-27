@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2012-03-24
+first_seen_by: wayback
 ---
 
 # 星乃珈琲店 店舗情報

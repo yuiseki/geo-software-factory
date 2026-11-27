@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2014-03-04
+first_seen_by: wayback
 ---
 
 # ネクステージ (NEXTAGE) 店舗検索

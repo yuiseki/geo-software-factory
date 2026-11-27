@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-smb
+first_seen: 2025-02-19
+first_seen_by: wayback
 ---
 
 # バーガーキング 店舗検索

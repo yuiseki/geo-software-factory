@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2026-07-06
+first_seen_by: wayback
 ---
 
 # サブウェイ 店舗検索

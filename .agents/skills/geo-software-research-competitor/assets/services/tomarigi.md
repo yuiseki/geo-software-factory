@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-smb
+first_seen: 2016-03-23
+first_seen_by: wayback
 ---
 
 # 日本のライブカメラ地図 | とまり木

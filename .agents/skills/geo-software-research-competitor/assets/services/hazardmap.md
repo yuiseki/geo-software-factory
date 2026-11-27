@@ -1,6 +1,8 @@
 ---
 financial: public-service
 organization: gov-central
+first_seen: 2016-06-10
+first_seen_by: wayback
 ---
 
 # 重ねるハザードマップ

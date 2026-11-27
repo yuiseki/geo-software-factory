@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2018-03-13
+first_seen_by: wayback
 ---
 
 # 東京ディズニーリゾート 施設マップ

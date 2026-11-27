@@ -1,6 +1,8 @@
 ---
 financial: non-commercial
 organization: individual
+first_seen: 2012-02-06
+first_seen_by: wayback
 ---
 
 # ダジック・アース - ダジック・アース

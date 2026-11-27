@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-smb
+first_seen: 2007-02-02
+first_seen_by: wayback
 ---
 
 # ヤマレコ (Yamareco)

@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2014-08-04
+first_seen_by: wayback
 ---
 
 # ワイモバイルショップ 店舗検索

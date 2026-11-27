@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2004-06-21
+first_seen_by: wayback
 ---
 
 # ユナイテッド・シネマ 劇場案内・アクセスマップ

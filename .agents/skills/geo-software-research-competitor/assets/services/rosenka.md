@@ -1,6 +1,8 @@
 ---
 financial: public-service
 organization: gov-central
+first_seen: 2001-10-20
+first_seen_by: wayback
 ---
 
 # 路線価図・評価倍率表

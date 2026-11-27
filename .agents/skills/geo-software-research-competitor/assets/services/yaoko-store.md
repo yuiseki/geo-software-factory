@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2012-07-02
+first_seen_by: wayback
 ---
 
 # ヤオコー チラシ・店舗情報

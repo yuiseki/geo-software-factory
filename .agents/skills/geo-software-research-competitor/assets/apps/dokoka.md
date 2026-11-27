@@ -1,6 +1,8 @@
 ---
 financial: non-commercial
 organization: individual
+first_seen: 2026-04-13
+first_seen_by: store
 ---
 
 # Dokoka - 矢印だけの散歩ナビ

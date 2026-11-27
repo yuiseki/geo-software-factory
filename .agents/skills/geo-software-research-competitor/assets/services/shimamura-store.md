@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2009-09-22
+first_seen_by: wayback
 ---
 
 # しまむら 店舗検索

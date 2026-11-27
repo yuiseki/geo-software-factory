@@ -1,6 +1,8 @@
 ---
 financial: non-commercial
 organization: individual
+first_seen: 2026-03-13
+first_seen_by: wayback
 ---
 
 # Rennes Transit Map - Visualisation temps réel du réseau STAR

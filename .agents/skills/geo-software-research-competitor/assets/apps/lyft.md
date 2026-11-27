@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2012-05-31
+first_seen_by: store
 ---
 
 # Lyft

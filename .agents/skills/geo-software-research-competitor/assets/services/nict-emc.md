@@ -1,6 +1,8 @@
 ---
 financial: public-service
 organization: gov-central
+first_seen: 2024-09-12
+first_seen_by: wayback
 ---
 
 # 電界強度マップ - 電磁環境研究室モニタリングプロジェクト

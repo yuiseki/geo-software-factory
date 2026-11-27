@@ -1,6 +1,8 @@
 ---
 financial: non-commercial
 organization: individual
+first_seen: 2005-05-19
+first_seen_by: wayback
 ---
 
 # ChicagoCrime.org

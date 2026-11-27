@@ -1,6 +1,8 @@
 ---
 financial: non-commercial
 organization: individual
+first_seen: 2006-04-14
+first_seen_by: wayback
 ---
 
 # Mapshaper

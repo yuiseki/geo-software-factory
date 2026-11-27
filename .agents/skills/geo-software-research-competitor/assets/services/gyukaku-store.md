@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2022-08-12
+first_seen_by: wayback
 ---
 
 # 牛角 店舗検索

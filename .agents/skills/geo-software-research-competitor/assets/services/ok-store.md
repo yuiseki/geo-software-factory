@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2019-01-12
+first_seen_by: wayback
 ---
 
 # オーケー 店舗一覧と検索

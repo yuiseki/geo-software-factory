@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2014-11-02
+first_seen_by: wayback
 ---
 
 # ロフト 店舗検索

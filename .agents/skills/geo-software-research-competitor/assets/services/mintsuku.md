@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: individual
+first_seen: none
+first_seen_by: none
 ---
 
 # みんなでつくる全国冠水道路マップ｜みんつく全国冠水マップ

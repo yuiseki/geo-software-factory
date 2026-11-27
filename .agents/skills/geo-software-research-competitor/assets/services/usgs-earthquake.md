@@ -1,6 +1,8 @@
 ---
 financial: public-service
 organization: gov-central
+first_seen: 2012-03-13
+first_seen_by: wayback
 ---
 
 # USGS Earthquake Map

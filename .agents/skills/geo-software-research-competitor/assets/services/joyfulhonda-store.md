@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2026-03-03
+first_seen_by: wayback
 ---
 
 # ジョイフル本田 店舗情報

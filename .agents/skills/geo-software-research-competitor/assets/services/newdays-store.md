@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2021-04-03
+first_seen_by: wayback
 ---
 
 # NewDays 店舗検索

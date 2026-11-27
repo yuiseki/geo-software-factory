@@ -1,6 +1,8 @@
 ---
 financial: public-service
 organization: gov-central
+first_seen: 2026-04-30
+first_seen_by: github
 ---
 
 # 3次元地図可視化サイト

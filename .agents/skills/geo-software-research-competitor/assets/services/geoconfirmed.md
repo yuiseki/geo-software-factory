@@ -1,6 +1,8 @@
 ---
 financial: non-commercial
 organization: individual
+first_seen: 2026-05-14
+first_seen_by: wayback
 ---
 
 # GeoConfirmed - Open-Source Conflict Geolocation & Verification

@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2022-01-26
+first_seen_by: wayback
 ---
 
 # カフェ・ベローチェ (C-United) 店舗検索

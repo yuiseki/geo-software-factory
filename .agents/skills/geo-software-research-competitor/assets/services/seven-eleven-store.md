@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2007-03-05
+first_seen_by: wayback
 ---
 
 # セブン-イレブン 店舗検索

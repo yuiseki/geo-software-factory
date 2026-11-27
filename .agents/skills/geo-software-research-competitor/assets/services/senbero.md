@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: individual
+first_seen: 2016-12-15
+first_seen_by: wayback
 ---
 
 # せんべろ東京マップ（東京都内の立ち飲み・大衆酒場・居酒屋を地図から検索） | せんべろnet

@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2009-02-05
+first_seen_by: wayback
 ---
 
 # ブックオフ 店舗検索

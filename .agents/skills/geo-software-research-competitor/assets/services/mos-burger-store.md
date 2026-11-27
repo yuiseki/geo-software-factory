@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2012-04-08
+first_seen_by: wayback
 ---
 
 # モスバーガー 店舗検索

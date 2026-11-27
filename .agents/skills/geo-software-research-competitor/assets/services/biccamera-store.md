@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2018-12-06
+first_seen_by: wayback
 ---
 
 # ビックカメラ 店舗検索

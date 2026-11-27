@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-smb
+first_seen: 2019-04-15
+first_seen_by: store
 ---
 
 # S.RIDE

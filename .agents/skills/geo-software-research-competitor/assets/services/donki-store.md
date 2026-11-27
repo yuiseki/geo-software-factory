@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2015-04-25
+first_seen_by: wayback
 ---
 
 # ドン・キホーテ 店舗検索

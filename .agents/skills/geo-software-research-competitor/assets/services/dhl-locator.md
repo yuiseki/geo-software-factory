@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2016-03-07
+first_seen_by: wayback
 ---
 
 # DHL ジャパン 拠点検索

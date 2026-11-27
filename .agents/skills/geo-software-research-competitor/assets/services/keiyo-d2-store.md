@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2021-10-02
+first_seen_by: wayback
 ---
 
 # ケーヨーデイツー (現 DCM) 店舗検索

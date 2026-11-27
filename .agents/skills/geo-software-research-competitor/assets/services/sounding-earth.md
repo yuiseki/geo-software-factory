@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: individual
+first_seen: 2026-10-10
+first_seen_by: wayback
 ---
 
 # THE SOUNDING EARTH

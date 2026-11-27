@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2022-08-15
+first_seen_by: wayback
 ---
 
 # 丸亀製麺 店舗検索

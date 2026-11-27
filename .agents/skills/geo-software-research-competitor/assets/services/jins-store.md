@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2018-10-27
+first_seen_by: wayback
 ---
 
 # JINS 店舗検索

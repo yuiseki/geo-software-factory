@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2017-07-08
+first_seen_by: wayback
 ---
 
 # かっぱ寿司 店舗検索

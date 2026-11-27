@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2024-01-17
+first_seen_by: wayback
 ---
 
 # マツモトキヨシ 店舗検索

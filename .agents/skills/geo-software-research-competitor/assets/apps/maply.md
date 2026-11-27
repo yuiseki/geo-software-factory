@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2026-02-23
+first_seen_by: store
 ---
 
 # Maply

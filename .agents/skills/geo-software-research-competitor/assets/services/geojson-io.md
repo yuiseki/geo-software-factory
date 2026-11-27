@@ -1,6 +1,8 @@
 ---
 financial: non-commercial
 organization: individual
+first_seen: 2013-05-10
+first_seen_by: github
 ---
 
 # geojson.io

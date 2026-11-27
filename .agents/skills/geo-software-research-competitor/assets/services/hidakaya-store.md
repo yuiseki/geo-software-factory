@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2024-03-13
+first_seen_by: wayback
 ---
 
 # 日高屋 店舗検索

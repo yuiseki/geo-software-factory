@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2019-09-30
+first_seen_by: wayback
 ---
 
 # タイムズカー ステーション検索

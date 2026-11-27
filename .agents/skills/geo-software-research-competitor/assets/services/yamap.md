@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-smb
+first_seen: 2000-06-21
+first_seen_by: wayback
 ---
 
 # YAMAP / ヤマップ | 登山をもっと楽しく、登山情報プラットフォーム

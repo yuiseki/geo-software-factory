@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-smb
+first_seen: 2019-12-19
+first_seen_by: wayback
 ---
 
 # 安楽亭 店舗検索

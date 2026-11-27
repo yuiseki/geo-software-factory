@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2014-04-11
+first_seen_by: wayback
 ---
 
 # エニタイムフィットネス 店舗一覧・店舗検索

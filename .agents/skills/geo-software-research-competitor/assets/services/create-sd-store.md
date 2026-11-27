@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2026-05-17
+first_seen_by: wayback
 ---
 
 # クリエイト エス・ディー 店舗検索

@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: individual
+first_seen: 2013-05-29
+first_seen_by: wayback
 ---
 
 # 地図ロイド

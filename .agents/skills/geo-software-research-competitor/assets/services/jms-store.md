@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2007-06-15
+first_seen_by: wayback
 ---
 
 # ジェームス (jms) 店舗検索

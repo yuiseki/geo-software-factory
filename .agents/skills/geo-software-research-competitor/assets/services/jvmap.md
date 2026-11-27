@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-smb
+first_seen: 2026-02-11
+first_seen_by: wayback
 ---
 
 # ライブハウス検索マップ - JVMAP｜全国の音楽会場を地図で探す

@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2017-04-18
+first_seen_by: wayback
 ---
 
 # Google Earth

@@ -1,6 +1,8 @@
 ---
 financial: non-commercial
 organization: individual
+first_seen: 2001-03-31
+first_seen_by: wayback
 ---
 
 # 東京観光公式サイト GO TOKYO

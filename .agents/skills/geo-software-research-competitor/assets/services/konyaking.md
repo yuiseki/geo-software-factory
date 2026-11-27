@@ -1,6 +1,8 @@
 ---
 financial: non-commercial
 organization: individual
+first_seen: 2026-07-04
+first_seen_by: github
 ---
 
 # こにゃーきんぐ

@@ -1,6 +1,8 @@
 ---
 financial: public-service
 organization: gov-central
+first_seen: 2013-09-16
+first_seen_by: wayback
 ---
 
 # 地質図Navi (GeomapNavi)

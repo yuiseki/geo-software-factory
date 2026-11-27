@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2016-07-22
+first_seen_by: store
 ---
 
 # Pokémon GO

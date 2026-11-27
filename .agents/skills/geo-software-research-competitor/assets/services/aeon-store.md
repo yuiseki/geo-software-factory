@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2018-07-07
+first_seen_by: wayback
 ---
 
 # イオングループ 店舗一覧・店舗検索

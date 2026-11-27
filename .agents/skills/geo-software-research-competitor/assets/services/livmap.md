@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-smb
+first_seen: 2023-02-23
+first_seen_by: store
 ---
 
 # LivMap (リブマップ) - チームで使う共有地図

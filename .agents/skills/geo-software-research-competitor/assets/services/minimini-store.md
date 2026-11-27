@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2014-12-13
+first_seen_by: wayback
 ---
 
 # ミニミニ 店舗検索

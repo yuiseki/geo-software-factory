@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: individual
+first_seen: 2010-09-29
+first_seen_by: wayback
 ---
 
 # MapCrunch

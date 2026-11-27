@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-smb
+first_seen: 2005-03-05
+first_seen_by: wayback
 ---
 
 # 明光義塾 教室検索

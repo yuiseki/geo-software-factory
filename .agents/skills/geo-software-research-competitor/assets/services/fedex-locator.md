@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2021-11-22
+first_seen_by: wayback
 ---
 
 # FedEx ジャパン 拠点検索

@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-smb
+first_seen: 2020-07-19
+first_seen_by: store
 ---
 
 # トリマ-歩数・移動でポイント！散歩やウォーキングでお金を稼ぐ

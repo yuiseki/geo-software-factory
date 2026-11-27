@@ -1,6 +1,8 @@
 ---
 financial: non-commercial
 organization: individual
+first_seen: 2026-08-05
+first_seen_by: wayback
 ---
 
 # 自分のサーバーで日本地図を表示する｜Japan PMTiles

@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2026-05-27
+first_seen_by: wayback
 ---
 
 # 平和堂 店舗検索

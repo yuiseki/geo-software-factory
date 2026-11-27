@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-smb
+first_seen: 2001-07-08
+first_seen_by: wayback
 ---
 
 # tenki.jp

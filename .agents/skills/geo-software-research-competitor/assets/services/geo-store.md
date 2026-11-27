@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2011-04-29
+first_seen_by: wayback
 ---
 
 # ゲオ 店舗検索

@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: individual
+first_seen: none
+first_seen_by: none
 ---
 
 # 全球大気の流れ、寒気・暖気の状況：2026年10月25日12UTC | 気温のページ | 気温データから地球大気を見る

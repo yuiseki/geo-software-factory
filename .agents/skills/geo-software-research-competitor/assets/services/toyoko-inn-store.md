@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2018-03-09
+first_seen_by: wayback
 ---
 
 # 東横イン ホテル一覧・検索

@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-smb
+first_seen: 2010-04-25
+first_seen_by: wayback
 ---
 
 # Komoot

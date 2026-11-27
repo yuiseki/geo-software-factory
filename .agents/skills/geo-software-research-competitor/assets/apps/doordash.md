@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2013-10-10
+first_seen_by: store
 ---
 
 # DoorDash

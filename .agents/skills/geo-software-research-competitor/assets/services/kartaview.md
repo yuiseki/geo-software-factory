@@ -1,6 +1,8 @@
 ---
 financial: non-commercial
 organization: corp-ent
+first_seen: 2016-07-20
+first_seen_by: github
 ---
 
 # KartaView

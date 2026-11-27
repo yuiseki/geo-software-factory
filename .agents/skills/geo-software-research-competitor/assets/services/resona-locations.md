@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2024-10-12
+first_seen_by: wayback
 ---
 
 # りそな銀行 店舗・ATMのご案内

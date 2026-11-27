@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: individual
+first_seen: 2026-03-17
+first_seen_by: wayback
 ---
 
 # 全国農業用ため池マップについて | 全国Q地図

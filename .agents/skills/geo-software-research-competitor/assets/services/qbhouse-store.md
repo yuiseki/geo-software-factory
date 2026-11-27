@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2004-05-03
+first_seen_by: wayback
 ---
 
 # QBハウス 店舗検索

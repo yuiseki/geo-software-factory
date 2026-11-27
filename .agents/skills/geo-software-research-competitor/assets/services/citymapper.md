@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-smb
+first_seen: 2004-04-12
+first_seen_by: wayback
 ---
 
 # Citymapper

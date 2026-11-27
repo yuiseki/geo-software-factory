@@ -1,6 +1,8 @@
 ---
 financial: non-commercial
 organization: individual
+first_seen: 2026-02-26
+first_seen_by: wayback
 ---
 
 # Map Studio

@@ -1,6 +1,8 @@
 ---
 financial: non-commercial
 organization: individual
+first_seen: 2011-12-05
+first_seen_by: github
 ---
 
 # OpenRailwayMap

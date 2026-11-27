@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2001-11-02
+first_seen_by: wayback
 ---
 
 # タイムズパーキング (タイムズ駐車場検索)

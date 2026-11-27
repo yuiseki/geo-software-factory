@@ -1,6 +1,8 @@
 ---
 financial: non-commercial
 organization: individual
+first_seen: 2024-03-27
+first_seen_by: wayback
 ---
 
 # Sunlit Earth: Earth from space as your wallpaper

@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: individual
+first_seen: 2020-08-16
+first_seen_by: wayback
 ---
 
 # City Guesser

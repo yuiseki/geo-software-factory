@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2007-07-08
+first_seen_by: wayback
 ---
 
 # Amazon ロッカー／カウンター検索

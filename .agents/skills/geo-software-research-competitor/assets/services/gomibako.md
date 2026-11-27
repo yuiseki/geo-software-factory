@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: individual
+first_seen: 2022-04-02
+first_seen_by: wayback
 ---
 
 # ゴミ箱マップ | 街中のゴミ箱情報をシェアしよう！

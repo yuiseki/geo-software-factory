@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2019-07-17
+first_seen_by: wayback
 ---
 
 # すき家 店舗検索

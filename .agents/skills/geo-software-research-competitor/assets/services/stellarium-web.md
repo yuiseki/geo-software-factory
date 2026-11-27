@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-smb
+first_seen: 2018-06-15
+first_seen_by: github
 ---
 
 # Stellarium Web

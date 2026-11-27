@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-smb
+first_seen: 2025-12-20
+first_seen_by: wayback
 ---
 
 # くまっぷ - クマ目撃・痕跡情報を共有するマップアプリ

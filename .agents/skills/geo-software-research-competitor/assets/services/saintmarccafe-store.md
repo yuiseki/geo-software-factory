@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2022-12-26
+first_seen_by: wayback
 ---
 
 # サンマルクカフェ 店舗検索

@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: individual
+first_seen: 2015-09-01
+first_seen_by: wayback
 ---
 
 # RainViewer

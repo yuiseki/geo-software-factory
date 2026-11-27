@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: individual
+first_seen: 2018-08-06
+first_seen_by: wayback
 ---
 
 # WorldGuessr

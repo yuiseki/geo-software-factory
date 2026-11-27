@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2020-12-04
+first_seen_by: wayback
 ---
 
 # ロイヤルホスト 店舗検索

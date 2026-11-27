@@ -1,6 +1,8 @@
 ---
 financial: non-commercial
 organization: individual
+first_seen: 2013-09-16
+first_seen_by: wayback
 ---
 
 # 今昔マップ on the web

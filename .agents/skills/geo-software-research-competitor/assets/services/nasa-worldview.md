@@ -1,6 +1,8 @@
 ---
 financial: public-service
 organization: gov-central
+first_seen: 2014-04-22
+first_seen_by: github
 ---
 
 # NASA Worldview

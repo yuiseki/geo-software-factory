@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2018-12-05
+first_seen_by: wayback
 ---
 
 # 日産 販売店(ディーラー)検索

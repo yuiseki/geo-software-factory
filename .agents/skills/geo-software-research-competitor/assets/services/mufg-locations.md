@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2015-09-12
+first_seen_by: wayback
 ---
 
 # 三菱UFJ銀行 ATM・店舗のご案内

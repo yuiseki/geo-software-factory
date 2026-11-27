@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2014-04-26
+first_seen_by: wayback
 ---
 
 # 西友 店舗検索

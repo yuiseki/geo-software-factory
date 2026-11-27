@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-smb
+first_seen: 1998-02-07
+first_seen_by: wayback
 ---
 
 # Windy

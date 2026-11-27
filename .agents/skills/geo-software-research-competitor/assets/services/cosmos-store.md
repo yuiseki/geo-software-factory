@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2020-03-17
+first_seen_by: wayback
 ---
 
 # コスモス薬品 店舗検索

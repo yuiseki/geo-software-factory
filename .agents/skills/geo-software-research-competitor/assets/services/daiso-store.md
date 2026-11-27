@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2002-11-06
+first_seen_by: wayback
 ---
 
 # ダイソー 店舗検索

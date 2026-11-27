@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: individual
+first_seen: 2026-05-05
+first_seen_by: store
 ---
 
 # 登山記録 - 百名山・GPS・オフライン地図

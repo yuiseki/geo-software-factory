@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: individual
+first_seen: 2014-08-01
+first_seen_by: wayback
 ---
 
 # Light Pollution Map

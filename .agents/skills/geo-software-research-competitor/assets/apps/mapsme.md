@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-smb
+first_seen: 2009-10-23
+first_seen_by: wayback
 ---
 
 # オフライン地図、GPSナビ:MAPS.ME

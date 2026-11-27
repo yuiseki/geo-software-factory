@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2025-06-06
+first_seen_by: wayback
 ---
 
 # キャンドゥ 店舗検索

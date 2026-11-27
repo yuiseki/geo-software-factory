@@ -1,6 +1,8 @@
 ---
 financial: non-commercial
 organization: corp-smb
+first_seen: 2026-08-15
+first_seen_by: wayback
 ---
 
 # 令和8年熊本地震 生活支援・被害状況マップ｜給水所・避難所・断水

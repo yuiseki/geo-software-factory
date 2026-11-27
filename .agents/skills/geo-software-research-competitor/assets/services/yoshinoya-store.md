@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2022-12-22
+first_seen_by: wayback
 ---
 
 # 吉野家 店舗検索

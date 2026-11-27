@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2009-11-04
+first_seen_by: wayback
 ---
 
 # スタジオアリス 店舗検索

@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-smb
+first_seen: none
+first_seen_by: none
 ---
 
 # USOMAP - 架空世界地図ジェネレーター｜無料の地図メーカー

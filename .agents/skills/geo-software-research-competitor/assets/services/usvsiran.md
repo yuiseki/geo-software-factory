@@ -1,6 +1,8 @@
 ---
 financial: non-commercial
 organization: individual
+first_seen: 2026-03-04
+first_seen_by: wayback
 ---
 
 # Trump Deadline Countdown | CENTCOM Theater Operations Map | US vs Iran Force Tracker

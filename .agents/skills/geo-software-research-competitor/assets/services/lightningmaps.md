@@ -1,6 +1,8 @@
 ---
 financial: non-commercial
 organization: individual
+first_seen: 2016-05-12
+first_seen_by: wayback
 ---
 
 # LightningMaps.org

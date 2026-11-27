@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-smb
+first_seen: 2026-01-24
+first_seen_by: wayback
 ---
 
 # Global Threat Map | Intelligence Platform

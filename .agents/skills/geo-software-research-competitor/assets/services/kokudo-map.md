@@ -1,6 +1,8 @@
 ---
 financial: non-commercial
 organization: individual
+first_seen: 2026-08-18
+first_seen_by: github
 ---
 
 # 国道マップ

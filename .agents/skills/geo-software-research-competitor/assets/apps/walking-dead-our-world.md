@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-smb
+first_seen: 2020-09-19
+first_seen_by: wayback
 ---
 
 # The Walking Dead: Our World

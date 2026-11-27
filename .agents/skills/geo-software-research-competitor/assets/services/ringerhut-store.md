@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2010-11-05
+first_seen_by: wayback
 ---
 
 # リンガーハット 店舗検索

@@ -1,6 +1,8 @@
 ---
 financial: non-commercial
 organization: individual
+first_seen: 2026-10-31
+first_seen_by: wayback
 ---
 
 # 電力系統マップ - Electrical Grid Map

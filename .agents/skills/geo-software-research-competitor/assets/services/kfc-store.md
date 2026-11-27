@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2002-05-07
+first_seen_by: wayback
 ---
 
 # ケンタッキーフライドチキン 店舗検索

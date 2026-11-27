@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2021-07-06
+first_seen_by: wayback
 ---
 
 # コーナン 店舗検索

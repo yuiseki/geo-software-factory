@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2012-08-25
+first_seen_by: wayback
 ---
 
 # スシロー 店舗検索

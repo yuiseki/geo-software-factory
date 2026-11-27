@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2022-02-19
+first_seen_by: wayback
 ---
 
 # カワチ薬品 店舗検索

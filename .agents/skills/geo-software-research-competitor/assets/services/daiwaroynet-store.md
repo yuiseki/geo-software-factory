@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2013-04-03
+first_seen_by: wayback
 ---
 
 # ダイワロイネットホテルズ ホテル一覧

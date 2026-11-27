@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-smb
+first_seen: 2024-07-21
+first_seen_by: wayback
 ---
 
 # 大戸屋 店舗検索

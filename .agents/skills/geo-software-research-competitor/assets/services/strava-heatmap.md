@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2024-01-25
+first_seen_by: wayback
 ---
 
 # Strava Global Heatmap

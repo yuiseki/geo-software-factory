@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: individual
+first_seen: 2016-09-21
+first_seen_by: wayback
 ---
 
 # みんなの行政地図

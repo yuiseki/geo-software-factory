@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: individual
+first_seen: 2026-10-01
+first_seen_by: wayback
 ---
 
 # Every lighthouse in the world | mapped.earth

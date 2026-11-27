@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2023-12-06
+first_seen_by: wayback
 ---
 
 # やよい軒 店舗検索

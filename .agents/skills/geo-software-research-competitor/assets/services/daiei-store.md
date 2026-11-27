@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2021-05-16
+first_seen_by: wayback
 ---
 
 # ダイエー 店舗一覧・店舗検索

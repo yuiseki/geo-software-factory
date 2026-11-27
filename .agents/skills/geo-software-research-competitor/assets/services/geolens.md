@@ -1,6 +1,8 @@
 ---
 financial: non-commercial
 organization: individual
+first_seen: 2026-03-22
+first_seen_by: github
 ---
 
 # GeoLens: Open-Source Geospatial Data Catalog & Map Builder

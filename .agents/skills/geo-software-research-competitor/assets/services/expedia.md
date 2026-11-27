@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 1996-12-21
+first_seen_by: wayback
 ---
 
 # Expedia

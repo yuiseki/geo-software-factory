@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2023-05-28
+first_seen_by: wayback
 ---
 
 # ロピア 店舗情報

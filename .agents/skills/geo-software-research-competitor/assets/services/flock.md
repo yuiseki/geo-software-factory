@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-smb
+first_seen: 2026-10-21
+first_seen_by: wayback
 ---
 
 # Flock camera map: Find the Flock cameras watching you | Proton

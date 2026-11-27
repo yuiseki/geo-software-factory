@@ -1,6 +1,8 @@
 ---
 financial: non-commercial
 organization: individual
+first_seen: 2018-01-15
+first_seen_by: wayback
 ---
 
 # kepler.gl

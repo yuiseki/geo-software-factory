@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-smb
+first_seen: 2006-08-13
+first_seen_by: wayback
 ---
 
 # GraphHopper

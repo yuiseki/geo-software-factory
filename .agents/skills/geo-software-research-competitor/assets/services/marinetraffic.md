@@ -1,6 +1,8 @@
 ---
 financial: commercial
 organization: corp-ent
+first_seen: 2008-07-05
+first_seen_by: wayback
 ---
 
 # MarineTraffic
